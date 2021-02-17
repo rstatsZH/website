@@ -1,0 +1,282 @@
+---
+title: "Praktikum 01 - Hallo R!"
+---
+
+Das Hauptziel diese Praktikums ist es, dich mit R und RStudio bekannt zu machen. Ein zusätzliches Ziel ist es, dich in Git und GitHub einzuführen, das Kollaborations- und Versionskontrollsystem, das wir während des Kurses benutzen werden.
+
+Ich ermutige dich im Laufe der Übungen über das hinauszugehen was die Übungen vorgeben. Die Bereitschaft zu experimentieren wird dich zu einer besseren Programmierin machen. Bevor wir soweit sind, ist es wichtig, dass du dir ein paar grundlegende Kenntnisse in R aneignest.
+
+Heute beginnen wir mit den grundlegenden Bausteinen von R und RStudio: die Benutzeroberfläche, das Einlesen von Daten und grundlegende Befehle.
+
+Dieses erste Praktikum wird von dir allein durchgeführt. In zukünfitgen Praktika wirst du lernen, wie du auf GitHub in kleinen Teams zusammenarbeitest und einen Bericht für dein Team erstellst.
+
+# Verbindung zu GitHub und RStudio Cloud aufbauen
+
+Du solltest eine Einladung erhalten haben, um der GitHub Organisation für diesen Kurs beizutreten. Diese Einladung musst du annehmen, bevor du mit dem nächsten Schritt fortfährst.
+
+- Öffne deine Email welche du für deinen GitHub Konto hinterlegt hast
+- Klicke auf "Join"
+
+```{r github-org-1, echo=FALSE}
+knitr::include_graphics("img/github-org-1.png")
+```
+
+Um deine RStudio und GitHub Konten zu verbinden, befolge die folgenden Schritte:
+
+- Öffne rstudio.cloud und login mit deinem Benutzerkonto (nutze GitHub)
+- Klicke auf deinen Namen in der oberen rechten Ecke, um das rechte Menü zu öffnen.
+- Klicke dann auf Authentifizierung.
+
+```{r github-auth-1, echo = FALSE}
+knitr::include_graphics("img/github-auth-1.png")
+```
+- Aktiviere im Fenster Authentifizierung das Kontrollkästchen für *Enabled*.
+
+```{r github-auth-2, echo = FALSE}
+knitr::include_graphics("img/github-auth-2.png")
+```
+
+- Im nächsten Fenster klickst du auf das grüne Kästchen mit der Aufschrift "Authorize rstudio".
+
+```{r github-auth-3, echo = FALSE}
+knitr::include_graphics("img/github-auth-3.png")
+```
+
+- Zurück im Authentifizierungsfenster aktivierst du das Kästchen *Private repo access also enabled* 
+- Im Feld *Organisation access*, klickst du nun zunächst auf "Request" neben deinem Kursnamen und folgend auf "Request approval from owners". Sollte hier kein Kurs auftauchen, könnte dies bedeueten, dass du die GitHub-Einladung zum Kurs noch nicht angenommen hast und du solltest zurückgehen und dies überprüfen und nacholen. Falls du keine Einladung hast, kontaktiere mich.
+- Nun noch auf das grüne Feld "Authorize rstudio" und nach Eingabe deines Passworts bist du bereit.
+
+```{r github-auth-4, echo = FALSE}
+knitr::include_graphics("img/github-auth-4.png")
+```
+- Sobald du fertig bist, sollten in RStudio Cloud beide Kästchen markiert sein.
+
+```{r github-auth-5, echo = FALSE}
+knitr::include_graphics("img/github-auth-5.png")
+```
+- Um zu bestätigen, dass du deine GitHub- und RStudio-Cloud-Konten erfolgreich verknüpft hast, wähle [GitHub settings \> Applications](https://github.com/settings/applications). Du solltest RStudio als autorisierte App unter *Authorized OAuth Apps* aufgelistet sehen. Falls nicht, ist dies ein guter Zeitpunkt, um eine Frage zu stellen.
+
+```{r github-auth-6, echo = FALSE}
+knitr::include_graphics("img/github-auth-6.png")
+```
+
+# Erste Schritte
+
+Jede deiner Aufgaben wird mit den folgenden Schritten beginnen. Du hast diese bereits einmal im Unterricht gesehen, hier sind sie noch einmal im Detail beschrieben.
+
+In Zukunft wird jede Aufgabe mit einem Abschnitt "Erste Schritte" beginnen, aber mit etwas weniger Details. Du kannst jedoch jederzeit auf dieses Praktikum zurückgreifen, um eine detaillierte Liste der Schritte zu erhalten, die notwendig sind, um mit einer Aufgabe zu beginnen.
+
+- Klicke auf den Link für die Aufgabe, den du in einer E-Mail erhalten haben solltest, um dein GitHub Repository (im Folgenden "Repo" genannt) für die Aufgabe zu erstellen. Dieses Repository enthält eine Vorlage, auf der du aufbauen kannst, um die Aufgabe zu lösen.
+
+```{r clone-repo-link, fig.margin = TRUE, echo = FALSE, fig.width=3}
+knitr::include_graphics("img/clone-repo-link.png")
+```
+
+- Auf GitHub klickst du auf den grünen **Clone or Download** Button und wählst **Use HTTPS** wie im Bild unten (dies könnte bereits standardmäßig ausgewählt sein, und wenn es so ist, siehst du den Text **Clone mit HTTPS**). Klicke auf das Klemmbrett-Symbol, um die Repo-URL zu kopieren.
+
+```{r new-project-from-gh, fig.margin = TRUE, echo = FALSE, fig.width=3}
+knitr::include_graphics("img/new-project-from-gh.png")
+```
+
+- Öffne nun RStudio Cloud und in den Kursarbeitsbereich. Klicke auf den Abwärtspfeil und erstelle ein **New Project from Git Repo**.
+
+```{r paste-gh-repo-url, fig.margin = TRUE, echo = FALSE, fig.width=5}
+knitr::include_graphics("img/paste-github-repo-url.png")
+```
+- Füge die URL aus deinem Repo oben in das Dialogfeld ein und stelle sicher, dass das Häkchen bei "Packages" gesetzt ist.
+
+```{r arrow-base-proejct}
+
+knitr::include_graphics("img/arrow-base-project.png")
+
+
+```
+
+- Klicke auf OK, habe etwas Geduld, und du bist bereit zum logslegen!
+
+## Aufwärmen
+
+Bevor wir uns die Daten anschauen, machen wir noch ein paar Aufwärmübungen um die R Markdown vorzustellen. 
+
+Der obere Teil deiner R Markdown Datei (zwischen den drei gestrichelten Linien) wird YAML genannt. Es steht für "YAML Ain't Markup Language". Es ist ein menschenfreundlicher Standard zur Serialisierung von Daten für alle Programmiersprachen. Alles, was du wissen musst, ist, dass dieser Bereich YAML genannt wird (wir werden ihn als solchen bezeichnen) und dass er Metainformationen über dein Dokument enthält.
+
+### YAML
+
+- Öffne die R Markdown (Rmd) Datei in deinem Projekt, ändere den Autorennamen zu deinen Namen, füge ein Datum hinzu und stricke ('knit') das Dokument.
+
+```{r yaml-raw-to-rendered, fig.fullwidth=TRUE, echo = FALSE}
+# knitr::include_graphics("img/yaml-raw-to-rendered.png")
+```
+
+Der obere Teil deiner R Markdown Datei (zwischen den drei gestrichelten Linien) wird YAML genannt. Es steht für "YAML Ain't Markup Language". Es ist ein menschenfreundlicher Standard zur Serialisierung von Daten für alle Programmiersprachen. Alles, was du wissen musst, ist, dass dieser Bereich YAML genannt wird (wir werden ihn als solchen bezeichnen) und dass er Metainformationen über dein Dokument enthält.
+
+### Änderungen schreiben (commit)
+
+In deinem RStudio, öffne das Fenster mit dem Titel Git im Ansichtsfenster oben rechts.
+
+Wenn du Änderungen an deiner Rmd-Datei gemacht hast, solltest du nun hier den Dateinamen sehen. Wähle die Datei aus der Liste aus indem du sie anklickst. Dann klicke auf **Diff** über den Dateinamen.
+
+Ein neues Fenster öffnet sich welche dir die *Diff*erenz zwischen dem letzten commit-Zustand des Dokuments (rot) und dem aktuellen aktuellen Zustand zeigt (grün), welcher deine Änderungen beinhaltet.
+
+Wenn du mit diesen Änderungen zufrieden bist, klicke auf das Kontrollkästchen neben dem Dateinamen um einen Haken zu setzen und schreibe "Aktualisiere Autorenname und Datum" in das Feld **Commit message**. Klicke anschliessend auf **Commit**.
+
+```{r update-author-name-commit, fig.fullwidth=TRUE, echo = FALSE}
+knitr::include_graphics("img/update-author-name-commit.png")
+```
+
+Du musst nicht nach jeder Änderung committen, das würde ziemlich mühsam werden.
+
+Du solltest in Betracht ziehen, Zustände zu committen, die *für dich bedeutsam* sind, um sie zu überprüfen, zu vergleichen oder wiederherzustellen.
+
+In den ersten paar Aufgaben werden wir dir genau sagen, wann du committen solltest und in einigen Fällen, welche commit-Nachricht du verwenden solltest. Im weiteren Verlauf des Kurses wirst du diese Entscheidungen dann selbst treffen.
+
+### Änderungen schieben (push)
+
+Jetzt, wo du ein Update gemacht und diese Änderung committed hast, ist es an der Zeit, diese Änderungen ins Web zu pushen!
+
+Oder genauer gesagt, in dein Repo auf GitHub. Warum das? Damit andere deine Änderungen sehen können. Und mit anderen meinen wir das Kursteam (deine Repos in diesem Kurs sind für dich und uns privat).
+
+Um deine Änderungen auf GitHub zu pushen, klicke auf **Push**. Daraufhin erscheint ein Dialogfenster, in dem du zuerst deinen Benutzernamen und dann dein Passwort eingeben musst. Das ist etwas umständlich und muss bei jedem push wiederholt werden. Aber, habe etwas Geduld, im Laufe des Kurse werde ich dir beibringen wie du dein Passwort speichern kannst, damit du es nicht jedes Mal neu eingeben musst.
+
+```{r}
+
+knitr::include_graphics("img/push-to-github.png")
+
+```
+
+## Pakate (Packages)
+
+In diesem Praktikum werden wir mit zwei Paketen arbeiten: **datasauRus**, welches den Datensatz enthält, den wir verwenden werden und **tidyverse**, welches eine Sammlung von Paketen ist, um Datenanalysen auf eine "ordentliche (tidy)" Art und Weise durchzuführen. Diese Pakete sind bereits für dich installiert. Du kannst die Pakete laden, indem du den folgenden Codeblock in der Konsole ausführst.
+
+```{r message=FALSE}
+library(tidyverse) 
+library(datasauRus)
+```
+
+Beachte, dass die Pakete auch mit den gleichen Befehlen in deinem R Markdown Dokument geladen werden.
+
+## Daten
+
+Der Dataframe, mit dem wir heute arbeiten werden, heißt `datasaurus_dozen` und befindet sich im Paket `datasauRus`. Eigentlich enthält dieser einzelne Dataframe 13 Datensätze, die uns zeigen sollen, warum Datenvisualisierung wichtig ist und wie zusammenfassende Statistiken allein irreführend sein können. Die verschiedenen Datensätze sind durch die Variable `dataset` gekennzeichnet.
+
+Um mehr über das Dataset herauszufinden, gib folgendes in deine Konsole ein: `?datasaurus_dozen`. Ein Fragezeichen vor dem Namen eines Objekts ruft immer dessen Hilfedatei auf. Dieser Befehl muss in der Konsole ausgeführt werden.
+
+# Übungen
+
+1.  Basierend auf der Hilfedatei, wie viele Zeilen und wie viele Spalten hat die Datei `datasaurus_dozen`? Was sind die Variablen, die im Dataframe enthalten sind? Füge deine Antworten zu deinem Praktikumsbericht hinzu.
+
+Schauen wir uns an, was diese Datensätze sind. Dazu können wir eine *Häufigkeitstabelle* (frequency table) der Datensatzvariablen erstellen:
+
+```{r}
+
+datasaurus_dozen %>% 
+  group_by(dataset) %>% 
+  count() 
+
+```
+
+Der ursprüngliche Datasaurus (`dino`) wurde von Alberto Cairo in [diesem großartigen Blogpost](http://www.thefunctionalart.com/2016/08/download-datasaurus-never-trust-summary.html) erstellt. Das andere Dutzend wurde mit Hilfe von Simulated Annealing generiert und der Prozess wird in dem Paper *Same Stats, Different Graphs: Generating Datasets with Varied Appearance and Identical Statistics through Simulated Annealing*^[Matejka, Justin, and George Fitzmaurice. "Same stats, different graphs: Generating datasets with varied appearance and identical statistics through simulated annealing." Proceedings of the 2017 CHI Conference on Human Factors in Computing Systems. ACM, 2017.] von Justin Matejka und George Fitzmaurice beschrieben. In dem Paper simulieren die Autoren eine Vielzahl von Datensätzen, die die gleichen zusammenfassenden Statistiken wie der Datasaurus haben, aber sehr unterschiedliche Verteilungen aufweisen.
+
+🧶 ✅ ⬆️ *Knit, commit und push deine Änderungen auf GitHub mit der Commit-Nachricht "Füge Antwort für Übung 1 hinzu." Achte darauf, alle geänderten Dateien zu committen und zu pushen, damit dein Git-Fenster danach aufgeräumt ist.*
+
+2.  Plot `y` gegen `x` für den `dino` Datensatz. Berechne dann den Korrelationskoeffizienten zwischen "x" und "y" für diesen Datensatz.
+
+Unten findest du den Code, den du brauchst, um diese Aufgabe zu lösen. Im Grunde ist die Antwort schon gegeben, aber du musst die relevanten Bits in dein Rmd-Dokument einfügen und es erfolgreich stricken (knit) und die Ergebnisse ansehen.
+
+Beginne mit dem `datasaurus_dozen` und leite es in die Funktion `filter`, um nach Beobachtungen zu filtern, bei denen `dataset == "dino"` ist. Speichere den resultierenden gefilterten Dataframe als einen Dataframe namens `dino_data`.
+
+```{r}
+dino_data <- datasaurus_dozen %>%
+  filter(dataset == "dino")
+```
+
+Hier geht eine ganze Menge vor sich, also lassen wir es langsam angehen und nehmen es Schritt für Schritt auseinander.
+
+Erstens, der Pipe-Operator: `%>%`, nimmt das, was davor kommt und sendet es als erstes Argument an das, was danach kommt. Hier sagen wir also, dass wir den `datasaurus_dozen` Dataframe nach Beobachtungen filtern, bei denen `dataset == "dino"` ist.
+
+Zweitens, der Zuweisungsoperator: `<-`, weist dem gefilterten Datenrahmen den Namen `dino_data` zu.
+
+Als nächstes wollen wir diese Daten visualisieren. Dafür verwenden wir die Funktion `ggplot()`. Das erste Argument sind die Daten, die wir visualisieren wollen. Als nächstes definieren wir die `aes`thetischen Mappings. In anderen Worten, die Spalten der Daten, die auf bestimmte ästhetische Merkmale des Plots abgebildet werden, z.B. wird die `x`-Achse die Variable namens `x` und die `y`-Achse die Variable namens `y` repräsentieren.
+
+Dann fügen wir eine weitere Ebene zu diesem Diagramm hinzu, in der wir definieren, welche geometrischen Formen wir verwenden wollen, um jede Beobachtung in den Daten darzustellen. In diesem Fall wollen wir, dass es sich um Punkte handelt, daher `geom_point()`.
+
+```{r fig.fullwidth=TRUE}
+ggplot(data = dino_data, mapping = aes(x = x, y = y)) +
+  geom_point()
+```
+
+Wenn das nach viel klingt, dann ist es das auch. Nächste Woche wirst du mehr über die Philosophie der Datenvisualisierung im Layer erfahren. Für den Moment kannst du dem Code folgen, welcher dir zur Verfügung gestellt wird.
+
+Für den zweiten Teil dieser Übungen müssen wir eine zusammenfassende Statistik berechnen: den Korrelationskoeffizienten. Der Korrelationskoeffizient, in der Statistik oft als $r$ bezeichnet, misst den linearen Zusammenhang zwischen zwei Variablen.
+
+Du wirst sehen, dass einige der Variablenpaare, die wir darstellen, keinen linearen Zusammenhang zwischen ihnen haben. Das ist genau der Grund, warum wir zuerst visualisieren wollen: visualisieren, um die Form der Beziehung zu beurteilen, und $r$ nur berechnen, wenn es relevant ist.
+
+In diesem Fall macht die Berechnung eines Korrelationskoeffizienten wirklich keinen Sinn, da die Beziehung zwischen `x` und `y` definitiv nicht linear ist - sie ist dinosaurierhaft!
+
+Aber zur Veranschaulichung lass uns den Korrelationskoeffizienten zwischen "x" und "y" berechnen.
+
+- Beginne mit `dino_data` und berechne eine zusammenfassende Statistik, die wir `r` nennen werden, als die Beziehung (`cor`) zwischen `x` und `y`.
+
+```{r}
+dino_data %>%
+  summarize(r = cor(x, y))
+```
+
+🧶 ✅ ⬆️ *Knit, commit, und pushe deine Änderungen auf GitHub mit der Commit-Nachricht "Füge Antwort für Übung 2 hinzu." Achte darauf, alle geänderten Dateien zu committen und zu pushen, damit dein Git-Fenster danach aufgeräumt ist.*
+
+3.  Plotte `y` gegen `x` für den `star` Datensatz. Du kannst (und solltest) den Code, den wir oben genutzt, wiederverwenden, ersetze einfach den Namen des Datensatzes durch den gewünschten Datensatz. Berechne dann den Korrelationskoeffizienten zwischen "x" und "y" für diesen Datensatz. Wie ist dieser Wert im Vergleich zu `r` von `dino`?
+
+🧶 ✅ ⬆️ *Dies ist ein weiterer guter Ort, um zu pausieren, zu stricken (knit), Änderungen mit der Commit-Nachricht "Füge Antwort für Übung 3 hinzu." zu committen und zu pushen. Achte darauf, alle geänderten Dateien zu committen und zu pushen, damit dein Git-Fenster danach aufgeräumt ist.*
+
+4.  Plotte `y` gegen `x` für den `circle` Datensatz. Du kannst (und solltest) den Code, den wir oben genutzt, wiederverwenden, ersetze einfach den Namen des Datensatzes durch den gewünschten Datensatz. Berechne dann den Korrelationskoeffizienten zwischen "x" und "y" für diesen Datensatz. Wie ist dieser Wert im Vergleich zu `r` von `dino`?
+
+🧶 ✅ ⬆️ *Du kannst erneut pausieren, die Änderungen mit der Commit-Nachricht "Füge Antwort für Übung 4 hinzu." committen und pushen. Achte darauf, alle geänderten Dateien zu committen und zu pushen, damit dein Git-Fenster danach aufgeräumt ist.*
+
+5.  Zum Schluss wollen wir alle Datensätze auf einmal darstellen. Um dies zu tun, werden wir Method für eine Facettierung nutzen.
+
+Mit einer Facette (facet) durich die Variable `dataset`, platzieren wir die Plots in einem Raster aus drei Spalten, entfernen die Legende und geben der Variable `dataset` eine visuelle Eigenschaft (aesthetic).
+
+
+```{r all-viz, eval=FALSE, fig.fullwidth=TRUE}
+
+ggplot(datasaurus_dozen, aes(x = x, y = y, color = dataset))+
+  geom_point()+
+  facet_wrap(~ dataset, ncol = 3) +
+  theme(legend.position = "none")
+
+```
+
+Und wir können die Funktion `group_by()` in Kombination mit der Funktion `summarize()` verwenden, um alle zusammenfassenden Korrelationskoeffizienten zu erzeugen.
+
+```{r all-r, eval=FALSE}
+datasaurus_dozen %>%
+  group_by(dataset) %>%
+  summarize(r = cor(x, y)) 
+```
+
+Gratulation! Du hast die Übungen abgeschlossen. Zwei Dinge noch:
+
+```{r fig-resize-global, fig.margin = TRUE, echo = FALSE, fig.width=3}
+# knitr::include_graphics("img/fig-resize-global.png")
+```
+
+- **(1) Ändere die Grösse deiner Abbildungen**
+
+Klicke auf das Zahnradsymbol oben im R Markdown Dokument und wähle "Output Options..." im Dropdown-Menü. In dem sich öffnenden Dialogfenster gehst du zum Reiter "Figures" und änderst die Höhe und Breite der Figuren und klickst auf "OK", wenn du fertig bist. Dann stricke dein Dokument und schaue, wie dir die neuen Größen gefallen. Ändere und stricke wieder und wieder, bis du mit den Figurengrößen zufrieden bist. Schau dir den YAML-Header an und beachte, dass diese Werte dort gespeichert werden, was bedeutet dass du diese auch hier ändern kannst.
+
+```{r fig-resize-local, fig.margin = TRUE, echo = FALSE, fig.width=3}
+# knitr::include_graphics("img/fig-resize-local.png")
+```
+
+Du kannst auch verschiedene Größen für unterschiedliche Abbildungen verwenden. Klicke dazu auf das Zahnradsymbol innerhalb des Chunks, in dem du eine Änderung vornehmen möchtest. Das Ändern der Abbildungsgrößen hat neue Optionen zu diesen Chunks hinzugefügt: `fig.width` und `fig.height`. Du kannst sie auch ändern, indem du verschiedene Werte direkt in deinem R Markdown Dokument definierst.
+
+```{r theme-highlight, fig.margin = TRUE, echo = FALSE, fig.width=3}
+# knitr::include_graphics("img/theme-highlight.png")
+```
+
+- **(2) Ändere das Aussehen deines Berichts:**
+
+Klicke erneut auf das Zahnradsymbol oben im R Markdown Dokument und wähle "Output Options..." im Dropdown-Menü.
+Probiere im Reiter "General" des sich öffnenden Dialogfeldes verschiedene Optionen für die Syntaxhervorhebung und das Design (theme) aus. Klicke auf OK und stricke dein Dokument. Du kannst mit diesen Optionen herumspielen, bis du mit dem Aussehen zufrieden bist.
+
+*Bravo, du bist fertig! Übertrage alle verbleibenden Änderungen, verwende die Commit-Nachricht "Fertig mit Übung 1! *" und pushe. Achte darauf, alle geänderten Dateien zu committen und zu pushen, damit dein Git-Fenster danach aufgeräumt ist. Bevor du die Aufgabe beendest, stelle sicher, dass alle Dokumente in deinem GitHub Repository aktualisiert sind.

@@ -1,14 +1,14 @@
 ---
-title: "Praktikum 01 - Hallo R!"
+title: "Heimarbeit 01 - Hallo Git!"
 ---
 
-Das Hauptziel diese Praktikums ist es, dich mit R und RStudio bekannt zu machen. Ein zusätzliches Ziel ist es, dich in Git und GitHub einzuführen, das Kollaborations- und Versionskontrollsystem, das wir während des Kurses benutzen werden.
+Das Hauptziel dieser Heimarbeit ist es, dich mit R und RStudio bekannt zu machen. Ein zusätzliches Ziel ist es, dich in Git und GitHub einzuführen, das Kollaborations- und Versionskontrollsystem, das wir während des Kurses benutzen werden.
 
 Ich ermutige dich im Laufe der Übungen über das hinauszugehen was die Übungen vorgeben. Die Bereitschaft zu experimentieren wird dich zu einer besseren Programmierin machen. Bevor wir soweit sind, ist es wichtig, dass du dir ein paar grundlegende Kenntnisse in R aneignest.
 
 Heute beginnen wir mit den grundlegenden Bausteinen von R und RStudio: die Benutzeroberfläche, das Einlesen von Daten und grundlegende Befehle.
 
-Dieses erste Praktikum wird von dir allein durchgeführt. In zukünfitgen Praktika wirst du lernen, wie du auf GitHub in kleinen Teams zusammenarbeitest und einen Bericht für dein Team erstellst.
+Dieses erste Heimarbeit wird von dir allein durchgeführt. In zukünfitgen Heimarbeiten (oder auch Praktika) wirst du lernen, wie du auf GitHub in kleinen Teams zusammenarbeitest und einen Bericht für dein Team erstellst.
 
 # Verbindung zu GitHub und RStudio Cloud aufbauen
 
@@ -64,7 +64,7 @@ knitr::include_graphics("img/github-auth-6.png")
 
 Jede deiner Aufgaben wird mit den folgenden Schritten beginnen. Du hast diese bereits einmal im Unterricht gesehen, hier sind sie noch einmal im Detail beschrieben.
 
-In Zukunft wird jede Aufgabe mit einem Abschnitt "Erste Schritte" beginnen, aber mit etwas weniger Details. Du kannst jedoch jederzeit auf dieses Praktikum zurückgreifen, um eine detaillierte Liste der Schritte zu erhalten, die notwendig sind, um mit einer Aufgabe zu beginnen.
+In Zukunft wird jede Aufgabe mit einem Abschnitt "Erste Schritte" beginnen, aber mit etwas weniger Details. Du kannst jedoch jederzeit auf dieses Heimarbeit zurückgreifen, um eine detaillierte Liste der Schritte zu erhalten, die notwendig sind, um mit einer Aufgabe zu beginnen.
 
 - Klicke auf den Link für die Aufgabe, den du in einer E-Mail erhalten haben solltest, um dein GitHub Repository (im Folgenden "Repo" genannt) für die Aufgabe zu erstellen. Dieses Repository enthält eine Vorlage, auf der du aufbauen kannst, um die Aufgabe zu lösen.
 
@@ -146,7 +146,7 @@ knitr::include_graphics("img/push-to-github.png")
 
 ## Pakate (Packages)
 
-In diesem Praktikum werden wir mit zwei Paketen arbeiten: **datasauRus**, welches den Datensatz enthält, den wir verwenden werden und **tidyverse**, welches eine Sammlung von Paketen ist, um Datenanalysen auf eine "ordentliche (tidy)" Art und Weise durchzuführen. Diese Pakete sind bereits für dich installiert. Du kannst die Pakete laden, indem du den folgenden Codeblock in der Konsole ausführst.
+In diesem Heimarbeit werden wir mit zwei Paketen arbeiten: **datasauRus**, welches den Datensatz enthält, den wir verwenden werden und **tidyverse**, welches eine Sammlung von Paketen ist, um Datenanalysen auf eine "ordentliche (tidy)" Art und Weise durchzuführen. Diese Pakete sind bereits für dich installiert. Du kannst die Pakete laden, indem du den folgenden Codeblock in der Konsole ausführst.
 
 ```{r message=FALSE}
 library(tidyverse) 
@@ -163,7 +163,7 @@ Um mehr über das Dataset herauszufinden, gib folgendes in deine Konsole ein: `?
 
 # Übungen
 
-1.  Basierend auf der Hilfedatei, wie viele Zeilen und wie viele Spalten hat die Datei `datasaurus_dozen`? Was sind die Variablen, die im Dataframe enthalten sind? Füge deine Antworten zu deinem Praktikumsbericht hinzu.
+1.  Basierend auf der Hilfedatei, wie viele Zeilen und wie viele Spalten hat die Datei `datasaurus_dozen`? Was sind die Variablen, die im Dataframe enthalten sind? Füge deine Antworten zu deinem Bericht hinzu.
 
 Schauen wir uns an, was diese Datensätze sind. Dazu können wir eine *Häufigkeitstabelle* (frequency table) der Datensatzvariablen erstellen:
 
@@ -194,7 +194,7 @@ Hier geht eine ganze Menge vor sich, also lassen wir es langsam angehen und nehm
 
 Erstens, der Pipe-Operator: `%>%`, nimmt das, was davor kommt und sendet es als erstes Argument an das, was danach kommt. Hier sagen wir also, dass wir den `datasaurus_dozen` Dataframe nach Beobachtungen filtern, bei denen `dataset == "dino"` ist.
 
-Zweitens, der Zuweisungsoperator: `<-`, weist dem gefilterten Datenrahmen den Namen `dino_data` zu.
+Zweitens, der Zuweisungsoperator: `<-`, weist dem gefilterten Dataframe den Namen `dino_data` zu.
 
 Als nächstes wollen wir diese Daten visualisieren. Dafür verwenden wir die Funktion `ggplot()`. Das erste Argument sind die Daten, die wir visualisieren wollen. Als nächstes definieren wir die `aes`thetischen Mappings. In anderen Worten, die Spalten der Daten, die auf bestimmte ästhetische Merkmale des Plots abgebildet werden, z.B. wird die `x`-Achse die Variable namens `x` und die `y`-Achse die Variable namens `y` repräsentieren.
 

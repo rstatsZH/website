@@ -1,0 +1,289 @@
+---
+title: "rstatsZH - Data Science mit R"
+subtitle: "Willkommen"  
+author: "Lars Schöbitz"
+date: "2020-02-08"
+output:
+  xaringan::moon_reader:
+    self_contained: false
+    lib_dir: libs
+    css: ["default", "../assets/css/xaringan-themer.css", "../assets/css/my-css-style.css"]
+    seal: FALSE
+    nature:
+      slideNumberFormat: |
+        <div class="progress-bar-container">
+          <div class="progress-bar" style="width: calc(%current% / %total% * 100%);">
+          </div>
+        </div>
+      highlightStyle: solarized-light
+      highlightLanguage: ["r", "css", "yaml"]
+      highlightLines: true
+      countIncrementalSlides: false
+      ratio: "16:9"
+---
+
+```{r child = "../setup.Rmd"}
+
+```
+
+class: title-slide
+
+# `r rmarkdown::metadata$title`
+## `r rmarkdown::metadata$subtitle` 
+
+.bottom[
+
+```{r, echo=FALSE}
+p(rmarkdown::metadata$author)
+p(rmarkdown::metadata$date)
+```
+]
+
+---
+class: middle
+
+# .big[Hallo R! `r emo::ji("wave")`]
+
+---
+class: left
+background-image: url(img/united-nations-covid-19-response-IKyhoO8giSA-unsplash.jpg)
+background-position: right
+background-size: contain
+
+# .big[Hallo Ihr!] 
+
+.footnote[[Image created by Danielo Baretto](https://unsplash.com/photos/IKyhoO8giSA)]
+
+---
+class: left
+background-image: url(img/goals.jpg)
+background-position: right
+background-size: contain
+
+# Ziele für heute 
+
+.pull-left[
+
+Am Ende des Tages:
+
+- haben wir uns kennengelernt
+- habt ihr die Werkzeugkiste kennengelernt
+- könnt ihr beschreiben was die Ziele des Kurses sind
+
+.footnote[Photo by: [Muzammil Soorma](https://unsplash.com/photos/6M_Wiwi1LQQ)]
+
+]
+
+???
+
+Heute geht es vor Allem um's Kennenlernen. Wir machen uns miteinander und der
+Arbeitsumgebung vertraut. Ihr bereitet euer erstes kleines RMarkdown Dokument vor.
+
+
+---
+# Kennenlernen
+
+.fyi[
+
+  Stellt euch jeweils gegenseitig in 2er Gruppen vor (pro Person 2 Minuten)
+  
+  - Mögliche Fragen
+    - In welcher Verwaltungseinheit bist du? 
+    - Was für Erfahrungen hast du mit R?
+    - Welche Ziele hast du für den Kurs?
+    - Was machst du gern ausserhalb der Arbeit? 
+]
+
+---
+# Kennenlernen
+
+.fyi[
+  
+  In der Gruppe: Stellt eure Arbeitsparter_in vor
+  
+]
+
+---
+class: inverse, middle
+
+# .big[Werkzeugkiste `r emo::ji("toolbox")`]
+
+---
+# Wekzeugkiste
+
+.pull-left[
+
+# **Kursarbeit**
+
+- Zoom
+- Slack
+- Google Docs
+- https://statistikzh.github.io/rstatsZH/
+]
+
+.pull-right[
+
+# Data Science
+
+**Programmieren**
+
+- R
+- RStudio (Cloud)
+- tidyverse
+- R Markdown
+
+**Versionskontrolle und Kollaboration**
+
+- Git
+- GitHub
+
+]
+
+---
+# Zoom
+
+Unsere Konferenzplatform
+
+**Tipps für die Nutzung**
+
+- Das Mikrofon auf stumm schalten
+- Wenn ihr mögt, das Video gern einschalten
+- Das Fenster in welchem ich zu sehen bin "pinnen"
+- Wir nutzen den Zoom Chat nur für Kleinigkeiten  
+
+---
+class: left
+background-image: url(img/kommunikation.jpg)
+background-position: right
+background-size: contain
+
+# Slack
+
+Unser Channel für die Kommunikation
+
+**Was gehört hinein?**
+
+- Ankündigungen
+- Unterhaltungen
+- Fragen
+- Unterstützung beim Programmieren
+
+.footnote[Photo by: [Steve Halama](https://unsplash.com/@steve3p_0)]
+
+---
+# Google Docs
+
+Unser geteiltes Notizbuch (ein Experiment)
+
+**Wozu nutzen wir es?**
+
+- Für bestimmte Übungen und Aufgaben
+- Zum Teilen von Bildern
+
+---
+# Data Science mit R - Lernziele
+
+Am Ende des Kurses wirst du:
+
+--
+- Wissen aus Daten generieren
+
+--
+- **reproduzierbar**, Wissen aus Daten generieren
+
+--
+- reproduzierbar, **und mit modernen Werkzeugen und Techniken**, Wissen aus Daten generieren
+
+--
+- reproduzierbar, **kollaborativ**, und mit modernen Werkzeugen und Techniken, Wissen aus Daten generieren
+
+--
+- reproduzierbar **(mit literate programming und Versionsverwaltung)**, kollaborativ, und mit modernen Werkzeugen und Techniken, Wissen aus Daten generieren
+
+---
+class: middle
+
+# .big[Reproduzierbare Datenanalyse]
+
+---
+
+.fyi[
+**Frage:**
+Was macht eine Datenanalyse reproduzierbar?
+]
+
+--
+**Kurzfristige Ziele**
+
+- Können Tabellen und Grafiken aus den Daten und dem Code neu erstellt (reproduziert) werden?
+- 
+
+---
+# Werkzeuge für reproduzierbare Datenanalyse
+
+- Skripts ➡️ R
+- Literate programming (Code, Beschreibung (Text), Output in einer Datei) ➡️ R Markdown
+- Versionsverwaltun und Kollaboration ➡️ Git / GitHub
+
+---
+
+class: middle
+
+# .big[R and RStudio]
+
+---
+# R und RStudio
+
+.pull-left[
+
+```{r echo=FALSE, out.width="25%"}
+knitr::include_graphics("img/r-logo.png")
+```
+- R is an open-source statistical **programming language**
+- R is also an environment for statistical computing and graphics 
+- It's easily extensible with *packages*
+
+]
+
+.pull-right[
+
+```{r echo=FALSE, out.width="50%"}
+knitr::include_graphics("img/rstudio-logo.png")
+```
+
+- RStudio is a convenient interface for R called an **IDE** (integrated development environment), e.g. *"I write R code in the RStudio IDE"*
+- RStudio is not a requirement for programming with R, but it's very commonly used by R programmers and data scientists
+
+]
+
+---
+# R packages
+
+- **Packages** are the fundamental units of reproducible R code. They include reusable R functions, the documentation that describes how to use them, and sample data<sup>1</sup>
+
+- As of September 2020, there are over 16,000 R packages available on **CRAN** (the Comprehensive R Archive Network)<sup>2</sup>
+
+- We're going to work with a small (but important) subset of these!
+
+.footnote[
+<sup>1</sup> Wickham and Bryan, [R Packages](https://r-pkgs.org/).
+
+<sup>2</sup> [CRAN contributed packages](https://cran.r-project.org/web/packages/).
+]
+
+---
+## Tour: R and RStudio
+
+```{r echo=FALSE, out.width="80%"}
+knitr::include_graphics("img/tour-r-rstudio.png")
+```
+
+
+
+
+
+
+
+
+
+

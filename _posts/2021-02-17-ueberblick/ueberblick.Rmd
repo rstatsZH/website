@@ -1,0 +1,93 @@
+---
+title: "Überblick"
+description: |
+  Schau herein um Informationen zum Kursinhalt, den Lehrpersonen und freien Terminen zu bekommen.
+date: 02-14-2021
+output:
+  distill::distill_article:
+    toc: true
+    self_contained: false
+preview: img/roadmap.jpg
+---
+
+```{r setup, echo=FALSE, include=FALSE}
+
+Sys.setlocale("LC_TIME", "de_DE.UTF-8")
+
+library(dplyr)
+library(magrittr)
+
+```
+
+```{r, layout="l-body", preview=TRUE, echo=FALSE, include=TRUE, fig.cap="Photo by [Jaromír Kavan](https://unsplash.com/photos/vv-oEGlN-4E)"}
+
+knitr::include_graphics("img/roadmap.jpg")
+
+```
+
+# Wer kann teilnehmen?
+
+Der Kurs richtet sich in erster Linie an Mitarbeiter_innen der Verwaltung des Kantons Zürich, steht jedoch auch anderen Personen offen. Die Kosten für den Kurs betragen 1450.00 CHF pro Person. 
+
+# Was sind die Ziele?
+
+Am Ende dieses Kurses kannst du:
+
+- (Daten)projekte reproduzierbar publizieren
+- kollaborativ mit git und GitHub arbeiten
+- das Konzept von tidy data verstehen und anwenden
+- explorative Datenanalysen durchführen (einfache lineare Modellierung machen hier einen kleinen Teil aus)
+- dir selbst und Anderen helfen mehr über die grosse Welt der Möglichkeiten für Data Science mit R zu lernen
+
+# Was macht den Kurs speziell?
+
+Über 7 Wochen lernst du R in deine Arbeitsabläufe zu integrieren. Wir helfen dir dabei mit wöchentlichen Kurseinheiten über 3 Stunden, ergänzenden Übungen und einem persönlichen Tutoring. 
+
+# Wer leitet den Kurs?
+
+**Angebot**
+
+Matthias Mazenaur  
+[Data Shop](https://www.zh.ch/de/direktion-der-justiz-und-des-innern/statistisches-amt/data-shop.html#-595137091)  
+Statistisisches Amt des Kantons Zürich  
+
+**Durchführung**
+
+[Lars Schöbitz](https://www.lse.de/)  
+Lars Schöbitz GmbH  
+
+# Was sind die Termine?
+
+```{r, echo=FALSE, layout="l-body"}
+
+googlesheets4::read_sheet("1WhGB4Pqpr4ywGbOKaC2UoRsyaf5jbI7L8jY75Lic9FE") %>% 
+  select(-starts_with("Woche")) %>% 
+  mutate(
+    Start = format(Start, "%d. %B %Y"),
+    Ende = format(Ende, "%d. %B %Y"),
+    Bemerkung = case_when(is.na(Bemerkung) == TRUE ~ " ", TRUE ~ Bemerkung)
+    ) %>% 
+  knitr::kable(format = "html") #%>% 
+  #kableExtra::kable_styling(bootstrap_options = c("striped", "hover"))
+```
+
+# Wo kann ich mich (unverbindlich) anmelden?
+
+Hier geht's zur Anmeldung worauf auf eine Kontaktaufhnahme folgt:
+
+https://www.zh.ch/de/politik-staat/statistik-daten/rstatszh-data-science-mit-r-anmelden.html
+
+# Eine Zusammenfassung in Folien
+
+```{r share-again, echo=FALSE}
+
+xaringanExtra::use_share_again()
+
+```
+
+
+```{r embed-xaringan, echo=FALSE, fig.cap="[Folien](slides/e0_d01-ueberblick/e0_d01-ueberblick.html)"}
+
+xaringanExtra::embed_xaringan(url = "../../slides/e0_d01-ueberblick/e0_d01-ueberblick.html", ratio = "16:9")
+
+```

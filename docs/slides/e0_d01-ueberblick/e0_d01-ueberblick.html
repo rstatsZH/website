@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+  <head>
+    <title>rstatsZH - Datenwissenschaften mit R</title>
+    <meta charset="utf-8" />
+    <meta name="author" content="Lars Schöbitz" />
+    <meta name="date" content="2020-02-01" />
+    <script src="libs/header-attrs/header-attrs.js"></script>
+    <link href="libs/remark-css/default.css" rel="stylesheet" />
+    <link href="libs/font-awesome/css/fontawesome-all.min.css" rel="stylesheet" />
+    <meta name="description" content="Ein Überblick über den Kurs &#39;Datenwisschenschaften mit R&#39;"/>
+    <meta name="generator" content="xaringan and remark.js"/>
+    <meta name="github-repo" content="statistikZH/rstatsZH"/>
+    <meta name="twitter:title" content="rstatsZH - Datenwissenschaften mit R"/>
+    <meta name="twitter:description" content="Ein Überblick über den Kurs &#39;Datenwisschenschaften mit R&#39;"/>
+    <meta name="twitter:url" content=""/>
+    <meta name="twitter:card" content="summary_large_image"/>
+    <meta name="twitter:creator" content="@larnsce"/>
+    <meta name="twitter:site" content="@larnsce"/>
+    <meta property="og:title" content="rstatsZH - Datenwissenschaften mit R"/>
+    <meta property="og:description" content="Ein Überblick über den Kurs &#39;Datenwisschenschaften mit R&#39;"/>
+    <meta property="og:url" content=""/>
+    <meta property="og:type" content="website"/>
+    <meta property="og:locale" content="en_US"/>
+    <meta property="article:author" content="Lars Schöbitz"/>
+    <link rel="stylesheet" href="../assets/css/xaringan-themer.css" type="text/css" />
+    <link rel="stylesheet" href="../assets/css/my-css-style.css" type="text/css" />
+  </head>
+  <body>
+    <textarea id="source">
+
+
+
+
+
+layout: true
+
+---
+
+class: title-slide
+
+# rstatsZH - Datenwissenschaften mit R
+## Angebotsüberblick 
+
+.bottom[
+
+<p>Lars Schöbitz</p><p>2020-02-01</p>
+]
+
+
+
+
+???
+
+Mein kurzer Vortrag wird euch einen zusammenfassenden Überblick über das Angebot geben, welches wir derzeit am Statistischen Amt ausarbeiten. 
+
+Es ist eines unserer Ziele die Zusammenarbeit mit anderen Stellen im Kanton gezielt durch ein Weiterbildungsprogramm zu Datenwissenschaften zu verbessern und vielleicht sogar zu ermöglichen. 
+
+Nebst der statistischen Grundversorgung arbeiten wir seit einigen Jahren gezielt daran Behördendaten öffentlich verfügbar zu machen. Und dabei sind wir immer wieder auf der Suche nach mutigen Kollegen, die diesen Weg mit uns gehen.
+
+Aber, nun erstmal fokussieren wir uns erstmal auf den Kurs: rstatsZH - Datenwissenschaften mit R
+
+---
+class: left
+background-image: url(img/lars_schoebitz_profile_photo.jpg)
+background-position: right
+background-size: contain
+
+# Hallo Zusammen 👋
+
+- Lars Schöbitz
+    - Umweltingenieur
+    - Toiletten-Forscher
+    - Datenwissenschaftler
+- R Nutzer seit 2016
+- R Trainer seit 2020
+- Twitter: [https://twitter.com/larnsce](https://twitter.com/larnsce)
+
+???
+Kurz zu mir: Mein Name ist Lars Schöbitz. Ich freue mich wenn ihr mich Lars nennt und hoffe es geht okay, dass ich euch Dutze.
+
+Ich habe mal Umwelt- Hygiene und Sicherheitstechnik an einer Fachhochschule in Deutschland studiert und bin über Umwege im jahr 2012 in der Schweiz gelandet.
+
+Hier habe ich dann 5 Jahre lang am Wasserforschungsinstitut Eawag gearbeitet und mich vor Allem mit der Sanitärversorgung im globalen Süden beschäftigt. Die Fäkalschlammbehandlung aus Toilettensystemen die nicht an die Kanalisation angeschlossen sind war mein Spezialgebiet.
+
+Neuerdings darf ich mich auch Datenwissenschaftler nennen, da ich ein Praktikum als Data Scientist im statistischen Amt gemacht habe. 
+
+Ich nutze R seit etwa vier Jahren. Mein Einstieg war ein 2-tägiger Workshop aber der Grossteil meiner Kompetenzen ist selbständig erworben. 
+
+Seit etwa zwei Monaten bin ich nun offiziel als R Trainer zertifiziert. Später noch etwas mehr dazu.
+
+---
+class: left
+background-position: right
+background-size: contain
+
+# rstatsZH - moderner NutzeR 
+
+Ein **moderner NutzeR** zu werden bedeutet, Fähigkeiten, Gewohnheiten und Denkweisen für eine reproduzierbare und kooperative Arbeitsweise zu entwickeln.
+
+Wir lernen:
+
+1. Coding mit bewährten Verfahren (R/RStudio/tidyverse)
+2. Kooperatives Arbeiten (Git/GitHub)
+3. Reproduzierbare Dokumente schreiben und veröffentlichen (R Markdown)
+
+
+???
+
+In diesem Kurs geht es nicht nur darum R zu lernen. 
+
+- Wir lernen ein gesamtes Ökosystem an Werkzeugen und Praktiken kennen, welche uns helfen werden gute Gewohnheiten für eine reproduzierbare und kooperative Arbeitsweise zu entwickeln
+    
+   -&gt; Entscheidene Kompetenzen eines modernen Analytikers
+
+- Wir werden Fähigkeiten erlernen, welche schrittweise in Eure bestehenden Arbeitsabläufe integriert werden können
+
+- Dabei geht es allerdings nicht nur um Fähigkeiten, sondern auch um Denkweisen
+    - Darüber wie wir Daten formen, Daten organisieren und Daten analysieren
+    - Und wie das was wir jetzt tun unser analytisches Leben in der Zukunft besser machen kann. 
+    
+---
+# Bewährte Verfahren
+
+.pull-left[
+
+## R - der Motor
+
+&lt;img src="img/engine.jpg" width="50%" style="display: block; margin: auto;" /&gt;
+
+]
+
+.pull-right[
+
+## RStudio IDE - das Dashboard
+
+&lt;img src="img/car-dashboard.jpg" width="50%" style="display: block; margin: auto;" /&gt;
+
+]
+
+.footnote[Images by rawpixel.com]
+
+???
+
+Wir werden die Kombination aus R und der RStudio IDE nutzen. 
+
+R ist die eigentliche Programmiersprache in welcher wir Code schreiben. Wenn wir die Analogie eines Autos nutzen, dann ist R der Motor. 
+
+Die RStudio IDE (integratred development environment oder integrierte Entwicklungsumgebung) ist eine Art Benutzeroberfläche welche das Programmieren in R erleichtet. In einem Auto wäre dies das Dashboard bzw. die Konsole. 
+
+---
+# Bewährte Verfahren - Tidyverse
+
+.pull-left[
+
+- Ein logisch zusammenhängendes System zur
+  - Daten Aufbereitung
+  - Daten Exploration
+  - Daten Visualisierung
+  - Daten Modellierung
+- Eine Designphilosophie, Grammatik und Daten Struktur
+- Entwickelt um Produktivität zu unterstützen
+- Haupt Entwickler: Hadley Wickham
+]
+
+.pull-right[
+&lt;img src="img/tidyverse.png" width="80%" style="display: block; margin: auto;" /&gt;
+
+]
+
+???
+
+Tidyverse steht für eine Sammlung an sogenannten Paketen welche das Arbeiten in R deutlich erleichtern und nutzerfreundlicher machen. In dem letzten 5 Jahren hat die Programmiersprache R durch diese Pakete eine regelrechte Revolution erfahren. 
+
+Was diese Philosophie so effektiv machen ist das hinter den Paketen ein gemeinsames nutzerzentriertes Design steht welches intuitiv ist. Es geht darum Software-Entwickler_innen produktiver zu machen. 
+
+Der Haupt Entwickler Hadley Wickham ist ein regelrechter Star in der R Community und hat eine Menge bewegt.
+
+---
+# Bewährte Verfahren - R for Data Science
+
+.pull-left[
+
+- Das Buch für den Kurs
+- Kostenfrei
+- Geschrieben von Hadley Wickham
+- Nutzt die Philosophie des Tidyverse
+
+] 
+
+.pull-right[
+
+&lt;img src="img/r4ds.jpg" width="60%" style="display: block; margin: auto;" /&gt;
+
+]
+
+.footnote[[Hadley Wickham &amp; Garret Grolemund - R for Data Science](https://r4ds.had.co.nz/)]
+
+???
+
+Dementsprechend orientiert sich der Kurs auch an dem von ihm geschriebenen Buch "R for Data Science". Das Buch ist online kostenfrei verfügbar. Während des Kurses wird es uns als Text Buch zur Seite stehen. 
+
+---
+# Kollaboratives Arbeiten - Git/GitHub/R Markdown
+
+.pull-left[
+
+<i class="fab  fa-git fa-5x "></i>
+
+
+<i class="fab  fa-github fa-5x "></i>
+
+]
+
+.pull-right[
+
+
+&lt;img src="img/rmarkdown.svg" width="50%" style="display: block; margin: auto;" /&gt;
+
+]
+
+???
+
+Git als freie Software gibt es schon seit 2005. Und obwohl es in der Software Entwickler Szene seitdem als ein wichtiges Werkzeug genutzt wird, ist erst durch Platformen wie GitHub ein regelrechter Hype entstanden welcher dazu geführt hat dass die Arbeit mit Git heutzutage deutlich verbreiteter ist und ihre Anwendung nicht nur unter Software Entwicklern findet.
+
+Gemeinsam mit R Markdown, einem Dokumenten Format welches es erlaub R Code mit Text zu kombinieren, lässt sich so reproduzierbar und transparent arbeiten.
+
+Wir werden diese modernen Werkzeuge für die Zusammenarbeit von Beginn an nutzen. Wir werden lernen wie wir diese Werkzeug produktiv Schritt für Schritt in unsere Arbeitsabläufe integrieren können. 
+
+---
+# Reproduzierbarkeit - Ein Beispiel
+
+&lt;img src="img/covid19_tel143.png" width="100%" style="display: block; margin: auto;" /&gt;
+
+
+.footnote[[Mitteilung: Corona verändert Alltagssorgen nur wenig](https://www.zh.ch/de/news-uebersicht/mitteilungen/2020/politik-staat/statistik/corona-veraendert-alltagssorgen-nur-wenig.html)]
+
+???
+
+Hier noch ein Beispiel für die Reproduzierbarkeit aus dem Statistischen Amt. 
+
+Eines der Ziele des Projektes Gesellschaftsmonitoring COVID-19 ist es Thematische Analysen zum Einfluss auf die Gesellschaft zu erarbeiten. 
+
+In diesem Zusammenhang haben wir im Statistischen Amt Daten von der Dargebotenen Hand erhalten welche Details zum Alter, Geschlecht der Anrufenden, und den Gesprächsinhalten beinhalten. 
+
+Das End-Produkt ist eine Mitteleiung im ZH Web, jedoch haben wir auch die bereinigten Roh-Daten und den Quellcode auf GitHub veröffentlicht. 
+
+---
+# Reproduzierbarkeit - Ein Beispiel
+
+&lt;img src="img/github_tel143.png" width="100%" style="display: block; margin: auto;" /&gt;
+
+.footnote[[GitHub repository: statistikZH/covid19monitoring_social_Tel143](https://github.com/statistikZH/covid19monitoring_social_Tel143)]
+
+???
+
+Das GitHub Repository enthält die Daten und den Quellcode um die Mitteilung zu reproduzieren. 
+
+Zum Einen bedeutet dies, dass sobald neue Daten von der Dargebotenen Hand vorliegen diese nur in die vorhandene RMarkdown Datei geladen werden brauchen um die Grafiken und Ergebnisse zu aktualisieren.
+
+Zum Anderen bedeutet dies, dass die publizierten Daten und der Quellcode von Anderen wieder verwendet und weiter entwickelt werden kann. In diesem Fall ist dies sogar passiert.
+
+---
+# Reproduzierbarkeit - Ein Beispiel
+
+&lt;img src="img/tagi_tel143.png" width="100%" style="display: block; margin: auto;" /&gt;
+
+
+.footnote[[Tagesanzeiger Artikel: Und plötzlich rufen Männer beim Sorgentelefon an](https://www.tagesanzeiger.ch/und-ploetzlich-rufen-maenner-beim-sorgentelefon-an-823601903971)]
+
+???
+
+Nicht einmal ein Tag war vergangen bis die Medien uns angerufen haben aus Interesse an dem Artikel. Gemeinsam mit der Dargebotenen Hand konnten wir Fragen dazu beantworten. 
+
+Als Statistisches Amt müssen wir eine neutrale Haltung bei der Interpretation der Ergebnisse einnehmen. Die Medien haben jedoch mehr Spielraum und so konnte der Tagesanzeiger innerhalb weniger Stunden einen eigenen Artikel publizieren, welcher einen weniger neutralen Blickwinkel auf die Interpretation der Daten legt. 
+
+All dies war möglich, da sowohl die Rohdaten als auch der Quellcode gut dokumentiert auf GitHub geteilt wurden. Für uns ein voller Erfolg.
+
+---
+# Reproduzierbarkeit - Ein Beispiel
+
+&lt;img src="img/tagi_tel143_quelle.png" width="90%" style="display: block; margin: auto;" /&gt;
+
+.footnote[[Tagesanzeiger Artikel: Und plötzlich rufen Männer beim Sorgentelefon an](https://github.com/statistikZH/covid19monitoring_social_Tel143)]
+
+
+---
+class: middle, center, inverse
+
+.big[# Der Kurs]
+
+---
+background-image: url(img/r_first_then.png)
+background-position: center
+background-size: contain
+
+---
+background-image: url(img/r_rollercoaster.png)
+background-position: center
+background-size: contain
+
+.footnote[Artwork by [@Alison_Horst](https://github.com/allisonhorst/stats-illustrations)]
+
+---
+class: left
+background-image: url(img/code_hero.jpg)
+background-position: right
+background-size: contain
+
+# rstatsZH - moderner NutzeR
+
+Wir werden **die Denkweise** aufbauen...  
+
+.small[
+...zu erwarten, dass das, was ihr tun wollt, möglich ist.  
+...Vertrauen zu haben, dass ihr es finden könnt.  
+...mit der unterstützenden Gemeinschaft weiter zu lernen.  
+...Andere zu befähigen.  
+]
+
+---
+# Warum dieser Kurs?
+
+.pull-left[
+- [RStudio Instructor](https://education.rstudio.com/trainers/#intro) Ausbildung
+- Gezieltes Training angepasst an die Teilnehmer_innen
+- Moderne und bewährte Lehrmethoden 
+    - Live Coding statt starre Folien    
+    - Gemeinsames Programmieren
+    - Zielgerichtete formative Fragestellungen
+]
+
+.pull-right[
+
+[
+&lt;img src="img/trainer-hex.png" width="80%" style="display: block; margin: auto;" /&gt;
+](https://education.rstudio.com/trainers/)
+
+]
+
+---
+# Warum dieser Kurs?
+
+.pull-left[
+- Persönliches Tutoring 
+    - Unterstützung bei eigenen Fragestellungen
+    - Unterstützung bei Übungen
+- Gemeinschaftliche und langfristige Zusammenarbeit
+- Freundliche und offene Zusammenarbeit 
+    - [Contributor Covenant Verhaltenskodex](https://www.contributor-covenant.org/de/version/1/4/code-of-conduct/)
+]
+
+.pull-right[
+
+[
+&lt;img src="img/trainer-hex.png" width="80%" style="display: block; margin: auto;" /&gt;
+](https://education.rstudio.com/trainers/)
+
+]
+
+---
+# Kursrahmen
+
+- **Kosten:** 1450.00 CHF
+- **Level:** Einsteiger 
+- **Zeitraum:** Flexibel (siehe [Google Form für die Kursplanung](https://forms.gle/tYtUNKG4tYB8ZQhm8))
+- **Aufwand:** 3 Stunden Unterricht pro Woche + Übungen + Tutoring
+- **Ort:** Virtuell (Zoom)
+- **Anzahl Teilnehmer:** Maximum 8
+- **Arbeitsumgebung:** [RStudio Cloud](https://rstudio.cloud/)
+- **Kommunikation:** Slack
+- **Unverbindliche Anmeldung:** [ZH Web Formular](https://www.zh.ch/de/politik-staat/statistik-daten/rstatszh-data-science-mit-r-anmelden.html)
+
+---
+
+&lt;img src="img/monster_support.jpg" width="100%" style="display: block; margin: auto;" /&gt;
+
+.footnote[Artwork by [@Alison_Horst](https://github.com/allisonhorst/stats-illustrations)]
+
+---
+# Kurshinhalt (flexivel)
+
+- **Woche 1:** Einführung 
+  - Werkzeuge und Arbeitsumgebung kennenlernen
+- **Woche 2:** Daten Visualisierung 1
+- **Woche 3:** Daten Aufbereitung 
+  - Daten manipulieren
+  - Daten zusammenfassen (Excel Pivot-Tabellen in R)
+- **Woche 4:** Daten Aufbereitung 
+  - Konzept Tidy Data
+  - Daten zusammenfügen (Excel VLOOKUP in R)
+  - Daten Typen
+- **Woche 5:** Daten Import und Visualisierung 2
+- **Woche 6:** Daten Kommunikation und Web Scraping
+- **Woche 7:** Funktionales Programmieren und Iteration
+
+---
+
+# Was sind eure Bedürfnisse? 
+
+- Google Form für die Kursplanung: https://forms.gle/tYtUNKG4tYB8ZQhm8
+- Welche Probleme möchtet ihr lernen zu lösen?
+- Welche Erfahrungen bringt ihr mit?
+
+--- 
+
+# Danke 
+
+Für die Aufmerksamkeit.
+
+Für die R packages [{xaringan}](https://github.com/yihui/xaringan) und [{xaringanthemer}](https://github.com/gadenbuie/xaringanthemer) mit welchen die Folien geschrieben wurden.
+
+<hr/>
+
+Quellcode der Folien und eine [PDF Version](https://github.com/statistikZH/rstatsZH/blob/main/kursmaterial/folien/e0_d01-ueberblick/e0_d01-ueberblick.pdf) sind im GitHub Repository [statistikZH/rstatsZH](https://github.com/statistikZH/rstatsZH) verfügbar.
+
+
+
+
+
+
+    </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script>var slideshow = remark.create({
+"slideNumberFormat": "<div class=\"progress-bar-container\">\n  <div class=\"progress-bar\" style=\"width: calc(%current% / %total% * 100%);\">\n  </div>\n</div>\n",
+"highlightStyle": "solarized-light",
+"highlightLanguage": ["r", "css", "yaml"],
+"highlightLines": true,
+"countIncrementalSlides": false,
+"ratio": "16:9"
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
+})();
+(function() {
+  "use strict"
+  // Replace <script> tags in slides area to make them executable
+  var scripts = document.querySelectorAll(
+    '.remark-slides-area .remark-slide-container script'
+  );
+  if (!scripts.length) return;
+  for (var i = 0; i < scripts.length; i++) {
+    var s = document.createElement('script');
+    var code = document.createTextNode(scripts[i].textContent);
+    s.appendChild(code);
+    var scriptAttrs = scripts[i].attributes;
+    for (var j = 0; j < scriptAttrs.length; j++) {
+      s.setAttribute(scriptAttrs[j].name, scriptAttrs[j].value);
+    }
+    scripts[i].parentElement.replaceChild(s, scripts[i]);
+  }
+})();
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();
+// adds .remark-code-has-line-highlighted class to <pre> parent elements
+// of code chunks containing highlighted lines with class .remark-code-line-highlighted
+(function(d) {
+  const hlines = d.querySelectorAll('.remark-code-line-highlighted');
+  const preParents = [];
+  const findPreParent = function(line, p = 0) {
+    if (p > 1) return null; // traverse up no further than grandparent
+    const el = line.parentElement;
+    return el.tagName === "PRE" ? el : findPreParent(el, ++p);
+  };
+
+  for (let line of hlines) {
+    let pre = findPreParent(line);
+    if (pre && !preParents.includes(pre)) preParents.push(pre);
+  }
+  preParents.forEach(p => p.classList.add("remark-code-has-line-highlighted"));
+})(document);</script>
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+};
+slideshow._releaseMath(document);
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>

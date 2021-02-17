@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+  <head>
+    <title>rstatsZH - Data Science mit R</title>
+    <meta charset="utf-8" />
+    <meta name="author" content="Lars Schöbitz" />
+    <meta name="date" content="2020-02-08" />
+    <script src="libs/header-attrs/header-attrs.js"></script>
+    <link href="libs/remark-css/default.css" rel="stylesheet" />
+    <link href="libs/font-awesome/css/all.css" rel="stylesheet" />
+    <link href="libs/font-awesome/css/v4-shims.css" rel="stylesheet" />
+    <link rel="stylesheet" href="../assets/css/xaringan-themer.css" type="text/css" />
+    <link rel="stylesheet" href="../assets/css/my-css-style.css" type="text/css" />
+  </head>
+  <body>
+    <textarea id="source">
+
+
+
+
+
+layout: true
+
+---
+
+class: title-slide
+
+# rstatsZH - Data Science mit R
+## Willkommen 
+
+.bottom[
+
+<p>Lars Schöbitz</p><p>2020-02-08</p>
+]
+
+---
+class: middle
+
+# .big[Hallo R! 👋]
+
+---
+class: left
+background-image: url(img/united-nations-covid-19-response-IKyhoO8giSA-unsplash.jpg)
+background-position: right
+background-size: contain
+
+# .big[Hallo Ihr!] 
+
+.footnote[[Image created by Danielo Baretto](https://unsplash.com/photos/IKyhoO8giSA)]
+
+---
+class: left
+background-image: url(img/goals.jpg)
+background-position: right
+background-size: contain
+
+# Ziele für heute 
+
+.pull-left[
+
+Am Ende des Tages:
+
+- haben wir uns kennengelernt
+- habt ihr die Werkzeugkiste kennengelernt
+- könnt ihr beschreiben was die Ziele des Kurses sind
+
+.footnote[Photo by: [Muzammil Soorma](https://unsplash.com/photos/6M_Wiwi1LQQ)]
+
+]
+
+???
+
+Heute geht es vor Allem um's Kennenlernen. Wir machen uns miteinander und der
+Arbeitsumgebung vertraut. Ihr bereitet euer erstes kleines RMarkdown Dokument vor.
+
+
+---
+# Kennenlernen
+
+.fyi[
+
+  Stellt euch jeweils gegenseitig in 2er Gruppen vor (pro Person 2 Minuten)
+  
+  - Mögliche Fragen
+    - In welcher Verwaltungseinheit bist du? 
+    - Was für Erfahrungen hast du mit R?
+    - Welche Ziele hast du für den Kurs?
+    - Was machst du gern ausserhalb der Arbeit? 
+]
+
+---
+# Kennenlernen
+
+.fyi[
+  
+  In der Gruppe: Stellt eure Arbeitsparter_in vor
+  
+]
+
+---
+class: inverse, middle
+
+# .big[Werkzeugkiste 🧰]
+
+---
+# Wekzeugkiste
+
+.pull-left[
+
+# **Kursarbeit**
+
+- Zoom
+- Slack
+- Google Docs
+- https://statistikzh.github.io/rstatsZH/
+]
+
+.pull-right[
+
+# Data Science
+
+**Programmieren**
+
+- R
+- RStudio (Cloud)
+- tidyverse
+- R Markdown
+
+**Versionskontrolle und Kollaboration**
+
+- Git
+- GitHub
+
+]
+
+---
+# Zoom
+
+Unsere Konferenzplatform
+
+**Tipps für die Nutzung**
+
+- Das Mikrofon auf stumm schalten
+- Wenn ihr mögt, das Video gern einschalten
+- Das Fenster in welchem ich zu sehen bin "pinnen"
+- Wir nutzen den Zoom Chat nur für Kleinigkeiten  
+
+---
+class: left
+background-image: url(img/kommunikation.jpg)
+background-position: right
+background-size: contain
+
+# Slack
+
+Unser Channel für die Kommunikation
+
+**Was gehört hinein?**
+
+- Ankündigungen
+- Unterhaltungen
+- Fragen
+- Unterstützung beim Programmieren
+
+.footnote[Photo by: [Steve Halama](https://unsplash.com/@steve3p_0)]
+
+---
+# Google Docs
+
+Unser geteiltes Notizbuch (ein Experiment)
+
+**Wozu nutzen wir es?**
+
+- Für bestimmte Übungen und Aufgaben
+- Zum Teilen von Bildern
+
+---
+# Data Science mit R - Lernziele
+
+Am Ende des Kurses wirst du:
+
+--
+- Wissen aus Daten generieren
+
+--
+- **reproduzierbar**, Wissen aus Daten generieren
+
+--
+- reproduzierbar, **und mit modernen Werkzeugen und Techniken**, Wissen aus Daten generieren
+
+--
+- reproduzierbar, **kollaborativ**, und mit modernen Werkzeugen und Techniken, Wissen aus Daten generieren
+
+--
+- reproduzierbar **(mit literate programming und Versionsverwaltung)**, kollaborativ, und mit modernen Werkzeugen und Techniken, Wissen aus Daten generieren
+
+---
+class: middle
+
+# .big[Reproduzierbare Datenanalyse]
+
+---
+
+.fyi[
+**Frage:**
+Was macht eine Datenanalyse reproduzierbar?
+]
+
+--
+**Kurzfristige Ziele**
+
+- Können Tabellen und Grafiken aus den Daten und dem Code neu erstellt (reproduziert) werden?
+- 
+
+---
+# Werkzeuge für reproduzierbare Datenanalyse
+
+- Skripts ➡️ R
+- Literate programming (Code, Beschreibung (Text), Output in einer Datei) ➡️ R Markdown
+- Versionsverwaltun und Kollaboration ➡️ Git / GitHub
+
+---
+
+class: middle
+
+# .big[R and RStudio]
+
+---
+# R und RStudio
+
+.pull-left[
+
+&lt;img src="img/r-logo.png" width="25%" style="display: block; margin: auto;" /&gt;
+- R is an open-source statistical **programming language**
+- R is also an environment for statistical computing and graphics 
+- It's easily extensible with *packages*
+
+]
+
+.pull-right[
+
+&lt;img src="img/rstudio-logo.png" width="50%" style="display: block; margin: auto;" /&gt;
+
+- RStudio is a convenient interface for R called an **IDE** (integrated development environment), e.g. *"I write R code in the RStudio IDE"*
+- RStudio is not a requirement for programming with R, but it's very commonly used by R programmers and data scientists
+
+]
+
+---
+# R packages
+
+- **Packages** are the fundamental units of reproducible R code. They include reusable R functions, the documentation that describes how to use them, and sample data&lt;sup&gt;1&lt;/sup&gt;
+
+- As of September 2020, there are over 16,000 R packages available on **CRAN** (the Comprehensive R Archive Network)&lt;sup&gt;2&lt;/sup&gt;
+
+- We're going to work with a small (but important) subset of these!
+
+.footnote[
+&lt;sup&gt;1&lt;/sup&gt; Wickham and Bryan, [R Packages](https://r-pkgs.org/).
+
+&lt;sup&gt;2&lt;/sup&gt; [CRAN contributed packages](https://cran.r-project.org/web/packages/).
+]
+
+---
+## Tour: R and RStudio
+
+&lt;img src="img/tour-r-rstudio.png" width="80%" style="display: block; margin: auto;" /&gt;
+
+
+
+
+
+
+
+
+
+
+    </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script>var slideshow = remark.create({
+"slideNumberFormat": "<div class=\"progress-bar-container\">\n  <div class=\"progress-bar\" style=\"width: calc(%current% / %total% * 100%);\">\n  </div>\n</div>\n",
+"highlightStyle": "solarized-light",
+"highlightLanguage": ["r", "css", "yaml"],
+"highlightLines": true,
+"countIncrementalSlides": false,
+"ratio": "16:9"
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
+})();
+(function() {
+  "use strict"
+  // Replace <script> tags in slides area to make them executable
+  var scripts = document.querySelectorAll(
+    '.remark-slides-area .remark-slide-container script'
+  );
+  if (!scripts.length) return;
+  for (var i = 0; i < scripts.length; i++) {
+    var s = document.createElement('script');
+    var code = document.createTextNode(scripts[i].textContent);
+    s.appendChild(code);
+    var scriptAttrs = scripts[i].attributes;
+    for (var j = 0; j < scriptAttrs.length; j++) {
+      s.setAttribute(scriptAttrs[j].name, scriptAttrs[j].value);
+    }
+    scripts[i].parentElement.replaceChild(s, scripts[i]);
+  }
+})();
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();
+// adds .remark-code-has-line-highlighted class to <pre> parent elements
+// of code chunks containing highlighted lines with class .remark-code-line-highlighted
+(function(d) {
+  const hlines = d.querySelectorAll('.remark-code-line-highlighted');
+  const preParents = [];
+  const findPreParent = function(line, p = 0) {
+    if (p > 1) return null; // traverse up no further than grandparent
+    const el = line.parentElement;
+    return el.tagName === "PRE" ? el : findPreParent(el, ++p);
+  };
+
+  for (let line of hlines) {
+    let pre = findPreParent(line);
+    if (pre && !preParents.includes(pre)) preParents.push(pre);
+  }
+  preParents.forEach(p => p.classList.add("remark-code-has-line-highlighted"));
+})(document);</script>
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+};
+slideshow._releaseMath(document);
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>

@@ -1,0 +1,52 @@
+---
+title: "Woche 1 - Willkommen zu rstatsZH"
+description: |
+  Ziele und Materialien für unsere erste gemeinsame Woche
+date: 02-12-2021
+output:
+  distill::distill_article:
+    toc: true
+    self_contained: false
+---
+
+```{r setup, echo=FALSE}
+library(magrittr)
+```
+
+Mache dich mit dem Kurs, den Werkzeugen, dem Arbeitsablauf und den Fähigkeiten, die du im Laufe des Kurses erwerben wirst, vertraut. 
+
+# Ziele
+
+Am Ende dieser Woche kannst du:
+
+- die Werkzeuge welche wir für den Kurs nutzen öffnen
+- ein git repository aus GitHub in deine Arbeitsumgebung laden
+- eine geänderte Datei auf ein git repository auf GitHub pushen
+- beschreiben welche Elemente Teil eines R Markdown Dokuments sind
+- R code für eine Visuaisierung mit {ggplot2} reproduzieren
+
+# Folien
+
+```{r share-again, echo=FALSE}
+
+xaringanExtra::use_share_again()
+
+```
+
+```{r embed-xaringan, echo=FALSE, fig.cap="[Folien](slides/e0_d01-ueberblick/e0_d01-ueberblick.html)"}
+
+xaringanExtra::embed_xaringan("../../slides/e1_d01-willkommen/e1_d01-willkommen.html", ratio = "16:9")
+
+```
+
+
+# Übungen
+
+```{r}
+
+
+
+```
+
+
+

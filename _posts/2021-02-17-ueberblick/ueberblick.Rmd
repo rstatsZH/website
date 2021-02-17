@@ -58,7 +58,7 @@ Lars Schöbitz GmbH
 
 # Was sind die Termine?
 
-```{r, echo=FALSE, layout="l-body"}
+```{r, echo=FALSE, layout="l-body-outset"}
 
 googlesheets4::read_sheet("1WhGB4Pqpr4ywGbOKaC2UoRsyaf5jbI7L8jY75Lic9FE") %>% 
   select(-starts_with("Woche")) %>% 

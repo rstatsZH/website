@@ -10,13 +10,18 @@
   padding-bottom: 100px;
 }
 
-.big {
-  font-size: 250%;
+/* Font sizes */
+.huge {
+   font-family: 'Montserrat', sans-serif;
+   font-size: 400%;
+   font-weight: bold;
 }
-
-.small {
-  font-size: 80%;
-}
+.big { font-size: 250% }
+.large { font-size: 150% }
+.midi { font-size: 85% }
+.small { font-size: 70% }
+.xsmall { font-size: 65% }
+.tiny { font-size: 50% }
 
 /* https://github.com/yihui/xaringan/wiki/Progressbar */
 .remark-slide-number {
@@ -41,6 +46,40 @@
   height: 0px;
 }
 
+/* colors */
+:root {
+  --dark-blue: #002b36;
+  --light-blue: #A7D5E8;
+  --green: #8fada7;
+  --gray: #A7A7A7;
+  --pink: #E9AFA3;
+  --yellow: #e9d968;
+  --beige: #fdf6e3;
+  --green-faint: #8fada750;
+  --light-blue-faint: #A7D5E850;
+  --pink-faint: #E9AFA350;
+}
+
+/* Font colors */
+.dark-blue {
+  color: var(--dark-blue);
+}
+.light-blue {
+  color: var(--light-blue);
+}
+.green {
+  color: var(--green);
+}
+.gray {
+  color: var(--gray);
+}
+.pink {
+  color: var(--pink);
+}
+.yellow {
+  color: var(--yellow);
+}
+
 
 /* -----------div tips------------- */
 /* https://desiree.rbind.io/post/2019/making-tip-boxes-with-bookdown-and-rmarkdown/ */
@@ -49,13 +88,43 @@ div.puzzle, div.fyi, div.demo, div.note {
     padding: 1em;
     margin: 1em 0;
     padding-left: 100px;
-    background-size: 70px;
+    background-size: 90px;
     background-repeat: no-repeat;
-    background-position: 15px center;
+    background-position: 3px center;
     min-height: 120px;
-    color: #1f5386;
-    background-color: #bed3ec;
-    border: solid 5px #dfedff;
+    color: var(--dark-blue);
+    background-color: var(--light-blue);
+    border-left: solid 5px var(--dark-blue);
   }
   
-  
+/* Custom boxes */
+
+.question, .your-turn, .tip {
+  padding-right: 10px;
+  padding-left: 10px;
+  padding-top: 3px;
+  padding-bottom: 3px;
+  margin-bottom: 6px;
+  margin-top: 6px;
+  color: white;
+}
+
+.question{
+  border-left: solid 5px var(--green);
+  background-color: var(--green-faint);
+}
+
+.tip {
+  border-left: solid 5px var(--pink);
+  background-color: var(--pink-faint);
+}
+
+.your-turn {
+  border-left: solid 5px var(--light-blue);
+}
+
+/* Handwriting */
+.hand{
+  font-family: 'Gochi Hand', cursive;
+  font-size: 125%;
+}

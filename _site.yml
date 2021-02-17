@@ -11,10 +11,10 @@ navbar:
   right:
     - text: "Home"
       href: index.html
-    - text: "Praktika"
+    - text: "Heimarbeit"
       menu:
-      - text: "Praktikum 1"
-        href: prak-01-hallo-r.html
+        - text: "Heimarbeit 1"
+          href: ha-01-hallo-git.html 
 output: 
   distill::distill_article:
     toc: true

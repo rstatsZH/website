@@ -18,9 +18,9 @@
     "author": [],
     "date": "2021-02-12",
     "categories": [],
-    "contents": "\n\nContents\nZiele\nFolien\nÜbungen\n\n\n\n\nMache dich mit dem Kurs, den Werkzeugen, dem Arbeitsablauf und den Fähigkeiten, die du im Laufe des Kurses erwerben wirst, vertraut.\nZiele\nAm Ende dieser Woche kannst du:\ndie Werkzeuge welche wir für den Kurs nutzen öffnen\nein git repository aus GitHub in deine Arbeitsumgebung laden\neine geänderte Datei auf ein git repository auf GitHub pushen\nbeschreiben welche Elemente Teil eines R Markdown Dokuments sind\nR code für eine Visuaisierung mit {ggplot2} reproduzieren\nFolien\n\n\n\n\n\n\nfitvids('.shareagain', {players: 'iframe'});\n\nÜbungen\n\n\n\n\n\n\n",
-    "preview": {},
-    "last_modified": "2021-02-17T11:14:41+01:00",
+    "contents": "\n\nContents\nZiele\nFolien\nHeimarbeit 1\nWeiterführende Aufgaben\n\n\n\n\n\n\n\nFigure 1: Photo by Barn Images\n\n\n\nMache dich mit dem Kurs, den Werkzeugen, dem Arbeitsablauf und den Fähigkeiten, die du im Laufe des Kurses erwerben wirst, vertraut.\nZiele\nAm Ende dieser Woche kannst du:\ndie Werkzeuge welche wir für den Kurs nutzen öffnen\nein git repository aus GitHub in deine Arbeitsumgebung laden\neine geänderte Datei auf ein git repository auf GitHub pushen\nbeschreiben welche Elemente Teil eines R Markdown Dokuments sind\nR code für eine Visuaisierung mit {ggplot2} reproduzieren\nFolien\n\n\n\n\n\n\nfitvids('.shareagain', {players: 'iframe'});\n\nHeimarbeit 1\nDie Heimarbeit für diese Woche kannst du im oben in der Navigationszeile finden.\nWeiterführende Aufgaben\n\n\n\n",
+    "preview": "posts/2021-02-17-woche01/img/toolbox.jpg",
+    "last_modified": "2021-02-17T19:23:47+01:00",
     "input_file": {}
   }
 ]

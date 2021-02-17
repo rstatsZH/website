@@ -7,10 +7,17 @@ output:
   distill::distill_article:
     toc: true
     self_contained: false
+preview: img/toolbox.jpg    
 ---
 
 ```{r setup, echo=FALSE}
 library(magrittr)
+```
+
+```{r, layout="l-body", preview=TRUE, echo=FALSE, include=TRUE, fig.cap="Photo by [Barn Images](https://unsplash.com/@barnimages)"}
+
+knitr::include_graphics("img/toolbox.jpg")
+
 ```
 
 Mache dich mit dem Kurs, den Werkzeugen, dem Arbeitsablauf und den Fähigkeiten, die du im Laufe des Kurses erwerben wirst, vertraut. 
@@ -40,13 +47,13 @@ xaringanExtra::embed_xaringan("../../slides/e1_d01-willkommen/e1_d01-willkommen.
 ```
 
 
-# Übungen
+# Heimarbeit 1
 
-```{r}
+Die Heimarbeit für diese Woche kannst du im oben in der Navigationszeile finden. 
+
+# Weiterführende Aufgaben
 
 
-
-```
 
 
 

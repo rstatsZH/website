@@ -285,7 +285,7 @@ Das End-Produkt ist eine Mitteleiung im ZH Web, jedoch haben wir auch die berein
 
 ```{r}
 
-knitr::include_graphics("img/github_tel143.PNG")
+knitr::include_graphics("img/github_tel143.png")
 
 ```
 

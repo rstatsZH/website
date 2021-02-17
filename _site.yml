@@ -1,12 +1,20 @@
 name: "rstatsZH"
 title: "rstatsZH - Data Science mit R"
 description: |
-  rstatsZH - Data Science mit R
-output_dir: "_site"
+  Ein R Kurs für Mitarbeiter_innen der Verwaltung des Kantons Zürich
+output_dir: "docs"
+include: ["slides/"]
+creative_commons: CC BY-SA
+repository_url: https://github.com/statistikZH/rstatsZH/
 navbar:
+  search: false
   right:
     - text: "Home"
       href: index.html
-    - text: "About"
-      href: about.html
-output: distill::distill_article
+    - text: "Praktika"
+      menu:
+      - text: "Praktikum 1"
+        href: prak-01-hallo-r.html
+output: 
+  distill::distill_article:
+    toc: true

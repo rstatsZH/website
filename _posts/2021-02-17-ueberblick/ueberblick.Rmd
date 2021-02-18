@@ -10,6 +10,8 @@ output:
 preview: img/roadmap.jpg
 ---
 
+<script async defer data-domain="statistikzh.github.io/rstatszh" src="https://plausible.io/js/plausible.js"></script>
+
 ```{r setup, echo=FALSE, include=FALSE}
 
 Sys.setlocale("LC_TIME", "de_DE.UTF-8")

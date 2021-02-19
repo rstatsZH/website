@@ -77,6 +77,7 @@ Am Ende des Tages:
 - haben wir uns kennengelernt
 - habt ihr die Werkzeugkiste kennengelernt
 - könnt ihr beschreiben was die Ziele des Kurses sind
+- könnt ihr einen ersten Plot erstellen
 
 .footnote[Photo by: [Muzammil Soorma](https://unsplash.com/photos/6M_Wiwi1LQQ)]
 
@@ -102,6 +103,17 @@ Arbeitsumgebung vertraut. Ihr bereitet euer erstes kleines RMarkdown Dokument vo
     - Was machst du gern ausserhalb der Arbeit? 
 ]
 
+```{r, echo = FALSE}
+
+countdown(
+  minutes = 2, seconds = 0,
+  left = 0, right = 0,
+  padding = "10px", margin = "5%",
+  font_size = "2em"
+)
+
+```
+
 ---
 # Kennenlernen
 
@@ -126,7 +138,8 @@ background-size: contain
     - Datenwissenschaftler
 - R Nutzer seit 2016
 - R Trainer seit 2020
-- Twitter: [https://twitter.com/larnsce](https://twitter.com/larnsce)
+- Website: [lse.de](https://www.lse.de?utm_source=Slides&utm_medium=rstatsZH)
+- Twitter: [@larnsce](https://twitter.com/larnsce)
 
 ???
 Kurz zu mir: Mein Name ist Lars Schöbitz. Ich freue mich wenn ihr mich Lars nennt und hoffe es geht okay, dass ich euch Dutze.
@@ -155,7 +168,7 @@ class: inverse, middle
 
 - Zoom
 - Slack
-- Google Docs
+- (Google Docs)
 - https://statistikzh.github.io/rstatsZH/
 ]
 
@@ -731,8 +744,18 @@ class: middle
 .note[
 
 - Öffnet jetzt eure E-Mail Inbox
-- Bestätigt mir im Zoom Chat, dass ihr eine Email mit Betreff "rstatsZH - Hausarbeit 01 - Hallo Git" erhalten habt
-- 
+- Bestätigt mir im Zoom Chat, dass ihr eine Email mit Betreff **"rstatsZH - Lars hat das Repo ha01-GitHubName"** erhalten habt
+- Kontaktiert mich unter der Woche jederzeit auf Slack 
 
 ]
 
+---
+# `r emo::ji("sunflower")` Danke 
+
+Für die Aufmerksamkeit!
+
+Für die R packages [{xaringan}](https://github.com/yihui/xaringan) und [{xaringanthemer}](https://github.com/gadenbuie/xaringanthemer) mit welchen die Folien geschrieben wurden.
+
+`r hr()`
+
+Für [Data Science in a Box](https://datasciencebox.org/) und [Remaster the Tidyverse](https://github.com/rstudio-education/remaster-the-tidyverse), von welchen ich Materialien für diesen Kurs nutze und welche genau wie diese Folien mit [Creative Commons Attribution Share Alike 4.0 International](https://creativecommons.org/licenses/by-sa/4.0/) lizensiert sind.

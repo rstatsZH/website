@@ -445,24 +445,15 @@ knitr::include_graphics("img/monster_support.jpg")
 - **Woche 7:** Funktionales Programmieren und Iteration
 
 ---
+# `r emo::ji("sunflower")` Danke 
 
-# Was sind eure Bedürfnisse? 
-
-- Google Form für die Kursplanung: https://forms.gle/tYtUNKG4tYB8ZQhm8
-- Welche Probleme möchtet ihr lernen zu lösen?
-- Welche Erfahrungen bringt ihr mit?
-
---- 
-
-# Danke 
-
-Für die Aufmerksamkeit.
+Für die Aufmerksamkeit!
 
 Für die R packages [{xaringan}](https://github.com/yihui/xaringan) und [{xaringanthemer}](https://github.com/gadenbuie/xaringanthemer) mit welchen die Folien geschrieben wurden.
 
 `r hr()`
 
-Quellcode der Folien und eine [PDF Version](https://github.com/statistikZH/rstatsZH/blob/main/kursmaterial/folien/e0_d01-ueberblick/e0_d01-ueberblick.pdf) sind im GitHub Repository [statistikZH/rstatsZH](https://github.com/statistikZH/rstatsZH) verfügbar.
+Für [Data Science in a Box](https://datasciencebox.org/) und [Remaster the Tidyverse](https://github.com/rstudio-education/remaster-the-tidyverse), von welchen ich Materialien für diesen Kurs nutze und welche genau wie diese Folien mit [Creative Commons Attribution Share Alike 4.0 International](https://creativecommons.org/licenses/by-sa/4.0/) lizensiert sind.
 
 
 

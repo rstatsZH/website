@@ -189,7 +189,8 @@ Beginne mit dem `datasaurus_dozen` und leite es in die Funktion `filter`, um nac
 
 ```{r}
 
-# Füge hier den Code ein
+dino_data <- datasaurus_dozen %>%
+  filter(dataset == "dino")
 
 ```
 

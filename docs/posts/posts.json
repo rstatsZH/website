@@ -8,8 +8,8 @@
     "categories": [],
     "contents": "\n\nContents\nWer kann teilnehmen?\nWas sind die Ziele?\nWas macht den Kurs speziell?\nWer leitet den Kurs?\nWas sind die Termine?\nWo kann ich mich (unverbindlich) anmelden?\nEine Zusammenfassung in Folien\n\n\n\n\nFigure 1: Photo by Jaromír Kavan\n\n\n\nWer kann teilnehmen?\nDer Kurs richtet sich in erster Linie an Mitarbeiter_innen der Verwaltung des Kantons Zürich, steht jedoch auch anderen Personen offen. Die Kosten für den Kurs betragen 1450.00 CHF pro Person.\nWas sind die Ziele?\nAm Ende dieses Kurses kannst du:\n(Daten)projekte reproduzierbar publizieren\nkollaborativ mit git und GitHub arbeiten\ndas Konzept von tidy data verstehen und anwenden\nexplorative Datenanalysen durchführen (einfache lineare Modellierung machen hier einen kleinen Teil aus)\ndir selbst und Anderen helfen mehr über die grosse Welt der Möglichkeiten für Data Science mit R zu lernen\nWas macht den Kurs speziell?\nÜber 7 Wochen lernst du R in deine Arbeitsabläufe zu integrieren. Wir helfen dir dabei mit wöchentlichen Kurseinheiten über 3 Stunden, ergänzenden Übungen und einem persönlichen Tutoring.\nWer leitet den Kurs?\nAngebot\nMatthias MazenaurData Shop\nStatistisisches Amt des Kantons Zürich\nDurchführung\nLars Schöbitz\nLars Schöbitz GmbH\nWas sind die Termine?\n\n\nKurs\n\n\nStart\n\n\nEnde\n\n\nFreie Plätze\n\n\nBemerkung\n\n\nrstatsZH-K001\n\n\nMärz 2021\n\n\nApril 2021\n\n\n1\n\n\nPause über Ostern\n\n\nrstatsZH-K002\n\n\nMärz 2021\n\n\nApril 2021\n\n\n1\n\n\nPause über Ostern\n\n\nrstatsZH-K003\n\n\nMai 2021\n\n\nJuni 2021\n\n\n1\n\n\nPause in Woche 25\n\n\nrstatsZH-K004\n\n\nMai 2021\n\n\nJuli 2021\n\n\n8\n\n\nPause in Woche 25\n\n\nrstatsZH-K005\n\n\nAugust 2021\n\n\nSeptember 2021\n\n\n8\n\n\nStart in Sommerferien\n\n\nrstatsZH-K006\n\n\nAugust 2021\n\n\nOktober 2021\n\n\n8\n\n\nEndet in Herbstferien\n\n\nrstatsZH-K007\n\n\nOktober 2021\n\n\nDezember 2021\n\n\n8\n\n\n\n\nrstatsZH-K008\n\n\nOktober 2021\n\n\nDezember 2021\n\n\n8\n\n\n\n\nWo kann ich mich (unverbindlich) anmelden?\nHier geht’s zur Anmeldung worauf auf eine Kontaktaufhnahme folgt:\nhttps://www.zh.ch/de/politik-staat/statistik-daten/rstatszh-data-science-mit-r-anmelden.html\nEine Zusammenfassung in Folien\n\n\n\n\n\n\nfitvids('.shareagain', {players: 'iframe'});\n\n\n\n\n",
     "preview": "posts/2021-02-17-ueberblick/img/roadmap.jpg",
-    "last_modified": "2021-02-18T08:37:25+01:00",
-    "input_file": {}
+    "last_modified": "2021-02-19T15:58:29+01:00",
+    "input_file": "ueberblick.utf8.md"
   },
   {
     "path": "posts/2021-02-17-woche01/",
@@ -20,7 +20,7 @@
     "categories": [],
     "contents": "\n\nContents\nZiele\nFolien\nHeimarbeit 1\nWeiterführende Aufgaben\n\n\n\n\n\n\n\nFigure 1: Photo by Barn Images\n\n\n\nMache dich mit dem Kurs, den Werkzeugen, dem Arbeitsablauf und den Fähigkeiten, die du im Laufe des Kurses erwerben wirst, vertraut.\nZiele\nAm Ende dieser Woche kannst du:\ndie Werkzeuge welche wir für den Kurs nutzen öffnen\nein git repository aus GitHub in deine Arbeitsumgebung laden\neine geänderte Datei auf ein git repository auf GitHub pushen\nbeschreiben welche Elemente Teil eines R Markdown Dokuments sind\nR code für eine Visuaisierung mit {ggplot2} reproduzieren\nFolien\n\n\n\n\n\n\nfitvids('.shareagain', {players: 'iframe'});\n\nHeimarbeit 1\nDie Heimarbeit für diese Woche kannst du im oben in der Navigationszeile finden.\nWeiterführende Aufgaben\n\n\n\n",
     "preview": "posts/2021-02-17-woche01/img/toolbox.jpg",
-    "last_modified": "2021-02-18T08:40:13+01:00",
-    "input_file": {}
+    "last_modified": "2021-02-19T15:58:22+01:00",
+    "input_file": "woche01.utf8.md"
   }
 ]

@@ -22,6 +22,8 @@ output:
       ratio: "16:9"
 ---
 
+class: title-slide
+
 ```{r child = "../setup.Rmd"}
 
 ```
@@ -33,8 +35,6 @@ library(dplyr)
 
 ```
 
-
-class: title-slide
 
 # `r rmarkdown::metadata$title`
 ## `r rmarkdown::metadata$subtitle` 

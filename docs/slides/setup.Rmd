@@ -62,6 +62,4 @@ library(htmltools)
 
 ```
 
-layout: true
-
----
+<script async defer data-domain="statistikzh.github.io/rstatszh" src="https://plausible.io/js/plausible.js"></script>

@@ -1867,16 +1867,16 @@ Heimarbeit
 <ul>
 <li>Öffne rstudio.cloud und login mit deinem Benutzerkonto (nutze GitHub)</li>
 <li>Klicke auf deinen Namen in der oberen rechten Ecke, um das rechte Menü zu öffnen.</li>
-<li>Klicke dann auf Authentifizierung.</li>
+<li>Klicke dann auf “Authentication”.</li>
 </ul>
 <div class="layout-chunk" data-layout="l-body">
-<p><img src="img/github-auth-1.png" width="540" /></p>
+<p><img src="img/github-auth.001.png" width="960" /></p>
 </div>
 <ul>
-<li>Aktiviere im Fenster Authentifizierung das Kontrollkästchen für <em>Enabled</em>.</li>
+<li>Aktiviere im Fenster Authentifizierung das Kontrollkästchen für <em>Enabled</em> neben GitHub.</li>
 </ul>
 <div class="layout-chunk" data-layout="l-body">
-<p><img src="img/github-auth-2.png" width="540" /></p>
+<p><img src="img/github-auth.002.png" width="960" /></p>
 </div>
 <ul>
 <li>Im nächsten Fenster klickst du auf das grüne Kästchen mit der Aufschrift “Authorize rstudio”.</li>
@@ -1885,12 +1885,22 @@ Heimarbeit
 <p><img src="img/github-auth-3.png" width="540" /></p>
 </div>
 <ul>
-<li>Zurück im Authentifizierungsfenster aktivierst du das Kästchen <em>Private repo access also enabled</em></li>
-<li>Im Feld <em>Organisation access</em>, klickst du nun zunächst auf “Request” neben deinem Kursnamen und folgend auf “Request approval from owners”. Sollte hier kein Kurs auftauchen, könnte dies bedeueten, dass du die GitHub-Einladung zum Kurs noch nicht angenommen hast und du solltest zurückgehen und dies überprüfen und nacholen. Falls du keine Einladung hast, kontaktiere mich.</li>
+<li>Zurück im Authentifizierungsfenster in RStudio Cloud aktivierst du nun auch das Kästchen <em>Private repo access also enabled</em></li>
+</ul>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'>knitr</span><span class='fu'>::</span><span class='fu'><a href='https://rdrr.io/pkg/knitr/man/include_graphics.html'>include_graphics</a></span><span class='op'>(</span><span class='st'>"img/github-auth.004.png"</span><span class='op'>)</span>
+</code></pre>
+</div>
+<p><img src="img/github-auth.004.png" width="960" /></p>
+</div>
+<ul>
+<li><strong>Wichtig</strong>: Im Feld <em>Organisation access</em>, klickst du nun zunächst auf “Request” neben deinem Kursnamen und folgend auf “Request approval from owners”.</li>
+<li><em>Hinweis:</em> Sollte hier kein Kurs auftauchen, könnte dies bedeueten, dass du die GitHub-Einladung zum Kurs noch nicht angenommen hast und du solltest zurückgehen und dies überprüfen und nacholen. Falls du keine Einladung hast, kontaktiere mich.</li>
 <li>Nun noch auf das grüne Feld “Authorize rstudio” und nach Eingabe deines Passworts bist du bereit.</li>
 </ul>
 <div class="layout-chunk" data-layout="l-body">
-<p><img src="img/github-auth-4.png" width="540" /></p>
+<p><img src="img/github-auth.005.png" width="960" /></p>
 </div>
 <ul>
 <li>Sobald du fertig bist, sollten in RStudio Cloud beide Kästchen markiert sein.</li>
@@ -1908,26 +1918,24 @@ Heimarbeit
 <p>Jede deiner Aufgaben wird mit den folgenden Schritten beginnen. Du hast diese bereits einmal im Unterricht gesehen, hier sind sie noch einmal im Detail beschrieben.</p>
 <p>In Zukunft wird jede Aufgabe mit einem Abschnitt “Erste Schritte” beginnen, aber mit etwas weniger Details. Du kannst jedoch jederzeit auf dieses Heimarbeit zurückgreifen, um eine detaillierte Liste der Schritte zu erhalten, die notwendig sind, um mit einer Aufgabe zu beginnen.</p>
 <ul>
-<li>Klicke auf den Link für die Aufgabe, den du in einer E-Mail erhalten haben solltest, um dein GitHub Repository (im Folgenden “Repo” genannt) für die Aufgabe zu erstellen. Dieses Repository enthält eine Vorlage, auf der du aufbauen kannst, um die Aufgabe zu lösen.</li>
+<li><p>Klicke auf den Link für die Aufgabe, den du in einer E-Mail erhalten haben solltest, um dein GitHub Repository (im Folgenden “Repo” genannt) für die Aufgabe zu erstellen. Dieses Repository enthält eine Vorlage, auf der du aufbauen kannst, um die Aufgabe zu lösen.</p></li>
+<li><p>Auf GitHub klickst du auf den grünen <strong>Code</strong> und wählst <strong>Use HTTPS</strong> wie im Bild unten (dies könnte bereits standardmäßig ausgewählt sein, und wenn es so ist, siehst du den Text <strong>Clone mit HTTPS</strong>). Klicke auf das Klemmbrett-Symbol, um die Repo-URL zu kopieren.</p></li>
 </ul>
 <div class="layout-chunk" data-layout="l-body">
 <p><img src="img/clone-repo-link.png" width="200" /></p>
 </div>
 <ul>
-<li>Auf GitHub klickst du auf den grünen <strong>Clone or Download</strong> Button und wählst <strong>Use HTTPS</strong> wie im Bild unten (dies könnte bereits standardmäßig ausgewählt sein, und wenn es so ist, siehst du den Text <strong>Clone mit HTTPS</strong>). Klicke auf das Klemmbrett-Symbol, um die Repo-URL zu kopieren.</li>
+<li>Öffne nun RStudio Cloud und in den Kursarbeitsbereich. Klicke auf den Abwärtspfeil und erstelle ein <strong>New Project from Git Repo</strong>.</li>
 </ul>
 <div class="layout-chunk" data-layout="l-body">
 <p><img src="img/new-project-from-gh.png" width="142" /></p>
 </div>
 <ul>
-<li>Öffne nun RStudio Cloud und in den Kursarbeitsbereich. Klicke auf den Abwärtspfeil und erstelle ein <strong>New Project from Git Repo</strong>.</li>
+<li>Füge die URL aus deinem Repo oben in das Dialogfeld ein und stelle sicher, dass das Häkchen bei “Packages” gesetzt ist.</li>
 </ul>
 <div class="layout-chunk" data-layout="l-body">
 <p><img src="img/paste-github-repo-url.png" width="260" /></p>
 </div>
-<ul>
-<li>Füge die URL aus deinem Repo oben in das Dialogfeld ein und stelle sicher, dass das Häkchen bei “Packages” gesetzt ist.</li>
-</ul>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='fu'>knitr</span><span class='fu'>::</span><span class='fu'><a href='https://rdrr.io/pkg/knitr/man/include_graphics.html'>include_graphics</a></span><span class='op'>(</span><span class='st'>"img/arrow-base-project.png"</span><span class='op'>)</span>
@@ -2039,7 +2047,7 @@ Heimarbeit
   <span class='fu'>geom_point</span><span class='op'>(</span><span class='op'>)</span>
 </code></pre>
 </div>
-<p><img src="ha-01-hallo-git_files/figure-html5/unnamed-chunk-5-1.png" width="624" /></p>
+<p><img src="ha-01-hallo-git_files/figure-html5/unnamed-chunk-6-1.png" width="624" /></p>
 </div>
 <p>Wenn das nach viel klingt, dann ist es das auch. Nächste Woche wirst du mehr über die Philosophie der Datenvisualisierung im Layer erfahren. Für den Moment kannst du dem Code folgen, welcher dir zur Verfügung gestellt wird.</p>
 <p>Für den zweiten Teil dieser Übungen müssen wir eine zusammenfassende Statistik berechnen: den Korrelationskoeffizienten. Der Korrelationskoeffizient, in der Statistik oft als <span class="math inline">\(r\)</span> bezeichnet, misst den linearen Zusammenhang zwischen zwei Variablen.</p>

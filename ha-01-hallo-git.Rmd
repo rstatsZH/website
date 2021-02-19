@@ -25,15 +25,15 @@ Um deine RStudio und GitHub Konten zu verbinden, befolge die folgenden Schritte:
 
 - Öffne rstudio.cloud und login mit deinem Benutzerkonto (nutze GitHub)
 - Klicke auf deinen Namen in der oberen rechten Ecke, um das rechte Menü zu öffnen.
-- Klicke dann auf Authentifizierung.
+- Klicke dann auf "Authentication".
 
 ```{r github-auth-1, echo = FALSE}
-knitr::include_graphics("img/github-auth-1.png")
+knitr::include_graphics("img/github-auth.001.png")
 ```
-- Aktiviere im Fenster Authentifizierung das Kontrollkästchen für *Enabled*.
+- Aktiviere im Fenster Authentifizierung das Kontrollkästchen für *Enabled* neben GitHub.
 
 ```{r github-auth-2, echo = FALSE}
-knitr::include_graphics("img/github-auth-2.png")
+knitr::include_graphics("img/github-auth.002.png")
 ```
 
 - Im nächsten Fenster klickst du auf das grüne Kästchen mit der Aufschrift "Authorize rstudio".
@@ -42,12 +42,20 @@ knitr::include_graphics("img/github-auth-2.png")
 knitr::include_graphics("img/github-auth-3.png")
 ```
 
-- Zurück im Authentifizierungsfenster aktivierst du das Kästchen *Private repo access also enabled* 
-- Im Feld *Organisation access*, klickst du nun zunächst auf "Request" neben deinem Kursnamen und folgend auf "Request approval from owners". Sollte hier kein Kurs auftauchen, könnte dies bedeueten, dass du die GitHub-Einladung zum Kurs noch nicht angenommen hast und du solltest zurückgehen und dies überprüfen und nacholen. Falls du keine Einladung hast, kontaktiere mich.
+- Zurück im Authentifizierungsfenster in RStudio Cloud aktivierst du nun auch das Kästchen *Private repo access also enabled*
+
+```{r}
+
+knitr::include_graphics("img/github-auth.004.png")
+
+```
+
+- **Wichtig**: Im Feld *Organisation access*, klickst du nun zunächst auf "Request" neben deinem Kursnamen und folgend auf "Request approval from owners". 
+- _Hinweis:_ Sollte hier kein Kurs auftauchen, könnte dies bedeueten, dass du die GitHub-Einladung zum Kurs noch nicht angenommen hast und du solltest zurückgehen und dies überprüfen und nacholen. Falls du keine Einladung hast, kontaktiere mich.
 - Nun noch auf das grüne Feld "Authorize rstudio" und nach Eingabe deines Passworts bist du bereit.
 
 ```{r github-auth-4, echo = FALSE}
-knitr::include_graphics("img/github-auth-4.png")
+knitr::include_graphics("img/github-auth.005.png")
 ```
 - Sobald du fertig bist, sollten in RStudio Cloud beide Kästchen markiert sein.
 
@@ -68,27 +76,27 @@ In Zukunft wird jede Aufgabe mit einem Abschnitt "Erste Schritte" beginnen, aber
 
 - Klicke auf den Link für die Aufgabe, den du in einer E-Mail erhalten haben solltest, um dein GitHub Repository (im Folgenden "Repo" genannt) für die Aufgabe zu erstellen. Dieses Repository enthält eine Vorlage, auf der du aufbauen kannst, um die Aufgabe zu lösen.
 
+- Auf GitHub klickst du auf den grünen **Code** und wählst **Use HTTPS** wie im Bild unten (dies könnte bereits standardmäßig ausgewählt sein, und wenn es so ist, siehst du den Text **Clone mit HTTPS**). Klicke auf das Klemmbrett-Symbol, um die Repo-URL zu kopieren.
+
 ```{r clone-repo-link, fig.margin = TRUE, echo = FALSE, fig.width=3}
 knitr::include_graphics("img/clone-repo-link.png")
 ```
 
-- Auf GitHub klickst du auf den grünen **Clone or Download** Button und wählst **Use HTTPS** wie im Bild unten (dies könnte bereits standardmäßig ausgewählt sein, und wenn es so ist, siehst du den Text **Clone mit HTTPS**). Klicke auf das Klemmbrett-Symbol, um die Repo-URL zu kopieren.
+- Öffne nun RStudio Cloud und in den Kursarbeitsbereich. Klicke auf den Abwärtspfeil und erstelle ein **New Project from Git Repo**.
 
 ```{r new-project-from-gh, fig.margin = TRUE, echo = FALSE, fig.width=3}
 knitr::include_graphics("img/new-project-from-gh.png")
 ```
 
-- Öffne nun RStudio Cloud und in den Kursarbeitsbereich. Klicke auf den Abwärtspfeil und erstelle ein **New Project from Git Repo**.
+- Füge die URL aus deinem Repo oben in das Dialogfeld ein und stelle sicher, dass das Häkchen bei "Packages" gesetzt ist.
 
 ```{r paste-gh-repo-url, fig.margin = TRUE, echo = FALSE, fig.width=5}
 knitr::include_graphics("img/paste-github-repo-url.png")
 ```
-- Füge die URL aus deinem Repo oben in das Dialogfeld ein und stelle sicher, dass das Häkchen bei "Packages" gesetzt ist.
 
 ```{r arrow-base-proejct}
 
 knitr::include_graphics("img/arrow-base-project.png")
-
 
 ```
 

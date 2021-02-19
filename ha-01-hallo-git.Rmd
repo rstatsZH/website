@@ -44,7 +44,7 @@ knitr::include_graphics("img/github-auth-3.png")
 
 - Zurück im Authentifizierungsfenster in RStudio Cloud aktivierst du nun auch das Kästchen *Private repo access also enabled*
 
-```{r}
+```{r, echo=FALSE}
 
 knitr::include_graphics("img/github-auth.004.png")
 
@@ -70,19 +70,17 @@ knitr::include_graphics("img/github-auth-6.png")
 
 # Erste Schritte
 
-Jede deiner Aufgaben wird mit den folgenden Schritten beginnen. Du hast diese bereits einmal im Unterricht gesehen, hier sind sie noch einmal im Detail beschrieben.
+Jede deiner Aufgaben wird mit den folgenden Schritten beginnen, welche hier im Detail beschrieben sind. In Zukunft wird jede Aufgabe mit einem Abschnitt "Erste Schritte" beginnen, aber mit etwas weniger Details. Du kannst jedoch jederzeit auf diese Heimarbeit zurückgreifen, um eine detaillierte Liste der Schritte zu erhalten, die notwendig sind, um mit einer Aufgabe zu beginnen.
 
-In Zukunft wird jede Aufgabe mit einem Abschnitt "Erste Schritte" beginnen, aber mit etwas weniger Details. Du kannst jedoch jederzeit auf dieses Heimarbeit zurückgreifen, um eine detaillierte Liste der Schritte zu erhalten, die notwendig sind, um mit einer Aufgabe zu beginnen.
+- Klicke auf den Link zu deinem persönlichen GitHub Repository (im Folgenden "Repo" genannt) um die Aufgabe zu erstellen. Dieses Repository enthält eine Vorlage, auf der du aufbauen kannst, um die Aufgabe zu lösen.
 
-- Klicke auf den Link für die Aufgabe, den du in einer E-Mail erhalten haben solltest, um dein GitHub Repository (im Folgenden "Repo" genannt) für die Aufgabe zu erstellen. Dieses Repository enthält eine Vorlage, auf der du aufbauen kannst, um die Aufgabe zu lösen.
-
-- Auf GitHub klickst du auf den grünen **Code** und wählst **Use HTTPS** wie im Bild unten (dies könnte bereits standardmäßig ausgewählt sein, und wenn es so ist, siehst du den Text **Clone mit HTTPS**). Klicke auf das Klemmbrett-Symbol, um die Repo-URL zu kopieren.
+- Auf GitHub klickst du auf den grünen **Code** Button und wählst **HTTPS** wie im Bild unten. Klicke auf das Klemmbrett-Symbol, um die Repo-URL zu kopieren.
 
 ```{r clone-repo-link, fig.margin = TRUE, echo = FALSE, fig.width=3}
 knitr::include_graphics("img/clone-repo-link.png")
 ```
 
-- Öffne nun RStudio Cloud und in den Kursarbeitsbereich. Klicke auf den Abwärtspfeil und erstelle ein **New Project from Git Repo**.
+- Öffne nun RStudio Cloud und den Workspace für den Kurs. Klicke auf den Abwärtspfeil und erstelle ein **New Project from Git Repository**.
 
 ```{r new-project-from-gh, fig.margin = TRUE, echo = FALSE, fig.width=3}
 knitr::include_graphics("img/new-project-from-gh.png")
@@ -94,7 +92,7 @@ knitr::include_graphics("img/new-project-from-gh.png")
 knitr::include_graphics("img/paste-github-repo-url.png")
 ```
 
-```{r arrow-base-proejct}
+```{r arrow-base-proejct, echo=FALSE}
 
 knitr::include_graphics("img/arrow-base-project.png")
 
@@ -105,8 +103,6 @@ knitr::include_graphics("img/arrow-base-project.png")
 ## Aufwärmen
 
 Bevor wir uns die Daten anschauen, machen wir noch ein paar Aufwärmübungen um die R Markdown vorzustellen. 
-
-Der obere Teil deiner R Markdown Datei (zwischen den drei gestrichelten Linien) wird YAML genannt. Es steht für "YAML Ain't Markup Language". Es ist ein menschenfreundlicher Standard zur Serialisierung von Daten für alle Programmiersprachen. Alles, was du wissen musst, ist, dass dieser Bereich YAML genannt wird (wir werden ihn als solchen bezeichnen) und dass er Metainformationen über dein Dokument enthält.
 
 ### YAML
 
@@ -132,11 +128,9 @@ Wenn du mit diesen Änderungen zufrieden bist, klicke auf das Kontrollkästchen 
 knitr::include_graphics("img/update-author-name-commit.png")
 ```
 
-Du musst nicht nach jeder Änderung committen, das würde ziemlich mühsam werden.
+Du musst nicht nach jeder Änderung committen, sondern Zustände, die *für dich bedeutsam* sind, um sie zu überprüfen, zu vergleichen oder wiederherzustellen.
 
-Du solltest in Betracht ziehen, Zustände zu committen, die *für dich bedeutsam* sind, um sie zu überprüfen, zu vergleichen oder wiederherzustellen.
-
-In den ersten paar Aufgaben werden wir dir genau sagen, wann du committen solltest und in einigen Fällen, welche commit-Nachricht du verwenden solltest. Im weiteren Verlauf des Kurses wirst du diese Entscheidungen dann selbst treffen.
+In den ersten paar Aufgaben werden wir dir genau sagen, wann und mit welchem Text du committen solltest. Im weiteren Verlauf des Kurses wirst du diese Entscheidungen dann selbst treffen.
 
 ### Änderungen schieben (push)
 
@@ -146,26 +140,26 @@ Oder genauer gesagt, in dein Repo auf GitHub. Warum das? Damit andere deine Änd
 
 Um deine Änderungen auf GitHub zu pushen, klicke auf **Push**. Daraufhin erscheint ein Dialogfenster, in dem du zuerst deinen Benutzernamen und dann dein Passwort eingeben musst. Das ist etwas umständlich und muss bei jedem push wiederholt werden. Aber, habe etwas Geduld, im Laufe des Kurse werde ich dir beibringen wie du dein Passwort speichern kannst, damit du es nicht jedes Mal neu eingeben musst.
 
-```{r}
+```{r, echo=FALSE}
 
-knitr::include_graphics("img/push-to-github.png")
+knitr::include_graphics("img/push-to-github.001.png")
 
 ```
 
 ## Pakate (Packages)
 
-In diesem Heimarbeit werden wir mit zwei Paketen arbeiten: **datasauRus**, welches den Datensatz enthält, den wir verwenden werden und **tidyverse**, welches eine Sammlung von Paketen ist, um Datenanalysen auf eine "ordentliche (tidy)" Art und Weise durchzuführen. Diese Pakete sind bereits für dich installiert. Du kannst die Pakete laden, indem du den folgenden Codeblock in der Konsole ausführst.
+In diesem Heimarbeit werden wir mit zwei R Packages arbeiten: **datasauRus**, welches den Datensatz enthält, den wir verwenden werden und **tidyverse**. Diese Packages sind bereits für dich installiert. Du kannst sie laden indem du den folgenden Codeblock ausführst.
 
 ```{r message=FALSE}
 library(tidyverse) 
 library(datasauRus)
 ```
 
-Beachte, dass die Pakete auch mit den gleichen Befehlen in deinem R Markdown Dokument geladen werden.
+Beachte, dass die Packages auch mit den gleichen Befehlen in deinem R Markdown Dokument geladen werden.
 
 ## Daten
 
-Der Dataframe, mit dem wir heute arbeiten werden, heißt `datasaurus_dozen` und befindet sich im Paket `datasauRus`. Eigentlich enthält dieser einzelne Dataframe 13 Datensätze, die uns zeigen sollen, warum Datenvisualisierung wichtig ist und wie zusammenfassende Statistiken allein irreführend sein können. Die verschiedenen Datensätze sind durch die Variable `dataset` gekennzeichnet.
+Der Dataframe, mit dem wir heute arbeiten werden, heißt `datasaurus_dozen` und befindet sich im R Package `datasauRus`. Eigentlich enthält dieser einzelne Dataframe 13 Datensätze, die uns zeigen sollen, warum Datenvisualisierung wichtig ist und wie zusammenfassende Statistiken allein irreführend sein können. Die verschiedenen Datensätze sind durch die Variable `dataset` gekennzeichnet.
 
 Um mehr über das Dataset herauszufinden, gib folgendes in deine Konsole ein: `?datasaurus_dozen`. Ein Fragezeichen vor dem Namen eines Objekts ruft immer dessen Hilfedatei auf. Dieser Befehl muss in der Konsole ausgeführt werden.
 
@@ -189,13 +183,14 @@ Der ursprüngliche Datasaurus (`dino`) wurde von Alberto Cairo in [diesem großa
 
 2.  Plot `y` gegen `x` für den `dino` Datensatz. Berechne dann den Korrelationskoeffizienten zwischen "x" und "y" für diesen Datensatz.
 
-Unten findest du den Code, den du brauchst, um diese Aufgabe zu lösen. Im Grunde ist die Antwort schon gegeben, aber du musst die relevanten Bits in dein Rmd-Dokument einfügen und es erfolgreich stricken (knit) und die Ergebnisse ansehen.
+Unten findest du den Code, den du brauchst, um diese Aufgabe zu lösen. Die Antwort ist schon gegeben, aber du musst die relevanten Bits in dein Rmd-Dokument einfügen und es erfolgreich stricken (knit) und die Ergebnisse ansehen.
 
 Beginne mit dem `datasaurus_dozen` und leite es in die Funktion `filter`, um nach Beobachtungen zu filtern, bei denen `dataset == "dino"` ist. Speichere den resultierenden gefilterten Dataframe als einen Dataframe namens `dino_data`.
 
 ```{r}
-dino_data <- datasaurus_dozen %>%
-  filter(dataset == "dino")
+
+# Füge hier den Code ein
+
 ```
 
 Hier geht eine ganze Menge vor sich, also lassen wir es langsam angehen und nehmen es Schritt für Schritt auseinander.
@@ -213,7 +208,7 @@ ggplot(data = dino_data, mapping = aes(x = x, y = y)) +
   geom_point()
 ```
 
-Wenn das nach viel klingt, dann ist es das auch. Nächste Woche wirst du mehr über die Philosophie der Datenvisualisierung im Layer erfahren. Für den Moment kannst du dem Code folgen, welcher dir zur Verfügung gestellt wird.
+Nächste Woche wirst du mehr über die Philosophie der Datenvisualisierung in Layern erfahren. Für den Moment kannst du dem Code folgen, welcher dir zur Verfügung gestellt wird.
 
 Für den zweiten Teil dieser Übungen müssen wir eine zusammenfassende Statistik berechnen: den Korrelationskoeffizienten. Der Korrelationskoeffizient, in der Statistik oft als $r$ bezeichnet, misst den linearen Zusammenhang zwischen zwei Variablen.
 

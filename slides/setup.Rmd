@@ -6,7 +6,8 @@ options(
   htmltools.preserve.raw = FALSE, # to fix HTML iossue
   dplyr.print_min = 6, 
   dplyr.print_max = 6,
-  width = 100
+  tibble.width = 65,
+  width = 65
   )
 # figure height, width, dpi
 # figure height, width, dpi
@@ -15,6 +16,8 @@ knitr::opts_chunk$set(echo = FALSE,
                       eval = TRUE,
                       fig.width = 6, 
                       fig.asp = 0.5,
+                      comment = "", 
+                      cache = FALSE, 
                       out.width = "100%",
                       fig.align = "center",
                       dpi = 300,
@@ -30,28 +33,10 @@ dev.off <- function(){
 }
 # countdown
 library(countdown)
+
 # conflicted
 library(conflicted)
 conflict_prefer("filter", "dplyr")
-
-# xaringanthemer
-library(xaringanthemer)
-
-## slide style 
-style_mono_accent(
-  base_color = "#0F4C81", # Pantone Classic Blue
-  header_font_google = google_font("Montserrat"),
-  code_font_google = google_font("Fira Mono"), 
-  code_font_size = "1.2rem",
-  text_font_size = "1.4rem", 
-  header_h1_font_size = "2.0rem",
-  header_h2_font_size = "1.75rem",
-  header_h3_font_size = "1.5rem",
-  footnote_font_size = "0.8rem",
-  footnote_position_bottom = "20px",
-  header_background_padding = "2rem",
-  outfile = here::here("slides/assets/css/xaringan-themer.css")
-)
 
 #fontawesome
 library(fontawesome)
@@ -59,6 +44,16 @@ library(fontawesome)
 #htmltools
 library(htmltools)
 
+# xaringanExtra
+library(xaringanExtra)
+xaringanExtra::use_panelset()
+
+# flipbook
+library(flipbookr)
+
+
+# ggplot2 set theme
+ggplot2::theme_set(ggplot2::theme_gray(base_size = 16))
 
 ```
 

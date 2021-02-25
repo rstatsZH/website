@@ -200,7 +200,8 @@ Unsere Konferenzplatform
 - Das Mikrofon auf stumm schalten
 - Wenn ihr mögt, das Video gern einschalten
 - Das Fenster in welchem ich zu sehen bin "pinnen"
-- Wir nutzen den Zoom Chat nur für Kleinigkeiten  
+- Wir nutzen den Zoom Chat nur für Kleinigkeiten
+- Bei Fragen, bitte "hand heben" 
 
 ---
 class: left
@@ -745,6 +746,7 @@ class: middle
 
 - Öffnet jetzt eure E-Mail Inbox
 - Bestätigt mir im Zoom Chat, dass ihr eine Email mit Betreff **"rstatsZH - Lars hat das Repo ha01-GitHubName"** erhalten habt
+- Die Anweisungen für die Heimarbeit 1 findet ihr oben rechts auf unserer Kurswebseite
 - Kontaktiert mich unter der Woche jederzeit auf Slack 
 
 ]

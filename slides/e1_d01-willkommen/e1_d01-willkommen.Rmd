@@ -178,7 +178,7 @@ class: inverse, middle
 ---
 # Kursinfo 
 
-- **Unterricht:** 3 Stunden Sessions
+- **Unterricht:** 3 Stunden Sessions (Pause jede Stunde)
 - **Übungen:** Praktika während der Session
 - **Hausaufgaben:** Einzureichen bis zum nächsten Kurstag
 - **Persönliches Tutoring:** Sprechstunden ausserhalb der Kurstage
@@ -193,7 +193,7 @@ class: inverse, middle
 
 # .big[Werkzeugkiste `r emo::ji("toolbox")`]
 
----
+---  
 # Wekzeugkiste
 
 .pull-left[
@@ -231,7 +231,7 @@ class: inverse, middle
 
 - Das Mikrofon auf stumm schalten
 - Wenn ihr mögt, das Video gern einschalten
-- Wir nutzen den Zoom Chat nur für Kleinigkeiten
+- Zoom Chat für Fragen
 
 --
 - Bei Fragen, bitte "Hand heben" 
@@ -249,8 +249,10 @@ wenn ihr euer Video nutzen mögt. Dann habe ich nicht das Gefühl in einen leere
 Raum zu sprechen.
 
 Probleme mit Zoom kennen wir alle nur zu gut diese Tage. Wenn es etwas nicht 
-klappt oder ihr eine Frage habt, dann habt bitte die Hand. Das könnt ihr unten
-im Reaktionen Feld machen. Dies werde ich immer mal wieder auch für Feedback
+klappt oder ihr eine Frage habt, dann habt bitte die Hand oder schreibt es in 
+den Chat. 
+
+Das könnt ihr unten im Reaktionen Feld machen. Dies werde ich immer mal wieder auch für Feedback
 von euch nutzen.
 
 ---
@@ -274,13 +276,15 @@ Unser Channel für die Kommunikation
 .footnote[Photo by: [Steve Halama](https://unsplash.com/@steve3p_0)]
 
 ???
-Falls ihr während des spezifische Fragen oder technische Probleme habt, schreibt
-mich doch bitte auf Slack an. 
 
-Dort ist es etwas einfacher für mich euch folgen
-zu können und zu helfen. Ihr könnt es direkt in unseren Channel posten. Bei einer Error 
+Ihr könnt mich für Fragen auch auf Slack anschreiben. 
+
+Dort ist es etwas einfacher für mich euch folgen zu können und zu helfen. 
+Ihr könnt es direkt in unseren Channel posten. Bei einer Error 
 Nachricht zum Beispiel.
 
+Aber, wichtiger als der passende Kanal ist mir, dass ihr Fragen stellt. Egal wo.
+  
 
 ---
 # Google Docs
@@ -295,6 +299,41 @@ Unser geteiltes Notizbuch (ein Experiment)
 ???
 Noch bin ich mit nicht sicher ob auch Google Docs zum Einsatz kommt. Es wäre 
 eher experimentell. 
+
+---
+# KeyCastr
+
+.pull-left[
+- MacOS 
+- Schweizer Keyboard Layout
+- 
+]
+
+.pull-right[
+
+```{r, out.width="40%"}
+
+knitr::include_graphics("img/keycastr.png")
+
+```
+
+]
+
+--
+
+.fyi[
+Wer von euch nutzt Windows? Antwortet mit "ja" als Reaktion in Zoom.
+]
+
+???
+Ich nutze ein MacBook und ein schweizer Keyboard Layout. Wenn ich live code
+schreibe werdet ihr unten rechts im Bildschirmrand die Tasten sehen welche
+ich gedrückt habe. 
+
+Bei wichtigen Tastaturkürzeln, werde ich auch immer für
+Windows wiederholen was dies bedeutet. 
+
+Kurze Umfrage: Bitte mit ja antworten wenn ihr Windows nutzt.
 
 ---
 class: inverse, middle
@@ -459,6 +498,8 @@ background-size: contain
 
 # R Community
 
+.footnote[Artwork by [@allison_horst](https://www.allisonhorst.com/)]
+
 ???
 Was R wirklich ausmacht, ist die Community. Wir werden uns im Laufe des Kurses
 noch etwas mehr damit beschäftigen, aber es ist wirklich sehr einzigartig in der
@@ -480,6 +521,8 @@ background-position: right
 - Zurich R User Group [@ZurichRUsers](https://twitter.com/ZurichRUsers)
 - [RStudio Community](https://community.rstudio.com/)
 
+.footnote[Artwork by [@allison_horst](https://www.allisonhorst.com/)]
+
 ???
 Noch nicht auf Twitter? Jetzt wäre ein guter Zeitpunkt. Der Hashtag rstats ist
 sehr beliebt. Nutzt diesen und teilt eure Fragen und Erfahrungen. Ich garantiere
@@ -495,6 +538,32 @@ Züri gibt es eine R User Group.
 
 Zuletzt noch die RStudio Community, ein Forum welches auch für Fragen genutzt 
 werden kann.
+
+---
+background-image: url(img/inclusion.jpg)
+background-size: contain
+background-position: right
+
+# Verhaltenskodex
+
+- Diversität und Inklusion
+- Namen und Pronomen
+- Lernprozess
+
+.footnote[Photo by: [Sharon McCutcheon](https://unsplash.com/@sharonmccutcheon)]
+
+???
+Diversität und Inklusion sind auch mir sehr wichtig und mit einem 
+Verhaltenskodex für unsere gemeinsame Zusammenarbeit versuche ich dies
+zu unterstützen. Bitte nehmt euch etwas Zeit diesen zu lesen. Ihr findet den
+Verhaltenskodex auf der Webseite für den Kurs.
+
+Ich spreche euch basierend auf eurem Namen an, lasst mich wissen falls du 
+einen anderen Namen und Pronomen bevorzugst.
+
+Ich bin selbst in einem Prozess mehr pber verschiedene Perspektiven und 
+Identitäten zu lernen. Sollte ich im Unterricht etwas sagen, dass dir Unbehagen
+bereitet, lass es mich bitte wissen.
 
 ---
 class: middle, inverse 
@@ -516,7 +585,7 @@ Steigen wir ein
 
 ---
 # R Markdown Hilfe
-
+ 
 .pull-left[
 .center[
 .midi[R Markdown Cheat Sheet  
@@ -713,7 +782,7 @@ class: middle
 ```{r}
 
 countdown(
-  minutes = 20, seconds = 0,
+  minutes = 30, seconds = 0,
   left = 0, right = 0,
   padding = "15px", margin = "5%",
   font_size = "4em"
@@ -794,7 +863,7 @@ class: inverse, middle
 ]
 
 ---
-class: middle
+class: middle, inverse
 
 # .big[Git und GitHub]
 
@@ -845,6 +914,11 @@ knitr::include_graphics("img/phd_comics_vc.gif")
 ```
 
 ---
+class: left, middle
+
+#.huge[Tour: GitHub]
+
+---
 # Wie nutzen wir Git und GitHub?
 
 ```{r echo=FALSE, out.width="100%"}
@@ -873,30 +947,12 @@ knitr::include_graphics("img/whole-game-04.png")
 ```
 
 ---
-# Git and GitHub Tipps
-
-- Es gibt etliche Git-Befehle 
-- Nur sehr wenige Leute kennen sie alle 
-- 99.9% der Zeit werden wir git add, commit, push und pull verwenden
-
---
-- Wir arbeiten mit Git und GitHub über die RStudio IDE
-- Es ist auch möglich mit der Command Line zu arbeiten (dies kannst du einfach überspringen)
-
---
-- Es gibt eine großartige Quelle für die Arbeit mit Git und R: [happygitwithr.com](http://happygitwithr.com/)
-
-???
-
-Einige der Inhalte gehen über den Rahmen dieses Kurses hinaus, aber es ist ein guter Ort, um nach Hilfe zu suchen.
-
----
 class: middle
 
-# .big[Heimarbeit]
+# .big[Hausaufgabe]
 
 ---
-# Heimarbeit
+# Hausaufgabe
 
 .note[
 
@@ -906,6 +962,33 @@ class: middle
 - Kontaktiert mich unter der Woche jederzeit auf Slack 
 
 ]
+
+---
+class: middle
+
+# .big[Feedback]
+
+---
+class: left
+background-image: url(img/goals.jpg)
+background-position: right
+background-size: contain
+
+# Ziele für heute 
+
+.pull-left[
+
+Am Ende des Tages:
+
+- haben wir uns kennengelernt
+- habt ihr die Werkzeugkiste kennengelernt
+- könnt ihr beschreiben was die Ziele des Kurses sind
+- könnt ihr einen ersten Plot erstellen
+
+.footnote[Photo by: [Muzammil Soorma](https://unsplash.com/photos/6M_Wiwi1LQQ)]
+
+]
+
 
 ---
 # `r emo::ji("sunflower")` Danke 

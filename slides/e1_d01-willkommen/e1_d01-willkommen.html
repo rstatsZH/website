@@ -9,6 +9,8 @@
     <link href="libs/remark-css/default.css" rel="stylesheet" />
     <link href="libs/font-awesome/css/all.css" rel="stylesheet" />
     <link href="libs/font-awesome/css/v4-shims.css" rel="stylesheet" />
+    <link href="libs/panelset/panelset.css" rel="stylesheet" />
+    <script src="libs/panelset/panelset.js"></script>
     <link href="libs/countdown/countdown.css" rel="stylesheet" />
     <script src="libs/countdown/countdown.js"></script>
     <link rel="stylesheet" href="../assets/css/xaringan-themer.css" type="text/css" />
@@ -41,8 +43,16 @@ class: middle
 
 # .big[Hallo R! 👋]
 
+???
+
+Hallo R! Das ist unser Thema für heute. Einige von euch haben vielleicht schon 
+etwas Erfahrung mit R gesammelt und für andere ist etwas ganz Neues. 
+
+Und das ist gut, denn dies ist ein Einsteiger Kurs und ich bin überzeut es ist
+für alle etwas Neues dabei. 
+
 ---
-class: left
+class: middle, left
 background-image: url(img/united-nations-covid-19-response-IKyhoO8giSA-unsplash.jpg)
 background-position: right
 background-size: contain
@@ -50,6 +60,15 @@ background-size: contain
 # .big[Hallo Ihr!] 
 
 .footnote[[Image created by Danielo Baretto](https://unsplash.com/photos/IKyhoO8giSA)]
+
+???
+
+Und Hallo Ihr! Leider lernen wir uns in diesem Kurs nur virtuell kennen, aber
+es bringt auch ein paar interessante neue Möglichkeiten. 
+
+Ich freue mich auf jeden Fall darauf euch in den nächsten 7 Wochen kennenzulernen und euch auf 
+Reise zu Data Science mit R begleiten zu dürfen.
+
 
 ---
 class: left
@@ -92,8 +111,8 @@ Arbeitsumgebung vertraut. Ihr bereitet euer erstes kleines RMarkdown Dokument vo
     - Was machst du gern ausserhalb der Arbeit? 
 ]
 
-<div class="countdown" id="timer_602fd1fb" style="right:0;bottom:0;left:0;margin:5%;padding:10px;font-size:2em;" data-warnwhen="0">
-<code class="countdown-time"><span class="countdown-digits minutes">02</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
+<div class="countdown" id="timer_6037b565" style="right:0;bottom:0;left:0;margin:5%;padding:10px;font-size:2em;" data-warnwhen="0">
+<code class="countdown-time"><span class="countdown-digits minutes">05</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
 
 ---
@@ -104,7 +123,6 @@ Arbeitsumgebung vertraut. Ihr bereitet euer erstes kleines RMarkdown Dokument vo
   In der Gruppe: Stellt eure Arbeitsparter_in vor
   
 ]
-
 
 ---
 class: left
@@ -135,6 +153,24 @@ Neuerdings darf ich mich auch Datenwissenschaftler nennen, da ich ein Praktikum 
 Ich nutze R seit etwa vier Jahren. Mein Einstieg war ein 2-tägiger Workshop aber der Grossteil meiner Kompetenzen ist selbständig erworben. 
 
 Seit letztem Jahr  Monaten bin ich nun offiziel als R Trainer zertifiziert. Später noch etwas mehr dazu.
+
+---
+class: inverse, middle
+
+# .big[Kursinfo]
+
+---
+# Kursinfo 
+
+- **Unterricht:** 3 Stunden Sessions
+- **Übungen:** Praktika während der Session
+- **Hausaufgaben:** Einzureichen bis zum nächsten Kurstag
+- **Persönliches Tutoring:** Sprechstunden ausserhalb der Kurstage
+- **Abschluss Projekt:** 
+    - Team Arbeit mit Daten eurer Wahl
+    - Bericht (1 Seite) 
+    - 5 Minuten Präsentation
+- **Zertifikat:** Bestätigung über Teilnahme und Aufwand
 
 ---
 class: inverse, middle
@@ -173,16 +209,29 @@ class: inverse, middle
 ]
 
 ---
-# Zoom
-
-Unsere Konferenzplatform
+# Zoom - Unsere Konferenzplatform
 
 **Tipps für die Nutzung**
 
 - Das Mikrofon auf stumm schalten
 - Wenn ihr mögt, das Video gern einschalten
-- Das Fenster in welchem ich zu sehen bin "pinnen"
-- Wir nutzen den Zoom Chat nur für Kleinigkeiten  
+- Wir nutzen den Zoom Chat nur für Kleinigkeiten
+
+--
+- Bei Fragen, bitte "Hand heben" 
+- Nutzt die Reaktionen für Feedback
+
+&lt;img src="img/zoom-hand.png" width="70%" style="display: block; margin: auto;" /&gt;
+
+???
+Wir versuchen es erstmal mit dem Mikrofon auf stumm, aber ich bin euch dankbar
+wenn ihr euer Video nutzen mögt. Dann habe ich nicht das Gefühl in einen leeren
+Raum zu sprechen.
+
+Probleme mit Zoom kennen wir alle nur zu gut diese Tage. Wenn es etwas nicht 
+klappt oder ihr eine Frage habt, dann habt bitte die Hand. Das könnt ihr unten
+im Reaktionen Feld machen. Dies werde ich immer mal wieder auch für Feedback
+von euch nutzen.
 
 ---
 class: left
@@ -196,12 +245,22 @@ Unser Channel für die Kommunikation
 
 **Was gehört hinein?**
 
-- Ankündigungen
-- Unterhaltungen
 - Fragen
 - Unterstützung beim Programmieren
+- Technische Probleme
+- Ankündigungen
+- Unterhaltungen
 
 .footnote[Photo by: [Steve Halama](https://unsplash.com/@steve3p_0)]
+
+???
+Falls ihr während des spezifische Fragen oder technische Probleme habt, schreibt
+mich doch bitte auf Slack an. 
+
+Dort ist es etwas einfacher für mich euch folgen
+zu können und zu helfen. Ihr könnt es direkt in unseren Channel posten. Bei einer Error 
+Nachricht zum Beispiel.
+
 
 ---
 # Google Docs
@@ -213,25 +272,34 @@ Unser geteiltes Notizbuch (ein Experiment)
 - Für bestimmte Übungen und Aufgaben
 - Zum Teilen von Bildern
 
+???
+Noch bin ich mit nicht sicher ob auch Google Docs zum Einsatz kommt. Es wäre 
+eher experimentell. 
+
+---
+class: inverse, middle
+
+#.big[Data Science]
+
 ---
 # Data Science - Lernziele
 
-Am Ende des Kurses wirst du:
+Am Ende dieses Kurses kannst du:
+
+- (Daten)projekte reproduzierbar publizieren
+- kollaborativ mit git und GitHub arbeiten
+- das Konzept von tidy data verstehen und anwenden
 
 --
-- Wissen aus Daten generieren
+- explorative Datenanalysen durchführen (einfache lineare Modellierung machen hier einen kleinen Teil aus)
+- dir selbst und Anderen helfen mehr über die grosse Welt der Möglichkeiten für Data Science mit R zu lernen
 
---
-- **reproduzierbar**, Wissen aus Daten generieren
+???
+Du wirst am Ende des Kurses Wissen aus Daten generieren können. Dies wirst du reproduzierbar und kollaborativ machen und dabei das Konzept von tidy data verstehen und anwenden.
 
---
-- reproduzierbar, **und mit modernen Werkzeugen und Techniken**, Wissen aus Daten generieren
+Unsere Analysen werden überwiegend explorativ und deskriptiv sein. Wir decken ein bisschen Material zu einfachen lineren Modellen ab, aber dies macht nur einen kleinen Teil aus. 
 
---
-- reproduzierbar, **kollaborativ**, und mit modernen Werkzeugen und Techniken, Wissen aus Daten generieren
-
---
-- reproduzierbar **(mit literate programming und Versionsverwaltung)**, kollaborativ, und mit modernen Werkzeugen und Techniken, Wissen aus Daten generieren
+Ich bin selbst nicht sehr erfahren auf dem Gebiet, aber bin überzeugt, dass ihr am Ende des Kurses die Fähigkeiten haben werdet euch in bestimme andere Bereiche weiter zu entwickeln.
 
 ---
 class: middle
@@ -241,11 +309,31 @@ class: middle
 ---
 
 .fyi[
+
+- Denkt über folgende Frage für 2 Minuten nach
+- Danach, teilt eure Ansichten in 2er Gruppen für 5 Minuten
+- Wichtig: Wir haben alle ein anderes mentales Modell
+
 **Frage:**
 Was macht eine Datenanalyse reproduzierbar?
 ]
 
---
+<div class="countdown" id="timer_6037b70c" style="right:0;bottom:0;left:0;margin:5%;padding:10px;font-size:2em;" data-warnwhen="0">
+<code class="countdown-time"><span class="countdown-digits minutes">02</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
+</div>
+
+---
+
+.fyi[
+
+- Denkt über folgende Frage für 2 Minuten nach
+- Danach, teilt eure Ansichten in 2er Gruppen für 5 Minuten
+- Wichtig: Wir haben alle ein anderes mentales Modell
+
+**Frage:**
+Was macht eine Datenanalyse reproduzierbar?
+]
+
 **Kurzfristige Ziele**
 
 - Können Tabellen und Grafiken aus den Daten und dem Code neu erstellt (reproduziert) werden?
@@ -269,23 +357,25 @@ Wir lernen:
 
 ???
 
-In diesem Kurs geht es nicht nur darum R zu lernen. 
+Als Zusammenfassung könnt seid ihr am Ende dieses Kurses ein moderner R Nutzer.
 
-- Wir lernen ein gesamtes Ökosystem an Werkzeugen und Praktiken kennen, welche uns helfen werden gute Gewohnheiten für eine reproduzierbare und kooperative Arbeitsweise zu entwickeln
+Modern, da es in diesem Kurs nicht darum geht den Umgang mit R zu lernen. 
+
+- Wir lernen ein gesamtes Ökosystem an Werkzeugen und Praktiken kennen, welche uns helfen werden gute Gewohnheiten für eine reproduzierbare und kollaborative Arbeitsweise zu entwickeln
     
    -&gt; Entscheidene Kompetenzen eines modernen Analytikers
 
-- Wir werden Fähigkeiten erlernen, welche schrittweise in Eure bestehenden Arbeitsabläufe integriert werden können
-
-- Dabei geht es allerdings nicht nur um Fähigkeiten, sondern auch um Denkweisen
+- Und dabei geht es nicht nur um Fähigkeiten, sondern auch um Denkweisen
     - Darüber wie wir Daten formen, Daten organisieren und Daten analysieren
     - Und wie das was wir jetzt tun unser analytisches Leben in der Zukunft besser machen kann. 
 
 ---
-
-class: middle
+class: middle, inverse
 
 # .big[R and RStudio]
+
+???
+Also, steigen wir ein in unsere Data Science Tools
 
 ---
 # R und RStudio
@@ -307,6 +397,16 @@ class: middle
 - RStudio IDE wird entwickelt von [RStudio, PBC](https://blog.rstudio.com/2020/01/29/rstudio-pbc/) (Public Benefit Corporation), eine US-amerikanische Firma
 ]
 
+???
+R gibt es schon eine ganze Weile. Um genau zu sein seit 1993. Es ist die Programmiersprache, die wir nutzen.
+Die Stärke von R ist, dass es durch sogenannte Packages beliebig erweitert werden, sodass man heute so 
+ziemlich alles denkbare in R machen kann.
+
+Diese Folien sind in R geschrieben. Die Webseite für den Kurs ist mit R geschrieben. Ihr könnt interkative 
+Grafiken erstellen, eure Emails aus R versenden, räumliche Analysen machen oder auch hochkomplexe machine learning Algorhitmen anwenden. Die Möglichkeiten sind grenzenlos.
+
+RStudio ist eine grafische Benutzeroberfläche. Wenn R der Motor ist, dann ist RStudio das Dashboard. Es wird entwickelt von der RStudio PBC, eine public-benefit corporation. Falls euch interessiert was das bedeutet ist hier ein Link.
+
 ---
 # R packages
 
@@ -319,11 +419,59 @@ class: middle
 &lt;sup&gt;1&lt;/sup&gt; [CRAN contributed packages](https://cran.r-project.org/web/packages/).
 ]
 
+???
+
+
 ---
-class: middle
+background-image: url(img/code_hero.jpg)
+background-size: contain
+
+# R Community
+
+???
+Was R wirklich ausmacht, ist die Community. Wir werden uns im Laufe des Kurses
+noch etwas mehr damit beschäftigen, aber es ist wirklich sehr einzigartig in der
+Tech Welt, wie einladend  R Community ist und was alles bewegt wird um mehr 
+Diversität in den Sektor zu bringen und Diskriminieung zu bekämpfen. 
+
+
+---
+background-image: url(img/welcome_to_rstats_twitter.png)
+background-size: contain
+background-position: right
+
+# R Community
+
+- Twitter: #rstats
+- Online learning community [@R4DScommunity](https://twitter.com/R4DScommunity)
+- Minority R Users [@miR_community](https://twitter.com/miR_community)
+- We are [@R-Ladies](https://twitter.com/WeAreRLadies)
+- Zurich R User Group [@ZurichRUsers](https://twitter.com/ZurichRUsers)
+- [RStudio Community](https://community.rstudio.com/)
+
+???
+Noch nicht auf Twitter? Jetzt wäre ein guter Zeitpunkt. Der Hashtag rstats ist
+sehr beliebt. Nutzt diesen und teilt eure Fragen und Erfahrungen. Ich garantiere
+es wird jemand antworten. 
+
+Dann gibt verschiedene Communities, einige organiseren sich auf Slack, so wie
+die R for Data Science online learning community oder Minority R Users, eine 
+Community die dazu dient unterrepräsentierte Minderheiten zusammenzubringen
+und zu unterstützen. Teilnehmen und unterstützen können Alle.
+
+Die R-Ladies sind zu einer weltweiten Bewegung herangewachsen und auch hier in 
+Züri gibt es eine R User Group.
+
+Zuletzt noch die RStudio Community, ein Forum welches auch für Fragen genutzt 
+werden kann.
+
+---
+class: middle, inverse 
 
 # .big[Tour: R, RStudio, R Markdown]
 
+???
+Steigen wir ein
 
 ---
 # Praktikum - Willkommen
@@ -368,7 +516,7 @@ background-size: contain
 
 # Pause 
 
-<div class="countdown" id="timer_602fd33d" style="right:0;bottom:0;left:0;margin:5%;padding:15px;font-size:4em;" data-warnwhen="0">
+<div class="countdown" id="timer_6037b625" style="right:0;bottom:0;left:0;margin:5%;padding:15px;font-size:4em;" data-warnwhen="0">
 <code class="countdown-time"><span class="countdown-digits minutes">05</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
 
@@ -513,7 +661,7 @@ class: middle
 
 ]
 
-<div class="countdown" id="timer_602fd2bc" style="right:0;bottom:0;left:0;margin:5%;padding:15px;font-size:4em;" data-warnwhen="0">
+<div class="countdown" id="timer_6037b4de" style="right:0;bottom:0;left:0;margin:5%;padding:15px;font-size:4em;" data-warnwhen="0">
 <code class="countdown-time"><span class="countdown-digits minutes">20</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
 
@@ -525,7 +673,7 @@ background-size: contain
 
 # Pause 
 
-<div class="countdown" id="timer_602fd1aa" style="right:0;bottom:0;left:0;margin:5%;padding:5px;font-size:4em;" data-warnwhen="0">
+<div class="countdown" id="timer_6037b736" style="right:0;bottom:0;left:0;margin:5%;padding:5px;font-size:4em;" data-warnwhen="0">
 <code class="countdown-time"><span class="countdown-digits minutes">07</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">30</span></code>
 </div>
 
@@ -673,6 +821,7 @@ class: middle
 
 - Öffnet jetzt eure E-Mail Inbox
 - Bestätigt mir im Zoom Chat, dass ihr eine Email mit Betreff **"rstatsZH - Lars hat das Repo ha01-GitHubName"** erhalten habt
+- Die Anweisungen für die Heimarbeit 1 findet ihr oben rechts auf unserer Kurswebseite
 - Kontaktiert mich unter der Woche jederzeit auf Slack 
 
 ]

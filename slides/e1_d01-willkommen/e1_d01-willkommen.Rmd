@@ -429,7 +429,14 @@ knitr::include_graphics("img/RStudio-Logo-Gray.png")
 ]
 
 ???
-R gibt es schon eine ganze Weile 
+R gibt es schon eine ganze Weile. Um genau zu sein seit 1993. Es ist die Programmiersprache, die wir nutzen.
+Die Stärke von R ist, dass es durch sogenannte Packages beliebig erweitert werden, sodass man heute so 
+ziemlich alles denkbare in R machen kann.
+
+Diese Folien sind in R geschrieben. Die Webseite für den Kurs ist mit R geschrieben. Ihr könnt interkative 
+Grafiken erstellen, eure Emails aus R versenden, räumliche Analysen machen oder auch hochkomplexe machine learning Algorhitmen anwenden. Die Möglichkeiten sind grenzenlos.
+
+RStudio ist eine grafische Benutzeroberfläche. Wenn R der Motor ist, dann ist RStudio das Dashboard. Es wird entwickelt von der RStudio PBC, eine public-benefit corporation. Falls euch interessiert was das bedeutet ist hier ein Link.
 
 ---
 # R packages
@@ -443,11 +450,59 @@ R gibt es schon eine ganze Weile
 <sup>1</sup> [CRAN contributed packages](https://cran.r-project.org/web/packages/).
 ]
 
+???
+
+
 ---
-class: middle
+background-image: url(img/code_hero.jpg)
+background-size: contain
+
+# R Community
+
+???
+Was R wirklich ausmacht, ist die Community. Wir werden uns im Laufe des Kurses
+noch etwas mehr damit beschäftigen, aber es ist wirklich sehr einzigartig in der
+Tech Welt, wie einladend  R Community ist und was alles bewegt wird um mehr 
+Diversität in den Sektor zu bringen und Diskriminieung zu bekämpfen. 
+
+
+---
+background-image: url(img/welcome_to_rstats_twitter.png)
+background-size: contain
+background-position: right
+
+# R Community
+
+- Twitter: #rstats
+- Online learning community [@R4DScommunity](https://twitter.com/R4DScommunity)
+- Minority R Users [@miR_community](https://twitter.com/miR_community)
+- We are [@R-Ladies](https://twitter.com/WeAreRLadies)
+- Zurich R User Group [@ZurichRUsers](https://twitter.com/ZurichRUsers)
+- [RStudio Community](https://community.rstudio.com/)
+
+???
+Noch nicht auf Twitter? Jetzt wäre ein guter Zeitpunkt. Der Hashtag rstats ist
+sehr beliebt. Nutzt diesen und teilt eure Fragen und Erfahrungen. Ich garantiere
+es wird jemand antworten. 
+
+Dann gibt verschiedene Communities, einige organiseren sich auf Slack, so wie
+die R for Data Science online learning community oder Minority R Users, eine 
+Community die dazu dient unterrepräsentierte Minderheiten zusammenzubringen
+und zu unterstützen. Teilnehmen und unterstützen können Alle.
+
+Die R-Ladies sind zu einer weltweiten Bewegung herangewachsen und auch hier in 
+Züri gibt es eine R User Group.
+
+Zuletzt noch die RStudio Community, ein Forum welches auch für Fragen genutzt 
+werden kann.
+
+---
+class: middle, inverse 
 
 # .big[Tour: R, RStudio, R Markdown]
 
+???
+Steigen wir ein
 
 ---
 # Praktikum - Willkommen

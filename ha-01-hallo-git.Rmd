@@ -1,14 +1,16 @@
 ---
-title: "Heimarbeit 01 - Hallo Git!"
+title: "Hausaufgabe 01 - Hallo Git!"
 ---
 
-Das Hauptziel dieser Heimarbeit ist es, dich mit R und RStudio bekannt zu machen. Ein zusätzliches Ziel ist es, dich in Git und GitHub einzuführen, das Kollaborations- und Versionskontrollsystem, das wir während des Kurses benutzen werden.
+<script async defer data-domain="rstatszh.github.io/website" src="https://plausible.io/js/plausible.js"></script>
+
+Das Hauptziel dieser Hausaufgabe ist es, dich mit R und RStudio bekannt zu machen. Ein zusätzliches Ziel ist es, dich in Git und GitHub einzuführen, das Kollaborations- und Versionskontrollsystem, das wir während des Kurses benutzen werden.
 
 Ich ermutige dich im Laufe der Übungen über das hinauszugehen was die Übungen vorgeben. Die Bereitschaft zu experimentieren wird dich zu einer besseren Programmierin machen. Bevor wir soweit sind, ist es wichtig, dass du dir ein paar grundlegende Kenntnisse in R aneignest.
 
 Heute beginnen wir mit den grundlegenden Bausteinen von R und RStudio: die Benutzeroberfläche, das Einlesen von Daten und grundlegende Befehle.
 
-Dieses erste Heimarbeit wird von dir allein durchgeführt. In zukünfitgen Heimarbeiten (oder auch Praktika) wirst du lernen, wie du auf GitHub in kleinen Teams zusammenarbeitest und einen Bericht für dein Team erstellst.
+Dieses erste Hausaufgabe wird von dir allein durchgeführt. In zukünfitgen Hausaufgabeen (oder auch Praktika) wirst du lernen, wie du auf GitHub in kleinen Teams zusammenarbeitest und einen Bericht für dein Team erstellst.
 
 # Verbindung zu GitHub und RStudio Cloud aufbauen
 
@@ -70,7 +72,7 @@ knitr::include_graphics("img/github-auth-6.png")
 
 # Erste Schritte
 
-Jede deiner Aufgaben wird mit den folgenden Schritten beginnen, welche hier im Detail beschrieben sind. In Zukunft wird jede Aufgabe mit einem Abschnitt "Erste Schritte" beginnen, aber mit etwas weniger Details. Du kannst jedoch jederzeit auf diese Heimarbeit zurückgreifen, um eine detaillierte Liste der Schritte zu erhalten, die notwendig sind, um mit einer Aufgabe zu beginnen.
+Jede deiner Aufgaben wird mit den folgenden Schritten beginnen, welche hier im Detail beschrieben sind. In Zukunft wird jede Aufgabe mit einem Abschnitt "Erste Schritte" beginnen, aber mit etwas weniger Details. Du kannst jedoch jederzeit auf diese Hausaufgabe zurückgreifen, um eine detaillierte Liste der Schritte zu erhalten, die notwendig sind, um mit einer Aufgabe zu beginnen.
 
 - Klicke auf den Link zu deinem persönlichen GitHub Repository (im Folgenden "Repo" genannt) um die Aufgabe zu erstellen. Dieses Repository enthält eine Vorlage, auf der du aufbauen kannst, um die Aufgabe zu lösen.
 
@@ -148,7 +150,7 @@ knitr::include_graphics("img/push-to-github.001.png")
 
 ## Pakate (Packages)
 
-In diesem Heimarbeit werden wir mit zwei R Packages arbeiten: **datasauRus**, welches den Datensatz enthält, den wir verwenden werden und **tidyverse**. Diese Packages sind bereits für dich installiert. Du kannst sie laden indem du den folgenden Codeblock ausführst.
+In dieser Hausaufgabe werden wir mit zwei R Packages arbeiten: **datasauRus**, welches den Datensatz enthält, den wir verwenden werden und **tidyverse**. Diese Packages sind bereits für dich installiert. Du kannst sie laden indem du den folgenden Codeblock ausführst.
 
 ```{r message=FALSE}
 library(tidyverse) 

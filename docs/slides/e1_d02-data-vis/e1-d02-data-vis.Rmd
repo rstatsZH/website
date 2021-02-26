@@ -150,28 +150,61 @@ class: middle
 
 - Öffne rstudio.cloud und login
 - Öffne deine Email und klicke auf den Link zu deinem persönlichen GitHub repo für **prak-02**
-- Bring das Repo in eure lokale Arbeitsumgebung (**Tipp:** "Erste Schritte" für Heimarbeit)
+- Bring das Repo in deine lokale Arbeitsumgebung (**Tipp:** "Erste Schritte" für Heimarbeit)
 - Sobald ihr soweit seid, hebt eure Hand in Zoom
 
 ]
 
+---
+class: middle, inverse
+
+# .big[Mapping und Faceting]
 
 ---
-## Mapping vs. setting
+.pull-left[
 
-- **Mapping:** Determine the size, alpha, etc. of points based on the values of a variable in the data
-  - goes into `aes()`
+.midi[**Mapping:** Grösse, Alpha, Farbe, etc. der Punkte werden basierend auf den Werten der Variable in den Daten bestimmt.]
 
-- **Setting:** Determine the size, alpha, etc. of points **not** based on the values of a variable in the data
-  - goes into `geom_*()` (this was `geom_point()` in the previous example, but we'll learn about other geoms soon!)
+```{r warning = FALSE, echo=TRUE, out.width = "100%"}
+ggplot(penguins,
+       aes(x = bill_depth_mm,
+           y = bill_length_mm,
+           size = body_mass_g, #<<
+           color = island)) + #<<
+  geom_point()  
+```
+]
+.pull-right[
 
---- 
-## Faceting summary
+.midi[**Setting:** Grösse, Alpha, Farbe, etc. der Punkte werden **nicht** basierend auf den Werten der Variable in den Daten bestimmt]
+
+```{r warning = FALSE, echo=TRUE, out.width = "100%"}
+ggplot(penguins,
+       aes(x = bill_depth_mm,
+           y = bill_length_mm)) + 
+  geom_point(size = 3, color = "blue") #<<
+```
+]
+
+---
+## Faceting - Zusammenfassung
 
 - `facet_grid()`:
-    - 2d grid
-    - `rows ~ cols`
-    - use `.` for no split
-- `facet_wrap()`: 1d ribbon wrapped according to number of rows and columns specified or available plotting area
+  - 2d grid
+  - `rows ~ cols`
+  - nutze `.` um nicht zu splitten 
+- `facet_wrap()`: 1d wird entsprechend der angegebenen Anzahl von Zeilen und Spalten oder der verfügbaren Plotfläche umbrochen
 
+---
+class: inverse, middle
 
+# .big[Live Code]
+
+---
+
+.note[
+
+- Gehe zurück zu prak-02 
+- Folge meinen Anweisungen auf dem Bildschirm
+
+]

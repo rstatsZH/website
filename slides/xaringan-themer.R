@@ -15,10 +15,10 @@ style_mono_accent(
   base_color = "#0F4C81", # Pantone Classic Blue
   header_font_google = google_font("Montserrat"),
   code_font_google = google_font("Fira Mono"), 
-  code_font_size = "1.2rem",
+  code_font_size = "1.0rem",
   text_font_size = "1.4rem", 
   header_h1_font_size = "2.0rem",
-  header_h2_font_size = "1.75rem",
+  header_h2_font_size = "1.75rem", 
   header_h3_font_size = "1.5rem",
   footnote_font_size = "0.8rem",
   footnote_position_bottom = "20px",

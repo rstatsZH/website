@@ -18,9 +18,9 @@
     "author": [],
     "date": "2021-02-12",
     "categories": [],
-    "contents": "\n\nContents\nZiele\nFolien\nHeimarbeit 1\nWeiterführende Aufgaben\n\n\n\n\n\n\n\nFigure 1: Photo by Barn Images\n\n\n\nMache dich mit dem Kurs, den Werkzeugen, dem Arbeitsablauf und den Fähigkeiten, die du im Laufe des Kurses erwerben wirst, vertraut.\nZiele\nAm Ende dieser Woche kannst du:\ndie Werkzeuge welche wir für den Kurs nutzen öffnen\nein git repository aus GitHub in deine Arbeitsumgebung laden\neine geänderte Datei auf ein git repository auf GitHub pushen\nbeschreiben welche Elemente Teil eines R Markdown Dokuments sind\nR code für eine Visuaisierung mit {ggplot2} reproduzieren\nFolien\n\n\n\n\n\n\nfitvids('.shareagain', {players: 'iframe'});\n\nHeimarbeit 1\nDie Heimarbeit für diese Woche kannst du im oben in der Navigationszeile finden.\nWeiterführende Aufgaben\n\n\n\n",
+    "contents": "\n\nContents\nZiele\nFolien\nWeiterführende Aufgaben\n\n\n\n\n\n\n\nFigure 1: Photo by Barn Images\n\n\n\nMache dich mit dem Kurs, den Werkzeugen, dem Arbeitsablauf und den Fähigkeiten, die du im Laufe des Kurses erwerben wirst, vertraut.\nZiele\nAm Ende dieser Woche kannst du:\ndie Werkzeuge welche wir für den Kurs nutzen öffnen\nein git repository aus GitHub in deine Arbeitsumgebung laden\neine geänderte Datei auf ein git repository auf GitHub pushen\nbeschreiben welche Elemente Teil eines R Markdown Dokuments sind\nR code für eine Visuaisierung mit {ggplot2} reproduzieren\nFolien\n\n\n\n\n\n\nfitvids('.shareagain', {players: 'iframe'});\n\nWeiterführende Aufgaben\n\n\n1\n\n\nBuch\n\n\nR4DS - Chapter 2 - Introduction\n\n\npflicht\n\n\n2\n\n\nHausaufgabe\n\n\nHausaufgabe 01- Hallo Git\n\n\npflicht\n\n\n3\n\n\nBlog Post\n\n\nIntroducing RStudio and R Markdown\n\n\nfreiwillig\n\n\n\n\n\n",
     "preview": "posts/2021-02-17-woche01/img/toolbox.jpg",
-    "last_modified": "2021-02-26T10:47:43+01:00",
+    "last_modified": "2021-02-26T16:22:15+01:00",
     "input_file": {}
   }
 ]

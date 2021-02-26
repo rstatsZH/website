@@ -14,6 +14,7 @@ preview: img/toolbox.jpg
 
 ```{r setup, echo=FALSE}
 library(magrittr)
+library(tidyverse)
 ```
 
 ```{r, layout="l-body", preview=TRUE, echo=FALSE, include=TRUE, fig.cap="Photo by [Barn Images](https://unsplash.com/@barnimages)"}
@@ -48,13 +49,18 @@ xaringanExtra::embed_xaringan("../../slides/e1_d01-willkommen/e1_d01-willkommen.
 
 ```
 
-
-# Heimarbeit 1
-
-Die Heimarbeit für diese Woche kannst du im oben in der Navigationszeile finden. 
-
 # Weiterführende Aufgaben
 
+```{r, echo=FALSE, message=FALSE, warning=FALSE}
+
+googlesheets4::read_sheet("198t05eFYHxuxY0d2jCvPkES1ZaMcsSYgBKcg0xQTwb0") %>% 
+  mutate(titel2 = paste0("[", titel, "](", link, ")")) %>% 
+  filter(woche == "woche1") %>% 
+  select(id, type, titel2, aufgabe) %>% 
+  arrange(desc(aufgabe)) %>% 
+  knitr::kable(format = "html", col.names = NULL)
+
+```
 
 
 

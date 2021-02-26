@@ -19,7 +19,7 @@ navbar:
     - text: "Code of Conduct"
       href: code_of_conduct.html
     - icon: fab fa-github
-      href: https://rstatszh.github.io/website/
+      href: https://github.com/rstatsZH/website
 output: 
   distill::distill_article:
     toc: true

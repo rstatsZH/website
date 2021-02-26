@@ -193,7 +193,7 @@ class: inverse, middle
 
 # .big[Werkzeugkiste `r emo::ji("toolbox")`]
 
----  
+---
 # Wekzeugkiste
 
 .pull-left[
@@ -203,7 +203,7 @@ class: inverse, middle
 - Zoom
 - Slack
 - (Google Docs)
-- https://statistikzh.github.io/rstatsZH/
+- https://rstatszh.github.io/website/
 ]
 
 .pull-right[
@@ -304,9 +304,11 @@ eher experimentell.
 # KeyCastr
 
 .pull-left[
+
 - MacOS 
 - Schweizer Keyboard Layout
-- 
+- cmd ⌘ (Mac) = Ctrl (Windows)
+-  ⌥ (Mac) = Alt (Windows)
 ]
 
 .pull-right[
@@ -970,25 +972,19 @@ class: middle
 
 ---
 class: left
-background-image: url(img/goals.jpg)
+background-image: url(img/tor.jpg)
 background-position: right
 background-size: contain
 
-# Ziele für heute 
+# Ziele erreicht? 
+
+Bitte ausfüllen: [kutt.it/rstatszh-eval](https://kutt.it/rstatszh-eval)
 
 .pull-left[
 
-Am Ende des Tages:
-
-- haben wir uns kennengelernt
-- habt ihr die Werkzeugkiste kennengelernt
-- könnt ihr beschreiben was die Ziele des Kurses sind
-- könnt ihr einen ersten Plot erstellen
-
-.footnote[Photo by: [Muzammil Soorma](https://unsplash.com/photos/6M_Wiwi1LQQ)]
+.footnote[Photo by: [Virgil Cayasa](https://unsplash.com/@virgilcayasa)]
 
 ]
-
 
 ---
 # `r emo::ji("sunflower")` Danke 

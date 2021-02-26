@@ -5,16 +5,21 @@ description: |
 output_dir: "docs"
 include: ["slides/"]
 creative_commons: CC BY-SA
-repository_url: https://github.com/statistikZH/rstatsZH/
+base_url: https://rstatszh.github.io/website/
+repository_url: https://github.com/rstatsZH/website
 navbar:
   search: false
   right:
     - text: "Home"
       href: index.html
-    - text: "Heimarbeit"
+    - text: "Hausaufgaben"
       menu:
-        - text: "Heimarbeit 1"
+        - text: "Hausaufgabe 01"
           href: ha-01-hallo-git.html 
+    - text: "Code of Conduct"
+      href: code_of_conduct.html
+    - icon: fab fa-github
+      href: https://rstatszh.github.io/website/
 output: 
   distill::distill_article:
     toc: true

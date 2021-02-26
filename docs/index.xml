@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:media="http://search.yahoo.com/mrss/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:dc="http://purl.org/dc/elements/1.1/" version="2.0">
+  <channel>
+    <title>rstatsZH - Data Science mit R</title>
+    <link>https://rstatszh.github.io/website/</link>
+    <atom:link href="https://rstatszh.github.io/website/index.xml" rel="self" type="application/rss+xml"/>
+    <description>Ein R Kurs für Mitarbeiter_innen der Verwaltung des Kantons Zürich
+</description>
+    <generator>Distill</generator>
+    <lastBuildDate>Sun, 14 Feb 2021 00:00:00 +0000</lastBuildDate>
+    <item>
+      <title>Überblick</title>
+      <link>https://rstatszh.github.io/website/posts/2021-02-17-ueberblick</link>
+      <description>Schau herein um Informationen zum Kursinhalt, den Lehrpersonen und freien Terminen zu bekommen.</description>
+      <guid>https://rstatszh.github.io/website/posts/2021-02-17-ueberblick</guid>
+      <pubDate>Sun, 14 Feb 2021 00:00:00 +0000</pubDate>
+      <media:content url="https://rstatszh.github.io/website/posts/2021-02-17-ueberblick/img/roadmap.jpg" medium="image" type="image/jpeg"/>
+    </item>
+    <item>
+      <title>Woche 1 - Willkommen zu rstatsZH</title>
+      <link>https://rstatszh.github.io/website/posts/2021-02-17-woche01</link>
+      <description>Ziele und Materialien für unsere erste gemeinsame Woche</description>
+      <guid>https://rstatszh.github.io/website/posts/2021-02-17-woche01</guid>
+      <pubDate>Fri, 12 Feb 2021 00:00:00 +0000</pubDate>
+      <media:content url="https://rstatszh.github.io/website/posts/2021-02-17-woche01/img/toolbox.jpg" medium="image" type="image/jpeg"/>
+    </item>
+  </channel>
+</rss>

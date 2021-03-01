@@ -56,7 +56,7 @@ xaringanExtra::embed_xaringan("../../slides/e1_d01-willkommen/e1_d01-willkommen.
 googlesheets4::read_sheet("198t05eFYHxuxY0d2jCvPkES1ZaMcsSYgBKcg0xQTwb0") %>% 
   mutate(titel2 = paste0("[", titel, "](", link, ")")) %>% 
   filter(woche == "woche1") %>% 
-  select(id, type, titel2, aufgabe) %>% 
+  select(id, type, titel2, aufgabe, zeitaufwand) %>% 
   arrange(desc(aufgabe)) %>% 
   knitr::kable(format = "html", col.names = NULL)
 

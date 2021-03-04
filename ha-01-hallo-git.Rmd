@@ -117,11 +117,11 @@ Bevor wir uns die Daten anschauen, machen wir noch ein paar Aufwärmübungen um 
 - Ändere den Autorennamen zu deinem Namen, füge ein Datum hinzu und stricke ('knit') das Dokument.
 
 ```{r, fig.fullwidth=TRUE, echo = FALSE}
-knitr::include_graphics("img/screenshot-imgs.002.jpeg")
+knitr::include_graphics("img/screenshot-imgs.002.png")
 ```
 
 ```{r, fig.fullwidth=TRUE, echo = FALSE}
-knitr::include_graphics("img/screenshot-imgs.003.jpeg")
+knitr::include_graphics("img/screenshot-imgs.003.png")
 ```
 
 Der obere Teil deiner R Markdown Datei (zwischen den drei gestrichelten Linien) wird YAML genannt. Es steht für "YAML Ain't Markup Language". Es ist ein menschenfreundlicher Standard zur Serialisierung von Daten für alle Programmiersprachen. Alles, was du wissen musst, ist, dass dieser Bereich YAML genannt wird (wir werden ihn als solchen bezeichnen) und dass er Metainformationen über dein Dokument enthält.

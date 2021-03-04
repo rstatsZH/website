@@ -1850,7 +1850,15 @@ Hausaufgaben
 <li><a href="#pakate-packages">Pakate (Packages)</a></li>
 <li><a href="#daten">Daten</a></li>
 </ul></li>
-<li><a href="#übungen">Übungen</a></li>
+<li><a href="#übungen">Übungen</a>
+<ul>
+<li><a href="#übung-1">Übung 1</a></li>
+<li><a href="#übung-2">Übung 2</a></li>
+<li><a href="#übung-3">Übung 3</a></li>
+<li><a href="#übung-4">Übung 4</a></li>
+<li><a href="#übung-5-bonus">Übung 5 (Bonus)</a></li>
+<li><a href="#übung-6-bonus">Übung 6 (Bonus)</a></li>
+</ul></li>
 </ul>
 </nav>
 </div>
@@ -1978,7 +1986,7 @@ Hausaufgaben
 <p><img src="img/push-to-github.001.png" width="960" /></p>
 </div>
 <h2 id="pakate-packages">Pakate (Packages)</h2>
-<p>In dieser Hausaufgabe werden wir mit zwei R Packages arbeiten: <strong>datasauRus</strong>, welches den Datensatz enthält, den wir verwenden werden und <strong>tidyverse</strong>. Diese Packages sind bereits für dich installiert. Du kannst sie laden indem du den folgenden Codeblock ausführst.</p>
+<p>In dieser Hausaufgabe werden wir mit zwei R Packages arbeiten: <strong>datasauRus</strong>, welches den Datensatz enthält, den wir verwenden werden und <strong>tidyverse</strong>. Diese Packages sind bereits für dich installiert. Du kannst sie laden indem du den folgenden Code-chunk in deiner R Markdown Datei ausführst.</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='http://tidyverse.tidyverse.org'>tidyverse</a></span><span class='op'>)</span> 
@@ -1989,12 +1997,16 @@ Hausaufgaben
 <p>Beachte, dass die Packages auch mit den gleichen Befehlen in deinem R Markdown Dokument geladen werden.</p>
 <h2 id="daten">Daten</h2>
 <p>Der Dataframe, mit dem wir heute arbeiten werden, heißt <code>datasaurus_dozen</code> und befindet sich im R Package <code>datasauRus</code>. Eigentlich enthält dieser einzelne Dataframe 13 Datensätze, die uns zeigen sollen, warum Datenvisualisierung wichtig ist und wie zusammenfassende Statistiken allein irreführend sein können. Die verschiedenen Datensätze sind durch die Variable <code>dataset</code> gekennzeichnet.</p>
-<p>Um mehr über das Dataset herauszufinden, gib folgendes in deine Konsole ein: <code>?datasaurus_dozen</code>. Ein Fragezeichen vor dem Namen eines Objekts ruft immer dessen Hilfedatei auf. Dieser Befehl muss in der Konsole ausgeführt werden.</p>
+<p>Um mehr über das Dataset herauszufinden, gib folgendes in deine Console ein: <code>?datasaurus_dozen</code>. Ein Fragezeichen vor dem Namen eines Objekts ruft immer dessen Hilfedatei auf. Ich habe für dich auch einen Code-chunk hinzugefügt welcher den Code enthält um die Hilfe-Datei für <code>datasaurus_dozen</code> zu öffnen.</p>
 <h1 id="übungen">Übungen</h1>
-<ol type="1">
-<li>Basierend auf der Hilfedatei, wie viele Zeilen und wie viele Spalten hat die Datei <code>datasaurus_dozen</code>? Was sind die Variablen, die im Dataframe enthalten sind? Füge deine Antworten zu deinem Bericht hinzu.</li>
-</ol>
-<p>Schauen wir uns an, was diese Datensätze sind. Dazu können wir eine <em>Häufigkeitstabelle</em> (frequency table) der Datensatzvariablen erstellen:</p>
+<h2 id="übung-1">Übung 1</h2>
+<ul>
+<li>Öffne die Hilfedatei für <code>datasaurus_dozen</code></li>
+<li>Wie viele Zeilen und wie viele Spalten hat der Datensatz <code>datasaurus_dozen</code>?</li>
+<li>Was sind die Variablen, die im Dataframe enthalten sind?</li>
+<li>Füge deine Antworten zu deinem R Markdown Bericht hinzu.</li>
+</ul>
+<p>Schauen wir uns an, was diese Datensätze sind. Dazu können wir eine <em>Häufigkeitstabelle</em> (frequency table) der dataset Variable erstellen:</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='va'>datasaurus_dozen</span> <span class='op'>%&gt;%</span> 
@@ -2022,10 +2034,15 @@ Hausaufgaben
 </div>
 <p>Der ursprüngliche Datasaurus (<code>dino</code>) wurde von Alberto Cairo in <a href="http://www.thefunctionalart.com/2016/08/download-datasaurus-never-trust-summary.html">diesem großartigen Blogpost</a> erstellt. Das andere Dutzend wurde mit Hilfe von Simulated Annealing generiert und der Prozess wird in dem Paper <em>Same Stats, Different Graphs: Generating Datasets with Varied Appearance and Identical Statistics through Simulated Annealing</em><a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> von Justin Matejka und George Fitzmaurice beschrieben. In dem Paper simulieren die Autoren eine Vielzahl von Datensätzen, die die gleichen zusammenfassenden Statistiken wie der Datasaurus haben, aber sehr unterschiedliche Verteilungen aufweisen.</p>
 <p>🧶 ✅ ⬆️ <em>Knit, commit und push deine Änderungen auf GitHub mit der Commit-Nachricht “Füge Antwort für Übung 1 hinzu.” Achte darauf, alle geänderten Dateien zu committen und zu pushen, damit dein Git-Fenster danach aufgeräumt ist.</em></p>
-<ol start="2" type="1">
-<li>Plot <code>y</code> gegen <code>x</code> für den <code>dino</code> Datensatz. Berechne dann den Korrelationskoeffizienten zwischen “x” und “y” für diesen Datensatz.</li>
+<h2 id="übung-2">Übung 2</h2>
+<p>Unten findest du den Code, den du brauchst, um diese nächste Übunge zu lösen. Die Antworten für 1 und 2 sind schon gegeben und auch in deiner R Markdown Datei enthalten.</p>
+<ol type="1">
+<li>Plot <code>y</code> gegen <code>x</code> für den <code>dino</code> Datensatz (Code ist in R Markdown Datei)</li>
+<li>Berechne dann den Korrelationskoeffizienten zwischen “x” und “y” für diesen Datensatz. (Code ist in R Markdown Datei)</li>
+<li>Klicke auf <code>knit</code> um das Dokument zu stricken</li>
 </ol>
-<p>Unten findest du den Code, den du brauchst, um diese Aufgabe zu lösen. Die Antwort ist schon gegeben, aber du musst die relevanten Bits in dein Rmd-Dokument einfügen und es erfolgreich stricken (knit) und die Ergebnisse ansehen.</p>
+<p><strong>Code vorlesen</strong></p>
+<p>Hier siehst du neuen Code, welchen wir noch nicht im Kurs behandelt haben. Dieser kann folgendermassen gelesen werden:</p>
 <p>Beginne mit dem <code>datasaurus_dozen</code> und leite es in die Funktion <code>filter</code>, um nach Beobachtungen zu filtern, bei denen <code>dataset == "dino"</code> ist. Speichere den resultierenden gefilterten Dataframe als einen Dataframe namens <code>dino_data</code>.</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
@@ -2037,7 +2054,7 @@ Hausaufgaben
 <p>Hier geht eine ganze Menge vor sich, also lassen wir es langsam angehen und nehmen es Schritt für Schritt auseinander.</p>
 <p>Erstens, der Pipe-Operator: <code>%&gt;%</code>, nimmt das, was davor kommt und sendet es als erstes Argument an das, was danach kommt. Hier sagen wir also, dass wir den <code>datasaurus_dozen</code> Dataframe nach Beobachtungen filtern, bei denen <code>dataset == "dino"</code> ist.</p>
 <p>Zweitens, der Zuweisungsoperator: <code>&lt;-</code>, weist dem gefilterten Dataframe den Namen <code>dino_data</code> zu.</p>
-<p>Als nächstes wollen wir diese Daten visualisieren. Dafür verwenden wir die Funktion <code>ggplot()</code>. Das erste Argument sind die Daten, die wir visualisieren wollen. Als nächstes definieren wir die <code>aes</code>thetischen Mappings. In anderen Worten, die Spalten der Daten, die auf bestimmte ästhetische Merkmale des Plots abgebildet werden, z.B. wird die <code>x</code>-Achse die Variable namens <code>x</code> und die <code>y</code>-Achse die Variable namens <code>y</code> repräsentieren.</p>
+<p>Als nächstes wollen wir diese Daten visualisieren. Dafür verwenden wir die Funktion <code>ggplot()</code>. Das erste Argument sind die Daten, die wir visualisieren wollen. Als nächstes definieren wir die <code>aes</code>thetischen Mappings (visuelle Eigenschaften). In anderen Worten, die Spalten der Daten, die auf bestimmte visuelle Eigenschaften des Plots abgebildet werden, z.B. wird die <code>x</code>-Achse die Variable namens <code>x</code> und die <code>y</code>-Achse die Variable namens <code>y</code> repräsentieren.</p>
 <p>Dann fügen wir eine weitere Ebene zu diesem Diagramm hinzu, in der wir definieren, welche geometrischen Formen wir verwenden wollen, um jede Beobachtung in den Daten darzustellen. In diesem Fall wollen wir, dass es sich um Punkte handelt, daher <code>geom_point()</code>.</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
@@ -2067,18 +2084,22 @@ Hausaufgaben
 1 -0.0645</code></pre>
 </div>
 <p>🧶 ✅ ⬆️ <em>Knit, commit, und pushe deine Änderungen auf GitHub mit der Commit-Nachricht “Füge Antwort für Übung 2 hinzu.” Achte darauf, alle geänderten Dateien zu committen und zu pushen, damit dein Git-Fenster danach aufgeräumt ist.</em></p>
-<ol start="3" type="1">
-<li>Plotte <code>y</code> gegen <code>x</code> für den <code>star</code> Datensatz. Du kannst (und solltest) den Code, den wir oben genutzt, wiederverwenden, ersetze einfach den Namen des Datensatzes durch den gewünschten Datensatz. Berechne dann den Korrelationskoeffizienten zwischen “x” und “y” für diesen Datensatz. Wie ist dieser Wert im Vergleich zu <code>r</code> von <code>dino</code>?</li>
+<h2 id="übung-3">Übung 3</h2>
+<ol type="1">
+<li>Plotte <code>y</code> gegen <code>x</code> für den <code>star</code> Datensatz.</li>
 </ol>
+<p>Du kannst (und solltest) den Code, den wir oben genutzt, wiederverwenden, ersetze den Namen des Datensatzes durch den gewünschten Datensatz. Berechne dann den Korrelationskoeffizienten zwischen “x” und “y” für diesen Datensatz. Wie ist dieser Wert im Vergleich zu <code>r</code> von <code>dino</code>?</p>
 <p>🧶 ✅ ⬆️ <em>Dies ist ein weiterer guter Ort, um zu pausieren, zu stricken (knit), Änderungen mit der Commit-Nachricht “Füge Antwort für Übung 3 hinzu.” zu committen und zu pushen. Achte darauf, alle geänderten Dateien zu committen und zu pushen, damit dein Git-Fenster danach aufgeräumt ist.</em></p>
-<ol start="4" type="1">
-<li>Plotte <code>y</code> gegen <code>x</code> für den <code>circle</code> Datensatz. Du kannst (und solltest) den Code, den wir oben genutzt, wiederverwenden, ersetze einfach den Namen des Datensatzes durch den gewünschten Datensatz. Berechne dann den Korrelationskoeffizienten zwischen “x” und “y” für diesen Datensatz. Wie ist dieser Wert im Vergleich zu <code>r</code> von <code>dino</code>?</li>
+<h2 id="übung-4">Übung 4</h2>
+<ol type="1">
+<li>Plotte <code>y</code> gegen <code>x</code> für den <code>circle</code> Datensatz.</li>
 </ol>
+<p>Du kannst (und solltest) den Code, den wir oben genutzt, wiederverwenden, ersetze den Namen des Datensatzes durch den gewünschten Datensatz. Berechne dann den Korrelationskoeffizienten zwischen “x” und “y” für diesen Datensatz. Wie ist dieser Wert im Vergleich zu <code>r</code> von <code>dino</code>?</p>
 <p>🧶 ✅ ⬆️ <em>Du kannst erneut pausieren, die Änderungen mit der Commit-Nachricht “Füge Antwort für Übung 4 hinzu.” committen und pushen. Achte darauf, alle geänderten Dateien zu committen und zu pushen, damit dein Git-Fenster danach aufgeräumt ist.</em></p>
-<ol start="5" type="1">
-<li>Zum Schluss wollen wir alle Datensätze auf einmal darstellen. Um dies zu tun, werden wir Method für eine Facettierung nutzen.</li>
-</ol>
-<p>Mit einer Facette (facet) durich die Variable <code>dataset</code>, platzieren wir die Plots in einem Raster aus drei Spalten, entfernen die Legende und geben der Variable <code>dataset</code> eine visuelle Eigenschaft (aesthetic).</p>
+<p>Super! Ich hoffe, dass du es schaffst in der Hausaufgabe bis hierhin zu kommen. Die nächsten beiden Übungen sind Bonus Übungen falls du Lust hast noch etwas weiter zu arbeiten.</p>
+<h2 id="übung-5-bonus">Übung 5 (Bonus)</h2>
+<p>Zum Schluss wollen wir alle Datensätze auf einmal darstellen. Um dies zu tun, werden wir Method für eine Facettierung nutzen.</p>
+<p>Mit einer Facette (facet) durich die Variable <code>dataset</code>, platzieren wir die Plots in einem Raster aus drei Spalten, entfernen die Legende und geben der Variable <code>dataset</code> eine visuelle Eigenschaft (aesthetic) indem wir es dem Argument ‘color’ zuordnen.</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='fu'>ggplot</span><span class='op'>(</span><span class='va'>datasaurus_dozen</span>, <span class='fu'>aes</span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>x</span>, y <span class='op'>=</span> <span class='va'>y</span>, color <span class='op'>=</span> <span class='va'>dataset</span><span class='op'>)</span><span class='op'>)</span><span class='op'>+</span>
@@ -2097,6 +2118,7 @@ Hausaufgaben
 </code></pre>
 </div>
 </div>
+<h2 id="übung-6-bonus">Übung 6 (Bonus)</h2>
 <p>Gratulation! Du hast die Übungen abgeschlossen. Zwei Dinge noch:</p>
 <div class="layout-chunk" data-layout="l-body">
 

@@ -158,7 +158,7 @@ knitr::include_graphics("img/push-to-github.001.png")
 
 ## Pakate (Packages)
 
-In dieser Hausaufgabe werden wir mit zwei R Packages arbeiten: **datasauRus**, welches den Datensatz enthält, den wir verwenden werden und **tidyverse**. Diese Packages sind bereits für dich installiert. Du kannst sie laden indem du den folgenden Codeblock ausführst.
+In dieser Hausaufgabe werden wir mit zwei R Packages arbeiten: **datasauRus**, welches den Datensatz enthält, den wir verwenden werden und **tidyverse**. Diese Packages sind bereits für dich installiert. Du kannst sie laden indem du den folgenden Code-chunk in deiner R Markdown Datei ausführst.
 
 ```{r message=FALSE}
 library(tidyverse) 
@@ -171,13 +171,18 @@ Beachte, dass die Packages auch mit den gleichen Befehlen in deinem R Markdown D
 
 Der Dataframe, mit dem wir heute arbeiten werden, heißt `datasaurus_dozen` und befindet sich im R Package `datasauRus`. Eigentlich enthält dieser einzelne Dataframe 13 Datensätze, die uns zeigen sollen, warum Datenvisualisierung wichtig ist und wie zusammenfassende Statistiken allein irreführend sein können. Die verschiedenen Datensätze sind durch die Variable `dataset` gekennzeichnet.
 
-Um mehr über das Dataset herauszufinden, gib folgendes in deine Konsole ein: `?datasaurus_dozen`. Ein Fragezeichen vor dem Namen eines Objekts ruft immer dessen Hilfedatei auf. Dieser Befehl muss in der Konsole ausgeführt werden.
+Um mehr über das Dataset herauszufinden, gib folgendes in deine Console ein: `?datasaurus_dozen`. Ein Fragezeichen vor dem Namen eines Objekts ruft immer dessen Hilfedatei auf. Ich habe für dich auch einen Code-chunk hinzugefügt welcher den Code enthält um die Hilfe-Datei für `datasaurus_dozen` zu öffnen.
 
 # Übungen
 
-1.  Basierend auf der Hilfedatei, wie viele Zeilen und wie viele Spalten hat die Datei `datasaurus_dozen`? Was sind die Variablen, die im Dataframe enthalten sind? Füge deine Antworten zu deinem Bericht hinzu.
+## Übung 1
 
-Schauen wir uns an, was diese Datensätze sind. Dazu können wir eine *Häufigkeitstabelle* (frequency table) der Datensatzvariablen erstellen:
+- Öffne die Hilfedatei für `datasaurus_dozen`
+- Wie viele Zeilen und wie viele Spalten hat der Datensatz `datasaurus_dozen`? 
+- Was sind die Variablen, die im Dataframe enthalten sind? 
+- Füge deine Antworten zu deinem R Markdown Bericht hinzu.
+
+Schauen wir uns an, was diese Datensätze sind. Dazu können wir eine *Häufigkeitstabelle* (frequency table) der dataset Variable erstellen:
 
 ```{r}
 
@@ -191,9 +196,17 @@ Der ursprüngliche Datasaurus (`dino`) wurde von Alberto Cairo in [diesem großa
 
 🧶 ✅ ⬆️ *Knit, commit und push deine Änderungen auf GitHub mit der Commit-Nachricht "Füge Antwort für Übung 1 hinzu." Achte darauf, alle geänderten Dateien zu committen und zu pushen, damit dein Git-Fenster danach aufgeräumt ist.*
 
-2.  Plot `y` gegen `x` für den `dino` Datensatz. Berechne dann den Korrelationskoeffizienten zwischen "x" und "y" für diesen Datensatz.
+## Übung 2
 
-Unten findest du den Code, den du brauchst, um diese Aufgabe zu lösen. Die Antwort ist schon gegeben, aber du musst die relevanten Bits in dein Rmd-Dokument einfügen und es erfolgreich stricken (knit) und die Ergebnisse ansehen.
+Unten findest du den Code, den du brauchst, um diese nächste Übunge zu lösen. Die Antworten für 1 und 2 sind schon gegeben und auch in deiner R Markdown Datei enthalten.
+
+1. Plot `y` gegen `x` für den `dino` Datensatz (Code ist in R Markdown Datei)
+2. Berechne dann den Korrelationskoeffizienten zwischen "x" und "y" für diesen Datensatz. (Code ist in R Markdown Datei)
+3. Klicke auf `knit` um das Dokument zu stricken
+
+**Code vorlesen**
+
+Hier siehst du neuen Code, welchen wir noch nicht im Kurs behandelt haben. Dieser kann folgendermassen gelesen werden:
 
 Beginne mit dem `datasaurus_dozen` und leite es in die Funktion `filter`, um nach Beobachtungen zu filtern, bei denen `dataset == "dino"` ist. Speichere den resultierenden gefilterten Dataframe als einen Dataframe namens `dino_data`.
 
@@ -210,7 +223,7 @@ Erstens, der Pipe-Operator: `%>%`, nimmt das, was davor kommt und sendet es als 
 
 Zweitens, der Zuweisungsoperator: `<-`, weist dem gefilterten Dataframe den Namen `dino_data` zu.
 
-Als nächstes wollen wir diese Daten visualisieren. Dafür verwenden wir die Funktion `ggplot()`. Das erste Argument sind die Daten, die wir visualisieren wollen. Als nächstes definieren wir die `aes`thetischen Mappings. In anderen Worten, die Spalten der Daten, die auf bestimmte ästhetische Merkmale des Plots abgebildet werden, z.B. wird die `x`-Achse die Variable namens `x` und die `y`-Achse die Variable namens `y` repräsentieren.
+Als nächstes wollen wir diese Daten visualisieren. Dafür verwenden wir die Funktion `ggplot()`. Das erste Argument sind die Daten, die wir visualisieren wollen. Als nächstes definieren wir die `aes`thetischen Mappings (visuelle Eigenschaften). In anderen Worten, die Spalten der Daten, die auf bestimmte visuelle Eigenschaften  des Plots abgebildet werden, z.B. wird die `x`-Achse die Variable namens `x` und die `y`-Achse die Variable namens `y` repräsentieren.
 
 Dann fügen wir eine weitere Ebene zu diesem Diagramm hinzu, in der wir definieren, welche geometrischen Formen wir verwenden wollen, um jede Beobachtung in den Daten darzustellen. In diesem Fall wollen wir, dass es sich um Punkte handelt, daher `geom_point()`.
 
@@ -238,17 +251,29 @@ dino_data %>%
 
 🧶 ✅ ⬆️ *Knit, commit, und pushe deine Änderungen auf GitHub mit der Commit-Nachricht "Füge Antwort für Übung 2 hinzu." Achte darauf, alle geänderten Dateien zu committen und zu pushen, damit dein Git-Fenster danach aufgeräumt ist.*
 
-3.  Plotte `y` gegen `x` für den `star` Datensatz. Du kannst (und solltest) den Code, den wir oben genutzt, wiederverwenden, ersetze einfach den Namen des Datensatzes durch den gewünschten Datensatz. Berechne dann den Korrelationskoeffizienten zwischen "x" und "y" für diesen Datensatz. Wie ist dieser Wert im Vergleich zu `r` von `dino`?
+## Übung 3
+
+1. Plotte `y` gegen `x` für den `star` Datensatz. 
+
+Du kannst (und solltest) den Code, den wir oben genutzt, wiederverwenden, ersetze den Namen des Datensatzes durch den gewünschten Datensatz. Berechne dann den Korrelationskoeffizienten zwischen "x" und "y" für diesen Datensatz. Wie ist dieser Wert im Vergleich zu `r` von `dino`?
 
 🧶 ✅ ⬆️ *Dies ist ein weiterer guter Ort, um zu pausieren, zu stricken (knit), Änderungen mit der Commit-Nachricht "Füge Antwort für Übung 3 hinzu." zu committen und zu pushen. Achte darauf, alle geänderten Dateien zu committen und zu pushen, damit dein Git-Fenster danach aufgeräumt ist.*
 
-4.  Plotte `y` gegen `x` für den `circle` Datensatz. Du kannst (und solltest) den Code, den wir oben genutzt, wiederverwenden, ersetze einfach den Namen des Datensatzes durch den gewünschten Datensatz. Berechne dann den Korrelationskoeffizienten zwischen "x" und "y" für diesen Datensatz. Wie ist dieser Wert im Vergleich zu `r` von `dino`?
+## Übung 4
+
+1. Plotte `y` gegen `x` für den `circle` Datensatz. 
+
+Du kannst (und solltest) den Code, den wir oben genutzt, wiederverwenden, ersetze den Namen des Datensatzes durch den gewünschten Datensatz. Berechne dann den Korrelationskoeffizienten zwischen "x" und "y" für diesen Datensatz. Wie ist dieser Wert im Vergleich zu `r` von `dino`?
 
 🧶 ✅ ⬆️ *Du kannst erneut pausieren, die Änderungen mit der Commit-Nachricht "Füge Antwort für Übung 4 hinzu." committen und pushen. Achte darauf, alle geänderten Dateien zu committen und zu pushen, damit dein Git-Fenster danach aufgeräumt ist.*
 
-5.  Zum Schluss wollen wir alle Datensätze auf einmal darstellen. Um dies zu tun, werden wir Method für eine Facettierung nutzen.
+Super! Ich hoffe, dass du es schaffst in der Hausaufgabe bis hierhin zu kommen. Die nächsten beiden Übungen sind Bonus Übungen falls du Lust hast noch etwas weiter zu arbeiten.
 
-Mit einer Facette (facet) durich die Variable `dataset`, platzieren wir die Plots in einem Raster aus drei Spalten, entfernen die Legende und geben der Variable `dataset` eine visuelle Eigenschaft (aesthetic).
+## Übung 5 (Bonus)
+
+Zum Schluss wollen wir alle Datensätze auf einmal darstellen. Um dies zu tun, werden wir Method für eine Facettierung nutzen.
+
+Mit einer Facette (facet) durich die Variable `dataset`, platzieren wir die Plots in einem Raster aus drei Spalten, entfernen die Legende und geben der Variable `dataset` eine visuelle Eigenschaft (aesthetic) indem wir es dem Argument 'color' zuordnen.
 
 
 ```{r all-viz, eval=FALSE, fig.fullwidth=TRUE}
@@ -267,6 +292,8 @@ datasaurus_dozen %>%
   group_by(dataset) %>%
   summarize(r = cor(x, y)) 
 ```
+
+## Übung 6 (Bonus)
 
 Gratulation! Du hast die Übungen abgeschlossen. Zwei Dinge noch:
 

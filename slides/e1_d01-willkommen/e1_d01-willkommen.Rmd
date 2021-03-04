@@ -413,9 +413,9 @@ class: left
 background-position: right
 background-size: contain
 
-# rstatsZH - moderner NutzeR 
+# rstatsZH - moderne Nutzer_innen 
 
-Ein **moderner NutzeR** zu werden bedeutet, Fähigkeiten, Gewohnheiten und Denkweisen für eine reproduzierbare und kollaborative Arbeitsweise zu entwickeln.
+Moderne Nutzer_innen zu sein bedeutet, Fähigkeiten, Gewohnheiten und Denkweisen für eine reproduzierbare und kollaborative Arbeitsweise zu entwickeln.
 
 Wir lernen:
 
@@ -425,7 +425,7 @@ Wir lernen:
 
 ???
 
-Als Zusammenfassung könnt seid ihr am Ende dieses Kurses ein moderner R Nutzer.
+Als Zusammenfassung könnt seid ihr am Ende dieses Kurses moderne Nutzer_innen
 
 Modern, da es in diesem Kurs nicht darum geht den Umgang mit R zu lernen. 
 

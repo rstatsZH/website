@@ -1896,7 +1896,7 @@ Hausaufgaben
 <p><img src="img/github-auth.004.png" width="960" /></p>
 </div>
 <ul>
-<li><strong>Wichtig</strong>: Im Feld <em>Organisation access</em>, klickst du nun zunächst auf “Request” neben deinem Kursnamen und folgend auf “Request approval from owners”.</li>
+<li><strong>Wichtig</strong>: Falls Feld <em>Organisation access</em> noch kein grünes Häkchen neben deinem Kursnamen auftaucht, klickst du nun zunächst auf “Request” neben deinem Kursnamen und folgend auf “Request approval from owners”.</li>
 <li><em>Hinweis:</em> Sollte hier kein Kurs auftauchen, könnte dies bedeueten, dass du die GitHub-Einladung zum Kurs noch nicht angenommen hast und du solltest zurückgehen und dies überprüfen und nacholen. Falls du keine Einladung hast, kontaktiere mich.</li>
 <li>Nun noch auf das grüne Feld “Authorize rstudio” und nach Eingabe deines Passworts bist du bereit.</li>
 </ul>
@@ -1918,8 +1918,10 @@ Hausaufgaben
 <h1 id="erste-schritte">Erste Schritte</h1>
 <p>Jede deiner Aufgaben wird mit den folgenden Schritten beginnen, welche hier im Detail beschrieben sind. In Zukunft wird jede Aufgabe mit einem Abschnitt “Erste Schritte” beginnen, aber mit etwas weniger Details. Du kannst jedoch jederzeit auf diese Hausaufgabe zurückgreifen, um eine detaillierte Liste der Schritte zu erhalten, die notwendig sind, um mit einer Aufgabe zu beginnen.</p>
 <ul>
-<li><p>Klicke auf den Link zu deinem persönlichen GitHub Repository (im Folgenden “Repo” genannt) um die Aufgabe zu erstellen. Dieses Repository enthält eine Vorlage, auf der du aufbauen kannst, um die Aufgabe zu lösen.</p></li>
-<li><p>Auf GitHub klickst du auf den grünen <strong>Code</strong> Button und wählst <strong>HTTPS</strong> wie im Bild unten. Klicke auf das Klemmbrett-Symbol, um die Repo-URL zu kopieren.</p></li>
+<li>Klicke auf den Link welchen ich in einer E-Mail mit dem Betreff (Lars hat das Repo XYZ-Dein-GitHub-Name auf GitHub erstellt) mit dir geteilt habe</li>
+<li>Dies führt dich zu deinem persönlichen GitHub Repository (im Folgenden “Repo” genannt)</li>
+<li>Dieses Repository enthält eine R Markdown (ha-01.Rmd) Vorlage, auf der du aufbauen kannst, um die Aufgabe zu lösen.</li>
+<li>Auf GitHub klickst du auf den grünen <strong>Code</strong> Button und wählst <strong>HTTPS</strong> wie im Bild unten. Klicke auf das Klemmbrett-Symbol, um die Repo-URL zu kopieren.</li>
 </ul>
 <div class="layout-chunk" data-layout="l-body">
 <p><img src="img/clone-repo-link.png" width="200" /></p>
@@ -1946,10 +1948,16 @@ Hausaufgaben
 <p>Bevor wir uns die Daten anschauen, machen wir noch ein paar Aufwärmübungen um die R Markdown vorzustellen.</p>
 <h3 id="yaml">YAML</h3>
 <ul>
-<li>Öffne die R Markdown (Rmd) Datei in deinem Projekt, ändere den Autorennamen zu deinen Namen, füge ein Datum hinzu und stricke (‘knit’) das Dokument.</li>
+<li>Im RStudio Cloud Workspace für den Kurs, klicke auf “Projects”</li>
+<li>Öffne dein Projekt in dem du darauf klickst (ha01-GitHubName)</li>
+<li>Öffne die R Markdown (ha-01.Rmd) Datei in deinem Projekt (<strong>Tipp:</strong> Sie befindet sich in dem Ansichtsfenster unten rechts unter dem Reiter “Files”)</li>
+<li>Ändere den Autorennamen zu deinem Namen, füge ein Datum hinzu und stricke (‘knit’) das Dokument.</li>
 </ul>
 <div class="layout-chunk" data-layout="l-body">
-
+<p><img src="slides/screenshot-imgs/screenshot-imgs.002.jpeg" /><!-- --></p>
+</div>
+<div class="layout-chunk" data-layout="l-body">
+<p><img src="slides/screenshot-imgs/screenshot-imgs.003.jpeg" /><!-- --></p>
 </div>
 <p>Der obere Teil deiner R Markdown Datei (zwischen den drei gestrichelten Linien) wird YAML genannt. Es steht für “YAML Ain’t Markup Language”. Es ist ein menschenfreundlicher Standard zur Serialisierung von Daten für alle Programmiersprachen. Alles, was du wissen musst, ist, dass dieser Bereich YAML genannt wird (wir werden ihn als solchen bezeichnen) und dass er Metainformationen über dein Dokument enthält.</p>
 <h3 id="änderungen-schreiben-commit">Änderungen schreiben (commit)</h3>
@@ -2037,7 +2045,7 @@ Hausaufgaben
   <span class='fu'>geom_point</span><span class='op'>(</span><span class='op'>)</span>
 </code></pre>
 </div>
-<p><img src="ha-01-hallo-git_files/figure-html5/unnamed-chunk-6-1.png" width="624" /></p>
+<p><img src="ha-01-hallo-git_files/figure-html5/unnamed-chunk-8-1.png" width="624" /></p>
 </div>
 <p>Nächste Woche wirst du mehr über die Philosophie der Datenvisualisierung in Layern erfahren. Für den Moment kannst du dem Code folgen, welcher dir zur Verfügung gestellt wird.</p>
 <p>Für den zweiten Teil dieser Übungen müssen wir eine zusammenfassende Statistik berechnen: den Korrelationskoeffizienten. Der Korrelationskoeffizient, in der Statistik oft als <span class="math inline">\(r\)</span> bezeichnet, misst den linearen Zusammenhang zwischen zwei Variablen.</p>

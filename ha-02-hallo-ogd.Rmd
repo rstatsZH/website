@@ -1,0 +1,172 @@
+---
+title: "Hausaufgabe 02 - Hallo Open (Government) Data"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+Das Portal opendata.swiss stellt der Allgemeinheit offene Behördendaten in einem zentralen Katalog zur Verfügung. Es wird betrieben vom Bundesamt für Statisik und ist ein gemeinsames Projekt von Bund, Kantonen, Gemeinden und weiteren Organisationen mit einem staatlichen Auftrag. In dieser Hausaufgabe nutzen wir den Datensatz ["Corona Hilfen im Kulturbereich im Kanton Zürich"](https://opendata.swiss/de/dataset/corona-hilfen-im-kulturbereich-im-kanton-zurich) publiziert am 04. März 2021 von der Fachstelle Open Government Data des Kantons Zürich, und der Fachstele Kultur der Direktion der Justiz und des Innern. 
+
+# Ziele
+
+Diese Hausaufgabe hat die folgenden Ziele:
+
+- einen OGD Datensatz von opendata.swiss zu erkunden
+- Visualisierungen zu rekonstruieren
+- Mehr Übung mit Git und GitHub zu bekommen
+
+# Erste Schritte
+
+Öffne deine Email Inbox und suche nach der Email mit dem Link für das GitHub Repo zu dieser Hausaufgabe (ha-02-hallo-ogd). Alternativ kannst du GitHub öffnen und in unserer GitHub Organisation nach dem Repo mit deinem Namen suchen.
+
+Folge den Schritten aus Hausaufgabe 1 oder den Folien der Woche 2 um das GitHub Repo in deine RStudio Cloud zu clonen. 
+
+# Packages
+
+In dieser Hausaufgabe lernst du ein zwei R Packages kennen, welche wir in Woche 3 in mehr Detail behandelnt werden. Das `{readr}` und das `{dplyr}` Package, welche beide zur Sammlung der `{tidyverse}` Packages gehören. 
+
+```{r}
+
+library(ggplot2)
+library(dplyr)
+library(readr)
+
+```
+
+# Data
+
+Wir nutzen den Datensatz mit dem Titel ["Corona Hilfen im Kulturbereich im Kanton Zürich"](https://opendata.swiss/de/dataset/corona-hilfen-im-kulturbereich-im-kanton-zurich) publiziert am 04. März 2021 von der Fachstelle Open Government Data des Kantons Zürich, Fachstele Kultur (Direktion der Justiz und des Innern). 
+
+```{r, echo=FALSE}
+
+corona_kultur <- read_csv("https://www.web.statistik.zh.ch/ogd/data/ji/fk/kultur_ausfallentschaedigung.csv")
+
+```
+
+Die Beschreibung der Variablen ist auf der [Ressource für den Datensatz](https://opendata.swiss/de/dataset/corona-hilfen-im-kulturbereich-im-kanton-zurich/resource/c93b970b-c903-4598-86c5-b7f04032848d) zu finden: 
+
+- **Kategorie** = Antragstellende Kategorie ('Kulturschaffende', 'Kulturunternehmen gemeinnützig' oder 'Kulturunternehmen gewinnorientiert')
+- **Sparte** = Kultursparte ('Bereichsübergreifend', 'Bildende Kunst', 'Design', 'Film', 'Kino', 'Klubs und Konzertlokale', 'Literatur', 'Museen', 'Musik' oder 'Tanz/Theater')
+- **Nachgefragt** = Nachgefragter Betrag in CHF (gerundet auf 100 CHF)
+- **Beschluss** = Beschlossener Betrag in CHF (gerundet auf 100 CHF, 'NA' bei Ablehnung)
+- **Status** = Status des Antrags ('Ablehnung', 'Ausbezahlt' oder 'Saldo offen')
+- **Eingangsdatum** = Datum des Eingangs des Gesuchs; 'Beschlussdatum' = Datum des Beschlusses über das Gesuch
+- **ID** = anonymisierter Identifikator der antragstellenden natürlichen oder juristischen Person
+
+# Übungen 
+
+## Übung 1
+
+Erinnerst du dich, dass RStudio in vier Bereiche unterteilt ist? Versuche diese, ohne nachzuschauen, zu benennen.
+
+**Aufgaben**
+
+1. Füge deine Antworten zu der R Markdown Datei für die Hausaufgabe hinzu
+2. Stricke das Dokument und verifiziere, dass es keine Fehlermeldung gibt
+
+🧶 ✅ ⬆️ *Knit, commit, und pushe deine Änderungen auf GitHub mit der Commit-Nachricht "Füge Antwort für Übung 1 hinzu." Achte darauf, alle geänderten Dateien zu committen und zu pushen, damit dein Git-Fenster danach aufgeräumt ist.*
+
+## Übung 2
+
+Verifiziere, dass der Datensatz `corona_kultur` in deinem Environment in RStudio zu finden ist. Wieviele Beobachtungen gibt es in diesem Datensatz?
+
+**Aufgaben**
+
+1. Im RStudio Environment, klicke auf den Namen das Datensatzes `corona_kultur`
+2. Führe den Code `View(corona_kultur)` in der Console aus.
+3. Nutze die Funktionen `glimpse()` und `str()` in einem R Code-chunk um die Daten zu erkunden
+4. Führe das Objekt welches die Daten enthält in der Console aus
+5. Welche zwei weiteren Funktionen kennst du um die Anzahl der Reihen und Spalten eines Datensatzes zu erfahren?
+6. In der Spalte `Beschluss` taucht immer wieder der Wert 'NA' auf. Was bedeutet dies? Generell, und für diesen Datensatz?
+
+```{r, include=FALSE}
+
+glimpse(corona_kultur)
+str(corona_kultur)
+
+```
+
+🧶 ✅ ⬆️ *Knit, commit, und pushe deine Änderungen auf GitHub mit der Commit-Nachricht "Füge Antwort für Übung 2  hinzu." Achte darauf, alle geänderten Dateien zu committen und zu pushen, damit dein Git-Fenster danach aufgeräumt ist.*
+
+## Übung 3
+
+Schauen wir uns zuerst die Verteilung der Beträge an, welche nachgefragt wurden. Wir sehen, dass eine grosse Anzahl an kleineren Beträgen (< 100'000 CHF) beantragt wurde, und das einige grosse Beträge (> 2'000'000 CHF) bentragt wurden. Ein Antrag mit über 10 Millionen CHF sticht ganz besonders heraus und führt dazu, dass dieser Plot nicht besonders schön ist. 
+
+**Code vorlesen:** Nutze das Objekt `corona_kultur` und plotte ein Histogram mit der der Verteilung der nachgefragten Beträge auf der x-Achse. Zähle die Anzahl der Gesuche pro 100'000 CHF auf der y-Achse. 
+
+```{r}
+
+ggplot(data = corona_kultur, aes(x = Nachgefragt)) +
+  geom_histogram(binwidth = 100000)
+
+```
+
+
+**Code vorlesen:** Beginne mit dem Objekt `corona_kultur` und leite es in die Funktion `filter()`, um nach Beobachtungen zu filtern, bei denen die Variable 'Nachgefragt' grösser 2'000'000 ist. Ordne den Datensatz dann in absteigender Reihenfolge nach der Variable 'Nachgefragt' 
+
+```{r}
+
+corona_kultur %>% 
+  filter(Nachgefragt > 2000000) %>% 
+  arrange(desc(Nachgefragt)) 
+
+```
+
+In den folgenden Aufgaben wollen wir uns nur mit Beobachtungen beschäftigen bei welchen die Variable 'Beschluss' kleiner 100'000 CHF ist. Dazu wird der Datensatz gefiltert und als ein neues Objekt in dem RStudio Environment gespeichert. Ich habe den Code für dich vorbereitet.
+
+```{r}
+
+corona_kultur_beschluss_gering <- corona_kultur %>% 
+  filter(Beschluss < 100000) 
+
+```
+
+**Aufgaben**
+
+1. Schreibe einen Text (im Style von **Code vorlesen**) für den Code im Code-chunk mit dem Titel 'beschluss-klein' in deiner R Markdown Datei
+2. Nutze das Objekt `corona_kultur_beschluss_gering` und plotte die Verteilung der beschlossenen Beträge mittels eines Histograms (**Tipp:** Die Variable heisst 'Beschluss' und in R spielt Gross- und Kleinschreibung eine Rolle)
+3. Ordne die Variable 'Sparte' der der visuellen Eigenschaft für Farben zu (**Tipp:** Schaue in Praktikum 3 oder 4 nach wie du es dort gemacht hast)
+4. Nutze Faceting und lege die Variable 'Kategorie' auf die Spalten (**Tipp:** Schaue in Praktikum 4 nach wie du es dort gemacht hast)
+5. Nutze die Funktion `scale_fill_brewer()` und passe die Farbe nach einer Skalierung deiner Wahl an
+6. Füge einen Titel, einen Untertitiel und eine Bildunterschrift (caption) hinzu. (**Tipp:** Schaue in den Folien für Woche 2 nach)
+
+```{r, include=FALSE}
+
+corona_kultur_beschluss_gering %>%
+  ggplot(aes(x = Beschluss, fill = Sparte)) +
+  geom_histogram() +
+  facet_wrap(~Kategorie) +
+  scale_fill_brewer(type = "qual", palette = 3) +
+  labs(title = "Mein Titel", subtitle = "Mein Untertitel", caption = "Fertig")
+
+```
+
+🧶 ✅ ⬆️ *Knit, commit, und pushe deine Änderungen auf GitHub mit der Commit-Nachricht "Füge Antwort für Übung 3 hinzu." Achte darauf, alle geänderten Dateien zu committen und zu pushen, damit dein Git-Fenster danach aufgeräumt ist.*
+
+Gratulation! Du hast die Übungen abgeschlossen. Falls du noch Lust und Zeit hast, ist hier noch eine Bonusaufgabe.
+
+## Übung 4 (Bonus)
+
+1. Nutze das Objekt `corona_kultur` und erstelle einen Barplot
+2. Ordne die Variable 'Sparte' der visuellen Eigenschaft für Farben
+3. Nutze Faceting und lege die Variable 'Kategorie' auf die Spalten
+4. Füge einen Titel, einen Untertitiel und eine Bildunterschrift (caption) hinzu.
+5. Ändere die Position der Legende auf den unteren obereich des Plots (**Tipp:** Schau nach was wir in Übung 2 aus Praktikum 4 gemacht haben)
+
+```{r, include=FALSE}
+
+
+ggplot(data = corona_kultur, 
+       mapping =  aes(x = Status, 
+                      fill = Sparte)) +
+  geom_bar() +
+
+  facet_wrap(~Kategorie, nrow = 1) +
+  theme(legend.position = "bottom")
+
+
+```
+
+🧶 ✅ ⬆️ *Knit, commit, und pushe deine Änderungen auf GitHub mit der Commit-Nachricht "Füge Antwort für Übung 4  hinzu." Achte darauf, alle geänderten Dateien zu committen und zu pushen, damit dein Git-Fenster danach aufgeräumt ist.*
+

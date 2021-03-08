@@ -1,0 +1,65 @@
+---
+title: "Woche 2 - Daten Visualisierung mit ggplot2"
+description: |
+  Ziele und Materialien für unsere zweite gemeinsame Woche
+date: 03-05-2021
+output:
+  distill::distill_article:
+    toc: true
+    self_contained: false
+preview: img/data-vis.jpg    
+editor_options: 
+  chunk_output_type: console
+---
+
+<script async defer data-domain="rstatszh.github.io/website" src="https://plausible.io/js/plausible.js"></script>
+
+```{r setup, echo=FALSE}
+library(magrittr)
+library(tidyverse)
+```
+
+```{r, layout="l-body", preview=TRUE, echo=FALSE, include=TRUE, fig.cap="Photo by [Neven Krcmarek](https://unsplash.com/photos/V4EOZj7g1gw)"}
+
+knitr::include_graphics("img/data-vis.jpg")
+
+```
+
+Lerne das Grundkonzept des `{ggplot2}` R Package kennen und erstelle selbständig einen Plot mit offenen Behördendaten (Open Government Data)
+
+# Ziele
+
+Am Ende dieser Woche kannst du:
+
+- den Unterschied zwischen markdown und R Markdown beschreiben
+- selbständig einen Plot mit dem R Package `{ggplot2}` erstellen
+- innerhalb von RStudio selbstständig eine neue R Markdown Datei erstellen
+- das Aussehen eines HTML Dokuments anpassen
+
+# Folien
+
+```{r share-again, echo=FALSE}
+
+xaringanExtra::use_share_again()
+
+```
+
+```{r embed-xaringan, echo=FALSE, fig.cap="[Folien](slides/e1_d02-data-vis/e1_d02-data-vis.html)"}
+
+xaringanExtra::embed_xaringan("../../slides/e1_d02-data-vis/e1_d02-data-vis.html", ratio = "16:9")
+
+
+```
+
+# Weiterführende Aufgaben
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE}
+
+googlesheets4::read_sheet("198t05eFYHxuxY0d2jCvPkES1ZaMcsSYgBKcg0xQTwb0") %>% 
+  mutate(titel2 = paste0("[", titel, "](", link, ")")) %>% 
+  filter(woche == "woche2") %>% 
+  select(type, titel2, aufgabe, zeitaufwand) %>% 
+  arrange(desc(aufgabe)) %>% 
+  knitr::kable(format = "html", col.names = NULL)
+
+```

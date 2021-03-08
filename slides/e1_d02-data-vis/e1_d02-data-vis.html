@@ -223,7 +223,7 @@ background-size: contain
 
 # Pause 
 
-<div class="countdown" id="timer_6045fcf6" style="right:0;bottom:0;left:0;margin:5%;padding:15px;font-size:4em;" data-warnwhen="0">
+<div class="countdown" id="timer_6045fc91" style="right:0;bottom:0;left:0;margin:5%;padding:15px;font-size:4em;" data-warnwhen="0">
 <code class="countdown-time"><span class="countdown-digits minutes">05</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
 
@@ -339,7 +339,7 @@ background-size: contain
 
 # Pause 
 
-<div class="countdown" id="timer_6045fd81" style="right:0;bottom:0;left:0;margin:5%;padding:15px;font-size:4em;" data-warnwhen="0">
+<div class="countdown" id="timer_6045fa46" style="right:0;bottom:0;left:0;margin:5%;padding:15px;font-size:4em;" data-warnwhen="0">
 <code class="countdown-time"><span class="countdown-digits minutes">05</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
 
@@ -357,8 +357,8 @@ class: middle, inverse
 
 
 ```r
-ggplot(penguins,
-       aes(x = bill_depth_mm,
+ggplot(data = penguins,
+       mapping = aes(x = bill_depth_mm,
            y = bill_length_mm,
 *          size = body_mass_g,
 *          color = island)) +
@@ -373,8 +373,8 @@ ggplot(penguins,
 
 
 ```r
-ggplot(penguins,
-       aes(x = bill_depth_mm,
+ggplot(data = penguins,
+       mapping = aes(x = bill_depth_mm,
            y = bill_length_mm)) + 
 * geom_point(size = 3, color = "blue")
 ```

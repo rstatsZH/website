@@ -368,8 +368,8 @@ class: middle, inverse
 .midi[**Mapping:** Grösse, Alpha, Farbe, etc. der Punkte werden basierend auf den Werten der Variable in den Daten bestimmt.]
 
 ```{r warning = FALSE, echo=TRUE, out.width = "100%"}
-ggplot(penguins,
-       aes(x = bill_depth_mm,
+ggplot(data = penguins,
+       mapping = aes(x = bill_depth_mm,
            y = bill_length_mm,
            size = body_mass_g, #<<
            color = island)) + #<<
@@ -381,8 +381,8 @@ ggplot(penguins,
 .midi[**Setting:** Grösse, Alpha, Farbe, etc. der Punkte werden **nicht** basierend auf den Werten der Variable in den Daten bestimmt]
 
 ```{r warning = FALSE, echo=TRUE, out.width = "100%"}
-ggplot(penguins,
-       aes(x = bill_depth_mm,
+ggplot(data = penguins,
+       mapping = aes(x = bill_depth_mm,
            y = bill_length_mm)) + 
   geom_point(size = 3, color = "blue") #<<
 ```

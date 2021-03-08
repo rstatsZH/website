@@ -370,9 +370,9 @@ class: middle, inverse
 ```{r warning = FALSE, echo=TRUE, out.width = "100%"}
 ggplot(data = penguins,
        mapping = aes(x = bill_depth_mm,
-           y = bill_length_mm,
-           size = body_mass_g, #<<
-           color = island)) + #<<
+                     y = bill_length_mm,
+                     size = body_mass_g, #<<
+                     color = island)) + #<<
   geom_point()  
 ```
 ]
@@ -383,7 +383,7 @@ ggplot(data = penguins,
 ```{r warning = FALSE, echo=TRUE, out.width = "100%"}
 ggplot(data = penguins,
        mapping = aes(x = bill_depth_mm,
-           y = bill_length_mm)) + 
+                     y = bill_length_mm)) + 
   geom_point(size = 3, color = "blue") #<<
 ```
 ]
@@ -392,9 +392,9 @@ ggplot(data = penguins,
 ## Faceting - Zusammenfassung
 
 - `facet_grid()`:
-  - 2d grid
-  - `rows ~ cols`
-  - nutze `.` um nicht zu splitten 
+- 2d grid
+- `rows ~ cols`
+- nutze `.` um nicht zu splitten 
 - `facet_wrap()`: 1d wird entsprechend der angegebenen Anzahl von Zeilen und Spalten oder der verfügbaren Plotfläche umbrochen
 
 ---
@@ -490,12 +490,12 @@ Arbeitet in 2er Teams. Eine Person teilt den Bildschirm. Die andere schreibt mit
 ```{r penguins-legend, fig.show="hide", echo=TRUE}
 
 ggplot(data = penguins,
-       aes(x = island,
-           fill = species)) +
+       mapping = aes(x = island,
+                     fill = species)) + # Achtung: Argument 'fill' und nicht 'color'
   geom_bar() +
   facet_grid(sex ~ species) +
-  scale_fill_brewer(type = "qual", palette = "Set2") +
-  theme(legend.position = "none")
+  scale_fill_brewer(type = "qual", palette = "Set2") +  # Passt die Farbe en
+  theme(legend.position = "none") # Entfernt die Legende
 
 ```
 

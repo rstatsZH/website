@@ -223,7 +223,7 @@ background-size: contain
 
 # Pause 
 
-<div class="countdown" id="timer_6045fc91" style="right:0;bottom:0;left:0;margin:5%;padding:15px;font-size:4em;" data-warnwhen="0">
+<div class="countdown" id="timer_60464273" style="right:0;bottom:0;left:0;margin:5%;padding:15px;font-size:4em;" data-warnwhen="0">
 <code class="countdown-time"><span class="countdown-digits minutes">05</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
 
@@ -339,7 +339,7 @@ background-size: contain
 
 # Pause 
 
-<div class="countdown" id="timer_6045fa46" style="right:0;bottom:0;left:0;margin:5%;padding:15px;font-size:4em;" data-warnwhen="0">
+<div class="countdown" id="timer_60464256" style="right:0;bottom:0;left:0;margin:5%;padding:15px;font-size:4em;" data-warnwhen="0">
 <code class="countdown-time"><span class="countdown-digits minutes">05</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
 
@@ -359,9 +359,9 @@ class: middle, inverse
 ```r
 ggplot(data = penguins,
        mapping = aes(x = bill_depth_mm,
-           y = bill_length_mm,
-*          size = body_mass_g,
-*          color = island)) +
+                     y = bill_length_mm,
+*                    size = body_mass_g,
+*                    color = island)) +
   geom_point()  
 ```
 
@@ -375,7 +375,7 @@ ggplot(data = penguins,
 ```r
 ggplot(data = penguins,
        mapping = aes(x = bill_depth_mm,
-           y = bill_length_mm)) + 
+                     y = bill_length_mm)) + 
 * geom_point(size = 3, color = "blue")
 ```
 
@@ -386,9 +386,9 @@ ggplot(data = penguins,
 ## Faceting - Zusammenfassung
 
 - `facet_grid()`:
-  - 2d grid
-  - `rows ~ cols`
-  - nutze `.` um nicht zu splitten 
+- 2d grid
+- `rows ~ cols`
+- nutze `.` um nicht zu splitten 
 - `facet_wrap()`: 1d wird entsprechend der angegebenen Anzahl von Zeilen und Spalten oder der verfügbaren Plotfläche umbrochen
 
 ---
@@ -477,12 +477,12 @@ Arbeitet in 2er Teams. Eine Person teilt den Bildschirm. Die andere schreibt mit
 
 ```r
 ggplot(data = penguins,
-       aes(x = island,
-           fill = species)) +
+       mapping = aes(x = island,
+                     fill = species)) + # Achtung: Argument 'fill' und nicht 'color'
   geom_bar() +
   facet_grid(sex ~ species) +
-  scale_fill_brewer(type = "qual", palette = "Set2") +
-  theme(legend.position = "none")
+  scale_fill_brewer(type = "qual", palette = "Set2") +  # Passt die Farbe en
+  theme(legend.position = "none") # Entfernt die Legende
 ```
 
 ]

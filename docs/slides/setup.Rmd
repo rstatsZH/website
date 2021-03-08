@@ -47,10 +47,13 @@ library(htmltools)
 # xaringanExtra
 library(xaringanExtra)
 xaringanExtra::use_panelset()
+xaringanExtra::use_share_again()
+xaringanExtra::style_share_again(
+  share_buttons = c("twitter", "linkedin")
+)
 
 # flipbook
 library(flipbookr)
-
 
 # ggplot2 set theme
 ggplot2::theme_set(ggplot2::theme_gray(base_size = 16))

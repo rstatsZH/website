@@ -200,7 +200,7 @@ class: middle, inverse
 
 # Praktikum 2 - R Markdown
 
-1. **E-Mail**: Öffne deine Email und klicke auf den Link zu deinem persönlichen GitHub repo für **prak-03**
+1. **E-Mail**: Öffne deine Email und klicke auf den Link zu deinem persönlichen GitHub repo für **prak-02**
 2. **GitHub**: Klicke auf den grünen Button "Code" und kopiere den Link für das Repo in deine Zwischenablage
 3. **RStudio Cloud**: Öffne deinen Arbeitsbereich für den Kurs in der RStudio Cloud
 4. **RStudio Cloud / Projects**: Klicke auf "New Project from GitHub Repository" 
@@ -218,6 +218,27 @@ class: middle, inverse
 1. **Bildschirm**: Konfiuriere deinen Bildschirm so, dass du mir gleichzeitig folgen kannst und selbst Code schreiben kannst
 
 ]
+
+---
+class: left
+background-image: url(img/coffee-break.jpg)
+background-position: right
+background-size: contain
+
+# Pause 
+
+```{r, echo = FALSE}
+
+countdown(
+  minutes = 5, seconds = 0,
+  left = 0, right = 0,
+  padding = "15px", margin = "5%",
+  font_size = "4em"
+)
+
+```
+
+.footnote[Photo by: [Blake Wisz](https://unsplash.com/@blakewisz)]
 
 ---
 class: middle, inverse
@@ -316,6 +337,27 @@ class: inverse, middle
 ]
 
 ---
+class: left
+background-image: url(img/coffee-break.jpg)
+background-position: right
+background-size: contain
+
+# Pause 
+
+```{r, echo = FALSE}
+
+countdown(
+  minutes = 5, seconds = 0,
+  left = 0, right = 0,
+  padding = "15px", margin = "5%",
+  font_size = "4em"
+)
+
+```
+
+.footnote[Photo by: [Blake Wisz](https://unsplash.com/@blakewisz)]
+
+---
 class: middle, inverse
 
 # .big[Mapping und Faceting]
@@ -351,7 +393,7 @@ ggplot(penguins,
 
 - `facet_grid()`:
   - 2d grid
-- `rows ~ cols`
+  - `rows ~ cols`
   - nutze `.` um nicht zu splitten 
 - `facet_wrap()`: 1d wird entsprechend der angegebenen Anzahl von Zeilen und Spalten oder der verfügbaren Plotfläche umbrochen
 
@@ -366,22 +408,12 @@ class: iverse, middle
 
 1. **RStudio Cloud**: Öffne deinen Arbeitsbereich für den Kurs in der RStudio Cloud
 2. **RStudio Cloud / Projects**: Öffne erneut das Praktikum 03
+3. Folgt wieder auf dem Bildschirm
 
 ]
 
 ---
-# Eine Skala ersetzen
-
-**Farbskalen**
-
-.pull-left[
-```{r warning = FALSE, echo=TRUE, out.width = "100%"}
-
-```
-]
-
----
-# Eine Skala ersetzen - Farbskalen
+# Eine Skala ersetzen - Farbskalen (color)
 
 ```{r penguins-scale-color, warning = FALSE, echo=TRUE, fig.show="hide"}
 ggplot(penguins, aes(x = bill_length_mm, y = bill_depth_mm, colour = species)) +
@@ -389,11 +421,11 @@ ggplot(penguins, aes(x = bill_length_mm, y = bill_depth_mm, colour = species)) +
   scale_color_viridis_d() #<<
 ```
 
-```{r ref.label = "penguins-scale", echo = FALSE, warning = FALSE, out.width = "80%", fig.width = 8}
+```{r ref.label = "penguins-scale-color", echo = FALSE, warning = FALSE, out.width = "80%", fig.width = 8}
 ```
 
 ---
-# Eine Skala ersetzen - Farbskalen
+# Eine Skala ersetzen - Farbskalen (fill)
 
 ```{r penguins-scale-fill, warning = FALSE, echo=TRUE, fig.show="hide"}
 ggplot(penguins, aes(x = species, fill = island)) +
@@ -436,7 +468,7 @@ class: iverse, middle
 
 Arbeitet in 2er Teams. Eine Person teilt den Bildschirm. Die andere schreibt mit.
 
-1. **E-Mail**: Öffne deine Email und klicke auf den Link zu deinem persönlichen GitHub repo für **prak-03**
+1. **E-Mail**: Öffne deine Email und klicke auf den Link zu deinem persönlichen GitHub repo für **prak-04**
 2. **GitHub**: Klicke auf den grünen Button "Code" und kopiere den Link für das Repo in deine Zwischenablage
 3. **RStudio Cloud**: Öffne deinen Arbeitsbereich für den Kurs in der RStudio Cloud
 4. **RStudio Cloud / Projects**: Klicke auf "New Project from GitHub Repository" 
@@ -476,18 +508,6 @@ class: middle
 # .big[Hausaufgabe]
 
 ---
-# Hausaufgabe
-
-.note[
-
-- Öffnet jetzt eure E-Mail Inbox
-- Bestätigt mir im Zoom Chat, dass ihr eine Email mit Betreff **"rstatsZH - Lars hat das Repo ha01-GitHubName"** erhalten habt
-- Die Anweisungen für die Heausaufgabe 01 findet ihr oben rechts auf unserer Kurswebseite
-- Kontaktiert mich unter der Woche jederzeit auf Slack 
-
-]
-
----
 class: middle
 
 # .big[Feedback]
@@ -505,6 +525,18 @@ Bitte ausfüllen: [kutt.it/rstatszh-eval](https://kutt.it/rstatszh-eval)
 .pull-left[
 
 .footnote[Photo by: [Virgil Cayasa](https://unsplash.com/@virgilcayasa)]
+
+]
+
+---
+# Hausaufgabe
+
+.note[
+
+- Öffnet jetzt eure E-Mail Inbox
+- Bestätigt mir im Zoom Chat, dass ihr eine Email mit Betreff **"rstatsZH - Lars hat das Repo ha01-GitHubName"** erhalten habt
+- Die Anweisungen für die Heausaufgabe 01 findet ihr oben rechts auf unserer Kurswebseite
+- Kontaktiert mich unter der Woche jederzeit auf Slack 
 
 ]
 

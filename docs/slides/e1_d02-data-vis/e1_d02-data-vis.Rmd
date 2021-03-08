@@ -1,0 +1,522 @@
+---
+title: "rstatsZH - Data Science mit R"
+subtitle: "Datenvisualisierung mit ggplot2"  
+author: "Lars Schöbitz"
+date: "2020-03-07"
+output:
+  xaringan::moon_reader:
+    self_contained: false
+    lib_dir: libs
+    css: ["default", "../assets/css/xaringan-themer.css", "../assets/css/my-css-style.css"]
+    seal: FALSE
+    nature:
+      slideNumberFormat: |
+        <div class="progress-bar-container">
+          <div class="progress-bar" style="width: calc(%current% / %total% * 100%);">
+          </div>
+        </div>
+      highlightStyle: solarized-light
+      highlightLanguage: ["r", "css", "yaml"]
+      highlightLines: true
+      countIncrementalSlides: false
+      ratio: "16:9"
+---
+
+class: title-slide
+
+```{r child = "../setup.Rmd"}
+
+```
+
+```{r}
+
+library(palmerpenguins)
+library(dplyr)
+library(ggplot2)
+
+```
+
+
+# `r rmarkdown::metadata$title`
+## `r rmarkdown::metadata$subtitle` 
+
+.bottom[
+
+```{r, echo=FALSE}
+p(rmarkdown::metadata$author)
+p(rmarkdown::metadata$date)
+```
+]
+
+---
+class: left
+background-image: url(img/review.jpg)
+background-position: right
+background-size: contain
+
+# Rückblick - Woche 1
+
+**Viele neue Konzepte**
+
+- Git  
+- GitHub
+- RStudio Cloud 
+- R
+- R Markdown
+- R Package `{ggplot2}`
+- Pinguine `r emo::ji("penguin")`
+- Help Files
+- Code-chunks
+- Cheatcheets
+- Argument, Objekte, Funktionen, etc. etc.
+
+.footnote[Photo by: [Annie Spratt](https://unsplash.com/photos/nVrqbvzOh08)]
+
+???
+Ihr habt letzte Woche unheimlich viel kennegelernt. Eine Menge neue Konzepte, welche einige von euch alle zum ersten gesehen haben.
+
+- Alles vorlesen
+
+---
+class: left
+background-image: url(img/wild-flowers.jpg)
+background-position: right
+background-size: contain
+
+# Lob! - Woche 1
+
+**Viele neue Konzepte**
+
+- Git  
+- GitHub
+- RStudio Cloud 
+- R
+- R Markdown
+- R Package `{ggplot2}`
+- Pinguine `r emo::ji("penguin")`
+- Help Files
+- Code-chunks
+- Cheatcheets
+- Argument, Objekte, Funktionen, etc. etc.
+
+.footnote[Photo by: [Annie Spratt](https://unsplash.com/photos/nVrqbvzOh08)]
+
+???
+Ein grosses Lob dafür was ihr letzte Woche erreicht habt. 
+
+Vieles von den Dingen wird sich weiterhin noch sehr fremd anfühlen, aber lasst euch nich beunruhigen. 
+
+Das ist völlig normal. Am Ende des Kurses wird es sich hoffentlich ganz natürlich anfühlen eine Datei aus GitHub zu holen und damit zu arbeiten.
+
+---
+background-image: url(img/goals-dart.jpg)
+background-position: right
+background-size: contain
+
+# Ziele für heute 
+
+.pull-left[
+
+Am Ende dieser Woche könnt ihr:
+
+- den Unterschied zwischen markdown und R Markdown beschreiben
+- selbständig einen Plot mit dem R Package `{ggplot2}` erstellen
+- innerhalb von RStudio selbstständig eine neue R Markdown Datei erstellen
+- das Aussehen eines HTML Dokuments anpassen
+
+.footnote[Photo by: [Ameer Basheer](https://unsplash.com/photos/nVrqbvzOh08)]
+]
+
+???
+Und gerade weil letzte Woche sehr viel war, möchte ich mir diese Woche nochmals Zeit nehmen für die Grundkonzepte mit denen wir arbeiten.
+
+Letzte Woche war vor Allem wichtig, dass ihr die Werkzeuge einmal kennenlernt und ausprobiert. 
+
+Diese Woche wollen wir beginnen sie besser zu verstehen und beschreiben zu können.
+
+Deshalb sind dies die Ziele für heute.
+
+---
+# Ein paar Tipps
+
+**Lesezeichen**
+
+- RStudio Cloud: https://rstudio.cloud/spaces/122222/projects
+- Kurs Webseite: https://rstatszh.github.io/website/
+- GitHub: https://github.com/rstatszh-k002
+
+**GitHub Credentials**
+
+- GitHub Nutzername 
+- GitHub Passwort
+
+???
+
+Ich schlage euch vor minimal drei Lesezeichen zu setzen auf welche ihr einfach zu greifen könnt. 
+
+Diese drei Webseiten werden wir mit Abstand am meisten nutzen. 
+
+Auch ist es nützlich den GitHub Nutzernamen und das Passwort griffbereit zu haben oder in einem Passwort Manager zu speichern. 
+
+Ihr werdet in eurer Hausaufgabe gemerkt haben, dass diese sehr häufig genutzt werden.
+
+---
+class: middle, inverse
+
+# .big[Erste Schritte (replay)]
+
+
+---
+background-image: url(img/email-klick.jpeg)
+background-size: contain 
+
+---
+background-image: url(img/screenshot.004.jpeg)
+background-size: contain 
+
+---
+background-image: url(img/screenshot.005.jpeg)
+background-size: contain 
+
+---
+background-image: url(img/screenshot.006.jpeg)
+background-size: contain 
+
+---
+background-image: url(img/screenshot.007.jpeg)
+background-size: contain 
+
+---
+background-image: url(img/screenshot.008.jpeg)
+background-size: contain 
+
+---
+class: middle, inverse
+
+# .big[Praktikum 2 - R Markdown]
+
+---
+.note[
+
+# Praktikum 2 - R Markdown
+
+1. **E-Mail**: Öffne deine Email und klicke auf den Link zu deinem persönlichen GitHub repo für **prak-03**
+2. **GitHub**: Klicke auf den grünen Button "Code" und kopiere den Link für das Repo in deine Zwischenablage
+3. **RStudio Cloud**: Öffne deinen Arbeitsbereich für den Kurs in der RStudio Cloud
+4. **RStudio Cloud / Projects**: Klicke auf "New Project from GitHub Repository" 
+5. **RStudio**: Finde den Datei Manager und Git
+6. **Zoom Chat**: Schreibt wenn ihr soweit seid
+
+]
+
+
+---
+.note[
+
+# Praktikum 2 - R Markdown
+
+1. **Bildschirm**: Konfiuriere deinen Bildschirm so, dass du mir gleichzeitig folgen kannst und selbst Code schreiben kannst
+
+]
+
+---
+class: middle, inverse
+
+# .big[ggplot2 `r emo::ji("heart")` `r emo::ji("penguin")`]
+
+---
+
+## ggplot2 $\in$ tidyverse
+
+.pull-left[
+```{r echo=FALSE, out.width="30%"}
+knitr::include_graphics("img/ggplot2-part-of-tidyverse.png")
+```
+] 
+
+.pull-right[ 
+- **ggplot2** ist das R Package für Datenvisualisierung im tidyverse 
+- Struktur des Codes kann folgerndermassen zusammengefasst werden: 
+]
+
+```{r eval = FALSE, echo=TRUE}
+ggplot(data = [dataset], 
+       mapping = aes(x = [x-variable], 
+                     y = [y-variable])) +
+  geom_xxx() +
+  other options
+```
+
+---
+## Data: Palmer Penguins
+
+Ein Datensatz über Pinguine Spezies auf Inseln im Palmer Archipelago mit Variablen für Grösse (Flossenlänge, Gewicht, Schnabelmasse), und Geschlecht. 
+
+.pull-left-narrow[
+```{r echo=FALSE, out.width="80%"}
+knitr::include_graphics("img/penguins.png")
+```
+]
+.pull-right-wide[
+```{r}
+library(palmerpenguins)
+glimpse(penguins)
+```
+]
+
+---
+.panelset[
+.panel[.panel-name[Plot]
+```{r ref.label = "penguins", echo = FALSE, warning = FALSE, out.width = "90%", fig.width = 8}
+```
+]
+.panel[.panel-name[Code]
+
+```{r penguins, fig.show = "hide", echo=TRUE}
+ggplot(data = penguins, 
+       mapping = aes(x = bill_depth_mm, 
+                     y = bill_length_mm,
+                     colour = species)) +
+  geom_point() +
+  labs(title = "Bill depth and length",
+       subtitle = "Dimensions for Adelie, Chinstrap, and Gentoo Penguins",
+       x = "Bill depth (mm)", 
+       y = "Bill length (mm)",
+       colour = "Species") 
+```
+]
+]
+
+???
+
+Die Funktion `ggplot()` erzeugt hier ein Koordinatensystem, welchem Ebenen hinzugefügt werden. Das erste Argument von ggplot ist der Datenatz, welcher im Diagram verwendet werden soll. 
+
+ggplot(data = penguins) erzeugt ein leeres Diagram. 
+
+Um ein komplettes Diagramm zu erzeugen müssen eine oder mehrere Ebenen hinzugefügt werden, sogenannte geoms, oder geometrische Funktionen. Jede dieser geometrischen Funktionen übernimmt ein Argument `mapping`. Dies definiert wie die Variablen auf visuelle Eigenschaften (aesthetics) abgebildet werden.  
+
+Neu hier für euch ist die Funktion `labs()`. Sie steht für Labels und hier können jegliche Labels angepasst werden. 
+
+---
+class: inverse, middle
+
+# .large[Praktikum 3 - {ggplot2}]
+
+---
+
+.note[
+
+1. **E-Mail**: Öffne deine Email und klicke auf den Link zu deinem persönlichen GitHub repo für **prak-03**
+2. **GitHub**: Klicke auf den grünen Button "Code" und kopiere den Link für das Repo in deine Zwischenablage
+3. **RStudio Cloud**: Öffne deinen Arbeitsbereich für den Kurs in der RStudio Cloud
+4. **RStudio Cloud / Projects**: Klicke auf "New Project from GitHub Repository" 
+5. **RStudio**: Finde den Datei Manager und Git
+6. **Zoom Chat**: Schreibt wenn ihr soweit seid
+
+]
+
+---
+class: middle, inverse
+
+# .big[Mapping und Faceting]
+
+---
+.pull-left[
+
+.midi[**Mapping:** Grösse, Alpha, Farbe, etc. der Punkte werden basierend auf den Werten der Variable in den Daten bestimmt.]
+
+```{r warning = FALSE, echo=TRUE, out.width = "100%"}
+ggplot(penguins,
+       aes(x = bill_depth_mm,
+           y = bill_length_mm,
+           size = body_mass_g, #<<
+           color = island)) + #<<
+  geom_point()  
+```
+]
+.pull-right[
+
+.midi[**Setting:** Grösse, Alpha, Farbe, etc. der Punkte werden **nicht** basierend auf den Werten der Variable in den Daten bestimmt]
+
+```{r warning = FALSE, echo=TRUE, out.width = "100%"}
+ggplot(penguins,
+       aes(x = bill_depth_mm,
+           y = bill_length_mm)) + 
+  geom_point(size = 3, color = "blue") #<<
+```
+]
+
+---
+## Faceting - Zusammenfassung
+
+- `facet_grid()`:
+  - 2d grid
+- `rows ~ cols`
+  - nutze `.` um nicht zu splitten 
+- `facet_wrap()`: 1d wird entsprechend der angegebenen Anzahl von Zeilen und Spalten oder der verfügbaren Plotfläche umbrochen
+
+---
+class: iverse, middle
+
+# .large[Praktikum 3 - {ggplot2}]
+
+---
+
+.note[
+
+1. **RStudio Cloud**: Öffne deinen Arbeitsbereich für den Kurs in der RStudio Cloud
+2. **RStudio Cloud / Projects**: Öffne erneut das Praktikum 03
+
+]
+
+---
+# Eine Skala ersetzen
+
+**Farbskalen**
+
+.pull-left[
+```{r warning = FALSE, echo=TRUE, out.width = "100%"}
+
+```
+]
+
+---
+# Eine Skala ersetzen - Farbskalen
+
+```{r penguins-scale-color, warning = FALSE, echo=TRUE, fig.show="hide"}
+ggplot(penguins, aes(x = bill_length_mm, y = bill_depth_mm, colour = species)) +
+  geom_point() +
+  scale_color_viridis_d() #<<
+```
+
+```{r ref.label = "penguins-scale", echo = FALSE, warning = FALSE, out.width = "80%", fig.width = 8}
+```
+
+---
+# Eine Skala ersetzen - Farbskalen
+
+```{r penguins-scale-fill, warning = FALSE, echo=TRUE, fig.show="hide"}
+ggplot(penguins, aes(x = species, fill = island)) +
+  geom_bar() +
+  scale_fill_viridis_d() #<<
+```
+
+```{r ref.label = "penguins-scale-fill", echo = FALSE, warning = FALSE, out.width = "80%", fig.width = 8}
+```
+
+
+---
+# 
+
+.pull-left[
+
+```{r}
+
+```
+
+]
+
+.pull-right[
+
+```{r}
+
+```
+
+]
+
+
+
+---
+class: iverse, middle
+
+# .large[Praktikum 4 - {ggplot2}]
+
+---
+.note[
+
+Arbeitet in 2er Teams. Eine Person teilt den Bildschirm. Die andere schreibt mit.
+
+1. **E-Mail**: Öffne deine Email und klicke auf den Link zu deinem persönlichen GitHub repo für **prak-03**
+2. **GitHub**: Klicke auf den grünen Button "Code" und kopiere den Link für das Repo in deine Zwischenablage
+3. **RStudio Cloud**: Öffne deinen Arbeitsbereich für den Kurs in der RStudio Cloud
+4. **RStudio Cloud / Projects**: Klicke auf "New Project from GitHub Repository" 
+
+]
+
+---
+# Praktikum 4 - Lösung
+
+.panelset[
+.panel[.panel-name[Plot]
+```{r ref.label="penguins-legend", echo=FALSE, warning=FALSE, out.width="80%", fig.width=8}
+
+
+```
+]
+
+.panel[.panel-name[Code]
+```{r penguins-legend, fig.show="hide", echo=TRUE}
+
+ggplot(data = penguins,
+       aes(x = island,
+           fill = species)) +
+  geom_bar() +
+  facet_grid(sex ~ species) +
+  scale_fill_brewer(type = "qual", palette = "Set2") +
+  theme(legend.position = "none")
+
+```
+
+]
+]
+
+---
+class: middle
+
+# .big[Hausaufgabe]
+
+---
+# Hausaufgabe
+
+.note[
+
+- Öffnet jetzt eure E-Mail Inbox
+- Bestätigt mir im Zoom Chat, dass ihr eine Email mit Betreff **"rstatsZH - Lars hat das Repo ha01-GitHubName"** erhalten habt
+- Die Anweisungen für die Heausaufgabe 01 findet ihr oben rechts auf unserer Kurswebseite
+- Kontaktiert mich unter der Woche jederzeit auf Slack 
+
+]
+
+---
+class: middle
+
+# .big[Feedback]
+
+---
+class: left
+background-image: url(img/tor.jpg)
+background-position: right
+background-size: contain
+
+# Ziele erreicht? 
+
+Bitte ausfüllen: [kutt.it/rstatszh-eval](https://kutt.it/rstatszh-eval)
+
+.pull-left[
+
+.footnote[Photo by: [Virgil Cayasa](https://unsplash.com/@virgilcayasa)]
+
+]
+
+---
+# `r emo::ji("sunflower")` Danke 
+
+Für die Aufmerksamkeit!
+
+Für die R packages [{xaringan}](https://github.com/yihui/xaringan) und [{xaringanthemer}](https://github.com/gadenbuie/xaringanthemer) mit welchen die Folien geschrieben wurden.
+
+Eine PDF Version der Folien kann hier heruntergeladen werden: https://github.com/rstatsZH/website/raw/master/slides/e1_d01-willkommen/e1_d01-willkommen.pdf
+
+`r hr()`
+
+Für [Data Science in a Box](https://datasciencebox.org/) und [Remaster the Tidyverse](https://github.com/rstudio-education/remaster-the-tidyverse), von welchen ich Materialien für diesen Kurs nutze und welche genau wie diese Folien mit [Creative Commons Attribution Share Alike 4.0 International](https://creativecommons.org/licenses/by-sa/4.0/) lizensiert sind.

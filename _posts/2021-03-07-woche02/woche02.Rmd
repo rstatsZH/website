@@ -8,8 +8,6 @@ output:
     toc: true
     self_contained: false
 preview: img/data-vis.jpg    
-editor_options: 
-  chunk_output_type: console
 ---
 
 <script async defer data-domain="rstatszh.github.io/website" src="https://plausible.io/js/plausible.js"></script>

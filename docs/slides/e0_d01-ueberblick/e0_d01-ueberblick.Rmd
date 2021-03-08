@@ -230,12 +230,12 @@ Dementsprechend orientiert sich der Kurs auch an dem von ihm geschriebenen Buch 
 .pull-left[
 
 ```{r}
-icon::fa_git(size = 5)
+
 ```
 
 
 ```{r}
-icon::fa_github(size = 5)
+# icon::fa_github(size = 5)
 ```
 
 ]

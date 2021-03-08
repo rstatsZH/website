@@ -1,5 +1,17 @@
 [
   {
+    "path": "posts/2021-03-07-woche02/",
+    "title": "Woche 2 - Daten Visualisierung mit ggplot2",
+    "description": "Ziele und Materialien für unsere zweite gemeinsame Woche",
+    "author": [],
+    "date": "2021-03-05",
+    "categories": [],
+    "contents": "\n\nContents\nZiele\nFolien\nWeiterführende Aufgaben\n\n\n\n\n\n\n\nFigure 1: Photo by Neven Krcmarek\n\n\n\nLerne das Grundkonzept des {ggplot2} R Package kennen und erstelle selbständig einen Plot mit offenen Behördendaten (Open Government Data)\nZiele\nAm Ende dieser Woche kannst du:\nden Unterschied zwischen markdown und R Markdown beschreiben\nselbständig einen Plot mit dem R Package {ggplot2} erstellen\ninnerhalb von RStudio selbstständig eine neue R Markdown Datei erstellen\ndas Aussehen eines HTML Dokuments anpassen\nFolien\n\n\n\n\n\n\nfitvids('.shareagain', {players: 'iframe'});\n\nWeiterführende Aufgaben\n\n\nBuch\n\n\nR4DS - Chapter 3.1 bis 3.7 - Visualisation\n\n\nPflicht\n\n\n~ 60 Minuten\n\n\nHausaufgabe\n\n\nHausaufgabe 02 - Hallo OGD\n\n\nPflicht\n\n\n~ 90 Minuten\n\n\nTutorial\n\n\nRStudio Primer - Visualisation Basics\n\n\nFreiwillig\n\n\n~ 60 Minuten\n\n\nFolien\n\n\nR markdown\n\n\nFreiwillig\n\n\n~ 30 Minuten\n\n\n\n\n\n",
+    "preview": "posts/2021-03-07-woche02/img/data-vis.jpg",
+    "last_modified": "2021-03-08T09:54:19+01:00",
+    "input_file": {}
+  },
+  {
     "path": "posts/2021-02-17-ueberblick/",
     "title": "Überblick",
     "description": "Schau herein um Informationen zum Kursinhalt, den Lehrpersonen und freien Terminen zu bekommen.",
@@ -18,9 +30,9 @@
     "author": [],
     "date": "2021-02-12",
     "categories": [],
-    "contents": "\n\nContents\nZiele\nFolien\nWeiterführende Aufgaben\n\n\n\n\n\n\n\nFigure 1: Photo by Barn Images\n\n\n\nMache dich mit dem Kurs, den Werkzeugen, dem Arbeitsablauf und den Fähigkeiten, die du im Laufe des Kurses erwerben wirst, vertraut.\nZiele\nAm Ende dieser Woche kannst du:\ndie Werkzeuge welche wir für den Kurs nutzen öffnen\nein git repository aus GitHub in deine Arbeitsumgebung laden\neine geänderte Datei auf ein git repository auf GitHub pushen\nbeschreiben welche Elemente Teil eines R Markdown Dokuments sind\nR code für eine Visuaisierung mit {ggplot2} reproduzieren\nFolien\n\n\n\n\n\n\nfitvids('.shareagain', {players: 'iframe'});\n\nWeiterführende Aufgaben\n\n\n1\n\n\nBuch\n\n\nR4DS - Chapter 2 - Introduction\n\n\nPflicht\n\n\n~ 10 Minuten\n\n\n2\n\n\nHausaufgabe\n\n\nHausaufgabe 01 - Hallo Git\n\n\nPflicht\n\n\n~ 1.5 Stunden\n\n\n3\n\n\nBlog Post\n\n\nIntroducing RStudio and R Markdown\n\n\nFreiwillig\n\n\n~ 30 Minuten\n\n\n\n\n\n",
+    "contents": "\n\nContents\nZiele\nFolien\nWeiterführende Aufgaben\n\n\n\n\n\n\n\nFigure 1: Photo by Barn Images\n\n\n\nMache dich mit dem Kurs, den Werkzeugen, dem Arbeitsablauf und den Fähigkeiten, die du im Laufe des Kurses erwerben wirst, vertraut.\nZiele\nAm Ende dieser Woche kannst du:\ndie Werkzeuge welche wir für den Kurs nutzen öffnen\nein git repository aus GitHub in deine Arbeitsumgebung laden\neine geänderte Datei auf ein git repository auf GitHub pushen\nbeschreiben welche Elemente Teil eines R Markdown Dokuments sind\nR code für eine Visuaisierung mit {ggplot2} reproduzieren\nFolien\n\n\n\n\n\n\nfitvids('.shareagain', {players: 'iframe'});\n\nWeiterführende Aufgaben\n\n\n1\n\n\nBuch\n\n\nR4DS - Chapter 2 - Introduction\n\n\nPflicht\n\n\n~ 10 Minuten\n\n\n2\n\n\nHausaufgabe\n\n\nHausaufgabe 01 - Hallo Git\n\n\nPflicht\n\n\n~ 90 Minuten\n\n\n3\n\n\nBlog Post\n\n\nIntroducing RStudio and R Markdown\n\n\nFreiwillig\n\n\n~ 30 Minuten\n\n\n\n\n\n",
     "preview": "posts/2021-02-17-woche01/img/toolbox.jpg",
-    "last_modified": "2021-03-04T14:55:40+01:00",
+    "last_modified": "2021-03-08T09:54:24+01:00",
     "input_file": {}
   }
 ]

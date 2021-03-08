@@ -7,7 +7,15 @@
     <description>Ein R Kurs für Mitarbeiter_innen der Verwaltung des Kantons Zürich
 </description>
     <generator>Distill</generator>
-    <lastBuildDate>Sun, 14 Feb 2021 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 05 Mar 2021 00:00:00 +0000</lastBuildDate>
+    <item>
+      <title>Woche 2 - Daten Visualisierung mit ggplot2</title>
+      <link>https://rstatszh.github.io/website/posts/2021-03-07-woche02</link>
+      <description>Ziele und Materialien für unsere zweite gemeinsame Woche</description>
+      <guid>https://rstatszh.github.io/website/posts/2021-03-07-woche02</guid>
+      <pubDate>Fri, 05 Mar 2021 00:00:00 +0000</pubDate>
+      <media:content url="https://rstatszh.github.io/website/posts/2021-03-07-woche02/img/data-vis.jpg" medium="image" type="image/jpeg"/>
+    </item>
     <item>
       <title>Überblick</title>
       <link>https://rstatszh.github.io/website/posts/2021-02-17-ueberblick</link>

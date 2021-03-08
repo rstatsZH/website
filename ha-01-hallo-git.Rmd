@@ -1,7 +1,5 @@
 ---
 title: "Hausaufgabe 01 - Hallo Git!"
-editor_options: 
-  chunk_output_type: console
 ---
 
 <script async defer data-domain="rstatszh.github.io/website" src="https://plausible.io/js/plausible.js"></script>

@@ -502,13 +502,9 @@ ggplot(data = penguins,
 ]
 ]
 
----
-class: middle
-
-# .big[Hausaufgabe]
 
 ---
-class: middle
+class: middle, inverse
 
 # .big[Feedback]
 
@@ -529,13 +525,19 @@ Bitte ausfüllen: [kutt.it/rstatszh-eval](https://kutt.it/rstatszh-eval)
 ]
 
 ---
+class: middle, inverse
+
+# .big[Hausaufgabe]
+
+
+---
 # Hausaufgabe
 
 .note[
 
 - Öffnet jetzt eure E-Mail Inbox
-- Bestätigt mir im Zoom Chat, dass ihr eine Email mit Betreff **"rstatsZH - Lars hat das Repo ha01-GitHubName"** erhalten habt
-- Die Anweisungen für die Heausaufgabe 01 findet ihr oben rechts auf unserer Kurswebseite
+- Bestätigt mir im Zoom Chat, dass ihr eine Email mit Betreff **"rstatsZH - Lars hat das Repo ha02-GitHubName"** erhalten habt
+- Die Anweisungen für die Heausaufgabe 02 findet ihr oben rechts auf unserer Kurswebseite
 - Kontaktiert mich unter der Woche jederzeit auf Slack 
 
 ]

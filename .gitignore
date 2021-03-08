@@ -48,7 +48,6 @@ po/*~
 *-solutions.html
 
 # ignore _files folder
-*_files
 
 # Files
 *.DS_Store

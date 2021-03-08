@@ -16,6 +16,8 @@ navbar:
       menu:
         - text: "Hausaufgabe 01"
           href: ha-01-hallo-git.html 
+        - text: "Hausaufgabe 02"
+          href: ha-02-hallo-ogd.html 
     - text: "Code of Conduct"
       href: code_of_conduct.html
     - icon: fab fa-github

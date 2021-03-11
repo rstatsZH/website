@@ -105,8 +105,13 @@ background-size: contain
 Ein grosses Lob dafür was ihr letzte Woche erreicht habt. 
 
 Vieles von den Dingen wird sich weiterhin noch sehr fremd anfühlen, aber lasst euch nich beunruhigen. 
-
 Das ist völlig normal. Am Ende des Kurses wird es sich hoffentlich ganz natürlich anfühlen eine Datei aus GitHub zu holen und damit zu arbeiten.
+
+---
+background-image: url(img/r_rollercoaster.png)
+background-size: contain 
+
+.footnote[Artwork by [@allison_horst](https://twitter.com/allison_horst)]
 
 ---
 background-image: url(img/goals-dart.jpg)

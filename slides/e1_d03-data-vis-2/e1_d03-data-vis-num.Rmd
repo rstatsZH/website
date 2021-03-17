@@ -1,0 +1,89 @@
+---
+title: "rstatsZH - Data Science mit R"
+subtitle: "Datenvisualisierung verschiedener Datentypen"  
+author: "Lars Schöbitz"
+date: "2020-03-22"
+output:
+  xaringan::moon_reader:
+    self_contained: false
+    lib_dir: libs
+    css: ["default", "../assets/css/xaringan-themer.css", "../assets/css/my-css-style.css"]
+    seal: FALSE
+    nature:
+      slideNumberFormat: |
+        <div class="progress-bar-container">
+          <div class="progress-bar" style="width: calc(%current% / %total% * 100%);">
+          </div>
+        </div>
+      highlightStyle: solarized-light
+      highlightLanguage: ["r", "css", "yaml"]
+      highlightLines: true
+      countIncrementalSlides: false
+      ratio: "16:9"
+---
+
+class: title-slide
+
+```{r child = "../setup.Rmd"}
+
+```
+
+```{r}
+
+library(palmerpenguins)
+library(dplyr)
+library(ggplot2)
+
+```
+
+
+# `r rmarkdown::metadata$title`
+## `r rmarkdown::metadata$subtitle` 
+
+.bottom[
+
+```{r, echo=FALSE}
+p(rmarkdown::metadata$author)
+p(rmarkdown::metadata$date)
+```
+]
+
+---
+class: left
+background-image: url(img/review.jpg)
+background-position: right
+background-size: contain
+
+# Rückblick - Woche 2
+
+**Daten erkunden**
+
+- Über mapping visueller Eigenschaften
+  - `aes()`
+- Über Faceting
+  - `facet_grid()` - 2 dimensional
+  - `facet_wrap()` - 1 dimensional
+- Mit Funktionen
+  - `glimpse()`
+  - `str()`
+  - `nrow()`
+  - `ncol()`
+  - `View()`
+
+.footnote[Photo by: [Annie Spratt](https://unsplash.com/photos/nVrqbvzOh08)]
+
+???
+
+# Ziele für diese Woche
+
+.pull-left[
+
+Am Ende dieser Woche könnt ihr:
+
+- die Farb und Achsenskalierung eines Plots anpassen
+- den passenden Plot für eure Daten finden
+- einzelne Funktionen des R Package `{dplyr}` anwenden
+- beschreiben wie das Symbol `%>%` genutzt wird
+
+.footnote[Photo by: [Ameer Basheer](https://unsplash.com/photos/nVrqbvzOh08)]
+]

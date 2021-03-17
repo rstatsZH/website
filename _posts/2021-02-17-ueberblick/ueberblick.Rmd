@@ -47,9 +47,13 @@ Am Ende dieses Kurses kannst du:
 
 # Wer leitet den Kurs?
 
-**Angebot**
+**Angebot & Koordination**
 
 Matthias Mazenaur  
+[Data Shop](https://www.zh.ch/de/direktion-der-justiz-und-des-innern/statistisches-amt/data-shop.html#-595137091)  
+Statistisisches Amt des Kantons Zürich  
+
+Thomas Knecht  
 [Data Shop](https://www.zh.ch/de/direktion-der-justiz-und-des-innern/statistisches-amt/data-shop.html#-595137091)  
 Statistisisches Amt des Kantons Zürich  
 
@@ -63,14 +67,15 @@ Lars Schöbitz GmbH
 ```{r, echo=FALSE, layout="l-body-outset"}
 
 googlesheets4::read_sheet("1WhGB4Pqpr4ywGbOKaC2UoRsyaf5jbI7L8jY75Lic9FE") %>% 
-  select(-starts_with("Woche")) %>% 
+  select(-Start, -Ende) %>% 
   mutate(
-    Start = format(Start, "%d. %B %Y"),
-    Ende = format(Ende, "%d. %B %Y"),
+    #Start = format(Start, "%d. %B %Y"),
+    #Ende = format(Ende, "%d. %B %Y"),
     Bemerkung = case_when(is.na(Bemerkung) == TRUE ~ " ", TRUE ~ Bemerkung)
     ) %>% 
-  knitr::kable(format = "html") #%>% 
-  #kableExtra::kable_styling(bootstrap_options = c("striped", "hover"))
+  gt::gt() %>% 
+  gt::opt_row_striping() %>% 
+  gt::tab_options(column_labels.font.weight = "bold")
 ```
 
 # Wo kann ich mich (unverbindlich) anmelden?

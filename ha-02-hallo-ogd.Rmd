@@ -135,10 +135,12 @@ corona_kultur_beschluss_gering <- corona_kultur %>%
 
 corona_kultur_beschluss_gering %>%
   ggplot(aes(x = Beschluss, fill = Sparte)) +
-  geom_histogram() +
-  facet_wrap(~Kategorie) +
+  geom_histogram(binwidth = 10000) +
+  facet_wrap(~Kategorie, ncol = 3) +
   scale_fill_brewer(type = "qual", palette = 3) +
-  labs(title = "Mein Titel", subtitle = "Mein Untertitel", caption = "Fertig")
+  labs(title = "Corona Hilfen im Kulturbereich im Kanton Zürich", 
+       subtitle = "Verteilung der Beträge kleiner 100'000 CHF nach Kategorie und Sparte", 
+       caption = "Daten: opendata.swiss")
 
 ```
 
@@ -149,10 +151,11 @@ Gratulation! Du hast die Übungen abgeschlossen. Falls du noch Lust und Zeit has
 ## Übung 4 (Bonus)
 
 1. Nutze das Objekt `corona_kultur` und erstelle einen Barplot
-2. Ordne die Variable 'Sparte' der visuellen Eigenschaft für Farben
-3. Nutze Faceting und lege die Variable 'Kategorie' auf die Spalten
-4. Füge einen Titel, einen Untertitiel und eine Bildunterschrift (caption) hinzu.
-5. Ändere die Position der Legende auf den unteren obereich des Plots (**Tipp:** Schau nach was wir in Übung 2 aus Praktikum 4 gemacht haben)
+2. Ordne die Variable 'Sparte' der visuellen Eigenschaft für Farben zu
+3. Ordne der x-Achse eine kategoriale Variable zu (anstatt einer numerischen Variable) (**Achtung: Dieser Schritt wurde nachträglich hinzugefügt**)
+4. Nutze Faceting und lege die Variable 'Kategorie' auf die Spalten
+5. Füge einen Titel, einen Untertitiel und eine Bildunterschrift (caption) hinzu.
+6. Ändere die Position der Legende auf den unteren Bereich des Plots (**Tipp:** Schau nach was wir in Übung 2 aus Praktikum 4 gemacht haben)
 
 ```{r, include=FALSE}
 

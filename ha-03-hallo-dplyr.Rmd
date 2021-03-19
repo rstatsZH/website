@@ -1,0 +1,8 @@
+---
+title: "Hausaufgabe 02 - Hallo Open (Government) Data"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+

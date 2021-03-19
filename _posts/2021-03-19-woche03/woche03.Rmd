@@ -1,0 +1,77 @@
+---
+title: "Woche 2 - Daten Transformation mit dplyr"
+description: |
+  Ziele und Materialien für unsere dritte gemeinsame Woche
+date: 03-19-2021
+output:
+  distill::distill_article:
+    toc: true
+    self_contained: false
+preview: img/pliers.jpg    
+---
+
+<script async defer data-domain="rstatszh.github.io/website" src="https://plausible.io/js/plausible.js"></script>
+
+```{r setup, echo=FALSE}
+library(magrittr)
+library(tidyverse)
+```
+
+```{r, layout="l-body", preview=TRUE, echo=FALSE, include=TRUE, fig.cap="Photo by [eleonora](https://unsplash.com/photos/JcL5sCUnBeI)"}
+
+knitr::include_graphics("img/pliers.jpg")
+
+```
+
+Lerne die Funktionen des `{dplyr}` R Package kennen und vertiefe deine Fähigkeiten im Umgang mit Visualisierungen. 
+# Ziele
+
+Am Ende dieser Woche könnt ihr:
+
+- die Farb- und Achsenskalierung eines Plots anpassen
+- den passenden Plot für deine Daten finden
+- einzelne Funktionen des R Package `{dplyr}` anwenden
+- beschreiben wie das Symbol `%>%` genutzt wird
+
+# Folien
+
+## Daten Visualisierung - Teil 2
+
+```{r share-again1, echo=FALSE}
+
+xaringanExtra::use_share_again()
+
+```
+
+```{r embed-xaringan1, echo=FALSE, fig.cap="[Folien](slides/e1_d03-data-vis-num/e1_d03-data-vis-num.html)"}
+
+xaringanExtra::embed_xaringan("../../slides/e1_d03-data-vis-num/e1_d03-data-vis-num.html", ratio = "16:9")
+
+```
+
+## Daten Transformation
+
+```{r share-again2, echo=FALSE}
+
+xaringanExtra::use_share_again()
+
+```
+
+```{r embed-xaringan2, echo=FALSE, fig.cap="[Folien](slides/e1_d04-data-transform/e1_d04-data-transform.html)"}
+
+xaringanExtra::embed_xaringan("../../slides/e1_d04-data-transform/e1_d04-data-transform.html", ratio = "16:9")
+
+```
+
+# Weiterführende Aufgaben
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE}
+
+googlesheets4::read_sheet("198t05eFYHxuxY0d2jCvPkES1ZaMcsSYgBKcg0xQTwb0") %>% 
+  mutate(titel2 = paste0("[", titel, "](", link, ")")) %>% 
+  filter(woche == "woche3") %>% 
+  select(type, titel2, aufgabe, zeitaufwand) %>% 
+  arrange(desc(aufgabe)) %>% 
+  knitr::kable(format = "html", col.names = NULL)
+
+```

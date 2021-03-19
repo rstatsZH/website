@@ -1,0 +1,464 @@
+---
+title: "rstatsZH - Data Science mit R"
+subtitle: "Datenvisualisierung verschiedener Datentypen"  
+author: "Lars Schöbitz"
+date: "2020-03-22"
+output:
+  xaringan::moon_reader:
+    self_contained: false
+    lib_dir: libs
+    css: ["default", "../assets/css/xaringan-themer.css", "../assets/css/my-css-style.css"]
+    seal: FALSE
+    nature:
+        </div>
+      slideNumberFormat: |
+        <div class="progress-bar-container">
+          </div>
+          <div class="progress-bar" style="width: calc(%current% / %total% * 100%);">
+      highlightStyle: solarized-light
+      highlightLanguage: ["r", "css", "yaml"]
+      highlightLines: true
+      countIncrementalSlides: false
+      ratio: "16:9"
+editor_options: 
+  chunk_output_type: console
+---
+
+class: title-slide
+
+```{r child = "../setup.Rmd"}
+
+```
+
+```{r}
+
+library(palmerpenguins)
+library(dplyr)
+library(readr)
+library(ggplot2)
+library(gt)
+
+```
+
+```{r, echo=FALSE}
+
+corona_kultur <- read_csv("https://www.web.statistik.zh.ch/ogd/data/ji/fk/kultur_ausfallentschaedigung.csv")
+
+corona_kultur_beschluss_gering <- corona_kultur %>% 
+  filter(Beschluss < 100000) 
+
+```
+
+
+
+
+# `r rmarkdown::metadata$title`
+## `r rmarkdown::metadata$subtitle` 
+
+.bottom[
+
+```{r, echo=FALSE}
+p(rmarkdown::metadata$author)
+p(rmarkdown::metadata$date)
+```
+]
+
+---
+class: left
+background-image: url(img/review.jpg)
+background-position: right
+background-size: contain
+
+# Rückblick - Woche 2
+
+**Daten erkunden**
+
+- Über mapping visueller Eigenschaften
+- `aes()`
+- Über Faceting
+- `facet_grid()` - 2 dimensional
+- `facet_wrap()` - 1 dimensional
+- Mit Funktionen
+- `glimpse()`
+- `str()`
+- `nrow()`
+- `ncol()`
+- `View()`
+
+.footnote[Photo by: [Annie Spratt](https://unsplash.com/photos/nVrqbvzOh08)]
+
+???
+
+# Ziele für diese Woche
+
+.pull-left[
+
+Am Ende dieser Woche könnt ihr:
+
+- die Farb- und Achsenskalierung eines Plots anpassen
+- den passenden Plot für eure Daten finden
+- einzelne Funktionen des R Package `{dplyr}` anwenden
+- beschreiben wie das Symbol `%>%` genutzt wird
+
+.footnote[Photo by: [Ameer Basheer](https://unsplash.com/photos/nVrqbvzOh08)]
+]
+
+
+---
+# Hausaufgabe - Hallo OGD
+
+.note[
+
+1. Öffnet eure R Markdown Datei für die Hausaufgabe 2
+2. Strickt das Dokument
+3. Wer möchte einen Plot aus Übung 3 präsentieren?
+4. Wer möchte einen Plot aus Übung 4 präsentieren?
+
+]
+---
+class: inverse, middle
+
+# .big[Übung 3 - Beispiel]
+
+---
+
+
+.panelset[
+.panel[.panel-name[Plot]
+```{r ref.label="corona-kultur", echo=FALSE, warning=FALSE, out.width="100%", fig.width=11}
+
+
+```
+]
+
+.panel[.panel-name[Code]
+```{r corona-kultur, fig.show="hide", echo=TRUE}
+
+
+ggplot(data = corona_kultur_beschluss_gering,
+       aes(x = Beschluss, 
+           fill = Sparte)) + 
+  geom_histogram(binwidth = 10000) +  #<<
+  facet_wrap(~Kategorie) +
+  scale_fill_brewer(type = "qual", palette = 3) +
+  scale_x_continuous(breaks = seq(0, 100000, 10000), #<<
+                     labels = seq(0, 100, 10)) + #<<
+  labs(title = "Corona Hilfen im Kulturbereich im Kanton Zürich", 
+       subtitle = "Verteilung der Beträge kleiner 100'000 CHF nach Kategorie und Sparte", 
+       caption = "Daten: opendata.swiss",
+       x = "Beschluss in 1000 CHF") + 
+  theme(legend.position = "bottom") #<<
+
+
+```
+
+]
+]
+
+---
+class: inverse, middle
+
+# .big[Übung 4 - Beispiel]
+
+---
+.panelset[
+.panel[.panel-name[Plot]
+```{r echo=FALSE, fig.width=9, warning=FALSE, out.width="100%", ref.label="corona-kultur-bar"}
+
+
+
+
+```
+]
+
+.panel[.panel-name[Code]
+```{r corona-kultur-bar, fig.show="hide", echo=TRUE}
+
+ggplot(data = corona_kultur, 
+       mapping =  aes(x = Status, 
+                      fill = Sparte)) +
+  geom_bar() +
+  facet_wrap(~Kategorie, nrow = 1) +
+  scale_fill_brewer(type = "qual", palette = 3) +
+  theme_minimal(base_size = 14) +  #<<
+  theme(panel.grid.major.x = element_blank(), #<<
+        panel.grid.minor.y = element_blank()) + #<<
+  theme(legend.position = "bottom") #<<
+
+```
+
+]
+]
+
+---
+class: iverse, middle
+
+# .large[Praktikum 3 - {ggplot2}]
+
+---
+
+.note[
+
+1. **RStudio Cloud**: Öffne deinen Arbeitsbereich für den Kurs in der RStudio Cloud
+2. **RStudio Cloud / Projects**: Öffne erneut das Praktikum 03
+3. Folgt wieder auf dem Bildschirm
+
+]
+
+---
+## Eine Skala ersetzen - Farbskalen (color)
+
+```{r penguins-scale-color, warning = FALSE, echo=TRUE, fig.show="hide"}
+ggplot(penguins, aes(x = bill_length_mm, y = bill_depth_mm, colour = species)) +
+  geom_point() +
+  scale_color_viridis_d() #<<
+```
+
+```{r ref.label = "penguins-scale-color", echo = FALSE, warning = FALSE, out.width = "80%", fig.width = 8}
+```
+
+---
+## Eine Skala ersetzen - Farbskalen (fill)
+
+```{r penguins-scale-fill, warning = FALSE, echo=TRUE, fig.show="hide"}
+ggplot(penguins, aes(x = species, fill = island)) +
+  geom_bar() +
+  scale_fill_viridis_d() #<<
+```
+
+```{r ref.label = "penguins-scale-fill", echo = FALSE, warning = FALSE, out.width = "80%", fig.width = 8}
+```
+
+
+---
+## Eine Skala ersetzen - Achsen (kontinuierliche Variable)
+
+.pull-left[
+
+```{r penguins-scale-continuous, warning = FALSE, echo=TRUE, fig.show="hide"}
+
+ggplot(penguins, 
+       aes(x = bill_length_mm,
+           y = bill_depth_mm,
+           colour = species)) +
+  geom_point() +
+  scale_color_viridis_d() +
+  scale_x_continuous(breaks = seq(0, 70, 5), limits = c(0, 70)) + #<<
+  scale_y_continuous(breaks = seq(0, 30, 2.5), limits = c(0, 30)) #<<
+
+
+```
+
+]
+
+.pull-right[
+
+```{r ref.label = "penguins-scale-continuous", echo = FALSE, warning = FALSE, out.width = "80%", fig.width = 8}
+```
+
+]
+
+---
+## Eine Skala ersetzen - Achsen (Datum)
+
+```{r, echo=FALSE}
+
+letzter_monat <- Sys.Date() - 0:29
+temp_vek <- runif(n = 30, min = -10, max = 10)
+
+tib <- tibble(
+  datum = letzter_monat,
+  temperatur = temp_vek
+)
+
+
+```
+
+
+.pull-right[
+```{r}
+
+tibble::tribble(
+  ~Code,                                 ~Meaning,
+  "%S",                         "second (00-59)",
+  "%M",                         "minute (00-59)",
+  "%l",          "hour, in 12-hour clock (1-12)",
+  "%I",         "hour, in 12-hour clock (01-12)",
+  "%H",         "hour, in 24-hour clock (01-24)",
+  "%a", "day of the week, abbreviated (Mon-Sun)",
+  "%A",  "day of the week, full (Monday-Sunday)",
+  "%e",                "day of the month (1-31)",
+  "%d",               "day of the month (01-31)",
+  "%m",                 "month, numeric (01-12)",
+  "%b",           "month, abbreviated (Jan-Dec)",
+  "%B",         "month, full (January-December)",
+  "%y",          "year, without century (00-99)",
+  "%Y",         "year, with century (0000-9999)"
+) %>% 
+  gt::gt() %>% 
+  gt::opt_row_striping() %>% 
+  gt::tab_options(column_labels.font.weight = "bold")
+
+```
+]
+
+pull.left[
+
+```{r, eval = FALSE, echo = TRUE}
+
+ggplot(data = tib,
+       mapping =  aes(x = datum, 
+                      y = temperatur)) +
+  geom_line() + 
+  coord_flip() + 
+  scale_x_date(
+    date_labels = "%a, %b %d, %Y",  #<<
+    date_breaks = "1 day") + #<<
+  theme_minimal() +
+  theme(panel.grid.minor.y = element_blank())
+
+```
+
+]
+
+.footnote[
+From:[ggplot2: Elegant Graphics for Data Analysis](https://ggplot2-book.org/scale-position.html#date-scales)
+]
+
+---
+class: iverse, middle
+
+# .large[Variablen Typen]
+
+
+---
+# Variablen Typen
+
+```{r}
+
+# **Numerische Variablen**
+
+text1 <- "
+**Diskrete Variablen**
+- nicht negative
+- zählbare
+- ganze Zahlen
+- z.B. Anzahl Schüler, Würfelwurf
+"
+
+text2 <- "
+**Stetige (kontinuierliche) Variablen**
+- unendliche Anzahl von Werten 
+- zwischen zwei Werten
+- auch Datums/Uhrzeitwerte
+- z.B. Länge, Gewicht, Grösse "
+
+# **Nicht-numerisch**
+
+text3 <- "
+**Kategoriale Variablen**
+- endliche Anzahl von Werten 
+- eindeutige Gruppen (z.B. EU Länder)
+- **ordinal**, wenn diese eine logische Reihenfolge/Rangordnung aufweisen (z.B. Wochentage, Schulnoten)
+"  
+
+
+dplyr::tribble(
+  ~Numerisch, ~`Nicht numerisch`,
+  text1, text3,
+  text2, "") %>% 
+  gt() %>%
+  fmt_markdown(columns = TRUE) %>%
+  #tab_options(table.width = px(800)) %>% 
+   gt::tab_options( 
+     column_labels.font.size = 30, column_labels.background.color = "gray"
+     ) %>% 
+  tab_style(
+    style = list(
+      cell_text(size = "x-large")), 
+    locations = cells_body())
+
+```
+
+---
+# Übung
+
+.note[
+
+Arbeitet in 2er Teams.
+
+1. **RStudio Cloud**: Öffnet euren Arbeitsbereich für den Kurs
+2. **RStudio Cloud / Projects**: Öffnet Praktikum 3
+3. Unter dem Kapitel "Daten kennelernen" 
+    - erkundet den Datensatz `penguins` mit den Funktionen `glimpse()` und `str()`
+    - öffnet die Help-File für den Datensatz `penguins`
+    - beschreibt den Variablen Typen für jede Variable im Datensatz 
+
+]
+
+```{r}
+
+tibble(
+  Variable = "Var 1",
+  `Variablen Typ 1` = "numerisch/kategorisch",
+  `Variablen Typ 2` = "diskret/stetig (kontinuierlich), oder ordinal/nicht ordinal"
+) %>% 
+  gt() %>% 
+  gt::tab_options(column_labels.font.weight = "bold")
+
+```
+
+```{r}
+
+countdown(
+  minutes = 10, seconds = 0,
+  left = 0, right = 0,
+  padding = "15px", margin = "5%",
+  font_size = "4em"
+)
+
+
+```
+
+---
+
+```{r}
+
+"diskret/stetig (kontinuierlich), oder ordinal/nicht ordinal"
+
+tibble(
+  Variable = names(penguins),
+  `Variablen Typ 1` = c("kategorisch", "kategorisch", "numerisch", "numerisch", "numerisch", "numerisch", "kategorisch", "numerisch"), 
+  `Variablen Typ 2` = c("nicht ordinal", "nicht ordinal", rep("kontinuierlich", 4), "nicht ordinal", "diskret")
+) %>% 
+  gt() %>% 
+  gt::tab_options(column_labels.font.weight = "bold")
+
+
+?penguins
+```
+
+
+???
+Diskrete Variablen sind numerische Variablen, die zwischen zwei beliebigen Werten eine zählbare Anzahl von nicht negativen Werten aufweisen. Eine diskrete Variable ist immer numerisch. Beispiele: Die Anzahl Schüler in der Primarschule oder das Ergebnis eines Wurfs eines Würfels. 
+
+Stetige Daten sind numerische Variablen, die zwischen zwei beliebigen Werten eine unendliche Anzahl von Werten aufweisen. Stetige Variablen können aus numerischen oder Datums-/Uhrzeitwerten bestehen. Beispiel: die Länge eines Teils oder Datum und Uhrzeit eines Zahlungseingangs
+
+Kategoriale Variablen umfassen eine endliche Anzahl von Kategorien oder eindeutigen Gruppen. Kategoriale Daten müssen nicht zwangsläufig eine logische Reihenfolge aufweisen. Zu den kategorialen Prädiktoren zählen beispielsweise Geschlecht, Materialtyp und Zahlungsmethode
+
+
+
+---
+background-image: url(img/data-to-viz.png)
+background-size: contain
+
+.footnote[Screenshot of: https://www.data-to-viz.com/]
+
+
+
+---
+# Zwei Bücher für eure weitere Reise
+
+- `{ggplot2}`: Elegant Graphics for Data Analysis  https://ggplot2-book.org/index.html
+- Fundamentals of Data Visualization: https://clauswilke.com/dataviz/
+

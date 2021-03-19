@@ -1,0 +1,240 @@
+---
+title: "rstatsZH - Data Science mit R"
+subtitle: "Daten Transformation mit dplyr"
+author: "Lars Schöbitz"
+date: "2020-03-22"
+output:
+  xaringan::moon_reader:
+    self_contained: false
+    lib_dir: libs
+    css: ["default", "../assets/css/xaringan-themer.css", "../assets/css/my-css-style.css"]
+    seal: FALSE
+    nature:
+      slideNumberFormat: |
+        <div class="progress-bar-container">
+          <div class="progress-bar" style="width: calc(%current% / %total% * 100%);">
+          </div>
+        </div>
+      highlightStyle: solarized-light
+      highlightLanguage: ["r", "css", "yaml"]
+      highlightLines: true
+      countIncrementalSlides: false
+      ratio: "16:9"
+---
+
+class: title-slide
+
+```{r child = "../setup.Rmd"}
+
+```
+
+```{r}
+
+library(palmerpenguins)
+library(dplyr)
+library(ggplot2)
+
+```
+
+
+# `r rmarkdown::metadata$title`
+## `r rmarkdown::metadata$subtitle` 
+
+.bottom[
+
+```{r, echo=FALSE}
+p(rmarkdown::metadata$author)
+p(rmarkdown::metadata$date)
+```
+]
+
+
+
+---
+class: middle, inverse
+
+# .large[# Data Science Lifecycle]
+
+???
+
+- Wir haben bereits eine ganze Menge über Visualisierungen gelernt
+- Was die Daten bisher alle gemeinsam hatten ist, dass diese in einem Format kommen, welches es uns ermöglicht direkt in die Visualsierungen einzusteigen
+- In der Realität ist das allerdings selten der Fall
+- Bevor wir Daten visualisieren können, müssen wir sie in ein Format bringen, welches das Visualisieren erlaubt
+- Dies wird oft als tidying bezeichnet
+- Auf das data tidying folgt in der Regel auch eine Daten Tranformation
+
+
+---
+background-image: url(img/data-science-lifecycle_de/data-science-lifecycle_de.001.png)
+background-size: contain
+
+---
+background-image: url(img/data-science-lifecycle_de/data-science-lifecycle_de.002.png)
+background-size: contain
+
+---
+background-image: url(img/data-science-lifecycle_de/data-science-lifecycle_de.003.png)
+background-size: contain
+
+---
+background-image: url(img/data-science-lifecycle_de/data-science-lifecycle_de.004.png)
+background-size: contain
+
+---
+background-image: url(img/data-science-lifecycle_de/data-science-lifecycle_de.005.png)
+background-size: contain
+
+---
+background-image: url(img/data-science-lifecycle_de/data-science-lifecycle_de.006.png)
+background-size: contain
+
+---
+background-image: url(img/data-science-lifecycle_de/data-science-lifecycle_de.007.png)
+background-size: contain
+
+---
+background-image: url(img/data-science-lifecycle_de/data-science-lifecycle_de.008.png)
+background-size: contain
+
+???
+Auch Daten Manipulation
+
+---
+class: middle, inverse
+
+# .large[What is Tidy Data?]
+
+---
+background-image: url(img/tidydata_1.jpg)
+background-size: 90%
+
+.footnote[Illustrations from the [Openscapes](https://www.openscapes.org/) blog [Tidy Data for reproducibility, efficiency, and collaboration](https://www.openscapes.org/blog/2020/10/12/tidy-data/) by [Julia Lowndes](https://twitter.com/juliesquid) and [Allison Horst](https://twitter.com/allison_horst)]
+
+???
+
+- Das Wort Tidy, also "aufgeräumt" ist uns bisher nur im Zusammenhang mit dem "tidyverse" begegnet
+- Wir wollen jetzt langsam beginnen uns mit dem Konzept von "tidy data" zu beschäftigen
+- Tidy Data ist eine Art um Daten zu beschriebe, die mit einer bestimmten Struktur organisiert sind
+- Es sind tabellarische Daten, bei der jede Variable in einer eigenen Spalte steht und jede Beobachtung ihrer eigene Zeile hat
+
+---
+background-image: url(img/tidydata_2.jpg)
+background-size: contain
+
+.footnote[Illustrations from the [Openscapes](https://www.openscapes.org/) blog [Tidy Data for reproducibility, efficiency, and collaboration](https://www.openscapes.org/blog/2020/10/12/tidy-data/) by [Julia Lowndes](https://twitter.com/juliesquid) and [Allison Horst](https://twitter.com/allison_horst)]
+
+???
+
+- Der Autor Leo Tolstoy hat einmal gesagt, dass "alle glücklichen Familien einander gleichen, aber dass jede unglückliche Familien auf ihre eigene Art unglücklich ist"
+- Und so beschreibt Hadley Wickham Daten. 
+- Die Struktur von Tidy Data gleicht einander, aber jeder Messy Datensatz ist Messy auf seine eigene Weise
+
+---
+background-image: url(img/tidydata_3.jpg)
+background-size: contain
+
+.footnote[Illustrations from the [Openscapes](https://www.openscapes.org/) blog [Tidy Data for reproducibility, efficiency, and collaboration](https://www.openscapes.org/blog/2020/10/12/tidy-data/) by [Julia Lowndes](https://twitter.com/juliesquid) and [Allison Horst](https://twitter.com/allison_horst)]
+
+???
+
+- Tidy data macht uns effizienter
+- Wenn unsere Daten tidy sind, dann können wir verschiedenszte Werkzeuge nutzen die dafür entwickelt wurden mit dieser Struktur zu arbeiten
+- Genau das sind die Werkzeuge des tidyverse
+
+---
+background-image: url(img/tidydata_4.jpg)
+background-size: contain
+
+.footnote[Illustrations from the [Openscapes](https://www.openscapes.org/) blog [Tidy Data for reproducibility, efficiency, and collaboration](https://www.openscapes.org/blog/2020/10/12/tidy-data/) by [Julia Lowndes](https://twitter.com/juliesquid) and [Allison Horst](https://twitter.com/allison_horst)]
+
+???
+
+- Tidy data erleichtert die Zusammenarbeit
+- Und das unabhängig davon ob wir dabei an an uns selbst in der Zukunft denken, oder an aktuelle und zukünftige Teamkolleginnen und Kollegens
+- Eine Organisation, und gemeinsame Nutzung von Daten auf kosistente und vorhersehbare Weise, beudeutet weniger Anpassung, Zeit und Aufwand für alle 
+
+---
+background-image: url(img/tidydata_5.jpg)
+background-size: contain
+
+.footnote[Illustrations from the [Openscapes](https://www.openscapes.org/) blog [Tidy Data for reproducibility, efficiency, and collaboration](https://www.openscapes.org/blog/2020/10/12/tidy-data/) by [Julia Lowndes](https://twitter.com/juliesquid) and [Allison Horst](https://twitter.com/allison_horst)]
+
+???
+- Tidy data unterstüzt auch die Reproduzierbarkeit und Wiederverwendbarkeit unseres Codes
+- Analysen können leichter verstanden, aktualisiert und wiederverwendete werden, da alle die gleichen Datenstruktur erwarten
+
+---
+background-image: url(img/tidydata_6.jpg)
+background-size: contain
+
+.footnote[Illustrations from the [Openscapes](https://www.openscapes.org/) blog [Tidy Data for reproducibility, efficiency, and collaboration](https://www.openscapes.org/blog/2020/10/12/tidy-data/) by [Julia Lowndes](https://twitter.com/juliesquid) and [Allison Horst](https://twitter.com/allison_horst)]
+
+???
+- Sobald ihr mit den Werkzeugen für die Arbeit mit tidy data ausgestattet seid, eröffnet sich eine ganze neue Welt von Datensätzen
+- Diese fühlen sich zugänglicher an, da mit vertrauten Werkzeugen gearbeitet werden kann
+- Dieses Vertrauen und die Fähigkeit zur Zusammenarbeit sind wahrscheinlich das Beste an Tidy Data
+
+---
+background-image: url(img/tidydata_7.jpg)
+background-size: contain
+
+.footnote[Illustrations from the [Openscapes](https://www.openscapes.org/) blog [Tidy Data for reproducibility, efficiency, and collaboration](https://www.openscapes.org/blog/2020/10/12/tidy-data/) by [Julia Lowndes](https://twitter.com/juliesquid) and [Allison Horst](https://twitter.com/allison_horst)]
+
+???
+- Also, fangen wir an Bekanntschaft mit tidy data zu machen und den Werkzeugen die wir nutzen können
+
+---
+class: middle, inverse
+
+# .large[Daten Transformation mit {dplyr}]
+
+---
+## A Grammatik der Daten Manipulation (data wrangling)...
+
+...basierend auf dem Konzept von Funktionen als Verben, die Daten manipulieren
+
+.pull-left-narrow[
+```{r dplyr-part-of-tidyverse, echo=FALSE, out.width="70%", caption = "dplyr is part of the tidyverse"}
+knitr::include_graphics("img/dplyr-part-of-tidyverse.png")
+```
+]
+.pull-right-wide[
+- `select`: Spalten beim Namen auswählen
+- `arrange`: Zeilen neu ordnen
+- `slice`: Zeilen über einen Index auswählen
+- `filter`: Zeilen mit bestimmten Kriterien auswählen
+- `distinct`: Eindeutige Zeilen filtern
+- `mutate`: Neue Variablen hinzufügen
+- `summarise`: Variablen auf Werte reduzieren
+- `group_by`: Gruppierte Arbeitsgänge
+- ... (und viele viele mehr)
+]
+
+???
+- Vorlesen
+
+---
+# Regeln für `{dplyr}` Funktionen
+
+1. Das erste Argument ist immer ein Dataframe (genau wie bei ggplot)
+2. Die folgenden Argumente geben man was mit dem Dataframe gemacht werden soll
+3. Geben immer einen Dataframe zurück
+4. Ändern nichts an Ort und Stelle
+
+
+---
+class: inverse, middle
+
+# .large[Praktikum 5 - {dplyr}]
+
+
+
+---
+## Logical operators
+***
+### Boolean operators
+
+`x` is the left-hand circle, `y` is the right-hand circle, and the shaded region show which parts each operator selects.
+
+![](http://r4ds.had.co.nz/diagrams/transform-logical.png)

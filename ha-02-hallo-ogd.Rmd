@@ -2,6 +2,8 @@
 title: "Hausaufgabe 02 - Hallo Open (Government) Data"
 ---
 
+<script async defer data-domain="rstatszh.github.io/website" src="https://plausible.io/js/plausible.js"></script>
+
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```

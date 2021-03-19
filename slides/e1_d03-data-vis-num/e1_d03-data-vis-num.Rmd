@@ -10,11 +10,11 @@ output:
     css: ["default", "../assets/css/xaringan-themer.css", "../assets/css/my-css-style.css"]
     seal: FALSE
     nature:
-        </div>
       slideNumberFormat: |
         <div class="progress-bar-container">
-          </div>
           <div class="progress-bar" style="width: calc(%current% / %total% * 100%);">
+          </div>
+        </div>
       highlightStyle: solarized-light
       highlightLanguage: ["r", "css", "yaml"]
       highlightLines: true
@@ -191,7 +191,7 @@ ggplot(data = corona_kultur,
 ]
 
 ---
-class: iverse, middle
+class: inverse, middle
 
 # .large[Praktikum 3 - {ggplot2}]
 
@@ -233,9 +233,16 @@ ggplot(penguins, aes(x = species, fill = island)) +
 ---
 ## Eine Skala ersetzen - Achsen (kontinuierliche Variable)
 
-.pull-left[
+.panelset[
+.panel[.panel-name[Plot]
+```{r ref.label="penguins-scale-continuous", echo=FALSE, warning=FALSE, out.width="100%", fig.width=8, fig.asp=0.4}
 
-```{r penguins-scale-continuous, warning = FALSE, echo=TRUE, fig.show="hide"}
+
+```
+]
+
+.panel[.panel-name[Code]
+```{r penguins-scale-continuous, fig.show="hide", echo=TRUE}
 
 ggplot(penguins, 
        aes(x = bill_length_mm,
@@ -250,83 +257,10 @@ ggplot(penguins,
 ```
 
 ]
-
-.pull-right[
-
-```{r ref.label = "penguins-scale-continuous", echo = FALSE, warning = FALSE, out.width = "80%", fig.width = 8}
-```
-
 ]
 
 ---
-## Eine Skala ersetzen - Achsen (Datum)
-
-```{r, echo=FALSE}
-
-letzter_monat <- Sys.Date() - 0:29
-temp_vek <- runif(n = 30, min = -10, max = 10)
-
-tib <- tibble(
-  datum = letzter_monat,
-  temperatur = temp_vek
-)
-
-
-```
-
-
-.pull-right[
-```{r}
-
-tibble::tribble(
-  ~Code,                                 ~Meaning,
-  "%S",                         "second (00-59)",
-  "%M",                         "minute (00-59)",
-  "%l",          "hour, in 12-hour clock (1-12)",
-  "%I",         "hour, in 12-hour clock (01-12)",
-  "%H",         "hour, in 24-hour clock (01-24)",
-  "%a", "day of the week, abbreviated (Mon-Sun)",
-  "%A",  "day of the week, full (Monday-Sunday)",
-  "%e",                "day of the month (1-31)",
-  "%d",               "day of the month (01-31)",
-  "%m",                 "month, numeric (01-12)",
-  "%b",           "month, abbreviated (Jan-Dec)",
-  "%B",         "month, full (January-December)",
-  "%y",          "year, without century (00-99)",
-  "%Y",         "year, with century (0000-9999)"
-) %>% 
-  gt::gt() %>% 
-  gt::opt_row_striping() %>% 
-  gt::tab_options(column_labels.font.weight = "bold")
-
-```
-]
-
-pull.left[
-
-```{r, eval = FALSE, echo = TRUE}
-
-ggplot(data = tib,
-       mapping =  aes(x = datum, 
-                      y = temperatur)) +
-  geom_line() + 
-  coord_flip() + 
-  scale_x_date(
-    date_labels = "%a, %b %d, %Y",  #<<
-    date_breaks = "1 day") + #<<
-  theme_minimal() +
-  theme(panel.grid.minor.y = element_blank())
-
-```
-
-]
-
-.footnote[
-From:[ggplot2: Elegant Graphics for Data Analysis](https://ggplot2-book.org/scale-position.html#date-scales)
-]
-
----
-class: iverse, middle
+class: inverse, middle
 
 # .large[Variablen Typen]
 
@@ -334,7 +268,38 @@ class: iverse, middle
 ---
 # Variablen Typen
 
-```{r}
+.midi[
+.pull-left[
+## Numerisch
+**Diskrete Variablen**
+- nicht negative
+- zählbare
+- ganze Zahlen
+- z.B. Anzahl Schüler, Würfelwurf
+
+**Stetige (kontinuierliche) Variablen**
+
+- unendliche Anzahl von Werten 
+- zwischen zwei Werten
+- auch Datums/Uhrzeitwerte
+- z.B. Länge, Gewicht, Grösse 
+
+]
+
+.pull-right[
+## Nicht numerisch
+
+**Kategoriale Variablen**
+- endliche Anzahl von Werten 
+- eindeutige Gruppen (z.B. EU Länder)
+- **ordinal**, wenn diese eine logische Reihenfolge/Rangordnung aufweisen (z.B. Wochentage, Schulnoten)
+
+]
+
+]
+
+
+```{r, eval=FALSE}
 
 # **Numerische Variablen**
 
@@ -369,32 +334,39 @@ dplyr::tribble(
   text2, "") %>% 
   gt() %>%
   fmt_markdown(columns = TRUE) %>%
-  #tab_options(table.width = px(800)) %>% 
-   gt::tab_options( 
-     column_labels.font.size = 30, column_labels.background.color = "gray"
-     ) %>% 
-  tab_style(
-    style = list(
-      cell_text(size = "x-large")), 
-    locations = cells_body())
+#tab_options(table.width = px(1200)) %>% 
+  gt::tab_options(
+    column_labels.font.size = 24, column_labels.background.color = "gray") 
+  #tab_style(
+  #  style = list(
+  #    cell_text(size = "large")), 
+  #  locations = cells_body())
 
 ```
+
+???
+Diskrete Variablen sind numerische Variablen, die zwischen zwei beliebigen Werten eine zählbare Anzahl von nicht negativen Werten aufweisen. Eine diskrete Variable ist immer numerisch. Beispiele: Die Anzahl Schüler in der Primarschule oder das Ergebnis eines Wurfs eines Würfels. 
+
+Stetige Daten sind numerische Variablen, die zwischen zwei beliebigen Werten eine unendliche Anzahl von Werten aufweisen. Stetige Variablen können aus numerischen oder Datums-/Uhrzeitwerten bestehen. Beispiel: die Länge eines Teils oder Datum und Uhrzeit eines Zahlungseingangs
+
+Kategoriale Variablen umfassen eine endliche Anzahl von Kategorien oder eindeutigen Gruppen. Kategoriale Daten müssen nicht zwangsläufig eine logische Reihenfolge aufweisen. Zu den kategorialen Prädiktoren zählen beispielsweise Geschlecht, Materialtyp und Zahlungsmethode
+
 
 ---
 # Übung
 
 .note[
-
 Arbeitet in 2er Teams.
 
 1. **RStudio Cloud**: Öffnet euren Arbeitsbereich für den Kurs
 2. **RStudio Cloud / Projects**: Öffnet Praktikum 3
 3. Unter dem Kapitel "Daten kennelernen" 
     - erkundet den Datensatz `penguins` mit den Funktionen `glimpse()` und `str()`
-    - öffnet die Help-File für den Datensatz `penguins`
+    - öffnet die Hilfedatei für den Datensatz `penguins`
     - beschreibt den Variablen Typen für jede Variable im Datensatz 
-
 ]
+
+---
 
 ```{r}
 
@@ -417,14 +389,12 @@ countdown(
   font_size = "4em"
 )
 
-
 ```
 
 ---
+# Lösung 
 
 ```{r}
-
-"diskret/stetig (kontinuierlich), oder ordinal/nicht ordinal"
 
 tibble(
   Variable = names(penguins),
@@ -435,17 +405,7 @@ tibble(
   gt::tab_options(column_labels.font.weight = "bold")
 
 
-?penguins
 ```
-
-
-???
-Diskrete Variablen sind numerische Variablen, die zwischen zwei beliebigen Werten eine zählbare Anzahl von nicht negativen Werten aufweisen. Eine diskrete Variable ist immer numerisch. Beispiele: Die Anzahl Schüler in der Primarschule oder das Ergebnis eines Wurfs eines Würfels. 
-
-Stetige Daten sind numerische Variablen, die zwischen zwei beliebigen Werten eine unendliche Anzahl von Werten aufweisen. Stetige Variablen können aus numerischen oder Datums-/Uhrzeitwerten bestehen. Beispiel: die Länge eines Teils oder Datum und Uhrzeit eines Zahlungseingangs
-
-Kategoriale Variablen umfassen eine endliche Anzahl von Kategorien oder eindeutigen Gruppen. Kategoriale Daten müssen nicht zwangsläufig eine logische Reihenfolge aufweisen. Zu den kategorialen Prädiktoren zählen beispielsweise Geschlecht, Materialtyp und Zahlungsmethode
-
 
 
 ---
@@ -454,11 +414,21 @@ background-size: contain
 
 .footnote[Screenshot of: https://www.data-to-viz.com/]
 
-
-
 ---
 # Zwei Bücher für eure weitere Reise
 
 - `{ggplot2}`: Elegant Graphics for Data Analysis  https://ggplot2-book.org/index.html
 - Fundamentals of Data Visualization: https://clauswilke.com/dataviz/
 
+---
+# `r emo::ji("sunflower")` Danke 
+
+Für die Aufmerksamkeit!
+
+Für die R packages [{xaringan}](https://github.com/yihui/xaringan) und [{xaringanthemer}](https://github.com/gadenbuie/xaringanthemer) mit welchen die Folien geschrieben wurden.
+
+Eine PDF Version der Folien kann hier heruntergeladen werden: https://github.com/rstatsZH/website/raw/master/slides/e1_d03-data-vis-num/e1_d03-data-vis-num.pdf
+
+`r hr()`
+
+Für [Data Science in a Box](https://datasciencebox.org/) und [Remaster the Tidyverse](https://github.com/rstudio-education/remaster-the-tidyverse), von welchen ich Materialien für diesen Kurs nutze und welche genau wie diese Folien mit [Creative Commons Attribution Share Alike 4.0 International](https://creativecommons.org/licenses/by-sa/4.0/) lizensiert sind.

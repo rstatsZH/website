@@ -30,7 +30,7 @@ Folge den Schritten aus Hausaufgabe 1 oder den Folien der Woche 2 um das GitHub 
 
 In dieser Hausaufgabe nutzen wir das `{dplyr}` Package und ein weiteres Daten Package names `{nycflights13}` um wesentliche Konzepte aus der letzten Lektionen zu üben. Das Package ist noch nicht installiert und ihr müsst dies in einem ersten Schritt selbst machen.
 
-`r rep(emo::ji("exclamation_mark"), 3)` 1. Installiere das `{nycflights13}` R package mit der Funktion `install.packages("")`
+`r emo::ji("exclamation_mark")` 1. Installiere das `{nycflights13}` R package mit der Funktion `install.packages("")`
 
 ```{r}
 
@@ -91,7 +91,7 @@ knitr::include_graphics("img/doc-opts/doc-opts.002.png")
 
 ```
 
-## Übung 1
+## Übung 1 - dplyr::filter()
 
 1. Lese das [Kapitel 5.1 - Introduction](https://r4ds.had.co.nz/transform.html#introduction-2) aus dem Buch R for Data Science, mache dir Notizen und schreibe dir Fragen auf wenn du etwas nicht nachvollziehen kannst. Stelle deine Fragen in unserem Slack Channel für den Kurs.
 
@@ -101,7 +101,7 @@ knitr::include_graphics("img/doc-opts/doc-opts.002.png")
 
 🧶 ✅ ⬆️ *Knit, commit und push deine Änderungen auf GitHub mit einer Commit-Nachricht deiner Wahl. Achte darauf, alle geänderten Dateien zu committen und zu pushen, damit dein Git-Fenster danach aufgeräumt ist.*
 
-## Übung 2
+## Übung 2 - dplyr::arrange()
 
 1. Lese das [Kapitel 5.3 - Arrange rows with `arrange()`](https://r4ds.had.co.nz/transform.html#arrange-rows-with-arrange) aus dem Buch R for Data Science, mache dir Notizen und schreibe dir Fragen auf wenn du etwas nicht nachvollziehen kannst. Stelle deine Fragen in unserem Slack Channel für den Kurs.
 
@@ -109,7 +109,7 @@ knitr::include_graphics("img/doc-opts/doc-opts.002.png")
 
 🧶 ✅ ⬆️ *Knit, commit und push deine Änderungen auf GitHub mit einer Commit-Nachricht deiner Wahl. Achte darauf, alle geänderten Dateien zu committen und zu pushen, damit dein Git-Fenster danach aufgeräumt ist.*
 
-## Übung 3
+## Übung 3 - dplyr::select()
 
 1. Lese das [Kapitel 5.4 - Select columns with `select()`](https://r4ds.had.co.nz/transform.html#select) aus dem Buch R for Data Science, mache dir Notizen und schreibe dir Fragen auf wenn du etwas nicht nachvollziehen kannst. Stelle deine Fragen in unserem Slack Channel für den Kurs.
 
@@ -117,7 +117,7 @@ knitr::include_graphics("img/doc-opts/doc-opts.002.png")
 
 🧶 ✅ ⬆️ *Knit, commit und push deine Änderungen auf GitHub mit einer Commit-Nachricht deiner Wahl. Achte darauf, alle geänderten Dateien zu committen und zu pushen, damit dein Git-Fenster danach aufgeräumt ist.*
 
-## Übung 4 (Bonus)
+## Übung 4 - dplyr::mutate() (Bonus)
 
 1. Lese das [Kapitel 5.5 - Add new variables with `mutate()`](https://r4ds.had.co.nz/transform.html#add-new-variables-with-mutate) aus dem Buch R for Data Science, mache dir Notizen und schreibe dir Fragen auf wenn du etwas nicht nachvollziehen kannst. Stelle deine Fragen in unserem Slack Channel für den Kurs.
 

@@ -47,6 +47,8 @@ po/*~
 *-solutions.Rmd
 *-solutions.html
 
+slides/store
+
 # ignore _files folder
 
 # Files

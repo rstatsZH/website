@@ -95,7 +95,7 @@ background-size: contain
 
 Am Ende dieser Woche könnt ihr:
 
-- die Farb und Achsenskalierung eines Plots anpassen
+- die Farb- und Achsenskalierung eines Plots anpassen
 - den passenden Plot für eure Daten finden
 - einzelne Funktionen des R Package `{dplyr}` anwenden
 - beschreiben wie das Symbol `%>%` genutzt wird

@@ -313,6 +313,17 @@ class: middle, inverse
 ]
 
 ---
+# Praktikum 5 - Lösungen
+
+- **GitHub Organisation:** rstatsZH
+    - github.com/rstatsZH
+- **Repo:** prak-05-wrangle-dplyr
+    - https://github.com/rstatsZH/prak-05-wrangle-dplyr
+- **R Markdown Datei:** prak-05-solutions.Rmd
+    - https://github.com/rstatsZH/prak-05-wrangle-dplyr/blob/main/prak-05-solutions.Rmd
+
+
+---
 class: middle, inverse
 
 # .big[Praktikum 6 - dplyr]
@@ -332,6 +343,8 @@ class: middle, inverse
 6. **Zoom Chat**: Schreibt wenn ihr soweit seid
 
 ]
+
+
 
 ---
 # [tidyverse.org](https://www.tidyverse.org/)

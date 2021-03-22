@@ -90,6 +90,10 @@ background-size: contain
 ???
 
 ---
+background-image: url(img/goals-dart.jpg)
+background-position: right
+background-size: contain
+
 # Ziele für diese Woche
 
 .pull-left[
@@ -262,6 +266,17 @@ ggplot(penguins,
 
 ]
 ]
+
+---
+# Praktikum 3 - Lösungen
+
+- **GitHub Organisation:** rstatsZH
+    - github.com/rstatsZH
+- **Repo:** prak-03-vis-ggplot2
+    - https://github.com/rstatsZH/prak-03-vis-ggplot2
+- **R Markdown Datei:** prak-03-solutions.Rmd
+    - https://github.com/rstatsZH/prak-03-vis-ggplot2/blob/main/prak-03-solutions.Rmd
+
 
 ---
 class: inverse, middle

@@ -53,52 +53,111 @@ p(rmarkdown::metadata$date)
 ---
 class: middle, inverse
 
-# .large[# Data Science Lifecycle]
+# .large[Data Science Lifecycle]
 
 ???
 
-- Wir haben bereits eine ganze Menge über Visualisierungen gelernt
+- Wir haben bereits eine ganze Menge über Visualisierungen gelernt und diese sind ein guter Ausgangspunkt wenn wir mit Daten arbeiten
 - Was die Daten bisher alle gemeinsam hatten ist, dass diese in einem Format kommen, welches es uns ermöglicht direkt in die Visualsierungen einzusteigen
 - In der Realität ist das allerdings selten der Fall
-- Bevor wir Daten visualisieren können, müssen wir sie in ein Format bringen, welches das Visualisieren erlaubt
-- Dies wird oft als tidying bezeichnet
-- Auf das data tidying folgt in der Regel auch eine Daten Tranformation
-
 
 ---
 background-image: url(img/data-science-lifecycle_de/data-science-lifecycle_de.001.png)
 background-size: contain
 
+
+???
+
+
+- Jedes Data Science Projekt folgt in etwa einem ähnlichen Zyklus, auch als als Data Science Lifecycle bezeichnet
+- Ich möchte diesen jetzt etwas erläutern und in Zukunft nutzen um uns zu orientieren
+
 ---
 background-image: url(img/data-science-lifecycle_de/data-science-lifecycle_de.002.png)
 background-size: contain
+
+
+???
+
+1. Als erstes müssen wir unsere Daten importieren. Typischerweise bedeuetet dies, dass wirt Daten:
+
+- aus einer Datei
+- aus einer Datenbank
+- oder aus einer Web Applikation haben, welche wir in R importieren wollen.
+
+2. Wenn wir es schaffen Daten zu importieren, dann können wir auch Data Science damit machen.
+
 
 ---
 background-image: url(img/data-science-lifecycle_de/data-science-lifecycle_de.003.png)
 background-size: contain
 
+???
+
+1. Sobald die Daten importiert sind, müssen wir sie säubern und aufräumen (Dazu werde ich auch tidying sagen)
+2. Dies bedeutet Daten in eine Struktur zu bringen, welche es uns erlaubt uns auf unsere Fragen zu konzentrieren und nicht auf das Format in welchem die Daten sein müssen 
+3. In diesem Schritt verbringen wir typischwerweise den grössten Anteil unserer Zeit. 
+4. Es wurde geschätzt, dass wir etwa 3/4 unserer Zeit mit dem Data tidying verbringen, bevor wir diese für eine Analyse nutzen können.
+5. Es lohnt sich also hier Zeit in Übungen zu investieren, in welchen ihr lernt Daten in ein Format zu bringen, welches tidy ist und das vielleicht schon wenn diese gesammelt werden und bevor sie importiert werdern. 
+
 ---
 background-image: url(img/data-science-lifecycle_de/data-science-lifecycle_de.004.png)
 background-size: contain
+
+???
+
+1. Sobald unsere Daten tidy sind, ist ein typischer erster Schritt die Daten Transfomationen oder auch Manipulation gennannt.
+2. Dies beinhaltet, zum Beispiel:
+     - Daten auf das eingrenzen was uns interessiert (z.B. Alle Personen über 18 Jahre in einer bestimmten Gemeinde; Oder alle Daten aus dem letzten Jahr anstatt der letzten 20 Jahre)
+     - neue Variablen aus existierenden Variablen erstellen (z.B. Bevölkerungsdichte aus der Bevölkerung und Fläche einer Gemeinde)
+     - zusammenfassende Statistiken berechnen, wie Häufigkeiten oder den Durchschnitt
 
 ---
 background-image: url(img/data-science-lifecycle_de/data-science-lifecycle_de.005.png)
 background-size: contain
 
+
+???
+1. Sobald wir die tidy Daten und die Variablen haben welche wir brauchen, gibt es zwei Wege um Wissen zu generieren:
+
+- Visualisierungen, und
+- Modellierungen
+
+2. Diese haben komplementäre Stärken und die meisten Analysen werden einige Male zwischen den beiden iterieren
+
+3. Visualiserungen ist eine fundamental menschliche Aktivität. Eine gute Visualisierungen zeigt uns Dinge die wir nicht erwartet haben, oder wirft neue Fragen über unsere Daten auf. 
+
 ---
 background-image: url(img/data-science-lifecycle_de/data-science-lifecycle_de.006.png)
 background-size: contain
 
+???
+
+1. Modelle sind komplementäre Werkzeuge zu Visualisierungen. Sobald wir unsere Fragen präzise definiert haben, können wir Modelle nutzen um diese zu beantworten.
+2. Modellierungen spielen eine untergeordnete Rolle in unserem Kurs. Aber, ich bin überzeugt, dass ihr euch am Ende des Kurses selbstständig und effizient in diesem Bereich weiterbilden könnt. Wichtiger ist es, dass ihr die Grundprinzipien versteht welche immer wieder angewendet werden.
+
 ---
 background-image: url(img/data-science-lifecycle_de/data-science-lifecycle_de.007.png)
 background-size: contain
+
+
+???
+
+1. Der letzte Schritt ist die Kommunikation. Ein kritischer Aspekt eines jeden Analyse Projektes.
+
+2. Es spielt keine Rolle wie gut wir unsere Daten durch Modelle und Visualisierungen kennengelernt haben, wenn wir die Ergebnisse nicht auch mit anderen kommunizieren können.
+
+3. R ist hat in diesem Bereich in den letzten Jahren deutlich zu gelegt. Es ist zu einer Programmiersprache auch für die Kommunikation geworden. 
 
 ---
 background-image: url(img/data-science-lifecycle_de/data-science-lifecycle_de.008.png)
 background-size: contain
 
 ???
-Auch Daten Manipulation
+
+1. In den nächsten 2 Wochen werden wir uns vor Allem mit dem Tidying und der Tranformation von Daten beschäftigen.
+2. Dies wird oft auch als Data Wrangling bezeichnet, da es wie ein Kampf sein kann die Daten in das richtige Format zu bringen.
+
 
 ---
 class: middle, inverse
@@ -113,10 +172,13 @@ background-size: 90%
 
 ???
 
-- Das Wort Tidy, also "aufgeräumt" ist uns bisher nur im Zusammenhang mit dem "tidyverse" begegnet
-- Wir wollen jetzt langsam beginnen uns mit dem Konzept von "tidy data" zu beschäftigen
-- Tidy Data ist eine Art um Daten zu beschriebe, die mit einer bestimmten Struktur organisiert sind
-- Es sind tabellarische Daten, bei der jede Variable in einer eigenen Spalte steht und jede Beobachtung ihrer eigene Zeile hat
+1. Das Wort Tidy, also "aufgeräumt" ist uns bisher nur im Zusammenhang mit dem "tidyverse" begegnet
+2. Wir wollen jetzt beginnen uns mit dem Konzept von "tidy data" zu beschäftigen
+3. Tidy Data ist eine Art um Daten zu beschreiben, die mit einer bestimmten Struktur organisiert sind
+4. Es sind tabellarische Daten, bei der 
+    - jede Variable in einer eigenen Spalte steht,
+    - jede Beobachtung ihrer eigene Zeile hat, und
+    - jede Zelle genau ein einen Wert angibt
 
 ---
 background-image: url(img/tidydata_2.jpg)
@@ -126,9 +188,9 @@ background-size: contain
 
 ???
 
-- Der Autor Leo Tolstoy hat einmal gesagt, dass "alle glücklichen Familien einander gleichen, aber dass jede unglückliche Familien auf ihre eigene Art unglücklich ist"
-- Und so beschreibt Hadley Wickham Daten. 
-- Die Struktur von Tidy Data gleicht einander, aber jeder Messy Datensatz ist Messy auf seine eigene Weise
+1. Der Autor Leo Tolstoy hat einmal gesagt, dass "alle glücklichen Familien einander gleichen, aber dass jede unglückliche Familien auf ihre eigene Art unglücklich ist"
+2. Und so beschreibt Hadley Wickham Daten. 
+3. Die Struktur von Tidy Data gleicht einander, aber jeder unaufgeräumte, messy Datensatz ist messy auf seine eigene Weise
 
 ---
 background-image: url(img/tidydata_3.jpg)
@@ -138,9 +200,9 @@ background-size: contain
 
 ???
 
-- Tidy data macht uns effizienter
-- Wenn unsere Daten tidy sind, dann können wir verschiedenszte Werkzeuge nutzen die dafür entwickelt wurden mit dieser Struktur zu arbeiten
-- Genau das sind die Werkzeuge des tidyverse
+1. Tidy data macht uns effizienter
+2. Denn wenn unsere Daten tidy sind, dann können wir verschiedenste Werkzeuge nutzen die dafür entwickelt wurden mit dieser Struktur zu arbeiten
+3. Genau das sind die Werkzeuge des tidyverse
 
 ---
 background-image: url(img/tidydata_4.jpg)
@@ -150,9 +212,9 @@ background-size: contain
 
 ???
 
-- Tidy data erleichtert die Zusammenarbeit
-- Und das unabhängig davon ob wir dabei an an uns selbst in der Zukunft denken, oder an aktuelle und zukünftige Teamkolleginnen und Kollegens
-- Eine Organisation, und gemeinsame Nutzung von Daten auf kosistente und vorhersehbare Weise, beudeutet weniger Anpassung, Zeit und Aufwand für alle 
+1. Tidy data erleichtert die Zusammenarbeit
+2. Und das unabhängig davon ob wir dabei an an uns selbst in der Zukunft denken, oder an aktuelle und zukünftige Teamkolleginnen und Kollegen
+3. Eine Organisation, und gemeinsame Nutzung von Daten auf konsistente und vorhersehbare Weise, beudeutet weniger Anpassung, Zeit und Aufwand für Alle 
 
 ---
 background-image: url(img/tidydata_5.jpg)
@@ -161,8 +223,8 @@ background-size: contain
 .footnote[Illustrations from the [Openscapes](https://www.openscapes.org/) blog [Tidy Data for reproducibility, efficiency, and collaboration](https://www.openscapes.org/blog/2020/10/12/tidy-data/) by [Julia Lowndes](https://twitter.com/juliesquid) and [Allison Horst](https://twitter.com/allison_horst)]
 
 ???
-- Tidy data unterstüzt auch die Reproduzierbarkeit und Wiederverwendbarkeit unseres Codes
-- Analysen können leichter verstanden, aktualisiert und wiederverwendete werden, da alle die gleichen Datenstruktur erwarten
+1. Tidy data unterstüzt auch die Reproduzierbarkeit und Wiederverwendbarkeit unseres Codes
+2. Analysen können leichter verstanden, aktualisiert und wiederverwendete werden, da alle die gleichen Datenstruktur erwarten
 
 ---
 background-image: url(img/tidydata_6.jpg)
@@ -171,9 +233,9 @@ background-size: contain
 .footnote[Illustrations from the [Openscapes](https://www.openscapes.org/) blog [Tidy Data for reproducibility, efficiency, and collaboration](https://www.openscapes.org/blog/2020/10/12/tidy-data/) by [Julia Lowndes](https://twitter.com/juliesquid) and [Allison Horst](https://twitter.com/allison_horst)]
 
 ???
-- Sobald ihr mit den Werkzeugen für die Arbeit mit tidy data ausgestattet seid, eröffnet sich eine ganze neue Welt von Datensätzen
-- Diese fühlen sich zugänglicher an, da mit vertrauten Werkzeugen gearbeitet werden kann
-- Dieses Vertrauen und die Fähigkeit zur Zusammenarbeit sind wahrscheinlich das Beste an Tidy Data
+1. Sobald ihr mit den Werkzeugen für die Arbeit mit tidy data ausgestattet seid, eröffnet sich eine ganze neue Welt von Datensätzen
+2. Diese fühlen sich zugänglicher an, da mit vertrauten Werkzeugen gearbeitet werden kann
+3. Dieses Vertrauen und die Fähigkeit zur Zusammenarbeit sind wahrscheinlich das Beste an Tidy Data
 
 ---
 background-image: url(img/tidydata_7.jpg)
@@ -182,7 +244,7 @@ background-size: contain
 .footnote[Illustrations from the [Openscapes](https://www.openscapes.org/) blog [Tidy Data for reproducibility, efficiency, and collaboration](https://www.openscapes.org/blog/2020/10/12/tidy-data/) by [Julia Lowndes](https://twitter.com/juliesquid) and [Allison Horst](https://twitter.com/allison_horst)]
 
 ???
-- Also, fangen wir an Bekanntschaft mit tidy data zu machen und den Werkzeugen die wir nutzen können
+1. Also, fangen wir an Bekanntschaft mit tidy data zu machen und den Werkzeugen die wir nutzen können
 
 ---
 class: middle, inverse
@@ -190,7 +252,7 @@ class: middle, inverse
 # .large[Daten Transformation mit {dplyr}]
 
 ---
-## A Grammatik der Daten Manipulation (data wrangling)...
+## A Grammatik für Daten Transformation...
 
 ...basierend auf dem Konzept von Funktionen als Verben, die Daten manipulieren
 
@@ -212,29 +274,133 @@ knitr::include_graphics("img/dplyr-part-of-tidyverse.png")
 ]
 
 ???
-- Vorlesen
+- Vorlesen und auf die Wortwahl hinweisen
 
 ---
 # Regeln für `{dplyr}` Funktionen
 
 1. Das erste Argument ist immer ein Dataframe (genau wie bei ggplot)
-2. Die folgenden Argumente geben man was mit dem Dataframe gemacht werden soll
+2. Die folgenden Argumente geben an was mit dem Dataframe gemacht werden soll
 3. Geben immer einen Dataframe zurück
 4. Ändern nichts an Ort und Stelle
 
 
+```{r, echo=TRUE}
+filter(.data = penguins, species == "Adelie")
+```
+
+
+
 ---
-class: inverse, middle
+class: middle, inverse
 
-# .large[Praktikum 5 - {dplyr}]
+# .big[Praktikum 5 - dplyr]
 
+---
+.note[
+
+# Praktikum 5 - dplyr
+
+## Live Code
+
+1. **E-Mail**: Öffne deine Email und klicke auf den Link zu deinem persönlichen GitHub repo für **prak-05**
+2. **GitHub**: Klicke auf den grünen Button "Code" und kopiere den Link für das Repo in deine Zwischenablage
+3. **RStudio Cloud**: Öffne deinen Arbeitsbereich für den Kurs in der RStudio Cloud
+4. **RStudio Cloud / Projects**: Klicke auf "New Project from GitHub Repository" 
+5. **RStudio**: Finde den Datei Manager und Git
+6. **Zoom Chat**: Schreibt wenn ihr soweit seid
+
+]
+
+---
+class: middle, inverse
+
+# .big[Praktikum 6 - dplyr]
+
+---
+.note[
+
+# Praktikum 6 - dplyr
+
+## In 2er Teams
+
+1. **E-Mail**: Öffne deine Email und klicke auf den Link zu deinem persönlichen GitHub repo für **prak-06**
+2. **GitHub**: Klicke auf den grünen Button "Code" und kopiere den Link für das Repo in deine Zwischenablage
+3. **RStudio Cloud**: Öffne deinen Arbeitsbereich für den Kurs in der RStudio Cloud
+4. **RStudio Cloud / Projects**: Klicke auf "New Project from GitHub Repository" 
+5. **RStudio**: Finde den Datei Manager und Git
+6. **Zoom Chat**: Schreibt wenn ihr soweit seid
+
+]
+
+---
+# [tidyverse.org](https://www.tidyverse.org/)
+
+.pull-left[
+
+- Lesezeichen
+  - ggplot2.tidyverse.org   
+  - dplyr.tidyverse.org
+  - readr.tidyverse.org
+  - ...
+]
+
+.pull-right[
+```{r, out.width="80%"}
+knitr::include_graphics("img/tidyverse.png")
+```
+
+]
 
 
 ---
-## Logical operators
-***
-### Boolean operators
+class: middle, inverse
 
-`x` is the left-hand circle, `y` is the right-hand circle, and the shaded region show which parts each operator selects.
+# .big[Feedback]
 
-![](http://r4ds.had.co.nz/diagrams/transform-logical.png)
+---
+class: left
+background-image: url(img/tor.jpg)
+background-position: right
+background-size: contain
+
+# Ziele erreicht? 
+
+Bitte ausfüllen: [kutt.it/rstatszh-eval](https://kutt.it/rstatszh-eval)
+
+.pull-left[
+
+.footnote[Photo by: [Virgil Cayasa](https://unsplash.com/@virgilcayasa)]
+
+]
+
+---
+class: middle, inverse
+
+# .big[Hausaufgabe]
+
+
+---
+# Hausaufgabe
+
+.note[
+
+- Öffnet jetzt eure E-Mail Inbox
+- Bestätigt mir im Zoom Chat, dass ihr eine Email mit Betreff **"rstatsZH - Lars hat das Repo ha02-GitHubName"** erhalten habt
+- Die Anweisungen für die Heausaufgabe 02 findet ihr oben rechts auf unserer Kurswebseite
+- Kontaktiert mich unter der Woche jederzeit auf Slack 
+
+]
+
+---
+# `r emo::ji("sunflower")` Danke 
+
+Für die Aufmerksamkeit!
+
+Für die R packages [{xaringan}](https://github.com/yihui/xaringan) und [{xaringanthemer}](https://github.com/gadenbuie/xaringanthemer) mit welchen die Folien geschrieben wurden.
+
+Eine PDF Version der Folien kann hier heruntergeladen werden: https://github.com/rstatsZH/website/raw/master/slides/e1_d02-data-vis/e1_d02-data-vis.pdf
+
+`r hr()`
+
+Für [Data Science in a Box](https://datasciencebox.org/) und [Remaster the Tidyverse](https://github.com/rstudio-education/remaster-the-tidyverse), von welchen ich Materialien für diesen Kurs nutze und welche genau wie diese Folien mit [Creative Commons Attribution Share Alike 4.0 International](https://creativecommons.org/licenses/by-sa/4.0/) lizensiert sind.

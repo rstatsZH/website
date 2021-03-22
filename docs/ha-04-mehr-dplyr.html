@@ -85,38 +85,377 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 </style>
 
   <!--radix_placeholder_meta_tags-->
-  <title>Woche 1 - Willkommen zu rstatsZH</title>
-
-  <meta property="description" itemprop="description" content="Ziele und Materialien für unsere erste gemeinsame Woche"/>
+  <title>rstatsZH - Data Science mit R: Hausaufgabe 04 - Mehr dyplr</title>
 
 
-  <!--  https://schema.org/Article -->
-  <meta property="article:published" itemprop="datePublished" content="2021-02-12"/>
-  <meta property="article:created" itemprop="dateCreated" content="2021-02-12"/>
+  <link rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/"/>
+
 
   <!--  https://developers.facebook.com/docs/sharing/webmasters#markup -->
-  <meta property="og:title" content="Woche 1 - Willkommen zu rstatsZH"/>
+  <meta property="og:title" content="rstatsZH - Data Science mit R: Hausaufgabe 04 - Mehr dyplr"/>
   <meta property="og:type" content="article"/>
-  <meta property="og:description" content="Ziele und Materialien für unsere erste gemeinsame Woche"/>
   <meta property="og:locale" content="en_US"/>
+  <meta property="og:site_name" content="rstatsZH - Data Science mit R"/>
 
   <!--  https://dev.twitter.com/cards/types/summary -->
   <meta property="twitter:card" content="summary"/>
-  <meta property="twitter:title" content="Woche 1 - Willkommen zu rstatsZH"/>
-  <meta property="twitter:description" content="Ziele und Materialien für unsere erste gemeinsame Woche"/>
+  <meta property="twitter:title" content="rstatsZH - Data Science mit R: Hausaufgabe 04 - Mehr dyplr"/>
 
   <!--/radix_placeholder_meta_tags-->
   <!--radix_placeholder_rmarkdown_metadata-->
 
   <script type="text/json" id="radix-rmarkdown-metadata">
-  {"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["title","description","date","output","preview"]}},"value":[{"type":"character","attributes":{},"value":["Woche 1 - Willkommen zu rstatsZH"]},{"type":"character","attributes":{},"value":["Ziele und Materialien für unsere erste gemeinsame Woche\n"]},{"type":"character","attributes":{},"value":["02-12-2021"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["distill::distill_article"]}},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["toc","self_contained"]}},"value":[{"type":"logical","attributes":{},"value":[true]},{"type":"logical","attributes":{},"value":[false]}]}]},{"type":"character","attributes":{},"value":["img/toolbox.jpg"]}]}
+  {"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["title"]}},"value":[{"type":"character","attributes":{},"value":["Hausaufgabe 04 - Mehr dyplr"]}]}
   </script>
   <!--/radix_placeholder_rmarkdown_metadata-->
-  
-  <script type="text/json" id="radix-resource-manifest">
-  {"type":"character","attributes":{},"value":["img/goals.jpg","img/kommunikation.jpg","img/md-cheatsheet.png","img/r-logo.png","img/rmarkdown.png","img/rmd-cheatsheet.png","img/rstudio-logo.png","img/tidyverse.png","img/toolbox.jpg","img/tour-r-rstudio.png","img/tour-rmarkdown.png","img/united-nations-covid-19-response-IKyhoO8giSA-unsplash.jpg","woche01_files/anchor-4.2.2/anchor.min.js","woche01_files/anchor/anchor.min.js","woche01_files/bowser-1.9.3/bowser.min.js","woche01_files/bowser/bowser.min.js","woche01_files/clipboard-2.0.6/clipboard.min.js","woche01_files/clipboard/clipboard.min.js","woche01_files/distill-2.2.21/template.v2.js","woche01_files/distill/template.v2.js","woche01_files/fitvids-2.1.1/fitvids.min.js","woche01_files/fitvids/fitvids.min.js","woche01_files/header-attrs-2.6.6/header-attrs.js","woche01_files/header-attrs-2.7/header-attrs.js","woche01_files/header-attrs/header-attrs.js","woche01_files/jquery-1.11.3/jquery.min.js","woche01_files/jquery/jquery.min.js","woche01_files/popper-2.6.0/popper.min.js","woche01_files/popper/popper.min.js","woche01_files/shareon-1.4.1/shareon.min.css","woche01_files/shareon-1.4.1/shareon.min.js","woche01_files/shareon/shareon.min.css","woche01_files/shareon/shareon.min.js","woche01_files/tippy-6.2.7/tippy-bundle.umd.min.js","woche01_files/tippy-6.2.7/tippy-light-border.css","woche01_files/tippy-6.2.7/tippy.css","woche01_files/tippy-6.2.7/tippy.umd.min.js","woche01_files/tippy/tippy-bundle.umd.min.js","woche01_files/tippy/tippy-light-border.css","woche01_files/tippy/tippy.css","woche01_files/tippy/tippy.umd.min.js","woche01_files/webcomponents-2.0.0/webcomponents.js","woche01_files/webcomponents/webcomponents.js","woche01_files/xaringanExtra-shareagain-0.2.4/shareagain.css","woche01_files/xaringanExtra-shareagain-0.2.4/shareagain.js","woche01_files/xaringanExtra-shareagain/shareagain.css","woche01_files/xaringanExtra-shareagain/shareagain.js"]}
-  </script>
   <!--radix_placeholder_navigation_in_header-->
+  <meta name="distill:offset" content=""/>
+
+  <script type="application/javascript">
+
+    window.headroom_prevent_pin = false;
+
+    window.document.addEventListener("DOMContentLoaded", function (event) {
+
+      // initialize headroom for banner
+      var header = $('header').get(0);
+      var headerHeight = header.offsetHeight;
+      var headroom = new Headroom(header, {
+        tolerance: 5,
+        onPin : function() {
+          if (window.headroom_prevent_pin) {
+            window.headroom_prevent_pin = false;
+            headroom.unpin();
+          }
+        }
+      });
+      headroom.init();
+      if(window.location.hash)
+        headroom.unpin();
+      $(header).addClass('headroom--transition');
+
+      // offset scroll location for banner on hash change
+      // (see: https://github.com/WickyNilliams/headroom.js/issues/38)
+      window.addEventListener("hashchange", function(event) {
+        window.scrollTo(0, window.pageYOffset - (headerHeight + 25));
+      });
+
+      // responsive menu
+      $('.distill-site-header').each(function(i, val) {
+        var topnav = $(this);
+        var toggle = topnav.find('.nav-toggle');
+        toggle.on('click', function() {
+          topnav.toggleClass('responsive');
+        });
+      });
+
+      // nav dropdowns
+      $('.nav-dropbtn').click(function(e) {
+        $(this).next('.nav-dropdown-content').toggleClass('nav-dropdown-active');
+        $(this).parent().siblings('.nav-dropdown')
+           .children('.nav-dropdown-content').removeClass('nav-dropdown-active');
+      });
+      $("body").click(function(e){
+        $('.nav-dropdown-content').removeClass('nav-dropdown-active');
+      });
+      $(".nav-dropdown").click(function(e){
+        e.stopPropagation();
+      });
+    });
+  </script>
+
+  <style type="text/css">
+
+  /* Theme (user-documented overrideables for nav appearance) */
+
+  .distill-site-nav {
+    color: rgba(255, 255, 255, 0.8);
+    background-color: #0F2E3D;
+    font-size: 15px;
+    font-weight: 300;
+  }
+
+  .distill-site-nav a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  .distill-site-nav a:hover {
+    color: white;
+  }
+
+  @media print {
+    .distill-site-nav {
+      display: none;
+    }
+  }
+
+  .distill-site-header {
+
+  }
+
+  .distill-site-footer {
+
+  }
+
+
+  /* Site Header */
+
+  .distill-site-header {
+    width: 100%;
+    box-sizing: border-box;
+    z-index: 3;
+  }
+
+  .distill-site-header .nav-left {
+    display: inline-block;
+    margin-left: 8px;
+  }
+
+  @media screen and (max-width: 768px) {
+    .distill-site-header .nav-left {
+      margin-left: 0;
+    }
+  }
+
+
+  .distill-site-header .nav-right {
+    float: right;
+    margin-right: 8px;
+  }
+
+  .distill-site-header a,
+  .distill-site-header .title {
+    display: inline-block;
+    text-align: center;
+    padding: 14px 10px 14px 10px;
+  }
+
+  .distill-site-header .title {
+    font-size: 18px;
+    min-width: 150px;
+  }
+
+  .distill-site-header .logo {
+    padding: 0;
+  }
+
+  .distill-site-header .logo img {
+    display: none;
+    max-height: 20px;
+    width: auto;
+    margin-bottom: -4px;
+  }
+
+  .distill-site-header .nav-image img {
+    max-height: 18px;
+    width: auto;
+    display: inline-block;
+    margin-bottom: -3px;
+  }
+
+
+
+  @media screen and (min-width: 1000px) {
+    .distill-site-header .logo img {
+      display: inline-block;
+    }
+    .distill-site-header .nav-left {
+      margin-left: 20px;
+    }
+    .distill-site-header .nav-right {
+      margin-right: 20px;
+    }
+    .distill-site-header .title {
+      padding-left: 12px;
+    }
+  }
+
+
+  .distill-site-header .nav-toggle {
+    display: none;
+  }
+
+  .nav-dropdown {
+    display: inline-block;
+    position: relative;
+  }
+
+  .nav-dropdown .nav-dropbtn {
+    border: none;
+    outline: none;
+    color: rgba(255, 255, 255, 0.8);
+    padding: 16px 10px;
+    background-color: transparent;
+    font-family: inherit;
+    font-size: inherit;
+    font-weight: inherit;
+    margin: 0;
+    margin-top: 1px;
+    z-index: 2;
+  }
+
+  .nav-dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: white;
+    min-width: 200px;
+    border: 1px solid rgba(0,0,0,0.15);
+    border-radius: 4px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.1);
+    z-index: 1;
+    margin-top: 2px;
+    white-space: nowrap;
+    padding-top: 4px;
+    padding-bottom: 4px;
+  }
+
+  .nav-dropdown-content hr {
+    margin-top: 4px;
+    margin-bottom: 4px;
+    border: none;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  }
+
+  .nav-dropdown-active {
+    display: block;
+  }
+
+  .nav-dropdown-content a, .nav-dropdown-content .nav-dropdown-header {
+    color: black;
+    padding: 6px 24px;
+    text-decoration: none;
+    display: block;
+    text-align: left;
+  }
+
+  .nav-dropdown-content .nav-dropdown-header {
+    display: block;
+    padding: 5px 24px;
+    padding-bottom: 0;
+    text-transform: uppercase;
+    font-size: 14px;
+    color: #999999;
+    white-space: nowrap;
+  }
+
+  .nav-dropdown:hover .nav-dropbtn {
+    color: white;
+  }
+
+  .nav-dropdown-content a:hover {
+    background-color: #ddd;
+    color: black;
+  }
+
+  .nav-right .nav-dropdown-content {
+    margin-left: -45%;
+    right: 0;
+  }
+
+  @media screen and (max-width: 768px) {
+    .distill-site-header a, .distill-site-header .nav-dropdown  {display: none;}
+    .distill-site-header a.nav-toggle {
+      float: right;
+      display: block;
+    }
+    .distill-site-header .title {
+      margin-left: 0;
+    }
+    .distill-site-header .nav-right {
+      margin-right: 0;
+    }
+    .distill-site-header {
+      overflow: hidden;
+    }
+    .nav-right .nav-dropdown-content {
+      margin-left: 0;
+    }
+  }
+
+
+  @media screen and (max-width: 768px) {
+    .distill-site-header.responsive {position: relative; min-height: 500px; }
+    .distill-site-header.responsive a.nav-toggle {
+      position: absolute;
+      right: 0;
+      top: 0;
+    }
+    .distill-site-header.responsive a,
+    .distill-site-header.responsive .nav-dropdown {
+      display: block;
+      text-align: left;
+    }
+    .distill-site-header.responsive .nav-left,
+    .distill-site-header.responsive .nav-right {
+      width: 100%;
+    }
+    .distill-site-header.responsive .nav-dropdown {float: none;}
+    .distill-site-header.responsive .nav-dropdown-content {position: relative;}
+    .distill-site-header.responsive .nav-dropdown .nav-dropbtn {
+      display: block;
+      width: 100%;
+      text-align: left;
+    }
+  }
+
+  /* Site Footer */
+
+  .distill-site-footer {
+    width: 100%;
+    overflow: hidden;
+    box-sizing: border-box;
+    z-index: 3;
+    margin-top: 30px;
+    padding-top: 30px;
+    padding-bottom: 30px;
+    text-align: center;
+  }
+
+  /* Headroom */
+
+  d-title {
+    padding-top: 6rem;
+  }
+
+  @media print {
+    d-title {
+      padding-top: 4rem;
+    }
+  }
+
+  .headroom {
+    z-index: 1000;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+  }
+
+  .headroom--transition {
+    transition: all .4s ease-in-out;
+  }
+
+  .headroom--unpinned {
+    top: -100px;
+  }
+
+  .headroom--pinned {
+    top: 0;
+  }
+
+  /* adjust viewport for navbar height */
+  /* helps vertically center bootstrap (non-distill) content */
+  .min-vh-100 {
+    min-height: calc(100vh - 100px) !important;
+  }
+
+  </style>
+
+  <script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+  <link href="site_libs/font-awesome-5.1.0/css/all.css" rel="stylesheet"/>
+  <link href="site_libs/font-awesome-5.1.0/css/v4-shims.css" rel="stylesheet"/>
+  <script src="site_libs/headroom-0.9.4/headroom.min.js"></script>
   <!--/radix_placeholder_navigation_in_header-->
   <!--radix_placeholder_distill-->
 
@@ -1432,22 +1771,15 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   </script>
 
   <!--/radix_placeholder_distill-->
-  <script src="woche01_files/header-attrs/header-attrs.js"></script>
-  <script src="woche01_files/clipboard/clipboard.min.js"></script>
-  <link href="woche01_files/shareon/shareon.min.css" rel="stylesheet" />
-  <script src="woche01_files/shareon/shareon.min.js"></script>
-  <link href="woche01_files/xaringanExtra-shareagain/shareagain.css" rel="stylesheet" />
-  <script src="woche01_files/xaringanExtra-shareagain/shareagain.js"></script>
-  <script src="woche01_files/fitvids/fitvids.min.js"></script>
-  <script src="woche01_files/jquery/jquery.min.js"></script>
-  <script src="woche01_files/popper/popper.min.js"></script>
-  <link href="woche01_files/tippy/tippy.css" rel="stylesheet" />
-  <link href="woche01_files/tippy/tippy-light-border.css" rel="stylesheet" />
-  <script src="woche01_files/tippy/tippy.umd.min.js"></script>
-  <script src="woche01_files/anchor/anchor.min.js"></script>
-  <script src="woche01_files/bowser/bowser.min.js"></script>
-  <script src="woche01_files/webcomponents/webcomponents.js"></script>
-  <script src="woche01_files/distill/template.v2.js"></script>
+  <script src="site_libs/header-attrs-2.7/header-attrs.js"></script>
+  <script src="site_libs/popper-2.6.0/popper.min.js"></script>
+  <link href="site_libs/tippy-6.2.7/tippy.css" rel="stylesheet" />
+  <link href="site_libs/tippy-6.2.7/tippy-light-border.css" rel="stylesheet" />
+  <script src="site_libs/tippy-6.2.7/tippy.umd.min.js"></script>
+  <script src="site_libs/anchor-4.2.2/anchor.min.js"></script>
+  <script src="site_libs/bowser-1.9.3/bowser.min.js"></script>
+  <script src="site_libs/webcomponents-2.0.0/webcomponents.js"></script>
+  <script src="site_libs/distill-2.2.21/template.v2.js"></script>
   <!--radix_placeholder_site_in_header-->
   <!--/radix_placeholder_site_in_header-->
 
@@ -1459,20 +1791,47 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <!--radix_placeholder_front_matter-->
 
 <script id="distill-front-matter" type="text/json">
-{"title":"Woche 1 - Willkommen zu rstatsZH","description":"Ziele und Materialien für unsere erste gemeinsame Woche","authors":[],"publishedDate":"2021-02-12T00:00:00.000+01:00"}
+{"title":"Hausaufgabe 04 - Mehr dyplr","authors":[]}
 </script>
 
 <!--/radix_placeholder_front_matter-->
 <!--radix_placeholder_navigation_before_body-->
+<header class="header header--fixed" role="banner">
+<nav class="distill-site-nav distill-site-header">
+<div class="nav-left">
+<a href="index.html" class="title">rstatsZH - Data Science mit R</a>
+</div>
+<div class="nav-right">
+<a href="index.html">Home</a>
+<div class="nav-dropdown">
+<button class="nav-dropbtn">
+Hausaufgaben
+ 
+<span class="down-arrow">&#x25BE;</span>
+</button>
+<div class="nav-dropdown-content">
+<a href="ha-01-hallo-git.html">Hausaufgabe 01</a>
+<a href="ha-02-hallo-ogd.html">Hausaufgabe 02</a>
+<a href="ha-03-hallo-dplyr.html">Hausaufgabe 03</a>
+</div>
+</div>
+<a href="code_of_conduct.html">Code of Conduct</a>
+<a href="https://github.com/rstatsZH/website">
+<i class="fab fa-github" aria-hidden="true"></i>
+</a>
+<a href="javascript:void(0);" class="nav-toggle">&#9776;</a>
+</div>
+</nav>
+</header>
 <!--/radix_placeholder_navigation_before_body-->
 <!--radix_placeholder_site_before_body-->
 <!--/radix_placeholder_site_before_body-->
 
 <div class="d-title">
-<h1>Woche 1 - Willkommen zu rstatsZH</h1>
+<h1>Hausaufgabe 04 - Mehr dyplr</h1>
 <!--radix_placeholder_categories-->
 <!--/radix_placeholder_categories-->
-<p><p>Ziele und Materialien für unsere erste gemeinsame Woche</p></p>
+
 </div>
 
 
@@ -1481,102 +1840,17 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <nav class="l-text toc figcaption" id="TOC">
 <h3>Contents</h3>
 <ul>
-<li><a href="#ziele">Ziele</a></li>
-<li><a href="#folien">Folien</a></li>
-<li><a href="#weiterführende-aufgaben">Weiterführende Aufgaben</a></li>
+<li><a href="#übung-4---dplyrmutate">Übung 4 - dplyr::mutate()</a></li>
 </ul>
 </nav>
 </div>
 <script async defer data-domain="rstatszh.github.io/website" src="https://plausible.io/js/plausible.js"></script>
-<div class="layout-chunk" data-layout="l-body">
-
-</div>
-<div class="layout-chunk" data-layout="l-body">
-<div class="figure"><span id="fig:unnamed-chunk-1"></span>
-<img src="img/toolbox.jpg" alt="Photo by [Barn Images](https://unsplash.com/@barnimages)" data-distill-preview=1 />
-<p class="caption">
-Figure 1: Photo by <a href="https://unsplash.com/@barnimages">Barn Images</a>
-</p>
-</div>
-</div>
-<p>Mache dich mit dem Kurs, den Werkzeugen, dem Arbeitsablauf und den Fähigkeiten, die du im Laufe des Kurses erwerben wirst, vertraut.</p>
-<h1 id="ziele">Ziele</h1>
-<p>Am Ende dieser Woche kannst du:</p>
-<ul>
-<li>die Werkzeuge welche wir für den Kurs nutzen öffnen</li>
-<li>ein git repository aus GitHub in deine Arbeitsumgebung laden</li>
-<li>eine geänderte Datei auf ein git repository auf GitHub pushen</li>
-<li>beschreiben welche Elemente Teil eines R Markdown Dokuments sind</li>
-<li>R code für eine Visuaisierung mit {ggplot2} reproduzieren</li>
-</ul>
-<h1 id="folien">Folien</h1>
-<div class="layout-chunk" data-layout="l-body">
-
-</div>
-<div class="layout-chunk" data-layout="l-body">
-<div class="shareagain" style="min-width:300px;margin:1em auto;">
-<iframe src="../../slides/e1_d01-willkommen/e1_d01-willkommen.html" width="1600" height="900" style="border:2px solid currentColor;" loading="lazy" allowfullscreen></iframe>
-<script>fitvids('.shareagain', {players: 'iframe'});</script>
-</div>
-</div>
-<h1 id="weiterführende-aufgaben">Weiterführende Aufgaben</h1>
-<div class="layout-chunk" data-layout="l-body">
-<table>
-<tbody>
-<tr>
-<td style="text-align:right;">
-1
-</td>
-<td style="text-align:left;">
-Buch
-</td>
-<td style="text-align:left;">
-<a href="https://r4ds.had.co.nz/explore-intro.html">R4DS - Chapter 2 - Introduction</a>
-</td>
-<td style="text-align:left;">
-Pflicht
-</td>
-<td style="text-align:left;">
-~ 10 Minuten
-</td>
-</tr>
-<tr>
-<td style="text-align:right;">
-2
-</td>
-<td style="text-align:left;">
-Hausaufgabe
-</td>
-<td style="text-align:left;">
-<a href="https://rstatszh.github.io/website/ha-01-hallo-git.html">Hausaufgabe 01 - Hallo Git</a>
-</td>
-<td style="text-align:left;">
-Pflicht
-</td>
-<td style="text-align:left;">
-~ 90 Minuten
-</td>
-</tr>
-<tr>
-<td style="text-align:right;">
-3
-</td>
-<td style="text-align:left;">
-Blog Post
-</td>
-<td style="text-align:left;">
-<a href="https://www.pipinghotdata.com/posts/2020-09-07-introducing-the-rstudio-ide-and-r-markdown/#personalizing-r-markdown">Introducing RStudio and R Markdown</a>
-</td>
-<td style="text-align:left;">
-Freiwillig
-</td>
-<td style="text-align:left;">
-~ 30 Minuten
-</td>
-</tr>
-</tbody>
-</table>
-</div>
+<h2 id="übung-4---dplyrmutate">Übung 4 - dplyr::mutate()</h2>
+<ol type="1">
+<li><p>Lese das <a href="https://r4ds.had.co.nz/transform.html#add-new-variables-with-mutate">Kapitel 5.5 - Add new variables with <code>mutate()</code></a> aus dem Buch R for Data Science, mache dir Notizen und schreibe dir Fragen auf wenn du etwas nicht nachvollziehen kannst. Stelle deine Fragen in unserem Slack Channel für den Kurs.</p></li>
+<li><p>Arbeite durch die Übungen aus <a href="https://r4ds.had.co.nz/transform.html#exercises-11">Kapitel 5.5.2 - Exercises</a>. Stelle Fragen in unserem Slack Channel für den Kurs.</p></li>
+</ol>
+<p>🧶 ✅ ⬆️ <em>Knit, commit und push deine Änderungen auf GitHub mit einer Commit-Nachricht deiner Wahl. Achte darauf, alle geänderten Dateien zu committen und zu pushen, damit dein Git-Fenster danach aufgeräumt ist.</em></p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
 <!--radix_placeholder_article_footer-->
 <!--/radix_placeholder_article_footer-->
@@ -1589,7 +1863,12 @@ Freiwillig
 <!--radix_placeholder_site_after_body-->
 <!--/radix_placeholder_site_after_body-->
 <!--radix_placeholder_appendices-->
-<div class="appendix-bottom"></div>
+<div class="appendix-bottom">
+<h3 id="updates-and-corrections">Corrections</h3>
+<p>If you see mistakes or want to suggest changes, please <a href="https://github.com/rstatsZH/website/issues/new">create an issue</a> on the source repository.</p>
+<h3 id="reuse">Reuse</h3>
+<p>Text and figures are licensed under Creative Commons Attribution <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a>. Source code is available at <a href="https://github.com/rstatsZH/website">https://github.com/rstatsZH/website</a>, unless otherwise noted. The figures that have been reused from other sources don't fall under this license and can be recognized by a note in their caption: "Figure from ...".</p>
+</div>
 <!--/radix_placeholder_appendices-->
 <!--radix_placeholder_navigation_after_body-->
 <!--/radix_placeholder_navigation_after_body-->

@@ -1850,12 +1850,10 @@ Hausaufgaben
 <li><a href="#übung-1---dplyrfilter">Übung 1 - dplyr::filter()</a></li>
 <li><a href="#übung-2---dplyrarrange">Übung 2 - dplyr::arrange()</a></li>
 <li><a href="#übung-3---dplyrselect">Übung 3 - dplyr::select()</a></li>
-<li><a href="#übung-4---dplyrmutate-bonus">Übung 4 - dplyr::mutate() (Bonus)</a></li>
 </ul></li>
 </ul>
 </nav>
 </div>
-<script async defer data-domain="rstatszh.github.io/website" src="https://plausible.io/js/plausible.js"></script>
 <script async defer data-domain="rstatszh.github.io/website" src="https://plausible.io/js/plausible.js"></script>
 <p>Visualisierung ist ein wichtiges Werkzeug um Daten zu erkunden. In den seltensten Fällen kommen Daten jedoch in genau der Form welche benötigt wird um hilfreiche Visualisierungen zu erstellen. Es werden oftmals neue Variablen erstellt, Zusammenfassungen erzeugt, oder möglicherweise werden Variablen umbenannt und umgeordnet, damit effizient damit gearbeitet werden kann. Das R Package <code>{dplyr}</code> aus der Sammlung der <code>{tidyverse}</code> Packages ist genau für diese Arbeit gemacht wurden, welche auch oft als Data Tansformation, Data Manipulation, oder auch Data Wrangling betitelt wird.</p>
 <h1 id="ziele">Ziele</h1>
@@ -1870,7 +1868,7 @@ Hausaufgaben
 <p>Folge den Schritten aus Hausaufgabe 1 oder den Folien der Woche 2 um das GitHub Repo in deine RStudio Cloud zu clonen.</p>
 <h1 id="packages">Packages</h1>
 <p>In dieser Hausaufgabe nutzen wir das <code>{dplyr}</code> Package und ein weiteres Daten Package names <code>{nycflights13}</code> um wesentliche Konzepte aus der letzten Lektionen zu üben. Das Package ist noch nicht installiert und ihr müsst dies in einem ersten Schritt selbst machen.</p>
-<p>❗ 1. Installiere das <code>{nycflights13}</code> R package mit der Funktion <code>install.packages("")</code></p>
+<p>❗ 1. <strong>In der R Konsole</strong>: Installiere das <code>{nycflights13}</code> R package mit der Funktion <code>install.packages("")</code></p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://dplyr.tidyverse.org'>dplyr</a></span><span class='op'>)</span>
@@ -1928,7 +1926,7 @@ $ time_hour      &lt;dttm&gt; 2013-01-01 05:00:00, 2013-01-01 05:00:00, 20…</c
 <h1 id="übungen">Übungen</h1>
 <h2 id="aufwärmen-1">Aufwärmen 1</h2>
 <ol type="1">
-<li>Öffne die R Markdown Datei für die Übunge</li>
+<li>Öffne die R Markdown Datei für die Übung</li>
 <li>Aktualisiere den YAML Header in dem du deinen Namen und das Datum hinzufügst</li>
 <li>Passe das Aussehen des Dokuments über die “Output Options” an (siehe Screenshots)</li>
 </ol>
@@ -1954,14 +1952,8 @@ $ time_hour      &lt;dttm&gt; 2013-01-01 05:00:00, 2013-01-01 05:00:00, 20…</c
 <p>🧶 ✅ ⬆️ <em>Knit, commit und push deine Änderungen auf GitHub mit einer Commit-Nachricht deiner Wahl. Achte darauf, alle geänderten Dateien zu committen und zu pushen, damit dein Git-Fenster danach aufgeräumt ist.</em></p>
 <h2 id="übung-3---dplyrselect">Übung 3 - dplyr::select()</h2>
 <ol type="1">
-<li><p>Lese das <a href="https://r4ds.had.co.nz/transform.html#select">Kapitel 5.4 - Select columns with <code>select()</code></a> aus dem Buch R for Data Science, mache dir Notizen und schreibe dir Fragen auf wenn du etwas nicht nachvollziehen kannst. Stelle deine Fragen in unserem Slack Channel für den Kurs.</p></li>
+<li><p>Lese das <a href="https://r4ds.had.co.nz/transform.html#select">Kapitel 5.4 - Select columns with <code>select()</code></a> aus dem Buch R for Data Science, mache dir Notizen und schreibe dir Fragen auf wenn du etwas nicht nachvollziehen kannst. Stelle deine Fragen in unserem Slack Channel für den Kurs. <strong>Es werden dir sogenannte “helper functions” vorgestellt, welche wir im Kurs noch nicht behandelt haben. Folgt dem Text und versucht zu verstehen was diese bewirken.</strong></p></li>
 <li><p>Arbeite durch die Übungen aus <a href="https://r4ds.had.co.nz/transform.html#exercises-10">Kapitel 5.4.1 - Exercises</a>. Stelle Fragen in unserem Slack Channel für den Kurs.</p></li>
-</ol>
-<p>🧶 ✅ ⬆️ <em>Knit, commit und push deine Änderungen auf GitHub mit einer Commit-Nachricht deiner Wahl. Achte darauf, alle geänderten Dateien zu committen und zu pushen, damit dein Git-Fenster danach aufgeräumt ist.</em></p>
-<h2 id="übung-4---dplyrmutate-bonus">Übung 4 - dplyr::mutate() (Bonus)</h2>
-<ol type="1">
-<li><p>Lese das <a href="https://r4ds.had.co.nz/transform.html#add-new-variables-with-mutate">Kapitel 5.5 - Add new variables with <code>mutate()</code></a> aus dem Buch R for Data Science, mache dir Notizen und schreibe dir Fragen auf wenn du etwas nicht nachvollziehen kannst. Stelle deine Fragen in unserem Slack Channel für den Kurs.</p></li>
-<li><p>Arbeite durch die Übungen aus <a href="https://r4ds.had.co.nz/transform.html#exercises-11">Kapitel 5.5.2 - Exercises</a>. Stelle Fragen in unserem Slack Channel für den Kurs.</p></li>
 </ol>
 <p>🧶 ✅ ⬆️ <em>Knit, commit und push deine Änderungen auf GitHub mit einer Commit-Nachricht deiner Wahl. Achte darauf, alle geänderten Dateien zu committen und zu pushen, damit dein Git-Fenster danach aufgeräumt ist.</em></p>
 <div class="sourceCode" id="cb2"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>

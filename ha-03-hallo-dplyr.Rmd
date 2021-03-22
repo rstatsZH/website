@@ -8,8 +8,6 @@ title: "Hausaufgabe 03 - Hallo dyplr"
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-<script async defer data-domain="rstatszh.github.io/website" src="https://plausible.io/js/plausible.js"></script>
-
 Visualisierung ist ein wichtiges Werkzeug um Daten zu erkunden. In den seltensten Fällen kommen Daten jedoch in genau der Form welche benötigt wird um hilfreiche Visualisierungen zu erstellen. Es werden oftmals neue Variablen erstellt, Zusammenfassungen erzeugt, oder möglicherweise werden Variablen umbenannt und umgeordnet, damit effizient damit gearbeitet werden kann. Das R Package `{dplyr}` aus der Sammlung der `{tidyverse}` Packages ist genau für diese Arbeit gemacht wurden, welche auch oft als Data Tansformation, Data Manipulation, oder auch Data Wrangling betitelt wird. 
 
 # Ziele
@@ -30,7 +28,7 @@ Folge den Schritten aus Hausaufgabe 1 oder den Folien der Woche 2 um das GitHub 
 
 In dieser Hausaufgabe nutzen wir das `{dplyr}` Package und ein weiteres Daten Package names `{nycflights13}` um wesentliche Konzepte aus der letzten Lektionen zu üben. Das Package ist noch nicht installiert und ihr müsst dies in einem ersten Schritt selbst machen.
 
-`r emo::ji("exclamation_mark")` 1. Installiere das `{nycflights13}` R package mit der Funktion `install.packages("")`
+`r emo::ji("exclamation_mark")` 1. **In der R Konsole**: Installiere das `{nycflights13}` R package mit der Funktion `install.packages("")`
 
 ```{r}
 
@@ -73,7 +71,7 @@ View(weather)
 
 ## Aufwärmen 1
 
-1. Öffne die R Markdown Datei für die Übunge
+1. Öffne die R Markdown Datei für die Übung
 2. Aktualisiere den YAML Header in dem du deinen Namen und das Datum hinzufügst
 3. Passe das Aussehen des Dokuments über die "Output Options" an (siehe Screenshots)
 
@@ -111,16 +109,9 @@ knitr::include_graphics("img/doc-opts/doc-opts.002.png")
 
 ## Übung 3 - dplyr::select()
 
-1. Lese das [Kapitel 5.4 - Select columns with `select()`](https://r4ds.had.co.nz/transform.html#select) aus dem Buch R for Data Science, mache dir Notizen und schreibe dir Fragen auf wenn du etwas nicht nachvollziehen kannst. Stelle deine Fragen in unserem Slack Channel für den Kurs.
+1. Lese das [Kapitel 5.4 - Select columns with `select()`](https://r4ds.had.co.nz/transform.html#select) aus dem Buch R for Data Science, mache dir Notizen und schreibe dir Fragen auf wenn du etwas nicht nachvollziehen kannst. Stelle deine Fragen in unserem Slack Channel für den Kurs. **Es werden dir sogenannte "helper functions" vorgestellt, welche wir im Kurs noch nicht behandelt haben. Folgt dem Text und versucht zu verstehen was diese bewirken.**
 
 2. Arbeite durch die Übungen aus [Kapitel 5.4.1 - Exercises](https://r4ds.had.co.nz/transform.html#exercises-10). Stelle Fragen in unserem Slack Channel für den Kurs.
 
 🧶 ✅ ⬆️ *Knit, commit und push deine Änderungen auf GitHub mit einer Commit-Nachricht deiner Wahl. Achte darauf, alle geänderten Dateien zu committen und zu pushen, damit dein Git-Fenster danach aufgeräumt ist.*
 
-## Übung 4 - dplyr::mutate() (Bonus)
-
-1. Lese das [Kapitel 5.5 - Add new variables with `mutate()`](https://r4ds.had.co.nz/transform.html#add-new-variables-with-mutate) aus dem Buch R for Data Science, mache dir Notizen und schreibe dir Fragen auf wenn du etwas nicht nachvollziehen kannst. Stelle deine Fragen in unserem Slack Channel für den Kurs.
-
-2. Arbeite durch die Übungen aus [Kapitel 5.5.2 - Exercises](https://r4ds.had.co.nz/transform.html#exercises-11). Stelle Fragen in unserem Slack Channel für den Kurs.
-
-🧶 ✅ ⬆️ *Knit, commit und push deine Änderungen auf GitHub mit einer Commit-Nachricht deiner Wahl. Achte darauf, alle geänderten Dateien zu committen und zu pushen, damit dein Git-Fenster danach aufgeräumt ist.*

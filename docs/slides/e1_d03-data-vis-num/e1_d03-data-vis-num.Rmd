@@ -36,6 +36,7 @@ library(palmerpenguins)
 library(dplyr)
 library(readr)
 library(ggplot2)
+library(forcats)
 library(gt)
 
 ```
@@ -120,8 +121,6 @@ Am Ende dieser Woche könnt ihr:
 4. Strickt das Dokument
 ]
 
-**Wer möchte das Ergebnise der Übung 3 präsentieren?**
-
 ---
 class: inverse, middle
 
@@ -188,9 +187,7 @@ ggplot(data = corona_kultur,
   geom_bar() +
   facet_wrap(~Kategorie, nrow = 1) +
   scale_fill_brewer(type = "qual", palette = 3) +
-  theme_minimal(base_size = 14) +  #<<
-  theme(panel.grid.major.x = element_blank(), #<<
-        panel.grid.minor.y = element_blank()) + #<<
+  theme_minimal(base_size = 14) +  #<< 
   theme(legend.position = "bottom") #<<
 
 ```
@@ -237,6 +234,17 @@ ggplot(penguins, aes(x = species, fill = island)) +
 ```{r ref.label = "penguins-scale-fill", echo = FALSE, warning = FALSE, out.width = "80%", fig.width = 8}
 ```
 
+---
+## Eine Skala ersetzen - Farbskalen ([colorbrewer2.org](https://colorbrewer2.org/))
+
+```{r penguins-scale-brewer, warning = FALSE, echo=TRUE, fig.show="hide"}
+ggplot(penguins, aes(x = species, fill = island)) +
+  geom_bar() +
+  scale_fill_brewer(type = "qual", palette = "Set2") #<<
+```
+
+```{r ref.label = "penguins-scale-brewer", echo = FALSE, warning = FALSE, out.width = "80%", fig.width = 8} 
+```
 
 ---
 ## Eine Skala ersetzen - Achsen (kontinuierliche Variable)
@@ -372,46 +380,14 @@ Kategoriale Variablen umfassen eine endliche Anzahl von Kategorien oder eindeuti
 
 
 ---
-# Übung
+# Variablen Typen - Penguins
 
-.note[
-Arbeitet in 2er Teams.
-
-1. **RStudio Cloud**: Öffnet euren Arbeitsbereich für den Kurs
-2. **RStudio Cloud / Projects**: Öffnet Praktikum 3
-3. Unter dem Kapitel "Daten kennelernen" 
-    - erkundet den Datensatz `penguins` mit den Funktionen `glimpse()` und `str()`
-    - öffnet die Hilfedatei für den Datensatz `penguins`
-    - beschreibt den Variablen Typen für jede Variable im Datensatz 
-]
-
----
-
-```{r}
-
-tibble(
-  Variable = "Var 1",
-  `Variablen Typ 1` = "numerisch/kategorisch",
-  `Variablen Typ 2` = "diskret/stetig (kontinuierlich), oder ordinal/nicht ordinal"
-) %>% 
-  gt() %>% 
-  gt::tab_options(column_labels.font.weight = "bold")
-
-```
-
-```{r}
-
-countdown(
-  minutes = 10, seconds = 0,
-  left = 0, right = 0,
-  padding = "15px", margin = "5%",
-  font_size = "4em"
-)
-
+```{r, echo=TRUE}
+str(penguins)
 ```
 
 ---
-# Lösung 
+# Variablen Typen - Penguins 
 
 ```{r}
 
@@ -426,6 +402,40 @@ tibble(
 
 ```
 
+???
+
+- Ist das Jahr nun diskret oder kontinuierlich?
+- In diesem Fall haben wir keine Datumsangabe oder Zeitpunktsangabe, sondern das Jahr in welchem die Daten gesammelt wurde, dies macht die Variable selbst zu einer diskreten Variable. 
+- Warum spielt das eine Rolle?
+
+---
+```{r penguins-type-c, warning = FALSE, echo=TRUE, fig.show="hide"}
+ggplot(penguins, 
+       aes(x = bill_length_mm,
+           y = bill_depth_mm,
+           colour = year)) + #<<
+  geom_point() +
+  scale_color_viridis_c() #<<
+
+```
+
+```{r ref.label = "penguins-type-c", echo = FALSE, warning = FALSE, out.width = "80%", fig.width = 8} 
+```
+
+---
+```{r penguins-type-d, warning = FALSE, echo=TRUE, fig.show="hide"}
+ggplot(penguins, 
+       aes(x = bill_length_mm,
+           y = bill_depth_mm,
+           colour = as_factor(year))) + #<<
+  geom_point() +
+  labs(colour = "year") +
+  scale_color_viridis_d() #<<
+
+```
+
+```{r ref.label = "penguins-type-d", echo = FALSE, warning = FALSE, out.width = "80%", fig.width = 8} 
+```
 
 ---
 background-image: url(img/data-to-viz.png)

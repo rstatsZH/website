@@ -24,6 +24,7 @@ knitr::include_graphics("img/pliers.jpg")
 ```
 
 Lerne die Funktionen des `{dplyr}` R Package kennen und vertiefe deine Fähigkeiten im Umgang mit Visualisierungen. 
+
 # Ziele
 
 Am Ende dieser Woche könnt ihr:

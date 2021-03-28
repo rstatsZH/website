@@ -84,8 +84,9 @@ background-size: contain
 
 Am Ende dieser Woche könnt ihr:
 
-- mehr als zehn Funktionen des R Package `{dplyr}` anwenden, um   - Daten einzugrenzen
-  - Neue Variablen zu erstellen
+- mehr als zehn Funktionen des R Package `{dplyr}` anwenden, um   
+  - Daten einzugrenzen
+  - neue Variablen zu erstellen
   - zusammefassende Statistiken zu berechnen
 - `NA` Werte aus euren Daten entfernen
 

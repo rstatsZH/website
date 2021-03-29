@@ -6,9 +6,9 @@
     "author": [],
     "date": "2021-03-26",
     "categories": [],
-    "contents": "\n\nContents\nZiele\nFolien\nDaten Transformation - Teil 2\n\nWeiterführende Aufgaben\n\n\n\n\n\n\n\nFigure 1: Photo by Hunter Haley\n\n\n\nLerne weitere Funktionen des {dplyr} R Packages kennen und beginnen diese in Code Sequenzen zusammenzufügen.\nZiele\nAm Ende dieser Woche könnt ihr:\nmehr als zehn Funktionen des R Package {dplyr} anwenden, um\nDaten einzugrenzen\nneue Variablen zu erstellen\nzusammefassende Statistiken zu berechnen\n\nNA Werte aus euren Daten entfernen\nFolien\nDaten Transformation - Teil 2\n\n\n\n\n\n\nfitvids('.shareagain', {players: 'iframe'});\n\nWeiterführende Aufgaben\n\n\nBuch\n\n\nR4DS - Chapter 7.1 to 7.4\n\n\nPflicht\n\n\n~ 30 Minuten\n\n\nHausaufgabe\n\n\nHausaufgabe 04 - Mehr dplyr\n\n\nPflicht\n\n\n~ 120 Minuten\n\n\nGuide\n\n\nR Style Guide - Chapter 4 + 5\n\n\nFreiwillig\n\n\n~ 20 Minuten\n\n\n\n\n\n",
+    "contents": "\n\nContents\nZiele\nFolien\nDaten Transformation - Teil 2\n\nWeiterführende Aufgaben\n\n\n\n\n\n\n\nFigure 1: Photo by Hunter Haley\n\n\n\nLerne weitere Funktionen des {dplyr} R Packages kennen und beginnen diese in Code Sequenzen zusammenzufügen.\nZiele\nAm Ende dieser Woche könnt ihr:\nmehr als zehn Funktionen des R Package {dplyr} anwenden, um\nDaten einzugrenzen\nneue Variablen zu erstellen\nzusammefassende Statistiken zu berechnen\n\nNA Werte aus euren Daten entfernen\nFolien\nDaten Transformation - Teil 2\n\n\n\n\n\n\nfitvids('.shareagain', {players: 'iframe'});\n\nWeiterführende Aufgaben\n\n\nBuch\n\n\nR4DS - Chapter 7.1 to 7.4\n\n\nPflicht\n\n\n~ 30 Minuten\n\n\nHausaufgabe\n\n\nHausaufgabe 04 - Mehr dplyr\n\n\nPflicht\n\n\n~ 120 Minuten\n\n\nGuide\n\n\nR Style Guide - Chapter 4 + 5\n\n\nFreiwillig\n\n\n~ 20 Minuten\n\n\nBuch\n\n\nR4DS - Chapter 10 - Tibbles\n\n\nFreiwillig\n\n\n~ 20 Minuten\n\n\n\n\n\n",
     "preview": "posts/2021-03-28-woche04/img/plier2.jpg",
-    "last_modified": "2021-03-29T11:22:53+02:00",
+    "last_modified": "2021-03-29T12:50:09+02:00",
     "input_file": {}
   },
   {

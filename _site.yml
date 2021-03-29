@@ -19,7 +19,9 @@ navbar:
         - text: "Hausaufgabe 02"
           href: ha-02-hallo-ogd.html
         - text: "Hausaufgabe 03"
-          href: ha-03-hallo-dplyr.html  
+          href: ha-03-hallo-dplyr.html
+        - text: "Hausaufgabe 04"
+          href: ha-04-mehr-dplyr.html
     - text: "Code of Conduct"
       href: code_of_conduct.html
     - icon: fab fa-github

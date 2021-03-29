@@ -1813,6 +1813,7 @@ Hausaufgaben
 <a href="ha-01-hallo-git.html">Hausaufgabe 01</a>
 <a href="ha-02-hallo-ogd.html">Hausaufgabe 02</a>
 <a href="ha-03-hallo-dplyr.html">Hausaufgabe 03</a>
+<a href="ha-04-mehr-dplyr.html">Hausaufgabe 04</a>
 </div>
 </div>
 <a href="code_of_conduct.html">Code of Conduct</a>
@@ -1840,18 +1841,197 @@ Hausaufgaben
 <nav class="l-text toc figcaption" id="TOC">
 <h3>Contents</h3>
 <ul>
-<li><a href="#übung-4---dplyrmutate">Übung 4 - dplyr::mutate()</a></li>
+<li><a href="#ziele">Ziele</a></li>
+<li><a href="#erste-schritte">Erste Schritte</a></li>
+<li><a href="#packages">Packages</a></li>
+<li><a href="#data">Data</a>
+<ul>
+<li><a href="#übersicht-über-alle-lernenden-im-kanton-zürich">Übersicht über alle Lernenden im Kanton Zürich</a></li>
+<li><a href="#data-package-nycflights13">Data Package <code>{nycflights13}</code></a></li>
+</ul></li>
+<li><a href="#aufwärmen">Aufwärmen</a></li>
+<li><a href="#übungen---teil-1---r-for-data-science">Übungen - Teil 1 - R for Data Science</a>
+<ul>
+<li><a href="#übung-1---dplyrmutate">Übung 1 - dplyr::mutate()</a></li>
+</ul></li>
+<li><a href="#übungen---teil-2---lernende-im-kanton-zürich">Übungen - Teil 2 - Lernende im Kanton Zürich</a>
+<ul>
+<li><a href="#übung-1---daten-importieren">Übung 1 - Daten Importieren</a></li>
+<li><a href="#übung-2---daten-beschreiben">Übung 2 - Daten beschreiben</a></li>
+<li><a href="#übung-3---daten-visualisieren">Übung 3 - Daten visualisieren</a></li>
+<li><a href="#übung-4---daten-eingrenzen">Übung 4 - Daten eingrenzen</a></li>
+<li><a href="#übung-5---daten-zusammenfassen">Übung 5 - Daten zusammenfassen</a></li>
+<li><a href="#übung-6---kurzanalyse">Übung 6 - Kurzanalyse</a></li>
+</ul></li>
+<li><a href="#übungen---teil-3---r-for-data-science---bonus">Übungen - Teil 3 - R for Data Science - (Bonus)</a>
+<ul>
+<li><a href="#übung-1---grouped-summaries-with-summarise">Übung 1 - Grouped summaries with summarise()</a></li>
+<li><a href="#übung-2---grouped-mutates-and-filters">Übung 2 - Grouped mutates (and filters)</a></li>
+</ul></li>
 </ul>
 </nav>
 </div>
 <script async defer data-domain="rstatszh.github.io/website" src="https://plausible.io/js/plausible.js"></script>
-<h2 id="übung-4---dplyrmutate">Übung 4 - dplyr::mutate()</h2>
+<p>Der erste Teil dieser Hausaufgabe beinhaltet nochmals Übungen aus dem Buch R for Data Science. Im zweiten Teil nutzen wir Daten aus der Bildungsstatistik des Kantons Zürich und werden diese mit uns bekannten Werkzeugen erkunden und visualisieren. Der dritte Teil ist Bonusmaterial und enthält erneut Übungen aus dem Buch R for Data Science.</p>
+<h1 id="ziele">Ziele</h1>
+<p>Diese Hausaufgabe hat die folgenden Ziele:</p>
+<ul>
+<li>Nochmals Erfahrungen mit den Hauptfunktionen des <code>{dplyr}</code> Package sammeln</li>
+<li>Fragen zu den Kapiteln im Buch <a href="https://r4ds.had.co.nz/">R for Data Science</a> in unserem Slack Channel für den Kurs zu stellen: #rstatszh-k00X</li>
+<li>Die Elemente einer vorgegebenen `{ggplot2}´ Visualisierung zu identifizieren und diese zu rekunstrieren</li>
+</ul>
+<h1 id="erste-schritte">Erste Schritte</h1>
+<p>Öffne deine Email Inbox und suche nach der Email mit dem Link für das GitHub Repo zu dieser Hausaufgabe (ha-04-mehr-dplyr). Alternativ kannst du GitHub öffnen und in unserer GitHub Organisation nach dem Repo mit deinem Namen suchen.</p>
+<p>Folge den Schritten aus Hausaufgabe 1 oder den Folien der Woche 2 um das GitHub Repo in deine RStudio Cloud zu clonen.</p>
+<h1 id="packages">Packages</h1>
+<p>In dieser Hausaufgabe werden wir weiterhin hauptsächlich das R Package <code>{dplyr}</code> aus der Sammlung der <code>{tidyverse}</code> Packages nutzen. Zusätzlich nutzen wir vereinzelt Funktionen aus R Packages, welche du noch nicht kennegelernt hast.</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='http://github.com/hadley/nycflights13'>nycflights13</a></span><span class='op'>)</span>  
+<span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://dplyr.tidyverse.org'>dplyr</a></span><span class='op'>)</span>
+<span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://ggplot2.tidyverse.org'>ggplot2</a></span><span class='op'>)</span>
+<span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://readr.tidyverse.org'>readr</a></span><span class='op'>)</span>
+<span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://tidyr.tidyverse.org'>tidyr</a></span><span class='op'>)</span>  <span class='co'># Neu in dieser Hausaufgabe</span>
+</code></pre>
+</div>
+</div>
+<h1 id="data">Data</h1>
+<h2 id="übersicht-über-alle-lernenden-im-kanton-zürich">Übersicht über alle Lernenden im Kanton Zürich</h2>
+<p>Ein Datensatz publiziert von der <a href="https://pub.bista.zh.ch/de/">Bildungsstatitik Kanton Zürich</a>. Der Datensatz ist öffentlich <a href="https://opendata.swiss/de/dataset/ubersicht-uber-alle-lernenden-im-kanton-zurich">auf opendata.swiss verfügbar</a> und wird auch auf einer Seite der Bildungsstatistik selbst mit <a href="https://pub.bista.zh.ch/de/zahlen-und-fakten/sdl/uebersicht-ueber-alle-lernenden/auswertungen-in-absoluten-zahlen/">Visualisierungen dargestellt</a>.</p>
+<h2 id="data-package-nycflights13">Data Package <code>{nycflights13}</code></h2>
+<p>Wir nutzen nochmals Daten aus dem R Package <code>{nycflights13}</code>. Der Datensatz <code>flights</code> enthält alle 336.776 Flüge, die in 2013 von New York City abgegegangen sind. Der Datensatz beinhaltet 19 Variablen, welche im Detail der Hilfedatei beschrieben sind und mit <code>?flights</code> aufgerufen werden können. Das Daten Package beinhaltet noch vier weitere nützliche Datensätze:</p>
+<ul>
+<li><em><code>airlines</code></em>: Beinhaltet den Namen der Fluggesellschaft für die Variable <code>carrier</code> aus dem <code>flights</code> Datensatz</li>
+<li><em><code>airports</code></em>: Beinhaltet Metadaten zu den einzelnen Flughäfen in der Variable <code>dest</code> aus dem <code>flights</code> Datensatz</li>
+<li><em><code>planes</code></em>: Beinhaltet Metadaten zu den einzelnen Flugzeugen in der Variable <code>tailnum</code> aus dem <code>flights</code> Datensatz</li>
+<li><em><code>weather</code></em>: Beinhaltet stündliche meterologische Daten für die Flughäfen LGA (La Guardia), JFK (John F Kennedy Intl) und EWR (Newark Liberty Intl).</li>
+</ul>
+<h1 id="aufwärmen">Aufwärmen</h1>
 <ol type="1">
-<li><p>Lese das <a href="https://r4ds.had.co.nz/transform.html#add-new-variables-with-mutate">Kapitel 5.5 - Add new variables with <code>mutate()</code></a> aus dem Buch R for Data Science, mache dir Notizen und schreibe dir Fragen auf wenn du etwas nicht nachvollziehen kannst. Stelle deine Fragen in unserem Slack Channel für den Kurs.</p></li>
-<li><p>Arbeite durch die Übungen aus <a href="https://r4ds.had.co.nz/transform.html#exercises-11">Kapitel 5.5.2 - Exercises</a>. Stelle Fragen in unserem Slack Channel für den Kurs.</p></li>
+<li>Öffne die R Markdown Datei für die Übung</li>
+<li>Stricke die Datei zu einer HTML Datei</li>
+<li>Aktualisiere den YAML Header in dem du deinen Namen und das Datum hinzufügst</li>
+<li>Passe das Aussehen des Dokuments über die “Output Options” an (siehe Screenshots)</li>
+<li>Stricke das Dokument erneut</li>
 </ol>
 <p>🧶 ✅ ⬆️ <em>Knit, commit und push deine Änderungen auf GitHub mit einer Commit-Nachricht deiner Wahl. Achte darauf, alle geänderten Dateien zu committen und zu pushen, damit dein Git-Fenster danach aufgeräumt ist.</em></p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
+<h1 id="übungen---teil-1---r-for-data-science">Übungen - Teil 1 - R for Data Science</h1>
+<h2 id="übung-1---dplyrmutate">Übung 1 - dplyr::mutate()</h2>
+<ol type="1">
+<li><p>Lese das <a href="https://r4ds.had.co.nz/transform.html#add-new-variables-with-mutate">Kapitel 5.5 - Add new variables with <code>mutate()</code></a> aus dem Buch R for Data Science, mache dir Notizen und schreibe dir Fragen auf wenn du etwas nicht nachvollziehen kannst. Stelle deine Fragen in unserem Slack Channel für den Kurs: #rstatszh-k00X.</p></li>
+<li><p>Arbeite durch die Übungen aus <a href="https://r4ds.had.co.nz/transform.html#exercises-11">Kapitel 5.5.2 - Exercises</a>. Stelle deine Fragen in unserem Slack Channel für den Kurs: #rstatszh-k00X.</p></li>
+</ol>
+<p>🧶 ✅ ⬆️ <em>Knit, commit und push deine Änderungen auf GitHub mit einer Commit-Nachricht deiner Wahl. Achte darauf, alle geänderten Dateien zu committen und zu pushen, damit dein Git-Fenster danach aufgeräumt ist.</em></p>
+<h1 id="übungen---teil-2---lernende-im-kanton-zürich">Übungen - Teil 2 - Lernende im Kanton Zürich</h1>
+<h2 id="übung-1---daten-importieren">Übung 1 - Daten Importieren</h2>
+<p>Ich habe die Daten für dich bereits importiert, auf das Jahr 2019 eingeschränkt und die NAs entfernt. Wir werden in allen folgenden Übungen, bis auf Übung 6 dem Objekt <code>lernende2019</code> arbeiten.</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Der Link zu den Daten wird hier als Objekt gespeichert </span>
+<span class='co'># und taucht oben rechts in deinem  "Environment" auf</span>
+<span class='va'>link</span> <span class='op'>&lt;-</span> <span class='st'>"https://www.web.statistik.zh.ch/ogd/data/bista/ZH_Uebersicht_alle_Lernende.csv"</span>
+
+<span class='co'># Hier wird nun das Objekt "link" genutzt um die CSV zu lesen</span>
+<span class='va'>lernende</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://readr.tidyverse.org/reference/read_delim.html'>read_csv</a></span><span class='op'>(</span>file <span class='op'>=</span> <span class='va'>link</span>, 
+                     locale <span class='op'>=</span> <span class='fu'><a href='https://readr.tidyverse.org/reference/locale.html'>locale</a></span><span class='op'>(</span>encoding <span class='op'>=</span> <span class='st'>"ISO-8859-1"</span><span class='op'>)</span><span class='op'>)</span>
+</code></pre>
+</div>
+</div>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Ich habe die Daten hier auf das Jahr 2019 gefilterert und NAs entfernt</span>
+<span class='va'>lernende2019</span> <span class='op'>&lt;-</span> <span class='va'>lernende</span> <span class='op'>%&gt;%</span> 
+   <span class='fu'><a href='https://dplyr.tidyverse.org/reference/filter.html'>filter</a></span><span class='op'>(</span><span class='va'>Jahr</span> <span class='op'>==</span> <span class='fl'>2019</span><span class='op'>)</span> <span class='op'>%&gt;%</span> 
+   <span class='fu'><a href='https://tidyr.tidyverse.org/reference/drop_na.html'>drop_na</a></span><span class='op'>(</span><span class='op'>)</span> <span class='co'># Die letzte Zeile 1960 weisst eine Zeile mit NAs auf</span>
+</code></pre>
+</div>
+</div>
+<h2 id="übung-2---daten-beschreiben">Übung 2 - Daten beschreiben</h2>
+<p>In dieser Übung geht es darum die Daten zu erkunden und zu beschreiben. Dazu schauen wir uns auch nochmals die Variablen Typen innerhalb des Dataframes <code>lernende2019</code> an.</p>
+<p>Variablen können ganz allgemein in numerische und nicht-numerische unterteilt werden. Innerhalb der numerischen Variablen, wird zwischen diskreten und kontinuierlichen Variablen unterschieden.</p>
+<p><strong>Diskrete Variablen</strong> sind numerische Variablen, die zwischen zwei beliebigen Werten eine zählbare Anzahl von nicht negativen Werten aufweisen. Eine diskrete Variable ist immer numerisch. Beispiele: Die Anzahl Schüler in der Primarschule oder das Ergebnis eines Wurfs eines Würfels.</p>
+<p><strong>Stetige (kontinuierliche) Variablen</strong> sind numerische Variablen, die zwischen zwei beliebigen Werten eine unendliche Anzahl von Werten aufweisen. Stetige Variablen können aus numerischen oder Datums-/Uhrzeitwerten bestehen. Beispiel: die Länge eines Teils oder Datum und Uhrzeit eines Zahlungseingangs</p>
+<p>Nicht-numerische Variablen werden auch als kategoriale Variablen bezeichnet.</p>
+<p><strong>Kategoriale Variablen</strong> umfassen eine endliche Anzahl von Kategorien oder eindeutigen Gruppen. Kategoriale Daten müssen nicht zwangsläufig eine logische Reihenfolge aufweisen (z.B. Materialtyp, Zahlungsmethode, Automarke). Wenn die Daten eine logische Reihenfolge aufweisen, dann werden sie auch als ordinal bezeichnet (z.B. Wochentage, Schulnoten).</p>
+<div class="layout-chunk" data-layout="l-body">
+<p><img src="img/var-types.png" width="1535" /></p>
+</div>
+<p>Die Fragen für diese Übungen sind in der Vorlage für die Hausaufgabe hinterlegt.</p>
+<h2 id="übung-3---daten-visualisieren">Übung 3 - Daten visualisieren</h2>
+<p>Ich habe hier einen Plot mit dem Dataframe <code>lernende2019</code> vorbereitet. In dieser Übung geht es darum, dass du die einzelnen Elemente des Plots (x-Achse, y-Achse, etc.) studierst und versuchst den Plot selnst zu rekonstruieren.</p>
+<p><strong>Tipp: Nutze <code>geom_col()</code> und nicht <code>geom_bar()</code></strong></p>
+<div class="layout-chunk" data-layout="l-body">
+<p><img src="ha-04-mehr-dplyr_files/figure-html5/unnamed-chunk-2-1.png" width="624" /></p>
+</div>
+<h2 id="übung-4---daten-eingrenzen">Übung 4 - Daten eingrenzen</h2>
+<p>Die Übung ist in der Vorlage für die Hausaufgabe beschrieben.</p>
+<h2 id="übung-5---daten-zusammenfassen">Übung 5 - Daten zusammenfassen</h2>
+<p>In den folgenden zwei Code-chunks findest du jeweils eine Code Sequenz, welche eine Häufigkeitstabelle mit den Spalten <code>Schultyp</code> und <code>n</code> erstellt.</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Häufigkeitstabelle 1 - Zusammenfassen mit count()</span>
+<span class='va'>lernende2019</span> <span class='op'>%&gt;%</span> 
+   <span class='fu'><a href='https://dplyr.tidyverse.org/reference/count.html'>count</a></span><span class='op'>(</span><span class='va'>Schultyp</span><span class='op'>)</span>
+</code></pre>
+</div>
+</div>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Häufigkeitstabelle 2 - Zusammfassen mit group_by %&gt;% summarise()</span>
+<span class='va'>lernende2019</span> <span class='op'>%&gt;%</span> 
+   <span class='fu'><a href='https://dplyr.tidyverse.org/reference/group_by.html'>group_by</a></span><span class='op'>(</span><span class='va'>Schultyp</span><span class='op'>)</span> <span class='op'>%&gt;%</span> 
+   <span class='fu'><a href='https://dplyr.tidyverse.org/reference/summarise.html'>summarise</a></span><span class='op'>(</span>
+      n <span class='op'>=</span> <span class='fu'><a href='https://dplyr.tidyverse.org/reference/context.html'>n</a></span><span class='op'>(</span><span class='op'>)</span>
+   <span class='op'>)</span>
+</code></pre>
+</div>
+</div>
+<p><strong>Versuche den Code so anzupassen dass du folgendes Ergebnis erreichst:</strong></p>
+<div class="layout-chunk" data-layout="l-body">
+<pre><code># A tibble: 6 x 2
+  Schultyp                    n
+* &lt;chr&gt;                   &lt;dbl&gt;
+1 Berufsfachschule        45510
+2 Brückenangebot           2073
+3 Heim- und Sonderschule   3013
+4 Höhere Berufsbildung    19760
+5 Mittelschule            20591
+6 Volksschule            161073</code></pre>
+</div>
+<h2 id="übung-6---kurzanalyse">Übung 6 - Kurzanalyse</h2>
+<p>Der Code für diese Aufgabe ist vorbereitet. Es geht hier darum die Lücken auszufüllen. Jede Lücke hat einen Platzhalter mit drei Unterstrichen ___, unabhänig davon wie viele Zeichen ersetzt werden sollen. Die Beschreibung der einzelnen Schritte ist in der Vorlage für die Hausaufgabe.</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>lernende ___  </span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>   drop____ <span class="sc">%&gt;%</span> </span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>   <span class="fu">group_by</span>(___) <span class="sc">%&gt;%</span> </span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>   <span class="fu">summarise</span>(</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>      <span class="at">Total =</span> <span class="fu">___</span>(___)</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>   ) <span class="sc">%&gt;%</span> </span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>   <span class="fu">mutate</span>(</span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>      <span class="at">Differenz =</span> Total <span class="sc">-</span> <span class="fu">___</span>(Total)</span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>   ) <span class="sc">%&gt;%</span> </span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>   <span class="fu">mutate</span>(</span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>      <span class="at">Veraenderung =</span> <span class="fu">case_when</span>(</span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>         Differenz <span class="sc">&gt;</span> ___ <span class="sc">~</span> <span class="st">&quot;Zunahme&quot;</span>,</span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>         Differenz <span class="sc">&lt;</span> ___ <span class="sc">~</span> <span class="st">&quot;Abnahme&quot;</span></span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>      )</span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>   )</span></code></pre></div>
+</div>
+<p>🧶 ✅ ⬆️ <em>Knit, commit und push deine Änderungen auf GitHub mit einer Commit-Nachricht deiner Wahl. Achte darauf, alle geänderten Dateien zu committen und zu pushen, damit dein Git-Fenster danach aufgeräumt ist.</em></p>
+<h1 id="übungen---teil-3---r-for-data-science---bonus">Übungen - Teil 3 - R for Data Science - (Bonus)</h1>
+<h2 id="übung-1---grouped-summaries-with-summarise">Übung 1 - Grouped summaries with summarise()</h2>
+<ol type="1">
+<li><p>Lese das <a href="https://r4ds.had.co.nz/transform.html#grouped-summaries-with-summarise">Kapitel 5.6 - Grouped summaries with <code>summarise()</code></a> aus dem Buch R for Data Science, mache dir Notizen und schreibe dir Fragen auf wenn du etwas nicht nachvollziehen kannst. Stelle deine Fragen in unserem Slack Channel für den Kurs: #rstatszh-k00X.</p></li>
+<li><p>Arbeite durch die Übungen aus <a href="https://r4ds.had.co.nz/transform.html#exercises-12">Kapitel 5.6.7 - Exercises</a>. Stelle deine Fragen in unserem Slack Channel für den Kurs: #rstatszh-k00X.</p></li>
+</ol>
+<p>🧶 ✅ ⬆️ <em>Knit, commit und push deine Änderungen auf GitHub mit einer Commit-Nachricht deiner Wahl. Achte darauf, alle geänderten Dateien zu committen und zu pushen, damit dein Git-Fenster danach aufgeräumt ist.</em></p>
+<h2 id="übung-2---grouped-mutates-and-filters">Übung 2 - Grouped mutates (and filters)</h2>
+<ol type="1">
+<li><p>Lese das <a href="https://r4ds.had.co.nz/transform.html#grouped-mutates-and-filters">Kapitel 5.7 - Grouped summaries with <code>summarise()</code></a> aus dem Buch R for Data Science, mache dir Notizen und schreibe dir Fragen auf wenn du etwas nicht nachvollziehen kannst. Stelle deine Fragen in unserem Slack Channel für den Kurs: #rstatszh-k00X.</p></li>
+<li><p>Arbeite durch die Übungen aus <a href="https://r4ds.had.co.nz/transform.html#exercises-13">Kapitel 5.7.1 - Exercises</a>. Stelle deine Fragen in unserem Slack Channel für den Kurs: #rstatszh-k00X.</p></li>
+</ol>
+<p>🧶 ✅ ⬆️ <em>Knit, commit und push deine Änderungen auf GitHub mit einer Commit-Nachricht deiner Wahl. Achte darauf, alle geänderten Dateien zu committen und zu pushen, damit dein Git-Fenster danach aufgeräumt ist.</em></p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
 <!--radix_placeholder_article_footer-->
 <!--/radix_placeholder_article_footer-->
 </div>

@@ -1,0 +1,353 @@
+---
+title: "rstatsZH - Data Science mit R"
+subtitle: "Daten Transformation mit dplyr - Teil 2"
+author: "Lars Schöbitz"
+date: "2020-03-29"
+output:
+  xaringan::moon_reader:
+    self_contained: false
+    lib_dir: libs
+    css: ["default", "../assets/css/xaringan-themer.css", "../assets/css/my-css-style.css"]
+    seal: FALSE
+    nature:
+      slideNumberFormat: |
+        <div class="progress-bar-container">
+          <div class="progress-bar" style="width: calc(%current% / %total% * 100%);">
+          </div>
+        </div>
+      highlightStyle: solarized-light
+      highlightLanguage: ["r", "css", "yaml"]
+      highlightLines: true
+      countIncrementalSlides: false
+      ratio: "16:9"
+---
+
+class: title-slide
+
+```{r child = "../setup.Rmd"}
+
+```
+
+```{r}
+
+library(palmerpenguins)
+library(dplyr)
+library(ggplot2)
+
+```
+
+
+# `r rmarkdown::metadata$title`
+## `r rmarkdown::metadata$subtitle` 
+
+.bottom[
+
+```{r, echo=FALSE}
+p(rmarkdown::metadata$author)
+p(rmarkdown::metadata$date)
+```
+]
+
+---
+class: left
+background-image: url(img/review.jpg)
+background-position: right
+background-size: contain
+
+# Rückblick - Woche 3
+
+**`ggplot2` Visualisierungen anpassen**
+
+- Skalierungen
+    - `scale_` Funktionen
+- Aussehen
+    - `theme` Funktionen
+
+**`dplyr` Funktionen **
+
+- `filter`: Zeilen mit bestimmten Kriterien auswählen
+- `arrange`: Zeilen neu ordnen
+- `select`: Spalten beim Namen auswählen
+
+.footnote[Photo by: [Annie Spratt](https://unsplash.com/photos/nVrqbvzOh08)]
+
+???
+
+---
+background-image: url(img/dplyr_filter.jpg)
+background-size: 80%
+
+## dplyr::filter() - Zeilen mit bestimmten Kriterien auswählen
+
+.footnote[Artwork by [@allison_horst](https://www.allisonhorst.com/)]
+---
+## dplyr::select() - Spalten beim Namen auswählen
+
+```{r echo=TRUE, eval=FALSE}
+
+# Erste Möglichkeit
+penguins %>% 
+  select(species, bill_length_mm, bill_depth_mm, flipper_length_mm)
+
+# Zweite Möglichkeit
+penguins %>% 
+  select(species, bill_length_mm:flipper_length_mm)
+
+# Dritte Möglichkeit - nicht zu empfehlen
+penguins %>% 
+  select(1, 3, 4, 5) 
+
+```
+
+```{r, echo=FALSE}
+
+penguins %>% 
+  select(1, 3, 4, 5) %>% 
+  head(4)
+
+```
+
+---
+## dplyr::arrange() - Zeilen neu ordnen
+
+```{r, echo=TRUE, eval=FALSE}
+
+# Aufsteigende Reihenfolge
+penguins %>% 
+  arrange(body_mass_g)
+
+# Absteigende Reihenfolge
+penguins %>% 
+  arrange(desc(body_mass_g))
+
+```
+
+
+---
+background-image: url(img/goals-dart.jpg)
+background-position: right
+background-size: contain
+
+# Ziele für diese Woche
+
+Am Ende dieser Woche könnt ihr:
+
+- mehr als zehn Funktionen des R Package `{dplyr}` anwenden, um   
+  - Daten einzugrenzen
+  - neue Variablen zu erstellen
+  - zusammefassende Statistiken zu berechnen
+- `NA` Werte aus euren Daten entfernen
+
+.footnote[Photo by: [Ameer Basheer](https://unsplash.com/photos/nVrqbvzOh08)]
+
+
+---
+# Hausaufgabe 3 - Hallo dplyr 
+
+.note[
+
+1. **RStudio Cloud:** Öffnet den Arbeitsbereich für den Kurs
+2. **RStudio Cloud - Projects:** Öffnet das Projekt für Hausaufgabe 3
+3. **File-Manager:** Öffnet eure R Markdown Datei (ha-03.Rmd) für die Hausaufgabe 3
+4. Strickt das Dokument
+]
+
+**Wo gibt es Klärungsbedarf?**
+
+---
+# Hausaufgabe 3 - Lösungen
+
+- **GitHub Organisation:** rstatsZH
+    - https://github.com/rstatsZH/
+- **Repo:** ha-03-hallo-dplyr
+    - https://github.com/rstatsZH/ha-03-hallo-dplyr
+- **R Markdown Datei:** ha-03-solutions.Rmd
+    - https://github.com/rstatsZH/ha-03-hallo-dplyr/blob/main/ha-03-solutions.Rmd
+
+
+---
+.note[
+
+# Praktikum 5 - dplyr
+
+## Live Code
+
+1. **RStudio Cloud**: Öffne deinen Arbeitsbereich für den Kurs in der RStudio Cloud
+2. **RStudio Cloud / Projects**: Öffne erneut das Praktikum 05
+3. Folgt wieder auf dem Bildschirm
+
+]
+
+---
+.note[
+# Praktikum 6 - dplyr
+
+## In 2er Teams
+
+1. **RStudio Cloud**: Öffne deinen Arbeitsbereich für den Kurs in der RStudio Cloud
+2. **RStudio Cloud / Projects**: Öffne erneut das Praktikum 06
+
+]
+
+---
+## dplyr::select() - Hilfsfunktionen
+
+```{r, echo=TRUE}
+
+penguins %>% 
+  select(starts_with(match = "BILL",
+                     # Ignoriere Gross- und Kleinschreibung
+                     ignore.case = TRUE)) # Standardeinstellung
+                                          
+```
+
+---
+## dplyr::select() - Hilfsfunktionen
+
+```{r, echo=TRUE}
+
+penguins %>% 
+  select(starts_with(match = "BILL",
+                     # Ignoriere Gross- und Kleinschreibung
+                     ignore.case = FALSE)) # Geändert auf FALSE
+                                          
+```
+
+Mehr Informationen zu Hilfsfunktionen: https://dplyr.tidyverse.org/reference/select.html
+
+---
+background-image: url(img/dplyr_relocate.png)
+background-size: 60%
+
+## dplyr::relocate() - Spalten verschieben
+
+.footnote[Artwork by [@allison_horst](https://www.allisonhorst.com/)]
+
+---
+## dplyr::rename() - Spalten umbennenen
+
+```{r, echo = TRUE}
+
+penguins %>% 
+  rename(mass = body_mass_g) # neuer name = alter name
+
+```
+
+---
+.note[
+
+# Praktikum 5 - dplyr
+
+## Live Code
+
+1. **RStudio Cloud**: Öffne deinen Arbeitsbereich für den Kurs in der RStudio Cloud
+2. **RStudio Cloud / Projects**: Öffne erneut das Praktikum 05
+3. Folgt wieder auf dem Bildschirm
+
+]
+
+---
+.note[
+# Praktikum 6 - dplyr
+
+## In 2er Teams
+
+1. **RStudio Cloud**: Öffne deinen Arbeitsbereich für den Kurs in der RStudio Cloud
+2. **RStudio Cloud / Projects**: Öffne erneut das Praktikum 06
+
+]
+
+---
+background-image: url(img/dplyr_mutate.png)
+background-size: 50%
+
+## dplyr::mutate() - Spalten hinzufügen
+
+.footnote[Artwork by [@allison_horst](https://www.allisonhorst.com/)]
+
+---
+## dplyr::mutate() - Mit anderen Funktionen
+
+.panelset[
+.panel[.panel-name[Factor relevel]
+
+```{r, echo=TRUE}
+library(forcats)
+
+penguins_relevel <- penguins %>% 
+  mutate(species = fct_relevel(species, c("Chinstrap", "Gentoo", "Adelie")))
+
+```
+]
+.panel[.panel-name[Plot Code]
+```{r penguins-fct, fig.show="hide", echo=TRUE}
+
+ggplot(data = penguins_relevel, #<<
+       mapping = aes(x = bill_depth_mm,
+                     y = bill_length_mm,
+                     colour = species)) +
+  geom_point()
+
+```
+]
+
+.panel[.panel-name[Plot]
+```{r ref.label = "penguins-fct", echo = FALSE, warning = FALSE, out.width = "80%"}
+```
+]  
+] 
+
+---
+.note[
+
+# Praktikum 7 - dplyr
+
+## Live Code
+
+1. **E-Mail**: Öffne deine Email und klicke auf den Link zu deinem persönlichen GitHub repo für **prak-07**
+2. **GitHub**: Klicke auf den grünen Button "Code" und kopiere den Link für das Repo in deine Zwischenablage
+3. **RStudio Cloud**: Öffne deinen Arbeitsbereich für den Kurs in der RStudio Cloud
+4. **RStudio Cloud / Projects**: Klicke auf "New Project from GitHub Repository" 
+5. **RStudio**: Finde den Datei Manager und Git
+6. **Zoom Chat**: Schreibt wenn ihr soweit seid
+
+]
+---
+class: middle, inverse
+
+# .big[Feedback]
+
+---
+class: left
+background-image: url(img/tor.jpg)
+background-position: right
+background-size: contain
+
+# Ziele erreicht? 
+
+Bitte ausfüllen: [kutt.it/rstatszh-eval](https://kutt.it/rstatszh-eval)
+
+.pull-left[
+
+.footnote[Photo by: [Virgil Cayasa](https://unsplash.com/@virgilcayasa)]
+
+]
+
+---
+class: middle, inverse
+
+# .big[Hausaufgabe]
+
+
+---
+# `r emo::ji("sunflower")` Danke 
+
+Für die Aufmerksamkeit!
+
+Für die R packages [{xaringan}](https://github.com/yihui/xaringan) und [{xaringanthemer}](https://github.com/gadenbuie/xaringanthemer) mit welchen die Folien geschrieben wurden.
+
+Eine PDF Version der Folien kann hier heruntergeladen werden: https://github.com/rstatsZH/website/raw/master/slides/e1_d04-data-transform/e1_d04-data-transform.pdf
+
+`r hr()`
+
+Für [Data Science in a Box](https://datasciencebox.org/) und [Remaster the Tidyverse](https://github.com/rstudio-education/remaster-the-tidyverse), von welchen ich Materialien für diesen Kurs nutze und welche genau wie diese Folien mit [Creative Commons Attribution Share Alike 4.0 International](https://creativecommons.org/licenses/by-sa/4.0/) lizensiert sind.

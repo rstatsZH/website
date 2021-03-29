@@ -7,7 +7,7 @@ output:
   distill::distill_article:
     toc: true
     self_contained: false
-preview: img/dplyr_case_when.png    
+preview: img/plier2.jpg    
 ---
 
 <script async defer data-domain="rstatszh.github.io/website" src="https://plausible.io/js/plausible.js"></script>
@@ -17,9 +17,9 @@ library(magrittr)
 library(tidyverse)
 ```
 
-```{r, layout="l-body", preview=TRUE, echo=FALSE, include=TRUE, fig.cap="Artwork by [Allison Horst](https://www.allisonhorst.com/)"}
+```{r, layout="l-body", preview=TRUE, echo=FALSE, include=TRUE, fig.cap="Photo by [Hunter Haley](https://unsplash.com/photos/s8OO2-t-HmQ)"}
 
-knitr::include_graphics("img/dplyr_case_when.png")
+knitr::include_graphics("img/plier2.jpg")
 
 ```
 

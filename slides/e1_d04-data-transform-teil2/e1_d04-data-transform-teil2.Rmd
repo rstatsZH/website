@@ -74,13 +74,61 @@ background-size: contain
 ???
 
 ---
+background-image: url(img/dplyr_filter.jpg)
+background-size: 80%
+
+## dplyr::filter() - Zeilen mit bestimmten Kriterien auswählen
+
+.footnote[Artwork by [@allison_horst](https://www.allisonhorst.com/)]
+---
+## dplyr::select() - Spalten beim Namen auswählen
+
+```{r echo=TRUE, eval=FALSE}
+
+# Erste Möglichkeit
+penguins %>% 
+  select(species, bill_length_mm, bill_depth_mm, flipper_length_mm)
+
+# Zweite Möglichkeit
+penguins %>% 
+  select(species, bill_length_mm:flipper_length_mm)
+
+# Dritte Möglichkeit - nicht zu empfehlen
+penguins %>% 
+  select(1, 3, 4, 5) 
+
+```
+
+```{r, echo=FALSE}
+
+penguins %>% 
+  select(1, 3, 4, 5) %>% 
+  head(4)
+
+```
+
+---
+## dplyr::arrange() - Zeilen neu ordnen
+
+```{r, echo=TRUE, eval=FALSE}
+
+# Aufsteigende Reihenfolge
+penguins %>% 
+  arrange(body_mass_g)
+
+# Absteigende Reihenfolge
+penguins %>% 
+  arrange(desc(body_mass_g))
+
+```
+
+
+---
 background-image: url(img/goals-dart.jpg)
 background-position: right
 background-size: contain
 
 # Ziele für diese Woche
-
-.pull-left[
 
 Am Ende dieser Woche könnt ihr:
 
@@ -91,7 +139,6 @@ Am Ende dieser Woche könnt ihr:
 - `NA` Werte aus euren Daten entfernen
 
 .footnote[Photo by: [Ameer Basheer](https://unsplash.com/photos/nVrqbvzOh08)]
-]
 
 
 ---
@@ -132,6 +179,7 @@ Am Ende dieser Woche könnt ihr:
 ]
 
 ---
+.note[
 # Praktikum 6 - dplyr
 
 ## In 2er Teams
@@ -139,6 +187,115 @@ Am Ende dieser Woche könnt ihr:
 1. **RStudio Cloud**: Öffne deinen Arbeitsbereich für den Kurs in der RStudio Cloud
 2. **RStudio Cloud / Projects**: Öffne erneut das Praktikum 06
 
+]
+
+---
+## dplyr::select() - Hilfsfunktionen
+
+```{r, echo=TRUE}
+
+penguins %>% 
+  select(starts_with(match = "BILL",
+                     # Ignoriere Gross- und Kleinschreibung
+                     ignore.case = TRUE)) # Standardeinstellung
+                                          
+```
+
+---
+## dplyr::select() - Hilfsfunktionen
+
+```{r, echo=TRUE}
+
+penguins %>% 
+  select(starts_with(match = "BILL",
+                     # Ignoriere Gross- und Kleinschreibung
+                     ignore.case = FALSE)) # Geändert auf FALSE
+                                          
+```
+
+Mehr Informationen zu Hilfsfunktionen: https://dplyr.tidyverse.org/reference/select.html
+
+---
+background-image: url(img/dplyr_relocate.png)
+background-size: 60%
+
+## dplyr::relocate() - Spalten verschieben
+
+.footnote[Artwork by [@allison_horst](https://www.allisonhorst.com/)]
+
+---
+## dplyr::rename() - Spalten umbennenen
+
+```{r, echo = TRUE}
+
+penguins %>% 
+  rename(mass = body_mass_g) # neuer name = alter name
+
+```
+
+---
+.note[
+
+# Praktikum 5 - dplyr
+
+## Live Code
+
+1. **RStudio Cloud**: Öffne deinen Arbeitsbereich für den Kurs in der RStudio Cloud
+2. **RStudio Cloud / Projects**: Öffne erneut das Praktikum 05
+3. Folgt wieder auf dem Bildschirm
+
+]
+
+---
+.note[
+# Praktikum 6 - dplyr
+
+## In 2er Teams
+
+1. **RStudio Cloud**: Öffne deinen Arbeitsbereich für den Kurs in der RStudio Cloud
+2. **RStudio Cloud / Projects**: Öffne erneut das Praktikum 06
+
+]
+
+---
+background-image: url(img/dplyr_mutate.png)
+background-size: 50%
+
+## dplyr::mutate() - Spalten hinzufügen
+
+.footnote[Artwork by [@allison_horst](https://www.allisonhorst.com/)]
+
+---
+## dplyr::mutate() - Mit anderen Funktionen
+
+.panelset[
+.panel[.panel-name[Factor relevel]
+
+```{r, echo=TRUE}
+library(forcats)
+
+penguins_relevel <- penguins %>% 
+  mutate(species = fct_relevel(species, c("Chinstrap", "Gentoo", "Adelie")))
+
+```
+]
+.panel[.panel-name[Plot Code]
+```{r penguins-fct, fig.show="hide", echo=TRUE}
+
+ggplot(data = penguins_relevel, #<<
+       mapping = aes(x = bill_depth_mm,
+                     y = bill_length_mm,
+                     colour = species)) +
+  geom_point()
+
+```
+]
+
+.panel[.panel-name[Plot]
+```{r ref.label = "penguins-fct", echo = FALSE, warning = FALSE, out.width = "80%"}
+```
+]  
+] 
 
 ---
 .note[

@@ -68,23 +68,72 @@ background-size: contain
 ???
 
 ---
+background-image: url(img/dplyr_filter.jpg)
+background-size: 80%
+
+## dplyr::filter() - Zeilen mit bestimmten Kriterien auswählen
+
+.footnote[Artwork by [@allison_horst](https://www.allisonhorst.com/)]
+---
+## dplyr::select() - Spalten beim Namen auswählen
+
+
+```r
+# Erste Möglichkeit
+penguins %&gt;% 
+  select(species, bill_length_mm, bill_depth_mm, flipper_length_mm)
+
+# Zweite Möglichkeit
+penguins %&gt;% 
+  select(species, bill_length_mm:flipper_length_mm)
+
+# Dritte Möglichkeit - nicht zu empfehlen
+penguins %&gt;% 
+  select(1, 3, 4, 5) 
+```
+
+
+```
+# A tibble: 4 x 4
+  species bill_length_mm bill_depth_mm flipper_length_mm
+  &lt;fct&gt;            &lt;dbl&gt;         &lt;dbl&gt;             &lt;int&gt;
+1 Adelie            39.1          18.7               181
+2 Adelie            39.5          17.4               186
+3 Adelie            40.3          18                 195
+4 Adelie            NA            NA                  NA
+```
+
+---
+## dplyr::arrange() - Zeilen neu ordnen
+
+
+```r
+# Aufsteigende Reihenfolge
+penguins %&gt;% 
+  arrange(body_mass_g)
+
+# Absteigende Reihenfolge
+penguins %&gt;% 
+  arrange(desc(body_mass_g))
+```
+
+
+---
 background-image: url(img/goals-dart.jpg)
 background-position: right
 background-size: contain
 
 # Ziele für diese Woche
 
-.pull-left[
-
 Am Ende dieser Woche könnt ihr:
 
-- mehr als zehn Funktionen des R Package `{dplyr}` anwenden, um   - Daten einzugrenzen
-  - Neue Variablen zu erstellen
+- mehr als zehn Funktionen des R Package `{dplyr}` anwenden, um   
+  - Daten einzugrenzen
+  - neue Variablen zu erstellen
   - zusammefassende Statistiken zu berechnen
 - `NA` Werte aus euren Daten entfernen
 
 .footnote[Photo by: [Ameer Basheer](https://unsplash.com/photos/nVrqbvzOh08)]
-]
 
 
 ---
@@ -125,6 +174,7 @@ Am Ende dieser Woche könnt ihr:
 ]
 
 ---
+.note[
 # Praktikum 6 - dplyr
 
 ## In 2er Teams
@@ -132,6 +182,141 @@ Am Ende dieser Woche könnt ihr:
 1. **RStudio Cloud**: Öffne deinen Arbeitsbereich für den Kurs in der RStudio Cloud
 2. **RStudio Cloud / Projects**: Öffne erneut das Praktikum 06
 
+]
+
+---
+## dplyr::select() - Hilfsfunktionen
+
+
+```r
+penguins %&gt;% 
+  select(starts_with(match = "BILL",
+                     # Ignoriere Gross- und Kleinschreibung
+                     ignore.case = TRUE)) # Standardeinstellung
+```
+
+```
+# A tibble: 344 x 2
+  bill_length_mm bill_depth_mm
+           &lt;dbl&gt;         &lt;dbl&gt;
+1           39.1          18.7
+2           39.5          17.4
+3           40.3          18  
+4           NA            NA  
+5           36.7          19.3
+6           39.3          20.6
+# … with 338 more rows
+```
+
+---
+## dplyr::select() - Hilfsfunktionen
+
+
+```r
+penguins %&gt;% 
+  select(starts_with(match = "BILL",
+                     # Ignoriere Gross- und Kleinschreibung
+                     ignore.case = FALSE)) # Geändert auf FALSE
+```
+
+```
+# A tibble: 344 x 0
+```
+
+Mehr Informationen zu Hilfsfunktionen: https://dplyr.tidyverse.org/reference/select.html
+
+---
+background-image: url(img/dplyr_relocate.png)
+background-size: 60%
+
+## dplyr::relocate() - Spalten verschieben
+
+.footnote[Artwork by [@allison_horst](https://www.allisonhorst.com/)]
+
+---
+## dplyr::rename() - Spalten umbennenen
+
+
+```r
+penguins %&gt;% 
+  rename(mass = body_mass_g) # neuer name = alter name
+```
+
+```
+# A tibble: 344 x 8
+  species island    bill_length_mm bill_depth_mm flipper_length_…
+  &lt;fct&gt;   &lt;fct&gt;              &lt;dbl&gt;         &lt;dbl&gt;            &lt;int&gt;
+1 Adelie  Torgersen           39.1          18.7              181
+2 Adelie  Torgersen           39.5          17.4              186
+3 Adelie  Torgersen           40.3          18                195
+4 Adelie  Torgersen           NA            NA                 NA
+5 Adelie  Torgersen           36.7          19.3              193
+6 Adelie  Torgersen           39.3          20.6              190
+# … with 338 more rows, and 3 more variables: mass &lt;int&gt;,
+#   sex &lt;fct&gt;, year &lt;int&gt;
+```
+
+---
+.note[
+
+# Praktikum 5 - dplyr
+
+## Live Code
+
+1. **RStudio Cloud**: Öffne deinen Arbeitsbereich für den Kurs in der RStudio Cloud
+2. **RStudio Cloud / Projects**: Öffne erneut das Praktikum 05
+3. Folgt wieder auf dem Bildschirm
+
+]
+
+---
+.note[
+# Praktikum 6 - dplyr
+
+## In 2er Teams
+
+1. **RStudio Cloud**: Öffne deinen Arbeitsbereich für den Kurs in der RStudio Cloud
+2. **RStudio Cloud / Projects**: Öffne erneut das Praktikum 06
+
+]
+
+---
+background-image: url(img/dplyr_mutate.png)
+background-size: 50%
+
+## dplyr::mutate() - Spalten hinzufügen
+
+.footnote[Artwork by [@allison_horst](https://www.allisonhorst.com/)]
+
+---
+## dplyr::mutate() - Mit anderen Funktionen
+
+.panelset[
+.panel[.panel-name[Factor relevel]
+
+
+```r
+library(forcats)
+
+penguins_relevel &lt;- penguins %&gt;% 
+  mutate(species = fct_relevel(species, c("Chinstrap", "Gentoo", "Adelie")))
+```
+]
+.panel[.panel-name[Plot Code]
+
+```r
+*ggplot(data = penguins_relevel,
+       mapping = aes(x = bill_depth_mm,
+                     y = bill_length_mm,
+                     colour = species)) +
+  geom_point()
+```
+]
+
+.panel[.panel-name[Plot]
+&lt;img src="e1_d04-data-transform-teil2_files/figure-html/unnamed-chunk-11-1.png" width="80%" style="display: block; margin: auto;" /&gt;
+]  
+] 
 
 ---
 .note[

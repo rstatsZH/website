@@ -1,0 +1,290 @@
+---
+title: "Hausaufgabe 05 - Mehr dyplr"
+
+---
+<script async defer data-domain="rstatszh.github.io/website" src="https://plausible.io/js/plausible.js"></script>
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+BLah Blah
+
+# Ziele
+
+Diese Hausaufgabe hat die folgenden Ziele:
+
+# Erste Schritte
+
+Heute wirst du zum ersten Mal ein Projekt selbst erstellen. Dies bedeutet, ich habe keine Vorlage für dich vorbereitet welche du aus GitHub importierst. Die ersten Schritte sind deshalb die erste Übung.
+
+# Übungen
+
+## Übung 1
+
+Im folgenden sind alle nötigen Schritte mit Beschreibung und Screenshots dokumentiert. Solltest du an einem Schritt nicht weiterkommen, dann melde dich bitte umgehend auf Slack. 
+
+1. Öffne die GitHub website: github.com
+2. Klicke auf das schwarze Dreieck neben deinem Benutzernamen
+3. In dem Dropdown Menü, wähle die GitHub Organisation für deinen Kurs aus
+
+```{r}
+
+
+```
+
+4. Klicke auf den grünen Button mit der Aufschrift "New" um ein neues Repository zu starten
+
+```{r}
+
+
+```
+
+5. Gib dem Respository den folgenden Namen und ersetze "GITHUB_BENUTZERNAME" mit deinem GitHub Benutzernamen:
+
+`mein-erstes-repo-GITHUB_BENUTZERNAME`
+
+**Beachte:** Namen für Repositories sollten kurz und ohne Leerzeichen sein. Der Name sollte für dich bedeutend sein und gegebenenfalls den Namen des Projektes an welchem du arbeitest widerspiegeln. 
+
+6. (optional): Gib dem Repository eine Beschreibung im Feld "Description"
+
+
+```{r}
+
+```
+
+7. Wähle die Option "Public" aus. Dein Repository ist damit öffentlich sichtbar.
+8. Setze das Häkchen neben "Add .gitignore" 
+9. Klicke auf das Feld ".gitignore template: None"
+10. Schreibe im Feld  "Filter ignores" den Buchstaben "R"
+11. Klicke auf das blau hinterlegte Feld mit dem Buchstaben "R"
+
+**Beachte:** Die Datei `.gitignore` definiert welche Dateien und/oder Ordner innerhalb eines Projektes **nicht** mit Git "verfolgt" werden sollen (ignoriert werden). Dies bedeutet, diese Dateien und/oder Ordner tauchen nicht auf GitHub auf. Sie sind nur lokal auf deinem Arbeitsgerät zu finden. Oft sind dies Konfigurationsdateien mit sensitiven Informationen oder Dateien die Nebenprodukte von der Arbeit mit R sind. Aber, dies können auch sensitive Daten innerhalb eines Projektes sein, welche nicht auf GitHub geteilt werden sollen, wobei jedoch der Code geteilt werden soll. 
+
+```{r}
+
+
+
+```
+
+12. Setze **kein** Häkchen bei "Add a README file" und "Choose a license"
+13. Klicke auf "Create repository"
+
+```{r}
+
+
+```
+
+14. Bewundere dein neues Repo und sei nicht eingeschüchtert von dem schwer nach zu vollziehbaren Text ;)
+15. Klicke auf das Klemmbrett-Symbol um den Link zu deinem neuen Respository in die Zwischenablage zu kopieren
+
+```{r}
+
+```
+
+16. Öffne die Website rstudio.cloud
+17. Logge dich wie gewöhnlich mit deinen GitHub Zugangsadaten ein
+
+**Achtung:** Falls du dies noch nicht eingerichtet hast, siehe [Hausaufgabe 01 - Verbindung zu GitHub und RStudio Cloud aufbauen](https://rstatszh.github.io/website/ha-01-hallo-git.html#verbindung-zu-github-und-rstudio-cloud-aufbauen.
+
+```{r}
+
+
+```
+
+18. Öffne den Arbeitsbereich für deinen Kurs
+
+```{r}
+
+
+
+```
+
+19. Klicke auf den Pfeil nach unten auf dem Button "New Project"
+20. Klicke auf "New Project from Git Repository"
+
+```{r}
+
+
+```
+
+21. Füge den Link, welchen du von GitHub in deine Zwischenablage kopiert hast in hier in das Fenster "URL of your Git Repository" ein.
+22. Lasse das Häkchen unter "Packages" gesetzt
+23. Klicke auf "OK"
+
+```{r}
+
+
+
+```
+
+24. Bewundere dein aus GitHub selbst erstelltes Projekt
+25. Im Fenster unten rechts öffne den Reiter "Files"
+26. Öffne die Datei `.gitignore` indem du auf die diese klickst
+27. Die Datei öffnet sich oben rechts in deinem Code Editor
+28. Scroll durch die Datei und beachte, dass auf Zeile 2 die Datei `.Rhistory` ignoriert wird
+29. Schliesse die `.gitignore` Datei wieder in dem du auf das kleine "x" neben dem Dateinamen oben rechts im Code Editor klickst 
+
+```{r}
+
+
+
+```
+
+30. Öffne den "Git" Reiter im Fenster oben rechts
+
+**Beachte:** Hier ist die Datei "project.Rproj" aufgetaucht. Die zwei gelben Fragezeichen `r knitr::include_graphics("img/git-untracked.png")` unter "Status" bedeuten, dass diese Datei noch nicht von Git "verfolgt" wird. Die Datei wurde neu erstellt als du in RStudio Cloud auf "New Project" geklickt hast. Die Datei `.gitignore` taucht hier nicht auf. Git "verfolgt" diese Datei bereits, da wir sie beim Erstellen des Repositories auf GitHub hinzugefügt haben. Auch die Datei `.Rhistory` taucht nicht auf, da wir in der `.gitignore` Datei definiert haben diese nicht zu "verfolgen". 
+
+```{r}
+
+
+
+```
+
+31. Setze nun den Haken unter "Staged"
+
+**Beachte:** Der Status ändert sich zu einem grünen `r knitr::include_graphics("img/git-add.png")`, welches für "Add" steht. Du hast Git nun signalisiert, dass diese Datei zu dem Git Repository hinzugefügt werden soll. Der Haken unter staged, bedeutet, dass diese Datei im nächsten Commit enthalten sein soll. 
+
+32. Klicke auf den "Commit" Button `r knitr::include_graphics("img/git-commit.png")`
+33. Ein neues Browser Fenster öffnet sich
+33. Im Feld "Commit message", schreibe: "R Project gestartet"
+34. Klicke auf den "Commit" Button unter dem Feld, welches die Commit Nachricht enthält. Ein neues Fenster öffnet sich.
+
+```{r}
+
+
+```
+
+35. Schliesse das neue Fenster indem du auf den "Close" Button klickst. Schliesse ach den Browser Tab, welches sich geöffnet hatte um die Commit Nachricht zu schreiben. 
+
+
+```{r}
+
+
+
+```
+
+36. Zurück im Browser Tab mit dem geöffneten RStudio Projekt, öffne erneutdie Datei `.gitignore` erneut indem du uten rechts im File Manage auf diese klickst. 
+37. Scroll ganz an das Ende der Datei auf die Zeile 40 und füge eine neue Zeile ein indem du auf die Enter Taste auf deiner Tastatur drückst.
+38. Füge Text mit einem # hinzu und schreibe "# Ignoriere folgende Dateien"
+39. Auf einer neuen Zeile, schreibe `*.csv`
+
+**Beachte:** Du sagst Git hier, dass alle Dateien in deinem Projekt mit der Endung `.csv` ignoriert werden sollen. 
+
+40. Speicher die Datei in dem du das Tastaturkürzel "Ctrl + S (Windows)" nutzt oder auf: File -> Save in RStudio klickst
+
+```{r}
+
+
+```
+
+41. Öffne den "Git" Reiter im Fenster oben rechts
+
+**Beachte:** Hier ist die Datei ".gitignore" aufgetaucht. Falls nicht, dann klicke auf den "Aktualisieren Button" `r knitr::include_graphics("img/git-refresh.png")` ganz rechts neben "main". Das blaue M `r knitr::include_graphics("img/git-modified.png")` steht für "modified" (de: verändert). Git verfolgt diese Datei bereits und hat hier gemerkt, dass Veränderung an der Datei gemacht wurde.
+
+42. Setze nun den Haken unter "Staged"
+
+**Beachte:** Der Status ändert sich nicht, aber das blaue M `r `knitr::include_graphics("img/git-modified.png")` bewegt sich etwas nach links. Die Dateu ist erneut "staged" und Git wird damit signalisiert, dass diese im nächsten Commit enthalten sein soll. 
+
+43. Klicke auf den "Commit" Button `r knitr::include_graphics("img/git-commit.png")`
+44. Ein neues Browser Fenster öffnet sich
+45. Schaue nun in das untere Fenster, welches in dem grünen Bereich die Veränderungen anzeigt, welche du an der `.gitignore` Datei gemacht hast.
+
+```{r}
+
+
+
+```
+
+46. Im Feld "Commit message", schreibe: "Ignoriere CSV Dateien"
+47. Klicke auf den "Commit" Button unter dem Feld, welches die Commit Nachricht enthält. Ein neues Fenster öffnet sich.
+48. Schliesse das neue Fenster indem du auf den "Close" Button klickst. Schliesse ach den Browser Tab, welches sich geöffnet hatte um die Commit Nachricht zu schreiben. 
+
+```{r}
+
+
+
+```
+
+49. Erstelle eine neue Markdown Datei (**Achtung:** Nicht R Markdown): File -> New File -> Markdown File
+50. Speicher die Datei mit dem Tastaturkürzel "Ctrl + S" (Windows) oder: File -> Save 
+51. Im Feld "File name:", schreibe "README" und klicke auf den Save Button
+
+```{r}
+
+
+```
+
+52. Öffne den "Git" Reiter im Fenster oben rechts
+
+**Beachte:** Hier ist die Datei "README.md" nun mit zwei gelben Fragezeichen `r knitr::include_graphics("img/git-untracked.png")` unter "Status" aufgetaucht. Du hast bereits gelernt, was dies bedeutet. Kannst du dich erinnern?
+
+53. Gehe erneut durch die Schritte Add, Commit, und wähle "README hinzugefügt" als Commit message. Mache jedoch mache weiterhin **keinen push**.
+
+54. Zurück im Browser Tab mit dem geöffneten RStudio Projekt, schreibe nun einen Text deiner Wahl in deine README Datei. Hier ist [mein Beispiel] zu sehen
+
+55. Klicke auf den Preview Button um dir eine Vorschau deiner README Datei anzusehen.
+
+```{r}
+
+
+
+```
+
+56. Öffne den "Git" Reiter im Fenster oben rechts
+
+**Beachte:** Die `README.md` Datei wird mit einem blauen M als "modified" angezeigt. Git "verfolgt" diese bereits und hat gemerkt, dass du Veränderungen gemacht hast. Neu taucht hier die `README.html` Datei auf. Diese ist enstanden nachdem du auf den Preview Button geklickt hast. 
+
+57. Setze den Haken **nur** neben der `README.md` Datei und mache einen Commit mit einer Commit Nachricht deiner Wahl. Mache jedoch mache weiterhin **keinen push**.
+
+```{r}
+
+
+```
+
+58. Zurück im Browser Tab mit dem geöffneten RStudio Projekt, öffne die `.gitignore` Datei
+59. Auf einer neuen Zeile, schreibe `README.html`
+60. Speicher die `.gitingore` Datei
+61. Im Git Fenster oben rechts, klicke auf den Aktualisieren Button `r knitr::include_graphics("img/git-refresh.png")`
+62. Die `README.html` ist hier nun verschwunden und die `.gitignore` Datei taucht hier wieder auf. Warum?
+63. Setze den Haken neben `.gitignore` und mache einen Commit mit der Commit Nachricht "Ignoriere README.html". Mache jedoch mache weiterhin **keinen push**.
+64. Schliesse den Browser Tab und gehe züruck zu dem Browser Tab mit dem geöffneten RStudio Projekt
+
+**Beachte:** Im Git Fenster oben rechts siehst du nun eine Zeile mit dem Text `Your branch is ahead of 'origin/main' by 5 commits.` Dies bedeutet: Git hat bei dir lokal in deinem Projekt fünf Commits registriert, welche noch nicht auf GitHub sind. 
+
+65. Klicke nun auf den "Push" Button (grüner Pfeil der nach oben zeigt) um deine Veränderung auf GitHub zu pushen.
+
+```{r}
+
+
+
+```
+
+66. Gehe zürck zu deinem Repo auf github.com und aktualisiere die Seite
+
+```{r}
+
+
+
+```
+
+67. Schau dich etwas um und versuche Dinge wieder zu erkennen die du in RStudio gemacht hast.
+68. Teile den Link zu deinem Repo in unserem Slack Channel für den Kurs.
+
+
+
+schreibe nun einen Text deiner Wahl in deine README Datei. Hier ist [mein Beispiel](https://github.com/rstatszh-k000/mein-erstes-repo-rainbow-train) zu sehen
+
+
+
+öffne erneutdie Datei `.gitignore` erneut indem du uten rechts im File Manage auf diese klickst. 
+
+
+
+bedeuten, dass diese Datei noch nicht von Git "verfolgt" wird. Die Datei wurde neu erstellt als du in RStudio Cloud auf "New Project" geklickt hast. Die Datei `.gitignore` taucht hier nicht auf. Git "verfolgt" diese Datei bereits, da wir sie beim Erstellen des Repositories auf GitHub hinzugefügt haben. Auch die Datei `.Rhistory` taucht nicht auf, da wir in der `.gitignore` Datei definiert haben diese nicht zu "verfolgen". 
+
+```{r}
+
+
+
+```

@@ -12,7 +12,12 @@ BLah Blah
 
 # Ziele
 
-Diese Hausaufgabe hat die folgenden Ziele:
+Diese Hausaufgabe hat die folgende Ziele:
+
+- Ein Git repository auf GitHub selbst erstellen 
+- Ein selbst erstelltes Git Repository aus GitHub in die eigene Arbeitsumgebung clonen
+- Ein öffentliches Git Repository aus GitHub in die eigene Arbeitsumgebung clonen
+- Eine Fork von einem öffentlichem GitHub Repository zu erstellen 
 
 # Erste Schritte
 
@@ -268,23 +273,84 @@ Im folgenden sind alle nötigen Schritte mit Beschreibung und Screenshots dokume
 
 ```
 
-67. Schau dich etwas um und versuche Dinge wieder zu erkennen die du in RStudio gemacht hast.
-68. Teile den Link zu deinem Repo in unserem Slack Channel für den Kurs.
-
-
-
-schreibe nun einen Text deiner Wahl in deine README Datei. Hier ist [mein Beispiel](https://github.com/rstatszh-k000/mein-erstes-repo-rainbow-train) zu sehen
-
-
-
-öffne erneutdie Datei `.gitignore` erneut indem du uten rechts im File Manage auf diese klickst. 
-
-
-
-bedeuten, dass diese Datei noch nicht von Git "verfolgt" wird. Die Datei wurde neu erstellt als du in RStudio Cloud auf "New Project" geklickt hast. Die Datei `.gitignore` taucht hier nicht auf. Git "verfolgt" diese Datei bereits, da wir sie beim Erstellen des Repositories auf GitHub hinzugefügt haben. Auch die Datei `.Rhistory` taucht nicht auf, da wir in der `.gitignore` Datei definiert haben diese nicht zu "verfolgen". 
+67. Schau dich etwas um, und versuche auf die Dinge zu klicken die du aus RStudio wieder erkennen kannst. Unten ein paar Beispiele zum darauf klicken:
 
 ```{r}
 
 
 
 ```
+
+68. Klicke auf den "Settings" Button um die Einstellungen für das Repository zu öffnen
+
+
+```{r}
+
+
+```
+
+69. Klicke auf "Manage access" links in der Auswahlleiste
+70. Klicke auf den Button "Invite teams or people"
+
+```{r}
+
+
+```
+
+71. Im sich öffnenden Fenster schreibe: "larnsce" 
+72. Klicke auf den blau hinterlegten Bereich
+73. Im sich öffnenden Fesnter, setzte den blauen Kreis auf "Admin" und klicke auf "Add larnsce to this repository"
+
+**Beachte:** Das Repository ist "public" und damit öffentlich sichbar. Jede Person kann dieses Repository "clonen" und damit in RStudio weiterarbeiten. So wie du es am Anfang gemacht hast um es in die RStudio Cloud zu bringen. Aber: Nicht jeder Person kann auch wieder zurück auf diese Repository "pushen" und damit Veränderung an deiner Version machen. Du hast mich gerade als Admin hinzugefüght, damit ich jegliche Zugangsrechte habe. Wenn du gemeinsam mit Personen aktiv an einem Repository arbeitest, empfiehlt es sich diese mindestens die Rolle mit "Write" Zugang zu geben. Dies ermöglicht es wieder auf das Repo zu "pushen".
+
+```{r}
+
+
+
+```
+
+
+## Übung 2 - Klone ein öffentliches Git Repository
+
+Letzte Woche haben wir im Kurs eine Live Coding Einheit zu Vektoren gemacht (Praktikum 9). Für diese Einheit hatte ich keine Vorlage für dich bereitgestellt und dich darum gebeten nicht selbst aktiv mitzuschreiben. Das Praktikum 9 ist als öffentliches Git Repository auf GitHub publiziert. Dies bedeutet, dass du dir sämtlichen Code aus den Übungen selbst in deine Arbeitsumgebung klonen kannst.
+
+1. Öffne das Repository auf GitHub: https://github.com/rstatsZH/prak-09-vektoren
+5. Nutze die dir bekannten Schritte um dieses Repository (rstatsZH/prak-09-vektoren) in die Arbeitsumgebung für den Kurs (RStudio Cloud Workspace rstatsZH-K00X) zu klonen  
+
+```{r}
+
+
+
+```
+
+3. Öffne die R Markdown Datei "prak-09-solutions.Rmd" 
+4. Stricke die R Markdown Datei "prak-09-solutions.Rmd"
+5. Öffne das Git Fentser oben rechts, und:
+    - add "prak-09-solutions.html"
+    - commit "prak-09-solutions.html"
+6. Push deine Veränderungen auf zurück auf GitHub. Was sagt die Fehlermeldung? Was könnte dies bedeuten und wie könnte dies behoben werden?
+
+## Übung 3 - Fork ein öffentliches Git Repository
+
+In Übung 1 hast du gelernt wie man jemanden als Collaborator zu einem Git Repository auf GitHub hinzufügt. In Übung 2 hast du gesehen, was passiert wenn du ein öffentliches GitHub Respository klonst aber selbst kein Collaborator bist. Diese Übung soll dir nun zeigen, wie du mit einem öffentlichen Repository selsbtständig weiterarbeiten kannst und deine Veränderung zurück auf GitHub pushen kannst.
+
+1. Öffne das Repository auf GitHub: https://github.com/rstatsZH/prak-09-vektoren
+2. Klicke auf den "Fork" Button. Ein neues Fenster öffnet sich.
+3. Klicke auf deinen Benutzernamen
+4. Schau dir den Namen des Repository genau an. Was könnte dies bedeuten?
+
+```{r}
+
+```
+
+5. Nutze die dir bekannten Schritte um dieses Repository (DEINNAME/prak-09-vektoren) in die Arbeitsumgebung für den Kurs (RStudio Cloud Workspace rstatsZH-K00X) zu klonen  
+6. Öffne die die R Markdown Datei "prak-09-solutions.Rmd" 
+7. Stricke die R Markdown Datei "prak-09-solutions.Rmd"
+8. Öffne das Git Fentser oben rechts, und:
+    - add "prak-09-solutions.html"
+    - commit "prak-09-solutions.html"
+9. Push deine Veränderungen auf zurück auf GitHub.
+
+# Grosses Danke Schön und Gratulation
+
+Du hast soeben den Grundstein für ein Verständnis über kollaboratives Arbeiten mit Git und GitHub gelegt. Danke, dass du die mehr als 100 Schritte durchgegangen bist! Es ist weiterhin völlig normal wenn sich das was dort im Hintergund passiert fremd und ungeheuerlich anfühlt. Erst wenn diese Schritte dutzende Male durchgeführt wurden und effektiv mit Anderen an Projekten gearbeitet wird, bildet sich ein Verständnis für die Prozesse die dort im Hintergrund laufen.

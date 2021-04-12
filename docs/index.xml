@@ -7,7 +7,15 @@
     <description>Ein R Kurs für Mitarbeiter_innen der Verwaltung des Kantons Zürich
 </description>
     <generator>Distill</generator>
-    <lastBuildDate>Fri, 26 Mar 2021 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 12 Apr 2021 00:00:00 +0000</lastBuildDate>
+    <item>
+      <title>Woche 5 - Vektoren in R und mehr Git</title>
+      <link>https://rstatszh.github.io/website/posts/2021-04-12-woche05</link>
+      <description>Ziele und Materialien für unsere fünfte gemeinsame Woche</description>
+      <guid>https://rstatszh.github.io/website/posts/2021-04-12-woche05</guid>
+      <pubDate>Mon, 12 Apr 2021 00:00:00 +0000</pubDate>
+      <media:content url="https://rstatszh.github.io/website/posts/2021-04-12-woche05/img/richy-great-MAYEkmn7G6E-unsplash.jpg" medium="image" type="image/jpeg"/>
+    </item>
     <item>
       <title>Woche 4 - Daten Transformation mit dplyr - Teil 2</title>
       <link>https://rstatszh.github.io/website/posts/2021-03-28-woche04</link>

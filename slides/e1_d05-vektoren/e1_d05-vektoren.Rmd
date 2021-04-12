@@ -1,6 +1,6 @@
 ---
 title: "rstatsZH - Data Science mit R"
-subtitle: ""
+subtitle: "Vektoren in R und mehr Git"
 author: "Lars Schöbitz"
 date: "2020-04-12"
 output:
@@ -30,9 +30,34 @@ class: title-slide
 
 ```{r}
 
-library(palmerpenguins)
 library(dplyr)
 library(ggplot2)
+library(readr)
+library(tidyr)
+
+```
+
+```{r daten-importieren}
+# Der Link zu den Daten wird hier als Objekt gespeichert und taucht oben rechts in "Environment" auf
+link <- "https://www.web.statistik.zh.ch/ogd/data/bista/ZH_Uebersicht_alle_Lernende.csv"
+
+# Hier wird nun das Objekt "link" genutzt um die CSV zu lesen
+lernende <- read_csv(file = link, 
+                     locale = locale(encoding = "ISO-8859-1"))
+
+# Conflict with lag
+
+conflicted::conflict_prefer("lag", "dplyr")
+
+
+```
+
+```{r daten-eingrenzen}
+
+# Ich habe die Daten hier auf das Jahr 2019 gefilterert und NAs entfernt
+lernende2019 <- lernende %>% 
+   filter(Jahr == 2019) %>% 
+   drop_na() # Die letzte Zeile 1960 weisst eine Zeile mit NAs auf
 
 ```
 
@@ -49,48 +74,319 @@ p(rmarkdown::metadata$date)
 ]
 
 ---
-class: left
-background-position: right
-background-size: contain
-
 # Rückblick - Woche 4
 
-**`dplyr` Funktionen **
+## `dplyr` Funktionen 
 
+.pull-left[
+- `select()` Hilfe Funktionen
+      - `starts_with()`
+      - `ends_with()`
+      - `contains()`
+      - `all_of()`
+      - `any_of()`
+]
 
-.footnote[Photo by: [Annie Spratt](https://unsplash.com/photos/nVrqbvzOh08)]
-
-???
+.pull-right[
+- `relocate()`
+- `rename()`
+- `rename_with()`
+- `mutate()`
+- `group_by()`
+- `summarise()`
+- `count()`
+]
 
 ---
-# Git / GitHub
+# Hausaufgabe 4 - Teil 2 - Übung 3
 
-- Staged: Wir sagen Git welche Änderungen im nächsten Commit enthalten sein sollen
 
-Command: `git add`
+.panelset[
+.panel[.panel-name[Plot]
+```{r ref.label="plot-anzahl", echo=FALSE, warning=FALSE, out.width="90%", fig.width=9}
 
-Status:
- - 
 
-- Commit: 
+```
+]
 
+.panel[.panel-name[Code]
+```{r plot-anzahl, fig.show="hide", echo=TRUE}
+
+ggplot(lernende2019, aes(x = Stufe, y = Anzahl, fill = Nationalitaet)) +
+   geom_col() +
+   coord_flip() + #<< 
+   scale_y_continuous(breaks = seq(0, 100000, 10000)) + #<<
+   scale_fill_viridis_d() +
+   labs(title = "Anzahl Schüler_innen",
+        subtitle = "Kanton Zürich, 2019",
+        fill = "Nationalität",
+        caption = "Daten: https://opendata.swiss/de/dataset/ubersicht-uber-alle-lernenden-im-kanton-zurich") +
+   theme_minimal() + #<<
+   theme(legend.position = "bottom", 
+         panel.grid.major.y = element_blank()) #<< 
+```
+
+]
+]
+
+---
+# Hausaufgabe 4 - Teil 2 - Übung 5
+
+Was gibt die Spalte `n` an?
+
+.pull-left[
+```{r anzahl1, echo=TRUE}
+# Häufigkeitstabelle 1 - Zusammenfassen mit count()
+lernende2019 %>% 
+   count(Schultyp)
+```
+]
+
+.pull-right[
+```{r anzahl2, echo=TRUE}
+# Häufigkeitstabelle 2 - Zusammfassen mit group_by %>% summarise()
+lernende2019 %>% 
+   group_by(Schultyp) %>% 
+   summarise(
+      n = n()
+   )
+```
+]
+
+---
+# Hausaufgabe 4 - Teil 2 - Übung 5
+
+Wie kommen wir auf die Anzahl Schüler_innen.
+
+.pull-left[
+```{r anzahl1-lsg, echo=TRUE}
+# Häufigkeitstabelle 1 - Zusammenfassen mit count()
+lernende2019 %>% 
+   count(Schultyp, wt = Anzahl)
+```
+]
+
+.pull-right[
+```{r anzahl2-lsg, echo=TRUE}
+# Häufigkeitstabelle 2 - Zusammfassen mit group_by %>% summarise()
+lernende2019 %>% 
+   group_by(Schultyp) %>% 
+   summarise(
+      n = sum(Anzahl)
+   )
+```
+]
+
+---
+# Hausaufgabe 4 - Teil 2 - Übung 6
+
+.pull-left[
+```{r, eval=FALSE, echo=TRUE}
+
+lernende %>%   
+   drop_na %>% 
+   group_by(Jahr) %>% 
+   summarise(
+      Total = sum(Anzahl)
+   ) %>% 
+   mutate(
+      Differenz = Total - lag(Total)
+   ) %>% 
+   mutate(
+      Veraenderung = case_when(
+         Differenz > 0 ~ "Zunahme",
+         Differenz < 0 ~ "Abnahme"
+      )
+   )
+
+```
+]
+
+.pull-right[
+```{r, eval=TRUE, echo=FALSE}
+
+lernende %>%   
+   drop_na %>% 
+   group_by(Jahr) %>% 
+   summarise(
+      Total = sum(Anzahl)
+   ) %>% 
+   mutate(
+      Differenz = Total - dplyr::lag(Total)
+   ) %>% 
+   mutate(
+      Veraenderung = case_when(
+         Differenz > 0 ~ "Zunahme",
+         Differenz < 0 ~ "Abnahme"
+      )
+   )
+
+```
+
+]
+
+---
+# Hausaufgabe 4 - Lösungen
+
+- **GitHub Organisation:** rstatsZH
+    - https://github.com/rstatsZH/
+- **Repo:** ha-04-mehr-dplyr
+    - https://github.com/rstatsZH/ha-04-mehr-dplyr
+- **R Markdown Datei:** ha-04-solutions.Rmd
+    - https://github.com/rstatsZH/ha-04-mehr-dplyr/blob/main/ha-04-solutions.Rmd
+
+
+---
+background-image: url(https://jrnold.github.io/r4ds-exercise-solutions/img/r4ds-exercise-solutions-cover.png)
+background-size: contain
+background-position: right
+
+# Hausaufgabe - Teil 1 + Teil 3
+
+.pull-left[
+Lösungen zu den Übungen aus dem Buch mit nützlichen Erklärungen gibt es hier:
+
+https://jrnold.github.io/r4ds-exercise-solutions/
+]
 
 
 ---
 .note[
 
-# Praktikum 7 - dplyr
+# Demonstration 1 - Ehedaten
 
-## Live Code
+1. Schaut mir bei dem Erkunden eines Datensatz zu 
+2. Schreibt selbst **keinen** Code
+2. Macht euch Notizen und stellt Fragen
 
-1. **E-Mail**: Öffne deine Email und klicke auf den Link zu deinem persönlichen GitHub repo für **prak-07**
+]
+
+---
+class: left
+background-image: url(img/coffee-break.jpg)
+background-position: right
+background-size: contain
+
+# Pause 
+
+```{r, echo = FALSE}
+
+countdown(
+  minutes = 10, seconds = 0,
+  left = 0, right = 0,
+  padding = "15px", margin = "5%",
+  font_size = "4em"
+)
+
+```
+
+.footnote[Photo by: [Blake Wisz](https://unsplash.com/@blakewisz)]
+
+---
+# Praktikum 8 - Git / GitHub
+
+Ihr könnt bereits:
+
+- `git add` (Das Häkchen bei Staged setzen)
+- `git commit`
+- `git push`
+
+Neu lernt ihr:
+
+- `git pull`
+
+---
+# Praktikum 8 - Zwei Rollen
+
+.pull-left[
+**Person 1 - Push**
+
+- Öffnet die R Markdown Datei für die Übung
+- Teilt den Bildschirm
+- Schreibt den Code
+- Führt die Git Befehle "add", "commit" und "push" aus
+]
+
+--
+
+.pull-right[
+**Person 2 - Pull**
+
+- Öffnet die R Markdown Datei für die Übung
+- Schreibt selbst **keinen** Code
+- Unterstützt Person 1 bei den Übungen
+- Führt den Git Befehl "pull" aus
+]
+
+---
+.note[
+
+# Praktikum 8 - Git / GitHub - Ehedaten
+
+## 2er Teams
+
+**Lest die Anleitungen aufmerksam und entscheidet welche Person zu Beginn den Bildschirm teilt**
+
+1. **E-Mail**: Öffne deine Email und klicke auf den Link zu deinem GitHub **Team** repo für **prak-08-team0X**
 2. **GitHub**: Klicke auf den grünen Button "Code" und kopiere den Link für das Repo in deine Zwischenablage
 3. **RStudio Cloud**: Öffne deinen Arbeitsbereich für den Kurs in der RStudio Cloud
 4. **RStudio Cloud / Projects**: Klicke auf "New Project from GitHub Repository" 
-5. **RStudio**: Finde den Datei Manager und Git
-6. **Zoom Chat**: Schreibt wenn ihr soweit seid
 
 ]
+
+
+---
+class: left
+background-image: url(img/coffee-break.jpg)
+background-position: right
+background-size: contain
+
+# Pause 
+
+```{r, echo = FALSE}
+
+countdown(
+  minutes = 10, seconds = 0,
+  left = 0, right = 0,
+  padding = "15px", margin = "5%",
+  font_size = "4em"
+)
+
+```
+
+.footnote[Photo by: [Blake Wisz](https://unsplash.com/@blakewisz)]
+
+---
+.note[
+
+# Demonstration 2 - Vektoren
+
+1. Schaut mir nochmals beim Programmieren zu
+2. Macht euch Notizen und stellt Fragen
+
+]
+
+
+---
+class: middle, inverse
+
+# .big[Hausaufgabe]
+
+---
+.note[
+
+# Hausaufgabe 5 - Erstes Projekt mit Git und GitHub
+
+- Keine Vorlage von meiner Seite
+- Alle Schritte sind auf der Webseite beschrieben:
+
+https://rstatszh.github.io/website/ha-05-erstes-projekt.html
+
+
+]
+
+
+
 ---
 class: middle, inverse
 
@@ -125,7 +421,7 @@ Für die Aufmerksamkeit!
 
 Für die R packages [{xaringan}](https://github.com/yihui/xaringan) und [{xaringanthemer}](https://github.com/gadenbuie/xaringanthemer) mit welchen die Folien geschrieben wurden.
 
-Eine PDF Version der Folien kann hier heruntergeladen werden: https://github.com/rstatsZH/website/raw/master/slides/e1_d04-data-transform-teil2/e1_d04-data-transform-teil2.pdf
+Eine PDF Version der Folien kann hier heruntergeladen werden: https://github.com/rstatsZH/website/raw/master/slides/e1_d05-vektoren/e1_d05-vektoren.pdf
 
 `r hr()`
 

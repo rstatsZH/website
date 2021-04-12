@@ -21,7 +21,7 @@ BLah Blah
 
 Diese Hausaufgabe hat die folgende Ziele:
 
-- Ein Git repository auf GitHub selbst erstellen 
+- Ein Git Repository auf GitHub selbst erstellen 
 - Ein selbst erstelltes Git Repository aus GitHub in die eigene Arbeitsumgebung klonen
 - Ein öffentliches Git Repository aus GitHub in die eigene Arbeitsumgebung klonen
 - Eine Fork von einem öffentlichem GitHub Repository zu erstellen
@@ -33,7 +33,7 @@ Heute wirst du zum ersten Mal ein Projekt selbst erstellen. Dies bedeutet, ich h
 
 # Übungen
 
-## Übung 1
+## Übung 1 - Erstelle ein eigenes Git Repository
 
 Im folgenden sind alle nötigen Schritte mit Beschreibung und Screenshots dokumentiert. Solltest du an einem Schritt nicht weiterkommen, dann melde dich bitte umgehend auf Slack. 
 
@@ -281,26 +281,26 @@ include_graphics(here::here("img/github-to-project/github-to-project.031.png"))
 
 ## Übung 2 - Klone ein öffentliches Git Repository
 
-Letzte Woche haben wir im Kurs eine Live Coding Einheit zu Vektoren gemacht (Praktikum 9). Für diese Einheit hatte ich keine Vorlage für dich bereitgestellt und dich darum gebeten nicht selbst aktiv mitzuschreiben. Das Praktikum 9 ist als öffentliches Git Repository auf GitHub publiziert. Dies bedeutet, dass du dir sämtlichen Code aus den Übungen selbst in deine Arbeitsumgebung klonen kannst.
+Letzte Woche haben wir im Kurs eine Demonstrationseinheit zu Vektoren gemacht (Demonstration 2). Für diese Einheit hatte ich keine Vorlage für dich bereitgestellt und dich darum gebeten nicht selbst aktiv mitzuschreiben. Die Demonstration 2 ist als öffentliches Git Repository auf GitHub publiziert. Dies bedeutet, dass du dir sämtlichen Code aus den Übungen selbst in deine Arbeitsumgebung klonen kannst.
 
-1. Öffne das Repository auf GitHub: https://github.com/rstatsZH/prak-09-vektoren und nutze die dir bekannten Schritte um dieses Repository (rstatsZH/prak-09-vektoren) in die Arbeitsumgebung für den Kurs (RStudio Cloud Workspace rstatsZH-K00X) zu klonen.
+1. Öffne das Repository auf GitHub: https://github.com/rstatsZH/demo-02-vektoren und nutze die dir bekannten Schritte um dieses Repository (rstatsZH/demo-02-vektoren) in die Arbeitsumgebung für den Kurs (RStudio Cloud Workspace rstatsZH-K00X) zu klonen.
 
 ```{r}
 include_graphics(here::here("img/github-to-project/github-to-project.032.png"))
 ```
 
-3. Öffne die R Markdown Datei "prak-09-solutions.Rmd" 
-4. Stricke die R Markdown Datei "prak-09-solutions.Rmd"
+3. Öffne die R Markdown Datei "demo-02-solutions.Rmd" 
+4. Stricke die R Markdown Datei "demo-02-solutions.Rmd"
 5. Öffne das Git Fentser oben rechts, und:
-    - add "prak-09-solutions.html"
-    - commit "prak-09-solutions.html"
+    - add "demo-02-solutions.html"
+    - commit "demo-02-solutions.html"
 6. Push deine Veränderungen auf zurück auf GitHub. Was sagt die Fehlermeldung? Was könnte dies bedeuten und wie könnte dies behoben werden?
 
 ## Übung 3 - Fork ein öffentliches Git Repository
 
 In Übung 1 hast du gelernt wie man jemanden als Collaborator zu einem Git Repository auf GitHub hinzufügt. In Übung 2 hast du gesehen, was passiert wenn du ein öffentliches GitHub Respository klonst aber selbst kein Collaborator bist. Diese Übung soll dir nun zeigen, wie du mit einem öffentlichen Repository selsbtständig weiterarbeiten kannst und deine Veränderung zurück auf GitHub pushen kannst.
 
-1. Öffne das Repository auf GitHub: https://github.com/rstatsZH/prak-09-vektoren und klicke auf den "Fork" Button. Ein neues Fenster öffnet sich. 
+1. Öffne das Repository auf GitHub: https://github.com/rstatsZH/demo-02-vektoren und klicke auf den "Fork" Button. Ein neues Fenster öffnet sich. 
 
 ```{r}
 include_graphics(here::here("img/github-to-project/github-to-project.033.png"))
@@ -318,12 +318,12 @@ include_graphics(here::here("img/github-to-project/github-to-project.034.png"))
 include_graphics(here::here("img/github-to-project/github-to-project.035.png"))
 ```
 
-4. Nutze die dir bekannten Schritte um dieses Repository (DEINNAME/prak-09-vektoren) in die Arbeitsumgebung für den Kurs (RStudio Cloud Workspace rstatsZH-K00X) zu klonen  
-5. Öffne die die R Markdown Datei "prak-09-solutions.Rmd" 
-6. Stricke die R Markdown Datei "prak-09-solutions.Rmd"
+4. Nutze die dir bekannten Schritte um dieses Repository (DEINNAME/demo-02-vektoren) in die Arbeitsumgebung für den Kurs (RStudio Cloud Workspace rstatsZH-K00X) zu klonen  
+5. Öffne die die R Markdown Datei "demo-02-solutions.Rmd" 
+6. Stricke die R Markdown Datei "demo-02-solutions.Rmd"
 7. Öffne das Git Fentser oben rechts, und:
-    - add "prak-09-solutions.html"
-    - commit "prak-09-solutions.html"
+    - add "demo-02-solutions.html"
+    - commit "demo-02-solutions.html"
 8. Push deine Veränderungen auf zurück auf GitHub.
 
 # Grosses "Danke Schön" und Gratulation!

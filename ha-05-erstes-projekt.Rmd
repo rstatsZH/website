@@ -15,8 +15,6 @@ library(knitr)
 ```
 
 
-BLah Blah
-
 # Ziele
 
 Diese Hausaufgabe hat die folgende Ziele:

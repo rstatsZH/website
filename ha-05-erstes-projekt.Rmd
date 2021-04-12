@@ -1,5 +1,5 @@
 ---
-title: "Hausaufgabe 05 - Mehr dyplr"
+title: "Hausaufgabe 05 - Erstes Projekt"
 
 ---
 <script async defer data-domain="rstatszh.github.io/website" src="https://plausible.io/js/plausible.js"></script>

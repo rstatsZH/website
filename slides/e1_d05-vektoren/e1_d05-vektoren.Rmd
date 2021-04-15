@@ -249,6 +249,16 @@ Lösungen zu den Übungen aus dem Buch mit nützlichen Erklärungen gibt es hier
 https://jrnold.github.io/r4ds-exercise-solutions/
 ]
 
+---
+# Ziele für diese Woche
+
+Am Ende dieser Woche könnt ihr:
+
+- Einer Anleitung folgen um kollaborativ mit Git und GitHub an einem Projekt zu arbeiten 
+- Die Begriffe `git add`, `git commit`, `git push`, und `git pull` unterscheiden 
+- Den Unterschied zwischen einem Vektor vom Typ "character" und "factor" erläutern
+- Erkennen wann es notwendig ist Datums- und Zeitwerte aus Rohdaten in R selbst zu codieren
+
 
 ---
 .note[
@@ -281,17 +291,6 @@ countdown(
 ```
 
 .footnote[Photo by: [Blake Wisz](https://unsplash.com/@blakewisz)]
-
----
-# Ziele für diese Woche
-
-Am Ende dieser Woche könnt ihr:
-
-- Einer Anleitung folgen um kollaborativ mit Git und GitHub an einem Projekt zu arbeiten 
-- Die Begriffe `git add`, `git commit`, `git push`, und `git pull` unterscheiden 
-- Den Unterschied zwischen einem Vektor vom Typ "character" und "factor" erläutern
-- Erkennen wann es notwendig ist Datums- und Zeitwerte aus Rohdaten in R selbst zu codieren
-
 
 ---
 # Praktikum 8 - Git / GitHub
@@ -418,12 +417,6 @@ Bitte ausfüllen: [kutt.it/rstatszh-eval](https://kutt.it/rstatszh-eval)
 .footnote[Photo by: [Virgil Cayasa](https://unsplash.com/@virgilcayasa)]
 
 ]
-
----
-class: middle, inverse
-
-# .big[Hausaufgabe]
-
 
 ---
 # `r emo::ji("sunflower")` Danke 

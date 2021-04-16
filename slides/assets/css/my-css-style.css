@@ -113,8 +113,8 @@
 /* https://desiree.rbind.io/post/2019/making-tip-boxes-with-bookdown-and-rmarkdown/ */
 
 div.puzzle, div.fyi, div.demo, div.note {
-    padding: 1em;
-    margin: 1em 0;
+    padding: 0.5em;
+    margin: 0.5em 0;
     padding-left: 100px;
     background-size: 90px;
     background-repeat: no-repeat;
@@ -134,12 +134,12 @@ div.puzzle, div.fyi, div.demo, div.note {
   padding-bottom: 3px;
   margin-bottom: 6px;
   margin-top: 6px;
-  color: white;
+  color: var(--dark-blue);
 }
 
 .question{
-  border-left: solid 5px var(--green);
-  background-color: var(--green-faint);
+  border-left: solid 5px var(--dark-blue);
+  background-color: var(--light-blue);
 }
 
 .tip {

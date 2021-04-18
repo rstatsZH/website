@@ -172,22 +172,20 @@ class: middle, inverse
 
 .pull-left[
 ```{r, echo=TRUE}
-
 schlechte_namen <- read_csv("data/bsp_namen.csv")
 names(schlechte_namen)
-
 ```
 
 In R sind Leerzeichen in Variablen nicht erlaubt
 
 ```{r, error=TRUE, echo=TRUE}
-
 schlechte_namen %>% 
    filter(Nachname Frau == "Meier")
-
 ```
 
 ]
+
+--
 
 .pull-right[
 Möglich mit Backticks, aber mühsam
@@ -217,15 +215,13 @@ read_csv("data/bsp_namen.csv",
 
 - Namen werden standardmässig im sogenannten snake_case formatiert
 
-```{r}
-
+```{r, echo=TRUE}
 library(janitor)
 
 namen <- read_csv("data/bsp_namen.csv") 
 
 namen %>% 
    clean_names() 
-
 ```
 
 ---
@@ -330,9 +326,9 @@ dat <- read_csv("data/data-na.csv",
 ```{r, eval=FALSE, echo=TRUE}
 dat <- dat %>% 
    mutate(alter = case_when(
-      alter == "five" ~ "5",  # Wenn "alter" gleich zwanzig dann
-      TRUE ~ alter)) %>% # Sonst "alter"
-   mutate(alter = as.numeric(alter))
+      alter == "zwanzig" ~ "20",        # Wenn "alter" gleich zwanzig dann "20"
+      TRUE ~ alter)) %>%                # Sonst "alter"
+   mutate(alter = as.numeric(alter))    # Unwandlung in den Typ numerisch
 ```
 
 --
@@ -340,11 +336,10 @@ dat <- dat %>%
 ```{r}
 dat %>% 
    mutate(alter = case_when(
-      alter == "five" ~ "5",  # Wenn "alter" gleich zwanzig dann
-      TRUE ~ alter)) %>% # Sonst "alter"
-   mutate(alter = as.numeric(alter)) %>% 
+      alter == "zwanzig" ~ "20",        # Wenn "alter" gleich zwanzig dann "20"
+      TRUE ~ alter)) %>%                # Sonst "alter"
+   mutate(alter = as.numeric(alter)) %>%    # Unwandlung in den Typ numerisch
    print(n = 5)
-
 ```
 
 ---
@@ -382,24 +377,20 @@ ggplot(dat, aes(x = bewertung)) +
 ---
 # Variable `bewertung` umwandeln - faktor
 
-```{r}
-
+```{r, echo=TRUE}
 vek_bewertung_lvl <-  c("trifft nicht zu", "trifft eher nicht zu",
                         "teils-teils", "trifft eher zu", "trifft zu")
 
 dat <- dat %>% 
    mutate(bewertung = fct_relevel(bewertung, vek_bewertung_lvl))
-
 ```
 
 ---
 # Variable `bewertung` - Häufgkeitstabelle
 
 ```{r, echo=TRUE}
-
 dat %>% 
    count(bewertung)
-
 ```
 
 ---
@@ -423,19 +414,18 @@ vek_bewertung_lvl <-  c("trifft nicht zu", "trifft eher nicht zu",
 dat_clean <- read_csv("data/data-na.csv", 
                       na = c("NA", ".", "9999", "Not applicable")) %>% 
    mutate(alter = case_when(
-      alter == "five" ~ "5",  # Wenn "alter" gleich zwanzig dann
-      TRUE ~ alter)) %>% # Sonst "alter"
-   mutate(alter = as.numeric(alter)) %>% 
-   mutate(bewertung = fct_relevel(bewertung, vek_bewertung_lvl))
+      alter == "zwanzig" ~ "20",       # Wenn "alter" gleich zwanzig dann "20"
+      TRUE ~ alter)) %>%                      # Sonst "alter"
+   mutate(alter = as.numeric(alter)) %>%      # Unwandlung in den Typ numerisch
+   mutate(bewertung = fct_relevel(bewertung,  # Umwandlung in den Typ faktor
+                                  vek_bewertung_lvl)) # Mit definierten Levels
 
-dat_clean %>% 
-   print(n = 3)
 ```
 
 ---
 # Daten schreiben und wieder lesen
 
-```{r}
+```{r, echo=TRUE}
 write_csv(dat_clean, file = "data/data-bewertung-clean.csv")
 
 dat_clean_csv <- read_csv(file = "data/data-bewertung-clean.csv")
@@ -452,8 +442,7 @@ Was ist denn nun wieder mit der Variable `bewertung` passiert?
 
 - Zwischenergebnisse als CSV zu speichern ist unzuerverlässig, wenn bestimmte Variablen Typen beibehalten werden sollen
 - `read_csv()` kann nicht wissen welche Level eine Faktor Variable hat
-- Eine gute Alternative sind RDS-Dateien 
-- ein R-internes Dateiformat
+- Eine gute Alternative sind RDS-Dateien, ein R-internes Dateiformat
 
 ```{r, echo=TRUE}
 write_rds(dat_clean, file = "data/data-bewertung-clean.rds")
@@ -487,7 +476,7 @@ con <- dbConnect(
    username = "guest",
    
    # Niemals Passwort in Skript speichern
-   password = rstudioapi::askForPassword("Datenbank Passwort"), 
+   password = rstudioapi::askForPassword("Datenbank Passwort"), #<<
    dbname = "sakila"
 )
 
@@ -527,7 +516,7 @@ WHERE length > 180
 ---
 # SQL Query - Mit Daten weiter arbeiten
 
-1. Objekt als mit Funktion `as_tibble()` in einen Tibble umwandeln
+1. Objekt mit Funktion `as_tibble()` in einen Tibble umwandeln
 
 ```{r}
 knitr::include_graphics("img/r-chunk.png")
@@ -568,7 +557,7 @@ film_tab %>%
 ---
 # dbplyr - Queries als dplyr code
 
-```{r}
+```{r, echo=TRUE}
 
 film_tab %>% 
    summarise(min_rate = min(rental_rate),
@@ -611,9 +600,405 @@ countdown(
 .footnote[Photo by: [Blake Wisz](https://unsplash.com/@blakewisz)]
 
 
+---
+.note[
+
+# Praktikum 9 - Daten importieren - Treibhausgasbilanz
+
+## 2er Teams
+
+1. **E-Mail**: Öffne deine Email und klicke auf den Link zu deinem persönlichen GitHub repo
+2. **GitHub**: Klicke auf den grünen Button "Code" und kopiere den Link für das Repo in deine Zwischenablage
+3. **RStudio Cloud**: Öffne deinen Arbeitsbereich für den Kurs in der RStudio Cloud
+4. **RStudio Cloud / Projects**: Klicke auf "New Project from GitHub Repository" 
+
+]
+
+---
+class: inverse, middle
+
+# .large[Tidy data]
+
+---
+# Tidy data
+
+Eigenschaften von Tidy data:
+
+- Eigenschaft 1: Jede Spalte ist eine Variable
+- Eigenschaft 2: Jede Reihe ist eine Beobachtung
+- Eigenschaft 3: Jede Zelle enthält eine Messung
+
+
+---
+# Penguins 
+
+.question[
+Erfüllen die Daten die Eingeschaften für Tidy data?
+]
+
+
+```{r}
+library(palmerpenguins)
+
+penguins %>% 
+   head(10) %>% 
+   knitr::kable(format = "html") %>% 
+   kableExtra::kable_styling(font_size = 20)
+```
+
+
+---
+.question[
+Welche Eigenschaften von Tidy data sind hier nicht erfüllt?
+]
 
 
 
+
+.xsmall[Quelle: [Bundesamt für Statistik - Ständige Wohnbevölkerung nach Altersklasse und Altersmasszahlen nach Kanton, Provisorische Jahresergebnisse, 2020]( https://www.bfs.admin.ch/bfs/de/home/statistiken/kataloge-datenbanken/tabellen.assetdetail.16404478.html)]
+
+---
+.question[
+Welche Eigenschaften von Tidy data sind hier nicht erfüllt?
+]
+
+
+
+
+.xsmall[Quelle: [Bundesamt für Statistik - Kosten des Gesundheitswesens nach Leistungen]( https://www.bfs.admin.ch/bfs/de/home/statistiken/kataloge-datenbanken/tabellen.assetdetail.14840808.html)]
+
+---
+.question[
+Welche Eigenschaften von Tidy data sind hier nicht erfüllt?
+]
+
+
+.xsmall[Quelle: [Bundesamt für Statistik - Klimadaten: Eistage, Frosttage, Sommertage, Hitzetage, Tropennächte und Niederschlagstage]( https://www.bfs.admin.ch/bfs/de/home/statistiken/kataloge-datenbanken/tabellen.assetdetail.15964164.html)]
+
+---
+# Relevanter Unterschied 
+
+## Ziel der Daten Publikation
+
+.pull-left[
+**Daten in Tabellen darstellen**
+- Layout
+- Gut leserlich
+- Kompakt
+- Erkenntnis bringend
+- Metadaten
+]
+
+.pull-right[
+**Daten für Daten Analyse bereitstellen**
+- Layout (Tidy data)
+- Eigenschaft 1: Jede Spalte ist eine Variable
+- Eigenschaft 2: Jede Reihe ist eine Beobachtung
+- Eigenschaft 3: Jede Zelle enthält eine Messung
+- Keine Metadaten
+- Keine Farben, Formatierungen, etc.
+- Folgt Standards (Datum: ISO 8601)
+- etc.
+]
+
+---
+# Data Organization in Spreadsheets
+
+- 12 Empfehlungen
+
+```{r}
+#knitr::include_graphics("")
+
+```
+
+---
+class: middle, inverse
+
+.large[# Data tidying]
+
+---
+# Treibhausgasemissionen
+
+```{r}
+
+ghg <- read_csv("https://data.stadt-zuerich.ch/dataset/ugz_treibhausgasbilanz/download/ugz_treibhausgasbilanz.csv")
+
+```
+
+.question[
+Welche Eigenschaften von Tidy data sind hier nicht erfüllt?
+]
+
+```{r}
+ghg %>% 
+   head(5) %>% 
+   knitr::kable() %>% 
+   kableExtra::kable_styling(font_size = 24)
+
+```
+
+--
+- `r emo::ji("x")` Eigenschaft 1: Jede Spalte ist eine Variable
+- `r emo::ji("white_check_mark")` Eigenschaft 2: Jede Reihe ist eine Beobachtung
+- `r emo::ji("white_check_mark")` Eigenschaft 3: Jede Zelle enthält eine Messung
+
+---
+# Treibhausgasemissionen
+
+.question[
+Wie wären alle Eigenschaften erfüllt?
+]
+
+.pull-left[
+
+**Vorher**
+
+```{r}
+
+ghg
+
+```
+
+]
+
+--
+.pull-right[
+
+**Nachher**
+```{r}
+
+ghg %>% 
+   pivot_longer(cols = !Jahr, names_to = "Energietraeger", values_to = "Emissionen") 
+
+```
+]
+
+---
+# R Package `tidyr` - Grammatik zum Daten aufräumen
+
+.pull-left[
+```{r dplyr-part-of-tidyverse, echo=FALSE, out.width="50%", caption = "tidyr ist Teil des tidyverse"}
+knitr::include_graphics("img/tidyr-part-of-tidyverse.png")
+```
+]
+.pull-right[
+Das Ziel des `tidyr` Package ist des Daten aufzuräumen mittels:
+
+- drehen (pivoting) von Daten um das Datenformat zwischen lang und weit zu wechseln 
+- teilen und kombinieren von Spalten
+- klarstellen wit mit `NA`s umgegangen werden soll
+]
+
+---
+# Pivoting
+
+- `pivot_longer()` - Daten in ein langes Format bringen
+- `pivot_wider()` - Daten in ein weites Format bringen
+
+.center[
+```{r echo=FALSE, out.width="45%", out.extra ='style="background-color: #FDF6E3"'}
+knitr::include_graphics("img/tidyr-longer-wider.gif")
+```
+]
+
+- https://tidyr.tidyverse.org/
+
+
+---
+# `pivot_longer()`
+
+- **cols**: Spalten die in das lange Format konveriert werden sollen
+- **names_to**: Name der neuen Spalte in welcher die gedrehten Variablen auftauchen sollen
+- **values_to**: Name der neuen Spalte in welcher die Werte der gedrehten Variablen auftauchen sollen
+
+```{r, echo=TRUE, eval=TRUE}
+ghg_tidy <- ghg %>% 
+   pivot_longer(
+      cols = Strom:Heizoel_EL,     # Variablen von Strom bis Heizoel_EL
+      names_to = "Energietraeger", # Variablen Namen -> Neue Spalte Energietraeger
+      values_to = "Emissionen"     # Variablen Werte -> Neue Spalte Emissionen
+   ) %>% 
+   mutate(Jahr = as_factor(Jahr))  # Die Variable Jahr als Faktor definiert
+
+```
+
+---
+# Warum Tidy data? Warum pivoting?
+
+.panelset[
+
+.panel[.panel-name[Code]
+```{r treibhausgas1, fig.show="hide", echo=TRUE}
+
+ggplot(data = ghg_tidy,                            # Daten im neuen Format
+       mapping = aes(x = Jahr,                     # Bestehende Variable Jahr
+                     y = Emissionen,               # Neue Variable Emissionen
+                     fill = Energietraeger))  +    # Energieträger als Farben
+   geom_col() +
+   
+   # Plot Styling ab hier 
+   scale_fill_brewer(type = "qual", palette = 1) +
+   scale_y_continuous(breaks = seq(0, 7, 1), 
+                      expand = c(0, 0), 
+                      limits = c(0, 7)) + 
+   labs(title = "Treibhausgasbilanz 1990 bis 2016",
+        subtitle = "",
+        y = "Treibhausgasemissionen [t CO2eq/Person]",
+        x = NULL,
+        caption = "Daten: https://data.stadt-zuerich.ch/dataset/ugz_treibhausgasbilanz",
+        fill = "Energieträger") +
+   theme_minimal() +
+   theme(panel.grid.major.x = element_blank(),
+         axis.text.x = element_text(angle = 90, vjust = 0.5, hjust = 10))
+```
+]
+
+.panel[.panel-name[Plot]
+```{r ref.label="treibhausgas1", echo=FALSE, warning=FALSE, out.width="100%"}
+
+
+```
+]
+]
+
+---
+# Warum Tidy data? Warum pivoting?
+
+.panelset[
+
+.panel[.panel-name[Code]
+```{r treibhausgas-tab1, fig.show="hide", echo=TRUE}
+
+ghg_tidy <- ghg %>% 
+   pivot_longer(
+      cols = Strom:Heizoel_EL,     # Variablen von Strom bis Heizoel_EL
+      names_to = "Energietraeger", # Variablen Namen -> Neue Spalte Energietraeger
+      values_to = "Emissionen"     # Variablen Werte -> Neue Spalte Emissionen
+   ) %>% 
+   group_by(Jahr) %>% #<<
+   mutate(Prozent = Emissionen / sum(Emissionen) * 100) #<<
+```
+]
+
+.panel[.panel-name[Data]
+```{r ref.label="treibhausgas1-tab1"}
+
+ghg_tidy
+
+```
+]
+]
+
+---
+.panelset[
+
+.panel[.panel-name[Code]
+```{r treibhausgas2, fig.show="hide", echo=TRUE}
+
+ggplot(data = ghg_tidy,                            # Daten im neuen Format
+       mapping = aes(x = Jahr,                     # Bestehende Variable Jahr
+                     y = Prozent,                  # Neue Variable Prozent
+                     fill = Energietraeger))  +    # Energieträger als Farben
+   geom_area() +                                   # Neues Geom
+   
+   # Plot Styling ab hier 
+   scale_fill_brewer(type = "qual", palette = 1) +
+   scale_x_continuous(breaks = seq(1990, 2016, 1), 
+                      expand = c(0, 0),
+                      limits = c(1990, 2016)) +
+   scale_y_continuous(expand = c(0, 0)) +
+   labs(title = "Treibhausgasbilanz 1990 bis 2016",
+        y = "Treibhausgasemissionen [Prozent]",
+        x = NULL,
+        caption = "Daten: https://data.stadt-zuerich.ch/dataset/ugz_treibhausgasbilanz",
+        fill = "Energieträger") +
+   theme_minimal()   +
+   theme(panel.grid = element_blank(),
+         axis.text.x = element_text(angle = 90, vjust = 0.5, hjust = 10))
+```
+]
+
+.panel[.panel-name[Plot]
+```{r ref.label="treibhausgas1", echo=FALSE, warning=FALSE, out.width="100%", fig.width=11}
+
+
+```
+]
+]
+
+---
+# Warum Tidy data? Warum pivoting?
+
+```{r}
+
+
+```
+
+
+
+.panelset[
+
+.panel[.panel-name[Code]
+```{r treibhausgas-tab2, fig.show="hide", echo=TRUE}
+
+ghg_tidy <- ghg %>% 
+   pivot_longer(
+      cols = Strom:Heizoel_EL,     # Variablen von Strom bis Heizoel_EL
+      names_to = "Energietraeger", # Variablen Namen -> Neue Spalte Energietraeger
+      values_to = "Emissionen"     # Variablen Werte -> Neue Spalte Emissionen
+   ) %>% 
+   group_by(Jahr) %>%   #<< 
+   mutate(Prozent = Emissionen / sum(Emissionen) * 100) %>%  #<<
+   ungroup() %>% #<<
+   filter(Jahr == max(Jahr) | Jahr == min(Jahr)) #<< 
+
+```
+]
+
+.panel[.panel-name[Data]
+```{r ref.label="treibhausgas1-tab2"}
+ghg_tidy %>% 
+   arrange(Energietraeger)
+```
+]
+]
+
+
+---
+.panelset[
+
+.panel[.panel-name[Code]
+```{r treibhausgas3, fig.show="hide", echo=TRUE}
+
+ggplot(data = ghg_tidy,                            # Daten im neuen Format
+       mapping = aes(x = Jahr,                     # Nur 1990 und 2016
+                     y = Prozent,                  # Neue Variable Prozent
+                     color = Energietraeger))  +   # Energieträger als Farben
+   
+   geom_line(size = 1) + #<<
+   geom_point(size = 5) + #<<
+   
+   # Plot Styling ab hier  
+   labs(title = "Treibhausgasbilanz 1990 und 2016",
+        y = "Treibhausgasemissionen [Prozent]",
+        x = NULL,
+        caption = "Daten: https://data.stadt-zuerich.ch/dataset/ugz_treibhausgasbilanz",
+        fill = "Energieträger") +
+   scale_x_continuous(limits = c(1990, 2016), 
+                      breaks = c(1990, 2016)) +
+   scale_color_brewer(type = "qual") +
+   theme_minimal() +
+   theme(panel.grid.minor = element_blank())
+```
+]
+
+.panel[.panel-name[Plot]
+```{r ref.label="treibhausgas3", echo=FALSE, warning=FALSE}
+
+
+```
+]
+]
 
 ---
 class: left

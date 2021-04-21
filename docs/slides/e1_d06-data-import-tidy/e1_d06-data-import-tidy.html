@@ -40,7 +40,7 @@ class: title-slide
 
 
 # rstatsZH - Data Science mit R
-## Vektoren Teil 2 &amp; Daten Importieren 
+## Vektoren Teil 2 / Daten Importieren / Daten Aufräumen 
 
 .bottom[
 
@@ -73,7 +73,7 @@ class: middle, inverse
 ---
 # Hausaufgabe 5
 
-.questione[Gibt es Fragen?]
+.question[Gibt es Fragen?]
 
 ---
 # Ziele für diese Woche
@@ -83,7 +83,7 @@ Am Ende dieser Woche könnt ihr:
 - Daten aus verschiedenen Formaten in R importieren
 - Mittels SQL mit Daten in R Markdown arbeiten
 - Erkennen wann es notwendig ist Datums- und Zeitwerte aus Rohdaten in R selbst zu codieren
-- Daten aus einem weiten Format in ein langes Format bringen, und umgekehrt
+- Daten aus einem weiten Format in ein langes Format bringen
 - Erkennen ob Daten als Tidy data klassifiert werden können 
 
 ---
@@ -550,6 +550,10 @@ dat_clean &lt;- read_csv("data/data-na.csv",
 ---
 # Daten schreiben und wieder lesen
 
+.question[
+Was ist denn nun wieder mit der Variable `bewertung` passiert?
+]
+
 
 ```r
 write_csv(dat_clean, file = "data/data-bewertung-clean.csv")
@@ -572,9 +576,7 @@ dat_clean_csv
 # … with 4 more rows
 ```
 
-.question[
-Was ist denn nun wieder mit der Variable `bewertung` passiert?
-]
+
 
 ---
 # Funktionen: `read_rds()` und `write_rds()` 
@@ -813,7 +815,7 @@ background-size: contain
 
 # Pause 
 
-<div class="countdown" id="timer_607fe3b1" style="right:0;bottom:0;left:0;margin:5%;padding:15px;font-size:4em;" data-warnwhen="0">
+<div class="countdown" id="timer_60807fa3" style="right:0;bottom:0;left:0;margin:5%;padding:15px;font-size:4em;" data-warnwhen="0">
 <code class="countdown-time"><span class="countdown-digits minutes">10</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
 
@@ -848,14 +850,12 @@ Eigenschaften von Tidy data:
 - Eigenschaft 2: Jede Reihe ist eine Beobachtung
 - Eigenschaft 3: Jede Zelle enthält eine Messung
 
-
 ---
 # Penguins 
 
 .question[
 Erfüllen die Daten die Eingeschaften für Tidy data?
 ]
-
 
 &lt;table class="table" style="font-size: 20px; margin-left: auto; margin-right: auto;"&gt;
  &lt;thead&gt;
@@ -980,7 +980,16 @@ Erfüllen die Daten die Eingeschaften für Tidy data?
 Welche Eigenschaften von Tidy data sind hier nicht erfüllt?
 ]
 
+&lt;img src="img/untidy-data/untidy-data.001.png" width="100%" style="display: block; margin: auto;" /&gt;
 
+.xsmall[Quelle: [Bundesamt für Statistik - Ständige Wohnbevölkerung nach Altersklasse und Altersmasszahlen nach Kanton, Provisorische Jahresergebnisse, 2020]( https://www.bfs.admin.ch/bfs/de/home/statistiken/kataloge-datenbanken/tabellen.assetdetail.16404478.html)]
+
+---
+.question[
+Welche Eigenschaften von Tidy data sind hier nicht erfüllt?
+]
+
+&lt;img src="img/untidy-data/untidy-data.002.png" width="100%" style="display: block; margin: auto;" /&gt;
 
 
 .xsmall[Quelle: [Bundesamt für Statistik - Ständige Wohnbevölkerung nach Altersklasse und Altersmasszahlen nach Kanton, Provisorische Jahresergebnisse, 2020]( https://www.bfs.admin.ch/bfs/de/home/statistiken/kataloge-datenbanken/tabellen.assetdetail.16404478.html)]
@@ -990,8 +999,16 @@ Welche Eigenschaften von Tidy data sind hier nicht erfüllt?
 Welche Eigenschaften von Tidy data sind hier nicht erfüllt?
 ]
 
+&lt;img src="img/untidy-data/untidy-data.003.png" width="100%" style="display: block; margin: auto;" /&gt;
 
+.xsmall[Quelle: [Bundesamt für Statistik - Ständige Wohnbevölkerung nach Altersklasse und Altersmasszahlen nach Kanton, Provisorische Jahresergebnisse, 2020]( https://www.bfs.admin.ch/bfs/de/home/statistiken/kataloge-datenbanken/tabellen.assetdetail.16404478.html)]
 
+---
+.question[
+Welche Eigenschaften von Tidy data sind hier nicht erfüllt?
+]
+
+&lt;img src="img/untidy-data/untidy-data.004.png" width="100%" style="display: block; margin: auto;" /&gt;
 
 .xsmall[Quelle: [Bundesamt für Statistik - Kosten des Gesundheitswesens nach Leistungen]( https://www.bfs.admin.ch/bfs/de/home/statistiken/kataloge-datenbanken/tabellen.assetdetail.14840808.html)]
 
@@ -1000,29 +1017,107 @@ Welche Eigenschaften von Tidy data sind hier nicht erfüllt?
 Welche Eigenschaften von Tidy data sind hier nicht erfüllt?
 ]
 
+&lt;img src="img/untidy-data/untidy-data.005.png" width="100%" style="display: block; margin: auto;" /&gt;
+
+.xsmall[Quelle: [Bundesamt für Statistik - Kosten des Gesundheitswesens nach Leistungen]( https://www.bfs.admin.ch/bfs/de/home/statistiken/kataloge-datenbanken/tabellen.assetdetail.14840808.html)]
+
+---
+.question[
+Welche Eigenschaften von Tidy data sind hier nicht erfüllt?
+]
+
+&lt;img src="img/untidy-data/untidy-data.006.png" width="100%" style="display: block; margin: auto;" /&gt;
+
+.xsmall[Quelle: [Bundesamt für Statistik - Kosten des Gesundheitswesens nach Leistungen]( https://www.bfs.admin.ch/bfs/de/home/statistiken/kataloge-datenbanken/tabellen.assetdetail.14840808.html)]
+
+---
+.question[
+Welche Eigenschaften von Tidy data sind hier nicht erfüllt?
+]
+
+&lt;img src="img/untidy-data/untidy-data.007.png" width="100%" style="display: block; margin: auto;" /&gt;
 
 .xsmall[Quelle: [Bundesamt für Statistik - Klimadaten: Eistage, Frosttage, Sommertage, Hitzetage, Tropennächte und Niederschlagstage]( https://www.bfs.admin.ch/bfs/de/home/statistiken/kataloge-datenbanken/tabellen.assetdetail.15964164.html)]
 
 ---
-# Relevanter Unterschied 
+.question[
+Welche Eigenschaften von Tidy data sind hier nicht erfüllt?
+]
 
-## Ziel der Daten Publikation
+&lt;img src="img/untidy-data/untidy-data.008.png" width="100%" style="display: block; margin: auto;" /&gt;
+
+
+.xsmall[Quelle: [Bundesamt für Statistik - Klimadaten: Eistage, Frosttage, Sommertage, Hitzetage, Tropennächte und Niederschlagstage]( https://www.bfs.admin.ch/bfs/de/home/statistiken/kataloge-datenbanken/tabellen.assetdetail.15964164.html)]
+
+---
+.question[
+Welche Eigenschaften von Tidy data sind hier nicht erfüllt?
+]
+
+&lt;img src="img/untidy-data/untidy-data.009.png" width="100%" style="display: block; margin: auto;" /&gt;
+
+.xsmall[Quelle: [Bundesamt für Statistik - Klimadaten: Eistage, Frosttage, Sommertage, Hitzetage, Tropennächte und Niederschlagstage]( https://www.bfs.admin.ch/bfs/de/home/statistiken/kataloge-datenbanken/tabellen.assetdetail.15964164.html)]
+
+---
+.question[
+Welche Eigenschaften von Tidy data sind hier nicht erfüllt?
+]
+
+&lt;img src="img/untidy-data/untidy-data.010.png" width="100%" style="display: block; margin: auto;" /&gt;
+
+
+.xsmall[Quelle: [Bundesamt für Statistik - Klimadaten: Eistage, Frosttage, Sommertage, Hitzetage, Tropennächte und Niederschlagstage]( https://www.bfs.admin.ch/bfs/de/home/statistiken/kataloge-datenbanken/tabellen.assetdetail.15964164.html)]
+
+---
+.question[
+Welche Eigenschaften von Tidy data sind hier nicht erfüllt?
+]
+
+&lt;img src="img/untidy-data/untidy-data.011.png" width="100%" style="display: block; margin: auto;" /&gt;
+
+
+.xsmall[Quelle: [Bundesamt für Statistik - Klimadaten: Eistage, Frosttage, Sommertage, Hitzetage, Tropennächte und Niederschlagstage]( https://www.bfs.admin.ch/bfs/de/home/statistiken/kataloge-datenbanken/tabellen.assetdetail.15964164.html)]
+
+---
+.question[
+Welche Eigenschaften von Tidy data sind hier nicht erfüllt?
+]
+
+&lt;img src="img/untidy-data/untidy-data.012.png" width="100%" style="display: block; margin: auto;" /&gt;
+
+.xsmall[Quelle: [Bundesamt für Statistik - Klimadaten: Eistage, Frosttage, Sommertage, Hitzetage, Tropennächte und Niederschlagstage]( https://www.bfs.admin.ch/bfs/de/home/statistiken/kataloge-datenbanken/tabellen.assetdetail.15964164.html)]
+
+???
+- 6 Tabellen in 6 Tabs -&gt; Eine Variable (typ_tag)
+- In Zeile 1 steckt eine Variable (Name: typ_tag)
+- In Zeile 4 steckt eine Definition für die Variable: typ_tag
+- In Zeile 4 stecke eine Definition für einen Mittelwert auf Zeile 8
+- Links lässt sich erkennen, dass Zeile "versteckt" sind? Doch nicht. Zeilen klein gemacht, aber leer.
+- Zeile 6 enthält eine Variable für den Ort der Messstation.
+- Zeile 7 enthält eine Variable für dier Höhe der Messstation
+- Spalte A, ab Zeile 11 enthält das Jahr der Messungen
+- Spalten B bis N enthalten die Messungen nach Messstationen
+- Einige Zeilen sind blau markiert, aber es scheint nur eine Lesehilfe zu sein
+- Metadaten und Bemerkungen sind in den Zeilen 75 bis 81 abgelegt
+
+---
+# Relevanter Unterschied - Ziel der Daten Publikation
 
 .pull-left[
 **Daten in Tabellen darstellen**
 - Layout
-- Gut leserlich
-- Kompakt
-- Erkenntnis bringend
+   - Gut leserlich
+   - Kompakt
+   - Erkenntnis bringend
 - Metadaten
 ]
 
 .pull-right[
-**Daten für Daten Analyse bereitstellen**
+**Daten für weitere Nutzung bereitstellen**
 - Layout (Tidy data)
-- Eigenschaft 1: Jede Spalte ist eine Variable
-- Eigenschaft 2: Jede Reihe ist eine Beobachtung
-- Eigenschaft 3: Jede Zelle enthält eine Messung
+   - Eigenschaft 1: Jede Spalte ist eine Variable
+   - Eigenschaft 2: Jede Reihe ist eine Beobachtung
+   - Eigenschaft 3: Jede Zelle enthält eine Messung
 - Keine Metadaten
 - Keine Farben, Formatierungen, etc.
 - Folgt Standards (Datum: ISO 8601)
@@ -1030,16 +1125,9 @@ Welche Eigenschaften von Tidy data sind hier nicht erfüllt?
 ]
 
 ---
-# Data Organization in Spreadsheets
-
-- 12 Empfehlungen
-
-
-
----
 class: middle, inverse
 
-.large[# Data tidying]
+# .large[Data tidying]
 
 ---
 # Treibhausgasemissionen
@@ -1242,14 +1330,14 @@ ggplot(data = ghg_tidy,                            # Daten im neuen Format
         x = NULL,
         caption = "Daten: https://data.stadt-zuerich.ch/dataset/ugz_treibhausgasbilanz",
         fill = "Energieträger") +
-   theme_minimal() +
+   theme_minimal(base_size = 14) +
    theme(panel.grid.major.x = element_blank(),
          axis.text.x = element_text(angle = 90, vjust = 0.5, hjust = 10))
 ```
 ]
 
 .panel[.panel-name[Plot]
-&lt;img src="e1_d06-data-import-tidy_files/figure-html/unnamed-chunk-56-1.png" width="100%" style="display: block; margin: auto;" /&gt;
+&lt;img src="e1_d06-data-import-tidy_files/figure-html/unnamed-chunk-67-1.png" width="80%" style="display: block; margin: auto;" /&gt;
 ]
 ]
 

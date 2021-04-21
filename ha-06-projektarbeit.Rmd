@@ -131,15 +131,7 @@ Sobald du zufrieden bist mit dem Aufbau deines Projektordners kannst du deine Ve
 
 ## Übung 1 - Daten importieren
 
-1. Importiere Die CSV Ressource aus dem folgendenden Metadateneintrag in deine Arbeitsumgebung: https://opendata.swiss/de/dataset/treibhausgasemissionen-stadt-zurich-ohne-klimakorrektur-1990-20163
-
-Dir sind zwei Wege bekannt um dies zu erreichen. Schau bei Bedarf im Praktikum 8 oder im Praktikum 9 nach. Den Namen für das Objekt in deiner Arbeitsumgebung (Environment) kannst du selbst auswählen.
-
-2. Strick das Dokument und dann: git add, commit, push alle Veränderung zurück auf GitHub
-
-```{r}
-
-```
+Die Aufgaben für diese Übung sind in der Vorlage hinterlegt.
 
 ## Übung 2 - Daten transformieren und visualisieren
 
@@ -150,7 +142,7 @@ Die Daten sind derzeit in einem weiten Format. Das Ziel ist die Daten in ein lan
 1. Erstelle ein neues Objekt in deiner Arbeitsumgebung (Environment), welches im langen Format ist in dem du die Lücken ausfüllst. Den Namen für das Objekt kannst du selbst auswählen.
 2. Strick das Dokument und dann: git add, commit, push alle Veränderung zurück auf GitHub
 
-```{r, eval=FALSE}
+```{r, eval=FALSE, echo=TRUE}
 
 ___ <- ___ %>% 
   ____longer(
@@ -171,15 +163,7 @@ ___ <- ___ %>%
 
 ### 2. Daten zusammenfassen und neue Variable erstellen
 
-1. Wieviele Spalten und Reihen hat das neue Objekt welches du im Schritt zuvor erstellt hast? **Beachte:** Falls dies **nicht** 3 Spalten und 216 Reihen sind, gehe nochmals zur vorherigen Übung und überprüfe deinen Code
-
-2. Starte mit dem neu erstellten Objekt im langen Format, und erstelle eine Code Sequenz, in welcher:
-
-- die Funktion `group_by()` die Daten nach dem Jahr gruppiert
-- die Funktion `summarise()` die Summe der Emmissionen pro Jahr zu berechnet
-- die Funktionen `mutate()` und `lag()` die Differenz der Summen zwischen den Jahren berechnen
-
-3. Speicher das Ergebnis als ein neues Objekt in deiner Arbeitsumgebung (Environment) mit einem Namen deiner Wahl
+Die Aufgaben für diese Übung sind in der Vorlage für die Hausaufgabe hinterlegt.
 
 ### 3. Daten visualisieren 1
 
@@ -243,13 +227,13 @@ In dieser Übung nutzen wir die Verbindung zu einer Datenbank welche ich mittels
 
 Der Name des Objektes mit der Verbindung zur Datenbank ist hier `con`, es kann jedoch ein beliebiger Name gewählt werden.
 
-```{r}
+```{r, echo=TRUE}
 library(DBI)
 
 con <- DBI::dbConnect(RSQLite::SQLite(), ":memory:")
 ```
 
-## Übung 1 - Verbindung zu einer Tabelle herstellen
+## Übung 1 - Tabellen in einer Datenbank erkunden
 
 Ich habe auch mittels des folgenden Codes den `penguins` Datensatz aus dem `palmerpenguins` Package in die Datenbank kopiert. Die Tabelle ist jetzt in unserer Datenbank hinterlegt.
 

@@ -1,6 +1,6 @@
 ---
 title: "rstatsZH - Data Science mit R"
-subtitle: "Vektoren Teil 2 & Daten Importieren"
+subtitle: "Vektoren Teil 2 / Daten Importieren / Daten Aufräumen"
 author: "Lars Schöbitz"
 date: "2020-04-22"
 output:
@@ -78,7 +78,7 @@ class: middle, inverse
 ---
 # Hausaufgabe 5
 
-.questione[Gibt es Fragen?]
+.question[Gibt es Fragen?]
 
 ---
 # Ziele für diese Woche
@@ -88,7 +88,7 @@ Am Ende dieser Woche könnt ihr:
 - Daten aus verschiedenen Formaten in R importieren
 - Mittels SQL mit Daten in R Markdown arbeiten
 - Erkennen wann es notwendig ist Datums- und Zeitwerte aus Rohdaten in R selbst zu codieren
-- Daten aus einem weiten Format in ein langes Format bringen, und umgekehrt
+- Daten aus einem weiten Format in ein langes Format bringen
 - Erkennen ob Daten als Tidy data klassifiert werden können 
 
 ---
@@ -448,6 +448,10 @@ dat_clean <- read_csv("data/data-na.csv",
 ---
 # Daten schreiben und wieder lesen
 
+.question[
+Was ist denn nun wieder mit der Variable `bewertung` passiert?
+]
+
 ```{r, echo=TRUE}
 write_csv(dat_clean, file = "data/data-bewertung-clean.csv")
 
@@ -456,9 +460,7 @@ dat_clean_csv <- read_csv(file = "data/data-bewertung-clean.csv")
 dat_clean_csv
 ```
 
-.question[
-Was ist denn nun wieder mit der Variable `bewertung` passiert?
-]
+
 
 ---
 # Funktionen: `read_rds()` und `write_rds()` 
@@ -651,14 +653,12 @@ Eigenschaften von Tidy data:
 - Eigenschaft 2: Jede Reihe ist eine Beobachtung
 - Eigenschaft 3: Jede Zelle enthält eine Messung
 
-
 ---
 # Penguins 
 
 .question[
 Erfüllen die Daten die Eingeschaften für Tidy data?
 ]
-
 
 ```{r}
 library(palmerpenguins)
@@ -675,9 +675,19 @@ penguins %>%
 Welche Eigenschaften von Tidy data sind hier nicht erfüllt?
 ]
 
+```{r}
+knitr::include_graphics("img/untidy-data/untidy-data.001.png")
+```
+
+.xsmall[Quelle: [Bundesamt für Statistik - Ständige Wohnbevölkerung nach Altersklasse und Altersmasszahlen nach Kanton, Provisorische Jahresergebnisse, 2020]( https://www.bfs.admin.ch/bfs/de/home/statistiken/kataloge-datenbanken/tabellen.assetdetail.16404478.html)]
+
+---
+.question[
+Welche Eigenschaften von Tidy data sind hier nicht erfüllt?
+]
 
 ```{r}
-
+knitr::include_graphics("img/untidy-data/untidy-data.002.png")
 ```
 
 
@@ -689,9 +699,19 @@ Welche Eigenschaften von Tidy data sind hier nicht erfüllt?
 ]
 
 ```{r}
-
+knitr::include_graphics("img/untidy-data/untidy-data.003.png")
 ```
 
+.xsmall[Quelle: [Bundesamt für Statistik - Ständige Wohnbevölkerung nach Altersklasse und Altersmasszahlen nach Kanton, Provisorische Jahresergebnisse, 2020]( https://www.bfs.admin.ch/bfs/de/home/statistiken/kataloge-datenbanken/tabellen.assetdetail.16404478.html)]
+
+---
+.question[
+Welche Eigenschaften von Tidy data sind hier nicht erfüllt?
+]
+
+```{r}
+knitr::include_graphics("img/untidy-data/untidy-data.004.png")
+```
 
 .xsmall[Quelle: [Bundesamt für Statistik - Kosten des Gesundheitswesens nach Leistungen]( https://www.bfs.admin.ch/bfs/de/home/statistiken/kataloge-datenbanken/tabellen.assetdetail.14840808.html)]
 
@@ -701,10 +721,88 @@ Welche Eigenschaften von Tidy data sind hier nicht erfüllt?
 ]
 
 ```{r}
+knitr::include_graphics("img/untidy-data/untidy-data.005.png")
+```
 
+.xsmall[Quelle: [Bundesamt für Statistik - Kosten des Gesundheitswesens nach Leistungen]( https://www.bfs.admin.ch/bfs/de/home/statistiken/kataloge-datenbanken/tabellen.assetdetail.14840808.html)]
+
+---
+.question[
+Welche Eigenschaften von Tidy data sind hier nicht erfüllt?
+]
+
+```{r}
+knitr::include_graphics("img/untidy-data/untidy-data.006.png")
+```
+
+.xsmall[Quelle: [Bundesamt für Statistik - Kosten des Gesundheitswesens nach Leistungen]( https://www.bfs.admin.ch/bfs/de/home/statistiken/kataloge-datenbanken/tabellen.assetdetail.14840808.html)]
+
+---
+.question[
+Welche Eigenschaften von Tidy data sind hier nicht erfüllt?
+]
+
+```{r}
+knitr::include_graphics("img/untidy-data/untidy-data.007.png")
+```
+
+.xsmall[Quelle: [Bundesamt für Statistik - Klimadaten: Eistage, Frosttage, Sommertage, Hitzetage, Tropennächte und Niederschlagstage]( https://www.bfs.admin.ch/bfs/de/home/statistiken/kataloge-datenbanken/tabellen.assetdetail.15964164.html)]
+
+---
+.question[
+Welche Eigenschaften von Tidy data sind hier nicht erfüllt?
+]
+
+```{r}
+knitr::include_graphics("img/untidy-data/untidy-data.008.png")
 ```
 
 
+.xsmall[Quelle: [Bundesamt für Statistik - Klimadaten: Eistage, Frosttage, Sommertage, Hitzetage, Tropennächte und Niederschlagstage]( https://www.bfs.admin.ch/bfs/de/home/statistiken/kataloge-datenbanken/tabellen.assetdetail.15964164.html)]
+
+---
+.question[
+Welche Eigenschaften von Tidy data sind hier nicht erfüllt?
+]
+
+```{r}
+knitr::include_graphics("img/untidy-data/untidy-data.009.png")
+```
+
+.xsmall[Quelle: [Bundesamt für Statistik - Klimadaten: Eistage, Frosttage, Sommertage, Hitzetage, Tropennächte und Niederschlagstage]( https://www.bfs.admin.ch/bfs/de/home/statistiken/kataloge-datenbanken/tabellen.assetdetail.15964164.html)]
+
+---
+.question[
+Welche Eigenschaften von Tidy data sind hier nicht erfüllt?
+]
+
+```{r}
+knitr::include_graphics("img/untidy-data/untidy-data.010.png")
+```
+
+
+.xsmall[Quelle: [Bundesamt für Statistik - Klimadaten: Eistage, Frosttage, Sommertage, Hitzetage, Tropennächte und Niederschlagstage]( https://www.bfs.admin.ch/bfs/de/home/statistiken/kataloge-datenbanken/tabellen.assetdetail.15964164.html)]
+
+---
+.question[
+Welche Eigenschaften von Tidy data sind hier nicht erfüllt?
+]
+
+```{r}
+knitr::include_graphics("img/untidy-data/untidy-data.011.png")
+```
+
+
+.xsmall[Quelle: [Bundesamt für Statistik - Klimadaten: Eistage, Frosttage, Sommertage, Hitzetage, Tropennächte und Niederschlagstage]( https://www.bfs.admin.ch/bfs/de/home/statistiken/kataloge-datenbanken/tabellen.assetdetail.15964164.html)]
+
+---
+.question[
+Welche Eigenschaften von Tidy data sind hier nicht erfüllt?
+]
+
+```{r}
+knitr::include_graphics("img/untidy-data/untidy-data.012.png")
+```
 
 .xsmall[Quelle: [Bundesamt für Statistik - Klimadaten: Eistage, Frosttage, Sommertage, Hitzetage, Tropennächte und Niederschlagstage]( https://www.bfs.admin.ch/bfs/de/home/statistiken/kataloge-datenbanken/tabellen.assetdetail.15964164.html)]
 
@@ -721,27 +819,24 @@ Welche Eigenschaften von Tidy data sind hier nicht erfüllt?
 - Einige Zeilen sind blau markiert, aber es scheint nur eine Lesehilfe zu sein
 - Metadaten und Bemerkungen sind in den Zeilen 75 bis 81 abgelegt
 
-
 ---
-# Relevanter Unterschied 
-
-## Ziel der Daten Publikation
+# Relevanter Unterschied - Ziel der Daten Publikation
 
 .pull-left[
 **Daten in Tabellen darstellen**
 - Layout
-- Gut leserlich
-- Kompakt
-- Erkenntnis bringend
+   - Gut leserlich
+   - Kompakt
+   - Erkenntnis bringend
 - Metadaten
 ]
 
 .pull-right[
-**Daten für Daten Analyse bereitstellen**
+**Daten für weitere Nutzung bereitstellen**
 - Layout (Tidy data)
-- Eigenschaft 1: Jede Spalte ist eine Variable
-- Eigenschaft 2: Jede Reihe ist eine Beobachtung
-- Eigenschaft 3: Jede Zelle enthält eine Messung
+   - Eigenschaft 1: Jede Spalte ist eine Variable
+   - Eigenschaft 2: Jede Reihe ist eine Beobachtung
+   - Eigenschaft 3: Jede Zelle enthält eine Messung
 - Keine Metadaten
 - Keine Farben, Formatierungen, etc.
 - Folgt Standards (Datum: ISO 8601)
@@ -749,19 +844,9 @@ Welche Eigenschaften von Tidy data sind hier nicht erfüllt?
 ]
 
 ---
-# Data Organization in Spreadsheets
-
-- 12 Empfehlungen
-
-```{r}
-#knitr::include_graphics("")
-
-```
-
----
 class: middle, inverse
 
-.large[# Data tidying]
+# .large[Data tidying]
 
 ---
 # Treibhausgasemissionen
@@ -891,14 +976,14 @@ ggplot(data = ghg_tidy,                            # Daten im neuen Format
         x = NULL,
         caption = "Daten: https://data.stadt-zuerich.ch/dataset/ugz_treibhausgasbilanz",
         fill = "Energieträger") +
-   theme_minimal() +
+   theme_minimal(base_size = 14) +
    theme(panel.grid.major.x = element_blank(),
          axis.text.x = element_text(angle = 90, vjust = 0.5, hjust = 10))
 ```
 ]
 
 .panel[.panel-name[Plot]
-```{r ref.label="treibhausgas1", echo=FALSE, warning=FALSE, out.width="100%"}
+```{r ref.label="treibhausgas1", echo=FALSE, warning=FALSE, out.width="80%", fig.width=10}
 
 
 ```

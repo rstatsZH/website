@@ -1,0 +1,60 @@
+---
+title: "Woche 6 - Daten importieren und Daten aufräumen"
+description: |
+  Ziele und Materialien für unsere fünfte gemeinsame Woche
+date: 04-21-2021
+output:
+  distill::distill_article:
+    toc: true
+    self_contained: false
+preview: img/alistair-macrobert-RazuRIEPdgg-unsplash.jpg   
+---
+
+<script async defer data-domain="rstatszh.github.io/website" src="https://plausible.io/js/plausible.js"></script>
+
+```{r setup, echo=FALSE}
+library(magrittr)
+library(tidyverse)
+```
+
+```{r, layout="l-body", preview=TRUE, echo=FALSE, include=TRUE, fig.cap="Photo by [Alistair MacRobert](https://unsplash.com/photos/RazuRIEPdgg)"}
+
+knitr::include_graphics("img/alistair-macrobert-RazuRIEPdgg-unsplash.jpg")
+
+```
+
+ABC
+
+# Ziele
+
+Am Ende dieser Woche könnt ihr:
+
+
+# Folien
+
+## Vektoren in R und mehr Git
+
+```{r share-again1, echo=FALSE}
+
+xaringanExtra::use_share_again()
+
+```
+
+```{r embed-xaringan1, echo=FALSE, fig.cap="[Folien](slides/e1_d06-data-import-tidy/e1_d06-data-import-tidy.html)"}
+
+xaringanExtra::embed_xaringan("../../slides/e1_d06-data-import-tidy/e1_d06-data-import-tidy.html", ratio = "16:9")
+
+```
+
+# Weiterführende Aufgaben
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE}
+
+googlesheets4::read_sheet("198t05eFYHxuxY0d2jCvPkES1ZaMcsSYgBKcg0xQTwb0") %>% 
+  mutate(titel2 = paste0("[", titel, "](", link, ")")) %>% 
+  filter(woche == "woche6") %>% 
+  select(type, titel2, aufgabe, zeitaufwand) %>% 
+  arrange(desc(aufgabe)) %>% 
+  knitr::kable(format = "html", col.names = NULL)
+
+```

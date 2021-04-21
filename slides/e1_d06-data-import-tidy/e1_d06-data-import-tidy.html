@@ -50,18 +50,41 @@ class: title-slide
 ---
 # Rückblick - Woche 5
 
+- Git / GitHub
+   - push / pull
+   - fork
+- Vektoren
+   - logical
+   - double
+   - integer
+   - character
+- Funktionen zum Umgang mit einem Datum
+   - `lubridate::ymd()`
+   - `readr::parse_date()`
+- Visualisierungen
+   - Verbundene Streudiagramm
+   - `geom_point()` + `geom_path()`
 
 ---
+class: middle, inverse
+
 # Hausaufgabe 5 
 
-- ??
+---
+# Hausaufgabe 5
 
+.questione[Gibt es Fragen?]
 
 ---
 # Ziele für diese Woche
 
 Am Ende dieser Woche könnt ihr:
 
+- Daten aus verschiedenen Formaten in R importieren
+- Mittels SQL mit Daten in R Markdown arbeiten
+- Erkennen wann es notwendig ist Datums- und Zeitwerte aus Rohdaten in R selbst zu codieren
+- Daten aus einem weiten Format in ein langes Format bringen, und umgekehrt
+- Erkennen ob Daten als Tidy data klassifiert werden können 
 
 ---
 .note[
@@ -790,7 +813,7 @@ background-size: contain
 
 # Pause 
 
-<div class="countdown" id="timer_607c4013" style="right:0;bottom:0;left:0;margin:5%;padding:15px;font-size:4em;" data-warnwhen="0">
+<div class="countdown" id="timer_607fe3b1" style="right:0;bottom:0;left:0;margin:5%;padding:15px;font-size:4em;" data-warnwhen="0">
 <code class="countdown-time"><span class="countdown-digits minutes">10</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
 
@@ -1213,11 +1236,8 @@ ggplot(data = ghg_tidy,                            # Daten im neuen Format
    
    # Plot Styling ab hier 
    scale_fill_brewer(type = "qual", palette = 1) +
-   scale_y_continuous(breaks = seq(0, 7, 1), 
-                      expand = c(0, 0), 
-                      limits = c(0, 7)) + 
+   scale_y_continuous(breaks = seq(0, 7, 1), expand = c(0, 0), limits = c(0, 7)) + 
    labs(title = "Treibhausgasbilanz 1990 bis 2016",
-        subtitle = "",
         y = "Treibhausgasemissionen [t CO2eq/Person]",
         x = NULL,
         caption = "Daten: https://data.stadt-zuerich.ch/dataset/ugz_treibhausgasbilanz",
@@ -1233,141 +1253,7 @@ ggplot(data = ghg_tidy,                            # Daten im neuen Format
 ]
 ]
 
----
-# Warum Tidy data? Warum pivoting?
 
-.panelset[
-
-.panel[.panel-name[Code]
-
-```r
-ghg_tidy &lt;- ghg %&gt;% 
-   pivot_longer(
-      cols = Strom:Heizoel_EL,     # Variablen von Strom bis Heizoel_EL
-      names_to = "Energietraeger", # Variablen Namen -&gt; Neue Spalte Energietraeger
-      values_to = "Emissionen"     # Variablen Werte -&gt; Neue Spalte Emissionen
-   ) %&gt;% 
-*  group_by(Jahr) %&gt;%
-*  mutate(Prozent = Emissionen / sum(Emissionen) * 100)
-```
-]
-
-.panel[.panel-name[Data]
-
-]
-]
-
----
-.panelset[
-
-.panel[.panel-name[Code]
-
-```r
-ggplot(data = ghg_tidy,                            # Daten im neuen Format
-       mapping = aes(x = Jahr,                     # Bestehende Variable Jahr
-                     y = Prozent,                  # Neue Variable Prozent
-                     fill = Energietraeger))  +    # Energieträger als Farben
-   geom_area() +                                   # Neues Geom
-   
-   # Plot Styling ab hier 
-   scale_fill_brewer(type = "qual", palette = 1) +
-   scale_x_continuous(breaks = seq(1990, 2016, 1), 
-                      expand = c(0, 0),
-                      limits = c(1990, 2016)) +
-   scale_y_continuous(expand = c(0, 0)) +
-   labs(title = "Treibhausgasbilanz 1990 bis 2016",
-        y = "Treibhausgasemissionen [Prozent]",
-        x = NULL,
-        caption = "Daten: https://data.stadt-zuerich.ch/dataset/ugz_treibhausgasbilanz",
-        fill = "Energieträger") +
-   theme_minimal()   +
-   theme(panel.grid = element_blank(),
-         axis.text.x = element_text(angle = 90, vjust = 0.5, hjust = 10))
-```
-]
-
-.panel[.panel-name[Plot]
-&lt;img src="e1_d06-data-import-tidy_files/figure-html/unnamed-chunk-58-1.png" width="100%" style="display: block; margin: auto;" /&gt;
-]
-]
-
----
-# Warum Tidy data? Warum pivoting?
-
-
-
-
-
-.panelset[
-
-.panel[.panel-name[Code]
-
-```r
-ghg_tidy &lt;- ghg %&gt;% 
-   pivot_longer(
-      cols = Strom:Heizoel_EL,     # Variablen von Strom bis Heizoel_EL
-      names_to = "Energietraeger", # Variablen Namen -&gt; Neue Spalte Energietraeger
-      values_to = "Emissionen"     # Variablen Werte -&gt; Neue Spalte Emissionen
-   ) %&gt;% 
-*  group_by(Jahr) %&gt;%
-*  mutate(Prozent = Emissionen / sum(Emissionen) * 100) %&gt;%
-*  ungroup() %&gt;%
-*  filter(Jahr == max(Jahr) | Jahr == min(Jahr))
-```
-]
-
-.panel[.panel-name[Data]
-
-]
-]
-
-
----
-.panelset[
-
-.panel[.panel-name[Code]
-
-```r
-ggplot(data = ghg_tidy,                            # Daten im neuen Format
-       mapping = aes(x = Jahr,                     # Nur 1990 und 2016
-                     y = Prozent,                  # Neue Variable Prozent
-                     color = Energietraeger))  +   # Energieträger als Farben
-   
-*  geom_line(size = 1) +
-*  geom_point(size = 5) +
-   
-   # Plot Styling ab hier  
-   labs(title = "Treibhausgasbilanz 1990 und 2016",
-        y = "Treibhausgasemissionen [Prozent]",
-        x = NULL,
-        caption = "Daten: https://data.stadt-zuerich.ch/dataset/ugz_treibhausgasbilanz",
-        fill = "Energieträger") +
-   scale_x_continuous(limits = c(1990, 2016), 
-                      breaks = c(1990, 2016)) +
-   scale_color_brewer(type = "qual") +
-   theme_minimal() +
-   theme(panel.grid.minor = element_blank())
-```
-]
-
-.panel[.panel-name[Plot]
-&lt;img src="e1_d06-data-import-tidy_files/figure-html/unnamed-chunk-61-1.png" width="100%" style="display: block; margin: auto;" /&gt;
-]
-]
-
----
-class: left
-background-image: url(img/coffee-break.jpg)
-background-position: right
-background-size: contain
-
-# Pause 
-
-<div class="countdown" id="timer_607c4081" style="right:0;bottom:0;left:0;margin:5%;padding:15px;font-size:4em;" data-warnwhen="0">
-<code class="countdown-time"><span class="countdown-digits minutes">10</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
-</div>
-
-.footnote[Photo by: [Blake Wisz](https://unsplash.com/@blakewisz)]
 
 
 ---

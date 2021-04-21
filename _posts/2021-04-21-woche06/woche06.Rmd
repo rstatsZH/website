@@ -1,7 +1,7 @@
 ---
 title: "Woche 6 - Daten importieren und Daten aufräumen"
 description: |
-  Ziele und Materialien für unsere fünfte gemeinsame Woche
+  Ziele und Materialien für unsere sechste gemeinsame Woche
 date: 04-21-2021
 output:
   distill::distill_article:

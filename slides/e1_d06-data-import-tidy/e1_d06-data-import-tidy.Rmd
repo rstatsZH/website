@@ -1027,7 +1027,7 @@ Für die Aufmerksamkeit!
 
 Für die R packages [{xaringan}](https://github.com/yihui/xaringan) und [{xaringanthemer}](https://github.com/gadenbuie/xaringanthemer) mit welchen die Folien geschrieben wurden.
 
-Eine PDF Version der Folien kann hier heruntergeladen werden: https://github.com/rstatsZH/website/raw/master/slides/e1_d05-vektoren/e1_d05-vektoren.pdf
+Eine PDF Version der Folien kann hier heruntergeladen werden: https://github.com/rstatsZH/website/raw/master/slides/e1_d06-data-import-tidy/e1_d06-data-import-tidy.pdf
 
 `r hr()`
 

@@ -1,0 +1,459 @@
+---
+title: "rstatsZH - Data Science mit R"
+subtitle: "Mit mehreren Dataframes arbeiten / Tabellen darstellen"
+author: "Lars Schöbitz"
+date: "2020-04-29"
+output:
+  xaringan::moon_reader:
+    self_contained: false
+    lib_dir: libs
+    css: ["default", "../assets/css/xaringan-themer.css", "../assets/css/my-css-style.css"]
+    seal: FALSE
+    nature:
+        </div>
+      slideNumberFormat: |
+        <div class="progress-bar-container">
+          </div>
+          <div class="progress-bar" style="width: calc(%current% / %total% * 100%);">
+      highlightStyle: solarized-light
+      highlightLanguage: ["r", "css", "yaml"]
+      highlightLines: true
+      countIncrementalSlides: false
+      ratio: "16:9"
+editor_options: 
+  chunk_output_type: console
+---
+
+class: title-slide
+
+```{r child = "../setup.Rmd"}
+
+```
+
+```{r}
+
+library(dplyr)
+library(ggplot2)
+library(readr)
+library(tidyr)
+library(forcats)
+library(knitr)
+
+```
+
+
+
+# `r rmarkdown::metadata$title`
+## `r rmarkdown::metadata$subtitle` 
+
+.bottom[
+
+```{r, echo=FALSE}
+p(rmarkdown::metadata$author)
+p(rmarkdown::metadata$date)
+
+```
+]
+
+---
+# Rückblick - Woche 6 
+
+
+
+---
+class: middle, inverse
+
+# Hausaufgabe 6
+
+---
+# Hausaufgabe 6
+
+.question[Gibt es Fragen?]
+
+---
+# Ziele für diese Woche
+
+Am Ende dieser Woche könnt ihr:
+
+
+---
+class: middle, inverse
+
+# .big[Mit mehreren Dataframes arbeiten]
+
+---
+
+class: middle
+
+# .hand[We...]
+
+.huge[.green[have]] .hand[multiple data frames]
+
+.huge[.pink[want]] .hand[to bring them together]
+
+```{r include=FALSE}
+professions <- read_csv("data/scientists/professions.csv")
+dates <- read_csv("data/scientists/dates.csv")
+works <- read_csv("data/scientists/works.csv")
+```
+
+## Data: Women in science 
+
+Informationen zu 10 Frauen in der Wissenschaft welche die Welt verändert haben
+
+.small[
+```{r echo=FALSE}
+professions %>% select(name) %>% kable()
+```
+]
+
+
+.footnote[
+Quelle: [Discover Magazine](https://www.discovermagazine.com/the-sciences/meet-10-women-in-science-who-changed-the-world)
+]
+
+???
+Daten kommen aus dem Discover Magazine. Daten aus dem Artikel herausgeholt. 
+
+---
+## Inputs - Drei Dataframes
+
+.panelset[
+
+.panel[.panel-name[professions]
+```{r}
+professions
+```
+]
+
+
+.panel[.panel-name[dates]
+```{r}
+dates
+```
+]
+
+.panel[.panel-name[works]
+```{r}
+works
+```
+]
+
+]
+
+**Professions**
+ 
+Hier sehen wir die berufsbezeichungen der 10 Wissenschatfler_innen welche in dem Artikelk auftauchen. So haben wir:
+
+- Namen: Ada lovelace
+- Profession (Berufsbezeichnung): Sie war Mathematikerin
+
+**Dates**
+
+Wir haben einen weiteren Dataframe mit dem Namen "dates" in welchem wir nur Info zu 8 der Wissenschaftlerinnen haben. 
+
+Wir hätten zwar die zwei fehlenden nachschlagen können, aber in diesem Beispiel soll es darum gehen zu zeigen wie die Funktionen sich bei nicht vollständigen Daten verhalten. 
+
+Wir sehen zwei NAs. Dies heisst nicht dass wir das Todesjahr nicht wissen, sondern dass diese Wissenschaftlerinenn noch leben. 
+
+**Works**
+
+Einen dritten Dataframe in welchem wir sehen wofür die Wissenschaftlerinnen bekannt waren. Zum Beispiel for Ada Lovelace wir sehen den ersten Computer algorhyhtmus.
+
+---
+## Gewünschter Output
+
+```{r echo=FALSE}
+professions %>%
+  left_join(dates) %>%
+  left_join(works)
+```
+
+???
+
+Hier sehen wir unseren gewünschten Output. Das Ziel nachdem die drei Dataframes zusammengefügt wurden:
+
+- name und profession aus dem ersten Dataframe
+- name, birth_year und death_year aus dem zweiten Dataframe
+- name und known_for aus dem dritten Dataframe
+
+---
+
+## Inputs als Erinnerung
+
+.pull-left[
+```{r}
+names(professions)
+names(dates)
+names(works)
+```
+]
+
+-- 
+
+.pull-right[
+```{r}
+nrow(professions)
+nrow(dates)
+nrow(works)
+```
+]
+
+
+???
+
+- Name ist hier sozusagen der Schlüssel
+- Professions hat die komplette Info während bei den anderen etwas fehlt 
+
+---
+
+class: middle
+
+# Dataframes zusammenfügen
+
+---
+
+## Dataframes zusammenfügen
+
+```{r eval=FALSE}
+abc_join(x, y)
+```
+
+- `left_join()`: alle Reihen aus x
+- `right_join()`: alle Reihen aus y
+- `full_join()`: alle Reihen aus x und y
+
+**Entferne die anderen drei**
+
+- `semi_join()`: alle Reihen aus x wofür auch Werte in y sind, behalte nur die Spalten aus x
+- `inner_join()`: alle Reihen aus x, in denen es übereinstimmende Werte in y gibt, Rückgabe aller Kombinationen von Mehrfachübereinstimmungen im Fall von Mehrfachübereinstimmungen
+- `anti_join()`: alle Reihen aus x, in denen es keine übereinstimmenden Werte in y gibt, niemals doppelte Zeilen von x
+
+ 
+---
+## Beispiel 
+
+Für die nächsten Folien
+
+.pull-left[
+```{r echo=FALSE}
+x <- tibble(
+  id = c(1, 2, 3),
+  value_x = c("x1", "x2", "x3")
+  )
+```
+```{r}
+x
+```
+]
+.pull-right[
+```{r echo=FALSE}
+y <- tibble(
+  id = c(1, 2, 4),
+  value_y = c("y1", "y2", "y4")
+  )
+```
+```{r}
+y
+```
+]
+
+---
+
+## `left_join()`
+
+.pull-left[
+```{r echo=FALSE, out.width="80%", out.extra ='style="background-color: #FDF6E3"'}
+include_graphics("img/left-join.gif")
+```
+]
+.pull-right[
+```{r}
+left_join(x, y)
+```
+]
+
+---
+
+## `left_join()`
+
+```{r}
+professions %>%
+  left_join(dates) #<<
+```
+
+---
+
+## `right_join()`
+
+.pull-left[
+```{r echo=FALSE, out.width="80%", out.extra ='style="background-color: #FDF6E3"'}
+include_graphics("img/right-join.gif")
+```
+]
+.pull-right[
+```{r}
+right_join(x, y)
+```
+]
+
+---
+
+## `right_join()`
+
+
+```{r}
+professions %>%
+  right_join(dates) #<<
+```
+
+---
+
+## `full_join()`
+
+.pull-left[
+```{r echo=FALSE, out.width="80%", out.extra ='style="background-color: #FDF6E3"'}
+include_graphics("img/full-join.gif")
+```
+]
+.pull-right[
+```{r}
+full_join(x, y)
+```
+]
+
+---
+
+## `full_join()`
+
+```{r}
+dates %>%
+  full_join(works) #<<
+```
+
+???
+
+Beschreiben in Detail
+
+---
+
+## `inner_join()`
+
+.pull-left[
+```{r echo=FALSE, out.width="80%", out.extra ='style="background-color: #FDF6E3"'}
+include_graphics("img/inner-join.gif")
+```
+]
+.pull-right[
+```{r}
+inner_join(x, y)
+```
+]
+
+---
+
+## `inner_join()`
+
+```{r}
+dates %>%
+  inner_join(works) #<<
+```
+
+---
+
+## `semi_join()`
+
+.pull-left[
+```{r echo=FALSE, out.width="80%", out.extra ='style="background-color: #FDF6E3"'}
+include_graphics("img/semi-join.gif")
+```
+]
+.pull-right[
+```{r}
+semi_join(x, y)
+```
+]
+
+---
+
+## `semi_join()`
+
+```{r}
+dates %>%
+  semi_join(works) #<<
+```
+
+---
+
+## `anti_join()`
+
+.pull-left[
+```{r echo=FALSE, out.width="80%", out.extra ='style="background-color: #FDF6E3"'}
+include_graphics("img/anti-join.gif")
+```
+]
+.pull-right[
+```{r}
+anti_join(x, y)
+```
+]
+
+---
+
+## `anti_join()`
+
+```{r}
+dates %>%
+  anti_join(works) #<<
+```
+
+---
+
+## Putting it altogether
+
+```{r}
+professions %>%
+  left_join(dates) %>%
+  left_join(works)
+```
+
+
+---
+class: middle, inverse
+
+# .big[Hausaufgabe]
+
+
+---
+class: middle, inverse
+
+# .big[Feedback]
+
+---
+class: left
+background-image: url(img/tor.jpg)
+background-position: right
+background-size: contain
+
+# Ziele erreicht? 
+
+Bitte ausfüllen: [kutt.it/rstatszh-eval](https://kutt.it/rstatszh-eval)
+
+.pull-left[
+
+.footnote[Photo by: [Virgil Cayasa](https://unsplash.com/@virgilcayasa)]
+
+]
+
+---
+# `r emo::ji("sunflower")` Danke 
+
+Für die Aufmerksamkeit!
+
+Für die R packages [{xaringan}](https://github.com/yihui/xaringan) und [{xaringanthemer}](https://github.com/gadenbuie/xaringanthemer) mit welchen die Folien geschrieben wurden.
+
+Eine PDF Version der Folien kann hier heruntergeladen werden: https://github.com/rstatsZH/website/raw/master/slides/e1_d06-data-import-tidy/e1_d06-data-import-tidy.pdf
+
+`r hr()`
+
+Für [Data Science in a Box](https://datasciencebox.org/) und [Remaster the Tidyverse](https://github.com/rstudio-education/remaster-the-tidyverse), von welchen ich Materialien für diesen Kurs nutze und welche genau wie diese Folien mit [Creative Commons Attribution Share Alike 4.0 International](https://creativecommons.org/licenses/by-sa/4.0/) lizensiert sind.

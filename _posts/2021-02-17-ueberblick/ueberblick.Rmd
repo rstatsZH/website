@@ -38,7 +38,7 @@ Am Ende dieses Kurses kannst du:
 - (Daten)projekte reproduzierbar publizieren
 - kollaborativ mit git und GitHub arbeiten
 - das Konzept von tidy data verstehen und anwenden
-- explorative Datenanalysen durchführen (einfache lineare Modellierung machen hier einen kleinen Teil aus)
+- explorative Datenanalysen durchführen
 - dir selbst und Anderen helfen mehr über die grosse Welt der Möglichkeiten für Data Science mit R zu lernen
 
 # Was macht den Kurs speziell?

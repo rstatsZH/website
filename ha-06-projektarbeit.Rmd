@@ -171,9 +171,9 @@ Die Aufgaben für diese Übung sind in der Vorlage für die Hausaufgabe hinterle
 ### 4. Daten visualisieren 2 (Bonus)
 
 1. Nutze das Objekt welches du in "2.1 Pivoting" erstellt hast, und:
-- Nutze die Funktion `group_by()` um die Daten nach dem Jahr zu gruppieren
-- Nutze die Funktion `filter()` um in der Spalte Jahr nur das Jahr 1990 und das Jahr 2016 anzuzeigen
-- Wieviele Wege fallen dir ein um auf das Ergebnis zu kommen?
+    - Nutze die Funktion `group_by()` um die Daten nach dem Jahr zu gruppieren
+    - Nutze die Funktion `filter()` um in der Spalte Jahr nur das Jahr 1990 und das Jahr 2016 anzuzeigen
+    - Wieviele Wege fallen dir ein um auf das Ergebnis zu kommen?
 2. Speicher das Ergebnis als ein neues Objekt in deiner Arbeitsumgebung (Environment) mit einem Namen deiner Wahl
 3. Reproduziere folgendes verbundenes Säulendiagramm
 

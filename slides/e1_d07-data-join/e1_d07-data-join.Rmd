@@ -2,7 +2,7 @@
 title: "rstatsZH - Data Science mit R"
 subtitle: "Mit mehreren Dataframes arbeiten / Tabellen darstellen"
 author: "Lars Schöbitz"
-date: "2020-04-29"
+date: "2020-05-02"
 output:
   xaringan::moon_reader:
     self_contained: false
@@ -57,28 +57,59 @@ p(rmarkdown::metadata$date)
 ---
 # Rückblick - Woche 6 
 
-
+- Erweiterte Vektoren
+  - Faktoren
+  - Datums- und Zeitwerte
+  - Tibbles
+- Daten importieren
+  - `read_csv()`
+  - `read_excel()`
+  - etc.
+- SQL in R Markdown
+- Tidy Data Konzept
+- Daten drehen (pivoting) mit `{tidyr}`
+  - `pivot_longer()`
+  - `pivot_wider()`
 
 ---
 class: middle, inverse
 
-# Hausaufgabe 6
+# .large[Hausaufgabe 6]
 
 ---
-# Hausaufgabe 6
+background-image: url(img/questions.jpg)
+background-size: contain
+background-position: right
+class: middle
 
-.question[Gibt es Fragen?]
+# .large[Hausaufgabe 6]
 
+
+---
+# Hausaufgabe 6 - Lösungen
+
+- **GitHub Organisation:** rstatsZH
+    - https://github.com/rstatsZH/
+- **Repo:** ha-06-treibhausgase
+    - https://github.com/rstatsZH/ha-06-treibhausgase
+- **R Markdown Datei:** ha-06-solutions.Rmd
+    - https://github.com/rstatsZH/ha-06-treibhausgase/blob/main/ha-06-solutions.Rmd
+    
 ---
 # Ziele für diese Woche
 
 Am Ende dieser Woche könnt ihr:
 
+- Mehrere Dataframes zusammenfügen
+- Tabellen mit dem `{gt}` Package erstellen
+- Einen mit `ggplot()` erstellten Plot interaktiv darstellen
+- Einen R Markdown Bericht als Website publizieren
+- Mit den im Kurs erlernten Fähigkeiten selbstständig weiter arbeiten
 
 ---
 class: middle, inverse
 
-# .big[Mit mehreren Dataframes arbeiten]
+# .large[Mit mehreren Dataframes arbeiten]
 
 ---
 class: middle
@@ -121,20 +152,23 @@ Daten kommen aus dem Discover Magazine. Daten aus dem Artikel herausgeholt.
 
 .panel[.panel-name[professions]
 ```{r}
-professions
+professions %>% 
+  print(n = 10)
 ```
 ]
 
 
 .panel[.panel-name[dates]
 ```{r}
-dates
+dates %>% 
+  print(n = 10)
 ```
 ]
 
 .panel[.panel-name[works]
 ```{r}
-works
+works %>% 
+  print(n = 10)
 ```
 ]
 
@@ -208,7 +242,7 @@ nrow(works)
 ---
 class: middle, inverse
 
-# Dataframes zusammenfügen
+# .large[Dataframes zusammenfügen]
 
 ---
 
@@ -435,7 +469,7 @@ einkaeufe %>%
 ```
 
 ---
-## Schritt 1 
+## Schritt 1 - Daten zusammenfügen
 
 ```{r, echo=TRUE, eval=FALSE}
 einkaeufe_preise <- einkaeufe %>% 
@@ -453,7 +487,7 @@ einkaeufe_preise <- einkaeufe %>%
 ```
 
 ---
-## Schritt 2
+## Schritt 2 - Daten zusammefassen
 
 ```{r, echo=TRUE, eval=FALSE}
 einkaeufe_preise_sum <- einkaeufe_preise %>% 
@@ -476,7 +510,7 @@ einkaeufe_preise_sum <- einkaeufe_preise %>%
 
 
 ---
-## Schritt 3
+## Schritt 3 - Daten zusammenfügen + eingrenzen
 
 ```{r, echo=TRUE, eval=FALSE}
 kunden_tab <- einkaeufe_preise_sum %>% 
@@ -494,7 +528,7 @@ kunden_tab <- einkaeufe_preise_sum %>%
 ```
 
 ---
-## Schritt 4
+## Schritt 4 - Daten als Tabelle darstellen
 
 ```{r, echo=TRUE, eval=TRUE}
 kunden_tab %>% 
@@ -584,7 +618,7 @@ Quelle: [Bundesamt für Statistik - Kosten des Gesundheitswesens nach Leistungen
 ---
 class: inverse, middle
 
-# Tabellen darstellen mit dem `{gt}` Package
+# .large[Tabellen darstellen mit dem {gt} Package]
 
 
 ---
@@ -627,7 +661,7 @@ Quelle: [gt.rstudio.com](https://gt.rstudio.com/index.html)
 ]
 
 ---
-# Tabellen dartellen - Packages
+# Tabellen darstellen - Weitere Packages
 
 - `{kableExtra}`: https://haozhu233.github.io/kableExtra/
 - `{formattable}`: https://renkun-ken.github.io/formattable/
@@ -648,38 +682,60 @@ class: middle, inverse
 ---
 # Was habt ihr gelernt?
 
-- Kollaboration und Versionsverwaltung mit Git/GitHub
-- Datenprojekte reproduzierbar publizieren mit GitHub
-- Das Konzept von Tidy Data
-- Tidyverse Packages zum 
+- Anwendung von Tidyverse Packages zum 
   - Importieren,
   - Aufräumen (Tidying),
   - Transformieren, 
-  - Visualsieren, und
-  - Kommunizieren
-  
+  - Visualisieren, und
+  - Kommunizieren von Daten.
+- Kollaboration und Versionsverwaltung mit Git/GitHub
+- Datenprojekte reproduzierbar publizieren mit GitHub
+- Das Konzept von Tidy Data
+
 ---
 class: middle, inverse
 
 # .large[Wie geht's weiter?]
 
+---
+# Raus aus der RStudio Cloud
+
+1. Installationen: https://github.com/rstatsZH/kochbuch/tree/main/01-Installation
+2. Einmalig: Tidyverse Packages installieren
+3. Danach: Tidyverse Packages laden
+4. Packages ausserhalb des Tidyverse installieren und laden (e.g. `janitor`)
+
+```{r, eval=FALSE, echo=TRUE}
+
+# Einmalig in Konsole ausführen
+install.packages("tidyverse")
+
+# In jedem Skript
+library(tidyverse)
+
+```
 
 ---
-# Projektarbeit
+# Üben + Vertiefen
+
+Link zu Woche 7
 
 ---
-# Üben
+# Projektarbeit - Unterstützung bis Anfang Juli
 
----
-# Vertiefen
+**Hausaufgabe 6**
 
----
+1. GitHub Repository erstellen und RStudio Projekt aufgleisen (Hausaufgabe 6)
+2. Daten für das Projekt identifizieren
 
----
-class: middle, inverse
+**Wie es weiter geht: Bericht mit R Markdown schreiben**
 
-# .big[Hausaufgabe]
-
+1. Daten importieren  
+2. Daten (visuell) erkunden
+3. Daten ggf. transformieren und dann erneut (visuell) erkunden
+4. Fragen an den Datensatz formulieren
+5. Versuchen zu Antworten zu kommen und dokumentieren
+6. Immer wieder, git add, commit, push 
 
 ---
 class: middle, inverse
@@ -703,13 +759,20 @@ Bitte ausfüllen: [kutt.it/rstatszh-eval](https://kutt.it/rstatszh-eval)
 ]
 
 ---
+# Wie es für mich weiter geht
+
+1. **Beratung:** Projektbezogener Support, Code Review, Coaching
+2. **rstatsZH Kursleitung:** Info über den Kurs verbreiten
+3. **Kurse zu vertiefenden Themen:** Entwicklung von 4-Stunden Workshops
+
+---
 # `r emo::ji("sunflower")` Danke 
 
 Für die Aufmerksamkeit!
 
 Für die R packages [{xaringan}](https://github.com/yihui/xaringan) und [{xaringanthemer}](https://github.com/gadenbuie/xaringanthemer) mit welchen die Folien geschrieben wurden.
 
-Eine PDF Version der Folien kann hier heruntergeladen werden: https://github.com/rstatsZH/website/raw/master/slides/e1_d06-data-import-tidy/e1_d06-data-import-tidy.pdf
+Eine PDF Version der Folien kann hier heruntergeladen werden: https://github.com/rstatsZH/website/raw/master/slides/e1_d07-data-join/e1_d07-data-join.pdf
 
 `r hr()`
 

@@ -1,0 +1,63 @@
+---
+title: "Woche 7 - Daten zusammenfügen und Tabellen darstellen"
+description: |
+  Ziele und Materialien für unsere letzte gemeinsame Woche
+date: 04-27-2021
+output:
+  distill::distill_article:
+    toc: true
+    self_contained: false
+preview: img/tim-mossholder-WE_Kv_ZB1l0-unsplash.jpg
+---
+
+<script async defer data-domain="rstatszh.github.io/website" src="https://plausible.io/js/plausible.js"></script>
+
+```{r setup, echo=FALSE}
+library(magrittr)
+library(tidyverse)
+```
+
+```{r, layout="l-body", preview=TRUE, echo=FALSE, include=TRUE, fig.cap="Photo by [Alistair MacRobert](https://unsplash.com/photos/WE_Kv_ZB1l0)"}
+
+knitr::include_graphics("img/tim-mossholder-WE_Kv_ZB1l0-unsplash.jpg")
+
+```
+
+Lerne wie du mehrere Dataframes zusammenfügst und Tabellen effektiv darstellst
+
+# Ziele
+
+Am Ende dieser Woche könnt ihr:
+
+- Mehrere Dataframes zusammenfügen
+- Tabellen mit dem `{gt}` Package erstellen
+- Einen mit `ggplot()` erstellten Plot interaktiv darstellen
+- Einen R Markdown Bericht als Website publizieren
+- Mit den im Kurs erlernten Fähigkeiten selbstständig weiter arbeiten
+
+# Folien
+
+```{r share-again1, echo=FALSE}
+
+xaringanExtra::use_share_again()
+
+```
+
+```{r embed-xaringan1, echo=FALSE, fig.cap="[Folien](slides/e1_d07-data-join/e1_d07-data-join.html)"}
+
+xaringanExtra::embed_xaringan("../../slides/e1_d07-data-join/e1_d07-data-join.html", ratio = "16:9")
+
+```
+
+# Weiterführende Ressourcen
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE, layout="l-body-outset"}
+
+googlesheets4::read_sheet("198t05eFYHxuxY0d2jCvPkES1ZaMcsSYgBKcg0xQTwb0") %>% 
+  mutate(titel2 = paste0("[", titel, "](", link, ")")) %>% 
+  filter(woche == "woche7") %>% 
+  select(topic, type, titel2) %>% 
+  arrange(topic) %>% 
+  knitr::kable(format = "html", col.names = NULL)
+
+```

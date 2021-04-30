@@ -10,18 +10,16 @@ output:
     css: ["default", "../assets/css/xaringan-themer.css", "../assets/css/my-css-style.css"]
     seal: FALSE
     nature:
-        </div>
       slideNumberFormat: |
         <div class="progress-bar-container">
-          </div>
           <div class="progress-bar" style="width: calc(%current% / %total% * 100%);">
+          </div>
+        </div>
       highlightStyle: solarized-light
       highlightLanguage: ["r", "css", "yaml"]
       highlightLines: true
       countIncrementalSlides: false
       ratio: "16:9"
-editor_options: 
-  chunk_output_type: console
 ---
 
 class: title-slide
@@ -38,6 +36,7 @@ library(readr)
 library(tidyr)
 library(forcats)
 library(knitr)
+library(gt)
 
 ```
 
@@ -82,21 +81,21 @@ class: middle, inverse
 # .big[Mit mehreren Dataframes arbeiten]
 
 ---
-
 class: middle
 
-# .hand[We...]
+# .hand[Wir...]
 
-.huge[.green[have]] .hand[multiple data frames]
+.huge[.green[haben]] .hand[mehrere Dataframes]
 
-.huge[.pink[want]] .hand[to bring them together]
+.huge[.pink[wollen]] .hand[diese zusammenbringen]
 
 ```{r include=FALSE}
-professions <- read_csv("data/scientists/professions.csv")
-dates <- read_csv("data/scientists/dates.csv")
-works <- read_csv("data/scientists/works.csv")
+professions <- read_csv(here::here("slides/e1_d07-data-join/data/scientists/professions.csv"))
+dates <- read_csv(here::here("slides/e1_d07-data-join/data/scientists/dates.csv"))
+works <- read_csv(here::here("slides/e1_d07-data-join/data/scientists/works.csv"))
 ```
 
+---
 ## Data: Women in science 
 
 Informationen zu 10 Frauen in der Wissenschaft welche die Welt verändert haben
@@ -141,6 +140,8 @@ works
 
 ]
 
+???
+.small[
 **Professions**
  
 Hier sehen wir die berufsbezeichungen der 10 Wissenschatfler_innen welche in dem Artikelk auftauchen. So haben wir:
@@ -160,13 +161,15 @@ Wir sehen zwei NAs. Dies heisst nicht dass wir das Todesjahr nicht wissen, sonde
 
 Einen dritten Dataframe in welchem wir sehen wofür die Wissenschaftlerinnen bekannt waren. Zum Beispiel for Ada Lovelace wir sehen den ersten Computer algorhyhtmus.
 
+] 
 ---
 ## Gewünschter Output
 
 ```{r echo=FALSE}
 professions %>%
   left_join(dates) %>%
-  left_join(works)
+  left_join(works) %>% 
+  print(n = 10)
 ```
 
 ???
@@ -178,21 +181,18 @@ Hier sehen wir unseren gewünschten Output. Das Ziel nachdem die drei Dataframes
 - name und known_for aus dem dritten Dataframe
 
 ---
-
 ## Inputs als Erinnerung
 
 .pull-left[
-```{r}
+```{r, echo = TRUE}
 names(professions)
 names(dates)
 names(works)
 ```
 ]
 
--- 
-
 .pull-right[
-```{r}
+```{r, echo=TRUE}
 nrow(professions)
 nrow(dates)
 nrow(works)
@@ -206,8 +206,7 @@ nrow(works)
 - Professions hat die komplette Info während bei den anderen etwas fehlt 
 
 ---
-
-class: middle
+class: middle, inverse
 
 # Dataframes zusammenfügen
 
@@ -215,20 +214,14 @@ class: middle
 
 ## Dataframes zusammenfügen
 
-```{r eval=FALSE}
-abc_join(x, y)
+```{r eval=FALSE, echo=TRUE}
+abcd_join(x, y)
 ```
 
 - `left_join()`: alle Reihen aus x
 - `right_join()`: alle Reihen aus y
 - `full_join()`: alle Reihen aus x und y
-
-**Entferne die anderen drei**
-
-- `semi_join()`: alle Reihen aus x wofür auch Werte in y sind, behalte nur die Spalten aus x
-- `inner_join()`: alle Reihen aus x, in denen es übereinstimmende Werte in y gibt, Rückgabe aller Kombinationen von Mehrfachübereinstimmungen im Fall von Mehrfachübereinstimmungen
-- `anti_join()`: alle Reihen aus x, in denen es keine übereinstimmenden Werte in y gibt, niemals doppelte Zeilen von x
-
+- ...
  
 ---
 ## Beispiel 
@@ -237,24 +230,24 @@ Für die nächsten Folien
 
 .pull-left[
 ```{r echo=FALSE}
-x <- tibble(
+tib_x <- tibble(
   id = c(1, 2, 3),
-  value_x = c("x1", "x2", "x3")
+  var_x = c("x1", "x2", "x3")
   )
 ```
 ```{r}
-x
+tib_x
 ```
 ]
 .pull-right[
 ```{r echo=FALSE}
-y <- tibble(
+tib_y <- tibble(
   id = c(1, 2, 4),
-  value_y = c("y1", "y2", "y4")
+  var_y = c("y1", "y2", "y4")
   )
 ```
 ```{r}
-y
+tib_y
 ```
 ]
 
@@ -268,8 +261,8 @@ include_graphics("img/left-join.gif")
 ```
 ]
 .pull-right[
-```{r}
-left_join(x, y)
+```{r, echo=TRUE}
+left_join(tib_x, tib_y)
 ```
 ]
 
@@ -277,9 +270,16 @@ left_join(x, y)
 
 ## `left_join()`
 
-```{r}
+```{r, echo=TRUE, eval=FALSE}
 professions %>%
   left_join(dates) #<<
+```
+
+
+```{r, echo=FALSE, eval=TRUE}
+professions %>%
+  left_join(dates) %>% 
+  print(n = 10)
 ```
 
 ---
@@ -292,8 +292,8 @@ include_graphics("img/right-join.gif")
 ```
 ]
 .pull-right[
-```{r}
-right_join(x, y)
+```{r, echo=TRUE}
+right_join(tib_x, tib_y)
 ```
 ]
 
@@ -302,9 +302,16 @@ right_join(x, y)
 ## `right_join()`
 
 
-```{r}
+```{r, echo=TRUE, eval=FALSE}
 professions %>%
   right_join(dates) #<<
+```
+
+
+```{r, echo=FALSE, eval=TRUE}
+professions %>%
+  right_join(dates) %>% 
+  print(n = 10)
 ```
 
 ---
@@ -317,8 +324,8 @@ include_graphics("img/full-join.gif")
 ```
 ]
 .pull-right[
-```{r}
-full_join(x, y)
+```{r, echo=TRUE}
+full_join(tib_x, tib_y)
 ```
 ]
 
@@ -326,97 +333,347 @@ full_join(x, y)
 
 ## `full_join()`
 
-```{r}
+```{r, echo=TRUE, eval=FALSE}
 dates %>%
   full_join(works) #<<
 ```
 
+```{r, echo=FALSE, eval=TRUE}
+dates %>%
+  full_join(works) %>% 
+  print(n = 10)
+```
+
+
 ???
 
-Beschreiben in Detail
-
 ---
 
-## `inner_join()`
+## Alles in einer Code Sequenz
 
-.pull-left[
-```{r echo=FALSE, out.width="80%", out.extra ='style="background-color: #FDF6E3"'}
-include_graphics("img/inner-join.gif")
-```
-]
-.pull-right[
-```{r}
-inner_join(x, y)
-```
-]
-
----
-
-## `inner_join()`
-
-```{r}
-dates %>%
-  inner_join(works) #<<
-```
-
----
-
-## `semi_join()`
-
-.pull-left[
-```{r echo=FALSE, out.width="80%", out.extra ='style="background-color: #FDF6E3"'}
-include_graphics("img/semi-join.gif")
-```
-]
-.pull-right[
-```{r}
-semi_join(x, y)
-```
-]
-
----
-
-## `semi_join()`
-
-```{r}
-dates %>%
-  semi_join(works) #<<
-```
-
----
-
-## `anti_join()`
-
-.pull-left[
-```{r echo=FALSE, out.width="80%", out.extra ='style="background-color: #FDF6E3"'}
-include_graphics("img/anti-join.gif")
-```
-]
-.pull-right[
-```{r}
-anti_join(x, y)
-```
-]
-
----
-
-## `anti_join()`
-
-```{r}
-dates %>%
-  anti_join(works) #<<
-```
-
----
-
-## Putting it altogether
-
-```{r}
+```{r, echo=TRUE, eval=FALSE}
 professions %>%
   left_join(dates) %>%
   left_join(works)
 ```
 
+```{r, echo=FALSE, eval=TRUE}
+professions %>%
+  left_join(dates) %>%
+  left_join(works) %>% 
+  print(n = 10)
+```
+
+---
+.note[
+
+# Praktikum 10 - Daten zusammenfügen 
+
+## 2er Teams
+
+1. **E-Mail**: Öffne deine Email und klicke auf den Link zu deinem persönlichen GitHub repo
+2. **GitHub**: Klicke auf den grünen Button "Code" und kopiere den Link für das Repo in deine Zwischenablage
+3. **RStudio Cloud**: Öffne deinen Arbeitsbereich für den Kurs in der RStudio Cloud
+4. **RStudio Cloud / Projects**: Klicke auf "New Project from GitHub Repository" 
+
+]
+
+
+```{r}
+
+einkaeufe <- read_csv("https://raw.githubusercontent.com/rstatsZH/data/main/data/raw/supermarkt/einkaeufe.csv")
+preise <- read_csv("https://raw.githubusercontent.com/rstatsZH/data/main/data/raw/supermarkt/preise.csv")
+kundenprofile <- read_csv("https://raw.githubusercontent.com/rstatsZH/data/main/data/raw/supermarkt/kundenprofile.csv")
+
+```
+
+
+---
+## Inputs - Drei Dataframes
+
+.panelset[
+
+.panel[.panel-name[einkaeufe]
+```{r}
+einkaeufe %>% 
+  print(n = 10)
+```
+]
+
+
+.panel[.panel-name[preise]
+```{r}
+preise %>% 
+  print(n = 10)
+```
+]
+
+.panel[.panel-name[kundenprofile]
+```{r}
+kundenprofile %>% 
+  print(n = 10)
+```
+]
+
+]
+
+
+
+---
+## Gewünschter Output
+
+```{r echo=FALSE}
+einkaeufe %>%
+  left_join(preise) %>%
+  group_by(kunden_id) %>% 
+  summarise(
+    summe = sum(preis)
+  ) %>% 
+  left_join(kundenprofile) %>% 
+  select(ends_with("name"), summe, email) %>% 
+  gt::gt()
+```
+
+---
+## Schritt 1 
+
+```{r, echo=TRUE, eval=FALSE}
+einkaeufe_preise <- einkaeufe %>% 
+  left_join(preise)
+
+einkaeufe_preise
+```
+
+```{r, echo=FALSE}
+
+einkaeufe_preise <- einkaeufe %>% 
+  left_join(preise) %>% 
+  print(n = 10)
+
+```
+
+---
+## Schritt 2
+
+```{r, echo=TRUE, eval=FALSE}
+einkaeufe_preise_sum <- einkaeufe_preise %>% 
+  group_by(kunden_id) %>% 
+  summarise(
+    summe = sum(preis)
+  )
+
+einkaeufe_preise_sum
+```
+
+```{r, echo=FALSE}
+einkaeufe_preise_sum <- einkaeufe_preise %>% 
+  group_by(kunden_id) %>% 
+  summarise(
+    summe = sum(preis)
+  ) %>% 
+  print(n = 10)
+```
+
+
+---
+## Schritt 3
+
+```{r, echo=TRUE, eval=FALSE}
+kunden_tab <- einkaeufe_preise_sum %>% 
+  left_join(kundenprofile) %>% 
+  select(ends_with("name"), summe, email)
+
+kunden_tab
+```
+
+```{r, echo=FALSE}
+kunden_tab <- einkaeufe_preise_sum %>% 
+  left_join(kundenprofile) %>% 
+  select(ends_with("name"), summe, email) %>% 
+  print(n = 10)
+```
+
+---
+## Schritt 4
+
+```{r, echo=TRUE, eval=TRUE}
+kunden_tab %>% 
+  gt()
+```
+
+---
+## Als eine Code Sequenz
+
+```{r echo=TRUE}
+einkaeufe %>%
+  left_join(preise) %>%
+  group_by(kunden_id) %>% 
+  summarise(
+    summe = sum(preis)
+  ) %>% 
+  left_join(kundenprofile) %>% 
+  select(ends_with("name"), summe, email) %>% 
+  gt()
+```
+
+---
+class: inverse, middle
+
+# .big[Tabellen darstellen]
+
+---
+background-image: url("img/untidy-data/untidy-data.004.png")
+background-size: contain
+
+.question[
+Welche Eigenschaften von Tidy data sind hier nicht erfüllt?
+]
+
+.footnote[
+Quelle: [Bundesamt für Statistik - Kosten des Gesundheitswesens nach Leistungen]( https://www.bfs.admin.ch/bfs/de/home/statistiken/kataloge-datenbanken/tabellen.assetdetail.14840808.html) 
+]
+---
+background-image: url("img/untidy-data/untidy-data.005.png")
+background-size: contain
+
+.question[
+Welche Eigenschaften von Tidy data sind hier nicht erfüllt?
+]
+
+.footnote[
+Quelle: [Bundesamt für Statistik - Kosten des Gesundheitswesens nach Leistungen]( https://www.bfs.admin.ch/bfs/de/home/statistiken/kataloge-datenbanken/tabellen.assetdetail.14840808.html)
+]
+
+---
+background-image: url("img/untidy-data/untidy-data.006.png")
+background-size: contain
+
+.question[
+Welche Eigenschaften von Tidy data sind hier nicht erfüllt?
+]
+
+.footnote[
+Quelle: [Bundesamt für Statistik - Kosten des Gesundheitswesens nach Leistungen]( https://www.bfs.admin.ch/bfs/de/home/statistiken/kataloge-datenbanken/tabellen.assetdetail.14840808.html)
+]
+
+
+---
+# Relevanter Unterschied - Ziel der Daten Publikation
+
+.pull-left[
+**Daten in Tabellen darstellen**
+- Layout
+   - Gut leserlich
+   - Kompakt
+   - Erkenntnis bringend
+- Metadaten
+]
+
+.pull-right[
+**Daten für weitere Nutzung bereitstellen**
+- Layout (Tidy data)
+   - Eigenschaft 1: Jede Spalte ist eine Variable
+   - Eigenschaft 2: Jede Reihe ist eine Beobachtung
+   - Eigenschaft 3: Jede Zelle enthält eine Messung
+- Keine Metadaten
+- Keine Farben, Formatierungen, etc.
+- Folgt Standards (Datum: ISO 8601)
+- etc.
+]
+
+---
+class: inverse, middle
+
+# Tabellen darstellen mit dem `{gt}` Package
+
+
+---
+background-image: url("https://gt.rstudio.com/reference/figures/gt_parts_of_a_table.svg")
+background-size: cover
+
+.footnote[
+Quelle: [gt.rstudio.com](https://gt.rstudio.com/index.html)
+]
+
+---
+background-image: url("https://gt.rstudio.com/reference/figures/gt_workflow_diagram.svg")
+background-size: contain
+
+.footnote[
+Quelle: [gt.rstudio.com](https://gt.rstudio.com/index.html)
+]
+
+---
+.note[
+
+# Demonstration 3 - Tabellen darstellen
+
+1. Schaut mir beim Programmieren zu
+2. Macht euch Notizen und stellt Fragen
+
+]
+
+---
+# {gt} - Lerne das Package besser kennen
+
+[
+```{r}
+knitr::include_graphics("img/gt-test-drive.svg")
+```
+](https://rstudio.cloud/project/779965)
+
+.footnote[
+Quelle: [gt.rstudio.com](https://gt.rstudio.com/index.html)
+]
+
+---
+# Tabellen dartellen - Packages
+
+- `{kableExtra}`: https://haozhu233.github.io/kableExtra/
+- `{formattable}`: https://renkun-ken.github.io/formattable/
+- `{DT}`: https://rstudio.github.io/DT/
+- `{flextable}`: https://davidgohel.github.io/flextable/
+- etc. 
+
+---
+class: middle, inverse
+
+# .large[The End]
+
+---
+class: middle, inverse
+
+# .large[The End - Noch nicht ganz]
+
+---
+# Was habt ihr gelernt?
+
+- Kollaboration und Versionsverwaltung mit Git/GitHub
+- Datenprojekte reproduzierbar publizieren mit GitHub
+- Das Konzept von Tidy Data
+- Tidyverse Packages zum 
+  - Importieren,
+  - Aufräumen (Tidying),
+  - Transformieren, 
+  - Visualsieren, und
+  - Kommunizieren
+  
+---
+class: middle, inverse
+
+# .large[Wie geht's weiter?]
+
+
+---
+# Projektarbeit
+
+---
+# Üben
+
+---
+# Vertiefen
+
+---
 
 ---
 class: middle, inverse

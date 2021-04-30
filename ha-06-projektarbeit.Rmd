@@ -73,7 +73,7 @@ Wie das geht hast du in [Übung 1 der Hausaufgabe aus Woche 5](https://rstatszh.
 
 Abweichend von der Anleitung ist Folgendes:
 
-- 1. + 2. Schritt: Diese Schritte kannst du überspringen und das neue Repository unter deinem Benutzernamen erstellen. Beginne also mit dem 3. Schritt und erstelle ein neues Repository in deinem persönlichen Benutzer Account.
+- 1 und 2. Schritt: Diese Schritte kannst du überspringen und das neue Repository unter deinem Benutzernamen erstellen. Beginne also mit dem 3. Schritt und erstelle ein neues Repository in deinem persönlichen Benutzer Account.
 - 4. Schritt: Überlege dir hier einen eigenen, sinnvollen Namen für das Repository
 - 6. Schritt: Entscheide hier selbst darüber ob du das Repository öffentlich (public) oder geschlossen (private) zugänglich machen möchtest. 
 
@@ -93,21 +93,16 @@ knitr::include_graphics("img/github-to-project-local/github-to-project-local.002
 ```
 
 - Füge die URL aus deiner Zwischenablage im Feld "Repository URL" ein. Im Feld "Project directory name:" wird der Name des Repositories übernommen. 
-
-
-
 - Wähle über den Button "Browse..." den Ordner auf deinem Arbeitsgerät aus, in dem du das Repository speichern möchtest (**Tipp:** Ich empfehle einen Ordner names "gitrepos" zu erstellen, welcher sich so nah wie möglich am Stammpfad des Laufwerks (Lokaler Datenträger) auf deinem Arbeitsgerät befindet. Im Windows Betriebssystem ist dies üblicherweise "C:". As bietet sich an, an dem Ort 'C:\gitrepos' nur Ordner anzulegen, welche auch ein Git Repository sind. Dies erlaubt eine saubere Trennung zwischen allgemeinen Ordnern auf deinem Arbeitsgerät und solchen die ein Git Repository sind. 
 
 ```{r}
 knitr::include_graphics("img/github-to-project-local/github-to-project-local.003.png")
 ```
 
-
-
 - Klicke auf "Create Project", was für dich die folgenden drei Dinge erstellt
-- ein Ordner auf deinem Arbeitsgerät
-- ein lokales Git Repository welches mit einem remote GitHub Repository verbunden ist
-- ein RStudio Project
+    - ein Ordner auf deinem Arbeitsgerät
+    - ein lokales Git Repository welches mit einem remote GitHub Repository verbunden ist
+    - ein RStudio Project
 - Betrachte dein offenes RStudio Project
 - Folge nun noch den Schritten 38 bis 43 aus der Hausaufgabe 5.
 

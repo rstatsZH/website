@@ -1,5 +1,17 @@
 [
   {
+    "path": "posts/2021-04-30-woche07/",
+    "title": "Woche 7 - Daten zusammenfügen und Tabellen darstellen",
+    "description": "Ziele und Materialien für unsere letzte gemeinsame Woche",
+    "author": [],
+    "date": "2021-04-27",
+    "categories": [],
+    "contents": "\n\nContents\nZiele\nFolien\nWeiterführende Ressourcen\n\n\n\n\n\n\n\nFigure 1: Photo by Alistair MacRobert\n\n\n\nLerne wie du mehrere Dataframes zusammenfügst und Tabellen effektiv darstellst\nZiele\nAm Ende dieser Woche könnt ihr:\nMehrere Dataframes zusammenfügen\nTabellen mit dem {gt} Package erstellen\nEinen mit ggplot() erstellten Plot interaktiv darstellen\nEinen R Markdown Bericht als Website publizieren\nMit den im Kurs erlernten Fähigkeiten selbstständig weiter arbeiten\nFolien\n\n\n\n\n\n\nfitvids('.shareagain', {players: 'iframe'});\n\nWeiterführende Ressourcen\n\n\nProgrammieren\n\n\nBuch\n\n\nHands-on Programming with R\n\n\nModellierung, Inferentielle Statistik, Machine Learning\n\n\nBuch\n\n\nModernDive - Statistical Inference via Data Science\n\n\nModellierung, Inferentielle Statistik, Machine Learning\n\n\nBuch\n\n\nOpenIntro - Introduction to Modern Statistics\n\n\nModellierung, Inferentielle Statistik, Machine Learning\n\n\nArtikel\n\n\nTidyModels - A collection of packages for modeling and machine learning\n\n\nKommunikation mit R Markdown\n\n\nBuch\n\n\nRMarkdown - The Definitive Guide\n\n\nKommunikation mit R Markdown\n\n\nBuch mit Anleitungen\n\n\nR Markdown Cookbook\n\n\nKommunikation mit R Markdown\n\n\nR Package\n\n\nFolien mit {xaringan}\n\n\nKommunikation mit R Markdown\n\n\nR Package\n\n\nDashboards mit {flexdashboard}\n\n\nKommunikation mit R Markdown\n\n\nR Package\n\n\nBerichte als Webseite oder Blog mit {distill}\n\n\nKollaboration und Versionsverwaltung\n\n\nBuch\n\n\nHappy Git and GitHub for the useR\n\n\nGeodaten und GIS in R\n\n\nBuch\n\n\nGeocomputation with R\n\n\nGenerell\n\n\nBuch\n\n\nR for Data Science\n\n\nGenerell\n\n\nTutorial\n\n\nRStudio Cloud Primers\n\n\nDeskriptive Statistik\n\n\nTutorial\n\n\nTeacup Giraffes\n\n\nNA\n\n\nTutorial\n\n\nTeacup Giraffes - Intro to R\n\n\n\n\n\n",
+    "preview": "posts/2021-04-30-woche07/img/tim-mossholder-WE_Kv_ZB1l0-unsplash.jpg",
+    "last_modified": "2021-04-30T14:55:21+02:00",
+    "input_file": "woche07.utf8.md"
+  },
+  {
     "path": "posts/2021-04-21-woche06/",
     "title": "Woche 6 - Daten importieren und Daten aufräumen",
     "description": "Ziele und Materialien für unsere sechste gemeinsame Woche",

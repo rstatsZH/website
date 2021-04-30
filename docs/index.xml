@@ -7,7 +7,15 @@
     <description>Ein R Kurs für Mitarbeiter_innen der Verwaltung des Kantons Zürich
 </description>
     <generator>Distill</generator>
-    <lastBuildDate>Wed, 21 Apr 2021 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 26 Apr 2021 00:00:00 +0000</lastBuildDate>
+    <item>
+      <title>Woche 7 - Daten zusammenfügen und Tabellen darstellen</title>
+      <link>https://rstatszh.github.io/website/posts/2021-04-30-woche07</link>
+      <description>Ziele und Materialien für unsere letzte gemeinsame Woche</description>
+      <guid>https://rstatszh.github.io/website/posts/2021-04-30-woche07</guid>
+      <pubDate>Mon, 26 Apr 2021 00:00:00 +0000</pubDate>
+      <media:content url="https://rstatszh.github.io/website/posts/2021-04-30-woche07/img/tim-mossholder-WE_Kv_ZB1l0-unsplash.jpg" medium="image" type="image/jpeg"/>
+    </item>
     <item>
       <title>Woche 6 - Daten importieren und Daten aufräumen</title>
       <link>https://rstatszh.github.io/website/posts/2021-04-21-woche06</link>
@@ -61,7 +69,7 @@
       <link>https://rstatszh.github.io/website/posts/2021-02-17-ueberblick</link>
       <description>Schau herein um Informationen zum Kursinhalt, den Lehrpersonen und freien Terminen zu bekommen.</description>
       <guid>https://rstatszh.github.io/website/posts/2021-02-17-ueberblick</guid>
-      <pubDate>Tue, 09 Feb 2021 00:00:00 +0000</pubDate>
+      <pubDate>Wed, 10 Feb 2021 00:00:00 +0000</pubDate>
       <media:content url="https://rstatszh.github.io/website/posts/2021-02-17-ueberblick/img/roadmap.jpg" medium="image" type="image/jpeg"/>
     </item>
   </channel>

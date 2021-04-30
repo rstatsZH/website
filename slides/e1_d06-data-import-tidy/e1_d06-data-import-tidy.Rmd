@@ -22,6 +22,7 @@ output:
       ratio: "16:9"
 ---
 
+
 class: title-slide
 
 ```{r child = "../setup.Rmd"}
@@ -671,140 +672,148 @@ penguins %>%
 
 
 ---
+background-image: url("img/untidy-data/untidy-data.001.png")
+background-size: contain
+
 .question[
 Welche Eigenschaften von Tidy data sind hier nicht erfüllt?
 ]
 
-```{r}
-knitr::include_graphics("img/untidy-data/untidy-data.001.png")
-```
-
-.xsmall[Quelle: [Bundesamt für Statistik - Ständige Wohnbevölkerung nach Altersklasse und Altersmasszahlen nach Kanton, Provisorische Jahresergebnisse, 2020]( https://www.bfs.admin.ch/bfs/de/home/statistiken/kataloge-datenbanken/tabellen.assetdetail.16404478.html)]
+.footnote[
+.small[Quelle: [Bundesamt für Statistik - Ständige Wohnbevölkerung nach Altersklasse und Altersmasszahlen nach Kanton, Provisorische Jahresergebnisse, 2020]( https://www.bfs.admin.ch/bfs/de/home/statistiken/kataloge-datenbanken/tabellen.assetdetail.16404478.html)]
+]
 
 ---
+background-image: url("img/untidy-data/untidy-data.002.png")
+background-size: contain
+
 .question[
 Welche Eigenschaften von Tidy data sind hier nicht erfüllt?
 ]
 
-```{r}
-knitr::include_graphics("img/untidy-data/untidy-data.002.png")
-```
+.footnote[
+.small[Quelle: [Bundesamt für Statistik - Ständige Wohnbevölkerung nach Altersklasse und Altersmasszahlen nach Kanton, Provisorische Jahresergebnisse, 2020]( https://www.bfs.admin.ch/bfs/de/home/statistiken/kataloge-datenbanken/tabellen.assetdetail.16404478.html)]
+]
+---
+background-image: url("img/untidy-data/untidy-data.003.png")
+background-size: contain
 
+.question[
+Welche Eigenschaften von Tidy data sind hier nicht erfüllt?
+]
 
-.xsmall[Quelle: [Bundesamt für Statistik - Ständige Wohnbevölkerung nach Altersklasse und Altersmasszahlen nach Kanton, Provisorische Jahresergebnisse, 2020]( https://www.bfs.admin.ch/bfs/de/home/statistiken/kataloge-datenbanken/tabellen.assetdetail.16404478.html)]
+.footnote[
+.small[Quelle: [Bundesamt für Statistik - Ständige Wohnbevölkerung nach Altersklasse und Altersmasszahlen nach Kanton, Provisorische Jahresergebnisse, 2020]( https://www.bfs.admin.ch/bfs/de/home/statistiken/kataloge-datenbanken/tabellen.assetdetail.16404478.html)]
+]
+---
+background-image: url("img/untidy-data/untidy-data.004.png")
+background-size: contain
+
+.question[
+Welche Eigenschaften von Tidy data sind hier nicht erfüllt?
+]
+
+.footnote[
+.small[Quelle: [Bundesamt für Statistik - Kosten des Gesundheitswesens nach Leistungen]( https://www.bfs.admin.ch/bfs/de/home/statistiken/kataloge-datenbanken/tabellen.assetdetail.14840808.html)]
+]
+---
+background-image: url("img/untidy-data/untidy-data.005.png")
+background-size: contain
+
+.question[
+Welche Eigenschaften von Tidy data sind hier nicht erfüllt?
+]
+
+.footnote[
+.small[Quelle: [Bundesamt für Statistik - Kosten des Gesundheitswesens nach Leistungen]( https://www.bfs.admin.ch/bfs/de/home/statistiken/kataloge-datenbanken/tabellen.assetdetail.14840808.html)]
+]
 
 ---
+background-image: url("img/untidy-data/untidy-data.006.png")
+background-size: contain
+
 .question[
 Welche Eigenschaften von Tidy data sind hier nicht erfüllt?
 ]
 
-```{r}
-knitr::include_graphics("img/untidy-data/untidy-data.003.png")
-```
-
-.xsmall[Quelle: [Bundesamt für Statistik - Ständige Wohnbevölkerung nach Altersklasse und Altersmasszahlen nach Kanton, Provisorische Jahresergebnisse, 2020]( https://www.bfs.admin.ch/bfs/de/home/statistiken/kataloge-datenbanken/tabellen.assetdetail.16404478.html)]
+.footnote[
+.small[Quelle: [Bundesamt für Statistik - Kosten des Gesundheitswesens nach Leistungen]() https://www.bfs.admin.ch/bfs/de/home/statistiken/kataloge-datenbanken/tabellen.assetdetail.14840808.html)]
+]
 
 ---
+background-image: url("img/untidy-data/untidy-data.007.png")
+background-size: contain
+
 .question[
 Welche Eigenschaften von Tidy data sind hier nicht erfüllt?
 ]
 
-```{r}
-knitr::include_graphics("img/untidy-data/untidy-data.004.png")
-```
-
-.xsmall[Quelle: [Bundesamt für Statistik - Kosten des Gesundheitswesens nach Leistungen]( https://www.bfs.admin.ch/bfs/de/home/statistiken/kataloge-datenbanken/tabellen.assetdetail.14840808.html)]
+.footnote[
+.small[Quelle: [Bundesamt für Statistik - Klimadaten: Eistage, Frosttage, Sommertage, Hitzetage, Tropennächte und Niederschlagstage](https://www.bfs.admin.ch/bfs/de/home/statistiken/kataloge-datenbanken/tabellen.assetdetail.15964164.html)]
+]
 
 ---
+background-image: url("img/untidy-data/untidy-data.008.png")
+background-size: contain
+
 .question[
 Welche Eigenschaften von Tidy data sind hier nicht erfüllt?
 ]
 
-```{r}
-knitr::include_graphics("img/untidy-data/untidy-data.005.png")
-```
-
-.xsmall[Quelle: [Bundesamt für Statistik - Kosten des Gesundheitswesens nach Leistungen]( https://www.bfs.admin.ch/bfs/de/home/statistiken/kataloge-datenbanken/tabellen.assetdetail.14840808.html)]
+.footnote[
+.small[Quelle: [Bundesamt für Statistik - Klimadaten: Eistage, Frosttage, Sommertage, Hitzetage, Tropennächte und Niederschlagstage](https://www.bfs.admin.ch/bfs/de/home/statistiken/kataloge-datenbanken/tabellen.assetdetail.15964164.html)]
+]
 
 ---
+background-image: url("img/untidy-data/untidy-data.009.png")
+background-size: contain
+
 .question[
 Welche Eigenschaften von Tidy data sind hier nicht erfüllt?
 ]
 
-```{r}
-knitr::include_graphics("img/untidy-data/untidy-data.006.png")
-```
+.footnote[
+.small[Quelle: [Bundesamt für Statistik - Klimadaten: Eistage, Frosttage, Sommertage, Hitzetage, Tropennächte und Niederschlagstage](https://www.bfs.admin.ch/bfs/de/home/statistiken/kataloge-datenbanken/tabellen.assetdetail.15964164.html)]
+]
 
-.xsmall[Quelle: [Bundesamt für Statistik - Kosten des Gesundheitswesens nach Leistungen]( https://www.bfs.admin.ch/bfs/de/home/statistiken/kataloge-datenbanken/tabellen.assetdetail.14840808.html)]
 
 ---
+background-image: url("img/untidy-data/untidy-data.010.png")
+background-size: contain
+
 .question[
 Welche Eigenschaften von Tidy data sind hier nicht erfüllt?
 ]
 
-```{r}
-knitr::include_graphics("img/untidy-data/untidy-data.007.png")
-```
-
-.xsmall[Quelle: [Bundesamt für Statistik - Klimadaten: Eistage, Frosttage, Sommertage, Hitzetage, Tropennächte und Niederschlagstage]( https://www.bfs.admin.ch/bfs/de/home/statistiken/kataloge-datenbanken/tabellen.assetdetail.15964164.html)]
+.footnote[
+.small[Quelle: [Bundesamt für Statistik - Klimadaten: Eistage, Frosttage, Sommertage, Hitzetage, Tropennächte und Niederschlagstage](https://www.bfs.admin.ch/bfs/de/home/statistiken/kataloge-datenbanken/tabellen.assetdetail.15964164.html)]
+]
 
 ---
+background-image: url("img/untidy-data/untidy-data.011.png")
+background-size: contain
+
 .question[
 Welche Eigenschaften von Tidy data sind hier nicht erfüllt?
 ]
 
-```{r}
-knitr::include_graphics("img/untidy-data/untidy-data.008.png")
-```
+.footnote[
+.small[Quelle: [Bundesamt für Statistik - Klimadaten: Eistage, Frosttage, Sommertage, Hitzetage, Tropennächte und Niederschlagstage](https://www.bfs.admin.ch/bfs/de/home/statistiken/kataloge-datenbanken/tabellen.assetdetail.15964164.html)]
+]
 
-
-.xsmall[Quelle: [Bundesamt für Statistik - Klimadaten: Eistage, Frosttage, Sommertage, Hitzetage, Tropennächte und Niederschlagstage]( https://www.bfs.admin.ch/bfs/de/home/statistiken/kataloge-datenbanken/tabellen.assetdetail.15964164.html)]
 
 ---
+background-image: url("img/untidy-data/untidy-data.012.png")
+background-size: contain
+
 .question[
 Welche Eigenschaften von Tidy data sind hier nicht erfüllt?
 ]
 
-```{r}
-knitr::include_graphics("img/untidy-data/untidy-data.009.png")
-```
-
-.xsmall[Quelle: [Bundesamt für Statistik - Klimadaten: Eistage, Frosttage, Sommertage, Hitzetage, Tropennächte und Niederschlagstage]( https://www.bfs.admin.ch/bfs/de/home/statistiken/kataloge-datenbanken/tabellen.assetdetail.15964164.html)]
-
----
-.question[
-Welche Eigenschaften von Tidy data sind hier nicht erfüllt?
+.footnote[
+.small[Quelle: [Bundesamt für Statistik - Klimadaten: Eistage, Frosttage, Sommertage, Hitzetage, Tropennächte und Niederschlagstage](https://www.bfs.admin.ch/bfs/de/home/statistiken/kataloge-datenbanken/tabellen.assetdetail.15964164.html)]
 ]
 
-```{r}
-knitr::include_graphics("img/untidy-data/untidy-data.010.png")
-```
-
-
-.xsmall[Quelle: [Bundesamt für Statistik - Klimadaten: Eistage, Frosttage, Sommertage, Hitzetage, Tropennächte und Niederschlagstage]( https://www.bfs.admin.ch/bfs/de/home/statistiken/kataloge-datenbanken/tabellen.assetdetail.15964164.html)]
-
----
-.question[
-Welche Eigenschaften von Tidy data sind hier nicht erfüllt?
-]
-
-```{r}
-knitr::include_graphics("img/untidy-data/untidy-data.011.png")
-```
-
-
-.xsmall[Quelle: [Bundesamt für Statistik - Klimadaten: Eistage, Frosttage, Sommertage, Hitzetage, Tropennächte und Niederschlagstage]( https://www.bfs.admin.ch/bfs/de/home/statistiken/kataloge-datenbanken/tabellen.assetdetail.15964164.html)]
-
----
-.question[
-Welche Eigenschaften von Tidy data sind hier nicht erfüllt?
-]
-
-```{r}
-knitr::include_graphics("img/untidy-data/untidy-data.012.png")
-```
-
-.xsmall[Quelle: [Bundesamt für Statistik - Klimadaten: Eistage, Frosttage, Sommertage, Hitzetage, Tropennächte und Niederschlagstage]( https://www.bfs.admin.ch/bfs/de/home/statistiken/kataloge-datenbanken/tabellen.assetdetail.15964164.html)]
 
 ???
 - 6 Tabellen in 6 Tabs -> Eine Variable (typ_tag)

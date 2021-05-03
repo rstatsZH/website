@@ -716,9 +716,11 @@ library(tidyverse)
 ```
 
 ---
-# Üben + Vertiefen
+class: middle
 
-Link zu Woche 7
+# Weiterführende Ressourcen - Üben + Vertiefen
+
+https://rstatszh.github.io/website/posts/2021-04-30-woche07/
 
 ---
 # Projektarbeit - Unterstützung bis Anfang Juli
@@ -764,6 +766,8 @@ Bitte ausfüllen: [kutt.it/rstatszh-eval](https://kutt.it/rstatszh-eval)
 1. **Beratung:** Projektbezogener Support, Code Review, Coaching
 2. **rstatsZH Kursleitung:** Info über den Kurs verbreiten
 3. **Kurse zu vertiefenden Themen:** Entwicklung von 4-Stunden Workshops
+
+Contact: [Lars@Lse.de](mailto:lars@lse.de)
 
 ---
 # `r emo::ji("sunflower")` Danke 

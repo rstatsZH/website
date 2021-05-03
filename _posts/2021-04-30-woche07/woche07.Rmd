@@ -58,6 +58,13 @@ googlesheets4::read_sheet("198t05eFYHxuxY0d2jCvPkES1ZaMcsSYgBKcg0xQTwb0") %>%
   filter(woche == "woche7") %>% 
   select(topic, type, titel2) %>% 
   arrange(topic) %>% 
-  knitr::kable(format = "html", col.names = NULL)
+  rename(
+    Thema = topic,
+    Typ = type,
+    Titel = titel2
+  ) %>% 
+  mutate(ID = seq(1:n())) %>% 
+  relocate(ID) %>% 
+  knitr::kable(format = "html")
 
 ```

@@ -4,7 +4,7 @@
     <title>rstatsZH - Data Science mit R</title>
     <meta charset="utf-8" />
     <meta name="author" content="Lars Schöbitz" />
-    <meta name="date" content="2020-04-29" />
+    <meta name="date" content="2020-05-02" />
     <script src="libs/header-attrs/header-attrs.js"></script>
     <link href="libs/remark-css/default.css" rel="stylesheet" />
     <link href="libs/font-awesome/css/all.css" rel="stylesheet" />
@@ -40,34 +40,65 @@ class: title-slide
 
 .bottom[
 
-<p>Lars Schöbitz</p><p>2020-04-29</p>
+<p>Lars Schöbitz</p><p>2020-05-02</p>
 ]
 
 ---
 # Rückblick - Woche 6 
 
-
+- Erweiterte Vektoren
+  - Faktoren
+  - Datums- und Zeitwerte
+  - Tibbles
+- Daten importieren
+  - `read_csv()`
+  - `read_excel()`
+  - etc.
+- SQL in R Markdown
+- Tidy Data Konzept
+- Daten drehen (pivoting) mit `{tidyr}`
+  - `pivot_longer()`
+  - `pivot_wider()`
 
 ---
 class: middle, inverse
 
-# Hausaufgabe 6
+# .large[Hausaufgabe 6]
 
 ---
-# Hausaufgabe 6
+background-image: url(img/questions.jpg)
+background-size: contain
+background-position: right
+class: middle
 
-.question[Gibt es Fragen?]
+# .large[Hausaufgabe 6]
 
+
+---
+# Hausaufgabe 6 - Lösungen
+
+- **GitHub Organisation:** rstatsZH
+    - https://github.com/rstatsZH/
+- **Repo:** ha-06-treibhausgase
+    - https://github.com/rstatsZH/ha-06-treibhausgase
+- **R Markdown Datei:** ha-06-solutions.Rmd
+    - https://github.com/rstatsZH/ha-06-treibhausgase/blob/main/ha-06-solutions.Rmd
+    
 ---
 # Ziele für diese Woche
 
 Am Ende dieser Woche könnt ihr:
 
+- Mehrere Dataframes zusammenfügen
+- Tabellen mit dem `{gt}` Package erstellen
+- Einen mit `ggplot()` erstellten Plot interaktiv darstellen
+- Einen R Markdown Bericht als Website publizieren
+- Mit den im Kurs erlernten Fähigkeiten selbstständig weiter arbeiten
 
 ---
 class: middle, inverse
 
-# .big[Mit mehreren Dataframes arbeiten]
+# .large[Mit mehreren Dataframes arbeiten]
 
 ---
 class: middle
@@ -144,15 +175,18 @@ Daten kommen aus dem Discover Magazine. Daten aus dem Artikel herausgeholt.
 
 ```
 # A tibble: 10 x 2
-  name              profession           
-  &lt;chr&gt;             &lt;chr&gt;                
-1 Ada Lovelace      Mathematician        
-2 Marie Curie       Physicist and Chemist
-3 Janaki Ammal      Botanist             
-4 Chien-Shiung Wu   Physicist            
-5 Katherine Johnson Mathematician        
-6 Rosalind Franklin Chemist              
-# … with 4 more rows
+   name               profession                        
+   &lt;chr&gt;              &lt;chr&gt;                             
+ 1 Ada Lovelace       Mathematician                     
+ 2 Marie Curie        Physicist and Chemist             
+ 3 Janaki Ammal       Botanist                          
+ 4 Chien-Shiung Wu    Physicist                         
+ 5 Katherine Johnson  Mathematician                     
+ 6 Rosalind Franklin  Chemist                           
+ 7 Vera Rubin         Astronomer                        
+ 8 Gladys West        Mathematician                     
+ 9 Flossie Wong-Staal Virologist and Molecular Biologist
+10 Jennifer Doudna    Biochemist                        
 ```
 ]
 
@@ -161,15 +195,16 @@ Daten kommen aus dem Discover Magazine. Daten aus dem Artikel herausgeholt.
 
 ```
 # A tibble: 8 x 3
-  name              birth_year death_year
-  &lt;chr&gt;                  &lt;dbl&gt;      &lt;dbl&gt;
-1 Janaki Ammal            1897       1984
-2 Chien-Shiung Wu         1912       1997
-3 Katherine Johnson       1918       2020
-4 Rosalind Franklin       1920       1958
-5 Vera Rubin              1928       2016
-6 Gladys West             1930         NA
-# … with 2 more rows
+  name               birth_year death_year
+  &lt;chr&gt;                   &lt;dbl&gt;      &lt;dbl&gt;
+1 Janaki Ammal             1897       1984
+2 Chien-Shiung Wu          1912       1997
+3 Katherine Johnson        1918       2020
+4 Rosalind Franklin        1920       1958
+5 Vera Rubin               1928       2016
+6 Gladys West              1930         NA
+7 Flossie Wong-Staal       1947         NA
+8 Jennifer Doudna          1964         NA
 ```
 ]
 
@@ -177,15 +212,17 @@ Daten kommen aus dem Discover Magazine. Daten aus dem Artikel herausgeholt.
 
 ```
 # A tibble: 9 x 2
-  name           known_for                                       
-  &lt;chr&gt;          &lt;chr&gt;                                           
-1 Ada Lovelace   first computer algorithm                        
-2 Marie Curie    theory of radioactivity,  discovery of elements…
-3 Janaki Ammal   hybrid species, biodiversity protection         
-4 Chien-Shiung … confim and refine theory of radioactive beta de…
-5 Katherine Joh… calculations of orbital mechanics critical to s…
-6 Vera Rubin     existence of dark matter                        
-# … with 3 more rows
+  name            known_for                                      
+  &lt;chr&gt;           &lt;chr&gt;                                          
+1 Ada Lovelace    first computer algorithm                       
+2 Marie Curie     theory of radioactivity,  discovery of element…
+3 Janaki Ammal    hybrid species, biodiversity protection        
+4 Chien-Shiung Wu confim and refine theory of radioactive beta d…
+5 Katherine John… calculations of orbital mechanics critical to …
+6 Vera Rubin      existence of dark matter                       
+7 Gladys West     mathematical modeling of the shape of the Eart…
+8 Flossie Wong-S… first scientist to clone HIV and create a map …
+9 Jennifer Doudna one of the primary developers of CRISPR, a gro…
 ```
 ]
 
@@ -307,7 +344,7 @@ nrow(works)
 ---
 class: middle, inverse
 
-# Dataframes zusammenfügen
+# .large[Dataframes zusammenfügen]
 
 ---
 
@@ -984,7 +1021,7 @@ professions %&gt;%
 </table></div>
 
 ---
-## Schritt 1 
+## Schritt 1 - Daten zusammenfügen
 
 
 ```r
@@ -1011,7 +1048,7 @@ einkaeufe_preise
 ```
 
 ---
-## Schritt 2
+## Schritt 2 - Daten zusammefassen
 
 
 ```r
@@ -1035,7 +1072,7 @@ einkaeufe_preise_sum
 
 
 ---
-## Schritt 3
+## Schritt 3 - Daten zusammenfügen + eingrenzen
 
 
 ```r
@@ -1056,7 +1093,7 @@ kunden_tab
 ```
 
 ---
-## Schritt 4
+## Schritt 4 - Daten als Tabelle darstellen
 
 
 ```r
@@ -1876,7 +1913,7 @@ Quelle: [Bundesamt für Statistik - Kosten des Gesundheitswesens nach Leistungen
 ---
 class: inverse, middle
 
-# Tabellen darstellen mit dem `{gt}` Package
+# .large[Tabellen darstellen mit dem {gt} Package]
 
 
 ---
@@ -1917,7 +1954,7 @@ Quelle: [gt.rstudio.com](https://gt.rstudio.com/index.html)
 ]
 
 ---
-# Tabellen dartellen - Packages
+# Tabellen darstellen - Weitere Packages
 
 - `{kableExtra}`: https://haozhu233.github.io/kableExtra/
 - `{formattable}`: https://renkun-ken.github.io/formattable/
@@ -1938,31 +1975,61 @@ class: middle, inverse
 ---
 # Was habt ihr gelernt?
 
-- 
-
+- Anwendung von Tidyverse Packages zum 
+  - Importieren,
+  - Aufräumen (Tidying),
+  - Transformieren, 
+  - Visualisieren, und
+  - Kommunizieren von Daten.
+- Kollaboration und Versionsverwaltung mit Git/GitHub
+- Datenprojekte reproduzierbar publizieren mit GitHub
+- Das Konzept von Tidy Data
 
 ---
 class: middle, inverse
 
 # .large[Wie geht's weiter?]
 
+---
+# Raus aus der RStudio Cloud
+
+1. Installationen: https://github.com/rstatsZH/kochbuch/tree/main/01-Installation
+2. Einmalig: Tidyverse Packages installieren
+3. Danach: Tidyverse Packages laden
+4. Packages ausserhalb des Tidyverse installieren und laden (e.g. `janitor`)
+
+
+```r
+# Einmalig in Konsole ausführen
+install.packages("tidyverse")
+
+# In jedem Skript
+library(tidyverse)
+```
 
 ---
-# Projektarbeit
+class: middle
+
+# Weiterführende Ressourcen - Üben + Vertiefen
+
+https://rstatszh.github.io/website/posts/2021-04-30-woche07/
 
 ---
-# Üben
+# Projektarbeit - Unterstützung bis Anfang Juli
 
----
-# Vertiefen
+**Hausaufgabe 6**
 
----
+1. GitHub Repository erstellen und RStudio Projekt aufgleisen (Hausaufgabe 6)
+2. Daten für das Projekt identifizieren
 
----
-class: middle, inverse
+**Wie es weiter geht: Bericht mit R Markdown schreiben**
 
-# .big[Hausaufgabe]
-
+1. Daten importieren  
+2. Daten (visuell) erkunden
+3. Daten ggf. transformieren und dann erneut (visuell) erkunden
+4. Fragen an den Datensatz formulieren
+5. Versuchen zu Antworten zu kommen und dokumentieren
+6. Immer wieder, git add, commit, push 
 
 ---
 class: middle, inverse
@@ -1986,13 +2053,22 @@ Bitte ausfüllen: [kutt.it/rstatszh-eval](https://kutt.it/rstatszh-eval)
 ]
 
 ---
+# Wie es für mich weiter geht
+
+1. **Beratung:** Projektbezogener Support, Code Review, Coaching
+2. **rstatsZH Kursleitung:** Info über den Kurs verbreiten
+3. **Kurse zu vertiefenden Themen:** Entwicklung von 4-Stunden Workshops
+
+Contact: [Lars@Lse.de](mailto:lars@lse.de)
+
+---
 # 🌻 Danke 
 
 Für die Aufmerksamkeit!
 
 Für die R packages [{xaringan}](https://github.com/yihui/xaringan) und [{xaringanthemer}](https://github.com/gadenbuie/xaringanthemer) mit welchen die Folien geschrieben wurden.
 
-Eine PDF Version der Folien kann hier heruntergeladen werden: https://github.com/rstatsZH/website/raw/master/slides/e1_d06-data-import-tidy/e1_d06-data-import-tidy.pdf
+Eine PDF Version der Folien kann hier heruntergeladen werden: https://github.com/rstatsZH/website/raw/master/slides/e1_d07-data-join/e1_d07-data-join.pdf
 
 <hr/>
 

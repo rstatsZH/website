@@ -739,10 +739,37 @@ https://rstatszh.github.io/website/posts/2021-04-30-woche07/
 5. Versuchen zu Antworten zu kommen und dokumentieren
 6. Immer wieder, git add, commit, push 
 
+
+---
+class: middle, inverse
+
+# .big[Reflexion]
+
+---
+# Reflexion
+
+## 5 min Nachdenken + Notizen, dann Austausch 2er Teams
+
+.question[
+
+1. Was sind die drei nützlichsten Dinge die du gelernt hast?
+2. Welches Thema war besonders schwer zu folgen? 
+3. Was hat dir gefehlt?
+
+]
+
+--
+```{r}
+knitr::include_graphics("img/kommentar.png")
+```
+
+
 ---
 class: middle, inverse
 
 # .big[Feedback]
+
+
 
 ---
 class: left

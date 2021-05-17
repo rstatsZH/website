@@ -2,7 +2,7 @@
 title: "rstatsZH - Data Science mit R"
 subtitle: "Willkommen"  
 author: "Lars Schöbitz"
-date: "2020-02-08"
+date: "2021-05-17"
 output:
   xaringan::moon_reader:
     self_contained: false
@@ -182,11 +182,11 @@ class: inverse, middle
 - **Übungen:** Praktika während der Session
 - **Hausaufgaben:** Einzureichen bis zum nächsten Kurstag
 - **Persönliches Tutoring:** Sprechstunden ausserhalb der Kurstage
-- **Abschluss Projekt:** 
-    - Team Arbeit mit Daten eurer Wahl
-    - Bericht (1 Seite) 
+- **Abschluss Projekt (freiwillig):** 
+    - Arbeit mit Daten eurer Wahl
+    - Bericht  
     - 5 Minuten Präsentation
-- **Zertifikat:** Bestätigung über Teilnahme und Aufwand
+- **Zertifikat:** Bestätigung über Teilnahme
 
 ---
 class: inverse, middle
@@ -202,7 +202,6 @@ class: inverse, middle
 
 - Zoom
 - Slack
-- (Google Docs)
 - https://rstatszh.github.io/website/
 ]
 
@@ -285,58 +284,6 @@ Nachricht zum Beispiel.
 
 Aber, wichtiger als der passende Kanal ist mir, dass ihr Fragen stellt. Egal wo.
   
-
----
-# Google Docs
-
-Unser geteiltes Notizbuch (ein Experiment)
-
-**Wozu nutzen wir es?**
-
-- Für bestimmte Übungen und Aufgaben
-- Zum Teilen von Bildern
-
-???
-Noch bin ich mit nicht sicher ob auch Google Docs zum Einsatz kommt. Es wäre 
-eher experimentell. 
-
----
-# KeyCastr
-
-.pull-left[
-
-- MacOS 
-- Schweizer Keyboard Layout
-- cmd ⌘ (Mac) = Ctrl (Windows)
--  ⌥ (Mac) = Alt (Windows)
-]
-
-.pull-right[
-
-```{r, out.width="40%"}
-
-knitr::include_graphics("img/keycastr.png")
-
-```
-
-]
-
---
-
-.fyi[
-Wer von euch nutzt Windows? Antwortet mit "ja" als Reaktion in Zoom.
-]
-
-???
-Ich nutze ein MacBook und ein schweizer Keyboard Layout. Wenn ich live code
-schreibe werdet ihr unten rechts im Bildschirmrand die Tasten sehen welche
-ich gedrückt habe. 
-
-Bei wichtigen Tastaturkürzeln, werde ich auch immer für
-Windows wiederholen was dies bedeutet. 
-
-Kurze Umfrage: Bitte mit ja antworten wenn ihr Windows nutzt.
-
 ---
 class: inverse, middle
 
@@ -352,7 +299,7 @@ Am Ende dieses Kurses kannst du:
 - das Konzept von tidy data verstehen und anwenden
 
 --
-- explorative Datenanalysen durchführen (einfache lineare Modellierung machen hier einen kleinen Teil aus)
+- explorative Datenanalysen durchführen
 - dir selbst und Anderen helfen mehr über die grosse Welt der Möglichkeiten für Data Science mit R zu lernen
 
 ???
@@ -546,13 +493,15 @@ background-image: url(img/inclusion.jpg)
 background-size: contain
 background-position: right
 
-# Verhaltenskodex
+# Verhaltenskodex<sup>1</sup>
 
 - Diversität und Inklusion
 - Namen und Pronomen
 - Lernprozess
 
-.footnote[Photo by: [Sharon McCutcheon](https://unsplash.com/@sharonmccutcheon)]
+.footnote[Photo by: [Sharon McCutcheon](https://unsplash.com/@sharonmccutcheon)
+
+<sup>1</sup> https://rstatszh.github.io/website/code_of_conduct.html.]
 
 ???
 Diversität und Inklusion sind auch mir sehr wichtig und mit einem 
@@ -585,27 +534,6 @@ Steigen wir ein
 - Folge meinen Anweisungen im Zoom Video
 ]
 
----
-# R Markdown Hilfe
- 
-.pull-left[
-.center[
-.midi[R Markdown Cheat Sheet  
-`Help -> Cheatsheets`]
-]
-```{r echo=FALSE, out.width="80%"}
-knitr::include_graphics("img/rmd-cheatsheet.png")
-```
-]
-.pull-right[
-.center[
-.midi[Markdown Quick Reference  
-`Help -> Markdown Quick Reference`]
-]
-```{r echo=FALSE, out.width="80%"}
-knitr::include_graphics("img/md-cheatsheet.png")
-```
-]
 
 ---
 # Wie nutzen wir R Markdown?

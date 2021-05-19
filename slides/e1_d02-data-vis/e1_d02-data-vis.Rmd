@@ -2,7 +2,7 @@
 title: "rstatsZH - Data Science mit R"
 subtitle: "Datenvisualisierung mit ggplot2"  
 author: "Lars Schöbitz"
-date: "2020-03-07"
+date: "2021-05-25"
 output:
   xaringan::moon_reader:
     self_contained: false
@@ -148,7 +148,7 @@ Deshalb sind dies die Ziele für heute.
 
 - RStudio Cloud: https://rstudio.cloud/spaces/122221/projects
 - Kurs Webseite: https://rstatszh.github.io/website/
-- GitHub: https://github.com/rstatszh-k001
+- GitHub: https://github.com/rstatszh-k003
 
 **GitHub Credentials**
 
@@ -170,30 +170,30 @@ class: middle, inverse
 
 # .big[Erste Schritte (replay)]
 
-
 ---
-background-image: url(img/email-klick.jpeg)
+background-image: url(img/screenshot/screenshot.004.png)
 background-size: contain 
 
 ---
-background-image: url(img/screenshot.004.jpeg)
+background-image: url(img/screenshot/screenshot.005.png)
 background-size: contain 
 
 ---
-background-image: url(img/screenshot.005.jpeg)
+background-image: url(img/screenshot/screenshot.006.png)
 background-size: contain 
 
 ---
-background-image: url(img/screenshot.006.jpeg)
+background-image: url(img/screenshot/screenshot.007.png)
 background-size: contain 
 
 ---
-background-image: url(img/screenshot.007.jpeg)
+background-image: url(img/screenshot/screenshot.008.png)
 background-size: contain 
 
 ---
-background-image: url(img/screenshot.008.jpeg)
+background-image: url(img/screenshot/screenshot.014.png)
 background-size: contain 
+
 
 ---
 class: middle, inverse

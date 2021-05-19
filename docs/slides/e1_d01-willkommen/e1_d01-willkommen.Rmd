@@ -310,7 +310,7 @@ Unsere Analysen werden überwiegend explorativ und deskriptiv sein. Wir decken e
 Ich bin selbst nicht sehr erfahren auf dem Gebiet, aber bin überzeugt, dass ihr am Ende des Kurses die Fähigkeiten haben werdet euch in bestimme andere Bereiche weiter zu entwickeln.
 
 ---
-class: middle
+class: middle, inverse
 
 # .big[Reproduzierbare Datenanalyse]
 
@@ -525,6 +525,35 @@ class: middle, inverse
 Steigen wir ein
 
 ---
+background-image: url(img/screenshot/screenshot.009.png)
+background-size: contain 
+
+---
+background-image: url(img/screenshot/screenshot.010.png)
+background-size: contain 
+
+---
+background-image: url(img/screenshot/screenshot.011.png)
+background-size: contain 
+
+---
+background-image: url(img/screenshot/screenshot.012.png)
+background-size: contain 
+
+---
+background-image: url(img/screenshot/screenshot.013.png)
+background-size: contain 
+
+---
+background-image: url(img/screenshot/screenshot.014.png)
+background-size: contain 
+
+---
+background-image: url(img/screenshot/screenshot.001.png)
+background-size: contain 
+
+
+---
 # Praktikum - Willkommen
 
 .note[
@@ -553,7 +582,7 @@ background-size: contain
 ```{r, echo = FALSE}
 
 countdown(
-  minutes = 5, seconds = 0,
+  minutes = 10, seconds = 0,
   left = 0, right = 0,
   padding = "15px", margin = "5%",
   font_size = "4em"
@@ -591,7 +620,7 @@ Schickt die Antwort in den Zoom Chat.
 
 ]
 ---
-class: middle
+class: middle. inverse
 
 # .big[R - Wesentliches]
 
@@ -617,28 +646,6 @@ install.packages("package_name")
 library(package_name)
 ```
 
----
-# R - Wesentliches
-
-- Auf Spalten (Variablen) in Dataframes wird mit `$` zugegriffen:
-
-```{r, eval=FALSE, echo=TRUE}
-
-# Beispiel
-dataframe$var_name
-
-# Praxis 
-penguins$species
-
-```
-
---
-
-- Auf die Dokumentation von Objekten, Packages, Funktionen, etc. kann mit `?` zugegriffen werden
-
-```{r eval=FALSE}
-?mean
-```
 
 ---
 # [tidyverse.org](https://www.tidyverse.org/)
@@ -694,7 +701,7 @@ Dementsprechend orientiert sich der Kurs auch an dem von ihm geschriebenen Buch 
 ---
 class: middle
 
-# .huge[Praktikum]
+# .huge[Praktikum 1]
 
 ---
 # Praktikum - Daten Visualisierung
@@ -844,9 +851,9 @@ knitr::include_graphics("img/phd_comics_vc.gif")
 ```
 
 ---
-class: left, middle
+class: middle, inverse
 
-#.huge[Tour: GitHub]
+#.big[Tour: GitHub]
 
 ---
 # Wie nutzen wir Git und GitHub?
@@ -877,7 +884,7 @@ knitr::include_graphics("img/whole-game-04.png")
 ```
 
 ---
-class: middle
+class: middle. inverse
 
 # .big[Hausaufgabe]
 
@@ -894,7 +901,7 @@ class: middle
 ]
 
 ---
-class: middle
+class: middle, inverse
 
 # .big[Feedback]
 

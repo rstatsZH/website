@@ -146,7 +146,7 @@ Deshalb sind dies die Ziele für heute.
 
 **Lesezeichen**
 
-- RStudio Cloud: https://rstudio.cloud/spaces/122221/projects
+- RStudio Cloud: https://rstudio.cloud/spaces/142876/projects
 - Kurs Webseite: https://rstatszh.github.io/website/
 - GitHub: https://github.com/rstatszh-k003
 
@@ -235,7 +235,7 @@ background-size: contain
 ```{r, echo = FALSE}
 
 countdown(
-  minutes = 5, seconds = 0,
+  minutes = 10, seconds = 0,
   left = 0, right = 0,
   padding = "15px", margin = "5%",
   font_size = "4em"
@@ -402,69 +402,9 @@ ggplot(data = penguins,
 - nutze `.` um nicht zu splitten 
 - `facet_wrap()`: 1d wird entsprechend der angegebenen Anzahl von Zeilen und Spalten oder der verfügbaren Plotfläche umbrochen
 
----
-class: iverse, middle
-
-# .large[Praktikum 3 - {ggplot2}]
 
 ---
-
-.note[
-
-1. **RStudio Cloud**: Öffne deinen Arbeitsbereich für den Kurs in der RStudio Cloud
-2. **RStudio Cloud / Projects**: Öffne erneut das Praktikum 03
-3. Folgt wieder auf dem Bildschirm
-
-]
-
----
-# Eine Skala ersetzen - Farbskalen (color)
-
-```{r penguins-scale-color, warning = FALSE, echo=TRUE, fig.show="hide"}
-ggplot(penguins, aes(x = bill_length_mm, y = bill_depth_mm, colour = species)) +
-  geom_point() +
-  scale_color_viridis_d() #<<
-```
-
-```{r ref.label = "penguins-scale-color", echo = FALSE, warning = FALSE, out.width = "80%", fig.width = 8}
-```
-
----
-# Eine Skala ersetzen - Farbskalen (fill)
-
-```{r penguins-scale-fill, warning = FALSE, echo=TRUE, fig.show="hide"}
-ggplot(penguins, aes(x = species, fill = island)) +
-  geom_bar() +
-  scale_fill_viridis_d() #<<
-```
-
-```{r ref.label = "penguins-scale-fill", echo = FALSE, warning = FALSE, out.width = "80%", fig.width = 8}
-```
-
-
----
-# 
-
-.pull-left[
-
-```{r}
-
-```
-
-]
-
-.pull-right[
-
-```{r}
-
-```
-
-]
-
-
-
----
-class: iverse, middle
+class: inverse, middle
 
 # .large[Praktikum 4 - {ggplot2}]
 
@@ -506,7 +446,6 @@ ggplot(data = penguins,
 
 ]
 ]
-
 
 ---
 class: middle, inverse

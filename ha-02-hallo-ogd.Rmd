@@ -26,7 +26,7 @@ Folge den Schritten aus Hausaufgabe 1 oder den Folien der Woche 2 um das GitHub 
 
 # Packages
 
-In dieser Hausaufgabe lernst du ein zwei R Packages kennen, welche wir in Woche 3 in mehr Detail behandelnt werden. Das `{readr}` und das `{dplyr}` Package, welche beide zur Sammlung der `{tidyverse}` Packages gehören. 
+In dieser Hausaufgabe lernst du ein zwei R Packages kennen, welche wir in Woche 3 in mehr Detail behandeln werden. Das `{readr}` und das `{dplyr}` Package, welche beide zur Sammlung der `{tidyverse}` Packages gehören. 
 
 ```{r}
 
@@ -71,14 +71,14 @@ Erinnerst du dich, dass RStudio in vier Bereiche unterteilt ist? Versuche diese,
 
 ## Übung 2
 
-Verifiziere, dass der Datensatz `corona_kultur` in deinem Environment in RStudio zu finden ist. Wieviele Beobachtungen gibt es in diesem Datensatz?
+Verifiziere, dass der Datensatz `corona_kultur` in deinem Environment (Fenster oben rechts) in RStudio zu finden ist. Wieviele Beobachtungen gibt es in diesem Datensatz?
 
 **Aufgaben**
 
 1. Im RStudio Environment, klicke auf den Namen das Datensatzes `corona_kultur`
-2. Führe den Code `View(corona_kultur)` in der Console aus.
+2. Führe den Code `View(corona_kultur)` in der **Console** aus.
 3. Nutze die Funktionen `glimpse()` und `str()` in einem R Code-chunk um die Daten zu erkunden
-4. Führe das Objekt welches die Daten enthält in der Console aus
+4. Führe das Objekt `corona_kultur` in der Console aus? Kannst du die Anzahl Reihen und Spalten im Output finden?
 5. Welche zwei weiteren Funktionen kennst du um die Anzahl der Reihen und Spalten eines Datensatzes zu erfahren?
 6. In der Spalte `Beschluss` taucht immer wieder der Wert 'NA' auf. Was bedeutet dies? Generell, und für diesen Datensatz?
 
@@ -126,12 +126,25 @@ corona_kultur_beschluss_gering <- corona_kultur %>%
 
 **Aufgaben**
 
-1. Schreibe einen Text (im Style von **Code vorlesen**) für den Code im Code-chunk mit dem Titel 'beschluss-klein' in deiner R Markdown Datei
-2. Nutze das Objekt `corona_kultur_beschluss_gering` und plotte die Verteilung der beschlossenen Beträge mittels eines Histograms (**Tipp:** Die Variable heisst 'Beschluss' und in R spielt Gross- und Kleinschreibung eine Rolle)
-3. Ordne die Variable 'Sparte' der der visuellen Eigenschaft für Farben zu (**Tipp:** Schaue in Praktikum 3 oder 4 nach wie du es dort gemacht hast)
-4. Nutze Faceting und lege die Variable 'Kategorie' auf die Spalten (**Tipp:** Schaue in Praktikum 4 nach wie du es dort gemacht hast)
-5. Nutze die Funktion `scale_fill_brewer()` und passe die Farbe nach einer Skalierung deiner Wahl an
-6. Füge einen Titel, einen Untertitiel und eine Bildunterschrift (caption) hinzu. (**Tipp:** Schaue in den Folien für Woche 2 nach)
+1. Nutze die Daten im Objekt `corona_kultur_beschluss_gering` um mit der Funktion `ggplot()` einen Plot zu erstellen
+2. Nutze die Variable 'Beschluss' für die x-Achse 
+3. Nutze das Geom für ein Histogram für die Darstellung des Plots (**Tipp:** `geom_histogram`)
+
+**Führe den Code aus und betrachte den Plot**
+
+4. Ordne die Variable 'Sparte' der der visuellen Eigenschaft für Farben zu (**Tipp:** Schaue in Praktikum 3 oder 4 nach wie du es dort gemacht hast)
+
+**Führe den Code aus und betrachte den Plot**
+
+5. Nutze Faceting und lege die Variable 'Kategorie' auf die Spalten (**Tipp:** Schaue in Praktikum 4 nach wie du es dort gemacht hast)
+
+**Führe den Code aus und betrachte den Plot**
+
+6. Innerhalb der Klammern der Funktion `geom_histogram()`, füge das Argument 'binwidth' hinzu uns setze den Wert auf 10000 (**Tipp**: `binwidth = 10000`). Was bewirkt dieses Argument?
+
+**Führe den Code aus und betrachte den Plot**
+
+7. Füge einen Titel, einen Untertitiel und eine Bildunterschrift (caption) hinzu. (**Tipp:** Schaue in den Folien für Woche 2 nach)
 
 ```{r, include=FALSE}
 
@@ -139,7 +152,6 @@ corona_kultur_beschluss_gering %>%
   ggplot(aes(x = Beschluss, fill = Sparte)) +
   geom_histogram(binwidth = 10000) +
   facet_wrap(~Kategorie, ncol = 3) +
-  scale_fill_brewer(type = "qual", palette = 3) +
   labs(title = "Corona Hilfen im Kulturbereich im Kanton Zürich", 
        subtitle = "Verteilung der Beträge kleiner 100'000 CHF nach Kategorie und Sparte", 
        caption = "Daten: opendata.swiss")
@@ -152,12 +164,12 @@ Gratulation! Du hast die Übungen abgeschlossen. Falls du noch Lust und Zeit has
 
 ## Übung 4 (Bonus)
 
-1. Nutze das Objekt `corona_kultur` und erstelle einen Barplot
+1. Nutze das Objekt `corona_kultur` und erstelle eine Säulendiagram (`geom_bar`)
 2. Ordne die Variable 'Sparte' der visuellen Eigenschaft für Farben zu
-3. Ordne der x-Achse eine kategoriale Variable zu (anstatt einer numerischen Variable) (**Achtung: Dieser Schritt wurde nachträglich hinzugefügt**)
+3. Ordne der x-Achse eine kategoriale Variable 'Status' zu (anstatt einer numerischen Variable 'Beschluss') 
 4. Nutze Faceting und lege die Variable 'Kategorie' auf die Spalten
 5. Füge einen Titel, einen Untertitiel und eine Bildunterschrift (caption) hinzu.
-6. Ändere die Position der Legende auf den unteren Bereich des Plots (**Tipp:** Schau nach was wir in Übung 2 aus Praktikum 4 gemacht haben)
+6. Ändere die Position der Legende auf den unteren Bereich des Plots (**Tipp:** Schau nach was wir in Übung 2 aus Praktikum 4 gemacht haben und ersetze 'none' durch 'bottom')
 
 ```{r, include=FALSE}
 

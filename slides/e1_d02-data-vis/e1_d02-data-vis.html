@@ -228,8 +228,8 @@ background-size: contain
 
 # Pause 
 
-<div class="countdown" id="timer_60ae186b" style="right:0;bottom:0;left:0;margin:5%;padding:15px;font-size:4em;" data-warnwhen="0">
-<code class="countdown-time"><span class="countdown-digits minutes">05</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
+<div class="countdown" id="timer_60af458a" style="right:0;bottom:0;left:0;margin:5%;padding:15px;font-size:4em;" data-warnwhen="0">
+<code class="countdown-time"><span class="countdown-digits minutes">10</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
 
 .footnote[Photo by: [Blake Wisz](https://unsplash.com/@blakewisz)]
@@ -344,7 +344,7 @@ background-size: contain
 
 # Pause 
 
-<div class="countdown" id="timer_60ae1947" style="right:0;bottom:0;left:0;margin:5%;padding:15px;font-size:4em;" data-warnwhen="0">
+<div class="countdown" id="timer_60af4457" style="right:0;bottom:0;left:0;margin:5%;padding:15px;font-size:4em;" data-warnwhen="0">
 <code class="countdown-time"><span class="countdown-digits minutes">05</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
 
@@ -396,62 +396,6 @@ ggplot(data = penguins,
 - nutze `.` um nicht zu splitten 
 - `facet_wrap()`: 1d wird entsprechend der angegebenen Anzahl von Zeilen und Spalten oder der verfügbaren Plotfläche umbrochen
 
----
-class: inverse, middle
-
-# .large[Praktikum 3 - {ggplot2}]
-
----
-
-.note[
-
-1. **RStudio Cloud**: Öffne deinen Arbeitsbereich für den Kurs in der RStudio Cloud
-2. **RStudio Cloud / Projects**: Öffne erneut das Praktikum 03
-3. Folgt wieder auf dem Bildschirm
-
-]
-
----
-# Eine Skala ersetzen - Farbskalen (color)
-
-
-```r
-ggplot(penguins, aes(x = bill_length_mm, y = bill_depth_mm, colour = species)) +
-  geom_point() +
-* scale_color_viridis_d()
-```
-
-&lt;img src="e1_d02-data-vis_files/figure-html/unnamed-chunk-13-1.png" width="80%" style="display: block; margin: auto;" /&gt;
-
----
-# Eine Skala ersetzen - Farbskalen (fill)
-
-
-```r
-ggplot(penguins, aes(x = species, fill = island)) +
-  geom_bar() +
-* scale_fill_viridis_d()
-```
-
-&lt;img src="e1_d02-data-vis_files/figure-html/unnamed-chunk-14-1.png" width="80%" style="display: block; margin: auto;" /&gt;
-
-
----
-# 
-
-.pull-left[
-
-
-
-]
-
-.pull-right[
-
-
-
-]
-
-
 
 ---
 class: inverse, middle
@@ -475,7 +419,7 @@ Arbeitet in 2er Teams. Eine Person teilt den Bildschirm. Die andere schreibt mit
 
 .panelset[
 .panel[.panel-name[Plot]
-&lt;img src="e1_d02-data-vis_files/figure-html/unnamed-chunk-17-1.png" width="80%" style="display: block; margin: auto;" /&gt;
+&lt;img src="e1_d02-data-vis_files/figure-html/unnamed-chunk-13-1.png" width="80%" style="display: block; margin: auto;" /&gt;
 ]
 
 .panel[.panel-name[Code]
@@ -492,7 +436,6 @@ ggplot(data = penguins,
 
 ]
 ]
-
 
 ---
 class: middle, inverse

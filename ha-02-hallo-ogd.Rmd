@@ -153,7 +153,7 @@ corona_kultur_beschluss_gering %>%
   geom_histogram(binwidth = 10000) +
   facet_wrap(~Kategorie, ncol = 3) +
   labs(title = "Corona Hilfen im Kulturbereich im Kanton Zürich", 
-       subtitle = "Verteilung der Beträge kleiner 100'000 CHF nach Kategorie und Sparte", 
+       subtitle = "Verteilung der Beträge kleiner 100'000 CHF nach Kategorie und Sparte",
        caption = "Daten: opendata.swiss")
 
 ```
@@ -174,11 +174,10 @@ Gratulation! Du hast die Übungen abgeschlossen. Falls du noch Lust und Zeit has
 ```{r, include=FALSE}
 
 
-ggplot(data = corona_kultur, 
+ggplot(data = corona_kultur,
        mapping =  aes(x = Status, 
                       fill = Sparte)) +
   geom_bar() +
-
   facet_wrap(~Kategorie, nrow = 1) +
   theme(legend.position = "bottom")
 

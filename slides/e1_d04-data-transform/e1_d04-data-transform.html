@@ -4,7 +4,7 @@
     <title>rstatsZH - Data Science mit R</title>
     <meta charset="utf-8" />
     <meta name="author" content="Lars Schöbitz" />
-    <meta name="date" content="2020-03-22" />
+    <meta name="date" content="2021-06-03" />
     <script src="libs/header-attrs/header-attrs.js"></script>
     <link href="libs/remark-css/default.css" rel="stylesheet" />
     <link href="libs/font-awesome/css/all.css" rel="stylesheet" />
@@ -16,6 +16,8 @@
     <script src="libs/shareon/shareon.min.js"></script>
     <link href="libs/xaringanExtra-shareagain/shareagain.css" rel="stylesheet" />
     <script src="libs/xaringanExtra-shareagain/shareagain.js"></script>
+    <script src="libs/kePrint/kePrint.js"></script>
+    <link href="libs/lightable/lightable.css" rel="stylesheet" />
     <link rel="stylesheet" href="../assets/css/xaringan-themer.css" type="text/css" />
     <link rel="stylesheet" href="../assets/css/my-css-style.css" type="text/css" />
   </head>
@@ -39,7 +41,7 @@ class: title-slide
 
 .bottom[
 
-<p>Lars Schöbitz</p><p>2020-03-22</p>
+<p>Lars Schöbitz</p><p>2021-06-03</p>
 ]
 
 
@@ -153,10 +155,11 @@ background-size: contain
 2. Dies wird oft auch als Data Wrangling bezeichnet, da es wie ein Kampf sein kann die Daten in das richtige Format zu bringen.
 
 
+
 ---
 class: middle, inverse
 
-# .large[What is Tidy Data?]
+# .large[Was bedeutet Tidy Data?]
 
 ---
 background-image: url(img/tidydata_1.jpg)
@@ -241,6 +244,140 @@ background-size: contain
 1. Also, fangen wir an Bekanntschaft mit tidy data zu machen und den Werkzeugen die wir nutzen können
 
 ---
+# Eigenschaften von Tidy Data
+
+Eigenschaften von Tidy Data:
+
+- Eigenschaft 1: Jede Spalte ist eine Variable
+- Eigenschaft 2: Jede Reihe ist eine Beobachtung
+- Eigenschaft 3: Jede Zelle enthält eine Messung
+
+---
+# Penguins 
+
+.question[
+Erfüllen die Daten die Eingeschaften für Tidy data?
+]
+
+&lt;table class="table" style="font-size: 20px; margin-left: auto; margin-right: auto;"&gt;
+ &lt;thead&gt;
+  &lt;tr&gt;
+   &lt;th style="text-align:left;"&gt; species &lt;/th&gt;
+   &lt;th style="text-align:left;"&gt; island &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; bill_length_mm &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; bill_depth_mm &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; flipper_length_mm &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; body_mass_g &lt;/th&gt;
+   &lt;th style="text-align:left;"&gt; sex &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; year &lt;/th&gt;
+  &lt;/tr&gt;
+ &lt;/thead&gt;
+&lt;tbody&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Adelie &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Torgersen &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 39.1 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 18.7 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 181 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 3750 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; male &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 2007 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Adelie &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Torgersen &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 39.5 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 17.4 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 186 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 3800 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; female &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 2007 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Adelie &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Torgersen &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 40.3 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 18.0 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 195 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 3250 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; female &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 2007 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Adelie &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Torgersen &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 2007 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Adelie &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Torgersen &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 36.7 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 19.3 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 193 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 3450 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; female &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 2007 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Adelie &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Torgersen &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 39.3 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 20.6 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 190 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 3650 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; male &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 2007 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Adelie &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Torgersen &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 38.9 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 17.8 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 181 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 3625 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; female &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 2007 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Adelie &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Torgersen &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 39.2 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 19.6 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 195 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 4675 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; male &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 2007 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Adelie &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Torgersen &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 34.1 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 18.1 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 193 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 3475 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 2007 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Adelie &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Torgersen &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 42.0 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 20.2 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 190 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 4250 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; NA &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 2007 &lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+
+---
 class: middle, inverse
 
 # .large[Daten Transformation mit {dplyr}]
@@ -258,7 +395,6 @@ class: middle, inverse
 - `arrange`: Zeilen neu ordnen
 - `slice`: Zeilen über einen Index auswählen
 - `filter`: Zeilen mit bestimmten Kriterien auswählen
-- `distinct`: Eindeutige Zeilen filtern
 - `mutate`: Neue Variablen hinzufügen
 - `summarise`: Variablen auf Werte reduzieren
 - `group_by`: Gruppierte Arbeitsgänge
@@ -314,7 +450,7 @@ class: middle, inverse
 2. **GitHub**: Klicke auf den grünen Button "Code" und kopiere den Link für das Repo in deine Zwischenablage
 3. **RStudio Cloud**: Öffne deinen Arbeitsbereich für den Kurs in der RStudio Cloud
 4. **RStudio Cloud / Projects**: Klicke auf "New Project from GitHub Repository" 
-5. **RStudio**: Finde den Datei Manager und Git
+5. **RStudio**: Finde den Datei Manager und den Git Reiter
 6. **Zoom Chat**: Schreibt wenn ihr soweit seid
 
 ]

@@ -4,7 +4,7 @@
     <title>rstatsZH - Data Science mit R</title>
     <meta charset="utf-8" />
     <meta name="author" content="Lars Schöbitz" />
-    <meta name="date" content="2020-03-22" />
+    <meta name="date" content="2021-06-03" />
     <script src="libs/header-attrs/header-attrs.js"></script>
     <link href="libs/remark-css/default.css" rel="stylesheet" />
     <link href="libs/font-awesome/css/all.css" rel="stylesheet" />
@@ -43,7 +43,7 @@ class: title-slide
 
 .bottom[
 
-<p>Lars Schöbitz</p><p>2020-03-22</p>
+<p>Lars Schöbitz</p><p>2021-06-03</p>
 ]
 
 ---
@@ -306,11 +306,33 @@ Kategoriale Variablen umfassen eine endliche Anzahl von Kategorien oder eindeuti
 
 
 ```r
+penguins
+```
+
+```
+# A tibble: 344 x 8
+  species island    bill_length_mm bill_depth_mm flipper_length_…
+  &lt;fct&gt;   &lt;fct&gt;              &lt;dbl&gt;         &lt;dbl&gt;            &lt;int&gt;
+1 Adelie  Torgersen           39.1          18.7              181
+2 Adelie  Torgersen           39.5          17.4              186
+3 Adelie  Torgersen           40.3          18                195
+4 Adelie  Torgersen           NA            NA                 NA
+5 Adelie  Torgersen           36.7          19.3              193
+6 Adelie  Torgersen           39.3          20.6              190
+# … with 338 more rows, and 3 more variables: body_mass_g &lt;int&gt;,
+#   sex &lt;fct&gt;, year &lt;int&gt;
+```
+
+---
+# Variablen Typen - Penguins
+
+
+```r
 str(penguins)
 ```
 
 ```
-tibble[,8] [344 × 8] (S3: tbl_df/tbl/data.frame)
+tibble [344 × 8] (S3: tbl_df/tbl/data.frame)
  $ species          : Factor w/ 3 levels "Adelie","Chinstrap",..: 1 1 1 1 1 1 1 1 1 1 ...
  $ island           : Factor w/ 3 levels "Biscoe","Dream",..: 3 3 3 3 3 3 3 3 3 3 ...
  $ bill_length_mm   : num [1:344] 39.1 39.5 40.3 NA 36.7 39.3 38.9 39.2 34.1 42 ...
@@ -732,7 +754,7 @@ ggplot(penguins,
 * scale_color_viridis_c()
 ```
 
-&lt;img src="e1_d03-data-vis-num_files/figure-html/unnamed-chunk-14-1.png" width="80%" style="display: block; margin: auto;" /&gt;
+&lt;img src="e1_d03-data-vis-num_files/figure-html/unnamed-chunk-15-1.png" width="80%" style="display: block; margin: auto;" /&gt;
 
 ---
 
@@ -746,7 +768,7 @@ ggplot(penguins,
 * scale_color_viridis_d()
 ```
 
-&lt;img src="e1_d03-data-vis-num_files/figure-html/unnamed-chunk-15-1.png" width="80%" style="display: block; margin: auto;" /&gt;
+&lt;img src="e1_d03-data-vis-num_files/figure-html/unnamed-chunk-16-1.png" width="80%" style="display: block; margin: auto;" /&gt;
 
 ---
 background-image: url(img/data-to-viz.png)

@@ -2,7 +2,7 @@
 title: "rstatsZH - Data Science mit R"
 subtitle: "Datenvisualisierung verschiedener Datentypen"  
 author: "Lars Schöbitz"
-date: "2020-03-22"
+date: "2021-06-03"
 output:
   xaringan::moon_reader:
     self_contained: false
@@ -378,6 +378,13 @@ Stetige Daten sind numerische Variablen, die zwischen zwei beliebigen Werten ein
 
 Kategoriale Variablen umfassen eine endliche Anzahl von Kategorien oder eindeutigen Gruppen. Kategoriale Daten müssen nicht zwangsläufig eine logische Reihenfolge aufweisen. Zu den kategorialen Prädiktoren zählen beispielsweise Geschlecht, Materialtyp und Zahlungsmethode
 
+
+---
+# Variablen Typen - Penguins
+
+```{r, echo=TRUE}
+penguins
+```
 
 ---
 # Variablen Typen - Penguins

@@ -2,7 +2,7 @@
 title: "rstatsZH - Data Science mit R"
 subtitle: "Daten Transformation mit dplyr"
 author: "Lars Schöbitz"
-date: "2020-03-22"
+date: "2021-06-03"
 output:
   xaringan::moon_reader:
     self_contained: false
@@ -159,10 +159,11 @@ background-size: contain
 2. Dies wird oft auch als Data Wrangling bezeichnet, da es wie ein Kampf sein kann die Daten in das richtige Format zu bringen.
 
 
+
 ---
 class: middle, inverse
 
-# .large[What is Tidy Data?]
+# .large[Was bedeutet Tidy Data?]
 
 ---
 background-image: url(img/tidydata_1.jpg)
@@ -247,6 +248,32 @@ background-size: contain
 1. Also, fangen wir an Bekanntschaft mit tidy data zu machen und den Werkzeugen die wir nutzen können
 
 ---
+# Eigenschaften von Tidy Data
+
+Eigenschaften von Tidy Data:
+
+- Eigenschaft 1: Jede Spalte ist eine Variable
+- Eigenschaft 2: Jede Reihe ist eine Beobachtung
+- Eigenschaft 3: Jede Zelle enthält eine Messung
+
+---
+# Penguins 
+
+.question[
+Erfüllen die Daten die Eingeschaften für Tidy data?
+]
+
+```{r}
+library(palmerpenguins)
+
+penguins %>% 
+   head(10) %>% 
+   knitr::kable(format = "html") %>% 
+   kableExtra::kable_styling(font_size = 20)
+```
+
+
+---
 class: middle, inverse
 
 # .large[Daten Transformation mit {dplyr}]
@@ -266,7 +293,6 @@ knitr::include_graphics("img/dplyr-part-of-tidyverse.png")
 - `arrange`: Zeilen neu ordnen
 - `slice`: Zeilen über einen Index auswählen
 - `filter`: Zeilen mit bestimmten Kriterien auswählen
-- `distinct`: Eindeutige Zeilen filtern
 - `mutate`: Neue Variablen hinzufügen
 - `summarise`: Variablen auf Werte reduzieren
 - `group_by`: Gruppierte Arbeitsgänge
@@ -307,7 +333,7 @@ class: middle, inverse
 2. **GitHub**: Klicke auf den grünen Button "Code" und kopiere den Link für das Repo in deine Zwischenablage
 3. **RStudio Cloud**: Öffne deinen Arbeitsbereich für den Kurs in der RStudio Cloud
 4. **RStudio Cloud / Projects**: Klicke auf "New Project from GitHub Repository" 
-5. **RStudio**: Finde den Datei Manager und Git
+5. **RStudio**: Finde den Datei Manager und den Git Reiter
 6. **Zoom Chat**: Schreibt wenn ihr soweit seid
 
 ]

@@ -168,19 +168,30 @@ pre code {
 </div>
 
 
-<table style="width:6%;">
-<colgroup>
-<col width="5%" />
-</colgroup>
-<tbody>
-<tr class="odd">
-<td>## Eine Skala ersetzen - Achsen (Datum)</td>
-</tr>
-<tr class="even">
-<td><code>r tibble::tribble( ~Code,                                 ~Meaning, &quot;%S&quot;,                         &quot;second (00-59)&quot;, &quot;%M&quot;,                         &quot;minute (00-59)&quot;, &quot;%l&quot;,          &quot;hour, in 12-hour clock (1-12)&quot;, &quot;%I&quot;,         &quot;hour, in 12-hour clock (01-12)&quot;, &quot;%H&quot;,         &quot;hour, in 24-hour clock (01-24)&quot;, &quot;%a&quot;, &quot;day of the week, abbreviated (Mon-Sun)&quot;, &quot;%A&quot;,  &quot;day of the week, full (Monday-Sunday)&quot;, &quot;%e&quot;,                &quot;day of the month (1-31)&quot;, &quot;%d&quot;,               &quot;day of the month (01-31)&quot;, &quot;%m&quot;,                 &quot;month, numeric (01-12)&quot;, &quot;%b&quot;,           &quot;month, abbreviated (Jan-Dec)&quot;, &quot;%B&quot;,         &quot;month, full (January-December)&quot;, &quot;%y&quot;,          &quot;year, without century (00-99)&quot;, &quot;%Y&quot;,         &quot;year, with century (0000-9999)&quot; ) %&gt;% gt::gt() %&gt;% gt::opt_row_striping() %&gt;% gt::tab_options(column_labels.font.weight = &quot;bold&quot;)</code></td>
-</tr>
-<tr class="odd">
-<td><style>html {
+<hr />
+<div id="eine-skala-ersetzen---achsen-datum" class="section level2">
+<h2>Eine Skala ersetzen - Achsen (Datum)</h2>
+<pre class="r"><code>tibble::tribble(
+  ~Code,                                 ~Meaning,
+  &quot;%S&quot;,                         &quot;second (00-59)&quot;,
+  &quot;%M&quot;,                         &quot;minute (00-59)&quot;,
+  &quot;%l&quot;,          &quot;hour, in 12-hour clock (1-12)&quot;,
+  &quot;%I&quot;,         &quot;hour, in 12-hour clock (01-12)&quot;,
+  &quot;%H&quot;,         &quot;hour, in 24-hour clock (01-24)&quot;,
+  &quot;%a&quot;, &quot;day of the week, abbreviated (Mon-Sun)&quot;,
+  &quot;%A&quot;,  &quot;day of the week, full (Monday-Sunday)&quot;,
+  &quot;%e&quot;,                &quot;day of the month (1-31)&quot;,
+  &quot;%d&quot;,               &quot;day of the month (01-31)&quot;,
+  &quot;%m&quot;,                 &quot;month, numeric (01-12)&quot;,
+  &quot;%b&quot;,           &quot;month, abbreviated (Jan-Dec)&quot;,
+  &quot;%B&quot;,         &quot;month, full (January-December)&quot;,
+  &quot;%y&quot;,          &quot;year, without century (00-99)&quot;,
+  &quot;%Y&quot;,         &quot;year, with century (0000-9999)&quot;
+) %&gt;% 
+  gt::gt() %&gt;% 
+  gt::opt_row_striping() %&gt;% 
+  gt::tab_options(column_labels.font.weight = &quot;bold&quot;)</code></pre>
+<style>html {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
 }
 
@@ -584,10 +595,8 @@ pre code {
   </tbody>
   
   
-</table></div></td>
-</tr>
-</tbody>
-</table>
+</table></div>
+<hr />
 <p>pull.left[</p>
 <pre class="r"><code>ggplot(data = tib,
        mapping =  aes(x = datum, 
@@ -601,6 +610,7 @@ pre code {
   theme(panel.grid.minor.y = element_blank())</code></pre>
 <p>]</p>
 <p>.footnote[ From:<a href="https://ggplot2-book.org/scale-position.html#date-scales">ggplot2: Elegant Graphics for Data Analysis</a>]</p>
+</div>
 
 
 

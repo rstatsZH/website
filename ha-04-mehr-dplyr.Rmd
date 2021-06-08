@@ -1,5 +1,5 @@
 ---
-title: "Hausaufgabe 04 - Mehr dyplr"
+title: "Hausaufgabe 04 - Lernende im Kanton Zürich"
 ---
 
 <script async defer data-domain="rstatszh.github.io/website" src="https://plausible.io/js/plausible.js"></script>
@@ -8,14 +8,13 @@ title: "Hausaufgabe 04 - Mehr dyplr"
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-Der erste Teil dieser Hausaufgabe beinhaltet nochmals Übungen aus dem Buch R for Data Science. Im zweiten Teil nutzen wir Daten aus der Bildungsstatistik des Kantons Zürich und werden diese mit uns bekannten Werkzeugen erkunden und visualisieren. Der dritte Teil ist Bonusmaterial und enthält erneut Übungen aus dem Buch R for Data Science. 
+In dieser Hausaufgabe nutzen wir Daten aus der Bildungsstatistik des Kantons Zürich und werden diese mit uns bekannten Werkzeugen erkunden und visualisieren. 
 
 # Ziele
 
 Diese Hausaufgabe hat die folgenden Ziele:
 
-- Nochmals Erfahrungen mit den Hauptfunktionen des `{dplyr}` Package sammeln
-- Fragen zu den Kapiteln im Buch [R for Data Science](https://r4ds.had.co.nz/) in unserem Slack Channel für den Kurs zu stellen: #rstatszh-k00X
+- Erfahrungen mit den Hauptfunktionen des `{dplyr}` Package sammeln
 - Die Elemente einer vorgegebenen `{ggplot2}´ Visualisierung zu identifizieren und diese zu rekunstrieren
 
 # Erste Schritte
@@ -30,7 +29,6 @@ In dieser Hausaufgabe werden wir weiterhin hauptsächlich das R Package `{dplyr}
 
 ```{r lade-packages, message=FALSE}
 
-library(nycflights13)  
 library(dplyr)
 library(ggplot2)
 library(readr)
@@ -44,36 +42,17 @@ library(tidyr)  # Neu in dieser Hausaufgabe
 
 Ein Datensatz publiziert von der [Bildungsstatitik Kanton Zürich](https://pub.bista.zh.ch/de/). Der Datensatz ist öffentlich [auf opendata.swiss verfügbar](https://opendata.swiss/de/dataset/ubersicht-uber-alle-lernenden-im-kanton-zurich) und wird auch auf einer Seite der Bildungsstatistik selbst mit [Visualisierungen dargestellt](https://pub.bista.zh.ch/de/zahlen-und-fakten/sdl/uebersicht-ueber-alle-lernenden/auswertungen-in-absoluten-zahlen/).
 
-## Data Package `{nycflights13}` 
-
-Wir nutzen nochmals Daten aus dem R Package `{nycflights13}`. Der Datensatz `flights` enthält alle 336.776 Flüge, die in 2013 von New York City abgegegangen sind. Der Datensatz beinhaltet 19 Variablen, welche im Detail der Hilfedatei beschrieben sind und mit `?flights` aufgerufen werden können. Das Daten Package beinhaltet noch vier weitere nützliche Datensätze:
-
-- *`airlines`*: Beinhaltet den Namen der Fluggesellschaft für die Variable `carrier` aus dem `flights` Datensatz 
-- *`airports`*: Beinhaltet Metadaten zu den einzelnen Flughäfen in der Variable `dest` aus dem `flights` Datensatz
-- *`planes`*: Beinhaltet Metadaten zu den einzelnen Flugzeugen in der Variable `tailnum` aus dem `flights` Datensatz
-- *`weather`*: Beinhaltet stündliche meterologische Daten für die Flughäfen LGA (La Guardia), JFK (John F Kennedy Intl) und EWR (Newark Liberty Intl). 
-
 # Aufwärmen 
 
 1. Öffne die R Markdown Datei für die Übung
 2. Stricke die Datei zu einer HTML Datei
 3. Aktualisiere den YAML Header in dem du deinen Namen und das Datum hinzufügst
-4. Passe das Aussehen des Dokuments über die "Output Options" an (siehe Screenshots)
+4. Passe das Aussehen des Dokuments über die "Output Options" an 
 5. Stricke das Dokument erneut
 
 🧶 ✅ ⬆️ *Knit, commit und push deine Änderungen auf GitHub mit einer Commit-Nachricht deiner Wahl. Achte darauf, alle geänderten Dateien zu committen und zu pushen, damit dein Git-Fenster danach aufgeräumt ist.*
 
-# Übungen - Teil 1 - R for Data Science
-
-## Übung 1 - dplyr::mutate() 
-
-1. Lese das [Kapitel 5.5 - Add new variables with `mutate()`](https://r4ds.had.co.nz/transform.html#add-new-variables-with-mutate) aus dem Buch R for Data Science, mache dir Notizen und schreibe dir Fragen auf wenn du etwas nicht nachvollziehen kannst. Stelle deine Fragen in unserem Slack Channel für den Kurs: #rstatszh-k00X.
-
-2. Arbeite durch die Übungen aus [Kapitel 5.5.2 - Exercises](https://r4ds.had.co.nz/transform.html#exercises-11). Stelle deine Fragen in unserem Slack Channel für den Kurs: #rstatszh-k00X.
-
-🧶 ✅ ⬆️ *Knit, commit und push deine Änderungen auf GitHub mit einer Commit-Nachricht deiner Wahl. Achte darauf, alle geänderten Dateien zu committen und zu pushen, damit dein Git-Fenster danach aufgeräumt ist.*
-
-# Übungen - Teil 2 - Lernende im Kanton Zürich
+# Übungen - Lernende im Kanton Zürich
 
 ## Übung 1 - Daten Importieren
 
@@ -202,20 +181,4 @@ lernende ___
 
 🧶 ✅ ⬆️ *Knit, commit und push deine Änderungen auf GitHub mit einer Commit-Nachricht deiner Wahl. Achte darauf, alle geänderten Dateien zu committen und zu pushen, damit dein Git-Fenster danach aufgeräumt ist.*
 
-# Übungen - Teil 3 - R for Data Science - (Bonus)
 
-## Übung 1 - Grouped summaries with summarise()
-
-1. Lese das [Kapitel 5.6 - Grouped summaries with `summarise()`](https://r4ds.had.co.nz/transform.html#grouped-summaries-with-summarise) aus dem Buch R for Data Science, mache dir Notizen und schreibe dir Fragen auf wenn du etwas nicht nachvollziehen kannst. Stelle deine Fragen in unserem Slack Channel für den Kurs: #rstatszh-k00X.
-
-2. Arbeite durch die Übungen aus [Kapitel 5.6.7 - Exercises](https://r4ds.had.co.nz/transform.html#exercises-12). Stelle deine Fragen in unserem Slack Channel für den Kurs: #rstatszh-k00X. 
-
-🧶 ✅ ⬆️ *Knit, commit und push deine Änderungen auf GitHub mit einer Commit-Nachricht deiner Wahl. Achte darauf, alle geänderten Dateien zu committen und zu pushen, damit dein Git-Fenster danach aufgeräumt ist.*
-
-## Übung 2 - Grouped mutates (and filters)
-
-1. Lese das [Kapitel 5.7 - Grouped summaries with `summarise()`](https://r4ds.had.co.nz/transform.html#grouped-mutates-and-filters) aus dem Buch R for Data Science, mache dir Notizen und schreibe dir Fragen auf wenn du etwas nicht nachvollziehen kannst. Stelle deine Fragen in unserem Slack Channel für den Kurs: #rstatszh-k00X. 
-
-2. Arbeite durch die Übungen aus [Kapitel 5.7.1 - Exercises](https://r4ds.had.co.nz/transform.html#exercises-13). Stelle deine Fragen in unserem Slack Channel für den Kurs: #rstatszh-k00X.
-
-🧶 ✅ ⬆️ *Knit, commit und push deine Änderungen auf GitHub mit einer Commit-Nachricht deiner Wahl. Achte darauf, alle geänderten Dateien zu committen und zu pushen, damit dein Git-Fenster danach aufgeräumt ist.*

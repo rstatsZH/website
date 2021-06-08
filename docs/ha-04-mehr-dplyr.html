@@ -85,27 +85,27 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 </style>
 
   <!--radix_placeholder_meta_tags-->
-  <title>rstatsZH - Data Science mit R: Hausaufgabe 04 - Mehr dyplr</title>
+  <title>rstatsZH - Data Science mit R: Hausaufgabe 04 - Lernende im Kanton Zürich</title>
 
 
   <link rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/"/>
 
 
   <!--  https://developers.facebook.com/docs/sharing/webmasters#markup -->
-  <meta property="og:title" content="rstatsZH - Data Science mit R: Hausaufgabe 04 - Mehr dyplr"/>
+  <meta property="og:title" content="rstatsZH - Data Science mit R: Hausaufgabe 04 - Lernende im Kanton Zürich"/>
   <meta property="og:type" content="article"/>
   <meta property="og:locale" content="en_US"/>
   <meta property="og:site_name" content="rstatsZH - Data Science mit R"/>
 
   <!--  https://dev.twitter.com/cards/types/summary -->
   <meta property="twitter:card" content="summary"/>
-  <meta property="twitter:title" content="rstatsZH - Data Science mit R: Hausaufgabe 04 - Mehr dyplr"/>
+  <meta property="twitter:title" content="rstatsZH - Data Science mit R: Hausaufgabe 04 - Lernende im Kanton Zürich"/>
 
   <!--/radix_placeholder_meta_tags-->
   <!--radix_placeholder_rmarkdown_metadata-->
 
   <script type="text/json" id="radix-rmarkdown-metadata">
-  {"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["title"]}},"value":[{"type":"character","attributes":{},"value":["Hausaufgabe 04 - Mehr dyplr"]}]}
+  {"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["title"]}},"value":[{"type":"character","attributes":{},"value":["Hausaufgabe 04 - Lernende im Kanton Zürich"]}]}
   </script>
   <!--/radix_placeholder_rmarkdown_metadata-->
   <!--radix_placeholder_navigation_in_header-->
@@ -1791,7 +1791,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <!--radix_placeholder_front_matter-->
 
 <script id="distill-front-matter" type="text/json">
-{"title":"Hausaufgabe 04 - Mehr dyplr","authors":[]}
+{"title":"Hausaufgabe 04 - Lernende im Kanton Zürich","authors":[]}
 </script>
 
 <!--/radix_placeholder_front_matter-->
@@ -1831,7 +1831,7 @@ Hausaufgaben
 <!--/radix_placeholder_site_before_body-->
 
 <div class="d-title">
-<h1>Hausaufgabe 04 - Mehr dyplr</h1>
+<h1>Hausaufgabe 04 - Lernende im Kanton Zürich</h1>
 <!--radix_placeholder_categories-->
 <!--/radix_placeholder_categories-->
 
@@ -1849,14 +1849,9 @@ Hausaufgaben
 <li><a href="#data">Data</a>
 <ul>
 <li><a href="#übersicht-über-alle-lernenden-im-kanton-zürich">Übersicht über alle Lernenden im Kanton Zürich</a></li>
-<li><a href="#data-package-nycflights13">Data Package <code>{nycflights13}</code></a></li>
 </ul></li>
 <li><a href="#aufwärmen">Aufwärmen</a></li>
-<li><a href="#übungen---teil-1---r-for-data-science">Übungen - Teil 1 - R for Data Science</a>
-<ul>
-<li><a href="#übung-1---dplyrmutate">Übung 1 - dplyr::mutate()</a></li>
-</ul></li>
-<li><a href="#übungen---teil-2---lernende-im-kanton-zürich">Übungen - Teil 2 - Lernende im Kanton Zürich</a>
+<li><a href="#übungen---lernende-im-kanton-zürich">Übungen - Lernende im Kanton Zürich</a>
 <ul>
 <li><a href="#übung-1---daten-importieren">Übung 1 - Daten Importieren</a></li>
 <li><a href="#übung-2---daten-beschreiben">Übung 2 - Daten beschreiben</a></li>
@@ -1865,21 +1860,15 @@ Hausaufgaben
 <li><a href="#übung-5---daten-zusammenfassen">Übung 5 - Daten zusammenfassen</a></li>
 <li><a href="#übung-6---kurzanalyse">Übung 6 - Kurzanalyse</a></li>
 </ul></li>
-<li><a href="#übungen---teil-3---r-for-data-science---bonus">Übungen - Teil 3 - R for Data Science - (Bonus)</a>
-<ul>
-<li><a href="#übung-1---grouped-summaries-with-summarise">Übung 1 - Grouped summaries with summarise()</a></li>
-<li><a href="#übung-2---grouped-mutates-and-filters">Übung 2 - Grouped mutates (and filters)</a></li>
-</ul></li>
 </ul>
 </nav>
 </div>
 <script async defer data-domain="rstatszh.github.io/website" src="https://plausible.io/js/plausible.js"></script>
-<p>Der erste Teil dieser Hausaufgabe beinhaltet nochmals Übungen aus dem Buch R for Data Science. Im zweiten Teil nutzen wir Daten aus der Bildungsstatistik des Kantons Zürich und werden diese mit uns bekannten Werkzeugen erkunden und visualisieren. Der dritte Teil ist Bonusmaterial und enthält erneut Übungen aus dem Buch R for Data Science.</p>
+<p>In dieser Hausaufgabe nutzen wir Daten aus der Bildungsstatistik des Kantons Zürich und werden diese mit uns bekannten Werkzeugen erkunden und visualisieren.</p>
 <h1 id="ziele">Ziele</h1>
 <p>Diese Hausaufgabe hat die folgenden Ziele:</p>
 <ul>
-<li>Nochmals Erfahrungen mit den Hauptfunktionen des <code>{dplyr}</code> Package sammeln</li>
-<li>Fragen zu den Kapiteln im Buch <a href="https://r4ds.had.co.nz/">R for Data Science</a> in unserem Slack Channel für den Kurs zu stellen: #rstatszh-k00X</li>
+<li>Erfahrungen mit den Hauptfunktionen des <code>{dplyr}</code> Package sammeln</li>
 <li>Die Elemente einer vorgegebenen `{ggplot2}´ Visualisierung zu identifizieren und diese zu rekunstrieren</li>
 </ul>
 <h1 id="erste-schritte">Erste Schritte</h1>
@@ -1889,8 +1878,7 @@ Hausaufgaben
 <p>In dieser Hausaufgabe werden wir weiterhin hauptsächlich das R Package <code>{dplyr}</code> aus der Sammlung der <code>{tidyverse}</code> Packages nutzen. Zusätzlich nutzen wir vereinzelt Funktionen aus R Packages, welche du noch nicht kennegelernt hast.</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='http://github.com/hadley/nycflights13'>nycflights13</a></span><span class='op'>)</span>  
-<span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://dplyr.tidyverse.org'>dplyr</a></span><span class='op'>)</span>
+<pre class="sourceCode r"><code class="sourceCode r"><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://dplyr.tidyverse.org'>dplyr</a></span><span class='op'>)</span>
 <span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://ggplot2.tidyverse.org'>ggplot2</a></span><span class='op'>)</span>
 <span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://readr.tidyverse.org'>readr</a></span><span class='op'>)</span>
 <span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://tidyr.tidyverse.org'>tidyr</a></span><span class='op'>)</span>  <span class='co'># Neu in dieser Hausaufgabe</span>
@@ -1900,31 +1888,16 @@ Hausaufgaben
 <h1 id="data">Data</h1>
 <h2 id="übersicht-über-alle-lernenden-im-kanton-zürich">Übersicht über alle Lernenden im Kanton Zürich</h2>
 <p>Ein Datensatz publiziert von der <a href="https://pub.bista.zh.ch/de/">Bildungsstatitik Kanton Zürich</a>. Der Datensatz ist öffentlich <a href="https://opendata.swiss/de/dataset/ubersicht-uber-alle-lernenden-im-kanton-zurich">auf opendata.swiss verfügbar</a> und wird auch auf einer Seite der Bildungsstatistik selbst mit <a href="https://pub.bista.zh.ch/de/zahlen-und-fakten/sdl/uebersicht-ueber-alle-lernenden/auswertungen-in-absoluten-zahlen/">Visualisierungen dargestellt</a>.</p>
-<h2 id="data-package-nycflights13">Data Package <code>{nycflights13}</code></h2>
-<p>Wir nutzen nochmals Daten aus dem R Package <code>{nycflights13}</code>. Der Datensatz <code>flights</code> enthält alle 336.776 Flüge, die in 2013 von New York City abgegegangen sind. Der Datensatz beinhaltet 19 Variablen, welche im Detail der Hilfedatei beschrieben sind und mit <code>?flights</code> aufgerufen werden können. Das Daten Package beinhaltet noch vier weitere nützliche Datensätze:</p>
-<ul>
-<li><em><code>airlines</code></em>: Beinhaltet den Namen der Fluggesellschaft für die Variable <code>carrier</code> aus dem <code>flights</code> Datensatz</li>
-<li><em><code>airports</code></em>: Beinhaltet Metadaten zu den einzelnen Flughäfen in der Variable <code>dest</code> aus dem <code>flights</code> Datensatz</li>
-<li><em><code>planes</code></em>: Beinhaltet Metadaten zu den einzelnen Flugzeugen in der Variable <code>tailnum</code> aus dem <code>flights</code> Datensatz</li>
-<li><em><code>weather</code></em>: Beinhaltet stündliche meterologische Daten für die Flughäfen LGA (La Guardia), JFK (John F Kennedy Intl) und EWR (Newark Liberty Intl).</li>
-</ul>
 <h1 id="aufwärmen">Aufwärmen</h1>
 <ol type="1">
 <li>Öffne die R Markdown Datei für die Übung</li>
 <li>Stricke die Datei zu einer HTML Datei</li>
 <li>Aktualisiere den YAML Header in dem du deinen Namen und das Datum hinzufügst</li>
-<li>Passe das Aussehen des Dokuments über die “Output Options” an (siehe Screenshots)</li>
+<li>Passe das Aussehen des Dokuments über die “Output Options” an</li>
 <li>Stricke das Dokument erneut</li>
 </ol>
 <p>🧶 ✅ ⬆️ <em>Knit, commit und push deine Änderungen auf GitHub mit einer Commit-Nachricht deiner Wahl. Achte darauf, alle geänderten Dateien zu committen und zu pushen, damit dein Git-Fenster danach aufgeräumt ist.</em></p>
-<h1 id="übungen---teil-1---r-for-data-science">Übungen - Teil 1 - R for Data Science</h1>
-<h2 id="übung-1---dplyrmutate">Übung 1 - dplyr::mutate()</h2>
-<ol type="1">
-<li><p>Lese das <a href="https://r4ds.had.co.nz/transform.html#add-new-variables-with-mutate">Kapitel 5.5 - Add new variables with <code>mutate()</code></a> aus dem Buch R for Data Science, mache dir Notizen und schreibe dir Fragen auf wenn du etwas nicht nachvollziehen kannst. Stelle deine Fragen in unserem Slack Channel für den Kurs: #rstatszh-k00X.</p></li>
-<li><p>Arbeite durch die Übungen aus <a href="https://r4ds.had.co.nz/transform.html#exercises-11">Kapitel 5.5.2 - Exercises</a>. Stelle deine Fragen in unserem Slack Channel für den Kurs: #rstatszh-k00X.</p></li>
-</ol>
-<p>🧶 ✅ ⬆️ <em>Knit, commit und push deine Änderungen auf GitHub mit einer Commit-Nachricht deiner Wahl. Achte darauf, alle geänderten Dateien zu committen und zu pushen, damit dein Git-Fenster danach aufgeräumt ist.</em></p>
-<h1 id="übungen---teil-2---lernende-im-kanton-zürich">Übungen - Teil 2 - Lernende im Kanton Zürich</h1>
+<h1 id="übungen---lernende-im-kanton-zürich">Übungen - Lernende im Kanton Zürich</h1>
 <h2 id="übung-1---daten-importieren">Übung 1 - Daten Importieren</h2>
 <p>Ich habe die Daten für dich bereits importiert, auf das Jahr 2019 eingeschränkt und die NAs entfernt. Wir werden in allen folgenden Übungen, bis auf Übung 6 dem Objekt <code>lernende2019</code> arbeiten.</p>
 <div class="layout-chunk" data-layout="l-body">
@@ -2019,19 +1992,6 @@ Hausaufgaben
 <span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>      )</span>
 <span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>   )</span></code></pre></div>
 </div>
-<p>🧶 ✅ ⬆️ <em>Knit, commit und push deine Änderungen auf GitHub mit einer Commit-Nachricht deiner Wahl. Achte darauf, alle geänderten Dateien zu committen und zu pushen, damit dein Git-Fenster danach aufgeräumt ist.</em></p>
-<h1 id="übungen---teil-3---r-for-data-science---bonus">Übungen - Teil 3 - R for Data Science - (Bonus)</h1>
-<h2 id="übung-1---grouped-summaries-with-summarise">Übung 1 - Grouped summaries with summarise()</h2>
-<ol type="1">
-<li><p>Lese das <a href="https://r4ds.had.co.nz/transform.html#grouped-summaries-with-summarise">Kapitel 5.6 - Grouped summaries with <code>summarise()</code></a> aus dem Buch R for Data Science, mache dir Notizen und schreibe dir Fragen auf wenn du etwas nicht nachvollziehen kannst. Stelle deine Fragen in unserem Slack Channel für den Kurs: #rstatszh-k00X.</p></li>
-<li><p>Arbeite durch die Übungen aus <a href="https://r4ds.had.co.nz/transform.html#exercises-12">Kapitel 5.6.7 - Exercises</a>. Stelle deine Fragen in unserem Slack Channel für den Kurs: #rstatszh-k00X.</p></li>
-</ol>
-<p>🧶 ✅ ⬆️ <em>Knit, commit und push deine Änderungen auf GitHub mit einer Commit-Nachricht deiner Wahl. Achte darauf, alle geänderten Dateien zu committen und zu pushen, damit dein Git-Fenster danach aufgeräumt ist.</em></p>
-<h2 id="übung-2---grouped-mutates-and-filters">Übung 2 - Grouped mutates (and filters)</h2>
-<ol type="1">
-<li><p>Lese das <a href="https://r4ds.had.co.nz/transform.html#grouped-mutates-and-filters">Kapitel 5.7 - Grouped summaries with <code>summarise()</code></a> aus dem Buch R for Data Science, mache dir Notizen und schreibe dir Fragen auf wenn du etwas nicht nachvollziehen kannst. Stelle deine Fragen in unserem Slack Channel für den Kurs: #rstatszh-k00X.</p></li>
-<li><p>Arbeite durch die Übungen aus <a href="https://r4ds.had.co.nz/transform.html#exercises-13">Kapitel 5.7.1 - Exercises</a>. Stelle deine Fragen in unserem Slack Channel für den Kurs: #rstatszh-k00X.</p></li>
-</ol>
 <p>🧶 ✅ ⬆️ <em>Knit, commit und push deine Änderungen auf GitHub mit einer Commit-Nachricht deiner Wahl. Achte darauf, alle geänderten Dateien zu committen und zu pushen, damit dein Git-Fenster danach aufgeräumt ist.</em></p>
 <div class="sourceCode" id="cb3"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
 <!--radix_placeholder_article_footer-->

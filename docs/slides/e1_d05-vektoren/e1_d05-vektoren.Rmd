@@ -2,7 +2,7 @@
 title: "rstatsZH - Data Science mit R"
 subtitle: "Vektoren in R und mehr Git"
 author: "Lars Schöbitz"
-date: "2020-06-17"
+date: "2021-06-17"
 output:
   xaringan::moon_reader:
     self_contained: false
@@ -245,6 +245,20 @@ Lösungen zu den Übungen aus dem Buch mit nützlichen Erklärungen gibt es hier
 
 https://jrnold.github.io/r4ds-exercise-solutions/
 ]
+
+---
+.note[
+
+# Praktikum 7 - dplyr
+
+## Live Code
+
+1. **RStudio Cloud**: Öffne deinen Arbeitsbereich für den Kurs in der RStudio Cloud
+2. **RStudio Cloud / Projects**: Öffne erneut das Praktikum 07
+3. Folgt wieder auf dem Bildschirm
+
+]
+
 
 ---
 # Ziele für diese Woche

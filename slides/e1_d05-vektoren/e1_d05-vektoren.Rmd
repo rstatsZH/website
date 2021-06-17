@@ -2,7 +2,7 @@
 title: "rstatsZH - Data Science mit R"
 subtitle: "Vektoren in R und mehr Git"
 author: "Lars Schöbitz"
-date: "2020-04-12"
+date: "2020-06-17"
 output:
   xaringan::moon_reader:
     self_contained: false
@@ -83,14 +83,11 @@ p(rmarkdown::metadata$date)
       - `starts_with()`
       - `ends_with()`
       - `contains()`
-      - `all_of()`
-      - `any_of()`
 ]
 
 .pull-right[
 - `relocate()`
 - `rename()`
-- `rename_with()`
 - `mutate()`
 - `group_by()`
 - `summarise()`
@@ -241,7 +238,7 @@ background-image: url(https://jrnold.github.io/r4ds-exercise-solutions/img/r4ds-
 background-size: contain
 background-position: right
 
-# Hausaufgabe - Teil 1 + Teil 3
+# R for Data Science - Lösungsbuch
 
 .pull-left[
 Lösungen zu den Übungen aus dem Buch mit nützlichen Erklärungen gibt es hier:

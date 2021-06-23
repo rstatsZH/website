@@ -31,11 +31,10 @@ Diese Hausaufgabe hat die folgende Ziele:
 
 # Erste Schritte
 
-Diese Hausaufgabe besteht aus drei Teilen:
+Diese Hausaufgabe besteht aus zwei Teilen:
 
-1. Abschluss Projektarbeit (Pflicht)
+1. Projektarbeit (Pflicht)
 2. Daten über Treibhausgase in der Stadt Zürich (Zum Teil Bonusmaterial)
-3. SQL Befehle in R Markdown (Falls es relevant fpr deine Arbeit ist)
 
 Öffne deine Email Inbox und suche nach der Email mit dem Link für das GitHub Repo zu dieser Hausaufgabe (ha-06-projekarbeit). 
 
@@ -212,75 +211,3 @@ ghg_long %>%
 
 ```
 
-# Übungen - Teil 3 - SQL Befehle in R
-
-In R Markdown Dokumenten kann Code aus verschiedenen Programmiersprachen ausgeführt werden. Dies wird mittels der Code-chunks gesteuert und es erlaubt Nutzer_innen die Effizienz von SQL Datenbanken mit den Stärken von R zu verbinden.
-
-## Übung 0 - Verbindung zu einer Datenbank herstellen
-
-In dieser Übung nutzen wir die Verbindung zu einer Datenbank welche ich mittels des folgenden Codes erstellt habe. In der Praxis wird hier die Verbindung zu der Datenbank erstellt, welche von der Verwaltungseinheit gepflegt wird.
-
-Der Name des Objektes mit der Verbindung zur Datenbank ist hier `con`, es kann jedoch ein beliebiger Name gewählt werden.
-
-```{r, echo=TRUE}
-library(DBI)
-
-con <- DBI::dbConnect(RSQLite::SQLite(), ":memory:")
-```
-
-## Übung 1 - Tabellen in einer Datenbank erkunden
-
-Ich habe auch mittels des folgenden Codes den `penguins` Datensatz aus dem `palmerpenguins` Package in die Datenbank kopiert. Die Tabelle ist jetzt in unserer Datenbank hinterlegt.
-
-1. Führe den Code-chunk aus
-
-```{r}
-copy_to(con, penguins)
-```
-
-2. Führe den Befehl `dbListTables(con)` im folgenden R Code-chunk aus
-3. Führe den Befehl `dbListFields(con, "penguins)` im folgenden R Code-chunk us
-
-```{r, eval=FALSE}
-dbListTables(con)
-dbListFields(con, "penguins")
-```
-
-## Übung 2 - SQL Code-chunk einfügen
-
-1. Klicke auf das kleine grüne C+ im oberen Bereich des Fensters. Ein Dropdown Menü öffnet sich. 
-2. Klicke auf das SQL Symbol
-3. Füge das Objekt `con` hinter das "=" Zeichen im obersten Bereich des Code-chunk. Dies sollte folgendermassen aussehen: `{sql connection=con}`
-4. Schreibe nun `SELECT * FROM penguins` in den Code-chunk 
-5. Führe den Code-chunk aus
-
-```{sql connection=con, eval=FALSE}
-SELECT * FROM penguins
-```
-
-## Übung 3 - SQL Code schreiben
-
-1. Füge einen SQL Code-chunk hinzu mit einer Verbindung zum Objekt `con`
-2. Schreibe dir bekannten SQL Code um die durchschnittliche Schnabellänge (Variable: `bill_length_mm`) gruppiert nach den Variablen `island` und `species` zu berechnen
-3. Führe den Code-chunk aus
-
-```{sql connection=con, eval=FALSE}
-SELECT species, island, AVG(bill_length_mm) AS avg_bill
-FROM penguins
-GROUP BY species, island
-```
-
-## Übung 4 - SQL Abruf als Objekt speichern
-
-1. Kopiere den Code-chunk aus der vorherigen Übung
-2. Füge nach "con" ein Komma ein und dann `output.var="penguins_avg"` um den Output des Code-chunks als Objekt in einer Arbeitsumgeung (Environment) zu speichern. Dies sollte folgendermassen aussehen:
-
-`{sql connection=con, output.var="penguins_avg"}`
-
-3. Führe den Code-chunk aus und überprüfe ob das Objekt in deiner Arbeitsumgebung (Environment) auftaucht
-
-```{sql connection=con, output.var="penguins_avg"}
-SELECT species, island, AVG(bill_length_mm) AS avg_bill
-FROM penguins
-GROUP BY species, island
-```

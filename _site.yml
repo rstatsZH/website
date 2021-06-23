@@ -26,6 +26,8 @@ navbar:
           href: ha-05-erstes-projekt.html
         - text: "Hausaufgabe 06"
           href: ha-06-projektarbeit.html
+        - text: "Haufaufgabe SQL"
+          href: ha-99-sql-rmarkdown.html
     - text: "Code of Conduct"
       href: code_of_conduct.html
     - icon: fab fa-github

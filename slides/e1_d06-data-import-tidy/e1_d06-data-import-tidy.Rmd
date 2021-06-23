@@ -2,7 +2,7 @@
 title: "rstatsZH - Data Science mit R"
 subtitle: "Vektoren Teil 2 / Daten Importieren / Daten Aufräumen"
 author: "Lars Schöbitz"
-date: "2020-04-22"
+date: "2021-07-01"
 output:
   xaringan::moon_reader:
     self_contained: false
@@ -73,12 +73,13 @@ p(rmarkdown::metadata$date)
 ---
 class: middle, inverse
 
-# Hausaufgabe 5 
+# Hausaufgabe 4 - Rückblick 
 
 ---
-# Hausaufgabe 5
+class: middle, inverse
 
-.question[Gibt es Fragen?]
+# Hausaufgabe 5 - Rückblick
+
 
 ---
 # Ziele für diese Woche
@@ -86,7 +87,6 @@ class: middle, inverse
 Am Ende dieser Woche könnt ihr:
 
 - Daten aus verschiedenen Formaten in R importieren
-- Mittels SQL mit Daten in R Markdown arbeiten
 - Erkennen wann es notwendig ist Datums- und Zeitwerte aus Rohdaten in R selbst zu codieren
 - Daten aus einem weiten Format in ein langes Format bringen
 - Erkennen ob Daten als Tidy data klassifiert werden können 
@@ -165,7 +165,7 @@ treibhaus
 ## Eine Datei schreiben
 ```{r, echo=TRUE}
 
-fussball_weltmeister <- tibble(
+fussball_weltmeister <- tibble( #<<
    jahr = as.integer(c(2018, 2014, 2010, 2006, 
                        2019, 2015, 2011, 2007)),
    weltmeisterschaft = c(rep("Männer", 4), rep("Frauen", 4)),
@@ -173,7 +173,7 @@ fussball_weltmeister <- tibble(
                     "Italien", "USA", "USA",
                     "Japan", "Deutschland"))
 
-write_csv(x = fussball_weltmeister, file = "data/fussball_weltmeister.csv")
+write_csv(x = fussball_weltmeister, file = "data/fussball_weltmeister.csv") #<<
 
 ```
 
@@ -504,7 +504,7 @@ countdown(
 
 # Praktikum 9 - Daten importieren - Treibhausgasbilanz
 
-## 2er Teams
+## 2er Teams - Übung 1
 
 1. **E-Mail**: Öffne deine Email und klicke auf den Link zu deinem persönlichen GitHub repo
 2. **GitHub**: Klicke auf den grünen Button "Code" und kopiere den Link für das Repo in deine Zwischenablage
@@ -723,6 +723,18 @@ Welche Eigenschaften von Tidy data sind hier nicht erfüllt?
 - Keine Farben, Formatierungen, etc.
 - Folgt Standards (Datum: ISO 8601)
 - etc.
+]
+
+
+---
+.note[
+
+# Praktikum 9 - Data tidying - Treibhausgasbilanz
+
+## 2er Teams - Übung 2 + 3
+
+- Öffnet nochmals das Praktikum 9
+
 ]
 
 ---

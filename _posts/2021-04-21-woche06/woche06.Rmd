@@ -30,7 +30,6 @@ Lerne wie du verschiedene Datenformate importierst und starte deine Projektarbei
 Am Ende dieser Woche könnt ihr:
 
 - Daten aus verschiedenen Formaten in R importieren
-- Mittels SQL mit Daten in R Markdown arbeiten
 - Erkennen wann es notwendig ist Datums- und Zeitwerte aus Rohdaten in R selbst zu codieren
 - Daten aus einem weiten Format in ein langes Format bringen
 - Erkennen ob Daten als Tidy data klassifiert werden können 

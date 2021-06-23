@@ -2,7 +2,7 @@
 title: "rstatsZH - Data Science mit R"
 subtitle: "Vektoren Teil 2 / Daten Importieren / Daten Aufräumen"
 author: "Lars Schöbitz"
-date: "2020-04-22"
+date: "2021-07-01"
 output:
   xaringan::moon_reader:
     self_contained: false
@@ -65,7 +65,6 @@ p(rmarkdown::metadata$date)
    - integer
    - character
 - Funktionen zum Umgang mit einem Datum
-   - `lubridate::ymd()`
    - `readr::parse_date()`
 - Visualisierungen
    - Verbundene Streudiagramm
@@ -74,12 +73,13 @@ p(rmarkdown::metadata$date)
 ---
 class: middle, inverse
 
-# Hausaufgabe 5 
+# Hausaufgabe 4 - Rückblick 
 
 ---
-# Hausaufgabe 5
+class: middle, inverse
 
-.question[Gibt es Fragen?]
+# Hausaufgabe 5 - Rückblick
+
 
 ---
 # Ziele für diese Woche
@@ -87,7 +87,6 @@ class: middle, inverse
 Am Ende dieser Woche könnt ihr:
 
 - Daten aus verschiedenen Formaten in R importieren
-- Mittels SQL mit Daten in R Markdown arbeiten
 - Erkennen wann es notwendig ist Datums- und Zeitwerte aus Rohdaten in R selbst zu codieren
 - Daten aus einem weiten Format in ein langes Format bringen
 - Erkennen ob Daten als Tidy data klassifiert werden können 
@@ -166,7 +165,7 @@ treibhaus
 ## Eine Datei schreiben
 ```{r, echo=TRUE}
 
-fussball_weltmeister <- tibble(
+fussball_weltmeister <- tibble( #<<
    jahr = as.integer(c(2018, 2014, 2010, 2006, 
                        2019, 2015, 2011, 2007)),
    weltmeisterschaft = c(rep("Männer", 4), rep("Frauen", 4)),
@@ -174,7 +173,7 @@ fussball_weltmeister <- tibble(
                     "Italien", "USA", "USA",
                     "Japan", "Deutschland"))
 
-write_csv(x = fussball_weltmeister, file = "data/fussball_weltmeister.csv")
+write_csv(x = fussball_weltmeister, file = "data/fussball_weltmeister.csv") #<<
 
 ```
 
@@ -477,132 +476,6 @@ dat_clean_rds <- read_rds(file = "data/data-bewertung-clean.rds")
 dat_clean_rds
 ```
 
----
-# Datenbanken - SQL queries in R
-
-- `DBI` Package: https://dbi.r-dbi.org/
-- `dbplyr` Package: https://dbplyr.tidyverse.org/index.html
-
----
-# DBI - Mit einer Datenbank verbinden
-
-Argumente variieren je nach Datenbank, aber das erste Argument ist immer das Datenbank Backend.
-
-```{r, echo=TRUE}
-
-library(DBI)
-
-con <- dbConnect(
-   
-   # Hier wird das Backend definiert
-   RMariaDB::MariaDB(),
-   
-   host = "relational.fit.cvut.cz", 
-   port = 3306,
-   username = "guest",
-   
-   # Niemals Passwort in Skript speichern
-   password = rstudioapi::askForPassword("Datenbank Passwort"), #<<
-   dbname = "sakila"
-)
-
-```
-
----
-# DBI - Tabellen in Datenbank anzeigen
-
-```{r, echo=TRUE}
-dbListTables(con)
-```
-
----
-# DBI - Spaltennamen einer Tabelle anzeigen
-
-```{r, echo=TRUE}
-dbListFields(con, "film")
-```
-
----
-# SQL Queries in R Markdown Dateien
-
-1. Datenbank Verbindung: Code-chunk mit `sql connection=con` starten
-2. Daten Output: Resultierende Daten mit `output.var = "NAME"` als Objekt im Environment speichern
-3. SQL Code schreiben
-
-```{r}
-knitr::include_graphics("img/sql-chunk-output.png")
-```
-
-```{sql connection=con, output.var="film_length_big180"}
-SELECT film_id, title, length
-FROM film 
-WHERE length > 180
-```
-
----
-# SQL Query - Mit Daten weiter arbeiten
-
-1. Objekt mit Funktion `as_tibble()` in einen Tibble umwandeln
-
-```{r}
-knitr::include_graphics("img/r-chunk.png")
-```
-
-```{r, echo=FALSE}
-film_length_big180 %>% 
-   as_tibble()
-```
-
----
-# dbplyr - Mit Tabelle in Datenbank verbinden
-
-```{r, echo=TRUE}
-film_tab <- tbl(con, "film")
-film_tab
-```
-
----
-# dbplyr - Queries als dplyr code
-
-```{r, echo=TRUE}
-film_tab %>% 
-   select(film_id, title, length) %>% 
-   filter(length > 180)
-```
-
----
-# dbplyr - Resultierende Daten aus Datenbank holen
-
-```{r, echo=TRUE}
-film_tab %>% 
-   select(film_id, title, length) %>% 
-   filter(length > 180) %>% 
-   collect() #<<
-```
-
----
-# dbplyr - Queries als dplyr code
-
-```{r, echo=TRUE}
-
-film_tab %>% 
-   summarise(min_rate = min(rental_rate),
-             max_rate = max(rental_rate),
-             mean_rate = mean(rental_rate)) %>% 
-   collect()
-
-```
-
----
-# R Packages für andere Datentypen
-
-- **googlesheets4:** Google Sheets
-- **haven**: SPSS, Stata, und SAS Dateien
-- **jsonline**: JSON
-- **xml2**: xml
-- **rvest**: web scraping
-- **httr**: web APIs
-- **sparklyr**: data loaded into spark
 
 ---
 class: left
@@ -631,7 +504,7 @@ countdown(
 
 # Praktikum 9 - Daten importieren - Treibhausgasbilanz
 
-## 2er Teams
+## 2er Teams - Übung 1
 
 1. **E-Mail**: Öffne deine Email und klicke auf den Link zu deinem persönlichen GitHub repo
 2. **GitHub**: Klicke auf den grünen Button "Code" und kopiere den Link für das Repo in deine Zwischenablage
@@ -850,6 +723,18 @@ Welche Eigenschaften von Tidy data sind hier nicht erfüllt?
 - Keine Farben, Formatierungen, etc.
 - Folgt Standards (Datum: ISO 8601)
 - etc.
+]
+
+
+---
+.note[
+
+# Praktikum 9 - Data tidying - Treibhausgasbilanz
+
+## 2er Teams - Übung 2 + 3
+
+- Öffnet nochmals das Praktikum 9
+
 ]
 
 ---

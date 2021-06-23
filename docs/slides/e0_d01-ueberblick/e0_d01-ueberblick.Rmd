@@ -2,7 +2,7 @@
 title: "rstatsZH - Datenwissenschaften mit R"
 subtitle: "Angebotsüberblick"  
 author: "Lars Schöbitz"
-date: "2020-02-01"
+date: "2021-06-23"
 output:
   xaringan::moon_reader:
     self_contained: false
@@ -409,7 +409,7 @@ knitr::include_graphics("img/trainer-hex.png")
 ---
 # Kursrahmen
 
-- **Kosten:** 1450.00 CHF
+- **Kosten:** 1450.00 CHF (gilt nicht für Kanton Zürich Justizdirektion)
 - **Level:** Einsteiger 
 - **Zeitraum:** Flexibel (siehe [Google Form für die Kursplanung](https://forms.gle/tYtUNKG4tYB8ZQhm8))
 - **Aufwand:** 3 Stunden Unterricht pro Woche + Übungen + Tutoring
@@ -428,21 +428,20 @@ knitr::include_graphics("img/monster_support.jpg")
 .footnote[Artwork by [@Alison_Horst](https://github.com/allisonhorst/stats-illustrations)]
 
 ---
-# Kurshinhalt (flexivel)
+# Kurshinhalt (flexibel)
 
 - **Woche 1:** Einführung 
   - Werkzeuge und Arbeitsumgebung kennenlernen
-- **Woche 2:** Daten Visualisierung 1
-- **Woche 3:** Daten Aufbereitung 
+- **Woche 2:** Daten Visualisierung mit ggplot2
+- **Woche 3:** Daten Transformation mit dplyr - Teil 1
   - Daten manipulieren
-  - Daten zusammenfassen (Excel Pivot-Tabellen in R)
-- **Woche 4:** Daten Aufbereitung 
+- **Woche 4:** Daten Transformation mit dplyr - Teil 2
+  - Daten zusammenfassen
+- **Woche 5:** Vektoren in R und Kollaboration mit Git
+  - Daten Typen und Klassen
+- **Woche 6:** Daten Importieren und Daten Aufräumen
   - Konzept Tidy Data
-  - Daten zusammenfügen (Excel VLOOKUP in R)
-  - Daten Typen
-- **Woche 5:** Daten Import und Visualisierung 2
-- **Woche 6:** Daten Kommunikation und Web Scraping
-- **Woche 7:** Funktionales Programmieren und Iteration
+- **Woche 7:** Daten zusammenfügen und Funktionen schreiben
 
 ---
 # `r emo::ji("sunflower")` Danke 

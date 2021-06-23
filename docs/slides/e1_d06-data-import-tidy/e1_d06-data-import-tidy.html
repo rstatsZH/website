@@ -4,7 +4,7 @@
     <title>rstatsZH - Data Science mit R</title>
     <meta charset="utf-8" />
     <meta name="author" content="Lars Schöbitz" />
-    <meta name="date" content="2020-04-22" />
+    <meta name="date" content="2021-07-01" />
     <script src="libs/header-attrs/header-attrs.js"></script>
     <link href="libs/remark-css/default.css" rel="stylesheet" />
     <link href="libs/font-awesome/css/all.css" rel="stylesheet" />
@@ -45,7 +45,7 @@ class: title-slide
 
 .bottom[
 
-<p>Lars Schöbitz</p><p>2020-04-22</p>
+<p>Lars Schöbitz</p><p>2021-07-01</p>
 ]
 
 ---
@@ -60,7 +60,6 @@ class: title-slide
    - integer
    - character
 - Funktionen zum Umgang mit einem Datum
-   - `lubridate::ymd()`
    - `readr::parse_date()`
 - Visualisierungen
    - Verbundene Streudiagramm
@@ -69,12 +68,13 @@ class: title-slide
 ---
 class: middle, inverse
 
-# Hausaufgabe 5 
+# Hausaufgabe 4 - Rückblick 
 
 ---
-# Hausaufgabe 5
+class: middle, inverse
 
-.question[Gibt es Fragen?]
+# Hausaufgabe 5 - Rückblick
+
 
 ---
 # Ziele für diese Woche
@@ -82,7 +82,6 @@ class: middle, inverse
 Am Ende dieser Woche könnt ihr:
 
 - Daten aus verschiedenen Formaten in R importieren
-- Mittels SQL mit Daten in R Markdown arbeiten
 - Erkennen wann es notwendig ist Datums- und Zeitwerte aus Rohdaten in R selbst zu codieren
 - Daten aus einem weiten Format in ein langes Format bringen
 - Erkennen ob Daten als Tidy data klassifiert werden können 
@@ -162,7 +161,7 @@ treibhaus
 ## Eine Datei schreiben
 
 ```r
-fussball_weltmeister &lt;- tibble(
+*fussball_weltmeister &lt;- tibble(
    jahr = as.integer(c(2018, 2014, 2010, 2006, 
                        2019, 2015, 2011, 2007)),
    weltmeisterschaft = c(rep("Männer", 4), rep("Frauen", 4)),
@@ -170,7 +169,7 @@ fussball_weltmeister &lt;- tibble(
                     "Italien", "USA", "USA",
                     "Japan", "Deutschland"))
 
-write_csv(x = fussball_weltmeister, file = "data/fussball_weltmeister.csv")
+*write_csv(x = fussball_weltmeister, file = "data/fussball_weltmeister.csv")
 ```
 
 
@@ -607,198 +606,6 @@ dat_clean_rds
 # … with 4 more rows
 ```
 
----
-# Datenbanken - SQL queries in R
-
-- `DBI` Package: https://dbi.r-dbi.org/
-- `dbplyr` Package: https://dbplyr.tidyverse.org/index.html
-
----
-# DBI - Mit einer Datenbank verbinden
-
-Argumente variieren je nach Datenbank, aber das erste Argument ist immer das Datenbank Backend.
-
-
-```r
-library(DBI)
-
-con &lt;- dbConnect(
-   
-   # Hier wird das Backend definiert
-   RMariaDB::MariaDB(),
-   
-   host = "relational.fit.cvut.cz", 
-   port = 3306,
-   username = "guest",
-   
-   # Niemals Passwort in Skript speichern
-*  password = rstudioapi::askForPassword("Datenbank Passwort"),
-   dbname = "sakila"
-)
-```
-
----
-# DBI - Tabellen in Datenbank anzeigen
-
-
-```r
-dbListTables(con)
-```
-
-```
- [1] "actor"         "address"       "category"      "city"          "country"       "customer"      "film"          "film_actor"    "film_category"
-[10] "film_text"     "inventory"     "language"      "payment"       "rental"        "staff"         "store"        
-```
-
----
-# DBI - Spaltennamen einer Tabelle anzeigen
-
-
-```r
-dbListFields(con, "film")
-```
-
-```
- [1] "film_id"              "title"                "description"          "release_year"         "language_id"          "original_language_id"
- [7] "rental_duration"      "rental_rate"          "length"               "replacement_cost"     "rating"               "special_features"    
-[13] "last_update"         
-```
-
----
-# SQL Queries in R Markdown Dateien
-
-1. Datenbank Verbindung: Code-chunk mit `sql connection=con` starten
-2. Daten Output: Resultierende Daten mit `output.var = "NAME"` als Objekt im Environment speichern
-3. SQL Code schreiben
-
-&lt;img src="img/sql-chunk-output.png" width="100%" style="display: block; margin: auto;" /&gt;
-
-
-
----
-# SQL Query - Mit Daten weiter arbeiten
-
-1. Objekt mit Funktion `as_tibble()` in einen Tibble umwandeln
-
-&lt;img src="img/r-chunk.png" width="100%" style="display: block; margin: auto;" /&gt;
-
-
-```
-# A tibble: 39 x 3
-  film_id title             length
-    &lt;int&gt; &lt;chr&gt;              &lt;int&gt;
-1      24 ANALYZE HOOSIERS     181
-2      50 BAKED CLEOPATRA      182
-3     128 CATCH AMISTAD        183
-4     141 CHICAGO NORTH        185
-5     180 CONSPIRACY SPIRIT    184
-6     182 CONTROL ANTHEM       185
-# … with 33 more rows
-```
-
----
-# dbplyr - Mit Tabelle in Datenbank verbinden
-
-
-```r
-film_tab &lt;- tbl(con, "film")
-film_tab
-```
-
-```
-# Source:   table&lt;film&gt; [?? x 13]
-# Database: mysql [guest@relational.fit.cvut.cz:NA/sakila]
-  film_id title    description           release_year language_id
-    &lt;int&gt; &lt;chr&gt;    &lt;chr&gt;                        &lt;int&gt;       &lt;int&gt;
-1       1 ACADEMY… A Epic Drama of a Fe…         2006           1
-2       2 ACE GOL… A Astounding Epistle…         2006           1
-3       3 ADAPTAT… A Astounding Reflect…         2006           1
-4       4 AFFAIR … A Fanciful Documenta…         2006           1
-5       5 AFRICAN… A Fast-Paced Documen…         2006           1
-6       6 AGENT T… A Intrepid Panorama …         2006           1
-# … with more rows, and 8 more variables:
-#   original_language_id &lt;int&gt;, rental_duration &lt;int&gt;,
-#   rental_rate &lt;dbl&gt;, length &lt;int&gt;, replacement_cost &lt;dbl&gt;,
-#   rating &lt;chr&gt;, special_features &lt;chr&gt;, last_update &lt;dttm&gt;
-```
-
----
-# dbplyr - Queries als dplyr code
-
-
-```r
-film_tab %&gt;% 
-   select(film_id, title, length) %&gt;% 
-   filter(length &gt; 180)
-```
-
-```
-# Source:   lazy query [?? x 3]
-# Database: mysql [guest@relational.fit.cvut.cz:NA/sakila]
-  film_id title             length
-    &lt;int&gt; &lt;chr&gt;              &lt;int&gt;
-1      24 ANALYZE HOOSIERS     181
-2      50 BAKED CLEOPATRA      182
-3     128 CATCH AMISTAD        183
-4     141 CHICAGO NORTH        185
-5     180 CONSPIRACY SPIRIT    184
-6     182 CONTROL ANTHEM       185
-# … with more rows
-```
-
----
-# dbplyr - Resultierende Daten aus Datenbank holen
-
-
-```r
-film_tab %&gt;% 
-   select(film_id, title, length) %&gt;% 
-   filter(length &gt; 180) %&gt;% 
-*  collect()
-```
-
-```
-# A tibble: 39 x 3
-  film_id title             length
-    &lt;int&gt; &lt;chr&gt;              &lt;int&gt;
-1      24 ANALYZE HOOSIERS     181
-2      50 BAKED CLEOPATRA      182
-3     128 CATCH AMISTAD        183
-4     141 CHICAGO NORTH        185
-5     180 CONSPIRACY SPIRIT    184
-6     182 CONTROL ANTHEM       185
-# … with 33 more rows
-```
-
----
-# dbplyr - Queries als dplyr code
-
-
-```r
-film_tab %&gt;% 
-   summarise(min_rate = min(rental_rate),
-             max_rate = max(rental_rate),
-             mean_rate = mean(rental_rate)) %&gt;% 
-   collect()
-```
-
-```
-# A tibble: 1 x 3
-  min_rate max_rate mean_rate
-     &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt;
-1     0.99     4.99      2.98
-```
-
----
-# R Packages für andere Datentypen
-
-- **googlesheets4:** Google Sheets
-- **haven**: SPSS, Stata, und SAS Dateien
-- **jsonline**: JSON
-- **xml2**: xml
-- **rvest**: web scraping
-- **httr**: web APIs
-- **sparklyr**: data loaded into spark
 
 ---
 class: left
@@ -808,7 +615,7 @@ background-size: contain
 
 # Pause 
 
-<div class="countdown" id="timer_60b79098" style="right:0;bottom:0;left:0;margin:5%;padding:15px;font-size:4em;" data-warnwhen="0">
+<div class="countdown" id="timer_60d32ff2" style="right:0;bottom:0;left:0;margin:5%;padding:15px;font-size:4em;" data-warnwhen="0">
 <code class="countdown-time"><span class="countdown-digits minutes">10</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
 
@@ -820,7 +627,7 @@ background-size: contain
 
 # Praktikum 9 - Daten importieren - Treibhausgasbilanz
 
-## 2er Teams
+## 2er Teams - Übung 1
 
 1. **E-Mail**: Öffne deine Email und klicke auf den Link zu deinem persönlichen GitHub repo
 2. **GitHub**: Klicke auf den grünen Button "Code" und kopiere den Link für das Repo in deine Zwischenablage
@@ -1149,6 +956,18 @@ Welche Eigenschaften von Tidy data sind hier nicht erfüllt?
 - etc.
 ]
 
+
+---
+.note[
+
+# Praktikum 9 - Data tidying - Treibhausgasbilanz
+
+## 2er Teams - Übung 2 + 3
+
+- Öffnet nochmals das Praktikum 9
+
+]
+
 ---
 class: middle, inverse
 
@@ -1362,7 +1181,7 @@ ggplot(data = ghg_tidy,                            # Daten im neuen Format
 ]
 
 .panel[.panel-name[Plot]
-&lt;img src="e1_d06-data-import-tidy_files/figure-html/unnamed-chunk-55-1.png" width="80%" style="display: block; margin: auto;" /&gt;
+&lt;img src="e1_d06-data-import-tidy_files/figure-html/unnamed-chunk-44-1.png" width="80%" style="display: block; margin: auto;" /&gt;
 ]
 ]
 

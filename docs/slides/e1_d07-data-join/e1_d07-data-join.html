@@ -977,13 +977,13 @@ professions %&gt;%
     <tr>
       <td class="gt_row gt_left">Edwin</td>
       <td class="gt_row gt_left">Dumont</td>
-      <td class="gt_row gt_right">9.2</td>
+      <td class="gt_row gt_right">17.4</td>
       <td class="gt_row gt_left">edwin.dumont@example.com</td>
     </tr>
     <tr>
       <td class="gt_row gt_left">Leonora</td>
       <td class="gt_row gt_left">Garcia</td>
-      <td class="gt_row gt_right">24.6</td>
+      <td class="gt_row gt_right">45.1</td>
       <td class="gt_row gt_left">leonora.garcia@example.com</td>
     </tr>
   </tbody>
@@ -1019,17 +1019,45 @@ einkaeufe_preise
 ```
 
 ---
-## Schritt 2 - Daten zusammefassen
+## Schritt 2 - Neue Variable erstellen
 
 
 ```r
-einkaeufe_preise_sum &lt;- einkaeufe_preise %&gt;% 
+einkaeufe_kosten &lt;- einkaeufe_preise %&gt;% 
+  mutate(kosten = einkauf * preis)
+
+einkaeufe_kosten
+```
+
+
+```
+# A tibble: 9 x 6
+  kunden_id produkt_name einkauf einheit preis kosten
+  &lt;chr&gt;     &lt;chr&gt;          &lt;dbl&gt; &lt;chr&gt;   &lt;dbl&gt;  &lt;dbl&gt;
+1 k1        Chips            2   anzahl    3.8   7.6 
+2 k1        Milch            3   anzahl    2.2   6.6 
+3 k1        Avocado          1   anzahl    3.2   3.2 
+4 k2        Pfirsich         2.5 kg        6.5  16.2 
+5 k2        Birne            0.5 kg        2.6   1.3 
+6 k2        Apfel            2   kg        4.1   8.2 
+7 k2        Tomate           1.5 kg        2.7   4.05
+8 k2        Pfirsich         1   kg        6.5   6.5 
+9 k2        Milch            4   anzahl    2.2   8.8 
+```
+
+
+---
+## Schritt 3 - Daten zusammefassen
+
+
+```r
+einkaeufe_kosten_sum &lt;- einkaeufe_kosten %&gt;% 
   group_by(kunden_id) %&gt;% 
   summarise(
-    summe = sum(preis)
+    summe = sum(kosten)
   )
 
-einkaeufe_preise_sum
+einkaeufe_kosten_sum
 ```
 
 
@@ -1037,17 +1065,17 @@ einkaeufe_preise_sum
 # A tibble: 2 x 2
   kunden_id summe
   &lt;chr&gt;     &lt;dbl&gt;
-1 k1          9.2
-2 k2         24.6
+1 k1         17.4
+2 k2         45.1
 ```
 
 
 ---
-## Schritt 3 - Daten zusammenfügen + eingrenzen
+## Schritt 4 - Daten zusammenfügen + eingrenzen
 
 
 ```r
-kunden_tab &lt;- einkaeufe_preise_sum %&gt;% 
+kunden_tab &lt;- einkaeufe_kosten_sum %&gt;% 
   left_join(kundenprofile) %&gt;% 
   select(ends_with("name"), summe, email)
 
@@ -1059,12 +1087,12 @@ kunden_tab
 # A tibble: 2 x 4
   vorname nachname summe email                     
   &lt;chr&gt;   &lt;chr&gt;    &lt;dbl&gt; &lt;chr&gt;                     
-1 Edwin   Dumont     9.2 edwin.dumont@example.com  
-2 Leonora Garcia    24.6 leonora.garcia@example.com
+1 Edwin   Dumont    17.4 edwin.dumont@example.com  
+2 Leonora Garcia    45.1 leonora.garcia@example.com
 ```
 
 ---
-## Schritt 4 - Daten als Tabelle darstellen
+## Schritt 5 - Daten als Tabelle darstellen
 
 
 ```r
@@ -1422,13 +1450,13 @@ kunden_tab %&gt;%
     <tr>
       <td class="gt_row gt_left">Edwin</td>
       <td class="gt_row gt_left">Dumont</td>
-      <td class="gt_row gt_right">9.2</td>
+      <td class="gt_row gt_right">17.4</td>
       <td class="gt_row gt_left">edwin.dumont@example.com</td>
     </tr>
     <tr>
       <td class="gt_row gt_left">Leonora</td>
       <td class="gt_row gt_left">Garcia</td>
-      <td class="gt_row gt_right">24.6</td>
+      <td class="gt_row gt_right">45.1</td>
       <td class="gt_row gt_left">leonora.garcia@example.com</td>
     </tr>
   </tbody>
@@ -1443,9 +1471,10 @@ kunden_tab %&gt;%
 ```r
 einkaeufe %&gt;%
   left_join(preise) %&gt;%
+  mutate(kosten = einkauf * preis) %&gt;% 
   group_by(kunden_id) %&gt;% 
   summarise(
-    summe = sum(preis)
+    summe = sum(kosten)
   ) %&gt;% 
   left_join(kundenprofile) %&gt;% 
   select(ends_with("name"), summe, email) %&gt;% 
@@ -1802,24 +1831,19 @@ einkaeufe %&gt;%
     <tr>
       <td class="gt_row gt_left">Edwin</td>
       <td class="gt_row gt_left">Dumont</td>
-      <td class="gt_row gt_right">9.2</td>
+      <td class="gt_row gt_right">17.4</td>
       <td class="gt_row gt_left">edwin.dumont@example.com</td>
     </tr>
     <tr>
       <td class="gt_row gt_left">Leonora</td>
       <td class="gt_row gt_left">Garcia</td>
-      <td class="gt_row gt_right">24.6</td>
+      <td class="gt_row gt_right">45.1</td>
       <td class="gt_row gt_left">leonora.garcia@example.com</td>
     </tr>
   </tbody>
   
   
 </table></div>
-
----
-class: middle, inverse
-
-# .large[Funktionen]
 
 ---
 class: middle, inverse

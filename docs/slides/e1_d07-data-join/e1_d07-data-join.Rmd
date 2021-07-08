@@ -456,14 +456,13 @@ kundenprofile %>%
 ```{r echo=FALSE}
 einkaeufe %>%
   left_join(preise) %>%
-  mutate(kosten = einkauf * preis) %>% 
   group_by(kunden_id) %>% 
   summarise(
-    summe = sum(kosten)
+    summe = sum(preis)
   ) %>% 
   left_join(kundenprofile) %>% 
   select(ends_with("name"), summe, email) %>% 
-  gt()
+  gt::gt()
 ```
 
 ---
@@ -496,6 +495,7 @@ einkaeufe_kosten
 
 ```
 
+
 ```{r, echo=FALSE}
 
 einkaeufe_kosten <- einkaeufe_preise %>% 
@@ -522,7 +522,7 @@ einkaeufe_kosten_sum
 einkaeufe_kosten_sum <- einkaeufe_kosten %>% 
   group_by(kunden_id) %>% 
   summarise(
-    summe = sum(kosten)
+    summe = sum(preis)
   ) %>% 
   print(n = 10)
 ```
@@ -569,6 +569,11 @@ einkaeufe %>%
   select(ends_with("name"), summe, email) %>% 
   gt()
 ```
+
+---
+class: middle, inverse
+
+# .large[Funktionen]
 
 ---
 class: middle, inverse

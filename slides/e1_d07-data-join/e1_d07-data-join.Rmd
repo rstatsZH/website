@@ -484,20 +484,42 @@ einkaeufe_preise <- einkaeufe %>%
 ```
 
 ---
-## Schritt 2 - Daten zusammefassen
+## Schritt 2 - Neue Variable erstellen
 
 ```{r, echo=TRUE, eval=FALSE}
-einkaeufe_preise_sum <- einkaeufe_preise %>% 
+
+einkaeufe_kosten <- einkaeufe_preise %>% 
+  mutate(kosten = einkauf * preis)
+
+einkaeufe_kosten
+
+```
+
+
+```{r, echo=FALSE}
+
+einkaeufe_kosten <- einkaeufe_preise %>% 
+  mutate(kosten = einkauf * preis) %>% 
+  print(n = 10)
+
+```
+
+
+---
+## Schritt 3 - Daten zusammefassen
+
+```{r, echo=TRUE, eval=FALSE}
+einkaeufe_kosten_sum <- einkaeufe_kosten %>% 
   group_by(kunden_id) %>% 
   summarise(
-    summe = sum(preis)
+    summe = sum(kosten)
   )
 
-einkaeufe_preise_sum
+einkaeufe_kosten_sum
 ```
 
 ```{r, echo=FALSE}
-einkaeufe_preise_sum <- einkaeufe_preise %>% 
+einkaeufe_kosten_sum <- einkaeufe_kosten %>% 
   group_by(kunden_id) %>% 
   summarise(
     summe = sum(preis)
@@ -507,10 +529,10 @@ einkaeufe_preise_sum <- einkaeufe_preise %>%
 
 
 ---
-## Schritt 3 - Daten zusammenfügen + eingrenzen
+## Schritt 4 - Daten zusammenfügen + eingrenzen
 
 ```{r, echo=TRUE, eval=FALSE}
-kunden_tab <- einkaeufe_preise_sum %>% 
+kunden_tab <- einkaeufe_kosten_sum %>% 
   left_join(kundenprofile) %>% 
   select(ends_with("name"), summe, email)
 
@@ -518,14 +540,14 @@ kunden_tab
 ```
 
 ```{r, echo=FALSE}
-kunden_tab <- einkaeufe_preise_sum %>% 
+kunden_tab <- einkaeufe_kosten_sum %>% 
   left_join(kundenprofile) %>% 
   select(ends_with("name"), summe, email) %>% 
   print(n = 10)
 ```
 
 ---
-## Schritt 4 - Daten als Tabelle darstellen
+## Schritt 5 - Daten als Tabelle darstellen
 
 ```{r, echo=TRUE, eval=TRUE}
 kunden_tab %>% 
@@ -538,9 +560,10 @@ kunden_tab %>%
 ```{r echo=TRUE}
 einkaeufe %>%
   left_join(preise) %>%
+  mutate(kosten = einkauf * preis) %>% 
   group_by(kunden_id) %>% 
   summarise(
-    summe = sum(preis)
+    summe = sum(kosten)
   ) %>% 
   left_join(kundenprofile) %>% 
   select(ends_with("name"), summe, email) %>% 

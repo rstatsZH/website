@@ -2,12 +2,12 @@
 title: "rstatsZH - Data Science mit R"
 subtitle: "Mit mehreren Dataframes arbeiten / Tabellen darstellen"
 author: "Lars Schöbitz"
-date: "2020-05-02"
+date: "2021-07-08"
 output:
   xaringan::moon_reader:
     self_contained: false
     lib_dir: libs
-    css: ["default", "../assets/css/xaringan-themer.css", "../assets/css/my-css-style.css"]
+    css: ["default", "assets/css/xaringan-themer.css", "assets/css/my-css-style.css"]
     seal: FALSE
     nature:
       slideNumberFormat: |
@@ -64,8 +64,6 @@ p(rmarkdown::metadata$date)
 - Daten importieren
   - `read_csv()`
   - `read_excel()`
-  - etc.
-- SQL in R Markdown
 - Tidy Data Konzept
 - Daten drehen (pivoting) mit `{tidyr}`
   - `pivot_longer()`
@@ -101,9 +99,8 @@ class: middle
 Am Ende dieser Woche könnt ihr:
 
 - Mehrere Dataframes zusammenfügen
-- Tabellen mit dem `{gt}` Package erstellen
-- Einen mit `ggplot()` erstellten Plot interaktiv darstellen
-- Einen R Markdown Bericht als Website publizieren
+- Tabellen mit verschiedenen Packages darstellen erstellen
+- Eine eigene Funktion für ein `{ggplot2}` theme schreiben
 - Mit den im Kurs erlernten Fähigkeiten selbstständig weiter arbeiten
 
 ---
@@ -551,123 +548,28 @@ einkaeufe %>%
 ```
 
 ---
-class: inverse, middle
+class: middle, inverse
 
-# .big[Tabellen darstellen]
-
----
-background-image: url("img/untidy-data/untidy-data.004.png")
-background-size: contain
-
-.question[
-Welche Eigenschaften von Tidy data sind hier nicht erfüllt?
-]
-
-.footnote[
-Quelle: [Bundesamt für Statistik - Kosten des Gesundheitswesens nach Leistungen]( https://www.bfs.admin.ch/bfs/de/home/statistiken/kataloge-datenbanken/tabellen.assetdetail.14840808.html) 
-]
----
-background-image: url("img/untidy-data/untidy-data.005.png")
-background-size: contain
-
-.question[
-Welche Eigenschaften von Tidy data sind hier nicht erfüllt?
-]
-
-.footnote[
-Quelle: [Bundesamt für Statistik - Kosten des Gesundheitswesens nach Leistungen]( https://www.bfs.admin.ch/bfs/de/home/statistiken/kataloge-datenbanken/tabellen.assetdetail.14840808.html)
-]
+# .large[Funktionen]
 
 ---
-background-image: url("img/untidy-data/untidy-data.006.png")
-background-size: contain
+class: middle, inverse
 
-.question[
-Welche Eigenschaften von Tidy data sind hier nicht erfüllt?
-]
-
-.footnote[
-Quelle: [Bundesamt für Statistik - Kosten des Gesundheitswesens nach Leistungen]( https://www.bfs.admin.ch/bfs/de/home/statistiken/kataloge-datenbanken/tabellen.assetdetail.14840808.html)
-]
-
-
----
-# Relevanter Unterschied - Ziel der Daten Publikation
-
-.pull-left[
-**Daten in Tabellen darstellen**
-- Layout
-   - Gut leserlich
-   - Kompakt
-   - Erkenntnis bringend
-- Metadaten
-]
-
-.pull-right[
-**Daten für weitere Nutzung bereitstellen**
-- Layout (Tidy data)
-   - Eigenschaft 1: Jede Spalte ist eine Variable
-   - Eigenschaft 2: Jede Reihe ist eine Beobachtung
-   - Eigenschaft 3: Jede Zelle enthält eine Messung
-- Keine Metadaten
-- Keine Farben, Formatierungen, etc.
-- Folgt Standards (Datum: ISO 8601)
-- etc.
-]
-
----
-class: inverse, middle
-
-# .large[Tabellen darstellen mit dem {gt} Package]
-
-
----
-background-image: url("https://gt.rstudio.com/reference/figures/gt_parts_of_a_table.svg")
-background-size: cover
-
-.footnote[
-Quelle: [gt.rstudio.com](https://gt.rstudio.com/index.html)
-]
-
----
-background-image: url("https://gt.rstudio.com/reference/figures/gt_workflow_diagram.svg")
-background-size: contain
-
-.footnote[
-Quelle: [gt.rstudio.com](https://gt.rstudio.com/index.html)
-]
+# .large[Funktionen - Bonusmaterial]
 
 ---
 .note[
 
-# Demonstration 3 - Tabellen darstellen
+# Praktikum 11 - Funktionen 
 
-1. Schaut mir beim Programmieren zu
-2. Macht euch Notizen und stellt Fragen
+## Live Coding 
+
+1. **E-Mail**: Öffne deine Email und klicke auf den Link zu deinem persönlichen GitHub repo
+2. **GitHub**: Klicke auf den grünen Button "Code" und kopiere den Link für das Repo in deine Zwischenablage
+3. **RStudio Cloud**: Öffne deinen Arbeitsbereich für den Kurs in der RStudio Cloud
+4. **RStudio Cloud / Projects**: Klicke auf "New Project from GitHub Repository" 
 
 ]
-
----
-# {gt} - Lerne das Package besser kennen
-
-[
-```{r}
-knitr::include_graphics("img/gt-test-drive.svg")
-```
-](https://rstudio.cloud/project/779965)
-
-.footnote[
-Quelle: [gt.rstudio.com](https://gt.rstudio.com/index.html)
-]
-
----
-# Tabellen darstellen - Weitere Packages
-
-- `{kableExtra}`: https://haozhu233.github.io/kableExtra/
-- `{formattable}`: https://renkun-ken.github.io/formattable/
-- `{DT}`: https://rstudio.github.io/DT/
-- `{flextable}`: https://davidgohel.github.io/flextable/
-- etc. 
 
 ---
 class: middle, inverse
@@ -678,6 +580,7 @@ class: middle, inverse
 class: middle, inverse
 
 # .large[The End - Noch nicht ganz]
+
 
 ---
 # Was habt ihr gelernt?

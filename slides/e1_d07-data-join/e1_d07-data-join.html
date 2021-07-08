@@ -4,7 +4,7 @@
     <title>rstatsZH - Data Science mit R</title>
     <meta charset="utf-8" />
     <meta name="author" content="Lars Schöbitz" />
-    <meta name="date" content="2020-05-02" />
+    <meta name="date" content="2021-07-08" />
     <script src="libs/header-attrs/header-attrs.js"></script>
     <link href="libs/remark-css/default.css" rel="stylesheet" />
     <link href="libs/font-awesome/css/all.css" rel="stylesheet" />
@@ -16,8 +16,8 @@
     <script src="libs/shareon/shareon.min.js"></script>
     <link href="libs/xaringanExtra-shareagain/shareagain.css" rel="stylesheet" />
     <script src="libs/xaringanExtra-shareagain/shareagain.js"></script>
-    <link rel="stylesheet" href="../assets/css/xaringan-themer.css" type="text/css" />
-    <link rel="stylesheet" href="../assets/css/my-css-style.css" type="text/css" />
+    <link rel="stylesheet" href="assets/css/xaringan-themer.css" type="text/css" />
+    <link rel="stylesheet" href="assets/css/my-css-style.css" type="text/css" />
   </head>
   <body>
     <textarea id="source">
@@ -40,7 +40,7 @@ class: title-slide
 
 .bottom[
 
-<p>Lars Schöbitz</p><p>2020-05-02</p>
+<p>Lars Schöbitz</p><p>2021-07-08</p>
 ]
 
 ---
@@ -53,8 +53,6 @@ class: title-slide
 - Daten importieren
   - `read_csv()`
   - `read_excel()`
-  - etc.
-- SQL in R Markdown
 - Tidy Data Konzept
 - Daten drehen (pivoting) mit `{tidyr}`
   - `pivot_longer()`
@@ -90,9 +88,8 @@ class: middle
 Am Ende dieser Woche könnt ihr:
 
 - Mehrere Dataframes zusammenfügen
-- Tabellen mit dem `{gt}` Package erstellen
-- Einen mit `ggplot()` erstellten Plot interaktiv darstellen
-- Einen R Markdown Bericht als Website publizieren
+- Tabellen mit verschiedenen Packages darstellen erstellen
+- Eine eigene Funktion für ein `{ggplot2}` theme schreiben
 - Mit den im Kurs erlernten Fähigkeiten selbstständig weiter arbeiten
 
 ---
@@ -117,45 +114,19 @@ class: middle
 Informationen zu 10 Frauen in der Wissenschaft welche die Welt verändert haben
 
 .small[
-&lt;table&gt;
- &lt;thead&gt;
-  &lt;tr&gt;
-   &lt;th style="text-align:left;"&gt; name &lt;/th&gt;
-  &lt;/tr&gt;
- &lt;/thead&gt;
-&lt;tbody&gt;
-  &lt;tr&gt;
-   &lt;td style="text-align:left;"&gt; Ada Lovelace &lt;/td&gt;
-  &lt;/tr&gt;
-  &lt;tr&gt;
-   &lt;td style="text-align:left;"&gt; Marie Curie &lt;/td&gt;
-  &lt;/tr&gt;
-  &lt;tr&gt;
-   &lt;td style="text-align:left;"&gt; Janaki Ammal &lt;/td&gt;
-  &lt;/tr&gt;
-  &lt;tr&gt;
-   &lt;td style="text-align:left;"&gt; Chien-Shiung Wu &lt;/td&gt;
-  &lt;/tr&gt;
-  &lt;tr&gt;
-   &lt;td style="text-align:left;"&gt; Katherine Johnson &lt;/td&gt;
-  &lt;/tr&gt;
-  &lt;tr&gt;
-   &lt;td style="text-align:left;"&gt; Rosalind Franklin &lt;/td&gt;
-  &lt;/tr&gt;
-  &lt;tr&gt;
-   &lt;td style="text-align:left;"&gt; Vera Rubin &lt;/td&gt;
-  &lt;/tr&gt;
-  &lt;tr&gt;
-   &lt;td style="text-align:left;"&gt; Gladys West &lt;/td&gt;
-  &lt;/tr&gt;
-  &lt;tr&gt;
-   &lt;td style="text-align:left;"&gt; Flossie Wong-Staal &lt;/td&gt;
-  &lt;/tr&gt;
-  &lt;tr&gt;
-   &lt;td style="text-align:left;"&gt; Jennifer Doudna &lt;/td&gt;
-  &lt;/tr&gt;
-&lt;/tbody&gt;
-&lt;/table&gt;
+
+|name               |
+|:------------------|
+|Ada Lovelace       |
+|Marie Curie        |
+|Janaki Ammal       |
+|Chien-Shiung Wu    |
+|Katherine Johnson  |
+|Rosalind Franklin  |
+|Vera Rubin         |
+|Gladys West        |
+|Flossie Wong-Staal |
+|Jennifer Doudna    |
 ]
 
 
@@ -660,7 +631,7 @@ professions %&gt;%
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
 }
 
-#plcwisvdhj .gt_table {
+#pzveloiefp .gt_table {
   display: table;
   border-collapse: collapse;
   margin-left: auto;
@@ -685,7 +656,7 @@ professions %&gt;%
   border-left-color: #D3D3D3;
 }
 
-#plcwisvdhj .gt_heading {
+#pzveloiefp .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -697,7 +668,7 @@ professions %&gt;%
   border-right-color: #D3D3D3;
 }
 
-#plcwisvdhj .gt_title {
+#pzveloiefp .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -707,7 +678,7 @@ professions %&gt;%
   border-bottom-width: 0;
 }
 
-#plcwisvdhj .gt_subtitle {
+#pzveloiefp .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -717,13 +688,13 @@ professions %&gt;%
   border-top-width: 0;
 }
 
-#plcwisvdhj .gt_bottom_border {
+#pzveloiefp .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#plcwisvdhj .gt_col_headings {
+#pzveloiefp .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -738,7 +709,7 @@ professions %&gt;%
   border-right-color: #D3D3D3;
 }
 
-#plcwisvdhj .gt_col_heading {
+#pzveloiefp .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -758,7 +729,7 @@ professions %&gt;%
   overflow-x: hidden;
 }
 
-#plcwisvdhj .gt_column_spanner_outer {
+#pzveloiefp .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -770,15 +741,15 @@ professions %&gt;%
   padding-right: 4px;
 }
 
-#plcwisvdhj .gt_column_spanner_outer:first-child {
+#pzveloiefp .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#plcwisvdhj .gt_column_spanner_outer:last-child {
+#pzveloiefp .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#plcwisvdhj .gt_column_spanner {
+#pzveloiefp .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -790,7 +761,7 @@ professions %&gt;%
   width: 100%;
 }
 
-#plcwisvdhj .gt_group_heading {
+#pzveloiefp .gt_group_heading {
   padding: 8px;
   color: #333333;
   background-color: #FFFFFF;
@@ -812,7 +783,7 @@ professions %&gt;%
   vertical-align: middle;
 }
 
-#plcwisvdhj .gt_empty_group_heading {
+#pzveloiefp .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -827,15 +798,15 @@ professions %&gt;%
   vertical-align: middle;
 }
 
-#plcwisvdhj .gt_from_md > :first-child {
+#pzveloiefp .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#plcwisvdhj .gt_from_md > :last-child {
+#pzveloiefp .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#plcwisvdhj .gt_row {
+#pzveloiefp .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -854,7 +825,7 @@ professions %&gt;%
   overflow-x: hidden;
 }
 
-#plcwisvdhj .gt_stub {
+#pzveloiefp .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -866,7 +837,7 @@ professions %&gt;%
   padding-left: 12px;
 }
 
-#plcwisvdhj .gt_summary_row {
+#pzveloiefp .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -876,7 +847,7 @@ professions %&gt;%
   padding-right: 5px;
 }
 
-#plcwisvdhj .gt_first_summary_row {
+#pzveloiefp .gt_first_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -886,7 +857,7 @@ professions %&gt;%
   border-top-color: #D3D3D3;
 }
 
-#plcwisvdhj .gt_grand_summary_row {
+#pzveloiefp .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -896,7 +867,7 @@ professions %&gt;%
   padding-right: 5px;
 }
 
-#plcwisvdhj .gt_first_grand_summary_row {
+#pzveloiefp .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -906,11 +877,11 @@ professions %&gt;%
   border-top-color: #D3D3D3;
 }
 
-#plcwisvdhj .gt_striped {
+#pzveloiefp .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#plcwisvdhj .gt_table_body {
+#pzveloiefp .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -919,7 +890,7 @@ professions %&gt;%
   border-bottom-color: #D3D3D3;
 }
 
-#plcwisvdhj .gt_footnotes {
+#pzveloiefp .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -933,13 +904,13 @@ professions %&gt;%
   border-right-color: #D3D3D3;
 }
 
-#plcwisvdhj .gt_footnote {
+#pzveloiefp .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding: 4px;
 }
 
-#plcwisvdhj .gt_sourcenotes {
+#pzveloiefp .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -953,46 +924,46 @@ professions %&gt;%
   border-right-color: #D3D3D3;
 }
 
-#plcwisvdhj .gt_sourcenote {
+#pzveloiefp .gt_sourcenote {
   font-size: 90%;
   padding: 4px;
 }
 
-#plcwisvdhj .gt_left {
+#pzveloiefp .gt_left {
   text-align: left;
 }
 
-#plcwisvdhj .gt_center {
+#pzveloiefp .gt_center {
   text-align: center;
 }
 
-#plcwisvdhj .gt_right {
+#pzveloiefp .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#plcwisvdhj .gt_font_normal {
+#pzveloiefp .gt_font_normal {
   font-weight: normal;
 }
 
-#plcwisvdhj .gt_font_bold {
+#pzveloiefp .gt_font_bold {
   font-weight: bold;
 }
 
-#plcwisvdhj .gt_font_italic {
+#pzveloiefp .gt_font_italic {
   font-style: italic;
 }
 
-#plcwisvdhj .gt_super {
+#pzveloiefp .gt_super {
   font-size: 65%;
 }
 
-#plcwisvdhj .gt_footnote_marks {
+#pzveloiefp .gt_footnote_marks {
   font-style: italic;
   font-size: 65%;
 }
 </style>
-<div id="plcwisvdhj" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;"><table class="gt_table">
+<div id="pzveloiefp" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;"><table class="gt_table">
   
   <thead class="gt_col_headings">
     <tr>
@@ -1105,7 +1076,7 @@ kunden_tab %&gt;%
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
 }
 
-#kbuovqfxsf .gt_table {
+#dbgvzfontn .gt_table {
   display: table;
   border-collapse: collapse;
   margin-left: auto;
@@ -1130,7 +1101,7 @@ kunden_tab %&gt;%
   border-left-color: #D3D3D3;
 }
 
-#kbuovqfxsf .gt_heading {
+#dbgvzfontn .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -1142,7 +1113,7 @@ kunden_tab %&gt;%
   border-right-color: #D3D3D3;
 }
 
-#kbuovqfxsf .gt_title {
+#dbgvzfontn .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -1152,7 +1123,7 @@ kunden_tab %&gt;%
   border-bottom-width: 0;
 }
 
-#kbuovqfxsf .gt_subtitle {
+#dbgvzfontn .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -1162,13 +1133,13 @@ kunden_tab %&gt;%
   border-top-width: 0;
 }
 
-#kbuovqfxsf .gt_bottom_border {
+#dbgvzfontn .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#kbuovqfxsf .gt_col_headings {
+#dbgvzfontn .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1183,7 +1154,7 @@ kunden_tab %&gt;%
   border-right-color: #D3D3D3;
 }
 
-#kbuovqfxsf .gt_col_heading {
+#dbgvzfontn .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1203,7 +1174,7 @@ kunden_tab %&gt;%
   overflow-x: hidden;
 }
 
-#kbuovqfxsf .gt_column_spanner_outer {
+#dbgvzfontn .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1215,15 +1186,15 @@ kunden_tab %&gt;%
   padding-right: 4px;
 }
 
-#kbuovqfxsf .gt_column_spanner_outer:first-child {
+#dbgvzfontn .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#kbuovqfxsf .gt_column_spanner_outer:last-child {
+#dbgvzfontn .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#kbuovqfxsf .gt_column_spanner {
+#dbgvzfontn .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -1235,7 +1206,7 @@ kunden_tab %&gt;%
   width: 100%;
 }
 
-#kbuovqfxsf .gt_group_heading {
+#dbgvzfontn .gt_group_heading {
   padding: 8px;
   color: #333333;
   background-color: #FFFFFF;
@@ -1257,7 +1228,7 @@ kunden_tab %&gt;%
   vertical-align: middle;
 }
 
-#kbuovqfxsf .gt_empty_group_heading {
+#dbgvzfontn .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -1272,15 +1243,15 @@ kunden_tab %&gt;%
   vertical-align: middle;
 }
 
-#kbuovqfxsf .gt_from_md > :first-child {
+#dbgvzfontn .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#kbuovqfxsf .gt_from_md > :last-child {
+#dbgvzfontn .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#kbuovqfxsf .gt_row {
+#dbgvzfontn .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1299,7 +1270,7 @@ kunden_tab %&gt;%
   overflow-x: hidden;
 }
 
-#kbuovqfxsf .gt_stub {
+#dbgvzfontn .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1311,7 +1282,7 @@ kunden_tab %&gt;%
   padding-left: 12px;
 }
 
-#kbuovqfxsf .gt_summary_row {
+#dbgvzfontn .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1321,7 +1292,7 @@ kunden_tab %&gt;%
   padding-right: 5px;
 }
 
-#kbuovqfxsf .gt_first_summary_row {
+#dbgvzfontn .gt_first_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1331,7 +1302,7 @@ kunden_tab %&gt;%
   border-top-color: #D3D3D3;
 }
 
-#kbuovqfxsf .gt_grand_summary_row {
+#dbgvzfontn .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1341,7 +1312,7 @@ kunden_tab %&gt;%
   padding-right: 5px;
 }
 
-#kbuovqfxsf .gt_first_grand_summary_row {
+#dbgvzfontn .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1351,11 +1322,11 @@ kunden_tab %&gt;%
   border-top-color: #D3D3D3;
 }
 
-#kbuovqfxsf .gt_striped {
+#dbgvzfontn .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#kbuovqfxsf .gt_table_body {
+#dbgvzfontn .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1364,7 +1335,7 @@ kunden_tab %&gt;%
   border-bottom-color: #D3D3D3;
 }
 
-#kbuovqfxsf .gt_footnotes {
+#dbgvzfontn .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1378,13 +1349,13 @@ kunden_tab %&gt;%
   border-right-color: #D3D3D3;
 }
 
-#kbuovqfxsf .gt_footnote {
+#dbgvzfontn .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding: 4px;
 }
 
-#kbuovqfxsf .gt_sourcenotes {
+#dbgvzfontn .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1398,46 +1369,46 @@ kunden_tab %&gt;%
   border-right-color: #D3D3D3;
 }
 
-#kbuovqfxsf .gt_sourcenote {
+#dbgvzfontn .gt_sourcenote {
   font-size: 90%;
   padding: 4px;
 }
 
-#kbuovqfxsf .gt_left {
+#dbgvzfontn .gt_left {
   text-align: left;
 }
 
-#kbuovqfxsf .gt_center {
+#dbgvzfontn .gt_center {
   text-align: center;
 }
 
-#kbuovqfxsf .gt_right {
+#dbgvzfontn .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#kbuovqfxsf .gt_font_normal {
+#dbgvzfontn .gt_font_normal {
   font-weight: normal;
 }
 
-#kbuovqfxsf .gt_font_bold {
+#dbgvzfontn .gt_font_bold {
   font-weight: bold;
 }
 
-#kbuovqfxsf .gt_font_italic {
+#dbgvzfontn .gt_font_italic {
   font-style: italic;
 }
 
-#kbuovqfxsf .gt_super {
+#dbgvzfontn .gt_super {
   font-size: 65%;
 }
 
-#kbuovqfxsf .gt_footnote_marks {
+#dbgvzfontn .gt_footnote_marks {
   font-style: italic;
   font-size: 65%;
 }
 </style>
-<div id="kbuovqfxsf" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;"><table class="gt_table">
+<div id="dbgvzfontn" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;"><table class="gt_table">
   
   <thead class="gt_col_headings">
     <tr>
@@ -1485,7 +1456,7 @@ einkaeufe %&gt;%
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
 }
 
-#qqyhzqhjov .gt_table {
+#xdduhtxcdz .gt_table {
   display: table;
   border-collapse: collapse;
   margin-left: auto;
@@ -1510,7 +1481,7 @@ einkaeufe %&gt;%
   border-left-color: #D3D3D3;
 }
 
-#qqyhzqhjov .gt_heading {
+#xdduhtxcdz .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -1522,7 +1493,7 @@ einkaeufe %&gt;%
   border-right-color: #D3D3D3;
 }
 
-#qqyhzqhjov .gt_title {
+#xdduhtxcdz .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -1532,7 +1503,7 @@ einkaeufe %&gt;%
   border-bottom-width: 0;
 }
 
-#qqyhzqhjov .gt_subtitle {
+#xdduhtxcdz .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -1542,13 +1513,13 @@ einkaeufe %&gt;%
   border-top-width: 0;
 }
 
-#qqyhzqhjov .gt_bottom_border {
+#xdduhtxcdz .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#qqyhzqhjov .gt_col_headings {
+#xdduhtxcdz .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1563,7 +1534,7 @@ einkaeufe %&gt;%
   border-right-color: #D3D3D3;
 }
 
-#qqyhzqhjov .gt_col_heading {
+#xdduhtxcdz .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1583,7 +1554,7 @@ einkaeufe %&gt;%
   overflow-x: hidden;
 }
 
-#qqyhzqhjov .gt_column_spanner_outer {
+#xdduhtxcdz .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1595,15 +1566,15 @@ einkaeufe %&gt;%
   padding-right: 4px;
 }
 
-#qqyhzqhjov .gt_column_spanner_outer:first-child {
+#xdduhtxcdz .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#qqyhzqhjov .gt_column_spanner_outer:last-child {
+#xdduhtxcdz .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#qqyhzqhjov .gt_column_spanner {
+#xdduhtxcdz .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -1615,7 +1586,7 @@ einkaeufe %&gt;%
   width: 100%;
 }
 
-#qqyhzqhjov .gt_group_heading {
+#xdduhtxcdz .gt_group_heading {
   padding: 8px;
   color: #333333;
   background-color: #FFFFFF;
@@ -1637,7 +1608,7 @@ einkaeufe %&gt;%
   vertical-align: middle;
 }
 
-#qqyhzqhjov .gt_empty_group_heading {
+#xdduhtxcdz .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -1652,15 +1623,15 @@ einkaeufe %&gt;%
   vertical-align: middle;
 }
 
-#qqyhzqhjov .gt_from_md > :first-child {
+#xdduhtxcdz .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#qqyhzqhjov .gt_from_md > :last-child {
+#xdduhtxcdz .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#qqyhzqhjov .gt_row {
+#xdduhtxcdz .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1679,7 +1650,7 @@ einkaeufe %&gt;%
   overflow-x: hidden;
 }
 
-#qqyhzqhjov .gt_stub {
+#xdduhtxcdz .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1691,7 +1662,7 @@ einkaeufe %&gt;%
   padding-left: 12px;
 }
 
-#qqyhzqhjov .gt_summary_row {
+#xdduhtxcdz .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1701,7 +1672,7 @@ einkaeufe %&gt;%
   padding-right: 5px;
 }
 
-#qqyhzqhjov .gt_first_summary_row {
+#xdduhtxcdz .gt_first_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1711,7 +1682,7 @@ einkaeufe %&gt;%
   border-top-color: #D3D3D3;
 }
 
-#qqyhzqhjov .gt_grand_summary_row {
+#xdduhtxcdz .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1721,7 +1692,7 @@ einkaeufe %&gt;%
   padding-right: 5px;
 }
 
-#qqyhzqhjov .gt_first_grand_summary_row {
+#xdduhtxcdz .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1731,11 +1702,11 @@ einkaeufe %&gt;%
   border-top-color: #D3D3D3;
 }
 
-#qqyhzqhjov .gt_striped {
+#xdduhtxcdz .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#qqyhzqhjov .gt_table_body {
+#xdduhtxcdz .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1744,7 +1715,7 @@ einkaeufe %&gt;%
   border-bottom-color: #D3D3D3;
 }
 
-#qqyhzqhjov .gt_footnotes {
+#xdduhtxcdz .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1758,13 +1729,13 @@ einkaeufe %&gt;%
   border-right-color: #D3D3D3;
 }
 
-#qqyhzqhjov .gt_footnote {
+#xdduhtxcdz .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding: 4px;
 }
 
-#qqyhzqhjov .gt_sourcenotes {
+#xdduhtxcdz .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1778,46 +1749,46 @@ einkaeufe %&gt;%
   border-right-color: #D3D3D3;
 }
 
-#qqyhzqhjov .gt_sourcenote {
+#xdduhtxcdz .gt_sourcenote {
   font-size: 90%;
   padding: 4px;
 }
 
-#qqyhzqhjov .gt_left {
+#xdduhtxcdz .gt_left {
   text-align: left;
 }
 
-#qqyhzqhjov .gt_center {
+#xdduhtxcdz .gt_center {
   text-align: center;
 }
 
-#qqyhzqhjov .gt_right {
+#xdduhtxcdz .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#qqyhzqhjov .gt_font_normal {
+#xdduhtxcdz .gt_font_normal {
   font-weight: normal;
 }
 
-#qqyhzqhjov .gt_font_bold {
+#xdduhtxcdz .gt_font_bold {
   font-weight: bold;
 }
 
-#qqyhzqhjov .gt_font_italic {
+#xdduhtxcdz .gt_font_italic {
   font-style: italic;
 }
 
-#qqyhzqhjov .gt_super {
+#xdduhtxcdz .gt_super {
   font-size: 65%;
 }
 
-#qqyhzqhjov .gt_footnote_marks {
+#xdduhtxcdz .gt_footnote_marks {
   font-style: italic;
   font-size: 65%;
 }
 </style>
-<div id="qqyhzqhjov" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;"><table class="gt_table">
+<div id="xdduhtxcdz" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;"><table class="gt_table">
   
   <thead class="gt_col_headings">
     <tr>
@@ -1846,121 +1817,28 @@ einkaeufe %&gt;%
 </table></div>
 
 ---
-class: inverse, middle
+class: middle, inverse
 
-# .big[Tabellen darstellen]
-
----
-background-image: url("img/untidy-data/untidy-data.004.png")
-background-size: contain
-
-.question[
-Welche Eigenschaften von Tidy data sind hier nicht erfüllt?
-]
-
-.footnote[
-Quelle: [Bundesamt für Statistik - Kosten des Gesundheitswesens nach Leistungen]( https://www.bfs.admin.ch/bfs/de/home/statistiken/kataloge-datenbanken/tabellen.assetdetail.14840808.html) 
-]
----
-background-image: url("img/untidy-data/untidy-data.005.png")
-background-size: contain
-
-.question[
-Welche Eigenschaften von Tidy data sind hier nicht erfüllt?
-]
-
-.footnote[
-Quelle: [Bundesamt für Statistik - Kosten des Gesundheitswesens nach Leistungen]( https://www.bfs.admin.ch/bfs/de/home/statistiken/kataloge-datenbanken/tabellen.assetdetail.14840808.html)
-]
+# .large[Funktionen]
 
 ---
-background-image: url("img/untidy-data/untidy-data.006.png")
-background-size: contain
+class: middle, inverse
 
-.question[
-Welche Eigenschaften von Tidy data sind hier nicht erfüllt?
-]
-
-.footnote[
-Quelle: [Bundesamt für Statistik - Kosten des Gesundheitswesens nach Leistungen]( https://www.bfs.admin.ch/bfs/de/home/statistiken/kataloge-datenbanken/tabellen.assetdetail.14840808.html)
-]
-
-
----
-# Relevanter Unterschied - Ziel der Daten Publikation
-
-.pull-left[
-**Daten in Tabellen darstellen**
-- Layout
-   - Gut leserlich
-   - Kompakt
-   - Erkenntnis bringend
-- Metadaten
-]
-
-.pull-right[
-**Daten für weitere Nutzung bereitstellen**
-- Layout (Tidy data)
-   - Eigenschaft 1: Jede Spalte ist eine Variable
-   - Eigenschaft 2: Jede Reihe ist eine Beobachtung
-   - Eigenschaft 3: Jede Zelle enthält eine Messung
-- Keine Metadaten
-- Keine Farben, Formatierungen, etc.
-- Folgt Standards (Datum: ISO 8601)
-- etc.
-]
-
----
-class: inverse, middle
-
-# .large[Tabellen darstellen mit dem {gt} Package]
-
-
----
-background-image: url("https://gt.rstudio.com/reference/figures/gt_parts_of_a_table.svg")
-background-size: cover
-
-.footnote[
-Quelle: [gt.rstudio.com](https://gt.rstudio.com/index.html)
-]
-
----
-background-image: url("https://gt.rstudio.com/reference/figures/gt_workflow_diagram.svg")
-background-size: contain
-
-.footnote[
-Quelle: [gt.rstudio.com](https://gt.rstudio.com/index.html)
-]
+# .large[Funktionen - Bonusmaterial]
 
 ---
 .note[
 
-# Demonstration 3 - Tabellen darstellen
+# Praktikum 11 - Funktionen 
 
-1. Schaut mir beim Programmieren zu
-2. Macht euch Notizen und stellt Fragen
+## Live Coding 
+
+1. **E-Mail**: Öffne deine Email und klicke auf den Link zu deinem persönlichen GitHub repo
+2. **GitHub**: Klicke auf den grünen Button "Code" und kopiere den Link für das Repo in deine Zwischenablage
+3. **RStudio Cloud**: Öffne deinen Arbeitsbereich für den Kurs in der RStudio Cloud
+4. **RStudio Cloud / Projects**: Klicke auf "New Project from GitHub Repository" 
 
 ]
-
----
-# {gt} - Lerne das Package besser kennen
-
-[
-&lt;img src="img/gt-test-drive.svg" width="100%" style="display: block; margin: auto;" /&gt;
-](https://rstudio.cloud/project/779965)
-
-.footnote[
-Quelle: [gt.rstudio.com](https://gt.rstudio.com/index.html)
-]
-
----
-# Tabellen darstellen - Weitere Packages
-
-- `{kableExtra}`: https://haozhu233.github.io/kableExtra/
-- `{formattable}`: https://renkun-ken.github.io/formattable/
-- `{DT}`: https://rstudio.github.io/DT/
-- `{flextable}`: https://davidgohel.github.io/flextable/
-- etc. 
 
 ---
 class: middle, inverse
@@ -1971,6 +1849,7 @@ class: middle, inverse
 class: middle, inverse
 
 # .large[The End - Noch nicht ganz]
+
 
 ---
 # Was habt ihr gelernt?

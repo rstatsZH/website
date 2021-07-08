@@ -30,9 +30,8 @@ Lerne wie du mehrere Dataframes zusammenfügst und Tabellen effektiv darstellst
 Am Ende dieser Woche könnt ihr:
 
 - Mehrere Dataframes zusammenfügen
-- Tabellen mit dem `{gt}` Package erstellen
-- Einen mit `ggplot()` erstellten Plot interaktiv darstellen
-- Einen R Markdown Bericht als Website publizieren
+- Tabellen mit verschiedenen Packages darstellen erstellen
+- Eine eigene Funktion für ein `{ggplot2}` theme schreiben
 - Mit den im Kurs erlernten Fähigkeiten selbstständig weiter arbeiten
 
 # Folien

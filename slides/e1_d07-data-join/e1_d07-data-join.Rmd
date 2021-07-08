@@ -2,12 +2,12 @@
 title: "rstatsZH - Data Science mit R"
 subtitle: "Mit mehreren Dataframes arbeiten / Tabellen darstellen"
 author: "Lars Schöbitz"
-date: "2020-05-02"
+date: "2021-07-08"
 output:
   xaringan::moon_reader:
     self_contained: false
     lib_dir: libs
-    css: ["default", "../assets/css/xaringan-themer.css", "../assets/css/my-css-style.css"]
+    css: ["default", "assets/css/xaringan-themer.css", "assets/css/my-css-style.css"]
     seal: FALSE
     nature:
       slideNumberFormat: |
@@ -64,8 +64,6 @@ p(rmarkdown::metadata$date)
 - Daten importieren
   - `read_csv()`
   - `read_excel()`
-  - etc.
-- SQL in R Markdown
 - Tidy Data Konzept
 - Daten drehen (pivoting) mit `{tidyr}`
   - `pivot_longer()`
@@ -101,9 +99,8 @@ class: middle
 Am Ende dieser Woche könnt ihr:
 
 - Mehrere Dataframes zusammenfügen
-- Tabellen mit dem `{gt}` Package erstellen
-- Einen mit `ggplot()` erstellten Plot interaktiv darstellen
-- Einen R Markdown Bericht als Website publizieren
+- Tabellen mit verschiedenen Packages darstellen erstellen
+- Eine eigene Funktion für ein `{ggplot2}` theme schreiben
 - Mit den im Kurs erlernten Fähigkeiten selbstständig weiter arbeiten
 
 ---
@@ -550,6 +547,29 @@ einkaeufe %>%
   gt()
 ```
 
+---
+class: middle, inverse
+
+# .large[Funktionen]
+
+---
+class: middle, inverse
+
+# .large[Funktionen - Bonusmaterial]
+
+---
+.note[
+
+# Praktikum 11 - Funktionen 
+
+## Live Coding 
+
+1. **E-Mail**: Öffne deine Email und klicke auf den Link zu deinem persönlichen GitHub repo
+2. **GitHub**: Klicke auf den grünen Button "Code" und kopiere den Link für das Repo in deine Zwischenablage
+3. **RStudio Cloud**: Öffne deinen Arbeitsbereich für den Kurs in der RStudio Cloud
+4. **RStudio Cloud / Projects**: Klicke auf "New Project from GitHub Repository" 
+
+]
 
 ---
 class: middle, inverse
@@ -560,6 +580,7 @@ class: middle, inverse
 class: middle, inverse
 
 # .large[The End - Noch nicht ganz]
+
 
 ---
 # Was habt ihr gelernt?

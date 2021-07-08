@@ -85,7 +85,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 </style>
 
   <!--radix_placeholder_meta_tags-->
-<title>rstatsZH - Data Science mit R: Woche 7 - Daten zusammenfügen und Tabellen darstellen</title>
+<title>rstatsZH - Data Science mit R: Woche 7 - Daten zusammenfügen und Funktionen schreiben</title>
 
 <meta property="description" itemprop="description" content="Ziele und Materialien für unsere letzte gemeinsame Woche"/>
 
@@ -97,7 +97,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <meta property="article:created" itemprop="dateCreated" content="2021-04-27"/>
 
 <!--  https://developers.facebook.com/docs/sharing/webmasters#markup -->
-<meta property="og:title" content="rstatsZH - Data Science mit R: Woche 7 - Daten zusammenfügen und Tabellen darstellen"/>
+<meta property="og:title" content="rstatsZH - Data Science mit R: Woche 7 - Daten zusammenfügen und Funktionen schreiben"/>
 <meta property="og:type" content="article"/>
 <meta property="og:description" content="Ziele und Materialien für unsere letzte gemeinsame Woche"/>
 <meta property="og:url" content="https://rstatszh.github.io/website/posts/2021-04-30-woche07/"/>
@@ -107,7 +107,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 
 <!--  https://dev.twitter.com/cards/types/summary -->
 <meta property="twitter:card" content="summary_large_image"/>
-<meta property="twitter:title" content="rstatsZH - Data Science mit R: Woche 7 - Daten zusammenfügen und Tabellen darstellen"/>
+<meta property="twitter:title" content="rstatsZH - Data Science mit R: Woche 7 - Daten zusammenfügen und Funktionen schreiben"/>
 <meta property="twitter:description" content="Ziele und Materialien für unsere letzte gemeinsame Woche"/>
 <meta property="twitter:url" content="https://rstatszh.github.io/website/posts/2021-04-30-woche07/"/>
 <meta property="twitter:image" content="https://rstatszh.github.io/website/posts/2021-04-30-woche07/img/tim-mossholder-WE_Kv_ZB1l0-unsplash.jpg"/>
@@ -116,7 +116,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   <!--radix_placeholder_rmarkdown_metadata-->
 
 <script type="text/json" id="radix-rmarkdown-metadata">
-{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["creative_commons","title","description","date","output","preview","editor_options","citation_url","canonical_url"]}},"value":[{"type":"character","attributes":{},"value":["CC BY-SA"]},{"type":"character","attributes":{},"value":["Woche 7 - Daten zusammenfügen und Tabellen darstellen"]},{"type":"character","attributes":{},"value":["Ziele und Materialien für unsere letzte gemeinsame Woche"]},{"type":"character","attributes":{},"value":["04-27-2021"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["distill::distill_article"]}},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["toc","self_contained"]}},"value":[{"type":"logical","attributes":{},"value":[true]},{"type":"logical","attributes":{},"value":[false]}]}]},{"type":"character","attributes":{},"value":["img/tim-mossholder-WE_Kv_ZB1l0-unsplash.jpg"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["chunk_output_type"]}},"value":[{"type":"character","attributes":{},"value":["console"]}]},{"type":"character","attributes":{},"value":["https://rstatszh.github.io/website/posts/2021-04-30-woche07/"]},{"type":"character","attributes":{},"value":["https://rstatszh.github.io/website/posts/2021-04-30-woche07/"]}]}
+{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["creative_commons","title","description","date","output","preview","editor_options","citation_url","canonical_url"]}},"value":[{"type":"character","attributes":{},"value":["CC BY-SA"]},{"type":"character","attributes":{},"value":["Woche 7 - Daten zusammenfügen und Funktionen schreiben"]},{"type":"character","attributes":{},"value":["Ziele und Materialien für unsere letzte gemeinsame Woche"]},{"type":"character","attributes":{},"value":["04-27-2021"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["distill::distill_article"]}},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["toc","self_contained"]}},"value":[{"type":"logical","attributes":{},"value":[true]},{"type":"logical","attributes":{},"value":[false]}]}]},{"type":"character","attributes":{},"value":["img/tim-mossholder-WE_Kv_ZB1l0-unsplash.jpg"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["chunk_output_type"]}},"value":[{"type":"character","attributes":{},"value":["console"]}]},{"type":"character","attributes":{},"value":["https://rstatszh.github.io/website/posts/2021-04-30-woche07/"]},{"type":"character","attributes":{},"value":["https://rstatszh.github.io/website/posts/2021-04-30-woche07/"]}]}
 </script>
 <!--/radix_placeholder_rmarkdown_metadata-->
   
@@ -1813,7 +1813,7 @@ document.addEventListener('DOMContentLoaded', function() {
 <!--radix_placeholder_front_matter-->
 
 <script id="distill-front-matter" type="text/json">
-{"title":"Woche 7 - Daten zusammenfügen und Tabellen darstellen","description":"Ziele und Materialien für unsere letzte gemeinsame Woche","authors":[],"publishedDate":"2021-04-27T00:00:00.000+02:00"}
+{"title":"Woche 7 - Daten zusammenfügen und Funktionen schreiben","description":"Ziele und Materialien für unsere letzte gemeinsame Woche","authors":[],"publishedDate":"2021-04-27T00:00:00.000+02:00"}
 </script>
 
 <!--/radix_placeholder_front_matter-->
@@ -1854,7 +1854,7 @@ Hausaufgaben
 <!--/radix_placeholder_site_before_body-->
 
 <div class="d-title">
-<h1>Woche 7 - Daten zusammenfügen und Tabellen darstellen</h1>
+<h1>Woche 7 - Daten zusammenfügen und Funktionen schreiben</h1>
 <!--radix_placeholder_categories-->
 <!--/radix_placeholder_categories-->
 <p><p>Ziele und Materialien für unsere letzte gemeinsame Woche</p></p>
@@ -1884,12 +1884,12 @@ Figure 1: Photo by <a href="https://unsplash.com/photos/WE_Kv_ZB1l0">Alistair Ma
 </p>
 </div>
 </div>
-<p>Lerne wie du mehrere Dataframes zusammenfügst und Tabellen effektiv darstellst</p>
+<p>Lerne wie du mehrere Dataframes zusammenfügst und deine eigenen Funktionen schreibst</p>
 <h1 id="ziele">Ziele</h1>
 <p>Am Ende dieser Woche könnt ihr:</p>
 <ul>
 <li>Mehrere Dataframes zusammenfügen</li>
-<li>Tabellen mit verschiedenen Packages darstellen erstellen</li>
+<li>Tabellen mit verschiedenen Packages darstellen</li>
 <li>Eine eigene Funktion für ein <code>{ggplot2}</code> theme schreiben</li>
 <li>Mit den im Kurs erlernten Fähigkeiten selbstständig weiter arbeiten</li>
 </ul>

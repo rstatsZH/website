@@ -1,5 +1,5 @@
 ---
-title: "Woche 7 - Daten zusammenfügen und Tabellen darstellen"
+title: "Woche 7 - Daten zusammenfügen und Funktionen schreiben"
 description: |
   Ziele und Materialien für unsere letzte gemeinsame Woche
 date: 04-27-2021
@@ -25,14 +25,14 @@ knitr::include_graphics("img/tim-mossholder-WE_Kv_ZB1l0-unsplash.jpg")
 
 ```
 
-Lerne wie du mehrere Dataframes zusammenfügst und Tabellen effektiv darstellst
+Lerne wie du mehrere Dataframes zusammenfügst und deine eigenen Funktionen schreibst
 
 # Ziele
 
 Am Ende dieser Woche könnt ihr:
 
 - Mehrere Dataframes zusammenfügen
-- Tabellen mit verschiedenen Packages darstellen erstellen
+- Tabellen mit verschiedenen Packages darstellen
 - Eine eigene Funktion für ein `{ggplot2}` theme schreiben
 - Mit den im Kurs erlernten Fähigkeiten selbstständig weiter arbeiten
 

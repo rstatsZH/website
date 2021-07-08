@@ -649,7 +649,7 @@ class: middle
 https://rstatszh.github.io/website/posts/2021-04-30-woche07/
 
 ---
-# Projektarbeit - Unterstützung bis Anfang Juli
+# Projektarbeit - Unterstützung bis Mitte August
 
 **Hausaufgabe 6**
 
@@ -674,7 +674,7 @@ class: middle, inverse
 ---
 # Reflexion
 
-## 5 min Nachdenken + Notizen, dann Austausch 2er Teams
+## 5 min Nachdenken + Notizen
 
 .question[
 

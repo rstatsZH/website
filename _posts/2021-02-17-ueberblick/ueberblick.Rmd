@@ -64,10 +64,14 @@ Lars Schöbitz GmbH
 
 # Was sind die Termine?
 
+Unsere Kurse in 2021 sind voll belegt. Wir freuen uns darauf auch in 2022 wieder Kurse anbieten zu können. Eine unverbindliche Anmeldung für die vorläufigen Kursdaten ist jederzeit möglich.
+
 ```{r, echo=FALSE, layout="l-body-outset"}
 
 googlesheets4::read_sheet("1WhGB4Pqpr4ywGbOKaC2UoRsyaf5jbI7L8jY75Lic9FE") %>% 
+  mutate(Jahr = lubridate::year(Start)) %>% 
   select(-Start, -Ende) %>% 
+  relocate(Jahr, .after = Kurs) %>% 
   mutate(
     #Start = format(Start, "%d. %B %Y"),
     #Ende = format(Ende, "%d. %B %Y"),

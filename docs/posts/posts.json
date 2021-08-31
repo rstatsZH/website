@@ -80,7 +80,7 @@
     "categories": [],
     "contents": "\n\nContents\nZiele\nFolien\nWeiterführende Aufgaben\n\n\n\n\n\n\n\nFigure 1: Photo by Barn Images\n\n\n\nMache dich mit dem Kurs, den Werkzeugen, dem Arbeitsablauf und den Fähigkeiten, die du im Laufe des Kurses erwerben wirst, vertraut.\nZiele\nAm Ende dieser Woche kannst du:\ndie Werkzeuge welche wir für den Kurs nutzen öffnen\nein git repository aus GitHub in deine Arbeitsumgebung laden\neine geänderte Datei auf ein git repository auf GitHub pushen\nbeschreiben welche Elemente Teil eines R Markdown Dokuments sind\nR code für eine Visuaisierung mit {ggplot2} reproduzieren\nFolien\n\n\n\n\n\n\nfitvids('.shareagain', {players: 'iframe'});\n\nWeiterführende Aufgaben\n\n\n1\n\n\nBuch\n\n\nR4DS - Chapter 2 - Introduction\n\n\nPflicht\n\n\n~ 10 Minuten\n\n\n2\n\n\nHausaufgabe\n\n\nHausaufgabe 01 - Hallo Git\n\n\nPflicht\n\n\n~ 90 Minuten\n\n\n3\n\n\nBlog Post\n\n\nIntroducing RStudio and R Markdown\n\n\nFreiwillig\n\n\n~ 30 Minuten\n\n\n\n\n\n",
     "preview": "posts/2021-02-17-woche01/img/toolbox.jpg",
-    "last_modified": "2021-06-02T15:59:51+02:00",
+    "last_modified": "2021-08-24T15:12:17+02:00",
     "input_file": {}
   },
   {

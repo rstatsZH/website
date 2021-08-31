@@ -2,7 +2,7 @@
 title: "rstatsZH - Data Science mit R"
 subtitle: "Datenvisualisierung mit ggplot2"  
 author: "Lars Schöbitz"
-date: "2021-05-25"
+date: "2021-09-01"
 output:
   xaringan::moon_reader:
     self_contained: false
@@ -96,8 +96,7 @@ background-size: contain
 - Pinguine `r emo::ji("penguin")`
 - Help Files
 - Code-chunks
-- Cheatcheets
-- Argument, Objekte, Funktionen, etc. etc.
+- Argument, Objekt, Funktion, etc. etc.
 
 .footnote[Photo by: [Annie Spratt](https://unsplash.com/photos/nVrqbvzOh08)]
 
@@ -150,10 +149,11 @@ Deshalb sind dies die Ziele für heute.
 - Kurs Webseite: https://rstatszh.github.io/website/
 - GitHub: https://github.com/rstatszh-k003
 
-**GitHub Credentials**
+**GitHub Credentials - Passwort Manager**
 
 - GitHub Nutzername 
 - GitHub Passwort
+- GitHub Personal Access Token (PAT)
 
 ???
 
@@ -215,14 +215,6 @@ class: middle, inverse
 ]
 
 
----
-.note[
-
-# Praktikum 2 - R Markdown
-
-1. **Bildschirm**: Konfiuriere deinen Bildschirm so, dass du mir gleichzeitig folgen kannst und selbst Code schreiben kannst
-
-]
 
 ---
 class: left

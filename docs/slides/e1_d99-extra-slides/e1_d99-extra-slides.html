@@ -16,8 +16,8 @@
     <script src="libs/shareon/shareon.min.js"></script>
     <link href="libs/xaringanExtra-shareagain/shareagain.css" rel="stylesheet" />
     <script src="libs/xaringanExtra-shareagain/shareagain.js"></script>
-    <link rel="stylesheet" href="../assets/css/xaringan-themer.css" type="text/css" />
-    <link rel="stylesheet" href="../assets/css/my-css-style.css" type="text/css" />
+    <link rel="stylesheet" href="/Users/lschoebitz/Documents/gitrepos/stat/website/slides/assets/css/xaringan-themer.css" type="text/css" />
+    <link rel="stylesheet" href="/Users/lschoebitz/Documents/gitrepos/stat/website/slides/assets/css/my-css-style.css" type="text/css" />
   </head>
   <body>
     <textarea id="source">
@@ -68,7 +68,7 @@ con &lt;- dbConnect(
    username = "guest",
    
    # Niemals Passwort in Skript speichern
-*  password = rstudioapi::askForPassword("Datenbank Passwort"),
+*  password = "relational", # rstudioapi::askForPassword("Datenbank Passwort"),
    dbname = "sakila"
 )
 ```
@@ -128,7 +128,7 @@ dbListFields(con, "film")
 
 
 ```
-# A tibble: 39 x 3
+# A tibble: 39 × 3
   film_id title             length
     &lt;int&gt; &lt;chr&gt;              &lt;int&gt;
 1      24 ANALYZE HOOSIERS     181
@@ -152,14 +152,14 @@ film_tab
 ```
 # Source:   table&lt;film&gt; [?? x 13]
 # Database: mysql [guest@relational.fit.cvut.cz:NA/sakila]
-  film_id title    description           release_year language_id
-    &lt;int&gt; &lt;chr&gt;    &lt;chr&gt;                        &lt;int&gt;       &lt;int&gt;
-1       1 ACADEMY… A Epic Drama of a Fe…         2006           1
-2       2 ACE GOL… A Astounding Epistle…         2006           1
-3       3 ADAPTAT… A Astounding Reflect…         2006           1
-4       4 AFFAIR … A Fanciful Documenta…         2006           1
-5       5 AFRICAN… A Fast-Paced Documen…         2006           1
-6       6 AGENT T… A Intrepid Panorama …         2006           1
+  film_id title            description   release_year language_id
+    &lt;int&gt; &lt;chr&gt;            &lt;chr&gt;                &lt;int&gt;       &lt;int&gt;
+1       1 ACADEMY DINOSAUR A Epic Drama…         2006           1
+2       2 ACE GOLDFINGER   A Astounding…         2006           1
+3       3 ADAPTATION HOLES A Astounding…         2006           1
+4       4 AFFAIR PREJUDICE A Fanciful D…         2006           1
+5       5 AFRICAN EGG      A Fast-Paced…         2006           1
+6       6 AGENT TRUMAN     A Intrepid P…         2006           1
 # … with more rows, and 8 more variables:
 #   original_language_id &lt;int&gt;, rental_duration &lt;int&gt;,
 #   rental_rate &lt;dbl&gt;, length &lt;int&gt;, replacement_cost &lt;dbl&gt;,
@@ -202,7 +202,7 @@ film_tab %&gt;%
 ```
 
 ```
-# A tibble: 39 x 3
+# A tibble: 39 × 3
   film_id title             length
     &lt;int&gt; &lt;chr&gt;              &lt;int&gt;
 1      24 ANALYZE HOOSIERS     181
@@ -227,7 +227,7 @@ film_tab %&gt;%
 ```
 
 ```
-# A tibble: 1 x 3
+# A tibble: 1 × 3
   min_rate max_rate mean_rate
      &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt;
 1     0.99     4.99      2.98
@@ -243,6 +243,124 @@ film_tab %&gt;%
 - **rvest**: web scraping
 - **httr**: web APIs
 - **sparklyr**: data loaded into spark
+
+
+---
+class: inverse, middle
+
+# .big[Tabellen darstellen]
+
+---
+background-image: url("img/untidy-data/untidy-data.004.png")
+background-size: contain
+
+.question[
+Welche Eigenschaften von Tidy data sind hier nicht erfüllt?
+]
+
+.footnote[
+Quelle: [Bundesamt für Statistik - Kosten des Gesundheitswesens nach Leistungen]( https://www.bfs.admin.ch/bfs/de/home/statistiken/kataloge-datenbanken/tabellen.assetdetail.14840808.html) 
+]
+---
+background-image: url("img/untidy-data/untidy-data.005.png")
+background-size: contain
+
+.question[
+Welche Eigenschaften von Tidy data sind hier nicht erfüllt?
+]
+
+.footnote[
+Quelle: [Bundesamt für Statistik - Kosten des Gesundheitswesens nach Leistungen]( https://www.bfs.admin.ch/bfs/de/home/statistiken/kataloge-datenbanken/tabellen.assetdetail.14840808.html)
+]
+
+---
+background-image: url("img/untidy-data/untidy-data.006.png")
+background-size: contain
+
+.question[
+Welche Eigenschaften von Tidy data sind hier nicht erfüllt?
+]
+
+.footnote[
+Quelle: [Bundesamt für Statistik - Kosten des Gesundheitswesens nach Leistungen]( https://www.bfs.admin.ch/bfs/de/home/statistiken/kataloge-datenbanken/tabellen.assetdetail.14840808.html)
+]
+
+
+---
+# Relevanter Unterschied - Ziel der Daten Publikation
+
+.pull-left[
+**Daten in Tabellen darstellen**
+- Layout
+   - Gut leserlich
+   - Kompakt
+   - Erkenntnis bringend
+- Metadaten
+]
+
+.pull-right[
+**Daten für weitere Nutzung bereitstellen**
+- Layout (Tidy data)
+   - Eigenschaft 1: Jede Spalte ist eine Variable
+   - Eigenschaft 2: Jede Reihe ist eine Beobachtung
+   - Eigenschaft 3: Jede Zelle enthält eine Messung
+- Keine Metadaten
+- Keine Farben, Formatierungen, etc.
+- Folgt Standards (Datum: ISO 8601)
+- etc.
+]
+
+---
+class: inverse, middle
+
+# .large[Tabellen darstellen mit dem {gt} Package]
+
+
+---
+background-image: url("https://gt.rstudio.com/reference/figures/gt_parts_of_a_table.svg")
+background-size: cover
+
+.footnote[
+Quelle: [gt.rstudio.com](https://gt.rstudio.com/index.html)
+]
+
+---
+background-image: url("https://gt.rstudio.com/reference/figures/gt_workflow_diagram.svg")
+background-size: contain
+
+.footnote[
+Quelle: [gt.rstudio.com](https://gt.rstudio.com/index.html)
+]
+
+---
+.note[
+
+# Demonstration 3 - Tabellen darstellen
+
+1. Schaut mir beim Programmieren zu
+2. Macht euch Notizen und stellt Fragen
+
+]
+
+---
+# {gt} - Lerne das Package besser kennen
+
+[
+
+](https://rstudio.cloud/project/779965)
+
+.footnote[
+Quelle: [gt.rstudio.com](https://gt.rstudio.com/index.html)
+]
+
+---
+# Tabellen darstellen - Weitere Packages
+
+- `{kableExtra}`: https://haozhu233.github.io/kableExtra/
+- `{formattable}`: https://renkun-ken.github.io/formattable/
+- `{DT}`: https://rstudio.github.io/DT/
+- `{flextable}`: https://davidgohel.github.io/flextable/
+- etc. 
     </textarea>
 <style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
 <script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>

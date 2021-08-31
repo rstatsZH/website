@@ -69,7 +69,10 @@ xaringanExtra::embed_xaringan("../../slides/e1_d04-data-transform/e1_d04-data-tr
 ```{r, echo=FALSE, message=FALSE, warning=FALSE}
 
 
-#googlesheets4::read_sheet("198t05eFYHxuxY0d2jCvPkES1ZaMcsSYgBKcg0xQTwb0") %>% 
+# googlesheets4::read_sheet("198t05eFYHxuxY0d2jCvPkES1ZaMcsSYgBKcg0xQTwb0") %>% 
+#  write_csv(("tab03-rstatszh-resources.csv"))
+  
+  
 readr::read_csv("tab03-rstatszh-resources.csv") %>% 
   mutate(titel2 = paste0("[", titel, "](", link, ")")) %>% 
   filter(woche == "woche3") %>% 

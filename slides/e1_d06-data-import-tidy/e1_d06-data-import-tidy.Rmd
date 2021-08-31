@@ -7,7 +7,7 @@ output:
   xaringan::moon_reader:
     self_contained: false
     lib_dir: libs
-    css: ["default", "../assets/css/xaringan-themer.css", "../assets/css/my-css-style.css"]
+    css: ["default", "assets/css/xaringan-themer.css", "assets/css/my-css-style.css"]
     seal: FALSE
     nature:
       slideNumberFormat: |

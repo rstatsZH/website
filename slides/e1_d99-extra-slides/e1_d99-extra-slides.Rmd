@@ -77,7 +77,7 @@ con <- dbConnect(
    username = "guest",
    
    # Niemals Passwort in Skript speichern
-   password = rstudioapi::askForPassword("Datenbank Passwort"), #<<
+   password = "relational", # rstudioapi::askForPassword("Datenbank Passwort"), #<<
    dbname = "sakila"
 )
 
@@ -282,7 +282,7 @@ Quelle: [gt.rstudio.com](https://gt.rstudio.com/index.html)
 
 [
 ```{r}
-knitr::include_graphics("img/gt-test-drive.svg")
+# knitr::include_graphics("img/gt-test-drive.svg")
 ```
 ](https://rstudio.cloud/project/779965)
 

@@ -2,7 +2,7 @@
 title: "rstatsZH - Data Science mit R"
 subtitle: "Daten Transformation mit dplyr"
 author: "Lars Schöbitz"
-date: "2021-06-03"
+date: "2021-09-07"
 output:
   xaringan::moon_reader:
     self_contained: false
@@ -20,6 +20,8 @@ output:
       highlightLines: true
       countIncrementalSlides: false
       ratio: "16:9"
+editor_options: 
+  chunk_output_type: console
 ---
 
 class: title-slide
@@ -279,7 +281,7 @@ class: middle, inverse
 # .large[Daten Transformation mit {dplyr}]
 
 ---
-## A Grammatik für Daten Transformation...
+## Eine Grammatik für Daten Transformation...
 
 ...basierend auf dem Konzept von Funktionen als Verben, die Daten manipulieren
 

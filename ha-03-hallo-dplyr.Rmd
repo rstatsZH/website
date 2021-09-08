@@ -99,7 +99,7 @@ knitr::include_graphics("img/doc-opts/doc-opts.002.png")
 
 🧶 ✅ ⬆️ *Knit, commit und push deine Änderungen auf GitHub mit einer Commit-Nachricht deiner Wahl. Achte darauf, alle geänderten Dateien zu committen und zu pushen, damit dein Git-Fenster danach aufgeräumt ist.*
 
-## Übung 2 - dplyr::arrange()
+## Übung 2 - dplyr::arrange() - Noch nicht im Kurs behandelt
 
 1. Lese das [Kapitel 5.3 - Arrange rows with `arrange()`](https://r4ds.had.co.nz/transform.html#arrange-rows-with-arrange) aus dem Buch R for Data Science, mache dir Notizen und schreibe dir Fragen auf wenn du etwas nicht nachvollziehen kannst. Stelle deine Fragen in unserem Slack Channel für den Kurs.
 
@@ -107,7 +107,7 @@ knitr::include_graphics("img/doc-opts/doc-opts.002.png")
 
 🧶 ✅ ⬆️ *Knit, commit und push deine Änderungen auf GitHub mit einer Commit-Nachricht deiner Wahl. Achte darauf, alle geänderten Dateien zu committen und zu pushen, damit dein Git-Fenster danach aufgeräumt ist.*
 
-## Übung 3 - dplyr::select()
+## Übung 3 - dplyr::select() - Noch nicht im Kurs behandelt
 
 1. Lese das [Kapitel 5.4 - Select columns with `select()`](https://r4ds.had.co.nz/transform.html#select) aus dem Buch R for Data Science, mache dir Notizen und schreibe dir Fragen auf wenn du etwas nicht nachvollziehen kannst. Stelle deine Fragen in unserem Slack Channel für den Kurs. **Es werden dir sogenannte "helper functions" vorgestellt, welche wir im Kurs noch nicht behandelt haben. Folgt dem Text und versucht zu verstehen was diese bewirken.**
 

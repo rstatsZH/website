@@ -4,7 +4,7 @@
     <title>rstatsZH - Data Science mit R</title>
     <meta charset="utf-8" />
     <meta name="author" content="Lars Schöbitz" />
-    <meta name="date" content="2021-06-10" />
+    <meta name="date" content="2021-09-21" />
     <script src="libs/header-attrs/header-attrs.js"></script>
     <link href="libs/remark-css/default.css" rel="stylesheet" />
     <link href="libs/font-awesome/css/all.css" rel="stylesheet" />
@@ -16,8 +16,8 @@
     <script src="libs/shareon/shareon.min.js"></script>
     <link href="libs/xaringanExtra-shareagain/shareagain.css" rel="stylesheet" />
     <script src="libs/xaringanExtra-shareagain/shareagain.js"></script>
-    <link rel="stylesheet" href="/Users/lschoebitz/Documents/gitrepos/stat/website/slides/assets/css/xaringan-themer.css" type="text/css" />
-    <link rel="stylesheet" href="/Users/lschoebitz/Documents/gitrepos/stat/website/slides/assets/css/my-css-style.css" type="text/css" />
+    <link rel="stylesheet" href="assets/css/xaringan-themer.css" type="text/css" />
+    <link rel="stylesheet" href="assets/css/my-css-style.css" type="text/css" />
   </head>
   <body>
     <textarea id="source">
@@ -39,7 +39,7 @@ class: title-slide
 
 .bottom[
 
-<p>Lars Schöbitz</p><p>2021-06-10</p>
+<p>Lars Schöbitz</p><p>2021-09-21</p>
 ]
 
 ---
@@ -59,8 +59,6 @@ background-size: contain
 **`dplyr` Funktionen **
 
 - `filter`: Zeilen mit bestimmten Kriterien auswählen
-- `arrange`: Zeilen neu ordnen
-- `select`: Spalten beim Namen auswählen
 
 .footnote[Photo by: [Annie Spratt](https://unsplash.com/photos/nVrqbvzOh08)]
 
@@ -73,49 +71,6 @@ background-size: 80%
 ## dplyr::filter() - Zeilen mit bestimmten Kriterien auswählen
 
 .footnote[Artwork by [@allison_horst](https://www.allisonhorst.com/)]
----
-## dplyr::select() - Spalten beim Namen auswählen
-
-
-```r
-# Erste Möglichkeit
-penguins %&gt;% 
-  select(species, bill_length_mm, bill_depth_mm, flipper_length_mm)
-
-# Zweite Möglichkeit
-penguins %&gt;% 
-  select(species, bill_length_mm:flipper_length_mm)
-
-# Dritte Möglichkeit - nicht zu empfehlen
-penguins %&gt;% 
-  select(1, 3, 4, 5) 
-```
-
-
-```
-# A tibble: 4 × 4
-  species bill_length_mm bill_depth_mm flipper_length_mm
-  &lt;fct&gt;            &lt;dbl&gt;         &lt;dbl&gt;             &lt;int&gt;
-1 Adelie            39.1          18.7               181
-2 Adelie            39.5          17.4               186
-3 Adelie            40.3          18                 195
-4 Adelie            NA            NA                  NA
-```
-
----
-## dplyr::arrange() - Zeilen neu ordnen
-
-
-```r
-# Aufsteigende Reihenfolge
-penguins %&gt;% 
-  arrange(body_mass_g)
-
-# Absteigende Reihenfolge
-penguins %&gt;% 
-  arrange(desc(body_mass_g))
-```
-
 
 ---
 background-position: right
@@ -133,19 +88,6 @@ Am Ende dieser Woche könnt ihr:
 
 .footnote[Photo by: [Ameer Basheer](https://unsplash.com/photos/nVrqbvzOh08)]
 
-
----
-# Hausaufgabe 3 - Hallo dplyr 
-
-.note[
-
-1. **RStudio Cloud:** Öffnet den Arbeitsbereich für den Kurs
-2. **RStudio Cloud - Projects:** Öffnet das Projekt für Hausaufgabe 3
-3. **File-Manager:** Öffnet eure R Markdown Datei (ha-03.Rmd) für die Hausaufgabe 3
-4. Strickt das Dokument
-]
-
-**Wo gibt es Klärungsbedarf?**
 
 ---
 # Hausaufgabe 3 - Lösungen
@@ -183,6 +125,51 @@ Am Ende dieser Woche könnt ihr:
 ]
 
 ---
+## dplyr::select() - Spalten beim Namen auswählen
+
+
+```r
+# Erste Möglichkeit
+penguins %&gt;% 
+  select(species, bill_length_mm, bill_depth_mm, flipper_length_mm)
+
+# Zweite Möglichkeit
+penguins %&gt;% 
+  select(species, bill_length_mm:flipper_length_mm)
+
+# Dritte Möglichkeit - nicht zu empfehlen
+penguins %&gt;% 
+  select(1, 3, 4, 5) 
+```
+
+
+```
+# A tibble: 4 x 4
+  species bill_length_mm bill_depth_mm flipper_length_mm
+  &lt;fct&gt;            &lt;dbl&gt;         &lt;dbl&gt;             &lt;int&gt;
+1 Adelie            39.1          18.7               181
+2 Adelie            39.5          17.4               186
+3 Adelie            40.3          18                 195
+4 Adelie            NA            NA                  NA
+```
+
+---
+## dplyr::arrange() - Zeilen neu ordnen
+
+
+```r
+# Aufsteigende Reihenfolge
+penguins %&gt;% 
+  arrange(body_mass_g)
+
+# Absteigende Reihenfolge
+penguins %&gt;% 
+  arrange(desc(body_mass_g))
+```
+
+
+
+---
 ## dplyr::select() - Hilfsfunktionen
 
 
@@ -194,7 +181,7 @@ penguins %&gt;%
 ```
 
 ```
-# A tibble: 344 × 2
+# A tibble: 344 x 2
   bill_length_mm bill_depth_mm
            &lt;dbl&gt;         &lt;dbl&gt;
 1           39.1          18.7
@@ -218,7 +205,7 @@ penguins %&gt;%
 ```
 
 ```
-# A tibble: 344 × 0
+# A tibble: 344 x 0
 ```
 
 Mehr Informationen zu Hilfsfunktionen: https://dplyr.tidyverse.org/reference/select.html
@@ -241,7 +228,7 @@ penguins %&gt;%
 ```
 
 ```
-# A tibble: 344 × 8
+# A tibble: 344 x 8
   species island    bill_length_mm bill_depth_mm flipper_length_…
   &lt;fct&gt;   &lt;fct&gt;              &lt;dbl&gt;         &lt;dbl&gt;            &lt;int&gt;
 1 Adelie  Torgersen           39.1          18.7              181

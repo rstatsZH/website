@@ -2,12 +2,12 @@
 title: "rstatsZH - Data Science mit R"
 subtitle: "Daten Transformation mit dplyr - Teil 2"
 author: "Lars Schöbitz"
-date: "2021-06-10"
+date: "2021-09-21"
 output:
   xaringan::moon_reader:
     self_contained: false
     lib_dir: libs
-    css: ["default", "../assets/css/xaringan-themer.css", "../assets/css/my-css-style.css"]
+    css: ["default", "assets/css/xaringan-themer.css", "assets/css/my-css-style.css"]
     seal: FALSE
     nature:
       slideNumberFormat: |
@@ -65,8 +65,6 @@ background-size: contain
 **`dplyr` Funktionen **
 
 - `filter`: Zeilen mit bestimmten Kriterien auswählen
-- `arrange`: Zeilen neu ordnen
-- `select`: Spalten beim Namen auswählen
 
 .footnote[Photo by: [Annie Spratt](https://unsplash.com/photos/nVrqbvzOh08)]
 
@@ -79,6 +77,59 @@ background-size: 80%
 ## dplyr::filter() - Zeilen mit bestimmten Kriterien auswählen
 
 .footnote[Artwork by [@allison_horst](https://www.allisonhorst.com/)]
+
+---
+background-position: right
+background-size: contain
+
+# Ziele für diese Woche
+
+Am Ende dieser Woche könnt ihr:
+
+- mehr als zehn Funktionen des R Package `{dplyr}` anwenden, um   
+  - Daten einzugrenzen
+  - neue Variablen zu erstellen
+  - zusammefassende Statistiken zu berechnen
+- `NA` Werte aus euren Daten entfernen
+
+.footnote[Photo by: [Ameer Basheer](https://unsplash.com/photos/nVrqbvzOh08)]
+
+
+---
+# Hausaufgabe 3 - Lösungen
+
+- **GitHub Organisation:** rstatsZH
+    - https://github.com/rstatsZH/
+- **Repo:** ha-03-hallo-dplyr
+    - https://github.com/rstatsZH/ha-03-hallo-dplyr
+- **R Markdown Datei:** ha-03-solutions.Rmd
+    - https://github.com/rstatsZH/ha-03-hallo-dplyr/blob/main/ha-03-solutions.Rmd
+
+
+---
+.note[
+
+# Praktikum 5 - dplyr
+
+## Live Code
+
+1. **RStudio Cloud**: Öffne deinen Arbeitsbereich für den Kurs in der RStudio Cloud
+2. **RStudio Cloud / Projects**: Öffne erneut das Praktikum 05
+3. Folgt wieder auf dem Bildschirm
+
+]
+
+---
+.note[
+# Praktikum 6 - dplyr
+
+## In 2er Teams
+
+1. **RStudio Cloud**: Öffne deinen Arbeitsbereich für den Kurs in der RStudio Cloud
+2. **RStudio Cloud / Projects**: Öffne erneut das Praktikum 06
+
+]
+
 ---
 ## dplyr::select() - Spalten beim Namen auswählen
 
@@ -122,70 +173,6 @@ penguins %>%
 ```
 
 
----
-background-position: right
-background-size: contain
-
-# Ziele für diese Woche
-
-Am Ende dieser Woche könnt ihr:
-
-- mehr als zehn Funktionen des R Package `{dplyr}` anwenden, um   
-  - Daten einzugrenzen
-  - neue Variablen zu erstellen
-  - zusammefassende Statistiken zu berechnen
-- `NA` Werte aus euren Daten entfernen
-
-.footnote[Photo by: [Ameer Basheer](https://unsplash.com/photos/nVrqbvzOh08)]
-
-
----
-# Hausaufgabe 3 - Hallo dplyr 
-
-.note[
-
-1. **RStudio Cloud:** Öffnet den Arbeitsbereich für den Kurs
-2. **RStudio Cloud - Projects:** Öffnet das Projekt für Hausaufgabe 3
-3. **File-Manager:** Öffnet eure R Markdown Datei (ha-03.Rmd) für die Hausaufgabe 3
-4. Strickt das Dokument
-]
-
-**Wo gibt es Klärungsbedarf?**
-
----
-# Hausaufgabe 3 - Lösungen
-
-- **GitHub Organisation:** rstatsZH
-    - https://github.com/rstatsZH/
-- **Repo:** ha-03-hallo-dplyr
-    - https://github.com/rstatsZH/ha-03-hallo-dplyr
-- **R Markdown Datei:** ha-03-solutions.Rmd
-    - https://github.com/rstatsZH/ha-03-hallo-dplyr/blob/main/ha-03-solutions.Rmd
-
-
----
-.note[
-
-# Praktikum 5 - dplyr
-
-## Live Code
-
-1. **RStudio Cloud**: Öffne deinen Arbeitsbereich für den Kurs in der RStudio Cloud
-2. **RStudio Cloud / Projects**: Öffne erneut das Praktikum 05
-3. Folgt wieder auf dem Bildschirm
-
-]
-
----
-.note[
-# Praktikum 6 - dplyr
-
-## In 2er Teams
-
-1. **RStudio Cloud**: Öffne deinen Arbeitsbereich für den Kurs in der RStudio Cloud
-2. **RStudio Cloud / Projects**: Öffne erneut das Praktikum 06
-
-]
 
 ---
 ## dplyr::select() - Hilfsfunktionen
@@ -246,9 +233,9 @@ penguins %>%
 
 ---
 .note[
-# Praktikum 6 - dplyr
+# Praktikum 6 - dplyr - Teil 5 
 
-## In 2er Teams
+## Hausaufgabe
 
 1. **RStudio Cloud**: Öffne deinen Arbeitsbereich für den Kurs in der RStudio Cloud
 2. **RStudio Cloud / Projects**: Öffne erneut das Praktikum 06

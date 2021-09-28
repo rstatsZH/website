@@ -2,7 +2,7 @@
 title: "rstatsZH - Data Science mit R"
 subtitle: "Vektoren in R und mehr Git"
 author: "Lars Schöbitz"
-date: "2021-06-17"
+date: "2021-09-28"
 output:
   xaringan::moon_reader:
     self_contained: false
@@ -20,6 +20,8 @@ output:
       highlightLines: true
       countIncrementalSlides: false
       ratio: "16:9"
+editor_options: 
+  chunk_output_type: console
 ---
 
 class: title-slide
@@ -43,11 +45,12 @@ link <- "https://www.web.statistik.zh.ch/ogd/data/bista/ZH_Uebersicht_alle_Lerne
 
 # Hier wird nun das Objekt "link" genutzt um die CSV zu lesen
 lernende <- read_csv(file = link, 
-                     locale = locale(encoding = "ISO-8859-1"))
+                     locale = locale(encoding = "UTF-8"))
 
 # Conflict with lag
 
 conflicted::conflict_prefer("lag", "dplyr")
+conflicted::conflict_prefer("filter", "dplyr")
 
 
 ```
@@ -95,7 +98,42 @@ p(rmarkdown::metadata$date)
 ]
 
 ---
-# Hausaufgabe 4 - Teil 2 - Übung 3
+# Hausaufgabe 4 -  Übung 1
+
+Was glaubst du wird mit der Zeile:  
+`locale = locale(encoding = "ISO-8859-1")`     
+erreicht? 
+
+```{r, eval=FALSE, echo=TRUE}
+
+# Der Link zu den Daten wird hier als Objekt gespeichert und taucht oben rechts in "Environment" auf
+link <- "https://www.web.statistik.zh.ch/ogd/data/bista/ZH_Uebersicht_alle_Lernende.csv"
+
+# Hier wird nun das Objekt "link" genutzt um die CSV zu lesen
+lernende <- read_csv(file = link, 
+                     locale = locale(encoding = "ISO-8859-1"))
+
+
+```
+
+---
+# Hausaufgabe 4 -  Übung 1
+
+Wenn Daten im UTF-8 Standard kodiert (gespeichert) wurden wir das `locale =` Argument nicht benötigt, da die Funktion `read_csv` standardmässig UTF-8 für die Dekodierung nutzt. 
+ 
+```{r, eval=FALSE, echo=TRUE}
+
+# Der Link zu den Daten wird hier als Objekt gespeichert und taucht oben rechts in "Environment" auf
+link <- "https://www.web.statistik.zh.ch/ogd/data/bista/ZH_Uebersicht_alle_Lernende.csv"
+
+# Hier wird nun das Objekt "link" genutzt um die CSV zu lesen
+lernende <- read_csv(file = link) 
+
+```
+
+
+---
+# Hausaufgabe 4 -  Übung 3
 
 
 .panelset[
@@ -127,7 +165,7 @@ ggplot(lernende2019, aes(x = Stufe, y = Anzahl, fill = Nationalitaet)) +
 ]
 
 ---
-# Hausaufgabe 4 - Teil 2 - Übung 5
+# Hausaufgabe 4 - Übung 5
 
 Was gibt die Spalte `n` an?
 
@@ -151,7 +189,7 @@ lernende2019 %>%
 ]
 
 ---
-# Hausaufgabe 4 - Teil 2 - Übung 5
+# Hausaufgabe 4 -  Übung 5
 
 Wie kommen wir auf die Anzahl Schüler_innen.
 
@@ -175,7 +213,7 @@ lernende2019 %>%
 ]
 
 ---
-# Hausaufgabe 4 - Teil 2 - Übung 6
+# Hausaufgabe 4 - Übung 6
 
 .pull-left[
 ```{r, eval=FALSE, echo=TRUE}

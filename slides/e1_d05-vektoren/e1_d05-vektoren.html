@@ -4,7 +4,7 @@
     <title>rstatsZH - Data Science mit R</title>
     <meta charset="utf-8" />
     <meta name="author" content="Lars Schöbitz" />
-    <meta name="date" content="2021-06-17" />
+    <meta name="date" content="2021-09-28" />
     <script src="libs/header-attrs/header-attrs.js"></script>
     <link href="libs/remark-css/default.css" rel="stylesheet" />
     <link href="libs/font-awesome/css/all.css" rel="stylesheet" />
@@ -45,7 +45,7 @@ class: title-slide
 
 .bottom[
 
-<p>Lars Schöbitz</p><p>2021-06-17</p>
+<p>Lars Schöbitz</p><p>2021-09-28</p>
 ]
 
 ---
@@ -70,12 +70,44 @@ class: title-slide
 ]
 
 ---
-# Hausaufgabe 4 - Teil 2 - Übung 3
+# Hausaufgabe 4 -  Übung 1
+
+Was glaubst du wird mit der Zeile:  
+`locale = locale(encoding = "ISO-8859-1")`     
+erreicht? 
+
+
+```r
+# Der Link zu den Daten wird hier als Objekt gespeichert und taucht oben rechts in "Environment" auf
+link &lt;- "https://www.web.statistik.zh.ch/ogd/data/bista/ZH_Uebersicht_alle_Lernende.csv"
+
+# Hier wird nun das Objekt "link" genutzt um die CSV zu lesen
+lernende &lt;- read_csv(file = link, 
+                     locale = locale(encoding = "ISO-8859-1"))
+```
+
+---
+# Hausaufgabe 4 -  Übung 1
+
+Wenn Daten im UTF-8 Standard kodiert (gespeichert) wurden wir das `locale =` Argument nicht benötigt, da die Funktion `read_csv` standardmässig UTF-8 für die Dekodierung nutzt. 
+ 
+
+```r
+# Der Link zu den Daten wird hier als Objekt gespeichert und taucht oben rechts in "Environment" auf
+link &lt;- "https://www.web.statistik.zh.ch/ogd/data/bista/ZH_Uebersicht_alle_Lernende.csv"
+
+# Hier wird nun das Objekt "link" genutzt um die CSV zu lesen
+lernende &lt;- read_csv(file = link) 
+```
+
+
+---
+# Hausaufgabe 4 -  Übung 3
 
 
 .panelset[
 .panel[.panel-name[Plot]
-&lt;img src="e1_d05-vektoren_files/figure-html/unnamed-chunk-4-1.png" width="90%" style="display: block; margin: auto;" /&gt;
+&lt;img src="e1_d05-vektoren_files/figure-html/unnamed-chunk-6-1.png" width="90%" style="display: block; margin: auto;" /&gt;
 ]
 
 .panel[.panel-name[Code]
@@ -99,7 +131,7 @@ ggplot(lernende2019, aes(x = Stufe, y = Anzahl, fill = Nationalitaet)) +
 ]
 
 ---
-# Hausaufgabe 4 - Teil 2 - Übung 5
+# Hausaufgabe 4 - Übung 5
 
 Was gibt die Spalte `n` an?
 
@@ -116,9 +148,9 @@ lernende2019 %&gt;%
   Schultyp                   n
   &lt;chr&gt;                  &lt;int&gt;
 1 Berufsfachschule           8
-2 BrÃ¼ckenangebot            8
-3 HÃ¶here Berufsbildung      8
-4 Heim- und Sonderschule    22
+2 Brückenangebot             8
+3 Heim- und Sonderschule    22
+4 Höhere Berufsbildung       8
 5 Mittelschule              16
 6 Volksschule               24
 ```
@@ -140,16 +172,16 @@ lernende2019 %&gt;%
   Schultyp                   n
   &lt;chr&gt;                  &lt;int&gt;
 1 Berufsfachschule           8
-2 BrÃ¼ckenangebot            8
-3 HÃ¶here Berufsbildung      8
-4 Heim- und Sonderschule    22
+2 Brückenangebot             8
+3 Heim- und Sonderschule    22
+4 Höhere Berufsbildung       8
 5 Mittelschule              16
 6 Volksschule               24
 ```
 ]
 
 ---
-# Hausaufgabe 4 - Teil 2 - Übung 5
+# Hausaufgabe 4 -  Übung 5
 
 Wie kommen wir auf die Anzahl Schüler_innen.
 
@@ -166,9 +198,9 @@ lernende2019 %&gt;%
   Schultyp                    n
   &lt;chr&gt;                   &lt;dbl&gt;
 1 Berufsfachschule        45508
-2 BrÃ¼ckenangebot          2073
-3 HÃ¶here Berufsbildung   19757
-4 Heim- und Sonderschule   3021
+2 Brückenangebot           2073
+3 Heim- und Sonderschule   3021
+4 Höhere Berufsbildung    19757
 5 Mittelschule            20591
 6 Volksschule            161073
 ```
@@ -190,16 +222,16 @@ lernende2019 %&gt;%
   Schultyp                    n
   &lt;chr&gt;                   &lt;dbl&gt;
 1 Berufsfachschule        45508
-2 BrÃ¼ckenangebot          2073
-3 HÃ¶here Berufsbildung   19757
-4 Heim- und Sonderschule   3021
+2 Brückenangebot           2073
+3 Heim- und Sonderschule   3021
+4 Höhere Berufsbildung    19757
 5 Mittelschule            20591
 6 Volksschule            161073
 ```
 ]
 
 ---
-# Hausaufgabe 4 - Teil 2 - Übung 6
+# Hausaufgabe 4 - Übung 6
 
 .pull-left[
 
@@ -305,7 +337,7 @@ background-size: contain
 
 # Pause 
 
-<div class="countdown" id="timer_612dfdcf" style="right:0;bottom:0;left:0;margin:5%;padding:15px;font-size:4em;" data-warnwhen="0">
+<div class="countdown" id="timer_61530200" style="right:0;bottom:0;left:0;margin:5%;padding:15px;font-size:4em;" data-warnwhen="0">
 <code class="countdown-time"><span class="countdown-digits minutes">10</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
 
@@ -372,7 +404,7 @@ background-size: contain
 
 # Pause 
 
-<div class="countdown" id="timer_612dffbb" style="right:0;bottom:0;left:0;margin:5%;padding:15px;font-size:4em;" data-warnwhen="0">
+<div class="countdown" id="timer_615303e3" style="right:0;bottom:0;left:0;margin:5%;padding:15px;font-size:4em;" data-warnwhen="0">
 <code class="countdown-time"><span class="countdown-digits minutes">10</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
 

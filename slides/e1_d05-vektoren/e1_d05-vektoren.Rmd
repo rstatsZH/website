@@ -132,6 +132,9 @@ lernende <- read_csv(file = link)
 ```
 
 
+**Tipp:** UTF-8 als Standard festlegen um Daten aus R zu speichern: https://github.com/rstatsZH/kochbuch/tree/main/06-file-encoding
+
+
 ---
 # Hausaufgabe 4 -  Übung 3
 

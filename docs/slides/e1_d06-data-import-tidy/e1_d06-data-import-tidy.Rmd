@@ -2,7 +2,7 @@
 title: "rstatsZH - Data Science mit R"
 subtitle: "Vektoren Teil 2 / Daten Importieren / Daten Aufräumen"
 author: "Lars Schöbitz"
-date: "2021-07-01"
+date: "2021-10-06"
 output:
   xaringan::moon_reader:
     self_contained: false
@@ -59,26 +59,18 @@ p(rmarkdown::metadata$date)
 - Git / GitHub
    - push / pull
    - fork
-- Vektoren
-   - logical
-   - double
-   - integer
-   - character
-- Funktionen zum Umgang mit einem Datum
-   - `readr::parse_date()`
+- Funktion zum Umgang mit einem Datum
+   - `lubridate::as_date()`
 - Visualisierungen
    - Verbundene Streudiagramm
    - `geom_point()` + `geom_path()`
 
----
-class: middle, inverse
-
-# Hausaufgabe 4 - Rückblick 
 
 ---
 class: middle, inverse
 
 # Hausaufgabe 5 - Rückblick
+
 
 
 ---
@@ -87,7 +79,7 @@ class: middle, inverse
 Am Ende dieser Woche könnt ihr:
 
 - Daten aus verschiedenen Formaten in R importieren
-- Erkennen wann es notwendig ist Datums- und Zeitwerte aus Rohdaten in R selbst zu codieren
+- Erkennen wann es notwendig ist Datumswerte aus Rohdaten in R selbst zu codieren
 - Daten aus einem weiten Format in ein langes Format bringen
 - Erkennen ob Daten als Tidy data klassifiert werden können 
 

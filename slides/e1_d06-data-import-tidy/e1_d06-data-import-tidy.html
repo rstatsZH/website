@@ -4,7 +4,7 @@
     <title>rstatsZH - Data Science mit R</title>
     <meta charset="utf-8" />
     <meta name="author" content="Lars Schöbitz" />
-    <meta name="date" content="2021-07-01" />
+    <meta name="date" content="2021-10-06" />
     <script src="libs/header-attrs/header-attrs.js"></script>
     <link href="libs/remark-css/default.css" rel="stylesheet" />
     <link href="libs/font-awesome/css/all.css" rel="stylesheet" />
@@ -45,7 +45,7 @@ class: title-slide
 
 .bottom[
 
-<p>Lars Schöbitz</p><p>2021-07-01</p>
+<p>Lars Schöbitz</p><p>2021-10-06</p>
 ]
 
 ---
@@ -54,26 +54,18 @@ class: title-slide
 - Git / GitHub
    - push / pull
    - fork
-- Vektoren
-   - logical
-   - double
-   - integer
-   - character
-- Funktionen zum Umgang mit einem Datum
-   - `readr::parse_date()`
+- Funktion zum Umgang mit einem Datum
+   - `lubridate::as_date()`
 - Visualisierungen
    - Verbundene Streudiagramm
    - `geom_point()` + `geom_path()`
 
----
-class: middle, inverse
-
-# Hausaufgabe 4 - Rückblick 
 
 ---
 class: middle, inverse
 
 # Hausaufgabe 5 - Rückblick
+
 
 
 ---
@@ -82,7 +74,7 @@ class: middle, inverse
 Am Ende dieser Woche könnt ihr:
 
 - Daten aus verschiedenen Formaten in R importieren
-- Erkennen wann es notwendig ist Datums- und Zeitwerte aus Rohdaten in R selbst zu codieren
+- Erkennen wann es notwendig ist Datumswerte aus Rohdaten in R selbst zu codieren
 - Daten aus einem weiten Format in ein langes Format bringen
 - Erkennen ob Daten als Tidy data klassifiert werden können 
 
@@ -142,7 +134,7 @@ treibhaus
 ```
 
 ```
-# A tibble: 27 × 9
+# A tibble: 27 x 9
    Jahr Strom Kerosin Diesel Benzin Holz_UW_BG_SK Fernwaerme
   &lt;dbl&gt; &lt;dbl&gt;   &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;         &lt;dbl&gt;      &lt;dbl&gt;
 1  1990 0.324   0.638  0.418   1.09         0.021      0.228
@@ -182,7 +174,7 @@ read_csv("data/fussball_weltmeister.csv")
 ```
 
 ```
-# A tibble: 8 × 3
+# A tibble: 8 x 3
    jahr weltmeisterschaft titeltraeger
   &lt;dbl&gt; &lt;chr&gt;             &lt;chr&gt;       
 1  2018 Männer            Frankreich  
@@ -242,7 +234,7 @@ schlechte_namen %&gt;%
 ```
 
 ```
-# A tibble: 1 × 2
+# A tibble: 1 x 2
   `Nachname Frau` `Nachname Mann`
   &lt;chr&gt;           &lt;chr&gt;          
 1 Meier           Müller         
@@ -261,7 +253,7 @@ read_csv("data/bsp_namen.csv",
 ```
 
 ```
-# A tibble: 3 × 2
+# A tibble: 3 x 2
   nachname_frau nachname_mann
   &lt;chr&gt;         &lt;chr&gt;        
 1 Müller        Meier        
@@ -285,7 +277,7 @@ namen %&gt;%
 ```
 
 ```
-# A tibble: 3 × 2
+# A tibble: 3 x 2
   nachname_frau nachname_mann
   &lt;chr&gt;         &lt;chr&gt;        
 1 Müller        Meier        
@@ -322,7 +314,7 @@ read_csv("data/data-na.csv")
 
 
 ```
-# A tibble: 10 × 4
+# A tibble: 10 x 4
    id    name           alter   bewertung           
    &lt;chr&gt; &lt;chr&gt;          &lt;chr&gt;   &lt;chr&gt;               
  1 1     Not applicable 46      trifft nicht zu     
@@ -352,7 +344,7 @@ read_csv("data/data-na.csv",
 .pull-right[
 
 ```
-# A tibble: 10 × 4
+# A tibble: 10 x 4
       id name     alter   bewertung           
    &lt;dbl&gt; &lt;chr&gt;    &lt;chr&gt;   &lt;chr&gt;               
  1     1 &lt;NA&gt;     46      trifft nicht zu     
@@ -394,7 +386,7 @@ dat
 
 
 ```
-# A tibble: 10 × 4
+# A tibble: 10 x 4
       id name     alter   bewertung           
    &lt;dbl&gt; &lt;chr&gt;    &lt;chr&gt;   &lt;chr&gt;               
  1     1 &lt;NA&gt;     46      trifft nicht zu     
@@ -433,7 +425,7 @@ dat &lt;- dat %&gt;%
 
 
 ```
-# A tibble: 10 × 4
+# A tibble: 10 x 4
      id name     alter bewertung           
   &lt;dbl&gt; &lt;chr&gt;    &lt;dbl&gt; &lt;chr&gt;               
 1     1 &lt;NA&gt;        46 trifft nicht zu     
@@ -456,7 +448,7 @@ dat %&gt;%
 ```
 
 ```
-# A tibble: 5 × 2
+# A tibble: 5 x 2
   bewertung                n
   &lt;chr&gt;                &lt;int&gt;
 1 teils-teils              3
@@ -507,7 +499,7 @@ dat %&gt;%
 ```
 
 ```
-# A tibble: 5 × 2
+# A tibble: 5 x 2
   bewertung                n
   &lt;fct&gt;                &lt;int&gt;
 1 trifft nicht zu          1
@@ -564,7 +556,7 @@ dat_clean_csv
 ```
 
 ```
-# A tibble: 10 × 4
+# A tibble: 10 x 4
      id name     alter bewertung           
   &lt;dbl&gt; &lt;chr&gt;    &lt;dbl&gt; &lt;chr&gt;               
 1     1 &lt;NA&gt;        46 trifft nicht zu     
@@ -594,7 +586,7 @@ dat_clean_rds
 ```
 
 ```
-# A tibble: 10 × 4
+# A tibble: 10 x 4
      id name     alter bewertung           
   &lt;dbl&gt; &lt;chr&gt;    &lt;dbl&gt; &lt;fct&gt;               
 1     1 &lt;NA&gt;        46 trifft nicht zu     
@@ -615,7 +607,7 @@ background-size: contain
 
 # Pause 
 
-<div class="countdown" id="timer_612e0038" style="right:0;bottom:0;left:0;margin:5%;padding:15px;font-size:4em;" data-warnwhen="0">
+<div class="countdown" id="timer_615d14e9" style="right:0;bottom:0;left:0;margin:5%;padding:15px;font-size:4em;" data-warnwhen="0">
 <code class="countdown-time"><span class="countdown-digits minutes">10</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
 
@@ -1073,7 +1065,7 @@ Wie wären alle Eigenschaften erfüllt?
 
 
 ```
-# A tibble: 27 × 9
+# A tibble: 27 x 9
    Jahr Strom Kerosin Diesel Benzin Holz_UW_BG_SK Fernwaerme
   &lt;dbl&gt; &lt;dbl&gt;   &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;         &lt;dbl&gt;      &lt;dbl&gt;
 1  1990 0.324   0.638  0.418   1.09         0.021      0.228
@@ -1094,7 +1086,7 @@ Wie wären alle Eigenschaften erfüllt?
 **Nachher**
 
 ```
-# A tibble: 216 × 3
+# A tibble: 216 x 3
    Jahr Energietraeger Emissionen
   &lt;dbl&gt; &lt;chr&gt;               &lt;dbl&gt;
 1  1990 Strom               0.324

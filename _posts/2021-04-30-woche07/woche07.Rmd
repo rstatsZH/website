@@ -32,8 +32,8 @@ Lerne wie du mehrere Dataframes zusammenfügst und deine eigenen Funktionen schr
 Am Ende dieser Woche könnt ihr:
 
 - Mehrere Dataframes zusammenfügen
-- Tabellen mit verschiedenen Packages darstellen
-- Eine eigene Funktion für ein `{ggplot2}` theme schreiben
+- Tabellen mit verschiedenen Packages darstellen 
+- **Bonusmaterial:** Eine eigene Funktion für ein `{ggplot2}` theme schreiben 
 - Mit den im Kurs erlernten Fähigkeiten selbstständig weiter arbeiten
 
 # Folien

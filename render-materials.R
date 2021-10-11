@@ -21,4 +21,4 @@ xaringans <- dir_info(recurse = 3, glob = "slides/*.Rmd") %>%
 
 walk(xaringans, render)
 
-
+walk(xaringans, pagedown::chrome_print)

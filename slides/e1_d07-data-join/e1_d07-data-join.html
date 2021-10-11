@@ -4,7 +4,7 @@
     <title>rstatsZH - Data Science mit R</title>
     <meta charset="utf-8" />
     <meta name="author" content="Lars Schöbitz" />
-    <meta name="date" content="2021-07-08" />
+    <meta name="date" content="2021-10-12" />
     <script src="libs/header-attrs/header-attrs.js"></script>
     <link href="libs/remark-css/default.css" rel="stylesheet" />
     <link href="libs/font-awesome/css/all.css" rel="stylesheet" />
@@ -36,11 +36,11 @@ class: title-slide
 
 
 # rstatsZH - Data Science mit R
-## Mit mehreren Dataframes arbeiten / Tabellen darstellen 
+## Mit mehreren Dataframes arbeiten / Funktionen schreiben 
 
 .bottom[
 
-<p>Lars Schöbitz</p><p>2021-07-08</p>
+<p>Lars Schöbitz</p><p>2021-10-12</p>
 ]
 
 ---
@@ -48,7 +48,7 @@ class: title-slide
 
 - Erweiterte Vektoren
   - Faktoren
-  - Datums- und Zeitwerte
+  - Datumswerte
   - Tibbles
 - Daten importieren
   - `read_csv()`
@@ -58,10 +58,6 @@ class: title-slide
   - `pivot_longer()`
   - `pivot_wider()`
 
----
-class: middle, inverse
-
-# .large[Hausaufgabe 6]
 
 ---
 background-image: url(img/questions.jpg)
@@ -70,6 +66,25 @@ background-position: right
 class: middle
 
 # .large[Hausaufgabe 6]
+
+---
+# Hausaufgabe 6 - Datenschutz
+
+
+1. Unterordner für Daten erstellen
+2. Daten in diesem Ordner speichern
+
+
+&lt;img src="img/github-to-project-local.004.png" width="80%" style="display: block; margin: auto;" /&gt;
+
+---
+# Hausaufgabe 6 - Datenschutz
+
+1. `.gitignore` Datei öffnen
+2. Neue Zeile hinzufügen mit Text `/data`
+
+
+&lt;img src="img/github-to-project-local.005.png" width="90%" style="display: block; margin: auto;" /&gt;
 
 
 ---
@@ -88,8 +103,8 @@ class: middle
 Am Ende dieser Woche könnt ihr:
 
 - Mehrere Dataframes zusammenfügen
-- Tabellen mit verschiedenen Packages darstellen erstellen
-- Eine eigene Funktion für ein `{ggplot2}` theme schreiben
+- Tabellen mit verschiedenen Packages darstellen 
+- **Bonusmaterial:** Eine eigene Funktion für ein `{ggplot2}` theme schreiben 
 - Mit den im Kurs erlernten Fähigkeiten selbstständig weiter arbeiten
 
 ---
@@ -114,45 +129,19 @@ class: middle
 Informationen zu 10 Frauen in der Wissenschaft welche die Welt verändert haben
 
 .small[
-&lt;table&gt;
- &lt;thead&gt;
-  &lt;tr&gt;
-   &lt;th style="text-align:left;"&gt; name &lt;/th&gt;
-  &lt;/tr&gt;
- &lt;/thead&gt;
-&lt;tbody&gt;
-  &lt;tr&gt;
-   &lt;td style="text-align:left;"&gt; Ada Lovelace &lt;/td&gt;
-  &lt;/tr&gt;
-  &lt;tr&gt;
-   &lt;td style="text-align:left;"&gt; Marie Curie &lt;/td&gt;
-  &lt;/tr&gt;
-  &lt;tr&gt;
-   &lt;td style="text-align:left;"&gt; Janaki Ammal &lt;/td&gt;
-  &lt;/tr&gt;
-  &lt;tr&gt;
-   &lt;td style="text-align:left;"&gt; Chien-Shiung Wu &lt;/td&gt;
-  &lt;/tr&gt;
-  &lt;tr&gt;
-   &lt;td style="text-align:left;"&gt; Katherine Johnson &lt;/td&gt;
-  &lt;/tr&gt;
-  &lt;tr&gt;
-   &lt;td style="text-align:left;"&gt; Rosalind Franklin &lt;/td&gt;
-  &lt;/tr&gt;
-  &lt;tr&gt;
-   &lt;td style="text-align:left;"&gt; Vera Rubin &lt;/td&gt;
-  &lt;/tr&gt;
-  &lt;tr&gt;
-   &lt;td style="text-align:left;"&gt; Gladys West &lt;/td&gt;
-  &lt;/tr&gt;
-  &lt;tr&gt;
-   &lt;td style="text-align:left;"&gt; Flossie Wong-Staal &lt;/td&gt;
-  &lt;/tr&gt;
-  &lt;tr&gt;
-   &lt;td style="text-align:left;"&gt; Jennifer Doudna &lt;/td&gt;
-  &lt;/tr&gt;
-&lt;/tbody&gt;
-&lt;/table&gt;
+
+|name               |
+|:------------------|
+|Ada Lovelace       |
+|Marie Curie        |
+|Janaki Ammal       |
+|Chien-Shiung Wu    |
+|Katherine Johnson  |
+|Rosalind Franklin  |
+|Vera Rubin         |
+|Gladys West        |
+|Flossie Wong-Staal |
+|Jennifer Doudna    |
 ]
 
 

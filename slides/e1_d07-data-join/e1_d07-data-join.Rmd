@@ -396,6 +396,38 @@ professions %>%
 ```
 
 ---
+
+## Fehlende Daten ergänzen
+
+```{r, echo=TRUE, eval=FALSE}
+professions %>% 
+  left_join(dates) %>% 
+  mutate(birth_year = case_when( 
+    name == "Ada Lovelace" ~ 1815, # looked up dates on Wikipedia
+    name == "Marie Curie" ~ 1867,
+    TRUE ~ birth_year
+  ))
+
+```
+
+
+```{r, echo=FALSE, eval=TRUE}
+
+professions %>% 
+  left_join(dates) %>% 
+  mutate(birth_year = case_when( 
+    name == "Ada Lovelace" ~ 1815, # looked up dates on Wikipedia
+    name == "Marie Curie" ~ 1867,
+    TRUE ~ birth_year
+  )) %>% 
+  print(n = 7)
+  
+
+```
+
+
+
+---
 .note[
 
 # Praktikum 10 - Daten zusammenfügen 

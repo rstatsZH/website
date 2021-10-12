@@ -23,7 +23,6 @@
 pre > code.sourceCode { white-space: pre; position: relative; }
 pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
 div.sourceCode { margin: 1em 0; }
 pre.sourceCode { margin: 0; }
@@ -1433,22 +1432,22 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   </script>
 
   <!--/radix_placeholder_distill-->
-  <script src="woche07_files/header-attrs/header-attrs.js"></script>
-  <script src="woche07_files/clipboard/clipboard.min.js"></script>
-  <link href="woche07_files/shareon/shareon.min.css" rel="stylesheet" />
-  <script src="woche07_files/shareon/shareon.min.js"></script>
-  <link href="woche07_files/xaringanExtra-shareagain/shareagain.css" rel="stylesheet" />
-  <script src="woche07_files/xaringanExtra-shareagain/shareagain.js"></script>
-  <script src="woche07_files/fitvids/fitvids.min.js"></script>
-  <script src="woche07_files/jquery/jquery.min.js"></script>
-  <script src="woche07_files/popper/popper.min.js"></script>
-  <link href="woche07_files/tippy/tippy.css" rel="stylesheet" />
-  <link href="woche07_files/tippy/tippy-light-border.css" rel="stylesheet" />
-  <script src="woche07_files/tippy/tippy.umd.min.js"></script>
-  <script src="woche07_files/anchor/anchor.min.js"></script>
-  <script src="woche07_files/bowser/bowser.min.js"></script>
-  <script src="woche07_files/webcomponents/webcomponents.js"></script>
-  <script src="woche07_files/distill/template.v2.js"></script>
+  <script src="woche07_files/header-attrs-2.9/header-attrs.js"></script>
+  <script src="woche07_files/clipboard-2.0.6/clipboard.min.js"></script>
+  <link href="woche07_files/shareon-1.4.1/shareon.min.css" rel="stylesheet" />
+  <script src="woche07_files/shareon-1.4.1/shareon.min.js"></script>
+  <link href="woche07_files/xaringanExtra-shareagain-0.2.6/shareagain.css" rel="stylesheet" />
+  <script src="woche07_files/xaringanExtra-shareagain-0.2.6/shareagain.js"></script>
+  <script src="woche07_files/fitvids-2.1.1/fitvids.min.js"></script>
+  <script src="woche07_files/jquery-1.11.3/jquery.min.js"></script>
+  <script src="woche07_files/popper-2.6.0/popper.min.js"></script>
+  <link href="woche07_files/tippy-6.2.7/tippy.css" rel="stylesheet" />
+  <link href="woche07_files/tippy-6.2.7/tippy-light-border.css" rel="stylesheet" />
+  <script src="woche07_files/tippy-6.2.7/tippy.umd.min.js"></script>
+  <script src="woche07_files/anchor-4.2.2/anchor.min.js"></script>
+  <script src="woche07_files/bowser-1.9.3/bowser.min.js"></script>
+  <script src="woche07_files/webcomponents-2.0.0/webcomponents.js"></script>
+  <script src="woche07_files/distill-2.2.21/template.v2.js"></script>
   <!--radix_placeholder_site_in_header-->
   <!--/radix_placeholder_site_in_header-->
 
@@ -1460,7 +1459,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <!--radix_placeholder_front_matter-->
 
 <script id="distill-front-matter" type="text/json">
-{"title":"Woche 7 - Daten zusammenfügen und Funktionen schreiben","description":"Ziele und Materialien für unsere letzte gemeinsame Woche","authors":[],"publishedDate":"2021-04-27T00:00:00.000+00:00"}
+{"title":"Woche 7 - Daten zusammenfügen und Funktionen schreiben","description":"Ziele und Materialien für unsere letzte gemeinsame Woche","authors":[],"publishedDate":"2021-04-27T00:00:00.000+02:00"}
 </script>
 
 <!--/radix_placeholder_front_matter-->
@@ -1544,6 +1543,20 @@ Titel
 1
 </td>
 <td style="text-align:left;">
+Arbeitsmaterial
+</td>
+<td style="text-align:left;">
+Folien
+</td>
+<td style="text-align:left;">
+<a href="https://github.com/rstatsZH-K004/folien">PDF Versionen der Folien aus dem Kurs</a>
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:left;">
 Deskriptive Statistik
 </td>
 <td style="text-align:left;">
@@ -1555,7 +1568,7 @@ Tutorial
 </tr>
 <tr>
 <td style="text-align:right;">
-2
+3
 </td>
 <td style="text-align:left;">
 Generell
@@ -1569,7 +1582,7 @@ Buch
 </tr>
 <tr>
 <td style="text-align:right;">
-3
+4
 </td>
 <td style="text-align:left;">
 Generell
@@ -1583,7 +1596,7 @@ Tutorial
 </tr>
 <tr>
 <td style="text-align:right;">
-4
+5
 </td>
 <td style="text-align:left;">
 Generell
@@ -1597,7 +1610,7 @@ Buch
 </tr>
 <tr>
 <td style="text-align:right;">
-5
+6
 </td>
 <td style="text-align:left;">
 Geodaten und GIS in R
@@ -1611,7 +1624,7 @@ Buch
 </tr>
 <tr>
 <td style="text-align:right;">
-6
+7
 </td>
 <td style="text-align:left;">
 Kollaboration und Versionsverwaltung
@@ -1625,7 +1638,7 @@ Buch
 </tr>
 <tr>
 <td style="text-align:right;">
-7
+8
 </td>
 <td style="text-align:left;">
 Kommunikation mit R Markdown
@@ -1639,7 +1652,7 @@ Buch
 </tr>
 <tr>
 <td style="text-align:right;">
-8
+9
 </td>
 <td style="text-align:left;">
 Kommunikation mit R Markdown
@@ -1653,7 +1666,7 @@ Buch mit Anleitungen
 </tr>
 <tr>
 <td style="text-align:right;">
-9
+10
 </td>
 <td style="text-align:left;">
 Kommunikation mit R Markdown
@@ -1667,7 +1680,7 @@ R Package
 </tr>
 <tr>
 <td style="text-align:right;">
-10
+11
 </td>
 <td style="text-align:left;">
 Kommunikation mit R Markdown
@@ -1681,7 +1694,7 @@ R Package
 </tr>
 <tr>
 <td style="text-align:right;">
-11
+12
 </td>
 <td style="text-align:left;">
 Kommunikation mit R Markdown
@@ -1695,7 +1708,21 @@ R Package
 </tr>
 <tr>
 <td style="text-align:right;">
-12
+13
+</td>
+<td style="text-align:left;">
+Kommunikation mit R Markdown, ggplot2 Theme, XLSX Output
+</td>
+<td style="text-align:left;">
+R Package
+</td>
+<td style="text-align:left;">
+<a href="https://statistikzh.github.io/statR/">Corporate Design des Kantons Zürich für konforme Visualisierungen, Excel-Tabellen und HTML-Bericht</a>
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+14
 </td>
 <td style="text-align:left;">
 Modellierung, Inferentielle Statistik, Machine Learning
@@ -1709,7 +1736,7 @@ Buch
 </tr>
 <tr>
 <td style="text-align:right;">
-13
+15
 </td>
 <td style="text-align:left;">
 Modellierung, Inferentielle Statistik, Machine Learning
@@ -1723,7 +1750,7 @@ Buch
 </tr>
 <tr>
 <td style="text-align:right;">
-14
+16
 </td>
 <td style="text-align:left;">
 Modellierung, Inferentielle Statistik, Machine Learning
@@ -1737,7 +1764,7 @@ Artikel
 </tr>
 <tr>
 <td style="text-align:right;">
-15
+17
 </td>
 <td style="text-align:left;">
 Programmieren

@@ -11,8 +11,15 @@ ID,Thema,Typ,Titel
 10,Kommunikation mit R Markdown,R Package,[Folien mit {xaringan}](https://slides.yihui.org/xaringan/#1)
 11,Kommunikation mit R Markdown,R Package,[Dashboards mit {flexdashboard}](https://rmarkdown.rstudio.com/flexdashboard/)
 12,Kommunikation mit R Markdown,R Package,[Berichte als Webseite oder Blog mit {distill}](https://rstudio.github.io/distill/)
+<<<<<<< HEAD
 13,"Kommunikation mit R Markdown, ggplot2 Theme, XLSX Output",R Package,"[Corporate Design des Kantons Zürich für konforme Visualisierungen, Excel-Tabellen und HTML-Bericht](https://statistikzh.github.io/statR/)"
 14,"Modellierung, Inferentielle Statistik, Machine Learning",Buch,[ModernDive - Statistical Inference via Data Science](https://moderndive.com/)
 15,"Modellierung, Inferentielle Statistik, Machine Learning",Buch,[OpenIntro - Introduction to Modern Statistics](https://openintro-ims.netlify.app/index.html)
 16,"Modellierung, Inferentielle Statistik, Machine Learning",Artikel,[TidyModels - A collection of packages for modeling and machine learning](https://www.tidymodels.org/start)
 17,Programmieren,Buch,[Hands-on Programming with R](https://rstudio-education.github.io/hopr/)
+=======
+13,"Modellierung, Inferentielle Statistik, Machine Learning",Buch,[ModernDive - Statistical Inference via Data Science](https://moderndive.com/)
+14,"Modellierung, Inferentielle Statistik, Machine Learning",Buch,[OpenIntro - Introduction to Modern Statistics](https://openintro-ims.netlify.app/index.html)
+15,"Modellierung, Inferentielle Statistik, Machine Learning",Artikel,[TidyModels - A collection of packages for modeling and machine learning](https://www.tidymodels.org/start)
+16,Programmieren,Buch,[Hands-on Programming with R](https://rstudio-education.github.io/hopr/)
+>>>>>>> d84c8524748f23ae20758fd84795eb2ab13456fb

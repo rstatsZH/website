@@ -1,8 +1,8 @@
 ---
 title: "rstatsZH - Data Science mit R"
-subtitle: "Mit mehreren Dataframes arbeiten / Tabellen darstellen"
+subtitle: "Mit mehreren Dataframes arbeiten / Funktionen schreiben"
 author: "Lars Schöbitz"
-date: "2021-07-08"
+date: "2021-10-12"
 output:
   xaringan::moon_reader:
     self_contained: false
@@ -59,7 +59,7 @@ p(rmarkdown::metadata$date)
 
 - Erweiterte Vektoren
   - Faktoren
-  - Datums- und Zeitwerte
+  - Datumswerte
   - Tibbles
 - Daten importieren
   - `read_csv()`
@@ -69,10 +69,6 @@ p(rmarkdown::metadata$date)
   - `pivot_longer()`
   - `pivot_wider()`
 
----
-class: middle, inverse
-
-# .large[Hausaufgabe 6]
 
 ---
 background-image: url(img/questions.jpg)
@@ -81,6 +77,29 @@ background-position: right
 class: middle
 
 # .large[Hausaufgabe 6]
+
+---
+# Hausaufgabe 6 - Datenschutz
+
+
+1. Unterordner für Daten erstellen
+2. Daten in diesem Ordner speichern
+
+
+```{r, out.width="80%"}
+knitr::include_graphics("img/github-to-project-local.004.png")
+```
+
+---
+# Hausaufgabe 6 - Datenschutz
+
+1. `.gitignore` Datei öffnen
+2. Neue Zeile hinzufügen mit Text `/data`
+
+
+```{r, out.width="90%"}
+knitr::include_graphics("img/github-to-project-local.005.png")
+```
 
 
 ---
@@ -99,8 +118,8 @@ class: middle
 Am Ende dieser Woche könnt ihr:
 
 - Mehrere Dataframes zusammenfügen
-- Tabellen mit verschiedenen Packages darstellen erstellen
-- Eine eigene Funktion für ein `{ggplot2}` theme schreiben
+- Tabellen mit verschiedenen Packages darstellen 
+- **Bonusmaterial:** Eine eigene Funktion für ein `{ggplot2}` theme schreiben 
 - Mit den im Kurs erlernten Fähigkeiten selbstständig weiter arbeiten
 
 ---

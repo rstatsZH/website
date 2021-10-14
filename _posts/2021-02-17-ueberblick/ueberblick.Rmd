@@ -86,7 +86,7 @@ googlesheets4::read_sheet("1WhGB4Pqpr4ywGbOKaC2UoRsyaf5jbI7L8jY75Lic9FE") %>%
 
 Hier geht's zur Anmeldung worauf auf eine Kontaktaufhnahme folgt:
 
-https://www.zh.ch/de/politik-staat/statistik-daten/rstatszh-data-science-mit-r-anmelden.html
+https://www.zh.ch/de/politik-staat/statistik-daten/datenwerkstatt.html
 
 # Eine Zusammenfassung in Folien
 

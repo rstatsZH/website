@@ -54,19 +54,19 @@ xaringanExtra::embed_xaringan("../../slides/e1_d07-data-join/e1_d07-data-join.ht
 
 ```{r, echo=FALSE, message=FALSE, warning=FALSE, layout="l-body-outset"}
 
-#googlesheets4::read_sheet("198t05eFYHxuxY0d2jCvPkES1ZaMcsSYgBKcg0xQTwb0") %>% 
-#  mutate(titel2 = paste0("[", titel, "](", link, ")")) %>% 
-#  filter(woche == "woche7") %>% 
-#  select(topic, type, titel2) %>% 
-#  arrange(topic) %>% 
-#  rename(
-#    Thema = topic,
-#    Typ = type,
-#    Titel = titel2
-#  ) %>% 
-#  mutate(ID = seq(1:n())) %>% 
-#  relocate(ID) %>%
-#  write_csv(here::here("_posts/2021-04-30-woche07/week7-material.csv"))
+googlesheets4::read_sheet("198t05eFYHxuxY0d2jCvPkES1ZaMcsSYgBKcg0xQTwb0") %>% 
+  mutate(titel2 = paste0("[", titel, "](", link, ")")) %>% 
+  filter(woche == "woche7") %>% 
+  select(topic, type, titel2) %>% 
+  arrange(topic) %>% 
+  rename(
+    Thema = topic,
+    Typ = type,
+    Titel = titel2
+  ) %>% 
+  mutate(ID = seq(1:n())) %>% 
+  relocate(ID) %>%
+  write_csv(here::here("_posts/2021-04-30-woche07/week7-material.csv"))
 
 read_csv(here::here("_posts/2021-04-30-woche07/week7-material.csv")) %>% 
   knitr::kable(format = "html")

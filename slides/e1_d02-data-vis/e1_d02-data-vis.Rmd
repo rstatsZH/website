@@ -2,7 +2,7 @@
 title: "rstatsZH - Data Science mit R"
 subtitle: "Datenvisualisierung mit ggplot2"  
 author: "Lars Schöbitz"
-date: "2021-09-01"
+date: "2021-10-31"
 output:
   xaringan::moon_reader:
     self_contained: false

@@ -2,7 +2,7 @@
 title: "rstatsZH - Data Science mit R"
 subtitle: "Datenvisualisierung verschiedener Datentypen"  
 author: "Lars Schöbitz"
-date: "2021-09-07"
+date: "2021-11-08"
 output:
   xaringan::moon_reader:
     self_contained: false

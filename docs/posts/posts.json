@@ -56,7 +56,7 @@
     "categories": [],
     "contents": "\n\nContents\nZiele\nFolien\nDaten Visualisierung - Teil 2\nDaten Transformation\n\nWeiterführende Aufgaben\n\n\n\n\n\n\n\nFigure 1: Photo by eleonora\n\n\n\nLerne die Funktionen des {dplyr} R Package kennen und vertiefe deine Fähigkeiten im Umgang mit Visualisierungen.\nZiele\nAm Ende dieser Woche könnt ihr:\ndie Farb- und Achsenskalierung eines Plots anpassen\nden passenden Plot für deine Daten finden\neinzelne Funktionen des R Package {dplyr} anwenden\nbeschreiben wie das Symbol %>% genutzt wird\nFolien\nDaten Visualisierung - Teil 2\n\n\n\n\n\n\nfitvids('.shareagain', {players: 'iframe'});\n\nDaten Transformation\n\n\n\n\n\n\nfitvids('.shareagain', {players: 'iframe'});\n\nWeiterführende Aufgaben\n\n\nHausaufgabe (Übungen aus R4DS)\n\n\nHausaufgabe 03 - Hallo dplyr - Übung 1\n\n\nPflicht\n\n\n~ 80 Minuten\n\n\nBuch\n\n\nR4DS - Chapter 4 - Workflow basics\n\n\nPflicht\n\n\n~ 20 Minuten\n\n\nTutorial\n\n\nRStudio Primer - Programming Basics\n\n\nFreiwillig\n\n\n~ 60 Minuten\n\n\n\n\n\n",
     "preview": "posts/2021-03-19-woche03/img/pliers.jpg",
-    "last_modified": "2021-10-12T14:48:43+02:00",
+    "last_modified": "2021-11-04T15:35:30+01:00",
     "input_file": {}
   },
   {

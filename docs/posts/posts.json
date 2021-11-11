@@ -44,7 +44,7 @@
     "categories": [],
     "contents": "\n\nContents\nZiele\nFolien\nDaten Transformation - Teil 2\n\nWeiterführende Aufgaben\n\n\n\n\n\n\n\nFigure 1: Photo by Hunter Haley\n\n\n\nLerne weitere Funktionen des {dplyr} R Packages kennen und beginnen diese in Code Sequenzen zusammenzufügen.\nZiele\nAm Ende dieser Woche könnt ihr:\nmehr als zehn Funktionen des R Package {dplyr} anwenden, um\nDaten einzugrenzen\nneue Variablen zu erstellen\nzusammefassende Statistiken zu berechnen\n\nNA Werte aus euren Daten entfernen\nFolien\nDaten Transformation - Teil 2\n\n\n\n\n\n\nfitvids('.shareagain', {players: 'iframe'});\n\nWeiterführende Aufgaben\n\n\nPraktikum (RStudio Cloud)\n\n\nPraktikum 06 - bis Ende Teil 5\n\n\nPflicht\n\n\n~ 20 Minuten\n\n\nHausaufgabe\n\n\nHausaufgabe 04 - Mehr dplyr\n\n\nPflicht\n\n\n~ 100 Minuten\n\n\nGuide\n\n\nR Style Guide - Chapter 4 + 5\n\n\nFreiwillig\n\n\n~ 20 Minuten\n\n\nBuch\n\n\nR4DS - Chapter 10 - Tibbles\n\n\nFreiwillig\n\n\n~ 20 Minuten\n\n\nBuch\n\n\nR4DS - Chapter 7.1 to 7.4\n\n\nEmpfohlen\n\n\n~ 30 Minuten\n\n\n\n\n\n",
     "preview": "posts/2021-03-28-woche04/img/plier2.jpg",
-    "last_modified": "2021-10-12T14:48:43+02:00",
+    "last_modified": "2021-11-11T14:02:47+01:00",
     "input_file": {}
   },
   {

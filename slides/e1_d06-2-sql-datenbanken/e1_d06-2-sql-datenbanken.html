@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+  <head>
+    <title>rstatsZH - Data Science mit R</title>
+    <meta charset="utf-8" />
+    <meta name="author" content="Lars Schöbitz" />
+    <meta name="date" content="2021-11-23" />
+    <script src="libs/header-attrs/header-attrs.js"></script>
+    <link href="libs/remark-css/default.css" rel="stylesheet" />
+    <link href="libs/font-awesome/css/all.css" rel="stylesheet" />
+    <link href="libs/font-awesome/css/v4-shims.css" rel="stylesheet" />
+    <link href="libs/panelset/panelset.css" rel="stylesheet" />
+    <script src="libs/panelset/panelset.js"></script>
+    <script src="libs/clipboard/clipboard.min.js"></script>
+    <link href="libs/shareon/shareon.min.css" rel="stylesheet" />
+    <script src="libs/shareon/shareon.min.js"></script>
+    <link href="libs/xaringanExtra-shareagain/shareagain.css" rel="stylesheet" />
+    <script src="libs/xaringanExtra-shareagain/shareagain.js"></script>
+    <link rel="stylesheet" href="assets/css/xaringan-themer.css" type="text/css" />
+    <link rel="stylesheet" href="assets/css/my-css-style.css" type="text/css" />
+  </head>
+  <body>
+    <textarea id="source">
+
+
+class: title-slide
+
+
+
+
+&lt;script async defer data-domain="rstatszh.github.io/website" src="https://plausible.io/js/plausible.js"&gt;&lt;/script&gt;
+
+
+
+
+
+
+# rstatsZH - Data Science mit R
+## SQL in R Markdown + Datenbank Abfragen 
+
+.bottom[
+
+<p>Lars Schöbitz</p><p>2021-11-23</p>
+]
+
+---
+# Datenbanken - SQL queries in R
+
+- `DBI` Package: https://dbi.r-dbi.org/
+- `dbplyr` Package: https://dbplyr.tidyverse.org/index.html
+
+---
+# DBI - Mit einer Datenbank verbinden
+
+Argumente variieren je nach Datenbank, aber das erste Argument ist immer das Datenbank Backend.
+
+
+```r
+library(DBI)
+
+con &lt;- dbConnect(
+   
+   # Hier wird das Backend definiert
+   RMariaDB::MariaDB(),
+   
+   host = "relational.fit.cvut.cz", 
+   port = 3306,
+   username = "guest",
+   
+   # Niemals Passwort in Skript speichern
+*  password = "relational", # rstudioapi::askForPassword("Datenbank Passwort"),
+   dbname = "sakila"
+)
+```
+
+---
+# DBI - Tabellen in Datenbank anzeigen
+
+
+```r
+dbListTables(con)
+```
+
+```
+ [1] "actor"         "address"       "category"     
+ [4] "city"          "country"       "customer"     
+ [7] "film"          "film_actor"    "film_category"
+[10] "film_text"     "inventory"     "language"     
+[13] "payment"       "rental"        "staff"        
+[16] "store"        
+```
+
+---
+# DBI - Spaltennamen einer Tabelle anzeigen
+
+
+```r
+dbListFields(con, "film")
+```
+
+```
+ [1] "film_id"              "title"               
+ [3] "description"          "release_year"        
+ [5] "language_id"          "original_language_id"
+ [7] "rental_duration"      "rental_rate"         
+ [9] "length"               "replacement_cost"    
+[11] "rating"               "special_features"    
+[13] "last_update"         
+```
+
+---
+# SQL Queries in R Markdown Dateien
+
+1. Datenbank Verbindung: Code-chunk mit `sql connection=con` starten
+2. Daten Output: Resultierende Daten mit `output.var = "NAME"` als Objekt im Environment speichern
+3. SQL Code schreiben
+
+&lt;img src="img/sql-chunk-output.png" width="100%" style="display: block; margin: auto;" /&gt;
+
+
+
+---
+# SQL Query - Mit Daten weiter arbeiten
+
+1. Objekt mit Funktion `as_tibble()` in einen Tibble umwandeln
+
+&lt;img src="img/r-chunk.png" width="100%" style="display: block; margin: auto;" /&gt;
+
+
+```
+# A tibble: 39 × 3
+  film_id title             length
+    &lt;int&gt; &lt;chr&gt;              &lt;int&gt;
+1      24 ANALYZE HOOSIERS     181
+2      50 BAKED CLEOPATRA      182
+3     128 CATCH AMISTAD        183
+4     141 CHICAGO NORTH        185
+5     180 CONSPIRACY SPIRIT    184
+6     182 CONTROL ANTHEM       185
+# … with 33 more rows
+```
+
+---
+# dbplyr - Mit Tabelle in Datenbank verbinden
+
+
+```r
+film_tab &lt;- tbl(con, "film")
+film_tab
+```
+
+```
+# Source:   table&lt;film&gt; [?? x 13]
+# Database: mysql [guest@relational.fit.cvut.cz:NA/sakila]
+  film_id title            description   release_year language_id
+    &lt;int&gt; &lt;chr&gt;            &lt;chr&gt;                &lt;int&gt;       &lt;int&gt;
+1       1 ACADEMY DINOSAUR A Epic Drama…         2006           1
+2       2 ACE GOLDFINGER   A Astounding…         2006           1
+3       3 ADAPTATION HOLES A Astounding…         2006           1
+4       4 AFFAIR PREJUDICE A Fanciful D…         2006           1
+5       5 AFRICAN EGG      A Fast-Paced…         2006           1
+6       6 AGENT TRUMAN     A Intrepid P…         2006           1
+# … with more rows, and 8 more variables:
+#   original_language_id &lt;int&gt;, rental_duration &lt;int&gt;,
+#   rental_rate &lt;dbl&gt;, length &lt;int&gt;, replacement_cost &lt;dbl&gt;,
+#   rating &lt;chr&gt;, special_features &lt;chr&gt;, last_update &lt;dttm&gt;
+```
+
+---
+# dbplyr - Queries als dplyr code
+
+
+```r
+film_tab %&gt;% 
+   select(film_id, title, length) %&gt;% 
+   filter(length &gt; 180)
+```
+
+```
+# Source:   lazy query [?? x 3]
+# Database: mysql [guest@relational.fit.cvut.cz:NA/sakila]
+  film_id title             length
+    &lt;int&gt; &lt;chr&gt;              &lt;int&gt;
+1      24 ANALYZE HOOSIERS     181
+2      50 BAKED CLEOPATRA      182
+3     128 CATCH AMISTAD        183
+4     141 CHICAGO NORTH        185
+5     180 CONSPIRACY SPIRIT    184
+6     182 CONTROL ANTHEM       185
+# … with more rows
+```
+
+---
+# dbplyr - Resultierende Daten aus Datenbank holen
+
+
+```r
+film_tab %&gt;% 
+   select(film_id, title, length) %&gt;% 
+   filter(length &gt; 180) %&gt;% 
+*  collect()
+```
+
+```
+# A tibble: 39 × 3
+  film_id title             length
+    &lt;int&gt; &lt;chr&gt;              &lt;int&gt;
+1      24 ANALYZE HOOSIERS     181
+2      50 BAKED CLEOPATRA      182
+3     128 CATCH AMISTAD        183
+4     141 CHICAGO NORTH        185
+5     180 CONSPIRACY SPIRIT    184
+6     182 CONTROL ANTHEM       185
+# … with 33 more rows
+```
+
+---
+# dbplyr - Queries als dplyr code
+
+
+```r
+film_tab %&gt;% 
+   summarise(min_rate = min(rental_rate),
+             max_rate = max(rental_rate),
+             mean_rate = mean(rental_rate)) %&gt;% 
+   collect()
+```
+
+```
+# A tibble: 1 × 3
+  min_rate max_rate mean_rate
+     &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt;
+1     0.99     4.99      2.98
+```
+
+---
+# R Packages für andere Datentypen
+
+- **googlesheets4:** Google Sheets
+- **haven**: SPSS, Stata, und SAS Dateien
+- **jsonline**: JSON
+- **xml2**: xml
+- **rvest**: web scraping
+- **httr**: web APIs
+- **sparklyr**: data loaded into spark
+
+
+---
+class: inverse, middle
+
+# .big[Tabellen darstellen]
+
+---
+background-image: url("img/untidy-data/untidy-data.004.png")
+background-size: contain
+
+.question[
+Welche Eigenschaften von Tidy data sind hier nicht erfüllt?
+]
+
+.footnote[
+Quelle: [Bundesamt für Statistik - Kosten des Gesundheitswesens nach Leistungen]( https://www.bfs.admin.ch/bfs/de/home/statistiken/kataloge-datenbanken/tabellen.assetdetail.14840808.html) 
+]
+---
+background-image: url("img/untidy-data/untidy-data.005.png")
+background-size: contain
+
+.question[
+Welche Eigenschaften von Tidy data sind hier nicht erfüllt?
+]
+
+.footnote[
+Quelle: [Bundesamt für Statistik - Kosten des Gesundheitswesens nach Leistungen]( https://www.bfs.admin.ch/bfs/de/home/statistiken/kataloge-datenbanken/tabellen.assetdetail.14840808.html)
+]
+
+---
+background-image: url("img/untidy-data/untidy-data.006.png")
+background-size: contain
+
+.question[
+Welche Eigenschaften von Tidy data sind hier nicht erfüllt?
+]
+
+.footnote[
+Quelle: [Bundesamt für Statistik - Kosten des Gesundheitswesens nach Leistungen]( https://www.bfs.admin.ch/bfs/de/home/statistiken/kataloge-datenbanken/tabellen.assetdetail.14840808.html)
+]
+
+
+---
+# Relevanter Unterschied - Ziel der Daten Publikation
+
+.pull-left[
+**Daten in Tabellen darstellen**
+- Layout
+   - Gut leserlich
+   - Kompakt
+   - Erkenntnis bringend
+- Metadaten
+]
+
+.pull-right[
+**Daten für weitere Nutzung bereitstellen**
+- Layout (Tidy data)
+   - Eigenschaft 1: Jede Spalte ist eine Variable
+   - Eigenschaft 2: Jede Reihe ist eine Beobachtung
+   - Eigenschaft 3: Jede Zelle enthält eine Messung
+- Keine Metadaten
+- Keine Farben, Formatierungen, etc.
+- Folgt Standards (Datum: ISO 8601)
+- etc.
+]
+
+---
+class: inverse, middle
+
+# .large[Tabellen darstellen mit dem {gt} Package]
+
+
+---
+background-image: url("https://gt.rstudio.com/reference/figures/gt_parts_of_a_table.svg")
+background-size: cover
+
+.footnote[
+Quelle: [gt.rstudio.com](https://gt.rstudio.com/index.html)
+]
+
+---
+background-image: url("https://gt.rstudio.com/reference/figures/gt_workflow_diagram.svg")
+background-size: contain
+
+.footnote[
+Quelle: [gt.rstudio.com](https://gt.rstudio.com/index.html)
+]
+
+---
+.note[
+
+# Demonstration 3 - Tabellen darstellen
+
+1. Schaut mir beim Programmieren zu
+2. Macht euch Notizen und stellt Fragen
+
+]
+
+---
+# {gt} - Lerne das Package besser kennen
+
+[
+
+](https://rstudio.cloud/project/779965)
+
+.footnote[
+Quelle: [gt.rstudio.com](https://gt.rstudio.com/index.html)
+]
+
+---
+# Tabellen darstellen - Weitere Packages
+
+- `{kableExtra}`: https://haozhu233.github.io/kableExtra/
+- `{formattable}`: https://renkun-ken.github.io/formattable/
+- `{DT}`: https://rstudio.github.io/DT/
+- `{flextable}`: https://davidgohel.github.io/flextable/
+- etc. 
+    </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script>var slideshow = remark.create({
+"slideNumberFormat": "<div class=\"progress-bar-container\">\n  <div class=\"progress-bar\" style=\"width: calc(%current% / %total% * 100%);\">\n  </div>\n</div>\n",
+"highlightStyle": "solarized-light",
+"highlightLanguage": ["r", "css", "yaml"],
+"highlightLines": true,
+"countIncrementalSlides": false,
+"ratio": "16:9"
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
+})();
+(function() {
+  "use strict"
+  // Replace <script> tags in slides area to make them executable
+  var scripts = document.querySelectorAll(
+    '.remark-slides-area .remark-slide-container script'
+  );
+  if (!scripts.length) return;
+  for (var i = 0; i < scripts.length; i++) {
+    var s = document.createElement('script');
+    var code = document.createTextNode(scripts[i].textContent);
+    s.appendChild(code);
+    var scriptAttrs = scripts[i].attributes;
+    for (var j = 0; j < scriptAttrs.length; j++) {
+      s.setAttribute(scriptAttrs[j].name, scriptAttrs[j].value);
+    }
+    scripts[i].parentElement.replaceChild(s, scripts[i]);
+  }
+})();
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();
+// adds .remark-code-has-line-highlighted class to <pre> parent elements
+// of code chunks containing highlighted lines with class .remark-code-line-highlighted
+(function(d) {
+  const hlines = d.querySelectorAll('.remark-code-line-highlighted');
+  const preParents = [];
+  const findPreParent = function(line, p = 0) {
+    if (p > 1) return null; // traverse up no further than grandparent
+    const el = line.parentElement;
+    return el.tagName === "PRE" ? el : findPreParent(el, ++p);
+  };
+
+  for (let line of hlines) {
+    let pre = findPreParent(line);
+    if (pre && !preParents.includes(pre)) preParents.push(pre);
+  }
+  preParents.forEach(p => p.classList.add("remark-code-has-line-highlighted"));
+})(document);</script>
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+};
+slideshow._releaseMath(document);
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>

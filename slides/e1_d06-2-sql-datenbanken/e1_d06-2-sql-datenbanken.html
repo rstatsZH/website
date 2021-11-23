@@ -68,7 +68,7 @@ con &lt;- dbConnect(
    username = "guest",
    
    # Niemals Passwort in Skript speichern
-*  password = "relational", # rstudioapi::askForPassword("Datenbank Passwort"),
+*  password = rstudioapi::askForPassword("Datenbank Passwort"),
    dbname = "sakila"
 )
 ```
@@ -246,121 +246,17 @@ film_tab %&gt;%
 
 
 ---
-class: inverse, middle
+# 🌻 Danke 
 
-# .big[Tabellen darstellen]
+Für die Aufmerksamkeit!
 
----
-background-image: url("img/untidy-data/untidy-data.004.png")
-background-size: contain
+Für die R packages [{xaringan}](https://github.com/yihui/xaringan) und [{xaringanthemer}](https://github.com/gadenbuie/xaringanthemer) mit welchen die Folien geschrieben wurden.
 
-.question[
-Welche Eigenschaften von Tidy data sind hier nicht erfüllt?
-]
+Eine PDF Version der Folien kann hier heruntergeladen werden: https://github.com/rstatsZH/website/raw/master/slides/e1_d01-willkommen/e1_d01-willkommen.pdf
 
-.footnote[
-Quelle: [Bundesamt für Statistik - Kosten des Gesundheitswesens nach Leistungen]( https://www.bfs.admin.ch/bfs/de/home/statistiken/kataloge-datenbanken/tabellen.assetdetail.14840808.html) 
-]
----
-background-image: url("img/untidy-data/untidy-data.005.png")
-background-size: contain
+<hr/>
 
-.question[
-Welche Eigenschaften von Tidy data sind hier nicht erfüllt?
-]
-
-.footnote[
-Quelle: [Bundesamt für Statistik - Kosten des Gesundheitswesens nach Leistungen]( https://www.bfs.admin.ch/bfs/de/home/statistiken/kataloge-datenbanken/tabellen.assetdetail.14840808.html)
-]
-
----
-background-image: url("img/untidy-data/untidy-data.006.png")
-background-size: contain
-
-.question[
-Welche Eigenschaften von Tidy data sind hier nicht erfüllt?
-]
-
-.footnote[
-Quelle: [Bundesamt für Statistik - Kosten des Gesundheitswesens nach Leistungen]( https://www.bfs.admin.ch/bfs/de/home/statistiken/kataloge-datenbanken/tabellen.assetdetail.14840808.html)
-]
-
-
----
-# Relevanter Unterschied - Ziel der Daten Publikation
-
-.pull-left[
-**Daten in Tabellen darstellen**
-- Layout
-   - Gut leserlich
-   - Kompakt
-   - Erkenntnis bringend
-- Metadaten
-]
-
-.pull-right[
-**Daten für weitere Nutzung bereitstellen**
-- Layout (Tidy data)
-   - Eigenschaft 1: Jede Spalte ist eine Variable
-   - Eigenschaft 2: Jede Reihe ist eine Beobachtung
-   - Eigenschaft 3: Jede Zelle enthält eine Messung
-- Keine Metadaten
-- Keine Farben, Formatierungen, etc.
-- Folgt Standards (Datum: ISO 8601)
-- etc.
-]
-
----
-class: inverse, middle
-
-# .large[Tabellen darstellen mit dem {gt} Package]
-
-
----
-background-image: url("https://gt.rstudio.com/reference/figures/gt_parts_of_a_table.svg")
-background-size: cover
-
-.footnote[
-Quelle: [gt.rstudio.com](https://gt.rstudio.com/index.html)
-]
-
----
-background-image: url("https://gt.rstudio.com/reference/figures/gt_workflow_diagram.svg")
-background-size: contain
-
-.footnote[
-Quelle: [gt.rstudio.com](https://gt.rstudio.com/index.html)
-]
-
----
-.note[
-
-# Demonstration 3 - Tabellen darstellen
-
-1. Schaut mir beim Programmieren zu
-2. Macht euch Notizen und stellt Fragen
-
-]
-
----
-# {gt} - Lerne das Package besser kennen
-
-[
-
-](https://rstudio.cloud/project/779965)
-
-.footnote[
-Quelle: [gt.rstudio.com](https://gt.rstudio.com/index.html)
-]
-
----
-# Tabellen darstellen - Weitere Packages
-
-- `{kableExtra}`: https://haozhu233.github.io/kableExtra/
-- `{formattable}`: https://renkun-ken.github.io/formattable/
-- `{DT}`: https://rstudio.github.io/DT/
-- `{flextable}`: https://davidgohel.github.io/flextable/
-- etc. 
+Für [Data Science in a Box](https://datasciencebox.org/) und [Remaster the Tidyverse](https://github.com/rstudio-education/remaster-the-tidyverse), von welchen ich Materialien für diesen Kurs nutze und welche genau wie diese Folien mit [Creative Commons Attribution Share Alike 4.0 International](https://creativecommons.org/licenses/by-sa/4.0/) lizensiert sind.
     </textarea>
 <style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
 <script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>

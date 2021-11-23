@@ -4,7 +4,7 @@
     <title>rstatsZH - Data Science mit R</title>
     <meta charset="utf-8" />
     <meta name="author" content="Lars Schöbitz" />
-    <meta name="date" content="2021-09-07" />
+    <meta name="date" content="2021-11-08" />
     <script src="libs/header-attrs/header-attrs.js"></script>
     <link href="libs/remark-css/default.css" rel="stylesheet" />
     <link href="libs/font-awesome/css/all.css" rel="stylesheet" />
@@ -43,7 +43,7 @@ class: title-slide
 
 .bottom[
 
-<p>Lars Schöbitz</p><p>2021-09-07</p>
+<p>Lars Schöbitz</p><p>2021-11-08</p>
 ]
 
 ---
@@ -303,7 +303,7 @@ penguins
 ```
 
 ```
-# A tibble: 344 × 8
+# A tibble: 344 x 8
   species island    bill_length_mm bill_depth_mm flipper_length_…
   &lt;fct&gt;   &lt;fct&gt;              &lt;dbl&gt;         &lt;dbl&gt;            &lt;int&gt;
 1 Adelie  Torgersen           39.1          18.7              181
@@ -339,7 +339,6 @@ tibble [344 × 8] (S3: tbl_df/tbl/data.frame)
 ---
 # Variablen Typen - Penguins 
 
-<div id="pzveloiefp" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
 <style>html {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
 }
@@ -396,7 +395,7 @@ tibble [344 × 8] (S3: tbl_df/tbl/data.frame)
   font-size: 85%;
   font-weight: initial;
   padding-top: 0;
-  padding-bottom: 6px;
+  padding-bottom: 4px;
   border-top-color: #FFFFFF;
   border-top-width: 0;
 }
@@ -468,7 +467,7 @@ tibble [344 × 8] (S3: tbl_df/tbl/data.frame)
   border-bottom-color: #D3D3D3;
   vertical-align: bottom;
   padding-top: 5px;
-  padding-bottom: 5px;
+  padding-bottom: 6px;
   overflow-x: hidden;
   display: inline-block;
   width: 100%;
@@ -673,11 +672,10 @@ tibble [344 × 8] (S3: tbl_df/tbl/data.frame)
 
 #pzveloiefp .gt_footnote_marks {
   font-style: italic;
-  font-weight: normal;
   font-size: 65%;
 }
 </style>
-<table class="gt_table">
+<div id="pzveloiefp" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;"><table class="gt_table">
   
   <thead class="gt_col_headings">
     <tr>
@@ -687,35 +685,50 @@ tibble [344 × 8] (S3: tbl_df/tbl/data.frame)
     </tr>
   </thead>
   <tbody class="gt_table_body">
-    <tr><td class="gt_row gt_left">species</td>
-<td class="gt_row gt_left">kategorisch</td>
-<td class="gt_row gt_left">nicht ordinal</td></tr>
-    <tr><td class="gt_row gt_left">island</td>
-<td class="gt_row gt_left">kategorisch</td>
-<td class="gt_row gt_left">nicht ordinal</td></tr>
-    <tr><td class="gt_row gt_left">bill_length_mm</td>
-<td class="gt_row gt_left">numerisch</td>
-<td class="gt_row gt_left">kontinuierlich</td></tr>
-    <tr><td class="gt_row gt_left">bill_depth_mm</td>
-<td class="gt_row gt_left">numerisch</td>
-<td class="gt_row gt_left">kontinuierlich</td></tr>
-    <tr><td class="gt_row gt_left">flipper_length_mm</td>
-<td class="gt_row gt_left">numerisch</td>
-<td class="gt_row gt_left">kontinuierlich</td></tr>
-    <tr><td class="gt_row gt_left">body_mass_g</td>
-<td class="gt_row gt_left">numerisch</td>
-<td class="gt_row gt_left">kontinuierlich</td></tr>
-    <tr><td class="gt_row gt_left">sex</td>
-<td class="gt_row gt_left">kategorisch</td>
-<td class="gt_row gt_left">nicht ordinal</td></tr>
-    <tr><td class="gt_row gt_left">year</td>
-<td class="gt_row gt_left">numerisch</td>
-<td class="gt_row gt_left">diskret</td></tr>
+    <tr>
+      <td class="gt_row gt_left">species</td>
+      <td class="gt_row gt_left">kategorisch</td>
+      <td class="gt_row gt_left">nicht ordinal</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_left">island</td>
+      <td class="gt_row gt_left">kategorisch</td>
+      <td class="gt_row gt_left">nicht ordinal</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_left">bill_length_mm</td>
+      <td class="gt_row gt_left">numerisch</td>
+      <td class="gt_row gt_left">kontinuierlich</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_left">bill_depth_mm</td>
+      <td class="gt_row gt_left">numerisch</td>
+      <td class="gt_row gt_left">kontinuierlich</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_left">flipper_length_mm</td>
+      <td class="gt_row gt_left">numerisch</td>
+      <td class="gt_row gt_left">kontinuierlich</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_left">body_mass_g</td>
+      <td class="gt_row gt_left">numerisch</td>
+      <td class="gt_row gt_left">kontinuierlich</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_left">sex</td>
+      <td class="gt_row gt_left">kategorisch</td>
+      <td class="gt_row gt_left">nicht ordinal</td>
+    </tr>
+    <tr>
+      <td class="gt_row gt_left">year</td>
+      <td class="gt_row gt_left">numerisch</td>
+      <td class="gt_row gt_left">diskret</td>
+    </tr>
   </tbody>
   
   
-</table>
-</div>
+</table></div>
 
 ???
 

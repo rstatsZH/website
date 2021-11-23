@@ -2,7 +2,7 @@
 title: "rstatsZH - Data Science mit R"
 subtitle: "Datenvisualisierung mit ggplot2"  
 author: "Lars Schöbitz"
-date: "2021-09-01"
+date: "2021-10-31"
 output:
   xaringan::moon_reader:
     self_contained: false
@@ -144,11 +144,11 @@ Deshalb sind dies die Ziele für heute.
 
 **Lesezeichen**
 
-- RStudio Cloud: https://rstudio.cloud/spaces/142876/projects
+- RStudio Cloud: https://rstudio.cloud/spaces/179362/projects
 - Kurs Webseite: https://rstatszh.github.io/website/
-- GitHub: https://github.com/rstatszh-k003
+- GitHub: https://github.com/rstatszh-k005
 
-**GitHub Credentials**
+**GitHub Zugangsdaten**
 
 - GitHub Nutzername 
 - GitHub Passwort

@@ -2,7 +2,7 @@
 title: "rstatsZH - Data Science mit R"
 subtitle: "Daten Transformation mit dplyr"
 author: "Lars Schöbitz"
-date: "2021-09-07"
+date: "2021-11-08"
 output:
   xaringan::moon_reader:
     self_contained: false
@@ -10,11 +10,11 @@ output:
     css: ["default", "assets/css/xaringan-themer.css", "assets/css/my-css-style.css"]
     seal: FALSE
     nature:
-        </div>
       slideNumberFormat: |
         <div class="progress-bar-container">
-          </div>
           <div class="progress-bar" style="width: calc(%current% / %total% * 100%);">
+          </div>
+        </div>
       highlightStyle: solarized-light
       highlightLanguage: ["r", "css", "yaml"]
       highlightLines: true

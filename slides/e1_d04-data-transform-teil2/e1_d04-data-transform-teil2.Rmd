@@ -2,7 +2,7 @@
 title: "rstatsZH - Data Science mit R"
 subtitle: "Daten Transformation mit dplyr - Teil 2"
 author: "Lars Schöbitz"
-date: "2021-09-21"
+date: "2021-11-15"
 output:
   xaringan::moon_reader:
     self_contained: false

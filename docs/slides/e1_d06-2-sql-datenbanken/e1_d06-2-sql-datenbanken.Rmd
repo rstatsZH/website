@@ -1,0 +1,195 @@
+---
+title: "rstatsZH - Data Science mit R"
+subtitle: "SQL in R Markdown + Datenbank Abfragen"
+author: "Lars Schöbitz"
+date: "2021-11-23"
+output:
+  xaringan::moon_reader:
+    self_contained: false
+    lib_dir: libs
+    css: ["default", "assets/css/xaringan-themer.css", "assets/css/my-css-style.css"]
+    seal: FALSE
+    nature:
+      slideNumberFormat: |
+        <div class="progress-bar-container">
+          <div class="progress-bar" style="width: calc(%current% / %total% * 100%);">
+          </div>
+        </div>
+      highlightStyle: solarized-light
+      highlightLanguage: ["r", "css", "yaml"]
+      highlightLines: true
+      countIncrementalSlides: false
+      ratio: "16:9"
+---
+
+class: title-slide
+
+```{r child = "../setup.Rmd"}
+
+```
+
+```{r}
+
+library(dplyr)
+library(ggplot2)
+library(readr)
+library(tidyr)
+library(forcats)
+
+```
+
+
+
+# `r rmarkdown::metadata$title`
+## `r rmarkdown::metadata$subtitle` 
+
+.bottom[
+
+```{r, echo=FALSE}
+p(rmarkdown::metadata$author)
+p(rmarkdown::metadata$date)
+
+```
+]
+
+---
+# Datenbanken - SQL queries in R
+
+- `DBI` Package: https://dbi.r-dbi.org/
+- `dbplyr` Package: https://dbplyr.tidyverse.org/index.html
+
+---
+# DBI - Mit einer Datenbank verbinden
+
+Argumente variieren je nach Datenbank, aber das erste Argument ist immer das Datenbank Backend.
+
+```{r, echo=TRUE}
+
+library(DBI)
+
+con <- dbConnect(
+   
+   # Hier wird das Backend definiert
+   RMariaDB::MariaDB(),
+   
+   host = "relational.fit.cvut.cz", 
+   port = 3306,
+   
+   # Niemals Passwort in Skript speichern
+   username = "guest",
+   password = rstudioapi::askForPassword("Datenbank Passwort"), #<<
+   
+   dbname = "sakila"
+)
+
+```
+
+---
+# DBI - Tabellen in Datenbank anzeigen
+
+```{r, echo=TRUE}
+dbListTables(con)
+```
+
+---
+# DBI - Spaltennamen einer Tabelle anzeigen
+
+```{r, echo=TRUE}
+dbListFields(con, "film")
+```
+
+---
+# SQL Queries in R Markdown Dateien
+
+1. Datenbank Verbindung: Code-chunk mit `sql connection=con` starten
+2. Daten Output: Resultierende Daten mit `output.var = "NAME"` als Objekt im Environment speichern
+3. SQL Code schreiben
+
+```{r}
+knitr::include_graphics("img/sql-chunk-output.png")
+```
+
+```{sql connection=con, output.var="film_length_big180"}
+SELECT film_id, title, length
+FROM film 
+WHERE length > 180
+```
+
+---
+# SQL Query - Mit Daten weiter arbeiten
+
+1. Objekt mit Funktion `as_tibble()` in einen Tibble umwandeln
+
+```{r}
+knitr::include_graphics("img/r-chunk.png")
+```
+
+```{r, echo=FALSE}
+film_length_big180 %>% 
+   as_tibble()
+```
+
+---
+# dbplyr - Mit Tabelle in Datenbank verbinden
+
+```{r, echo=TRUE}
+film_tab <- tbl(con, "film")
+film_tab
+```
+
+---
+# dbplyr - Queries als dplyr code
+
+```{r, echo=TRUE}
+film_tab %>% 
+   select(film_id, title, length) %>% 
+   filter(length > 180)
+```
+
+---
+# dbplyr - Resultierende Daten aus Datenbank holen
+
+```{r, echo=TRUE}
+film_tab %>% 
+   select(film_id, title, length) %>% 
+   filter(length > 180) %>% 
+   collect() #<<
+```
+
+---
+# dbplyr - Queries als dplyr code
+
+```{r, echo=TRUE}
+
+film_tab %>% 
+   summarise(min_rate = min(rental_rate),
+             max_rate = max(rental_rate),
+             mean_rate = mean(rental_rate)) %>% 
+   collect()
+
+```
+
+---
+# R Packages für andere Datentypen
+
+- **googlesheets4:** Google Sheets
+- **haven**: SPSS, Stata, und SAS Dateien
+- **jsonline**: JSON
+- **xml2**: xml
+- **rvest**: web scraping
+- **httr**: web APIs
+- **sparklyr**: data loaded into spark
+
+
+---
+# `r emo::ji("sunflower")` Danke 
+
+Für die Aufmerksamkeit!
+
+Für die R packages [{xaringan}](https://github.com/yihui/xaringan) und [{xaringanthemer}](https://github.com/gadenbuie/xaringanthemer) mit welchen die Folien geschrieben wurden.
+
+Eine PDF Version der Folien kann hier heruntergeladen werden: https://github.com/rstatsZH/website/raw/master/slides/e1_d06-2-sql-datenbanken/e1_d06-2-sql-datenbanken.pdf
+
+`r hr()`
+
+Für [Data Science in a Box](https://datasciencebox.org/) und [Remaster the Tidyverse](https://github.com/rstudio-education/remaster-the-tidyverse), von welchen ich Materialien für diesen Kurs nutze und welche genau wie diese Folien mit [Creative Commons Attribution Share Alike 4.0 International](https://creativecommons.org/licenses/by-sa/4.0/) lizensiert sind.

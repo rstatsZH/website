@@ -1,5 +1,17 @@
 [
   {
+    "path": "posts/2021-11-23-zusatzseinheit-sql/",
+    "title": "Zusatzeinheit - SQL",
+    "description": "Übungen für Zusatzeinheit zum Arbeiten mit SQL Datenbanken",
+    "author": [],
+    "date": "2021-11-23",
+    "categories": [],
+    "contents": "\n\nContents\nZiele\nFolien\nWeiterführende Ressourcen\n\n\n\n\n\n\n\nFigure 1: Photo by Joshua Sortino\n\n\n\nLerne wie du dich mit einer Datenbank sicher verbindest und SQL Code in R Markdown Dokumenten schreiben kannst.\nZiele\nAm Ende dieser Einheit könnt ihr:\nEine Verbindung zu einer Datenbank aufbauen\nCredentials in der .Renviron Datei speichern\nSQL Code in R Markdown Code-chunks schreiben\nSyntax aus dem {dplyr} Package nutzen um SQL Abfragen zu machen\nFolien\n\n\n\n\n\n\nfitvids('.shareagain', {players: 'iframe'});\n\nWeiterführende Ressourcen\n\n\nID\n\n\nThema\n\n\nTyp\n\n\nTitel\n\n\n1\n\n\nDatenbank, SQL\n\n\nR Package\n\n\nR Database Interface\n\n\n2\n\n\nDatenbank, SQL\n\n\nR Package\n\n\nA dplyr backend for databases\n\n\n3\n\n\nDatenbank, SQL\n\n\nDocumentation\n\n\nDatabases using R\n\n\n\n\n\n",
+    "preview": "posts/2021-11-23-zusatzseinheit-sql/img/joshua-sortino-LqKhnDzSF-8-unsplash.jpg",
+    "last_modified": "2021-11-23T09:27:59+01:00",
+    "input_file": {}
+  },
+  {
     "path": "posts/2021-04-30-woche07/",
     "title": "Woche 7 - Daten zusammenfügen und Funktionen schreiben",
     "description": "Ziele und Materialien für unsere letzte gemeinsame Woche",

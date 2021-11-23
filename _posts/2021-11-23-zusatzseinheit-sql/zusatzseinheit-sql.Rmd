@@ -1,0 +1,75 @@
+---
+title: "Zusatzeinheit - SQL"
+description: |
+  Übungen für Zusatzeinheit zum Arbeiten mit SQL Datenbanken
+date: 11-23-2021
+output:
+  distill::distill_article:
+    toc: true
+    self_contained: false
+preview: img/joshua-sortino-LqKhnDzSF-8-unsplash.jpg
+editor_options: 
+  chunk_output_type: console
+---
+
+<script async defer data-domain="rstatszh.github.io/website" src="https://plausible.io/js/plausible.js"></script>
+
+```{r setup, echo=FALSE}
+library(magrittr)
+library(tidyverse)
+```
+
+```{r, layout="l-body", preview=TRUE, echo=FALSE, include=TRUE, fig.cap="Photo by [Joshua Sortino](https://unsplash.com/photos/LqKhnDzSF-8)"}
+
+knitr::include_graphics("img/joshua-sortino-LqKhnDzSF-8-unsplash.jpg")
+
+```
+
+Lerne wie du dich mit einer Datenbank sicher verbindest und SQL Code in R Markdown Dokumenten schreiben kannst.
+
+# Ziele
+
+Am Ende dieser Einheit könnt ihr:
+
+- Eine Verbindung zu einer Datenbank aufbauen
+- Credentials in der `.Renviron` Datei speichern 
+- SQL Code in R Markdown Code-chunks schreiben
+- Syntax aus dem `{dplyr}` Package nutzen um SQL Abfragen zu machen
+
+
+# Folien
+
+```{r share-again1, echo=FALSE}
+
+xaringanExtra::use_share_again()
+
+```
+
+```{r embed-xaringan1, echo=FALSE, fig.cap="[Folien](slides/e1_d06-2-sql-datenbanken/e1_d06-2-sql-datenbanken.html)"}
+
+xaringanExtra::embed_xaringan("../../slides/e1_d06-2-sql-datenbanken/e1_d06-2-sql-datenbanken.html", ratio = "16:9")
+
+```
+
+# Weiterführende Ressourcen
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE, layout="l-body-outset"}
+
+googlesheets4::read_sheet("198t05eFYHxuxY0d2jCvPkES1ZaMcsSYgBKcg0xQTwb0") %>% 
+  mutate(titel2 = paste0("[", titel, "](", link, ")")) %>% 
+  filter(woche == "zusatzeinheit-sql") %>% 
+  select(topic, type, titel2) %>% 
+  arrange(topic) %>% 
+  rename(
+    Thema = topic,
+    Typ = type,
+    Titel = titel2
+  ) %>% 
+  mutate(ID = seq(1:n())) %>% 
+  relocate(ID) %>%
+  write_csv(here::here("_posts/2021-11-23-zusatzseinheit-sql/2021-11-23-zusatzseinheit-sql.csv"))
+
+read_csv(here::here("_posts/2021-11-23-zusatzseinheit-sql/2021-11-23-zusatzseinheit-sql.csv")) %>% 
+  knitr::kable(format = "html")
+
+```

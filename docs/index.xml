@@ -7,7 +7,15 @@
     <description>Ein R Kurs für Mitarbeiter_innen der Verwaltung des Kantons Zürich
 </description>
     <generator>Distill</generator>
-    <lastBuildDate>Tue, 27 Apr 2021 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Tue, 23 Nov 2021 00:00:00 +0000</lastBuildDate>
+    <item>
+      <title>Zusatzeinheit - SQL</title>
+      <link>https://rstatszh.github.io/website/posts/2021-11-23-zusatzseinheit-sql</link>
+      <description>Übungen für Zusatzeinheit zum Arbeiten mit SQL Datenbanken</description>
+      <guid>https://rstatszh.github.io/website/posts/2021-11-23-zusatzseinheit-sql</guid>
+      <pubDate>Tue, 23 Nov 2021 00:00:00 +0000</pubDate>
+      <media:content url="https://rstatszh.github.io/website/posts/2021-11-23-zusatzseinheit-sql/img/joshua-sortino-LqKhnDzSF-8-unsplash.jpg" medium="image" type="image/jpeg"/>
+    </item>
     <item>
       <title>Woche 7 - Daten zusammenfügen und Funktionen schreiben</title>
       <link>https://rstatszh.github.io/website/posts/2021-04-30-woche07</link>

@@ -1,0 +1,4 @@
+ID,Thema,Typ,Titel
+1,"Datenbank, SQL",R Package,[R Database Interface](https://dbi.r-dbi.org/)
+2,"Datenbank, SQL",R Package,[A dplyr backend for databases](https://dbplyr.tidyverse.org/)
+3,"Datenbank, SQL",Documentation,[Databases using R](https://db.rstudio.com/)

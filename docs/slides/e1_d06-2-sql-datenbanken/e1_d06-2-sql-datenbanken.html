@@ -65,10 +65,11 @@ con &lt;- dbConnect(
    
    host = "relational.fit.cvut.cz", 
    port = 3306,
-   username = "guest",
    
    # Niemals Passwort in Skript speichern
+   username = "guest",
 *  password = rstudioapi::askForPassword("Datenbank Passwort"),
+   
    dbname = "sakila"
 )
 ```
@@ -252,7 +253,7 @@ Für die Aufmerksamkeit!
 
 Für die R packages [{xaringan}](https://github.com/yihui/xaringan) und [{xaringanthemer}](https://github.com/gadenbuie/xaringanthemer) mit welchen die Folien geschrieben wurden.
 
-Eine PDF Version der Folien kann hier heruntergeladen werden: https://github.com/rstatsZH/website/raw/master/slides/e1_d01-willkommen/e1_d01-willkommen.pdf
+Eine PDF Version der Folien kann hier heruntergeladen werden: https://github.com/rstatsZH/website/raw/master/slides/e1_d06-2-sql-datenbanken/e1_d06-2-sql-datenbanken.pdf
 
 <hr/>
 

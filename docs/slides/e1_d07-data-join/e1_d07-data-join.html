@@ -4,7 +4,7 @@
     <title>rstatsZH - Data Science mit R</title>
     <meta charset="utf-8" />
     <meta name="author" content="Lars Schöbitz" />
-    <meta name="date" content="2021-10-12" />
+    <meta name="date" content="2021-12-06" />
     <script src="libs/header-attrs/header-attrs.js"></script>
     <link href="libs/remark-css/default.css" rel="stylesheet" />
     <link href="libs/font-awesome/css/all.css" rel="stylesheet" />
@@ -40,7 +40,7 @@ class: title-slide
 
 .bottom[
 
-<p>Lars Schöbitz</p><p>2021-10-12</p>
+<p>Lars Schöbitz</p><p>2021-12-06</p>
 ]
 
 ---
@@ -160,7 +160,7 @@ Daten kommen aus dem Discover Magazine. Daten aus dem Artikel herausgeholt.
 .panel[.panel-name[professions]
 
 ```
-# A tibble: 10 x 2
+# A tibble: 10 × 2
    name               profession                        
    &lt;chr&gt;              &lt;chr&gt;                             
  1 Ada Lovelace       Mathematician                     
@@ -180,7 +180,7 @@ Daten kommen aus dem Discover Magazine. Daten aus dem Artikel herausgeholt.
 .panel[.panel-name[dates]
 
 ```
-# A tibble: 8 x 3
+# A tibble: 8 × 3
   name               birth_year death_year
   &lt;chr&gt;                   &lt;dbl&gt;      &lt;dbl&gt;
 1 Janaki Ammal             1897       1984
@@ -197,18 +197,18 @@ Daten kommen aus dem Discover Magazine. Daten aus dem Artikel herausgeholt.
 .panel[.panel-name[works]
 
 ```
-# A tibble: 9 x 2
-  name            known_for                                      
-  &lt;chr&gt;           &lt;chr&gt;                                          
-1 Ada Lovelace    first computer algorithm                       
-2 Marie Curie     theory of radioactivity,  discovery of element…
-3 Janaki Ammal    hybrid species, biodiversity protection        
-4 Chien-Shiung Wu confim and refine theory of radioactive beta d…
-5 Katherine John… calculations of orbital mechanics critical to …
-6 Vera Rubin      existence of dark matter                       
-7 Gladys West     mathematical modeling of the shape of the Eart…
-8 Flossie Wong-S… first scientist to clone HIV and create a map …
-9 Jennifer Doudna one of the primary developers of CRISPR, a gro…
+# A tibble: 9 × 2
+  name               known_for                                   
+  &lt;chr&gt;              &lt;chr&gt;                                       
+1 Ada Lovelace       first computer algorithm                    
+2 Marie Curie        theory of radioactivity,  discovery of elem…
+3 Janaki Ammal       hybrid species, biodiversity protection     
+4 Chien-Shiung Wu    confim and refine theory of radioactive bet…
+5 Katherine Johnson  calculations of orbital mechanics critical …
+6 Vera Rubin         existence of dark matter                    
+7 Gladys West        mathematical modeling of the shape of the E…
+8 Flossie Wong-Staal first scientist to clone HIV and create a m…
+9 Jennifer Doudna    one of the primary developers of CRISPR, a …
 ```
 ]
 
@@ -241,19 +241,19 @@ Einen dritten Dataframe in welchem wir sehen wofür die Wissenschaftlerinnen bek
 
 
 ```
-# A tibble: 10 x 5
-   name     profession    birth_year death_year known_for        
-   &lt;chr&gt;    &lt;chr&gt;              &lt;dbl&gt;      &lt;dbl&gt; &lt;chr&gt;            
- 1 Ada Lov… Mathematician         NA         NA first computer a…
- 2 Marie C… Physicist an…         NA         NA theory of radioa…
- 3 Janaki … Botanist            1897       1984 hybrid species, …
- 4 Chien-S… Physicist           1912       1997 confim and refin…
- 5 Katheri… Mathematician       1918       2020 calculations of …
- 6 Rosalin… Chemist             1920       1958 &lt;NA&gt;             
- 7 Vera Ru… Astronomer          1928       2016 existence of dar…
- 8 Gladys … Mathematician       1930         NA mathematical mod…
- 9 Flossie… Virologist a…       1947         NA first scientist …
-10 Jennife… Biochemist          1964         NA one of the prima…
+# A tibble: 10 × 5
+   name               profession  birth_year death_year known_for
+   &lt;chr&gt;              &lt;chr&gt;            &lt;dbl&gt;      &lt;dbl&gt; &lt;chr&gt;    
+ 1 Ada Lovelace       Mathematic…         NA         NA first co…
+ 2 Marie Curie        Physicist …         NA         NA theory o…
+ 3 Janaki Ammal       Botanist          1897       1984 hybrid s…
+ 4 Chien-Shiung Wu    Physicist         1912       1997 confim a…
+ 5 Katherine Johnson  Mathematic…       1918       2020 calculat…
+ 6 Rosalind Franklin  Chemist           1920       1958 &lt;NA&gt;     
+ 7 Vera Rubin         Astronomer        1928       2016 existenc…
+ 8 Gladys West        Mathematic…       1930         NA mathemat…
+ 9 Flossie Wong-Staal Virologist…       1947         NA first sc…
+10 Jennifer Doudna    Biochemist        1964         NA one of t…
 ```
 
 ???
@@ -355,7 +355,7 @@ Für die nächsten Folien
 
 
 ```
-# A tibble: 3 x 2
+# A tibble: 3 × 2
      id var_x
   &lt;dbl&gt; &lt;chr&gt;
 1     1 x1   
@@ -367,7 +367,7 @@ Für die nächsten Folien
 
 
 ```
-# A tibble: 3 x 2
+# A tibble: 3 × 2
      id var_y
   &lt;dbl&gt; &lt;chr&gt;
 1     1 y1   
@@ -390,7 +390,7 @@ left_join(tib_x, tib_y)
 ```
 
 ```
-# A tibble: 3 x 3
+# A tibble: 3 × 3
      id var_x var_y
   &lt;dbl&gt; &lt;chr&gt; &lt;chr&gt;
 1     1 x1    y1   
@@ -412,19 +412,19 @@ professions %&gt;%
 
 
 ```
-# A tibble: 10 x 4
-   name           profession                birth_year death_year
-   &lt;chr&gt;          &lt;chr&gt;                          &lt;dbl&gt;      &lt;dbl&gt;
- 1 Ada Lovelace   Mathematician                     NA         NA
- 2 Marie Curie    Physicist and Chemist             NA         NA
- 3 Janaki Ammal   Botanist                        1897       1984
- 4 Chien-Shiung … Physicist                       1912       1997
- 5 Katherine Joh… Mathematician                   1918       2020
- 6 Rosalind Fran… Chemist                         1920       1958
- 7 Vera Rubin     Astronomer                      1928       2016
- 8 Gladys West    Mathematician                   1930         NA
- 9 Flossie Wong-… Virologist and Molecular…       1947         NA
-10 Jennifer Doud… Biochemist                      1964         NA
+# A tibble: 10 × 4
+   name               profession            birth_year death_year
+   &lt;chr&gt;              &lt;chr&gt;                      &lt;dbl&gt;      &lt;dbl&gt;
+ 1 Ada Lovelace       Mathematician                 NA         NA
+ 2 Marie Curie        Physicist and Chemist         NA         NA
+ 3 Janaki Ammal       Botanist                    1897       1984
+ 4 Chien-Shiung Wu    Physicist                   1912       1997
+ 5 Katherine Johnson  Mathematician               1918       2020
+ 6 Rosalind Franklin  Chemist                     1920       1958
+ 7 Vera Rubin         Astronomer                  1928       2016
+ 8 Gladys West        Mathematician               1930         NA
+ 9 Flossie Wong-Staal Virologist and Molec…       1947         NA
+10 Jennifer Doudna    Biochemist                  1964         NA
 ```
 
 ---
@@ -441,7 +441,7 @@ right_join(tib_x, tib_y)
 ```
 
 ```
-# A tibble: 3 x 3
+# A tibble: 3 × 3
      id var_x var_y
   &lt;dbl&gt; &lt;chr&gt; &lt;chr&gt;
 1     1 x1    y1   
@@ -464,17 +464,17 @@ professions %&gt;%
 
 
 ```
-# A tibble: 8 x 4
-  name           profession                 birth_year death_year
-  &lt;chr&gt;          &lt;chr&gt;                           &lt;dbl&gt;      &lt;dbl&gt;
-1 Janaki Ammal   Botanist                         1897       1984
-2 Chien-Shiung … Physicist                        1912       1997
-3 Katherine Joh… Mathematician                    1918       2020
-4 Rosalind Fran… Chemist                          1920       1958
-5 Vera Rubin     Astronomer                       1928       2016
-6 Gladys West    Mathematician                    1930         NA
-7 Flossie Wong-… Virologist and Molecular …       1947         NA
-8 Jennifer Doud… Biochemist                       1964         NA
+# A tibble: 8 × 4
+  name               profession             birth_year death_year
+  &lt;chr&gt;              &lt;chr&gt;                       &lt;dbl&gt;      &lt;dbl&gt;
+1 Janaki Ammal       Botanist                     1897       1984
+2 Chien-Shiung Wu    Physicist                    1912       1997
+3 Katherine Johnson  Mathematician                1918       2020
+4 Rosalind Franklin  Chemist                      1920       1958
+5 Vera Rubin         Astronomer                   1928       2016
+6 Gladys West        Mathematician                1930         NA
+7 Flossie Wong-Staal Virologist and Molecu…       1947         NA
+8 Jennifer Doudna    Biochemist                   1964         NA
 ```
 
 ---
@@ -491,7 +491,7 @@ full_join(tib_x, tib_y)
 ```
 
 ```
-# A tibble: 4 x 3
+# A tibble: 4 × 3
      id var_x var_y
   &lt;dbl&gt; &lt;chr&gt; &lt;chr&gt;
 1     1 x1    y1   
@@ -513,19 +513,19 @@ dates %&gt;%
 
 
 ```
-# A tibble: 10 x 4
-   name       birth_year death_year known_for                    
-   &lt;chr&gt;           &lt;dbl&gt;      &lt;dbl&gt; &lt;chr&gt;                        
- 1 Janaki Am…       1897       1984 hybrid species, biodiversity…
- 2 Chien-Shi…       1912       1997 confim and refine theory of …
- 3 Katherine…       1918       2020 calculations of orbital mech…
- 4 Rosalind …       1920       1958 &lt;NA&gt;                         
- 5 Vera Rubin       1928       2016 existence of dark matter     
- 6 Gladys We…       1930         NA mathematical modeling of the…
- 7 Flossie W…       1947         NA first scientist to clone HIV…
- 8 Jennifer …       1964         NA one of the primary developer…
- 9 Ada Lovel…         NA         NA first computer algorithm     
-10 Marie Cur…         NA         NA theory of radioactivity,  di…
+# A tibble: 10 × 4
+   name               birth_year death_year known_for            
+   &lt;chr&gt;                   &lt;dbl&gt;      &lt;dbl&gt; &lt;chr&gt;                
+ 1 Janaki Ammal             1897       1984 hybrid species, biod…
+ 2 Chien-Shiung Wu          1912       1997 confim and refine th…
+ 3 Katherine Johnson        1918       2020 calculations of orbi…
+ 4 Rosalind Franklin        1920       1958 &lt;NA&gt;                 
+ 5 Vera Rubin               1928       2016 existence of dark ma…
+ 6 Gladys West              1930         NA mathematical modelin…
+ 7 Flossie Wong-Staal       1947         NA first scientist to c…
+ 8 Jennifer Doudna          1964         NA one of the primary d…
+ 9 Ada Lovelace               NA         NA first computer algor…
+10 Marie Curie                NA         NA theory of radioactiv…
 ```
 
 
@@ -544,19 +544,19 @@ professions %&gt;%
 
 
 ```
-# A tibble: 10 x 5
-   name     profession    birth_year death_year known_for        
-   &lt;chr&gt;    &lt;chr&gt;              &lt;dbl&gt;      &lt;dbl&gt; &lt;chr&gt;            
- 1 Ada Lov… Mathematician         NA         NA first computer a…
- 2 Marie C… Physicist an…         NA         NA theory of radioa…
- 3 Janaki … Botanist            1897       1984 hybrid species, …
- 4 Chien-S… Physicist           1912       1997 confim and refin…
- 5 Katheri… Mathematician       1918       2020 calculations of …
- 6 Rosalin… Chemist             1920       1958 &lt;NA&gt;             
- 7 Vera Ru… Astronomer          1928       2016 existence of dar…
- 8 Gladys … Mathematician       1930         NA mathematical mod…
- 9 Flossie… Virologist a…       1947         NA first scientist …
-10 Jennife… Biochemist          1964         NA one of the prima…
+# A tibble: 10 × 5
+   name               profession  birth_year death_year known_for
+   &lt;chr&gt;              &lt;chr&gt;            &lt;dbl&gt;      &lt;dbl&gt; &lt;chr&gt;    
+ 1 Ada Lovelace       Mathematic…         NA         NA first co…
+ 2 Marie Curie        Physicist …         NA         NA theory o…
+ 3 Janaki Ammal       Botanist          1897       1984 hybrid s…
+ 4 Chien-Shiung Wu    Physicist         1912       1997 confim a…
+ 5 Katherine Johnson  Mathematic…       1918       2020 calculat…
+ 6 Rosalind Franklin  Chemist           1920       1958 &lt;NA&gt;     
+ 7 Vera Rubin         Astronomer        1928       2016 existenc…
+ 8 Gladys West        Mathematic…       1930         NA mathemat…
+ 9 Flossie Wong-Staal Virologist…       1947         NA first sc…
+10 Jennifer Doudna    Biochemist        1964         NA one of t…
 ```
 
 ---
@@ -577,7 +577,7 @@ professions %&gt;%
 
 
 ```
-# A tibble: 10 x 4
+# A tibble: 10 × 4
   name              profession            birth_year death_year
   &lt;chr&gt;             &lt;chr&gt;                      &lt;dbl&gt;      &lt;dbl&gt;
 1 Ada Lovelace      Mathematician               1815         NA
@@ -618,7 +618,7 @@ professions %&gt;%
 .panel[.panel-name[einkaeufe]
 
 ```
-# A tibble: 9 x 4
+# A tibble: 9 × 4
   kunden_id produkt_name einkauf einheit
   &lt;chr&gt;     &lt;chr&gt;          &lt;dbl&gt; &lt;chr&gt;  
 1 k1        Chips            2   anzahl 
@@ -637,7 +637,7 @@ professions %&gt;%
 .panel[.panel-name[preise]
 
 ```
-# A tibble: 10 x 2
+# A tibble: 10 × 2
    produkt_name    preis
    &lt;chr&gt;           &lt;dbl&gt;
  1 Toilettenpapier  14.3
@@ -656,7 +656,7 @@ professions %&gt;%
 .panel[.panel-name[kundenprofile]
 
 ```
-# A tibble: 5 x 10
+# A tibble: 5 × 10
   kunden_id email    phone  vorname nachname wohnort kanton   plz
   &lt;chr&gt;     &lt;chr&gt;    &lt;chr&gt;  &lt;chr&gt;   &lt;chr&gt;    &lt;chr&gt;   &lt;chr&gt;  &lt;dbl&gt;
 1 k1        edwin.d… 075 4… Edwin   Dumont   Domles… Zug     8099
@@ -675,6 +675,7 @@ professions %&gt;%
 ---
 ## Gewünschter Output
 
+<div id="pzveloiefp" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
 <style>html {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
 }
@@ -731,7 +732,7 @@ professions %&gt;%
   font-size: 85%;
   font-weight: initial;
   padding-top: 0;
-  padding-bottom: 4px;
+  padding-bottom: 6px;
   border-top-color: #FFFFFF;
   border-top-width: 0;
 }
@@ -803,7 +804,7 @@ professions %&gt;%
   border-bottom-color: #D3D3D3;
   vertical-align: bottom;
   padding-top: 5px;
-  padding-bottom: 6px;
+  padding-bottom: 5px;
   overflow-x: hidden;
   display: inline-block;
   width: 100%;
@@ -1008,10 +1009,11 @@ professions %&gt;%
 
 #pzveloiefp .gt_footnote_marks {
   font-style: italic;
+  font-weight: normal;
   font-size: 65%;
 }
 </style>
-<div id="pzveloiefp" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;"><table class="gt_table">
+<table class="gt_table">
   
   <thead class="gt_col_headings">
     <tr>
@@ -1022,22 +1024,19 @@ professions %&gt;%
     </tr>
   </thead>
   <tbody class="gt_table_body">
-    <tr>
-      <td class="gt_row gt_left">Edwin</td>
-      <td class="gt_row gt_left">Dumont</td>
-      <td class="gt_row gt_right">9.2</td>
-      <td class="gt_row gt_left">edwin.dumont@example.com</td>
-    </tr>
-    <tr>
-      <td class="gt_row gt_left">Leonora</td>
-      <td class="gt_row gt_left">Garcia</td>
-      <td class="gt_row gt_right">24.6</td>
-      <td class="gt_row gt_left">leonora.garcia@example.com</td>
-    </tr>
+    <tr><td class="gt_row gt_left">Edwin</td>
+<td class="gt_row gt_left">Dumont</td>
+<td class="gt_row gt_right">9.2</td>
+<td class="gt_row gt_left">edwin.dumont@example.com</td></tr>
+    <tr><td class="gt_row gt_left">Leonora</td>
+<td class="gt_row gt_left">Garcia</td>
+<td class="gt_row gt_right">24.6</td>
+<td class="gt_row gt_left">leonora.garcia@example.com</td></tr>
   </tbody>
   
   
-</table></div>
+</table>
+</div>
 
 ---
 ## Schritt 1 - Daten zusammenfügen
@@ -1052,7 +1051,7 @@ einkaeufe_preise
 
 
 ```
-# A tibble: 9 x 5
+# A tibble: 9 × 5
   kunden_id produkt_name einkauf einheit preis
   &lt;chr&gt;     &lt;chr&gt;          &lt;dbl&gt; &lt;chr&gt;   &lt;dbl&gt;
 1 k1        Chips            2   anzahl    3.8
@@ -1080,7 +1079,7 @@ einkaeufe_kosten
 
 
 ```
-# A tibble: 9 x 6
+# A tibble: 9 × 6
   kunden_id produkt_name einkauf einheit preis kosten
   &lt;chr&gt;     &lt;chr&gt;          &lt;dbl&gt; &lt;chr&gt;   &lt;dbl&gt;  &lt;dbl&gt;
 1 k1        Chips            2   anzahl    3.8   7.6 
@@ -1111,7 +1110,7 @@ einkaeufe_kosten_sum
 
 
 ```
-# A tibble: 2 x 2
+# A tibble: 2 × 2
   kunden_id summe
   &lt;chr&gt;     &lt;dbl&gt;
 1 k1          9.2
@@ -1133,7 +1132,7 @@ kunden_tab
 
 
 ```
-# A tibble: 2 x 4
+# A tibble: 2 × 4
   vorname nachname summe email                     
   &lt;chr&gt;   &lt;chr&gt;    &lt;dbl&gt; &lt;chr&gt;                     
 1 Edwin   Dumont     9.2 edwin.dumont@example.com  
@@ -1149,6 +1148,7 @@ kunden_tab %&gt;%
   gt()
 ```
 
+<div id="dbgvzfontn" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
 <style>html {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
 }
@@ -1205,7 +1205,7 @@ kunden_tab %&gt;%
   font-size: 85%;
   font-weight: initial;
   padding-top: 0;
-  padding-bottom: 4px;
+  padding-bottom: 6px;
   border-top-color: #FFFFFF;
   border-top-width: 0;
 }
@@ -1277,7 +1277,7 @@ kunden_tab %&gt;%
   border-bottom-color: #D3D3D3;
   vertical-align: bottom;
   padding-top: 5px;
-  padding-bottom: 6px;
+  padding-bottom: 5px;
   overflow-x: hidden;
   display: inline-block;
   width: 100%;
@@ -1482,10 +1482,11 @@ kunden_tab %&gt;%
 
 #dbgvzfontn .gt_footnote_marks {
   font-style: italic;
+  font-weight: normal;
   font-size: 65%;
 }
 </style>
-<div id="dbgvzfontn" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;"><table class="gt_table">
+<table class="gt_table">
   
   <thead class="gt_col_headings">
     <tr>
@@ -1496,22 +1497,19 @@ kunden_tab %&gt;%
     </tr>
   </thead>
   <tbody class="gt_table_body">
-    <tr>
-      <td class="gt_row gt_left">Edwin</td>
-      <td class="gt_row gt_left">Dumont</td>
-      <td class="gt_row gt_right">9.2</td>
-      <td class="gt_row gt_left">edwin.dumont@example.com</td>
-    </tr>
-    <tr>
-      <td class="gt_row gt_left">Leonora</td>
-      <td class="gt_row gt_left">Garcia</td>
-      <td class="gt_row gt_right">24.6</td>
-      <td class="gt_row gt_left">leonora.garcia@example.com</td>
-    </tr>
+    <tr><td class="gt_row gt_left">Edwin</td>
+<td class="gt_row gt_left">Dumont</td>
+<td class="gt_row gt_right">9.2</td>
+<td class="gt_row gt_left">edwin.dumont@example.com</td></tr>
+    <tr><td class="gt_row gt_left">Leonora</td>
+<td class="gt_row gt_left">Garcia</td>
+<td class="gt_row gt_right">24.6</td>
+<td class="gt_row gt_left">leonora.garcia@example.com</td></tr>
   </tbody>
   
   
-</table></div>
+</table>
+</div>
 
 ---
 ## Als eine Code Sequenz
@@ -1530,6 +1528,7 @@ einkaeufe %&gt;%
   gt()
 ```
 
+<div id="xdduhtxcdz" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
 <style>html {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
 }
@@ -1586,7 +1585,7 @@ einkaeufe %&gt;%
   font-size: 85%;
   font-weight: initial;
   padding-top: 0;
-  padding-bottom: 4px;
+  padding-bottom: 6px;
   border-top-color: #FFFFFF;
   border-top-width: 0;
 }
@@ -1658,7 +1657,7 @@ einkaeufe %&gt;%
   border-bottom-color: #D3D3D3;
   vertical-align: bottom;
   padding-top: 5px;
-  padding-bottom: 6px;
+  padding-bottom: 5px;
   overflow-x: hidden;
   display: inline-block;
   width: 100%;
@@ -1863,10 +1862,11 @@ einkaeufe %&gt;%
 
 #xdduhtxcdz .gt_footnote_marks {
   font-style: italic;
+  font-weight: normal;
   font-size: 65%;
 }
 </style>
-<div id="xdduhtxcdz" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;"><table class="gt_table">
+<table class="gt_table">
   
   <thead class="gt_col_headings">
     <tr>
@@ -1877,22 +1877,19 @@ einkaeufe %&gt;%
     </tr>
   </thead>
   <tbody class="gt_table_body">
-    <tr>
-      <td class="gt_row gt_left">Edwin</td>
-      <td class="gt_row gt_left">Dumont</td>
-      <td class="gt_row gt_right">17.4</td>
-      <td class="gt_row gt_left">edwin.dumont@example.com</td>
-    </tr>
-    <tr>
-      <td class="gt_row gt_left">Leonora</td>
-      <td class="gt_row gt_left">Garcia</td>
-      <td class="gt_row gt_right">45.1</td>
-      <td class="gt_row gt_left">leonora.garcia@example.com</td>
-    </tr>
+    <tr><td class="gt_row gt_left">Edwin</td>
+<td class="gt_row gt_left">Dumont</td>
+<td class="gt_row gt_right">17.4</td>
+<td class="gt_row gt_left">edwin.dumont@example.com</td></tr>
+    <tr><td class="gt_row gt_left">Leonora</td>
+<td class="gt_row gt_left">Garcia</td>
+<td class="gt_row gt_right">45.1</td>
+<td class="gt_row gt_left">leonora.garcia@example.com</td></tr>
   </tbody>
   
   
-</table></div>
+</table>
+</div>
 
 ---
 class: middle, inverse
@@ -1972,7 +1969,7 @@ class: middle
 https://rstatszh.github.io/website/posts/2021-04-30-woche07/
 
 ---
-# Projektarbeit - Unterstützung bis Mitte August
+# Projektarbeit - Unterstützung im Februar 2022
 
 **Hausaufgabe 6**
 

@@ -700,7 +700,7 @@ class: middle
 https://rstatszh.github.io/website/posts/2021-04-30-woche07/
 
 ---
-# Projektarbeit - Unterstützung bis Mitte August
+# Projektarbeit - Unterstützung im Februar 2022
 
 **Hausaufgabe 6**
 

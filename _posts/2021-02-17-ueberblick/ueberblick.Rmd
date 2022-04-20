@@ -49,7 +49,7 @@ Am Ende dieses Kurses kannst du:
 
 **Angebot & Koordination**
 
-Matthias Mazenaur  
+Matthias Mazenauer  
 [Data Shop](https://www.zh.ch/de/direktion-der-justiz-und-des-innern/statistisches-amt/data-shop.html#-595137091)  
 Statistisisches Amt des Kantons Zürich  
 
@@ -72,21 +72,22 @@ googlesheets4::read_sheet("1WhGB4Pqpr4ywGbOKaC2UoRsyaf5jbI7L8jY75Lic9FE") %>%
   mutate(Jahr = lubridate::year(Start)) %>% 
   select(-Start, -Ende) %>% 
   relocate(Jahr, .after = Kurs) %>% 
-  mutate(
+  #mutate(
     #Start = format(Start, "%d. %B %Y"),
     #Ende = format(Ende, "%d. %B %Y"),
-    Bemerkung = case_when(is.na(Bemerkung) == TRUE ~ " ", TRUE ~ Bemerkung)
-    ) %>% 
+    #Bemerkung = case_when(is.na(Bemerkung) == TRUE ~ " ", TRUE ~ Bemerkung)
+    #) %>% 
   gt::gt() %>% 
   gt::opt_row_striping() %>% 
-  gt::tab_options(column_labels.font.weight = "bold")
+  gt::tab_options(column_labels.font.weight = "bold") %>% 
+  gt::fmt_missing(columns = "Bemerkung", missing_text = "---")
 ```
 
 # Wo kann ich mich (unverbindlich) anmelden?
 
-Hier geht's zur Anmeldung worauf auf eine Kontaktaufhnahme folgt:
+Hier geht's zur Anmeldung worauf auf eine Kontaktaufnahme folgt:
 
-https://www.zh.ch/de/politik-staat/statistik-daten/datenwerkstatt.html
+https://www.zh.ch/de/politik-staat/statistik-daten/datenkompetenz/datenkompetenz-verwaltung.html
 
 # Eine Zusammenfassung in Folien
 

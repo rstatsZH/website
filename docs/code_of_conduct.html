@@ -56,7 +56,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 }
 code span.al { color: #ad0000; } /* Alert */
 code span.an { color: #5e5e5e; } /* Annotation */
-code span.at { color: #20794d; } /* Attribute */
+code span.at { } /* Attribute */
 code span.bn { color: #ad0000; } /* BaseN */
 code span.bu { } /* BuiltIn */
 code span.cf { color: #007ba5; } /* ControlFlow */
@@ -77,13 +77,14 @@ code span.kw { color: #007ba5; } /* Keyword */
 code span.op { color: #5e5e5e; } /* Operator */
 code span.ot { color: #007ba5; } /* Other */
 code span.pp { color: #ad0000; } /* Preprocessor */
-code span.sc { color: #20794d; } /* SpecialChar */
+code span.sc { color: #5e5e5e; } /* SpecialChar */
 code span.ss { color: #20794d; } /* SpecialString */
 code span.st { color: #20794d; } /* String */
 code span.va { color: #111111; } /* Variable */
 code span.vs { color: #20794d; } /* VerbatimString */
 code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 </style>
+
 
   <!--radix_placeholder_meta_tags-->
   <title>rstatsZH - Data Science mit R: Code of Conduct</title>
@@ -453,7 +454,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 
   </style>
 
-  <script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+  <script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
   <link href="site_libs/font-awesome-5.1.0/css/all.css" rel="stylesheet"/>
   <link href="site_libs/font-awesome-5.1.0/css/v4-shims.css" rel="stylesheet"/>
   <script src="site_libs/headroom-0.9.4/headroom.min.js"></script>
@@ -1601,7 +1602,10 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 
       // hoverable references
       $('span.citation[data-cites]').each(function() {
-        var refHtml = $('#ref-' + $(this).attr('data-cites')).html();
+        var refs = $(this).attr('data-cites').split(" ");
+        var refHtml = refs.map(function(ref) {
+          return "<p>" + $('#ref-' + ref).html() + "</p>";
+        }).join("\n");
         window.tippy(this, {
           allowHTML: true,
           content: refHtml,
@@ -1772,7 +1776,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   </script>
 
   <!--/radix_placeholder_distill-->
-  <script src="site_libs/header-attrs-2.9/header-attrs.js"></script>
+  <script src="site_libs/header-attrs-2.11/header-attrs.js"></script>
   <script src="site_libs/popper-2.6.0/popper.min.js"></script>
   <link href="site_libs/tippy-6.2.7/tippy.css" rel="stylesheet" />
   <link href="site_libs/tippy-6.2.7/tippy-light-border.css" rel="stylesheet" />
@@ -1845,18 +1849,23 @@ Hausaufgaben
 <nav class="l-text toc figcaption" id="TOC">
 <h3>Contents</h3>
 <ul>
-<li><a href="#vereinbarung-über-verhaltenskodex-für-mitwirkende">Vereinbarung über Verhaltenskodex für Mitwirkende</a>
+<li><a
+href="#vereinbarung-über-verhaltenskodex-für-mitwirkende">Vereinbarung
+über Verhaltenskodex für Mitwirkende</a>
 <ul>
 <li><a href="#unsere-verpflichtung">Unsere Verpflichtung</a></li>
 <li><a href="#unsere-standards">Unsere Standards</a></li>
-<li><a href="#verantwortlichkeiten-bei-der-durchsetzung">Verantwortlichkeiten bei der Durchsetzung</a></li>
+<li><a
+href="#verantwortlichkeiten-bei-der-durchsetzung">Verantwortlichkeiten
+bei der Durchsetzung</a></li>
 <li><a href="#geltungsbereich">Geltungsbereich</a></li>
 <li><a href="#umsetzung">Umsetzung</a></li>
 <li><a href="#durchsetzungsrichtlinien">Durchsetzungsrichtlinien</a>
 <ul>
 <li><a href="#berichtigung">1. Berichtigung</a></li>
 <li><a href="#verwarnung">2. Verwarnung</a></li>
-<li><a href="#vorübergehender-ausschluss">3. Vorübergehender Ausschluss</a></li>
+<li><a href="#vorübergehender-ausschluss">3. Vorübergehender
+Ausschluss</a></li>
 <li><a href="#dauerhafter-ausschluss">4. Dauerhafter Ausschluss</a></li>
 </ul></li>
 <li><a href="#bezug">Bezug</a></li>
@@ -1865,52 +1874,124 @@ Hausaufgaben
 </nav>
 </div>
 <script async defer data-domain="rstatszh.github.io/website" src="https://plausible.io/js/plausible.js"></script>
-<h1 id="vereinbarung-über-verhaltenskodex-für-mitwirkende">Vereinbarung über Verhaltenskodex für Mitwirkende</h1>
+<h1 id="vereinbarung-über-verhaltenskodex-für-mitwirkende">Vereinbarung
+über Verhaltenskodex für Mitwirkende</h1>
 <h2 id="unsere-verpflichtung">Unsere Verpflichtung</h2>
-<p>Wir als Mitglieder, Teilnehmende und Verantwortliche unserer Gemeinschaft verpflichten uns bei der Teilnahme an dem Projekt und unserer Gemeinschaft zu einer belästigungsfreien Erfahrung für alle, unabhängig von Alter, Körpergröße, Behinderung, ethnischer Zuordnung, geschlechtlicher Identität und Ausdruck, Grad der Erfahrung, Bildung, sozialem Status, Nationalität, persönlicher Erscheinung, Rasse, Religion oder Geschlechtsidentität und sexueller Orientierung.</p>
-<p>Wir verpflichten uns, in einer Weise zu handeln und zu interagieren, die zu einer offenen, einladenden, vielfältigen, inklusiven und gesunden Gemeinschaft beiträgt.</p>
+<p>Wir als Mitglieder, Teilnehmende und Verantwortliche unserer
+Gemeinschaft verpflichten uns bei der Teilnahme an dem Projekt und
+unserer Gemeinschaft zu einer belästigungsfreien Erfahrung für alle,
+unabhängig von Alter, Körpergröße, Behinderung, ethnischer Zuordnung,
+geschlechtlicher Identität und Ausdruck, Grad der Erfahrung, Bildung,
+sozialem Status, Nationalität, persönlicher Erscheinung, Rasse, Religion
+oder Geschlechtsidentität und sexueller Orientierung.</p>
+<p>Wir verpflichten uns, in einer Weise zu handeln und zu interagieren,
+die zu einer offenen, einladenden, vielfältigen, inklusiven und gesunden
+Gemeinschaft beiträgt.</p>
 <h2 id="unsere-standards">Unsere Standards</h2>
-<p>Beispiele für Verhaltensweisen, die zu einem positiven Umfeld für unsere Gemeinschaft beitragen, sind:</p>
+<p>Beispiele für Verhaltensweisen, die zu einem positiven Umfeld für
+unsere Gemeinschaft beitragen, sind:</p>
 <ul>
-<li>Einfühlungsvermögen und Freundlichkeit gegenüber anderen Menschen zeigen</li>
-<li>Unterschiedliche Meinungen, Standpunkte und Erfahrungen respektieren</li>
+<li>Einfühlungsvermögen und Freundlichkeit gegenüber anderen Menschen
+zeigen</li>
+<li>Unterschiedliche Meinungen, Standpunkte und Erfahrungen
+respektieren</li>
 <li>Konstruktives Feedback geben und würdevoll annehmen</li>
-<li>Verantwortung übernehmen und uns bei denjenigen entschuldigen, die von unseren Fehlern betroffen sind, und aus den Erfahrungen lernen</li>
-<li>Konzentration auf das, was nicht nur für uns als Individuen, sondern für die gesamte Gemeinschaft das Beste ist</li>
+<li>Verantwortung übernehmen und uns bei denjenigen entschuldigen, die
+von unseren Fehlern betroffen sind, und aus den Erfahrungen lernen</li>
+<li>Konzentration auf das, was nicht nur für uns als Individuen, sondern
+für die gesamte Gemeinschaft das Beste ist</li>
 </ul>
 <p>Beispiele für inakzeptables Verhalten sind:</p>
 <ul>
-<li>Die Verwendung sexualisierter Sprache, Bilder oder Symbolik sowie unerwünschte Versuche sexueller Annäherung</li>
-<li>Beleidigende oder abwertende Kommentare, persönliche oder politische Angriffe und trollen</li>
+<li>Die Verwendung sexualisierter Sprache, Bilder oder Symbolik sowie
+unerwünschte Versuche sexueller Annäherung</li>
+<li>Beleidigende oder abwertende Kommentare, persönliche oder politische
+Angriffe und trollen</li>
 <li>Öffentliche oder private Belästigungen</li>
-<li>Das Veröffentlichen von privaten Informationen Anderer, wie zum Beispiel physische oder elektronische Adressen, ohne deren ausdrückliche Erlaubnis</li>
-<li>Anderes Verhalten, welches in einem professionellen Umfeld begründet als unangemessen betrachtet werden kann</li>
+<li>Das Veröffentlichen von privaten Informationen Anderer, wie zum
+Beispiel physische oder elektronische Adressen, ohne deren ausdrückliche
+Erlaubnis</li>
+<li>Anderes Verhalten, welches in einem professionellen Umfeld begründet
+als unangemessen betrachtet werden kann</li>
 </ul>
-<h2 id="verantwortlichkeiten-bei-der-durchsetzung">Verantwortlichkeiten bei der Durchsetzung</h2>
-<p>Die Gemeinschaftsleitung ist verantwortlich dafür, unsere Standards für ein akzeptables Benehmen klarzustellen und werden angemessen und fair korrigierende Maßnahmen ergreifen um auf jegliches Verhalten, das sie für unangemessen, bedrohlich oder beleidigend halten, zu reagieren.</p>
-<p>Die Gemeinschaftsleitung hat das Recht und die Verantwortung Kommentare, Commits, Code, Wiki-Bearbeitungen, Support-Tickets und andere Beiträge, die nicht mit diesem Verhaltenskodex vereinbar sind zu entfernen, zu bearbeiten oder abzulehnen, und werden die Gründe für eine Mäßigung mitteilen, wenn es angebracht ist.</p>
+<h2 id="verantwortlichkeiten-bei-der-durchsetzung">Verantwortlichkeiten
+bei der Durchsetzung</h2>
+<p>Die Gemeinschaftsleitung ist verantwortlich dafür, unsere Standards
+für ein akzeptables Benehmen klarzustellen und werden angemessen und
+fair korrigierende Maßnahmen ergreifen um auf jegliches Verhalten, das
+sie für unangemessen, bedrohlich oder beleidigend halten, zu
+reagieren.</p>
+<p>Die Gemeinschaftsleitung hat das Recht und die Verantwortung
+Kommentare, Commits, Code, Wiki-Bearbeitungen, Support-Tickets und
+andere Beiträge, die nicht mit diesem Verhaltenskodex vereinbar sind zu
+entfernen, zu bearbeiten oder abzulehnen, und werden die Gründe für eine
+Mäßigung mitteilen, wenn es angebracht ist.</p>
 <h2 id="geltungsbereich">Geltungsbereich</h2>
-<p>Dieser Verhaltenskodex gilt für alle Gemeinschaftsbereiche und gilt auch, wenn eine Einzelperson die Gemeinschaft offiziell in öffentlichen Bereichen vertritt. Beispiele für die Repräsentation unserer Gemeinschaft sind die Verwendung einer offiziellen E-Mail-Adresse, das Posten über ein offizielles Social-Media-Konto oder das Auftreten als ernannte Vertretung bei einer Online- oder Offline-Veranstaltung.</p>
+<p>Dieser Verhaltenskodex gilt für alle Gemeinschaftsbereiche und gilt
+auch, wenn eine Einzelperson die Gemeinschaft offiziell in öffentlichen
+Bereichen vertritt. Beispiele für die Repräsentation unserer
+Gemeinschaft sind die Verwendung einer offiziellen E-Mail-Adresse, das
+Posten über ein offizielles Social-Media-Konto oder das Auftreten als
+ernannte Vertretung bei einer Online- oder Offline-Veranstaltung.</p>
 <h2 id="umsetzung">Umsetzung</h2>
-<p>Fälle von missbräuchlichem, belästigendem oder anderweitig inakzeptablem Verhalten können unter [<a href="mailto:lars@lse.de" class="email">lars@lse.de</a>] der für die Durchsetzung zuständigen Gemeinschaftsleitung gemeldet werden. Alle Beschwerden werden zeitnah und fair geprüft und ermittelt.</p>
-<p>Die gesamte Gemeinschaftsleitung ist verpflichtet, die Privatsphäre und die Sicherheit derjenigen, die einen Vorfall gemeldet haben, zu respektieren.</p>
+<p>Fälle von missbräuchlichem, belästigendem oder anderweitig
+inakzeptablem Verhalten können unter [<a href="mailto:lars@lse.de"
+class="email">lars@lse.de</a>] der für die Durchsetzung zuständigen
+Gemeinschaftsleitung gemeldet werden. Alle Beschwerden werden zeitnah
+und fair geprüft und ermittelt.</p>
+<p>Die gesamte Gemeinschaftsleitung ist verpflichtet, die Privatsphäre
+und die Sicherheit derjenigen, die einen Vorfall gemeldet haben, zu
+respektieren.</p>
 <h2 id="durchsetzungsrichtlinien">Durchsetzungsrichtlinien</h2>
-<p>Die Gemeinschaftsleitung wird sich bei der Bestimmung der Konsequenzen für jede Handlung, die ihrer Ansicht nach gegen diesen Verhaltenskodex verstößt, an diese Richtlinien über die Auswirkungen in der Gemeinschaft halten:</p>
+<p>Die Gemeinschaftsleitung wird sich bei der Bestimmung der
+Konsequenzen für jede Handlung, die ihrer Ansicht nach gegen diesen
+Verhaltenskodex verstößt, an diese Richtlinien über die Auswirkungen in
+der Gemeinschaft halten:</p>
 <h3 id="berichtigung">1. Berichtigung</h3>
-<p><strong>Auswirkungen in der Gemeinschaft</strong>: Verwendung unangemessener Sprache oder anderes Verhalten, das in der Gemeinschaft als unprofessionell oder unwillkommen gilt.</p>
-<p><strong>Folge</strong>: Eine private, schriftliche Verwarnung der Gemeinschaftsleitung, die Klarheit über die Art des Verstoßes und eine Erklärung dafür bietet, warum das Verhalten unangemessen war. Eine öffentliche Entschuldigung kann verlangt werden.</p>
+<p><strong>Auswirkungen in der Gemeinschaft</strong>: Verwendung
+unangemessener Sprache oder anderes Verhalten, das in der Gemeinschaft
+als unprofessionell oder unwillkommen gilt.</p>
+<p><strong>Folge</strong>: Eine private, schriftliche Verwarnung der
+Gemeinschaftsleitung, die Klarheit über die Art des Verstoßes und eine
+Erklärung dafür bietet, warum das Verhalten unangemessen war. Eine
+öffentliche Entschuldigung kann verlangt werden.</p>
 <h3 id="verwarnung">2. Verwarnung</h3>
-<p><strong>Auswirkungen in der Gemeinschaft</strong>: Eine Verletzung durch einen einzelnen Vorfall oder eine Reihe von Handlungen.</p>
-<p><strong>Folge</strong>: Eine Warnung mit Konsequenzen bei wiederholtem Fehlverhalten. Keine Interaktion mit den beteiligten Personen, einschließlich unaufgeforderter Interaktion mit denjenigen, die den Verhaltenskodex durchsetzen, für einen bestimmten Zeitraum. Dazu gehört die Vermeidung von Interaktionen in Gemeinschaftsräumen sowie in externen Kanälen wie sozialen Medien. Ein Verstoß gegen diese Bedingungen kann zu einem vorübergehenden oder dauerhaften Verbot führen.</p>
+<p><strong>Auswirkungen in der Gemeinschaft</strong>: Eine Verletzung
+durch einen einzelnen Vorfall oder eine Reihe von Handlungen.</p>
+<p><strong>Folge</strong>: Eine Warnung mit Konsequenzen bei
+wiederholtem Fehlverhalten. Keine Interaktion mit den beteiligten
+Personen, einschließlich unaufgeforderter Interaktion mit denjenigen,
+die den Verhaltenskodex durchsetzen, für einen bestimmten Zeitraum. Dazu
+gehört die Vermeidung von Interaktionen in Gemeinschaftsräumen sowie in
+externen Kanälen wie sozialen Medien. Ein Verstoß gegen diese
+Bedingungen kann zu einem vorübergehenden oder dauerhaften Verbot
+führen.</p>
 <h3 id="vorübergehender-ausschluss">3. Vorübergehender Ausschluss</h3>
-<p><strong>Auswirkungen in der Gemeinschaft</strong>: Eine schwerwiegende Verletzung von Gemeinschaftsstandards, einschließlich anhaltend unangemessenen Verhaltens.</p>
-<p><strong>Folge</strong>: Ein zeitlich begrenztes Verbot jeglicher Art von Interaktion oder öffentlicher Kommunikation mit der Gemeinschaft. Während dieses Zeitraums ist keine öffentliche oder private Interaktion mit den beteiligten Personen erlaubt. Auch keine unaufgeforderte Interaktion mit denjenigen, die den Verhaltenskodex durchsetzen. Ein Verstoß gegen diese Bedingungen kann zu einem dauerhaften Verbot führen.</p>
+<p><strong>Auswirkungen in der Gemeinschaft</strong>: Eine
+schwerwiegende Verletzung von Gemeinschaftsstandards, einschließlich
+anhaltend unangemessenen Verhaltens.</p>
+<p><strong>Folge</strong>: Ein zeitlich begrenztes Verbot jeglicher Art
+von Interaktion oder öffentlicher Kommunikation mit der Gemeinschaft.
+Während dieses Zeitraums ist keine öffentliche oder private Interaktion
+mit den beteiligten Personen erlaubt. Auch keine unaufgeforderte
+Interaktion mit denjenigen, die den Verhaltenskodex durchsetzen. Ein
+Verstoß gegen diese Bedingungen kann zu einem dauerhaften Verbot
+führen.</p>
 <h3 id="dauerhafter-ausschluss">4. Dauerhafter Ausschluss</h3>
-<p><strong>Auswirkungen in der Gemeinschaft</strong>: Aufzeigen eines Musters von Verletzungen der Gemeinschaftsstandards, einschließlich anhaltend unangemessenen Verhaltens, Belästigung einer Person oder Aggression gegen oder Herabsetzung von Gruppen von Personen.</p>
-<p><strong>Folge</strong>: Ein dauerhaftes Verbot jeglicher Art von öffentlicher Interaktion innerhalb der Gemeinschaft.</p>
+<p><strong>Auswirkungen in der Gemeinschaft</strong>: Aufzeigen eines
+Musters von Verletzungen der Gemeinschaftsstandards, einschließlich
+anhaltend unangemessenen Verhaltens, Belästigung einer Person oder
+Aggression gegen oder Herabsetzung von Gruppen von Personen.</p>
+<p><strong>Folge</strong>: Ein dauerhaftes Verbot jeglicher Art von
+öffentlicher Interaktion innerhalb der Gemeinschaft.</p>
 <h2 id="bezug">Bezug</h2>
-<p>Dieser Verhaltenskodex basiert auf dem <a href="https://www.contributor-covenant.org">Contributor Covenant</a>, Version 2.0, verfügbar unter <a href="https://www.contributor-covenant.org/de/version/2/0/code-of-conduct" class="uri">https://www.contributor-covenant.org/de/version/2/0/code-of-conduct</a></p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
+<p>Dieser Verhaltenskodex basiert auf dem <a
+href="https://www.contributor-covenant.org">Contributor Covenant</a>,
+Version 2.0, verfügbar unter <a
+href="https://www.contributor-covenant.org/de/version/2/0/code-of-conduct"
+class="uri">https://www.contributor-covenant.org/de/version/2/0/code-of-conduct</a></p>
+<div class="sourceCode" id="cb1"><pre
+class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
 <!--radix_placeholder_article_footer-->
 <!--/radix_placeholder_article_footer-->
 </div>

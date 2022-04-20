@@ -56,7 +56,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 }
 code span.al { color: #ad0000; } /* Alert */
 code span.an { color: #5e5e5e; } /* Annotation */
-code span.at { color: #20794d; } /* Attribute */
+code span.at { } /* Attribute */
 code span.bn { color: #ad0000; } /* BaseN */
 code span.bu { } /* BuiltIn */
 code span.cf { color: #007ba5; } /* ControlFlow */
@@ -77,13 +77,14 @@ code span.kw { color: #007ba5; } /* Keyword */
 code span.op { color: #5e5e5e; } /* Operator */
 code span.ot { color: #007ba5; } /* Other */
 code span.pp { color: #ad0000; } /* Preprocessor */
-code span.sc { color: #20794d; } /* SpecialChar */
+code span.sc { color: #5e5e5e; } /* SpecialChar */
 code span.ss { color: #20794d; } /* SpecialString */
 code span.st { color: #20794d; } /* String */
 code span.va { color: #111111; } /* Variable */
 code span.vs { color: #20794d; } /* VerbatimString */
 code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 </style>
+
 
   <!--radix_placeholder_meta_tags-->
   <title>rstatsZH - Data Science mit R: Hausaufgabe 05 - Erstes Projekt</title>
@@ -453,7 +454,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 
   </style>
 
-  <script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+  <script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
   <link href="site_libs/font-awesome-5.1.0/css/all.css" rel="stylesheet"/>
   <link href="site_libs/font-awesome-5.1.0/css/v4-shims.css" rel="stylesheet"/>
   <script src="site_libs/headroom-0.9.4/headroom.min.js"></script>
@@ -1601,7 +1602,10 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 
       // hoverable references
       $('span.citation[data-cites]').each(function() {
-        var refHtml = $('#ref-' + $(this).attr('data-cites')).html();
+        var refs = $(this).attr('data-cites').split(" ");
+        var refHtml = refs.map(function(ref) {
+          return "<p>" + $('#ref-' + ref).html() + "</p>";
+        }).join("\n");
         window.tippy(this, {
           allowHTML: true,
           content: refHtml,
@@ -1772,7 +1776,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   </script>
 
   <!--/radix_placeholder_distill-->
-  <script src="site_libs/header-attrs-2.9/header-attrs.js"></script>
+  <script src="site_libs/header-attrs-2.11/header-attrs.js"></script>
   <script src="site_libs/popper-2.6.0/popper.min.js"></script>
   <link href="site_libs/tippy-6.2.7/tippy.css" rel="stylesheet" />
   <link href="site_libs/tippy-6.2.7/tippy-light-border.css" rel="stylesheet" />
@@ -1849,11 +1853,15 @@ Hausaufgaben
 <li><a href="#erste-schritte">Erste Schritte</a></li>
 <li><a href="#übungen">Übungen</a>
 <ul>
-<li><a href="#übung-1---erstelle-ein-eigenes-git-repository">Übung 1 - Erstelle ein eigenes Git Repository</a></li>
-<li><a href="#übung-2---klone-ein-öffentliches-git-repository">Übung 2 - Klone ein öffentliches Git Repository</a></li>
-<li><a href="#übung-3---fork-ein-öffentliches-git-repository">Übung 3 - Fork ein öffentliches Git Repository</a></li>
+<li><a href="#übung-1---erstelle-ein-eigenes-git-repository">Übung 1 -
+Erstelle ein eigenes Git Repository</a></li>
+<li><a href="#übung-2---klone-ein-öffentliches-git-repository">Übung 2 -
+Klone ein öffentliches Git Repository</a></li>
+<li><a href="#übung-3---fork-ein-öffentliches-git-repository">Übung 3 -
+Fork ein öffentliches Git Repository</a></li>
 </ul></li>
-<li><a href="#grosses-danke-schön-und-gratulation">Grosses “Danke Schön” und Gratulation!</a></li>
+<li><a href="#grosses-danke-schön-und-gratulation">Grosses “Danke Schön”
+und Gratulation!</a></li>
 </ul>
 </nav>
 </div>
@@ -1865,67 +1873,103 @@ Hausaufgaben
 <p>Diese Hausaufgabe hat die folgende Ziele:</p>
 <ul>
 <li>Ein Git Repository auf GitHub selbst erstellen</li>
-<li>Ein selbst erstelltes Git Repository aus GitHub in die eigene Arbeitsumgebung klonen</li>
-<li>Ein öffentliches Git Repository aus GitHub in die eigene Arbeitsumgebung klonen</li>
+<li>Ein selbst erstelltes Git Repository aus GitHub in die eigene
+Arbeitsumgebung klonen</li>
+<li>Ein öffentliches Git Repository aus GitHub in die eigene
+Arbeitsumgebung klonen</li>
 <li>Eine Fork von einem öffentlichem GitHub Repository zu erstellen</li>
-<li>Die Begriffe “add”, “commit,”push“, und”pull" unterscheiden können</li>
+<li>Die Begriffe “add”, “commit,”push”, und “pull” unterscheiden
+können</li>
 </ul>
 <h1 id="erste-schritte">Erste Schritte</h1>
-<p>Heute wirst du zum ersten Mal ein Projekt selbst erstellen. Dies bedeutet, ich habe keine Vorlage für dich vorbereitet welche aus GitHub in den Arbeitsbereich für die den Kurs gebracht wird. Die typischen ersten Schritte fallen deshalb hier weg und wir steigen direkt mit den Übungen ein.</p>
+<p>Heute wirst du zum ersten Mal ein Projekt selbst erstellen. Dies
+bedeutet, ich habe keine Vorlage für dich vorbereitet welche aus GitHub
+in den Arbeitsbereich für die den Kurs gebracht wird. Die typischen
+ersten Schritte fallen deshalb hier weg und wir steigen direkt mit den
+Übungen ein.</p>
 <h1 id="übungen">Übungen</h1>
-<h2 id="übung-1---erstelle-ein-eigenes-git-repository">Übung 1 - Erstelle ein eigenes Git Repository</h2>
-<p>Im folgenden sind alle nötigen Schritte mit Beschreibung und Screenshots dokumentiert. Solltest du an einem Schritt nicht weiterkommen, dann melde dich bitte umgehend auf Slack.</p>
+<h2 id="übung-1---erstelle-ein-eigenes-git-repository">Übung 1 -
+Erstelle ein eigenes Git Repository</h2>
+<p>Im folgenden sind alle nötigen Schritte mit Beschreibung und
+Screenshots dokumentiert. Solltest du an einem Schritt nicht
+weiterkommen, dann melde dich bitte umgehend auf Slack.</p>
 <ol type="1">
 <li>Öffne die GitHub website: github.com</li>
-<li>Klicke auf das schwarze Dreieck neben deinem Benutzernamen und in dem Dropdown Menü, wähle die GitHub Organisation für deinen Kurs aus</li>
+<li>Klicke auf das schwarze Dreieck neben deinem Benutzernamen und in
+dem Dropdown Menü, wähle die GitHub Organisation für deinen Kurs
+aus</li>
 </ol>
 <div class="layout-chunk" data-layout="l-body">
 <p><img src="img/github-to-project/github-to-project.001.png" width="960" /></p>
 </div>
 <ol start="3" type="1">
-<li>Klicke auf den grünen Button mit der Aufschrift “New” um ein neues Repository zu starten</li>
+<li>Klicke auf den grünen Button mit der Aufschrift “New” um ein neues
+Repository zu starten</li>
 </ol>
 <div class="layout-chunk" data-layout="l-body">
 <p><img src="img/github-to-project/github-to-project.002.png" width="960" /></p>
 </div>
 <ol start="4" type="1">
-<li>Gib dem Respository den folgenden Namen und ersetze “GITHUB_BENUTZERNAME” mit deinem GitHub Benutzernamen:</li>
+<li>Gib dem Respository den folgenden Namen und ersetze
+“GITHUB_BENUTZERNAME” mit deinem GitHub Benutzernamen:</li>
 </ol>
 <p><code>mein-erstes-repo-GITHUB_BENUTZERNAME</code></p>
-<p><strong>Beachte:</strong> Namen für Repositories sollten kurz und ohne Leerzeichen sein. Der Name sollte für dich bedeutend sein und gegebenenfalls den Namen des Projektes an welchem du arbeitest widerspiegeln.</p>
+<p><strong>Beachte:</strong> Namen für Repositories sollten kurz und
+ohne Leerzeichen sein. Der Name sollte für dich bedeutend sein und
+gegebenenfalls den Namen des Projektes an welchem du arbeitest
+widerspiegeln.</p>
 <ol start="5" type="1">
-<li>(optional): Gib dem Repository eine Beschreibung im Feld “Description”</li>
+<li>(optional): Gib dem Repository eine Beschreibung im Feld
+“Description”</li>
 </ol>
 <div class="layout-chunk" data-layout="l-body">
 <p><img src="img/github-to-project/github-to-project.003.png" width="960" /></p>
 </div>
 <ol start="6" type="1">
-<li>Wähle die Option “Public” aus. Dein Repository ist damit öffentlich sichtbar.</li>
-<li>Setze das Häkchen neben “Add .gitignore” und klicke auf das Feld “.gitignore template: None”</li>
+<li>Wähle die Option “Public” aus. Dein Repository ist damit öffentlich
+sichtbar.</li>
+<li>Setze das Häkchen neben “Add .gitignore” und klicke auf das Feld
+“.gitignore template: None”</li>
 <li>Schreibe im Feld “Filter ignores” den Buchstaben “R”</li>
 <li>Klicke auf das blau hinterlegte Feld mit dem Buchstaben “R”</li>
 </ol>
-<p><strong>Beachte:</strong> Die Datei <code>.gitignore</code> definiert welche Dateien und/oder Ordner innerhalb eines Projektes <strong>nicht</strong> mit Git “verfolgt” werden sollen (ignoriert werden). Dies bedeutet, diese Dateien und/oder Ordner tauchen nicht auf GitHub auf. Sie sind nur lokal auf deinem Arbeitsgerät zu finden. Oft sind dies Konfigurationsdateien mit sensitiven Informationen oder Dateien die Nebenprodukte von der Arbeit mit R sind. Aber, dies können auch sensitive Daten innerhalb eines Projektes sein, welche nicht auf GitHub geteilt werden sollen, wobei jedoch der Code geteilt werden soll.</p>
+<p><strong>Beachte:</strong> Die Datei <code>.gitignore</code> definiert
+welche Dateien und/oder Ordner innerhalb eines Projektes
+<strong>nicht</strong> mit Git “verfolgt” werden sollen (ignoriert
+werden). Dies bedeutet, diese Dateien und/oder Ordner tauchen nicht auf
+GitHub auf. Sie sind nur lokal auf deinem Arbeitsgerät zu finden. Oft
+sind dies Konfigurationsdateien mit sensitiven Informationen oder
+Dateien die Nebenprodukte von der Arbeit mit R sind. Aber, dies können
+auch sensitive Daten innerhalb eines Projektes sein, welche nicht auf
+GitHub geteilt werden sollen, wobei jedoch der Code geteilt werden
+soll.</p>
 <div class="layout-chunk" data-layout="l-body">
 <p><img src="img/github-to-project/github-to-project.004.png" width="960" /></p>
 </div>
 <ol start="10" type="1">
-<li>Setze <strong>kein</strong> Häkchen bei “Add a README file” und “Choose a license” und klicke auf “Create repository”</li>
+<li>Setze <strong>kein</strong> Häkchen bei “Add a README file” und
+“Choose a license” und klicke auf “Create repository”</li>
 </ol>
 <div class="layout-chunk" data-layout="l-body">
 <p><img src="img/github-to-project/github-to-project.005.png" width="960" /></p>
 </div>
-<p>Bewundere dein neues Repo und sei nicht eingeschüchtert von dem schwer nach zu vollziehbaren Text.</p>
+<p>Bewundere dein neues Repo und sei nicht eingeschüchtert von dem
+schwer nach zu vollziehbaren Text.</p>
 <ol start="11" type="1">
-<li>Klicke auf das Klemmbrett-Symbol um den Link zu deinem neuen Respository in die Zwischenablage zu kopieren</li>
+<li>Klicke auf das Klemmbrett-Symbol um den Link zu deinem neuen
+Respository in die Zwischenablage zu kopieren</li>
 </ol>
 <div class="layout-chunk" data-layout="l-body">
 <p><img src="img/github-to-project/github-to-project.006.png" width="960" /></p>
 </div>
 <ol start="12" type="1">
-<li>Öffne die Website rstudio.cloud und logge dich wie gewöhnlich mit deinen GitHub Zugangsadaten ein</li>
+<li>Öffne die Website rstudio.cloud und logge dich wie gewöhnlich mit
+deinen GitHub Zugangsadaten ein</li>
 </ol>
-<p><strong>Achtung:</strong> Falls du dies noch nicht eingerichtet hast, siehe <a href="https://rstatszh.github.io/website/ha-01-hallo-git.html#verbindung-zu-github-und-rstudio-cloud-aufbauen">Hausaufgabe 01 - Verbindung zu GitHub und RStudio Cloud aufbauen</a>.</p>
+<p><strong>Achtung:</strong> Falls du dies noch nicht eingerichtet hast,
+siehe <a
+href="https://rstatszh.github.io/website/ha-01-hallo-git.html#verbindung-zu-github-und-rstudio-cloud-aufbauen">Hausaufgabe
+01 - Verbindung zu GitHub und RStudio Cloud aufbauen</a>.</p>
 <div class="layout-chunk" data-layout="l-body">
 <p><img src="img/github-to-project/github-to-project.007.png" width="960" /></p>
 </div>
@@ -1943,7 +1987,8 @@ Hausaufgaben
 <p><img src="img/github-to-project/github-to-project.009.png" width="960" /></p>
 </div>
 <ol start="16" type="1">
-<li>Füge den Link, welchen du von GitHub in deine Zwischenablage kopiert hast, hier in das Fenster “URL of your Git Repository” ein.</li>
+<li>Füge den Link, welchen du von GitHub in deine Zwischenablage kopiert
+hast, hier in das Fenster “URL of your Git Repository” ein.</li>
 <li>Lasse das Häkchen unter “Packages” gesetzt und klicke auf “OK”</li>
 </ol>
 <div class="layout-chunk" data-layout="l-body">
@@ -1951,11 +1996,15 @@ Hausaufgaben
 </div>
 <p>Bewundere dein aus GitHub selbst erstelltes Projekt.</p>
 <ol start="18" type="1">
-<li>Im Fenster unten rechts öffne den Reiter “Files” und klicke auf die Datei <code>.gitignore</code> um diese oben rechts im Code Editor zu öffnen.</li>
+<li>Im Fenster unten rechts öffne den Reiter “Files” und klicke auf die
+Datei <code>.gitignore</code> um diese oben rechts im Code Editor zu
+öffnen.</li>
 </ol>
-<p>Scroll durch die Datei und beachte, dass auf Zeile 2 die Datei <code>.Rhistory</code> ignoriert wird.</p>
+<p>Scroll durch die Datei und beachte, dass auf Zeile 2 die Datei
+<code>.Rhistory</code> ignoriert wird.</p>
 <ol start="19" type="1">
-<li>Schliesse die <code>.gitignore</code> Datei wieder in dem du auf das kleine “x” neben dem Dateinamen oben rechts im Code Editor klickst</li>
+<li>Schliesse die <code>.gitignore</code> Datei wieder in dem du auf das
+kleine “x” neben dem Dateinamen oben rechts im Code Editor klickst</li>
 </ol>
 <div class="layout-chunk" data-layout="l-body">
 <p><img src="img/github-to-project/github-to-project.011.png" width="960" /></p>
@@ -1963,60 +2012,101 @@ Hausaufgaben
 <ol start="20" type="1">
 <li>Öffne den “Git” Reiter im Fenster oben rechts</li>
 </ol>
-<p><strong>Beachte:</strong> Hier ist die Datei “project.Rproj” aufgetaucht. Die zwei gelben Fragezeichen unter “Status” bedeuten, dass diese Datei noch nicht von Git “verfolgt” wird. Die Datei wurde neu erstellt als du in RStudio Cloud auf “New Project” geklickt hast. Die Datei <code>.gitignore</code> taucht hier nicht auf. Git “verfolgt” diese Datei bereits, da wir sie beim Erstellen des Repositories auf GitHub hinzugefügt haben. Auch die Datei <code>.Rhistory</code> taucht nicht auf, da wir in der <code>.gitignore</code> Datei definiert haben diese nicht zu “verfolgen”.</p>
+<p><strong>Beachte:</strong> Hier ist die Datei “project.Rproj”
+aufgetaucht. Die zwei gelben Fragezeichen unter “Status” bedeuten, dass
+diese Datei noch nicht von Git “verfolgt” wird. Die Datei wurde neu
+erstellt als du in RStudio Cloud auf “New Project” geklickt hast. Die
+Datei <code>.gitignore</code> taucht hier nicht auf. Git “verfolgt”
+diese Datei bereits, da wir sie beim Erstellen des Repositories auf
+GitHub hinzugefügt haben. Auch die Datei <code>.Rhistory</code> taucht
+nicht auf, da wir in der <code>.gitignore</code> Datei definiert haben
+diese nicht zu “verfolgen”.</p>
 <div class="layout-chunk" data-layout="l-body">
 <p><img src="img/github-to-project/github-to-project.012.png" width="960" /></p>
 </div>
 <ol start="21" type="1">
-<li>Setze nun den Haken unter “Staged” und klicke auf den “Commit” Button woraufhin sich ein neues Fenster öffnet.</li>
+<li>Setze nun den Haken unter “Staged” und klicke auf den “Commit”
+Button woraufhin sich ein neues Fenster öffnet.</li>
 </ol>
 <div class="layout-chunk" data-layout="l-body">
 <p><img src="img/git-commit.png" width="10%" /></p>
 </div>
-<p><strong>Beachte:</strong> Der Status ändert sich zu einem grünen A welches für “add” steht. Du hast Git nun signalisiert, dass diese Datei zu dem Git Repository hinzugefügt werden soll. Der Haken unter staged, bedeutet, dass diese Datei im nächsten Commit enthalten sein soll.</p>
+<p><strong>Beachte:</strong> Der Status ändert sich zu einem grünen A
+welches für “add” steht. Du hast Git nun signalisiert, dass diese Datei
+zu dem Git Repository hinzugefügt werden soll. Der Haken unter staged,
+bedeutet, dass diese Datei im nächsten Commit enthalten sein soll.</p>
 <div class="layout-chunk" data-layout="l-body">
 <p><img src="img/github-to-project/github-to-project.013.png" width="960" /></p>
 </div>
 <ol start="22" type="1">
 <li>Im Feld “Commit message”, schreibe: “R Project gestartet”</li>
-<li>Klicke auf den “Commit” Button unter dem Feld, welches die Commit Nachricht enthält. Ein neues Fenster öffnet sich.</li>
+<li>Klicke auf den “Commit” Button unter dem Feld, welches die Commit
+Nachricht enthält. Ein neues Fenster öffnet sich.</li>
 </ol>
 <div class="layout-chunk" data-layout="l-body">
 <p><img src="img/github-to-project/github-to-project.014.png" width="960" /></p>
 </div>
 <ol start="24" type="1">
-<li>Schliesse das neue Fenster indem du auf den “Close” Button klickst. Schliesse auch den Browser Tab, welches sich geöffnet hatte um die Commit Nachricht zu schreiben.</li>
+<li>Schliesse das neue Fenster indem du auf den “Close” Button klickst.
+Schliesse auch den Browser Tab, welches sich geöffnet hatte um die
+Commit Nachricht zu schreiben.</li>
 </ol>
 <div class="layout-chunk" data-layout="l-body">
 <p><img src="img/github-to-project/github-to-project.015.png" width="960" /></p>
 </div>
 <ol start="24" type="1">
-<li>Zurück im Browser Tab mit dem geöffneten RStudio Projekt, öffne erneut die Datei <code>.gitignore</code>. Scroll ganz an das Ende der Datei auf die Zeile 40 und füge eine neue Zeile ein indem du auf die Enter Taste auf deiner Tastatur drückst. Füge Text mit einem # hinzu und schreibe “# Ignoriere folgende Dateien”. Auf einer neuen Zeile, schreibe <code>*.csv</code>. Speicher die Datei in dem du das Tastaturkürzel “Ctrl + S (Windows)” nutzt oder auf: File -&gt; Save in RStudio klickst</li>
+<li>Zurück im Browser Tab mit dem geöffneten RStudio Projekt, öffne
+erneut die Datei <code>.gitignore</code>. Scroll ganz an das Ende der
+Datei auf die Zeile 40 und füge eine neue Zeile ein indem du auf die
+Enter Taste auf deiner Tastatur drückst. Füge Text mit einem # hinzu und
+schreibe “# Ignoriere folgende Dateien”. Auf einer neuen Zeile, schreibe
+<code>*.csv</code>. Speicher die Datei in dem du das Tastaturkürzel
+“Ctrl + S (Windows)” nutzt oder auf: File -&gt; Save in RStudio
+klickst</li>
 </ol>
 <div class="layout-chunk" data-layout="l-body">
 <p><img src="img/github-to-project/github-to-project.016.png" width="960" /></p>
 </div>
-<p><strong>Beachte:</strong> Du sagst Git hier, dass alle Dateien in deinem Projekt mit der Endung <code>.csv</code> ignoriert werden sollen.</p>
+<p><strong>Beachte:</strong> Du sagst Git hier, dass alle Dateien in
+deinem Projekt mit der Endung <code>.csv</code> ignoriert werden
+sollen.</p>
 <ol start="25" type="1">
-<li>Öffne den Git Reiter im Fenster oben rechts, setzte den Haken bei staged um die Veränderungen im nächsten Commit hinzuzfügen, und klicke auf den Commit Button.</li>
+<li>Öffne den Git Reiter im Fenster oben rechts, setzte den Haken bei
+staged um die Veränderungen im nächsten Commit hinzuzfügen, und klicke
+auf den Commit Button.</li>
 </ol>
 <div class="layout-chunk" data-layout="l-body">
 <p><img src="img/github-to-project/github-to-project.017.png" width="960" /></p>
 </div>
-<p><strong>Beachte:</strong> Hier ist die Datei “.gitignore” aufgetaucht. Falls nicht, dann klicke auf den “Aktualisieren Button” ganz rechts neben “main”. Das blaue M steht für “modified” (de: verändert). Git verfolgt diese Datei bereits und hat hier gemerkt, dass Veränderung an der Datei gemacht wurden. Der Status ändert sich nicht, aber das blaue M bewegt sich etwas nach links. Die Dateu ist erneut “staged” und Git wird damit signalisiert, dass diese im nächsten Commit enthalten sein soll.</p>
-<p>Schaue nun in das untere Fenster, welches in dem grünen Bereich die Veränderungen anzeigt, welche du an der <code>.gitignore</code> Datei gemacht hast.</p>
+<p><strong>Beachte:</strong> Hier ist die Datei “.gitignore”
+aufgetaucht. Falls nicht, dann klicke auf den “Aktualisieren Button”
+ganz rechts neben “main”. Das blaue M steht für “modified” (de:
+verändert). Git verfolgt diese Datei bereits und hat hier gemerkt, dass
+Veränderung an der Datei gemacht wurden. Der Status ändert sich nicht,
+aber das blaue M bewegt sich etwas nach links. Die Dateu ist erneut
+“staged” und Git wird damit signalisiert, dass diese im nächsten Commit
+enthalten sein soll.</p>
+<p>Schaue nun in das untere Fenster, welches in dem grünen Bereich die
+Veränderungen anzeigt, welche du an der <code>.gitignore</code> Datei
+gemacht hast.</p>
 <div class="layout-chunk" data-layout="l-body">
 <p><img src="img/github-to-project/github-to-project.018.png" width="960" /></p>
 </div>
 <ol start="26" type="1">
 <li>Im Feld “Commit message”, schreibe: “Ignoriere CSV Dateien”</li>
-<li>Klicke auf den “Commit” Button unter dem Feld, welches die Commit Nachricht enthält. Ein neues Fenster öffnet sich. Schliesse das neue Fenster indem du auf den “Close” Button klickst. Mache <strong>keinen push</strong>.</li>
+<li>Klicke auf den “Commit” Button unter dem Feld, welches die Commit
+Nachricht enthält. Ein neues Fenster öffnet sich. Schliesse das neue
+Fenster indem du auf den “Close” Button klickst. Mache <strong>keinen
+push</strong>.</li>
 </ol>
 <div class="layout-chunk" data-layout="l-body">
 <p><img src="img/github-to-project/github-to-project.019.png" width="960" /></p>
 </div>
 <ol start="28" type="1">
-<li>Erstelle eine neue Markdown Datei (<strong>Achtung:</strong> Nicht R Markdown): File -&gt; New File -&gt; Markdown File, und speicher die Datei mit dem Tastaturkürzel “Ctrl + S” (Windows) oder: File -&gt; Save. Ein neues Fenster öffnet sich.</li>
+<li>Erstelle eine neue Markdown Datei (<strong>Achtung:</strong> Nicht R
+Markdown): File -&gt; New File -&gt; Markdown File, und speicher die
+Datei mit dem Tastaturkürzel “Ctrl + S” (Windows) oder: File -&gt; Save.
+Ein neues Fenster öffnet sich.</li>
 </ol>
 <div class="layout-chunk" data-layout="l-body">
 <p><img src="img/github-to-project/github-to-project.020.png" width="960" /></p>
@@ -2028,53 +2118,84 @@ Hausaufgaben
 <div class="layout-chunk" data-layout="l-body">
 <p><img src="img/github-to-project/github-to-project.021.png" width="960" /></p>
 </div>
-<p><strong>Beachte:</strong> Im Fenster oben rechts unter dem Git Reiter ist nun die Datei “README.md” nun mit zwei gelben Fragezeichen hinter “Status” aufgetaucht. Du hast bereits gelernt, was dies bedeutet. Kannst du dich erinnern?</p>
+<p><strong>Beachte:</strong> Im Fenster oben rechts unter dem Git Reiter
+ist nun die Datei “README.md” nun mit zwei gelben Fragezeichen hinter
+“Status” aufgetaucht. Du hast bereits gelernt, was dies bedeutet. Kannst
+du dich erinnern?</p>
 <ol start="31" type="1">
-<li>Gehe erneut durch die Schritte Add, Commit, und wähle “README hinzugefügt” als Commit message. Mache jedoch mache weiterhin <strong>keinen push</strong>.</li>
+<li>Gehe erneut durch die Schritte Add, Commit, und wähle “README
+hinzugefügt” als Commit message. Mache jedoch mache weiterhin
+<strong>keinen push</strong>.</li>
 </ol>
 <div class="layout-chunk" data-layout="l-body">
 <p><img src="img/github-to-project/github-to-project.022.png" width="960" /></p>
 </div>
 <ol start="32" type="1">
-<li>Zurück im Browser Tab mit dem geöffneten RStudio Projekt, schreibe nun einen Text deiner Wahl in deine README Datei. Anschliessend, klicke auf den “Preview” Button um dir eine Vorschau deiner README Datei anzusehen.</li>
+<li>Zurück im Browser Tab mit dem geöffneten RStudio Projekt, schreibe
+nun einen Text deiner Wahl in deine README Datei. Anschliessend, klicke
+auf den “Preview” Button um dir eine Vorschau deiner README Datei
+anzusehen.</li>
 </ol>
 <div class="layout-chunk" data-layout="l-body">
 <p><img src="img/github-to-project/github-to-project.023.png" width="960" /></p>
 </div>
 <ol start="33" type="1">
-<li>Öffne den “Git” Reiter im Fenster oben rechts. Setze den Haken <strong>nur</strong> neben der <code>README.md</code> Datei und mache einen Commit mit einer Commit Nachricht deiner Wahl. Mache jedoch mache weiterhin <strong>keinen push</strong>.</li>
+<li>Öffne den “Git” Reiter im Fenster oben rechts. Setze den Haken
+<strong>nur</strong> neben der <code>README.md</code> Datei und mache
+einen Commit mit einer Commit Nachricht deiner Wahl. Mache jedoch mache
+weiterhin <strong>keinen push</strong>.</li>
 </ol>
 <div class="layout-chunk" data-layout="l-body">
 <p><img src="img/github-to-project/github-to-project.024.png" width="960" /></p>
 </div>
-<p><strong>Beachte:</strong> Die <code>README.md</code> Datei wird mit einem blauen M als “modified” angezeigt. Git “verfolgt” diese bereits und hat gemerkt, dass du Veränderungen gemacht hast. Neu taucht hier die <code>README.html</code> Datei auf. Diese ist enstanden nachdem du auf den Preview Button geklickt hast.</p>
+<p><strong>Beachte:</strong> Die <code>README.md</code> Datei wird mit
+einem blauen M als “modified” angezeigt. Git “verfolgt” diese bereits
+und hat gemerkt, dass du Veränderungen gemacht hast. Neu taucht hier die
+<code>README.html</code> Datei auf. Diese ist enstanden nachdem du auf
+den Preview Button geklickt hast.</p>
 <ol start="34" type="1">
-<li>Zurück im Browser Tab mit dem geöffneten RStudio Projekt, öffne die <code>.gitignore</code> Datei. Auf einer neuen Zeile, schreibe <code>README.html</code>. Speicher die <code>.gitingore</code> Datei</li>
+<li>Zurück im Browser Tab mit dem geöffneten RStudio Projekt, öffne die
+<code>.gitignore</code> Datei. Auf einer neuen Zeile, schreibe
+<code>README.html</code>. Speicher die <code>.gitingore</code>
+Datei</li>
 </ol>
 <div class="layout-chunk" data-layout="l-body">
 <p><img src="img/github-to-project/github-to-project.025.png" width="960" /></p>
 </div>
 <ol start="35" type="1">
-<li>Im Git Fenster oben rechts, klicke auf den Aktualisieren Button. Die <code>README.html</code> ist hier nun verschwunden und die <code>.gitignore</code> Datei taucht hier wieder auf. Warum? Setze den Haken neben <code>.gitignore</code> und mache einen Commit mit der Commit Nachricht “Ignoriere README.html”. Mache jedoch mache weiterhin <strong>keinen push</strong>.</li>
+<li>Im Git Fenster oben rechts, klicke auf den Aktualisieren Button. Die
+<code>README.html</code> ist hier nun verschwunden und die
+<code>.gitignore</code> Datei taucht hier wieder auf. Warum? Setze den
+Haken neben <code>.gitignore</code> und mache einen Commit mit der
+Commit Nachricht “Ignoriere README.html”. Mache jedoch mache weiterhin
+<strong>keinen push</strong>.</li>
 </ol>
 <div class="layout-chunk" data-layout="l-body">
 <p><img src="img/github-to-project/github-to-project.026.png" width="960" /></p>
 </div>
 <ol start="36" type="1">
-<li>Klicke nun auf den “Push” Button (grüner Pfeil der nach oben zeigt) um deine Veränderung auf GitHub zu pushen.</li>
+<li>Klicke nun auf den “Push” Button (grüner Pfeil der nach oben zeigt)
+um deine Veränderung auf GitHub zu pushen.</li>
 </ol>
-<p><strong>Beachte:</strong> Im Git Fenster oben rechts siehst du nun eine Zeile mit dem Text <code>Your branch is ahead of 'origin/main' by 5 commits.</code> Dies bedeutet: Git hat bei dir lokal in deinem Projekt fünf Commits registriert, welche noch nicht auf GitHub sind.</p>
+<p><strong>Beachte:</strong> Im Git Fenster oben rechts siehst du nun
+eine Zeile mit dem Text
+<code>Your branch is ahead of 'origin/main' by 5 commits.</code> Dies
+bedeutet: Git hat bei dir lokal in deinem Projekt fünf Commits
+registriert, welche noch nicht auf GitHub sind.</p>
 <div class="layout-chunk" data-layout="l-body">
 <p><img src="img/github-to-project/github-to-project.027.png" width="960" /></p>
 </div>
 <ol start="37" type="1">
-<li>Gehe zurück zu deinem Repo auf github.com, aktualisiere die Seite, und schau dich etwas um. Versuche auf die Dinge zu klicken die du wieder erkennen kannst. Unten ein paar Beispiele zum darauf klicken.</li>
+<li>Gehe zurück zu deinem Repo auf github.com, aktualisiere die Seite,
+und schau dich etwas um. Versuche auf die Dinge zu klicken die du wieder
+erkennen kannst. Unten ein paar Beispiele zum darauf klicken.</li>
 </ol>
 <div class="layout-chunk" data-layout="l-body">
 <p><img src="img/github-to-project/github-to-project.028.png" width="960" /></p>
 </div>
 <ol start="38" type="1">
-<li>Klicke auf den “Settings” Button um die Einstellungen für das Repository zu öffnen</li>
+<li>Klicke auf den “Settings” Button um die Einstellungen für das
+Repository zu öffnen</li>
 </ol>
 <div class="layout-chunk" data-layout="l-body">
 <p><img src="img/github-to-project/github-to-project.029.png" width="960" /></p>
@@ -2089,16 +2210,37 @@ Hausaufgaben
 <ol start="41" type="1">
 <li>Im sich öffnenden Fenster schreibe: “larnsce”</li>
 <li>Klicke auf den blau hinterlegten Bereich</li>
-<li>Im sich öffnenden Fenster, setzte den blauen Kreis auf “Admin” und klicke auf “Add larnsce to this repository”</li>
+<li>Im sich öffnenden Fenster, setzte den blauen Kreis auf “Admin” und
+klicke auf “Add larnsce to this repository”</li>
 </ol>
 <div class="layout-chunk" data-layout="l-body">
 <p><img src="img/github-to-project/github-to-project.031.png" width="960" /></p>
 </div>
-<p><strong>Beachte:</strong> Das Repository ist “public” und damit öffentlich sichbar. Jede Person kann dieses Repository “clonen” und damit in RStudio weiterarbeiten. So wie du es am Anfang gemacht hast um es in die RStudio Cloud zu bringen. Aber: Nicht jede Person kann auch wieder zurück auf diese Repository “pushen” und damit Veränderung an deiner Version machen. Du hast mich gerade als Admin hinzugefüght, damit ich jegliche Zugangsrechte habe. Wenn du gemeinsam mit Personen aktiv an einem Repository arbeitest, empfiehlt es sich diesen mindestens die Rolle mit “Write” Zugang zu geben. Dies ermöglicht es wieder auf das Repo zu “pushen”.</p>
-<h2 id="übung-2---klone-ein-öffentliches-git-repository">Übung 2 - Klone ein öffentliches Git Repository</h2>
-<p>Letzte Woche haben wir im Kurs eine Demonstrationseinheit zu Vektoren gemacht (Demonstration 2). Für diese Einheit hatte ich keine Vorlage für dich bereitgestellt und dich darum gebeten nicht selbst aktiv mitzuschreiben. Die Demonstration 2 ist als öffentliches Git Repository auf GitHub publiziert. Dies bedeutet, dass du dir sämtlichen Code aus den Übungen selbst in deine Arbeitsumgebung klonen kannst.</p>
+<p><strong>Beachte:</strong> Das Repository ist “public” und damit
+öffentlich sichbar. Jede Person kann dieses Repository “clonen” und
+damit in RStudio weiterarbeiten. So wie du es am Anfang gemacht hast um
+es in die RStudio Cloud zu bringen. Aber: Nicht jede Person kann auch
+wieder zurück auf diese Repository “pushen” und damit Veränderung an
+deiner Version machen. Du hast mich gerade als Admin hinzugefüght, damit
+ich jegliche Zugangsrechte habe. Wenn du gemeinsam mit Personen aktiv an
+einem Repository arbeitest, empfiehlt es sich diesen mindestens die
+Rolle mit “Write” Zugang zu geben. Dies ermöglicht es wieder auf das
+Repo zu “pushen”.</p>
+<h2 id="übung-2---klone-ein-öffentliches-git-repository">Übung 2 - Klone
+ein öffentliches Git Repository</h2>
+<p>Letzte Woche haben wir im Kurs eine Demonstrationseinheit zu Vektoren
+gemacht (Demonstration 2). Für diese Einheit hatte ich keine Vorlage für
+dich bereitgestellt und dich darum gebeten nicht selbst aktiv
+mitzuschreiben. Die Demonstration 2 ist als öffentliches Git Repository
+auf GitHub publiziert. Dies bedeutet, dass du dir sämtlichen Code aus
+den Übungen selbst in deine Arbeitsumgebung klonen kannst.</p>
 <ol type="1">
-<li>Öffne das Repository auf GitHub: <a href="https://github.com/rstatsZH/demo-02-vektoren" class="uri">https://github.com/rstatsZH/demo-02-vektoren</a> und nutze die dir bekannten Schritte um dieses Repository (rstatsZH/demo-02-vektoren) in die Arbeitsumgebung für den Kurs (RStudio Cloud Workspace rstatsZH-K00X) zu klonen.</li>
+<li>Öffne das Repository auf GitHub: <a
+href="https://github.com/rstatsZH/demo-02-vektoren"
+class="uri">https://github.com/rstatsZH/demo-02-vektoren</a> und nutze
+die dir bekannten Schritte um dieses Repository
+(rstatsZH/demo-02-vektoren) in die Arbeitsumgebung für den Kurs (RStudio
+Cloud Workspace rstatsZH-K00X) zu klonen.</li>
 </ol>
 <div class="layout-chunk" data-layout="l-body">
 <p><img src="img/github-to-project/github-to-project.032.png" width="960" /></p>
@@ -2111,12 +2253,23 @@ Hausaufgaben
 <li>add “demo-02-solutions.html”</li>
 <li>commit “demo-02-solutions.html”</li>
 </ul></li>
-<li>Push deine Veränderungen auf zurück auf GitHub. Was sagt die Fehlermeldung? Was könnte dies bedeuten und wie könnte dies behoben werden?</li>
+<li>Push deine Veränderungen auf zurück auf GitHub. Was sagt die
+Fehlermeldung? Was könnte dies bedeuten und wie könnte dies behoben
+werden?</li>
 </ol>
-<h2 id="übung-3---fork-ein-öffentliches-git-repository">Übung 3 - Fork ein öffentliches Git Repository</h2>
-<p>In Übung 1 hast du gelernt wie man jemanden als Collaborator zu einem Git Repository auf GitHub hinzufügt. In Übung 2 hast du gesehen, was passiert wenn du ein öffentliches GitHub Respository klonst aber selbst kein Collaborator bist. Diese Übung soll dir nun zeigen, wie du mit einem öffentlichen Repository selsbtständig weiterarbeiten kannst und deine Veränderung zurück auf GitHub pushen kannst.</p>
+<h2 id="übung-3---fork-ein-öffentliches-git-repository">Übung 3 - Fork
+ein öffentliches Git Repository</h2>
+<p>In Übung 1 hast du gelernt wie man jemanden als Collaborator zu einem
+Git Repository auf GitHub hinzufügt. In Übung 2 hast du gesehen, was
+passiert wenn du ein öffentliches GitHub Respository klonst aber selbst
+kein Collaborator bist. Diese Übung soll dir nun zeigen, wie du mit
+einem öffentlichen Repository selsbtständig weiterarbeiten kannst und
+deine Veränderung zurück auf GitHub pushen kannst.</p>
 <ol type="1">
-<li>Öffne das Repository auf GitHub: <a href="https://github.com/rstatsZH/demo-02-vektoren" class="uri">https://github.com/rstatsZH/demo-02-vektoren</a> und klicke auf den “Fork” Button. Ein neues Fenster öffnet sich.</li>
+<li>Öffne das Repository auf GitHub: <a
+href="https://github.com/rstatsZH/demo-02-vektoren"
+class="uri">https://github.com/rstatsZH/demo-02-vektoren</a> und klicke
+auf den “Fork” Button. Ein neues Fenster öffnet sich.</li>
 </ol>
 <div class="layout-chunk" data-layout="l-body">
 <p><img src="img/github-to-project/github-to-project.033.png" width="960" /></p>
@@ -2128,13 +2281,16 @@ Hausaufgaben
 <p><img src="img/github-to-project/github-to-project.034.png" width="960" /></p>
 </div>
 <ol start="3" type="1">
-<li>Schau dir den Namen des Repository genau an. Was könnte dies bedeuten?</li>
+<li>Schau dir den Namen des Repository genau an. Was könnte dies
+bedeuten?</li>
 </ol>
 <div class="layout-chunk" data-layout="l-body">
 <p><img src="img/github-to-project/github-to-project.035.png" width="960" /></p>
 </div>
 <ol start="4" type="1">
-<li>Nutze die dir bekannten Schritte um dieses Repository (DEINNAME/demo-02-vektoren) in die Arbeitsumgebung für den Kurs (RStudio Cloud Workspace rstatsZH-K00X) zu klonen<br />
+<li>Nutze die dir bekannten Schritte um dieses Repository
+(DEINNAME/demo-02-vektoren) in die Arbeitsumgebung für den Kurs (RStudio
+Cloud Workspace rstatsZH-K00X) zu klonen<br />
 </li>
 <li>Öffne die die R Markdown Datei “demo-02-solutions.Rmd”</li>
 <li>Stricke die R Markdown Datei “demo-02-solutions.Rmd”</li>
@@ -2145,9 +2301,17 @@ Hausaufgaben
 </ul></li>
 <li>Push deine Veränderungen auf zurück auf GitHub.</li>
 </ol>
-<h1 id="grosses-danke-schön-und-gratulation">Grosses “Danke Schön” und Gratulation!</h1>
-<p>Du hast soeben den Grundstein für ein Verständnis über kollaboratives Arbeiten mit Git und GitHub gelegt. Danke, dass du die mehr als 50 Schritte durchgegangen bist! Es ist weiterhin völlig normal wenn sich das was dort im Hintergund passiert fremd und ungeheuerlich anfühlt. Erst wenn diese Schritte dutzende Male durchgeführt wurden und effektiv mit Anderen an Projekten gearbeitet wird, bildet sich ein Verständnis für die Prozesse die dort im Hintergrund laufen.</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
+<h1 id="grosses-danke-schön-und-gratulation">Grosses “Danke Schön” und
+Gratulation!</h1>
+<p>Du hast soeben den Grundstein für ein Verständnis über kollaboratives
+Arbeiten mit Git und GitHub gelegt. Danke, dass du die mehr als 50
+Schritte durchgegangen bist! Es ist weiterhin völlig normal wenn sich
+das was dort im Hintergund passiert fremd und ungeheuerlich anfühlt.
+Erst wenn diese Schritte dutzende Male durchgeführt wurden und effektiv
+mit Anderen an Projekten gearbeitet wird, bildet sich ein Verständnis
+für die Prozesse die dort im Hintergrund laufen.</p>
+<div class="sourceCode" id="cb1"><pre
+class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
 <!--radix_placeholder_article_footer-->
 <!--/radix_placeholder_article_footer-->
 </div>

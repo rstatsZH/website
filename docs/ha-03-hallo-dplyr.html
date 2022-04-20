@@ -56,7 +56,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 }
 code span.al { color: #ad0000; } /* Alert */
 code span.an { color: #5e5e5e; } /* Annotation */
-code span.at { color: #20794d; } /* Attribute */
+code span.at { } /* Attribute */
 code span.bn { color: #ad0000; } /* BaseN */
 code span.bu { } /* BuiltIn */
 code span.cf { color: #007ba5; } /* ControlFlow */
@@ -77,13 +77,14 @@ code span.kw { color: #007ba5; } /* Keyword */
 code span.op { color: #5e5e5e; } /* Operator */
 code span.ot { color: #007ba5; } /* Other */
 code span.pp { color: #ad0000; } /* Preprocessor */
-code span.sc { color: #20794d; } /* SpecialChar */
+code span.sc { color: #5e5e5e; } /* SpecialChar */
 code span.ss { color: #20794d; } /* SpecialString */
 code span.st { color: #20794d; } /* String */
 code span.va { color: #111111; } /* Variable */
 code span.vs { color: #20794d; } /* VerbatimString */
 code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 </style>
+
 
   <!--radix_placeholder_meta_tags-->
   <title>rstatsZH - Data Science mit R: Hausaufgabe 03 - Hallo dyplr</title>
@@ -453,7 +454,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 
   </style>
 
-  <script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+  <script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
   <link href="site_libs/font-awesome-5.1.0/css/all.css" rel="stylesheet"/>
   <link href="site_libs/font-awesome-5.1.0/css/v4-shims.css" rel="stylesheet"/>
   <script src="site_libs/headroom-0.9.4/headroom.min.js"></script>
@@ -1601,7 +1602,10 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 
       // hoverable references
       $('span.citation[data-cites]').each(function() {
-        var refHtml = $('#ref-' + $(this).attr('data-cites')).html();
+        var refs = $(this).attr('data-cites').split(" ");
+        var refHtml = refs.map(function(ref) {
+          return "<p>" + $('#ref-' + ref).html() + "</p>";
+        }).join("\n");
         window.tippy(this, {
           allowHTML: true,
           content: refHtml,
@@ -1772,7 +1776,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   </script>
 
   <!--/radix_placeholder_distill-->
-  <script src="site_libs/header-attrs-2.9/header-attrs.js"></script>
+  <script src="site_libs/header-attrs-2.11/header-attrs.js"></script>
   <script src="site_libs/popper-2.6.0/popper.min.js"></script>
   <link href="site_libs/tippy-6.2.7/tippy.css" rel="stylesheet" />
   <link href="site_libs/tippy-6.2.7/tippy-light-border.css" rel="stylesheet" />
@@ -1853,27 +1857,52 @@ Hausaufgaben
 <ul>
 <li><a href="#aufwärmen-1">Aufwärmen 1</a></li>
 <li><a href="#übung-1---dplyrfilter">Übung 1 - dplyr::filter()</a></li>
-<li><a href="#übung-2---dplyrarrange---noch-nicht-im-kurs-behandelt">Übung 2 - dplyr::arrange() - Noch nicht im Kurs behandelt</a></li>
-<li><a href="#übung-3---dplyrselect---noch-nicht-im-kurs-behandelt">Übung 3 - dplyr::select() - Noch nicht im Kurs behandelt</a></li>
+<li><a
+href="#übung-2---dplyrarrange---noch-nicht-im-kurs-behandelt">Übung 2 -
+dplyr::arrange() - Noch nicht im Kurs behandelt</a></li>
+<li><a
+href="#übung-3---dplyrselect---noch-nicht-im-kurs-behandelt">Übung 3 -
+dplyr::select() - Noch nicht im Kurs behandelt</a></li>
 </ul></li>
 </ul>
 </nav>
 </div>
 <script async defer data-domain="rstatszh.github.io/website" src="https://plausible.io/js/plausible.js"></script>
-<p>Visualisierung ist ein wichtiges Werkzeug um Daten zu erkunden. In den seltensten Fällen kommen Daten jedoch in genau der Form welche benötigt wird um hilfreiche Visualisierungen zu erstellen. Es werden oftmals neue Variablen erstellt, Zusammenfassungen erzeugt, oder möglicherweise werden Variablen umbenannt und umgeordnet, damit effizient damit gearbeitet werden kann. Das R Package <code>{dplyr}</code> aus der Sammlung der <code>{tidyverse}</code> Packages ist genau für diese Arbeit gemacht wurden, welche auch oft als Data Tansformation, Data Manipulation, oder auch Data Wrangling betitelt wird.</p>
+<p>Visualisierung ist ein wichtiges Werkzeug um Daten zu erkunden. In
+den seltensten Fällen kommen Daten jedoch in genau der Form welche
+benötigt wird um hilfreiche Visualisierungen zu erstellen. Es werden
+oftmals neue Variablen erstellt, Zusammenfassungen erzeugt, oder
+möglicherweise werden Variablen umbenannt und umgeordnet, damit
+effizient damit gearbeitet werden kann. Das R Package
+<code>{dplyr}</code> aus der Sammlung der <code>{tidyverse}</code>
+Packages ist genau für diese Arbeit gemacht wurden, welche auch oft als
+Data Tansformation, Data Manipulation, oder auch Data Wrangling betitelt
+wird.</p>
 <h1 id="ziele">Ziele</h1>
 <p>Diese Hausaufgabe hat die folgenden Ziele:</p>
 <ul>
-<li>Erfahrungen mit den Hauptfunktionen des <code>{dplyr}</code> Package sammeln</li>
-<li>Übungen aus dem Buch <a href="https://r4ds.had.co.nz/">R for Data Science</a> lösen</li>
+<li>Erfahrungen mit den Hauptfunktionen des <code>{dplyr}</code> Package
+sammeln</li>
+<li>Übungen aus dem Buch <a href="https://r4ds.had.co.nz/">R for Data
+Science</a> lösen</li>
 <li>Bei Fragen unseren Slack Channel für den Kurs nutzen</li>
 </ul>
 <h1 id="erste-schritte">Erste Schritte</h1>
-<p>Öffne deine Email Inbox und suche nach der Email mit dem Link für das GitHub Repo zu dieser Hausaufgabe (ha-03-hallo-dplyr). Alternativ kannst du GitHub öffnen und in unserer GitHub Organisation nach dem Repo mit deinem Namen suchen.</p>
-<p>Folge den Schritten aus Hausaufgabe 1 oder den Folien der Woche 2 um das GitHub Repo in deine RStudio Cloud zu clonen.</p>
+<p>Öffne deine Email Inbox und suche nach der Email mit dem Link für das
+GitHub Repo zu dieser Hausaufgabe (ha-03-hallo-dplyr). Alternativ kannst
+du GitHub öffnen und in unserer GitHub Organisation nach dem Repo mit
+deinem Namen suchen.</p>
+<p>Folge den Schritten aus Hausaufgabe 1 oder den Folien der Woche 2 um
+das GitHub Repo in deine RStudio Cloud zu clonen.</p>
 <h1 id="packages">Packages</h1>
-<p>In dieser Hausaufgabe nutzen wir das <code>{dplyr}</code> Package und ein weiteres Daten Package names <code>{nycflights13}</code> um wesentliche Konzepte aus der letzten Lektionen zu üben. Das Package ist noch nicht installiert und ihr müsst dies in einem ersten Schritt selbst machen.</p>
-<p>❗ 1. <strong>In der R Konsole</strong>: Installiere das <code>{nycflights13}</code> R package mit der Funktion <code>install.packages("")</code></p>
+<p>In dieser Hausaufgabe nutzen wir das <code>{dplyr}</code> Package und
+ein weiteres Daten Package names <code>{nycflights13}</code> um
+wesentliche Konzepte aus der letzten Lektionen zu üben. Das Package ist
+noch nicht installiert und ihr müsst dies in einem ersten Schritt selbst
+machen.</p>
+<p>❗ 1. <strong>In der R Konsole</strong>: Installiere das
+<code>{nycflights13}</code> R package mit der Funktion
+<code>install.packages("")</code></p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://dplyr.tidyverse.org'>dplyr</a></span><span class='op'>)</span>
@@ -1882,11 +1911,19 @@ Hausaufgaben
 </div>
 </div>
 <h1 id="data">Data</h1>
-<p>Wir nutzen den Dataframe <code>flights</code> aus dem <code>{nycflights13}</code> R Package. Die Rohdaten für diesen Datensatz stammen aus dem <a href="https://www.transtats.bts.gov/">United States Department of Transportation - Bureau of Transportation Statistics</a> und wurden für das Buch R for Data Science aufbereitet und als Daten Package bereitgestellt.</p>
-<p>Der Datensatz enthält alle 336.776 Flüge, die in 2013 von New York City abgegegangen sind. Der Datensatz beinhaltet 19 Variablen, welche im Detail der Hilfedatei beschrieben sind und mit <code>?flights</code> aufgerufen werden können.</p>
+<p>Wir nutzen den Dataframe <code>flights</code> aus dem
+<code>{nycflights13}</code> R Package. Die Rohdaten für diesen Datensatz
+stammen aus dem <a href="https://www.transtats.bts.gov/">United States
+Department of Transportation - Bureau of Transportation Statistics</a>
+und wurden für das Buch R for Data Science aufbereitet und als Daten
+Package bereitgestellt.</p>
+<p>Der Datensatz enthält alle 336.776 Flüge, die in 2013 von New York
+City abgegegangen sind. Der Datensatz beinhaltet 19 Variablen, welche im
+Detail der Hilfedatei beschrieben sind und mit <code>?flights</code>
+aufgerufen werden können.</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://pillar.r-lib.org/reference/glimpse.html'>glimpse</a></span><span class='op'>(</span><span class='va'>flights</span><span class='op'>)</span>
+<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://dplyr.tidyverse.org/reference/glimpse.html'>glimpse</a></span><span class='op'>(</span><span class='va'>flights</span><span class='op'>)</span>
 </code></pre>
 </div>
 <pre><code>Rows: 336,776
@@ -1911,14 +1948,24 @@ $ hour           &lt;dbl&gt; 5, 5, 5, 5, 6, 5, 6, 6, 6, 6, 6, 6, 6, 6, 6, …
 $ minute         &lt;dbl&gt; 15, 29, 40, 45, 0, 58, 0, 0, 0, 0, 0, 0, 0, 0…
 $ time_hour      &lt;dttm&gt; 2013-01-01 05:00:00, 2013-01-01 05:00:00, 20…</code></pre>
 </div>
-<p>Das Daten Package beinhaltet noch vier weitere nützliche Datensätze:</p>
+<p>Das Daten Package beinhaltet noch vier weitere nützliche
+Datensätze:</p>
 <ul>
-<li><em><code>airlines</code></em>: Beinhaltet den Namen der Fluggesellschaft für die Variable <code>carrier</code> aus dem <code>flights</code> Datensatz</li>
-<li><em><code>airports</code></em>: Beinhaltet Metadaten zu den einzelnen Flughäfen in der Variable <code>dest</code> aus dem <code>flights</code> Datensatz</li>
-<li><em><code>planes</code></em>: Beinhaltet Metadaten zu den einzelnen Flugzeugen in der Variable <code>tailnum</code> aus dem <code>flights</code> Datensatz</li>
-<li><em><code>weather</code></em>: Beinhaltet stündliche meterologische Daten für die Flughäfen LGA (La Guardia), JFK (John F Kennedy Intl) und EWR (Newark Liberty Intl).</li>
+<li><em><code>airlines</code></em>: Beinhaltet den Namen der
+Fluggesellschaft für die Variable <code>carrier</code> aus dem
+<code>flights</code> Datensatz</li>
+<li><em><code>airports</code></em>: Beinhaltet Metadaten zu den
+einzelnen Flughäfen in der Variable <code>dest</code> aus dem
+<code>flights</code> Datensatz</li>
+<li><em><code>planes</code></em>: Beinhaltet Metadaten zu den einzelnen
+Flugzeugen in der Variable <code>tailnum</code> aus dem
+<code>flights</code> Datensatz</li>
+<li><em><code>weather</code></em>: Beinhaltet stündliche meterologische
+Daten für die Flughäfen LGA (La Guardia), JFK (John F Kennedy Intl) und
+EWR (Newark Liberty Intl).</li>
 </ul>
-<p>Du kannst mehr über die Datensätze in der Hilfedatei lernen oder diese mit der <code>View()</code> Funktion öffnen und erkunden.</p>
+<p>Du kannst mehr über die Datensätze in der Hilfedatei lernen oder
+diese mit der <code>View()</code> Funktion öffnen und erkunden.</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
 <pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://rdrr.io/r/utils/View.html'>View</a></span><span class='op'>(</span><span class='va'>airlines</span><span class='op'>)</span>
@@ -1932,10 +1979,15 @@ $ time_hour      &lt;dttm&gt; 2013-01-01 05:00:00, 2013-01-01 05:00:00, 20…</c
 <h2 id="aufwärmen-1">Aufwärmen 1</h2>
 <ol type="1">
 <li>Öffne die R Markdown Datei für die Übung</li>
-<li>Aktualisiere den YAML Header in dem du deinen Namen und das Datum hinzufügst</li>
-<li>Passe das Aussehen des Dokuments über die “Output Options” an (siehe Screenshots)</li>
+<li>Aktualisiere den YAML Header in dem du deinen Namen und das Datum
+hinzufügst</li>
+<li>Passe das Aussehen des Dokuments über die “Output Options” an (siehe
+Screenshots)</li>
 </ol>
-<p>🧶 ✅ ⬆️ <em>Knit, commit und push deine Änderungen auf GitHub mit einer Commit-Nachricht deiner Wahl. Achte darauf, alle geänderten Dateien zu committen und zu pushen, damit dein Git-Fenster danach aufgeräumt ist.</em></p>
+<p>🧶 ✅ ⬆️ <em>Knit, commit und push deine Änderungen auf GitHub mit
+einer Commit-Nachricht deiner Wahl. Achte darauf, alle geänderten
+Dateien zu committen und zu pushen, damit dein Git-Fenster danach
+aufgeräumt ist.</em></p>
 <div class="layout-chunk" data-layout="l-body">
 <p><img src="img/doc-opts/doc-opts.001.png" width="960" /></p>
 </div>
@@ -1944,24 +1996,66 @@ $ time_hour      &lt;dttm&gt; 2013-01-01 05:00:00, 2013-01-01 05:00:00, 20…</c
 </div>
 <h2 id="übung-1---dplyrfilter">Übung 1 - dplyr::filter()</h2>
 <ol type="1">
-<li><p>Lese das <a href="https://r4ds.had.co.nz/transform.html#introduction-2">Kapitel 5.1 - Introduction</a> aus dem Buch R for Data Science, mache dir Notizen und schreibe dir Fragen auf wenn du etwas nicht nachvollziehen kannst. Stelle deine Fragen in unserem Slack Channel für den Kurs.</p></li>
-<li><p>Lese das <a href="https://r4ds.had.co.nz/transform.html#filter-rows-with-filter">Kapitel 5.2 - Filter rows with <code>filter()</code></a> aus dem Buch R for Data Science, mache dir Notizen und schreibe dir Fragen auf wenn du etwas nicht nachvollziehen kannst. Stelle deine Fragen in unserem Slack Channel für den Kurs.</p></li>
-<li><p>Arbeite durch die Übungen aus <a href="https://r4ds.had.co.nz/transform.html#exercises-8">Kapitel 5.2.4 - Exercises</a>. Stelle Fragen in unserem Slack Channel für den Kurs.</p></li>
+<li><p>Lese das <a
+href="https://r4ds.had.co.nz/transform.html#introduction-2">Kapitel 5.1
+- Introduction</a> aus dem Buch R for Data Science, mache dir Notizen
+und schreibe dir Fragen auf wenn du etwas nicht nachvollziehen kannst.
+Stelle deine Fragen in unserem Slack Channel für den Kurs.</p></li>
+<li><p>Lese das <a
+href="https://r4ds.had.co.nz/transform.html#filter-rows-with-filter">Kapitel
+5.2 - Filter rows with <code>filter()</code></a> aus dem Buch R for Data
+Science, mache dir Notizen und schreibe dir Fragen auf wenn du etwas
+nicht nachvollziehen kannst. Stelle deine Fragen in unserem Slack
+Channel für den Kurs.</p></li>
+<li><p>Arbeite durch die Übungen aus <a
+href="https://r4ds.had.co.nz/transform.html#exercises-8">Kapitel 5.2.4 -
+Exercises</a>. Stelle Fragen in unserem Slack Channel für den
+Kurs.</p></li>
 </ol>
-<p>🧶 ✅ ⬆️ <em>Knit, commit und push deine Änderungen auf GitHub mit einer Commit-Nachricht deiner Wahl. Achte darauf, alle geänderten Dateien zu committen und zu pushen, damit dein Git-Fenster danach aufgeräumt ist.</em></p>
-<h2 id="übung-2---dplyrarrange---noch-nicht-im-kurs-behandelt">Übung 2 - dplyr::arrange() - Noch nicht im Kurs behandelt</h2>
+<p>🧶 ✅ ⬆️ <em>Knit, commit und push deine Änderungen auf GitHub mit
+einer Commit-Nachricht deiner Wahl. Achte darauf, alle geänderten
+Dateien zu committen und zu pushen, damit dein Git-Fenster danach
+aufgeräumt ist.</em></p>
+<h2 id="übung-2---dplyrarrange---noch-nicht-im-kurs-behandelt">Übung 2 -
+dplyr::arrange() - Noch nicht im Kurs behandelt</h2>
 <ol type="1">
-<li><p>Lese das <a href="https://r4ds.had.co.nz/transform.html#arrange-rows-with-arrange">Kapitel 5.3 - Arrange rows with <code>arrange()</code></a> aus dem Buch R for Data Science, mache dir Notizen und schreibe dir Fragen auf wenn du etwas nicht nachvollziehen kannst. Stelle deine Fragen in unserem Slack Channel für den Kurs.</p></li>
-<li><p>Arbeite durch die Übungen aus <a href="https://r4ds.had.co.nz/transform.html#exercises-9">Kapitel 5.3.1 - Exercises</a>. Stelle Fragen in unserem Slack Channel für den Kurs.</p></li>
+<li><p>Lese das <a
+href="https://r4ds.had.co.nz/transform.html#arrange-rows-with-arrange">Kapitel
+5.3 - Arrange rows with <code>arrange()</code></a> aus dem Buch R for
+Data Science, mache dir Notizen und schreibe dir Fragen auf wenn du
+etwas nicht nachvollziehen kannst. Stelle deine Fragen in unserem Slack
+Channel für den Kurs.</p></li>
+<li><p>Arbeite durch die Übungen aus <a
+href="https://r4ds.had.co.nz/transform.html#exercises-9">Kapitel 5.3.1 -
+Exercises</a>. Stelle Fragen in unserem Slack Channel für den
+Kurs.</p></li>
 </ol>
-<p>🧶 ✅ ⬆️ <em>Knit, commit und push deine Änderungen auf GitHub mit einer Commit-Nachricht deiner Wahl. Achte darauf, alle geänderten Dateien zu committen und zu pushen, damit dein Git-Fenster danach aufgeräumt ist.</em></p>
-<h2 id="übung-3---dplyrselect---noch-nicht-im-kurs-behandelt">Übung 3 - dplyr::select() - Noch nicht im Kurs behandelt</h2>
+<p>🧶 ✅ ⬆️ <em>Knit, commit und push deine Änderungen auf GitHub mit
+einer Commit-Nachricht deiner Wahl. Achte darauf, alle geänderten
+Dateien zu committen und zu pushen, damit dein Git-Fenster danach
+aufgeräumt ist.</em></p>
+<h2 id="übung-3---dplyrselect---noch-nicht-im-kurs-behandelt">Übung 3 -
+dplyr::select() - Noch nicht im Kurs behandelt</h2>
 <ol type="1">
-<li><p>Lese das <a href="https://r4ds.had.co.nz/transform.html#select">Kapitel 5.4 - Select columns with <code>select()</code></a> aus dem Buch R for Data Science, mache dir Notizen und schreibe dir Fragen auf wenn du etwas nicht nachvollziehen kannst. Stelle deine Fragen in unserem Slack Channel für den Kurs. <strong>Es werden dir sogenannte “helper functions” vorgestellt, welche wir im Kurs noch nicht behandelt haben. Folgt dem Text und versucht zu verstehen was diese bewirken.</strong></p></li>
-<li><p>Arbeite durch die Übungen aus <a href="https://r4ds.had.co.nz/transform.html#exercises-10">Kapitel 5.4.1 - Exercises</a>. Stelle Fragen in unserem Slack Channel für den Kurs.</p></li>
+<li><p>Lese das <a
+href="https://r4ds.had.co.nz/transform.html#select">Kapitel 5.4 - Select
+columns with <code>select()</code></a> aus dem Buch R for Data Science,
+mache dir Notizen und schreibe dir Fragen auf wenn du etwas nicht
+nachvollziehen kannst. Stelle deine Fragen in unserem Slack Channel für
+den Kurs. <strong>Es werden dir sogenannte “helper functions”
+vorgestellt, welche wir im Kurs noch nicht behandelt haben. Folgt dem
+Text und versucht zu verstehen was diese bewirken.</strong></p></li>
+<li><p>Arbeite durch die Übungen aus <a
+href="https://r4ds.had.co.nz/transform.html#exercises-10">Kapitel 5.4.1
+- Exercises</a>. Stelle Fragen in unserem Slack Channel für den
+Kurs.</p></li>
 </ol>
-<p>🧶 ✅ ⬆️ <em>Knit, commit und push deine Änderungen auf GitHub mit einer Commit-Nachricht deiner Wahl. Achte darauf, alle geänderten Dateien zu committen und zu pushen, damit dein Git-Fenster danach aufgeräumt ist.</em></p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
+<p>🧶 ✅ ⬆️ <em>Knit, commit und push deine Änderungen auf GitHub mit
+einer Commit-Nachricht deiner Wahl. Achte darauf, alle geänderten
+Dateien zu committen und zu pushen, damit dein Git-Fenster danach
+aufgeräumt ist.</em></p>
+<div class="sourceCode" id="cb2"><pre
+class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
 <!--radix_placeholder_article_footer-->
 <!--/radix_placeholder_article_footer-->
 </div>

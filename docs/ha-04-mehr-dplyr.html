@@ -50,16 +50,17 @@ pre.numberSource code > span > a:first-child::before
   }
 pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
 div.sourceCode
-  {   }
+  { color: #00769e; background-color: #f1f3f5; }
 @media screen {
 pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
+code span { color: #00769e; } /* Normal */
 code span.al { color: #ad0000; } /* Alert */
 code span.an { color: #5e5e5e; } /* Annotation */
-code span.at { } /* Attribute */
+code span.at { color: #657422; } /* Attribute */
 code span.bn { color: #ad0000; } /* BaseN */
 code span.bu { } /* BuiltIn */
-code span.cf { color: #007ba5; } /* ControlFlow */
+code span.cf { color: #00769e; } /* ControlFlow */
 code span.ch { color: #20794d; } /* Char */
 code span.cn { color: #8f5902; } /* Constant */
 code span.co { color: #5e5e5e; } /* Comment */
@@ -73,9 +74,9 @@ code span.fl { color: #ad0000; } /* Float */
 code span.fu { color: #4758ab; } /* Function */
 code span.im { } /* Import */
 code span.in { color: #5e5e5e; } /* Information */
-code span.kw { color: #007ba5; } /* Keyword */
+code span.kw { color: #00769e; } /* Keyword */
 code span.op { color: #5e5e5e; } /* Operator */
-code span.ot { color: #007ba5; } /* Other */
+code span.ot { color: #00769e; } /* Other */
 code span.pp { color: #ad0000; } /* Preprocessor */
 code span.sc { color: #5e5e5e; } /* SpecialChar */
 code span.ss { color: #20794d; } /* SpecialString */
@@ -767,10 +768,6 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
     position: relative;
     margin-bottom: 2.5em;
     margin-top: 1.5em;
-  }
-
-  .figure img {
-    width: 100%;
   }
 
   .figure .caption {
@@ -1602,6 +1599,12 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 
       // hoverable references
       $('span.citation[data-cites]').each(function() {
+        if ($(this).children()[0].nodeName == "D-FOOTNOTE") {
+          var fn = $(this).children()[0]
+          $(this).html(fn.shadowRoot.querySelector("sup"))
+          $(this).id = fn.id
+          fn.remove()
+        }
         var refs = $(this).attr('data-cites').split(" ");
         var refHtml = refs.map(function(ref) {
           return "<p>" + $('#ref-' + ref).html() + "</p>";
@@ -1616,6 +1619,31 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
           placement: 'bottom-start'
         });
       });
+
+      // fix footnotes in tables (#411)
+      // replacing broken distill.pub feature
+      $('table d-footnote').each(function() {
+        // we replace internal showAtNode methode which is triggered when hovering a footnote
+        this.hoverBox.showAtNode = function(node) {
+          // ported from https://github.com/distillpub/template/pull/105/files
+          calcOffset = function(elem) {
+              let x = elem.offsetLeft;
+              let y = elem.offsetTop;
+              // Traverse upwards until an `absolute` element is found or `elem`
+              // becomes null.
+              while (elem = elem.offsetParent && elem.style.position != 'absolute') {
+                  x += elem.offsetLeft;
+                  y += elem.offsetTop;
+              }
+
+              return { left: x, top: y };
+          }
+          // https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/offsetTop
+          const bbox = node.getBoundingClientRect();
+          const offset = calcOffset(node);
+          this.show([offset.left + bbox.width, offset.top + bbox.height]);
+        }
+      })
 
       // clear polling timer
       clearInterval(tid);
@@ -1715,6 +1743,8 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
     // mark non-body figures created by knitr chunks as 100% width
     $('.layout-chunk').each(function(i, val) {
       var figures = $(this).find('img, .html-widget');
+      // ignore leaflet img layers (#106)
+      figures = figures.filter(':not(img[class*="leaflet"])')
       if ($(this).attr('data-layout') !== "l-body") {
         figures.css('width', '100%');
       } else {
@@ -1737,7 +1767,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
     // get rid of index.html references in header
     if (window.location.protocol !== "file:") {
       $('.distill-site-header a[href]').each(function(i,val) {
-        $(this).attr('href', $(this).attr('href').replace("index.html", "./"));
+        $(this).attr('href', $(this).attr('href').replace(/^index[.]html/, "./"));
       });
     }
 
@@ -1776,7 +1806,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   </script>
 
   <!--/radix_placeholder_distill-->
-  <script src="site_libs/header-attrs-2.11/header-attrs.js"></script>
+  <script src="site_libs/header-attrs-2.14/header-attrs.js"></script>
   <script src="site_libs/popper-2.6.0/popper.min.js"></script>
   <link href="site_libs/tippy-6.2.7/tippy.css" rel="stylesheet" />
   <link href="site_libs/tippy-6.2.7/tippy-light-border.css" rel="stylesheet" />
@@ -1849,29 +1879,37 @@ Hausaufgaben
 <nav class="l-text toc figcaption" id="TOC">
 <h3>Contents</h3>
 <ul>
-<li><a href="#ziele">Ziele</a></li>
-<li><a href="#erste-schritte">Erste Schritte</a></li>
-<li><a href="#packages">Packages</a></li>
-<li><a href="#data">Data</a>
+<li><a href="#ziele" id="toc-ziele">Ziele</a></li>
+<li><a href="#erste-schritte" id="toc-erste-schritte">Erste
+Schritte</a></li>
+<li><a href="#packages" id="toc-packages">Packages</a></li>
+<li><a href="#data" id="toc-data">Data</a>
 <ul>
-<li><a href="#übersicht-über-alle-lernenden-im-kanton-zürich">Übersicht
-über alle Lernenden im Kanton Zürich</a></li>
+<li><a href="#übersicht-über-alle-lernenden-im-kanton-zürich"
+id="toc-übersicht-über-alle-lernenden-im-kanton-zürich">Übersicht über
+alle Lernenden im Kanton Zürich</a></li>
 </ul></li>
-<li><a href="#aufwärmen">Aufwärmen</a></li>
-<li><a href="#übungen---lernende-im-kanton-zürich">Übungen - Lernende im
+<li><a href="#aufwärmen" id="toc-aufwärmen">Aufwärmen</a></li>
+<li><a href="#übungen---lernende-im-kanton-zürich"
+id="toc-übungen---lernende-im-kanton-zürich">Übungen - Lernende im
 Kanton Zürich</a>
 <ul>
-<li><a href="#übung-1---daten-importieren">Übung 1 - Daten
+<li><a href="#übung-1---daten-importieren"
+id="toc-übung-1---daten-importieren">Übung 1 - Daten
 Importieren</a></li>
-<li><a href="#übung-2---daten-beschreiben">Übung 2 - Daten
+<li><a href="#übung-2---daten-beschreiben"
+id="toc-übung-2---daten-beschreiben">Übung 2 - Daten
 beschreiben</a></li>
-<li><a href="#übung-3---daten-visualisieren">Übung 3 - Daten
+<li><a href="#übung-3---daten-visualisieren"
+id="toc-übung-3---daten-visualisieren">Übung 3 - Daten
 visualisieren</a></li>
-<li><a href="#übung-4---daten-eingrenzen">Übung 4 - Daten
-eingrenzen</a></li>
-<li><a href="#übung-5---daten-zusammenfassen">Übung 5 - Daten
+<li><a href="#übung-4---daten-eingrenzen"
+id="toc-übung-4---daten-eingrenzen">Übung 4 - Daten eingrenzen</a></li>
+<li><a href="#übung-5---daten-zusammenfassen"
+id="toc-übung-5---daten-zusammenfassen">Übung 5 - Daten
 zusammenfassen</a></li>
-<li><a href="#übung-6---kurzanalyse">Übung 6 - Kurzanalyse</a></li>
+<li><a href="#übung-6---kurzanalyse"
+id="toc-übung-6---kurzanalyse">Übung 6 - Kurzanalyse</a></li>
 </ul></li>
 </ul>
 </nav>
@@ -1903,11 +1941,10 @@ vereinzelt Funktionen aus R Packages, welche du noch nicht kennegelernt
 hast.</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://dplyr.tidyverse.org'>dplyr</a></span><span class='op'>)</span>
-<span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://ggplot2.tidyverse.org'>ggplot2</a></span><span class='op'>)</span>
-<span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://readr.tidyverse.org'>readr</a></span><span class='op'>)</span>
-<span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://tidyr.tidyverse.org'>tidyr</a></span><span class='op'>)</span>  <span class='co'># Neu in dieser Hausaufgabe</span>
-</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r"><span><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://dplyr.tidyverse.org'>dplyr</a></span><span class='op'>)</span></span>
+<span><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://ggplot2.tidyverse.org'>ggplot2</a></span><span class='op'>)</span></span>
+<span><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://readr.tidyverse.org'>readr</a></span><span class='op'>)</span></span>
+<span><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://tidyr.tidyverse.org'>tidyr</a></span><span class='op'>)</span>  <span class='co'># Neu in dieser Hausaufgabe</span></span></code></pre>
 </div>
 </div>
 <h1 id="data">Data</h1>
@@ -1943,23 +1980,21 @@ eingeschränkt und die NAs entfernt. Wir werden in allen folgenden
 arbeiten.</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Der Link zu den Daten wird hier als Objekt gespeichert </span>
-<span class='co'># und taucht oben rechts in deinem  "Environment" auf</span>
-<span class='va'>link</span> <span class='op'>&lt;-</span> <span class='st'>"https://www.web.statistik.zh.ch/ogd/data/bista/ZH_Uebersicht_alle_Lernende.csv"</span>
-
-<span class='co'># Hier wird nun das Objekt "link" genutzt um die CSV zu lesen</span>
-<span class='va'>lernende</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://readr.tidyverse.org/reference/read_delim.html'>read_csv</a></span><span class='op'>(</span>file <span class='op'>=</span> <span class='va'>link</span>, 
-                     locale <span class='op'>=</span> <span class='fu'><a href='https://readr.tidyverse.org/reference/locale.html'>locale</a></span><span class='op'>(</span>encoding <span class='op'>=</span> <span class='st'>"ISO-8859-1"</span><span class='op'>)</span><span class='op'>)</span>
-</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r"><span><span class='co'># Der Link zu den Daten wird hier als Objekt gespeichert </span></span>
+<span><span class='co'># und taucht oben rechts in deinem  "Environment" auf</span></span>
+<span><span class='va'>link</span> <span class='op'>&lt;-</span> <span class='st'>"https://www.web.statistik.zh.ch/ogd/data/bista/ZH_Uebersicht_alle_Lernende.csv"</span></span>
+<span></span>
+<span><span class='co'># Hier wird nun das Objekt "link" genutzt um die CSV zu lesen</span></span>
+<span><span class='va'>lernende</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://readr.tidyverse.org/reference/read_delim.html'>read_csv</a></span><span class='op'>(</span>file <span class='op'>=</span> <span class='va'>link</span>, </span>
+<span>                     locale <span class='op'>=</span> <span class='fu'><a href='https://readr.tidyverse.org/reference/locale.html'>locale</a></span><span class='op'>(</span>encoding <span class='op'>=</span> <span class='st'>"ISO-8859-1"</span><span class='op'>)</span><span class='op'>)</span></span></code></pre>
 </div>
 </div>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Ich habe die Daten hier auf das Jahr 2019 gefilterert und NAs entfernt</span>
-<span class='va'>lernende2019</span> <span class='op'>&lt;-</span> <span class='va'>lernende</span> <span class='op'>%&gt;%</span> 
-   <span class='fu'><a href='https://dplyr.tidyverse.org/reference/filter.html'>filter</a></span><span class='op'>(</span><span class='va'>Jahr</span> <span class='op'>==</span> <span class='fl'>2019</span><span class='op'>)</span> <span class='op'>%&gt;%</span> 
-   <span class='fu'><a href='https://tidyr.tidyverse.org/reference/drop_na.html'>drop_na</a></span><span class='op'>(</span><span class='op'>)</span> <span class='co'># Die letzte Zeile 1960 weisst eine Zeile mit NAs auf</span>
-</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r"><span><span class='co'># Ich habe die Daten hier auf das Jahr 2019 gefilterert und NAs entfernt</span></span>
+<span><span class='va'>lernende2019</span> <span class='op'>&lt;-</span> <span class='va'>lernende</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span> </span>
+<span>   <span class='fu'><a href='https://dplyr.tidyverse.org/reference/filter.html'>filter</a></span><span class='op'>(</span><span class='va'>Jahr</span> <span class='op'>==</span> <span class='fl'>2019</span><span class='op'>)</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span> </span>
+<span>   <span class='fu'><a href='https://tidyr.tidyverse.org/reference/drop_na.html'>drop_na</a></span><span class='op'>(</span><span class='op'>)</span> <span class='co'># Die letzte Zeile 1960 weisst eine Zeile mit NAs auf</span></span></code></pre>
 </div>
 </div>
 <h2 id="übung-2---daten-beschreiben">Übung 2 - Daten beschreiben</h2>
@@ -2012,21 +2047,19 @@ Sequenz, welche eine Häufigkeitstabelle mit den Spalten
 <code>Schultyp</code> und <code>n</code> erstellt.</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Häufigkeitstabelle 1 - Zusammenfassen mit count()</span>
-<span class='va'>lernende2019</span> <span class='op'>%&gt;%</span> 
-   <span class='fu'><a href='https://dplyr.tidyverse.org/reference/count.html'>count</a></span><span class='op'>(</span><span class='va'>Schultyp</span><span class='op'>)</span>
-</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r"><span><span class='co'># Häufigkeitstabelle 1 - Zusammenfassen mit count()</span></span>
+<span><span class='va'>lernende2019</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span> </span>
+<span>   <span class='fu'><a href='https://dplyr.tidyverse.org/reference/count.html'>count</a></span><span class='op'>(</span><span class='va'>Schultyp</span><span class='op'>)</span></span></code></pre>
 </div>
 </div>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='co'># Häufigkeitstabelle 2 - Zusammfassen mit group_by %&gt;% summarise()</span>
-<span class='va'>lernende2019</span> <span class='op'>%&gt;%</span> 
-   <span class='fu'><a href='https://dplyr.tidyverse.org/reference/group_by.html'>group_by</a></span><span class='op'>(</span><span class='va'>Schultyp</span><span class='op'>)</span> <span class='op'>%&gt;%</span> 
-   <span class='fu'><a href='https://dplyr.tidyverse.org/reference/summarise.html'>summarise</a></span><span class='op'>(</span>
-      n <span class='op'>=</span> <span class='fu'><a href='https://dplyr.tidyverse.org/reference/context.html'>n</a></span><span class='op'>(</span><span class='op'>)</span>
-   <span class='op'>)</span>
-</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r"><span><span class='co'># Häufigkeitstabelle 2 - Zusammfassen mit group_by %&gt;% summarise()</span></span>
+<span><span class='va'>lernende2019</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span> </span>
+<span>   <span class='fu'><a href='https://dplyr.tidyverse.org/reference/group_by.html'>group_by</a></span><span class='op'>(</span><span class='va'>Schultyp</span><span class='op'>)</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span> </span>
+<span>   <span class='fu'><a href='https://dplyr.tidyverse.org/reference/summarise.html'>summarise</a></span><span class='op'>(</span></span>
+<span>      n <span class='op'>=</span> <span class='fu'><a href='https://dplyr.tidyverse.org/reference/context.html'>n</a></span><span class='op'>(</span><span class='op'>)</span></span>
+<span>   <span class='op'>)</span></span></code></pre>
 </div>
 </div>
 <p><strong>Versuche den Code so anzupassen dass du folgendes Ergebnis
@@ -2035,12 +2068,12 @@ erreichst:</strong></p>
 <pre><code># A tibble: 6 × 2
   Schultyp                    n
   &lt;chr&gt;                   &lt;dbl&gt;
-1 Berufsfachschule        45508
+1 Berufsfachschule        45532
 2 BrÃ¼ckenangebot          2073
-3 HÃ¶here Berufsbildung   19757
+3 HÃ¶here Berufsbildung   19780
 4 Heim- und Sonderschule   3021
 5 Mittelschule            20591
-6 Volksschule            161073</code></pre>
+6 Volksschule            161072</code></pre>
 </div>
 <h2 id="übung-6---kurzanalyse">Übung 6 - Kurzanalyse</h2>
 <p>Der Code für diese Aufgabe ist vorbereitet. Es geht hier darum die

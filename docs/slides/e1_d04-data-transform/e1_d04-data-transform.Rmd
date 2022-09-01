@@ -10,11 +10,11 @@ output:
     css: ["default", "assets/css/xaringan-themer.css", "assets/css/my-css-style.css"]
     seal: FALSE
     nature:
+        </div>
       slideNumberFormat: |
         <div class="progress-bar-container">
-          <div class="progress-bar" style="width: calc(%current% / %total% * 100%);">
           </div>
-        </div>
+          <div class="progress-bar" style="width: calc(%current% / %total% * 100%);">
       highlightStyle: solarized-light
       highlightLanguage: ["r", "css", "yaml"]
       highlightLines: true

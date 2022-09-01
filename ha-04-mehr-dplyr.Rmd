@@ -107,14 +107,14 @@ Ich habe hier einen Plot mit dem Dataframe `lernende2019` vorbereitet. In dieser
 
 ```{r, echo=FALSE}
 
-ggplot(lernende2019, aes(x = Stufe, y = Anzahl, fill = Nationalitaet)) +
+ggplot(lernende2019, aes(x = Stufe, y = Anzahl, fill = Staatsangehoerigkeit)) +
    geom_col() +
    coord_flip() +
    scale_y_continuous(breaks = seq(0, 100000, 10000)) +
    scale_fill_viridis_d() +
    labs(title = "Anzahl Schüler_innen",
         subtitle = "Kanton Zürich, 2019",
-        fill = "Nationalität",
+        fill = "Staatsangehörigkeit",
         caption = "Daten: https://opendata.swiss/de/dataset/ubersicht-uber-alle-lernenden-im-kanton-zurich") +
    theme_minimal() +
    theme(legend.position = "bottom", panel.grid.major.y = element_blank())

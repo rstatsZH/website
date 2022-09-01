@@ -42,7 +42,7 @@ Wir nutzen den Datensatz mit dem Titel ["Corona Hilfen im Kulturbereich im Kanto
 
 ```{r, echo=FALSE}
 
-corona_kultur <- read_csv("https://www.web.statistik.zh.ch/ogd/data/ji/fk/kultur_ausfallentschaedigung.csv")
+corona_kultur <- read_csv("https://www.web.statistik.zh.ch/ogd/daten/ressourcen/KTZH_00000719_00001790.csv")
 
 ```
 

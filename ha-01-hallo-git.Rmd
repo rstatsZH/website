@@ -297,31 +297,4 @@ datasaurus_dozen %>%
   summarize(r = cor(x, y)) 
 ```
 
-## Übung 6 (Bonus)
-
-Gratulation! Du hast die Übungen abgeschlossen. Zwei Dinge noch:
-
-```{r fig-resize-global, fig.margin = TRUE, echo = FALSE, fig.width=3}
-# knitr::include_graphics("img/fig-resize-global.png")
-```
-
-- **(1) Ändere die Grösse deiner Abbildungen**
-
-Klicke auf das Zahnradsymbol oben im R Markdown Dokument und wähle "Output Options..." im Dropdown-Menü. In dem sich öffnenden Dialogfenster gehst du zum Reiter "Figures" und änderst die Höhe und Breite der Figuren und klickst auf "OK", wenn du fertig bist. Dann stricke dein Dokument und schaue, wie dir die neuen Größen gefallen. Ändere und stricke wieder und wieder, bis du mit den Figurengrößen zufrieden bist. Schau dir den YAML-Header an und beachte, dass diese Werte dort gespeichert werden, was bedeutet dass du diese auch hier ändern kannst.
-
-```{r fig-resize-local, fig.margin = TRUE, echo = FALSE, fig.width=3}
-# knitr::include_graphics("img/fig-resize-local.png")
-```
-
-Du kannst auch verschiedene Größen für unterschiedliche Abbildungen verwenden. Klicke dazu auf das Zahnradsymbol innerhalb des Chunks, in dem du eine Änderung vornehmen möchtest. Das Ändern der Abbildungsgrößen hat neue Optionen zu diesen Chunks hinzugefügt: `fig.width` und `fig.height`. Du kannst sie auch ändern, indem du verschiedene Werte direkt in deinem R Markdown Dokument definierst.
-
-```{r theme-highlight, fig.margin = TRUE, echo = FALSE, fig.width=3}
-# knitr::include_graphics("img/theme-highlight.png")
-```
-
-- **(2) Ändere das Aussehen deines Berichts:**
-
-Klicke erneut auf das Zahnradsymbol oben im R Markdown Dokument und wähle "Output Options..." im Dropdown-Menü.
-Probiere im Reiter "General" des sich öffnenden Dialogfeldes verschiedene Optionen für die Syntaxhervorhebung (Syntax Highlighting) und das Design (Appl,y theme) aus. Klicke auf OK und stricke dein Dokument. Du kannst mit diesen Optionen herumspielen, bis du mit dem Aussehen zufrieden bist.
-
 *Bravo, du bist fertig! Übertrage alle verbleibenden Änderungen, verwende die Commit-Nachricht "Fertig mit Hausaufgabe 1! *" und pushe. Achte darauf, alle geänderten Dateien zu committen und zu pushen, damit dein Git-Fenster danach aufgeräumt ist. Bevor du die Aufgabe beendest, stelle sicher, dass alle Dokumente in deinem GitHub Repository aktualisiert sind.

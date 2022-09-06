@@ -50,17 +50,16 @@ pre.numberSource code > span > a:first-child::before
   }
 pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
 div.sourceCode
-  { color: #00769e; background-color: #f1f3f5; }
+  {   }
 @media screen {
 pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
-code span { color: #00769e; } /* Normal */
 code span.al { color: #ad0000; } /* Alert */
 code span.an { color: #5e5e5e; } /* Annotation */
-code span.at { color: #657422; } /* Attribute */
+code span.at { } /* Attribute */
 code span.bn { color: #ad0000; } /* BaseN */
 code span.bu { } /* BuiltIn */
-code span.cf { color: #00769e; } /* ControlFlow */
+code span.cf { color: #007ba5; } /* ControlFlow */
 code span.ch { color: #20794d; } /* Char */
 code span.cn { color: #8f5902; } /* Constant */
 code span.co { color: #5e5e5e; } /* Comment */
@@ -74,9 +73,9 @@ code span.fl { color: #ad0000; } /* Float */
 code span.fu { color: #4758ab; } /* Function */
 code span.im { } /* Import */
 code span.in { color: #5e5e5e; } /* Information */
-code span.kw { color: #00769e; } /* Keyword */
+code span.kw { color: #007ba5; } /* Keyword */
 code span.op { color: #5e5e5e; } /* Operator */
-code span.ot { color: #00769e; } /* Other */
+code span.ot { color: #007ba5; } /* Other */
 code span.pp { color: #ad0000; } /* Preprocessor */
 code span.sc { color: #5e5e5e; } /* SpecialChar */
 code span.ss { color: #20794d; } /* SpecialString */
@@ -768,6 +767,10 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
     position: relative;
     margin-bottom: 2.5em;
     margin-top: 1.5em;
+  }
+
+  .figure img {
+    width: 100%;
   }
 
   .figure .caption {
@@ -1599,12 +1602,6 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 
       // hoverable references
       $('span.citation[data-cites]').each(function() {
-        if ($(this).children()[0].nodeName == "D-FOOTNOTE") {
-          var fn = $(this).children()[0]
-          $(this).html(fn.shadowRoot.querySelector("sup"))
-          $(this).id = fn.id
-          fn.remove()
-        }
         var refs = $(this).attr('data-cites').split(" ");
         var refHtml = refs.map(function(ref) {
           return "<p>" + $('#ref-' + ref).html() + "</p>";
@@ -1619,31 +1616,6 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
           placement: 'bottom-start'
         });
       });
-
-      // fix footnotes in tables (#411)
-      // replacing broken distill.pub feature
-      $('table d-footnote').each(function() {
-        // we replace internal showAtNode methode which is triggered when hovering a footnote
-        this.hoverBox.showAtNode = function(node) {
-          // ported from https://github.com/distillpub/template/pull/105/files
-          calcOffset = function(elem) {
-              let x = elem.offsetLeft;
-              let y = elem.offsetTop;
-              // Traverse upwards until an `absolute` element is found or `elem`
-              // becomes null.
-              while (elem = elem.offsetParent && elem.style.position != 'absolute') {
-                  x += elem.offsetLeft;
-                  y += elem.offsetTop;
-              }
-
-              return { left: x, top: y };
-          }
-          // https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/offsetTop
-          const bbox = node.getBoundingClientRect();
-          const offset = calcOffset(node);
-          this.show([offset.left + bbox.width, offset.top + bbox.height]);
-        }
-      })
 
       // clear polling timer
       clearInterval(tid);
@@ -1743,8 +1715,6 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
     // mark non-body figures created by knitr chunks as 100% width
     $('.layout-chunk').each(function(i, val) {
       var figures = $(this).find('img, .html-widget');
-      // ignore leaflet img layers (#106)
-      figures = figures.filter(':not(img[class*="leaflet"])')
       if ($(this).attr('data-layout') !== "l-body") {
         figures.css('width', '100%');
       } else {
@@ -1767,7 +1737,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
     // get rid of index.html references in header
     if (window.location.protocol !== "file:") {
       $('.distill-site-header a[href]').each(function(i,val) {
-        $(this).attr('href', $(this).attr('href').replace(/^index[.]html/, "./"));
+        $(this).attr('href', $(this).attr('href').replace("index.html", "./"));
       });
     }
 
@@ -1806,7 +1776,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   </script>
 
   <!--/radix_placeholder_distill-->
-  <script src="site_libs/header-attrs-2.14/header-attrs.js"></script>
+  <script src="site_libs/header-attrs-2.11/header-attrs.js"></script>
   <script src="site_libs/popper-2.6.0/popper.min.js"></script>
   <link href="site_libs/tippy-6.2.7/tippy.css" rel="stylesheet" />
   <link href="site_libs/tippy-6.2.7/tippy-light-border.css" rel="stylesheet" />
@@ -1926,9 +1896,10 @@ und das <code>{dplyr}</code> Package, welche beide zur Sammlung der
 <code>{tidyverse}</code> Packages gehören.</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://ggplot2.tidyverse.org'>ggplot2</a></span><span class='op'>)</span></span>
-<span><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://dplyr.tidyverse.org'>dplyr</a></span><span class='op'>)</span></span>
-<span><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://readr.tidyverse.org'>readr</a></span><span class='op'>)</span></span></code></pre>
+<pre class="sourceCode r"><code class="sourceCode r"><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://ggplot2.tidyverse.org'>ggplot2</a></span><span class='op'>)</span>
+<span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://dplyr.tidyverse.org'>dplyr</a></span><span class='op'>)</span>
+<span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://readr.tidyverse.org'>readr</a></span><span class='op'>)</span>
+</code></pre>
 </div>
 </div>
 <h1 id="data">Data</h1>
@@ -2012,8 +1983,9 @@ Verteilung der nachgefragten Beträge auf der x-Achse. Zähle die Anzahl
 der Gesuche pro 100’000 CHF auf der y-Achse.</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span><span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></span><span class='op'>(</span>data <span class='op'>=</span> <span class='va'>corona_kultur</span>, <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>Nachgefragt</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span></span>
-<span>  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_histogram.html'>geom_histogram</a></span><span class='op'>(</span>binwidth <span class='op'>=</span> <span class='fl'>100000</span><span class='op'>)</span></span></code></pre>
+<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></span><span class='op'>(</span>data <span class='op'>=</span> <span class='va'>corona_kultur</span>, <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>Nachgefragt</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_histogram.html'>geom_histogram</a></span><span class='op'>(</span>binwidth <span class='op'>=</span> <span class='fl'>100000</span><span class='op'>)</span>
+</code></pre>
 </div>
 <p><img src="ha-02-hallo-ogd_files/figure-html5/unnamed-chunk-4-1.png" width="624" /></p>
 </div>
@@ -2024,24 +1996,24 @@ Variable ‘Nachgefragt’ grösser 2’000’000 ist. Ordne den Datensatz dann
 in absteigender Reihenfolge nach der Variable ‘Nachgefragt’</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span><span class='va'>corona_kultur</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span> </span>
-<span>  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/filter.html'>filter</a></span><span class='op'>(</span><span class='va'>Nachgefragt</span> <span class='op'>&gt;</span> <span class='fl'>2000000</span><span class='op'>)</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span> </span>
-<span>  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/arrange.html'>arrange</a></span><span class='op'>(</span><span class='fu'><a href='https://dplyr.tidyverse.org/reference/desc.html'>desc</a></span><span class='op'>(</span><span class='va'>Nachgefragt</span><span class='op'>)</span><span class='op'>)</span> </span></code></pre>
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>corona_kultur</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span> 
+  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/filter.html'>filter</a></span><span class='op'>(</span><span class='va'>Nachgefragt</span> <span class='op'>&gt;</span> <span class='fl'>2000000</span><span class='op'>)</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span> 
+  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/arrange.html'>arrange</a></span><span class='op'>(</span><span class='fu'><a href='https://dplyr.tidyverse.org/reference/desc.html'>desc</a></span><span class='op'>(</span><span class='va'>Nachgefragt</span><span class='op'>)</span><span class='op'>)</span> 
+</code></pre>
 </div>
 <pre><code># A tibble: 9 × 8
-  Kategorie  Sparte Nachg…¹ Besch…² Status Eingangs…³ Beschlus…⁴ ID   
-  &lt;chr&gt;      &lt;chr&gt;    &lt;dbl&gt;   &lt;dbl&gt; &lt;chr&gt;  &lt;date&gt;     &lt;date&gt;     &lt;chr&gt;
-1 Kulturunt… Kino    1.07e7 2531400 Ausbe… 2020-11-30 2020-12-21 b454…
-2 Kulturunt… Musik   3.16e6       0 Ausbe… 2020-04-29 2020-10-26 0c69…
-3 Kulturunt… Tanz/…  2.73e6 1517900 Ausbe… 2020-09-20 2020-11-10 3b19…
-4 Kulturunt… Musik   2.72e6 2091900 Ausbe… 2020-09-20 2020-12-21 b904…
-5 Kulturunt… Musik   2.52e6       0 Ausbe… 2020-05-20 2020-12-15 7abf…
-6 Kulturunt… Klubs…  2.39e6  272200 Ausbe… 2020-07-20 2020-12-03 b67e…
-7 Kulturunt… Tanz/…  2.37e6 1566400 Ausbe… 2020-04-30 2020-10-07 6c71…
-8 Kulturunt… Klubs…  2.16e6  578400 Ausbe… 2020-04-13 2020-09-29 7a48…
-9 Kulturunt… Berei…  2.05e6      NA Ableh… 2020-09-15 2020-12-15 36a5…
-# … with abbreviated variable names ¹​Nachgefragt, ²​Beschluss,
-#   ³​Eingangsdatum, ⁴​Beschlussdatum</code></pre>
+  Kategorie      Sparte     Nachgefragt Beschluss Status Eingangsdatum
+  &lt;chr&gt;          &lt;chr&gt;            &lt;dbl&gt;     &lt;dbl&gt; &lt;chr&gt;  &lt;date&gt;       
+1 Kulturunterne… Kino          10749500   2531400 Ausbe… 2020-11-30   
+2 Kulturunterne… Musik          3156000         0 Ausbe… 2020-04-29   
+3 Kulturunterne… Tanz/Thea…     2730800   1517900 Ausbe… 2020-09-20   
+4 Kulturunterne… Musik          2722200   2091900 Ausbe… 2020-09-20   
+5 Kulturunterne… Musik          2519000         0 Ausbe… 2020-05-20   
+6 Kulturunterne… Klubs und…     2391000    272200 Ausbe… 2020-07-20   
+7 Kulturunterne… Tanz/Thea…     2368000   1566400 Ausbe… 2020-04-30   
+8 Kulturunterne… Klubs und…     2159400    578400 Ausbe… 2020-04-13   
+9 Kulturunterne… Bereichsü…     2049100        NA Ableh… 2020-09-15   
+# … with 2 more variables: Beschlussdatum &lt;date&gt;, ID &lt;chr&gt;</code></pre>
 </div>
 <p>In den folgenden Aufgaben wollen wir uns nur mit Beobachtungen
 beschäftigen bei welchen die Variable ‘Beschluss’ kleiner 100’000 CHF
@@ -2050,8 +2022,9 @@ RStudio Environment gespeichert. Ich habe den Code für dich
 vorbereitet.</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span><span class='va'>corona_kultur_beschluss_gering</span> <span class='op'>&lt;-</span> <span class='va'>corona_kultur</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span> </span>
-<span>  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/filter.html'>filter</a></span><span class='op'>(</span><span class='va'>Beschluss</span> <span class='op'>&lt;</span> <span class='fl'>100000</span><span class='op'>)</span> </span></code></pre>
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>corona_kultur_beschluss_gering</span> <span class='op'>&lt;-</span> <span class='va'>corona_kultur</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span> 
+  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/filter.html'>filter</a></span><span class='op'>(</span><span class='va'>Beschluss</span> <span class='op'>&lt;</span> <span class='fl'>100000</span><span class='op'>)</span> 
+</code></pre>
 </div>
 </div>
 <p><strong>Aufgaben</strong></p>

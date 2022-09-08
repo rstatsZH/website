@@ -144,7 +144,7 @@ Deshalb sind dies die Ziele für heute.
 
 **Lesezeichen**
 
-- RStudio Cloud: https://rstudio.cloud/spaces/179362/projects
+- RStudio Cloud: https://rstudio.cloud/spaces/274753/content/
 - Kurs Webseite: https://rstatszh.github.io/website/
 - GitHub: https://github.com/rstatszh-k005
 

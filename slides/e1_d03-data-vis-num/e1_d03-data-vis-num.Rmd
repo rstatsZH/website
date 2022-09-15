@@ -2,7 +2,7 @@
 title: "rstatsZH - Data Science mit R"
 subtitle: "Datenvisualisierung verschiedener Datentypen"  
 author: "Lars Schöbitz"
-date: "2021-11-08"
+date: "2022-09-15"
 output:
   xaringan::moon_reader:
     self_contained: false
@@ -12,9 +12,8 @@ output:
     nature:
       slideNumberFormat: |
         <div class="progress-bar-container">
-          <div class="progress-bar" style="width: calc(%current% / %total% * 100%);">
           </div>
-        </div>
+          <div class="progress-bar" style="width: calc(%current% / %total% * 100%);">
       highlightStyle: solarized-light
       highlightLanguage: ["r", "css", "yaml"]
       highlightLines: true
@@ -43,7 +42,7 @@ library(gt)
 
 ```{r, echo=FALSE}
 
-corona_kultur <- read_csv("https://www.web.statistik.zh.ch/ogd/data/ji/fk/kultur_ausfallentschaedigung.csv")
+corona_kultur <- read_csv("https://www.web.statistik.zh.ch/ogd/daten/ressourcen/KTZH_00000719_00001790.csv")
 
 corona_kultur_beschluss_gering <- corona_kultur %>% 
   filter(Beschluss < 100000) 

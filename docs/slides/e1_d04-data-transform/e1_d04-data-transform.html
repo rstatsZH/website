@@ -4,7 +4,7 @@
     <title>rstatsZH - Data Science mit R</title>
     <meta charset="utf-8" />
     <meta name="author" content="Lars Schöbitz" />
-    <meta name="date" content="2021-11-08" />
+    <meta name="date" content="2022-09-15" />
     <script src="libs/header-attrs/header-attrs.js"></script>
     <link href="libs/remark-css/default.css" rel="stylesheet" />
     <link href="libs/font-awesome/css/all.css" rel="stylesheet" />
@@ -41,7 +41,7 @@ class: title-slide
 
 .bottom[
 
-<p>Lars Schöbitz</p><p>2021-11-08</p>
+<p>Lars Schöbitz</p><p>2022-09-15</p>
 ]
 
 
@@ -420,16 +420,17 @@ filter(.data = penguins, species == "Adelie")
 
 ```
 # A tibble: 152 × 8
-  species island    bill_length_mm bill_depth_mm flipper_length_…
-  &lt;fct&gt;   &lt;fct&gt;              &lt;dbl&gt;         &lt;dbl&gt;            &lt;int&gt;
-1 Adelie  Torgersen           39.1          18.7              181
-2 Adelie  Torgersen           39.5          17.4              186
-3 Adelie  Torgersen           40.3          18                195
-4 Adelie  Torgersen           NA            NA                 NA
-5 Adelie  Torgersen           36.7          19.3              193
-6 Adelie  Torgersen           39.3          20.6              190
-# … with 146 more rows, and 3 more variables: body_mass_g &lt;int&gt;,
-#   sex &lt;fct&gt;, year &lt;int&gt;
+  species island    bill_le…¹ bill_…² flipp…³ body_…⁴ sex    year
+  &lt;fct&gt;   &lt;fct&gt;         &lt;dbl&gt;   &lt;dbl&gt;   &lt;int&gt;   &lt;int&gt; &lt;fct&gt; &lt;int&gt;
+1 Adelie  Torgersen      39.1    18.7     181    3750 male   2007
+2 Adelie  Torgersen      39.5    17.4     186    3800 fema…  2007
+3 Adelie  Torgersen      40.3    18       195    3250 fema…  2007
+4 Adelie  Torgersen      NA      NA        NA      NA &lt;NA&gt;   2007
+5 Adelie  Torgersen      36.7    19.3     193    3450 fema…  2007
+6 Adelie  Torgersen      39.3    20.6     190    3650 male   2007
+# … with 146 more rows, and abbreviated variable names
+#   ¹​bill_length_mm, ²​bill_depth_mm, ³​flipper_length_mm,
+#   ⁴​body_mass_g
 ```
 
 
@@ -535,18 +536,6 @@ class: middle, inverse
 
 
 ---
-# Hausaufgabe
-
-.note[
-
-- Öffnet jetzt eure E-Mail Inbox
-- Bestätigt mir im Zoom Chat, dass ihr eine Email mit Betreff **"rstatsZH - Lars hat das Repo ha02-GitHubName"** erhalten habt
-- Die Anweisungen für die Heausaufgabe 02 findet ihr oben rechts auf unserer Kurswebseite
-- Kontaktiert mich unter der Woche jederzeit auf Slack 
-
-]
-
----
 # 🌻 Danke 
 
 Für die Aufmerksamkeit!
@@ -562,7 +551,7 @@ Für [Data Science in a Box](https://datasciencebox.org/) und [Remaster the Tidy
 <style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
 <script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
 <script>var slideshow = remark.create({
-"slideNumberFormat": "<div class=\"progress-bar-container\">\n  <div class=\"progress-bar\" style=\"width: calc(%current% / %total% * 100%);\">\n  </div>\n</div>\n",
+"slideNumberFormat": "<div class=\"progress-bar-container\">\n  </div>\n  <div class=\"progress-bar\" style=\"width: calc(%current% / %total% * 100%);\">\n",
 "highlightStyle": "solarized-light",
 "highlightLanguage": ["r", "css", "yaml"],
 "highlightLines": true,
@@ -608,6 +597,19 @@ if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
     deleted = true;
   });
 })();
+// add `data-at-shortcutkeys` attribute to <body> to resolve conflicts with JAWS
+// screen reader (see PR #262)
+(function(d) {
+  let res = {};
+  d.querySelectorAll('.remark-help-content table tr').forEach(tr => {
+    const t = tr.querySelector('td:nth-child(2)').innerText;
+    tr.querySelectorAll('td:first-child .key').forEach(key => {
+      const k = key.innerText;
+      if (/^[a-z]$/.test(k)) res[k] = t;  // must be a single letter (key)
+    });
+  });
+  d.body.setAttribute('data-at-shortcutkeys', JSON.stringify(res));
+})(document);
 (function() {
   "use strict"
   // Replace <script> tags in slides area to make them executable

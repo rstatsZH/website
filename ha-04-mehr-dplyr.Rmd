@@ -64,8 +64,7 @@ Ich habe die Daten für dich bereits importiert, auf das Jahr 2019 eingeschränk
 link <- "https://www.web.statistik.zh.ch/ogd/data/bista/ZH_Uebersicht_alle_Lernende.csv"
 
 # Hier wird nun das Objekt "link" genutzt um die CSV zu lesen
-lernende <- read_csv(file = link, 
-                     locale = locale(encoding = "ISO-8859-1"))
+lernende <- read_csv(file = link)
 ```
 
 ```{r daten-eingrenzen}

@@ -2,7 +2,7 @@
 title: "rstatsZH - Data Science mit R"
 subtitle: "Vektoren in R und mehr Git"
 author: "Lars Schöbitz"
-date: "2021-09-28"
+date: "2022-10-20"
 output:
   xaringan::moon_reader:
     self_contained: false
@@ -12,9 +12,8 @@ output:
     nature:
       slideNumberFormat: |
         <div class="progress-bar-container">
-          <div class="progress-bar" style="width: calc(%current% / %total% * 100%);">
           </div>
-        </div>
+          <div class="progress-bar" style="width: calc(%current% / %total% * 100%);">
       highlightStyle: solarized-light
       highlightLanguage: ["r", "css", "yaml"]
       highlightLines: true
@@ -44,8 +43,8 @@ library(tidyr)
 link <- "https://www.web.statistik.zh.ch/ogd/data/bista/ZH_Uebersicht_alle_Lernende.csv"
 
 # Hier wird nun das Objekt "link" genutzt um die CSV zu lesen
-lernende <- read_csv(file = link, 
-                     locale = locale(encoding = "UTF-8"))
+lernende <- read_csv(file = link) 
+                     #locale = locale(encoding = "UTF-8"))
 
 # Conflict with lag
 
@@ -98,42 +97,6 @@ p(rmarkdown::metadata$date)
 ]
 
 ---
-# Hausaufgabe 4 -  Übung 1
-
-Was glaubst du wird mit der Zeile:  
-`locale = locale(encoding = "ISO-8859-1")`     
-erreicht? 
-
-```{r, eval=FALSE, echo=TRUE}
-
-# Der Link zu den Daten wird hier als Objekt gespeichert und taucht oben rechts in "Environment" auf
-link <- "https://www.web.statistik.zh.ch/ogd/data/bista/ZH_Uebersicht_alle_Lernende.csv"
-
-# Hier wird nun das Objekt "link" genutzt um die CSV zu lesen
-lernende <- read_csv(file = link, 
-                     locale = locale(encoding = "ISO-8859-1"))
-
-
-```
-
----
-# Hausaufgabe 4 -  Übung 1
-
-Wenn Daten im UTF-8 Standard kodiert (gespeichert) wurden wir das `locale =` Argument nicht benötigt, da die Funktion `read_csv` standardmässig UTF-8 für die Dekodierung nutzt. 
- 
-```{r, eval=FALSE, echo=TRUE}
-
-# Der Link zu den Daten wird hier als Objekt gespeichert und taucht oben rechts in "Environment" auf
-link <- "https://www.web.statistik.zh.ch/ogd/data/bista/ZH_Uebersicht_alle_Lernende.csv"
-
-# Hier wird nun das Objekt "link" genutzt um die CSV zu lesen
-lernende <- read_csv(file = link) 
-
-```
-
-
-**Tipp:** UTF-8 als Standard festlegen um Daten aus R zu speichern: https://github.com/rstatsZH/kochbuch/tree/main/06-file-encoding
-
 
 ---
 # Hausaufgabe 4 -  Übung 3
@@ -150,7 +113,7 @@ lernende <- read_csv(file = link)
 .panel[.panel-name[Code]
 ```{r plot-anzahl, fig.show="hide", echo=TRUE}
 
-ggplot(lernende2019, aes(x = Stufe, y = Anzahl, fill = Nationalitaet)) +
+ggplot(lernende2019, aes(x = Stufe, y = Anzahl, fill = Staatsangehoerigkeit)) +
    geom_col() +
    coord_flip() + #<< 
    scale_y_continuous(breaks = seq(0, 100000, 10000)) + #<<
@@ -262,16 +225,6 @@ lernende %>%
 ```
 
 ]
-
----
-# Hausaufgabe 4 - Lösungen
-
-- **GitHub Organisation:** rstatsZH
-    - https://github.com/rstatsZH/
-- **Repo:** ha-04-mehr-dplyr
-    - https://github.com/rstatsZH/ha-04-mehr-dplyr
-- **R Markdown Datei:** ha-04-solutions.Rmd
-    - https://github.com/rstatsZH/ha-04-mehr-dplyr/blob/main/ha-04-solutions.Rmd
 
 
 ---

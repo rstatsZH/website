@@ -2,7 +2,7 @@
 title: "rstatsZH - Data Science mit R"
 subtitle: "Vektoren Teil 2 / Daten Importieren / Daten Aufräumen"
 author: "Lars Schöbitz"
-date: "2021-11-29"
+date: "2022-10-27"
 output:
   xaringan::moon_reader:
     self_contained: false
@@ -58,7 +58,6 @@ p(rmarkdown::metadata$date)
 
 - Git / GitHub
    - push / pull
-   - fork
 - Funktion zum Umgang mit einem Datum
    - `lubridate::as_date()`
 - Visualisierungen

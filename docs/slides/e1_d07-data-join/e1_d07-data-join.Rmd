@@ -2,7 +2,7 @@
 title: "rstatsZH - Data Science mit R"
 subtitle: "Mit mehreren Dataframes arbeiten / Funktionen schreiben"
 author: "Lars Schöbitz"
-date: "2021-12-06"
+date: "2022-11-03"
 output:
   xaringan::moon_reader:
     self_contained: false
@@ -60,10 +60,8 @@ p(rmarkdown::metadata$date)
 - Erweiterte Vektoren
   - Faktoren
   - Datumswerte
-  - Tibbles
 - Daten importieren
   - `read_csv()`
-  - `read_excel()`
 - Tidy Data Konzept
 - Daten drehen (pivoting) mit `{tidyr}`
   - `pivot_longer()`
@@ -101,17 +99,6 @@ knitr::include_graphics("img/github-to-project-local.004.png")
 knitr::include_graphics("img/github-to-project-local.005.png")
 ```
 
-
----
-# Hausaufgabe 6 - Lösungen
-
-- **GitHub Organisation:** rstatsZH
-    - https://github.com/rstatsZH/
-- **Repo:** ha-06-treibhausgase
-    - https://github.com/rstatsZH/ha-06-treibhausgase
-- **R Markdown Datei:** ha-06-solutions.Rmd
-    - https://github.com/rstatsZH/ha-06-treibhausgase/blob/main/ha-06-solutions.Rmd
-    
 ---
 # Ziele für diese Woche
 
@@ -119,7 +106,7 @@ Am Ende dieser Woche könnt ihr:
 
 - Mehrere Dataframes zusammenfügen
 - Tabellen mit verschiedenen Packages darstellen 
-- **Bonusmaterial:** Eine eigene Funktion für ein `{ggplot2}` theme schreiben 
+- **Bonusmaterial:** Eine eigene Funktion schreiben
 - Mit den im Kurs erlernten Fähigkeiten selbstständig weiter arbeiten
 
 ---

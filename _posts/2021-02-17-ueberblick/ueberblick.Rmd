@@ -69,9 +69,9 @@ Unsere Kurse in 2021 sind voll belegt. Wir freuen uns darauf auch in 2022 wieder
 ```{r, echo=FALSE, layout="l-body-outset"}
 
 googlesheets4::read_sheet("1WhGB4Pqpr4ywGbOKaC2UoRsyaf5jbI7L8jY75Lic9FE") %>% 
-  mutate(Jahr = lubridate::year(Start)) %>% 
-  select(-Start, -Ende) %>% 
-  relocate(Jahr, .after = Kurs) %>% 
+  #mutate(Jahr = lubridate::year(Start)) %>% 
+  select(-`Start KW`, -`Ende KW`) %>% 
+  #relocate(Jahr, .after = Kurs) 
   #mutate(
     #Start = format(Start, "%d. %B %Y"),
     #Ende = format(Ende, "%d. %B %Y"),
@@ -79,8 +79,15 @@ googlesheets4::read_sheet("1WhGB4Pqpr4ywGbOKaC2UoRsyaf5jbI7L8jY75Lic9FE") %>%
     #) %>% 
   gt::gt() %>% 
   gt::opt_row_striping() %>% 
+  gt::fmt_date(
+    columns = c(Start, Ende),
+    date_style = "day_month_year",
+    locale = "de"
+  ) |> 
   gt::tab_options(column_labels.font.weight = "bold") %>% 
   gt::fmt_missing(columns = "Bemerkung", missing_text = "---")
+
+
 ```
 
 # Wo kann ich mich (unverbindlich) anmelden?

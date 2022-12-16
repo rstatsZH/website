@@ -50,17 +50,16 @@ pre.numberSource code > span > a:first-child::before
   }
 pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
 div.sourceCode
-  { color: #00769e; background-color: #f1f3f5; }
+  {   }
 @media screen {
 pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
-code span { color: #00769e; } /* Normal */
 code span.al { color: #ad0000; } /* Alert */
 code span.an { color: #5e5e5e; } /* Annotation */
-code span.at { color: #657422; } /* Attribute */
+code span.at { } /* Attribute */
 code span.bn { color: #ad0000; } /* BaseN */
 code span.bu { } /* BuiltIn */
-code span.cf { color: #00769e; } /* ControlFlow */
+code span.cf { color: #007ba5; } /* ControlFlow */
 code span.ch { color: #20794d; } /* Char */
 code span.cn { color: #8f5902; } /* Constant */
 code span.co { color: #5e5e5e; } /* Comment */
@@ -74,9 +73,9 @@ code span.fl { color: #ad0000; } /* Float */
 code span.fu { color: #4758ab; } /* Function */
 code span.im { } /* Import */
 code span.in { color: #5e5e5e; } /* Information */
-code span.kw { color: #00769e; } /* Keyword */
+code span.kw { color: #007ba5; } /* Keyword */
 code span.op { color: #5e5e5e; } /* Operator */
-code span.ot { color: #00769e; } /* Other */
+code span.ot { color: #007ba5; } /* Other */
 code span.pp { color: #ad0000; } /* Preprocessor */
 code span.sc { color: #5e5e5e; } /* SpecialChar */
 code span.ss { color: #20794d; } /* SpecialString */
@@ -527,7 +526,6 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   d-article table.gt_table td,
   d-article table.gt_table th {
     border-bottom: none;
-    font-size: 100%;
   }
 
   .html-widget {
@@ -769,6 +767,10 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
     position: relative;
     margin-bottom: 2.5em;
     margin-top: 1.5em;
+  }
+
+  .figure img {
+    width: 100%;
   }
 
   .figure .caption {
@@ -1600,21 +1602,9 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 
       // hoverable references
       $('span.citation[data-cites]').each(function() {
-        const citeChild = $(this).children()[0]
-        // Do not process if @xyz has been used without escaping and without bibliography activated
-        // https://github.com/rstudio/distill/issues/466
-        if (citeChild === undefined) return true
-
-        if (citeChild.nodeName == "D-FOOTNOTE") {
-          var fn = citeChild
-          $(this).html(fn.shadowRoot.querySelector("sup"))
-          $(this).id = fn.id
-          fn.remove()
-        }
         var refs = $(this).attr('data-cites').split(" ");
         var refHtml = refs.map(function(ref) {
-          // Could use CSS.escape too here, we insure backward compatibility in navigator
-          return "<p>" + $('div[id="ref-' + ref + '"]').html() + "</p>";
+          return "<p>" + $('#ref-' + ref).html() + "</p>";
         }).join("\n");
         window.tippy(this, {
           allowHTML: true,
@@ -1626,31 +1616,6 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
           placement: 'bottom-start'
         });
       });
-
-      // fix footnotes in tables (#411)
-      // replacing broken distill.pub feature
-      $('table d-footnote').each(function() {
-        // we replace internal showAtNode methode which is triggered when hovering a footnote
-        this.hoverBox.showAtNode = function(node) {
-          // ported from https://github.com/distillpub/template/pull/105/files
-          calcOffset = function(elem) {
-              let x = elem.offsetLeft;
-              let y = elem.offsetTop;
-              // Traverse upwards until an `absolute` element is found or `elem`
-              // becomes null.
-              while (elem = elem.offsetParent && elem.style.position != 'absolute') {
-                  x += elem.offsetLeft;
-                  y += elem.offsetTop;
-              }
-
-              return { left: x, top: y };
-          }
-          // https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/offsetTop
-          const bbox = node.getBoundingClientRect();
-          const offset = calcOffset(node);
-          this.show([offset.left + bbox.width, offset.top + bbox.height]);
-        }
-      })
 
       // clear polling timer
       clearInterval(tid);
@@ -1750,8 +1715,6 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
     // mark non-body figures created by knitr chunks as 100% width
     $('.layout-chunk').each(function(i, val) {
       var figures = $(this).find('img, .html-widget');
-      // ignore leaflet img layers (#106)
-      figures = figures.filter(':not(img[class*="leaflet"])')
       if ($(this).attr('data-layout') !== "l-body") {
         figures.css('width', '100%');
       } else {
@@ -1774,7 +1737,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
     // get rid of index.html references in header
     if (window.location.protocol !== "file:") {
       $('.distill-site-header a[href]').each(function(i,val) {
-        $(this).attr('href', $(this).attr('href').replace(/^index[.]html/, "./"));
+        $(this).attr('href', $(this).attr('href').replace("index.html", "./"));
       });
     }
 
@@ -1813,7 +1776,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   </script>
 
   <!--/radix_placeholder_distill-->
-  <script src="site_libs/header-attrs-2.16/header-attrs.js"></script>
+  <script src="site_libs/header-attrs-2.11/header-attrs.js"></script>
   <script src="site_libs/popper-2.6.0/popper.min.js"></script>
   <link href="site_libs/tippy-6.2.7/tippy.css" rel="stylesheet" />
   <link href="site_libs/tippy-6.2.7/tippy-light-border.css" rel="stylesheet" />
@@ -1886,14 +1849,19 @@ Hausaufgaben
 <nav class="l-text toc figcaption" id="TOC">
 <h3>Contents</h3>
 <ul>
-<li><a href="#verbindung-zu-github-und-rstudio-cloud-aufbauen" id="toc-verbindung-zu-github-und-rstudio-cloud-aufbauen">Verbindung zu GitHub und RStudio Cloud aufbauen</a></li>
+<li><a href="#verbindung-zu-github-und-rstudio-cloud-aufbauen"
+id="toc-verbindung-zu-github-und-rstudio-cloud-aufbauen">Verbindung zu
+GitHub und RStudio Cloud aufbauen</a></li>
 <li><a href="#erste-schritte" id="toc-erste-schritte">Erste Schritte</a>
 <ul>
 <li><a href="#aufwärmen" id="toc-aufwärmen">Aufwärmen</a>
 <ul>
 <li><a href="#yaml" id="toc-yaml">YAML</a></li>
-<li><a href="#änderungen-schreiben-commit" id="toc-änderungen-schreiben-commit">Änderungen schreiben (commit)</a></li>
-<li><a href="#änderungen-schieben-push" id="toc-änderungen-schieben-push">Änderungen schieben (push)</a></li>
+<li><a href="#änderungen-schreiben-commit"
+id="toc-änderungen-schreiben-commit">Änderungen schreiben
+(commit)</a></li>
+<li><a href="#änderungen-schieben-push"
+id="toc-änderungen-schieben-push">Änderungen schieben (push)</a></li>
 </ul></li>
 <li><a href="#r-packages" id="toc-r-packages">R Packages</a></li>
 <li><a href="#daten" id="toc-daten">Daten</a></li>
@@ -1904,91 +1872,140 @@ Hausaufgaben
 <li><a href="#übung-2" id="toc-übung-2">Übung 2</a></li>
 <li><a href="#übung-3" id="toc-übung-3">Übung 3</a></li>
 <li><a href="#übung-4" id="toc-übung-4">Übung 4</a></li>
-<li><a href="#übung-5-bonus" id="toc-übung-5-bonus">Übung 5 (Bonus)</a></li>
+<li><a href="#übung-5-bonus" id="toc-übung-5-bonus">Übung 5
+(Bonus)</a></li>
 </ul></li>
 </ul>
 </nav>
 </div>
 <script async defer data-domain="rstatszh.github.io/website" src="https://plausible.io/js/plausible.js"></script>
-<p>Das Hauptziel dieser Hausaufgabe ist es, dich mit R und RStudio bekannt zu machen. Ein zusätzliches Ziel ist es, dich in Git und GitHub einzuführen, das Kollaborations- und Versionskontrollsystem, das wir während des Kurses benutzen werden.</p>
-<p>Ich ermutige dich im Laufe der Übungen über das hinauszugehen was die Übungen vorgeben. Die Bereitschaft zu experimentieren wird dich zu einer besseren Programmierin machen. Bevor wir soweit sind, ist es wichtig, dass du dir ein paar grundlegende Kenntnisse in R aneignest.</p>
-<p>Heute beginnen wir mit den grundlegenden Bausteinen von R und RStudio: die Benutzeroberfläche, das Einlesen von Daten und grundlegende Befehle.</p>
-<p>Dieses erste Hausaufgabe wird von dir allein durchgeführt. In zukünfitgen Hausaufgabeen (oder auch Praktika) wirst du lernen, wie du auf GitHub in kleinen Teams zusammenarbeitest und einen Bericht für dein Team erstellst.</p>
-<h1 id="verbindung-zu-github-und-rstudio-cloud-aufbauen">Verbindung zu GitHub und RStudio Cloud aufbauen</h1>
-<p>Du solltest eine Einladung erhalten haben, um der GitHub Organisation für diesen Kurs beizutreten. Diese Einladung musst du annehmen, bevor du mit dem nächsten Schritt fortfährst.</p>
+<p>Das Hauptziel dieser Hausaufgabe ist es, dich mit R und RStudio
+bekannt zu machen. Ein zusätzliches Ziel ist es, dich in Git und GitHub
+einzuführen, das Kollaborations- und Versionskontrollsystem, das wir
+während des Kurses benutzen werden.</p>
+<p>Ich ermutige dich im Laufe der Übungen über das hinauszugehen was die
+Übungen vorgeben. Die Bereitschaft zu experimentieren wird dich zu einer
+besseren Programmierin machen. Bevor wir soweit sind, ist es wichtig,
+dass du dir ein paar grundlegende Kenntnisse in R aneignest.</p>
+<p>Heute beginnen wir mit den grundlegenden Bausteinen von R und
+RStudio: die Benutzeroberfläche, das Einlesen von Daten und grundlegende
+Befehle.</p>
+<p>Dieses erste Hausaufgabe wird von dir allein durchgeführt. In
+zukünfitgen Hausaufgabeen (oder auch Praktika) wirst du lernen, wie du
+auf GitHub in kleinen Teams zusammenarbeitest und einen Bericht für dein
+Team erstellst.</p>
+<h1 id="verbindung-zu-github-und-rstudio-cloud-aufbauen">Verbindung zu
+GitHub und RStudio Cloud aufbauen</h1>
+<p>Du solltest eine Einladung erhalten haben, um der GitHub Organisation
+für diesen Kurs beizutreten. Diese Einladung musst du annehmen, bevor du
+mit dem nächsten Schritt fortfährst.</p>
 <ul>
-<li>Öffne deine Email welche du für deinen GitHub Konto hinterlegt hast</li>
+<li>Öffne deine Email welche du für deinen GitHub Konto hinterlegt
+hast</li>
 <li>Klicke auf “Join”</li>
 </ul>
 <div class="layout-chunk" data-layout="l-body">
 <p><img src="img/github-org-1.png" width="331" /></p>
 </div>
-<p>Um deine RStudio und GitHub Konten zu verbinden, befolge die folgenden Schritte:</p>
+<p>Um deine RStudio und GitHub Konten zu verbinden, befolge die
+folgenden Schritte:</p>
 <ul>
-<li>Öffne rstudio.cloud und login mit deinem Benutzerkonto (nutze GitHub)</li>
-<li>Klicke auf deinen Namen in der oberen rechten Ecke, um das rechte Menü zu öffnen.</li>
+<li>Öffne rstudio.cloud und login mit deinem Benutzerkonto (nutze
+GitHub)</li>
+<li>Klicke auf deinen Namen in der oberen rechten Ecke, um das rechte
+Menü zu öffnen.</li>
 <li>Klicke dann auf “Authentication”.</li>
 </ul>
 <div class="layout-chunk" data-layout="l-body">
 <p><img src="img/github-auth.001.png" width="960" /></p>
 </div>
 <ul>
-<li>Aktiviere im Fenster Authentifizierung das Kontrollkästchen für <em>Enabled</em> neben GitHub.</li>
+<li>Aktiviere im Fenster Authentifizierung das Kontrollkästchen für
+<em>Enabled</em> neben GitHub.</li>
 </ul>
 <div class="layout-chunk" data-layout="l-body">
 <p><img src="img/github-auth.002.png" width="960" /></p>
 </div>
 <ul>
-<li>Im nächsten Fenster klickst du auf das grüne Kästchen mit der Aufschrift “Authorize rstudio”.</li>
+<li>Im nächsten Fenster klickst du auf das grüne Kästchen mit der
+Aufschrift “Authorize rstudio”.</li>
 </ul>
 <div class="layout-chunk" data-layout="l-body">
 <p><img src="img/github-auth-3.png" width="540" /></p>
 </div>
 <ul>
-<li>Zurück im Authentifizierungsfenster in RStudio Cloud aktivierst du nun auch das Kästchen <em>Private repo access also enabled</em></li>
+<li>Zurück im Authentifizierungsfenster in RStudio Cloud aktivierst du
+nun auch das Kästchen <em>Private repo access also enabled</em></li>
 </ul>
 <div class="layout-chunk" data-layout="l-body">
 <p><img src="img/github-auth.004.png" width="960" /></p>
 </div>
 <ul>
-<li><strong>Wichtig</strong>: Falls Feld <em>Organisation access</em> noch kein grünes Häkchen neben deinem Kursnamen auftaucht, klickst du nun zunächst auf “Request” neben deinem Kursnamen und folgend auf “Request approval from owners”.</li>
-<li><em>Hinweis:</em> Sollte hier kein Kurs auftauchen, könnte dies bedeueten, dass du die GitHub-Einladung zum Kurs noch nicht angenommen hast und du solltest zurückgehen und dies überprüfen und nacholen. Falls du keine Einladung hast, kontaktiere mich.</li>
-<li>Nun noch auf das grüne Feld “Authorize rstudio” und nach Eingabe deines Passworts bist du bereit.</li>
+<li><strong>Wichtig</strong>: Falls Feld <em>Organisation access</em>
+noch kein grünes Häkchen neben deinem Kursnamen auftaucht, klickst du
+nun zunächst auf “Request” neben deinem Kursnamen und folgend auf
+“Request approval from owners”.</li>
+<li><em>Hinweis:</em> Sollte hier kein Kurs auftauchen, könnte dies
+bedeueten, dass du die GitHub-Einladung zum Kurs noch nicht angenommen
+hast und du solltest zurückgehen und dies überprüfen und nacholen. Falls
+du keine Einladung hast, kontaktiere mich.</li>
+<li>Nun noch auf das grüne Feld “Authorize rstudio” und nach Eingabe
+deines Passworts bist du bereit.</li>
 </ul>
 <div class="layout-chunk" data-layout="l-body">
 <p><img src="img/github-auth.005.png" width="960" /></p>
 </div>
 <ul>
-<li>Sobald du fertig bist, sollten in RStudio Cloud beide Kästchen markiert sein.</li>
+<li>Sobald du fertig bist, sollten in RStudio Cloud beide Kästchen
+markiert sein.</li>
 </ul>
 <div class="layout-chunk" data-layout="l-body">
 <p><img src="img/github-auth-5.png" width="540" /></p>
 </div>
 <ul>
-<li>Um zu bestätigen, dass du deine GitHub- und RStudio-Cloud-Konten erfolgreich verknüpft hast, wähle <a href="https://github.com/settings/applications">GitHub settings &gt; Applications</a>. Du solltest RStudio als autorisierte App unter <em>Authorized OAuth Apps</em> aufgelistet sehen. Falls nicht, ist dies ein guter Zeitpunkt, um eine Frage zu stellen.</li>
+<li>Um zu bestätigen, dass du deine GitHub- und RStudio-Cloud-Konten
+erfolgreich verknüpft hast, wähle <a
+href="https://github.com/settings/applications">GitHub settings &gt;
+Applications</a>. Du solltest RStudio als autorisierte App unter
+<em>Authorized OAuth Apps</em> aufgelistet sehen. Falls nicht, ist dies
+ein guter Zeitpunkt, um eine Frage zu stellen.</li>
 </ul>
 <div class="layout-chunk" data-layout="l-body">
 <p><img src="img/github-auth-6.png" width="540" /></p>
 </div>
 <h1 id="erste-schritte">Erste Schritte</h1>
-<p>Jede deiner Aufgaben wird mit den folgenden Schritten beginnen, welche hier im Detail beschrieben sind. In Zukunft wird jede Aufgabe mit einem Abschnitt “Erste Schritte” beginnen, aber mit etwas weniger Details. Du kannst jedoch jederzeit auf diese Hausaufgabe zurückgreifen, um eine detaillierte Liste der Schritte zu erhalten, die notwendig sind, um mit einer Aufgabe zu beginnen.</p>
+<p>Jede deiner Aufgaben wird mit den folgenden Schritten beginnen,
+welche hier im Detail beschrieben sind. In Zukunft wird jede Aufgabe mit
+einem Abschnitt “Erste Schritte” beginnen, aber mit etwas weniger
+Details. Du kannst jedoch jederzeit auf diese Hausaufgabe zurückgreifen,
+um eine detaillierte Liste der Schritte zu erhalten, die notwendig sind,
+um mit einer Aufgabe zu beginnen.</p>
 <ul>
-<li>Klicke auf den Link welchen ich in einer E-Mail mit dem Betreff (Lars hat das Repo XYZ-Dein-GitHub-Name auf GitHub erstellt) mit dir geteilt habe</li>
-<li>Dies führt dich zu deinem persönlichen GitHub Repository (im Folgenden “Repo” genannt)</li>
-<li>Dieses Repository enthält eine R Markdown (ha-01.Rmd) Vorlage, auf der du aufbauen kannst, um die Aufgabe zu lösen.</li>
-<li>Auf GitHub klickst du auf den grünen <strong>Code</strong> Button und wählst <strong>HTTPS</strong> wie im Bild unten. Klicke auf das Klemmbrett-Symbol, um die Repo-URL zu kopieren.</li>
+<li>Klicke auf den Link welchen ich in einer E-Mail mit dem Betreff
+(Lars hat das Repo XYZ-Dein-GitHub-Name auf GitHub erstellt) mit dir
+geteilt habe</li>
+<li>Dies führt dich zu deinem persönlichen GitHub Repository (im
+Folgenden “Repo” genannt)</li>
+<li>Dieses Repository enthält eine R Markdown (ha-01.Rmd) Vorlage, auf
+der du aufbauen kannst, um die Aufgabe zu lösen.</li>
+<li>Auf GitHub klickst du auf den grünen <strong>Code</strong> Button
+und wählst <strong>HTTPS</strong> wie im Bild unten. Klicke auf das
+Klemmbrett-Symbol, um die Repo-URL zu kopieren.</li>
 </ul>
 <div class="layout-chunk" data-layout="l-body">
 <p><img src="img/clone-repo-link.png" width="200" /></p>
 </div>
 <ul>
-<li>Öffne nun RStudio Cloud und den Workspace für den Kurs. Klicke auf den Abwärtspfeil und erstelle ein <strong>New Project from Git Repository</strong>.</li>
+<li>Öffne nun RStudio Cloud und den Workspace für den Kurs. Klicke auf
+den Abwärtspfeil und erstelle ein <strong>New Project from Git
+Repository</strong>.</li>
 </ul>
 <div class="layout-chunk" data-layout="l-body">
 <p><img src="img/new-project-from-gh.png" width="142" /></p>
 </div>
 <ul>
-<li>Füge die URL aus deinem Repo oben in das Dialogfeld ein und stelle sicher, dass das Häkchen bei “Packages” gesetzt ist.</li>
+<li>Füge die URL aus deinem Repo oben in das Dialogfeld ein und stelle
+sicher, dass das Häkchen bei “Packages” gesetzt ist.</li>
 </ul>
 <div class="layout-chunk" data-layout="l-body">
 <p><img src="img/paste-github-repo-url.png" width="260" /></p>
@@ -1997,16 +2014,21 @@ Hausaufgaben
 <p><img src="img/arrow-base-project.png" width="264" /></p>
 </div>
 <ul>
-<li>Klicke auf OK, habe etwas Geduld, und du bist bereit zum logslegen!</li>
+<li>Klicke auf OK, habe etwas Geduld, und du bist bereit zum
+logslegen!</li>
 </ul>
 <h2 id="aufwärmen">Aufwärmen</h2>
-<p>Bevor wir uns die Daten anschauen, machen wir noch ein paar Aufwärmübungen um die R Markdown vorzustellen.</p>
+<p>Bevor wir uns die Daten anschauen, machen wir noch ein paar
+Aufwärmübungen um die R Markdown vorzustellen.</p>
 <h3 id="yaml">YAML</h3>
 <ul>
 <li>Im RStudio Cloud Workspace für den Kurs, klicke auf “Projects”</li>
 <li>Öffne dein Projekt in dem du darauf klickst (ha01-GitHubName)</li>
-<li>Öffne die R Markdown (ha-01.Rmd) Datei in deinem Projekt (<strong>Tipp:</strong> Sie befindet sich in dem Ansichtsfenster unten rechts unter dem Reiter “Files”)</li>
-<li>Ändere den Autorennamen zu deinem Namen, füge ein Datum hinzu und stricke (‘knit’) das Dokument.</li>
+<li>Öffne die R Markdown (ha-01.Rmd) Datei in deinem Projekt
+(<strong>Tipp:</strong> Sie befindet sich in dem Ansichtsfenster unten
+rechts unter dem Reiter “Files”)</li>
+<li>Ändere den Autorennamen zu deinem Namen, füge ein Datum hinzu und
+stricke (‘knit’) das Dokument.</li>
 </ul>
 <div class="layout-chunk" data-layout="l-body">
 <p><img src="img/screenshot-imgs-002.png" width="960" /></p>
@@ -2014,52 +2036,104 @@ Hausaufgaben
 <div class="layout-chunk" data-layout="l-body">
 <p><img src="img/screenshot-imgs-003.png" width="960" /></p>
 </div>
-<p>Der obere Teil deiner R Markdown Datei (zwischen den drei gestrichelten Linien) wird YAML genannt. Es steht für “YAML Ain’t Markup Language”. Es ist ein menschenfreundlicher Standard zur Serialisierung von Daten für alle Programmiersprachen. Alles, was du wissen musst, ist, dass dieser Bereich YAML genannt wird (wir werden ihn als solchen bezeichnen) und dass er Metainformationen über dein Dokument enthält.</p>
+<p>Der obere Teil deiner R Markdown Datei (zwischen den drei
+gestrichelten Linien) wird YAML genannt. Es steht für “YAML Ain’t Markup
+Language”. Es ist ein menschenfreundlicher Standard zur Serialisierung
+von Daten für alle Programmiersprachen. Alles, was du wissen musst, ist,
+dass dieser Bereich YAML genannt wird (wir werden ihn als solchen
+bezeichnen) und dass er Metainformationen über dein Dokument
+enthält.</p>
 <h3 id="änderungen-schreiben-commit">Änderungen schreiben (commit)</h3>
-<p>In deinem RStudio, öffne das Fenster mit dem Titel Git im Ansichtsfenster oben rechts.</p>
-<p>Wenn du Änderungen an deiner Rmd-Datei gemacht hast, solltest du nun hier den Dateinamen sehen. Wähle die Datei aus der Liste aus indem du sie anklickst. Dann klicke auf <strong>Diff</strong> über den Dateinamen.</p>
-<p>Ein neues Fenster öffnet sich welche dir die <em>Diff</em>erenz zwischen dem letzten commit-Zustand des Dokuments (rot) und dem aktuellen aktuellen Zustand zeigt (grün), welcher deine Änderungen beinhaltet.</p>
-<p>Wenn du mit diesen Änderungen zufrieden bist, klicke auf das Kontrollkästchen neben dem Dateinamen um einen Haken zu setzen und schreibe “Aktualisiere Autorenname und Datum” in das Feld <strong>Commit message</strong>. Klicke anschliessend auf <strong>Commit</strong>.</p>
+<p>In deinem RStudio, öffne das Fenster mit dem Titel Git im
+Ansichtsfenster oben rechts.</p>
+<p>Wenn du Änderungen an deiner Rmd-Datei gemacht hast, solltest du nun
+hier den Dateinamen sehen. Wähle die Datei aus der Liste aus indem du
+sie anklickst. Dann klicke auf <strong>Diff</strong> über den
+Dateinamen.</p>
+<p>Ein neues Fenster öffnet sich welche dir die <em>Diff</em>erenz
+zwischen dem letzten commit-Zustand des Dokuments (rot) und dem
+aktuellen aktuellen Zustand zeigt (grün), welcher deine Änderungen
+beinhaltet.</p>
+<p>Wenn du mit diesen Änderungen zufrieden bist, klicke auf das
+Kontrollkästchen neben dem Dateinamen um einen Haken zu setzen und
+schreibe “Aktualisiere Autorenname und Datum” in das Feld <strong>Commit
+message</strong>. Klicke anschliessend auf <strong>Commit</strong>.</p>
 <div class="layout-chunk" data-layout="l-body">
 <p><img src="img/update-author-name-commit.png" width="540" /></p>
 </div>
-<p>Du musst nicht nach jeder Änderung committen, sondern Zustände, die <em>für dich bedeutsam</em> sind, um sie zu überprüfen, zu vergleichen oder wiederherzustellen.</p>
-<p>In den ersten paar Aufgaben werden wir dir genau sagen, wann und mit welchem Text du committen solltest. Im weiteren Verlauf des Kurses wirst du diese Entscheidungen dann selbst treffen.</p>
+<p>Du musst nicht nach jeder Änderung committen, sondern Zustände, die
+<em>für dich bedeutsam</em> sind, um sie zu überprüfen, zu vergleichen
+oder wiederherzustellen.</p>
+<p>In den ersten paar Aufgaben werden wir dir genau sagen, wann und mit
+welchem Text du committen solltest. Im weiteren Verlauf des Kurses wirst
+du diese Entscheidungen dann selbst treffen.</p>
 <h3 id="änderungen-schieben-push">Änderungen schieben (push)</h3>
-<p>Jetzt, wo du ein Update gemacht und diese Änderung committed hast, ist es an der Zeit, diese Änderungen ins Web zu pushen!</p>
-<p>Oder genauer gesagt, in dein Repo auf GitHub. Warum das? Damit Andere deine Änderungen sehen können. Und mit Anderen meinen wir das Kursteam (deine Repos in diesem Kurs sind für dich und uns privat).</p>
-<p>Doch bevor du dies ausführen kannst, musst du noch einen GitHub Personal Access Token (PAT) setzen und für dich speichern. GitHub erlaubt diesen Zugang über externe Applikationen seit dem 13. August 2021 nicht mehr über das Benutzerpasswort. Die Anweisungen um einen PAT zu erstellen findest du hier:</p>
-<p><a href="https://github.com/rstatsZH/kochbuch/tree/main/05-github-pat" class="uri">https://github.com/rstatsZH/kochbuch/tree/main/05-github-pat</a></p>
-<p>Um deine Änderungen nun auf GitHub zu pushen, klicke auf <strong>Push</strong>. Daraufhin erscheint ein Dialogfenster, in dem du zuerst deinen Benutzernamen und dann deinen erstellen Personal Access Token (PAT).</p>
+<p>Jetzt, wo du ein Update gemacht und diese Änderung committed hast,
+ist es an der Zeit, diese Änderungen ins Web zu pushen!</p>
+<p>Oder genauer gesagt, in dein Repo auf GitHub. Warum das? Damit Andere
+deine Änderungen sehen können. Und mit Anderen meinen wir das Kursteam
+(deine Repos in diesem Kurs sind für dich und uns privat).</p>
+<p>Doch bevor du dies ausführen kannst, musst du noch einen GitHub
+Personal Access Token (PAT) setzen und für dich speichern. GitHub
+erlaubt diesen Zugang über externe Applikationen seit dem 13. August
+2021 nicht mehr über das Benutzerpasswort. Die Anweisungen um einen PAT
+zu erstellen findest du hier:</p>
+<p><a
+href="https://github.com/rstatsZH/kochbuch/tree/main/05-github-pat"
+class="uri">https://github.com/rstatsZH/kochbuch/tree/main/05-github-pat</a></p>
+<p>Um deine Änderungen nun auf GitHub zu pushen, klicke auf
+<strong>Push</strong>. Daraufhin erscheint ein Dialogfenster, in dem du
+zuerst deinen Benutzernamen und dann deinen erstellen Personal Access
+Token (PAT).</p>
 <div class="layout-chunk" data-layout="l-body">
 <p><img src="img/push-to-github.001.png" width="960" /></p>
 </div>
 <h2 id="r-packages">R Packages</h2>
-<p>In dieser Hausaufgabe werden wir mit zwei R Packages arbeiten: <strong>datasauRus</strong>, welches den Datensatz enthält, den wir verwenden werden und <strong>tidyverse</strong>. Diese Packages sind bereits für dich installiert. Du kannst sie laden indem du den folgenden Code-chunk in deiner R Markdown Datei ausführst.</p>
+<p>In dieser Hausaufgabe werden wir mit zwei R Packages arbeiten:
+<strong>datasauRus</strong>, welches den Datensatz enthält, den wir
+verwenden werden und <strong>tidyverse</strong>. Diese Packages sind
+bereits für dich installiert. Du kannst sie laden indem du den folgenden
+Code-chunk in deiner R Markdown Datei ausführst.</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://tidyverse.tidyverse.org'>tidyverse</a></span><span class='op'>)</span> </span>
-<span><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://github.com/jumpingrivers/datasauRus'>datasauRus</a></span><span class='op'>)</span></span></code></pre>
+<pre class="sourceCode r"><code class="sourceCode r"><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://tidyverse.tidyverse.org'>tidyverse</a></span><span class='op'>)</span> 
+<span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://github.com/lockedata/datasauRus'>datasauRus</a></span><span class='op'>)</span>
+</code></pre>
 </div>
 </div>
-<p>Beachte, dass die Packages auch mit den gleichen Befehlen in deinem R Markdown Dokument geladen werden.</p>
+<p>Beachte, dass die Packages auch mit den gleichen Befehlen in deinem R
+Markdown Dokument geladen werden.</p>
 <h2 id="daten">Daten</h2>
-<p>Der Datensatz, mit dem wir heute arbeiten werden, heißt <code>datasaurus_dozen</code> und befindet sich im R Package <code>datasauRus</code>. Eigentlich enthält dieser einzelne Datensatz 13 weitere Datensätze, die uns zeigen sollen, warum Datenvisualisierung wichtig ist und wie zusammenfassende Statistiken allein irreführend sein können. Die verschiedenen Datensätze sind durch die Variable <code>dataset</code> (Spalte) gekennzeichnet.</p>
-<p>Um mehr über das Dataset herauszufinden, gib folgendes in deine Console ein: <code>?datasaurus_dozen</code>. Ein Fragezeichen vor dem Namen eines Objekts ruft immer dessen Hilfedatei auf. Ich habe für dich auch einen Code-chunk hinzugefügt welcher den Code enthält um die Hilfe-Datei für <code>datasaurus_dozen</code> zu öffnen.</p>
+<p>Der Datensatz, mit dem wir heute arbeiten werden, heißt
+<code>datasaurus_dozen</code> und befindet sich im R Package
+<code>datasauRus</code>. Eigentlich enthält dieser einzelne Datensatz 13
+weitere Datensätze, die uns zeigen sollen, warum Datenvisualisierung
+wichtig ist und wie zusammenfassende Statistiken allein irreführend sein
+können. Die verschiedenen Datensätze sind durch die Variable
+<code>dataset</code> (Spalte) gekennzeichnet.</p>
+<p>Um mehr über das Dataset herauszufinden, gib folgendes in deine
+Console ein: <code>?datasaurus_dozen</code>. Ein Fragezeichen vor dem
+Namen eines Objekts ruft immer dessen Hilfedatei auf. Ich habe für dich
+auch einen Code-chunk hinzugefügt welcher den Code enthält um die
+Hilfe-Datei für <code>datasaurus_dozen</code> zu öffnen.</p>
 <h1 id="übungen">Übungen</h1>
 <h2 id="übung-1">Übung 1</h2>
 <ul>
 <li>Öffne die Hilfedatei für <code>datasaurus_dozen</code></li>
-<li>Wie viele Zeilen und wie viele Spalten hat der Datensatz <code>datasaurus_dozen</code>?</li>
+<li>Wie viele Zeilen und wie viele Spalten hat der Datensatz
+<code>datasaurus_dozen</code>?</li>
 <li>Was sind die Variablen, die im Dataframe enthalten sind?</li>
 <li>Füge deine Antworten zu deinem R Markdown Bericht hinzu.</li>
 </ul>
-<p>Schauen wir uns an, was diese Datensätze sind. Dazu können wir eine <em>Häufigkeitstabelle</em> (frequency table) der dataset Variable erstellen:</p>
+<p>Schauen wir uns an, was diese Datensätze sind. Dazu können wir eine
+<em>Häufigkeitstabelle</em> (frequency table) der dataset Variable
+erstellen:</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span><span class='va'>datasaurus_dozen</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span> </span>
-<span>  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/group_by.html'>group_by</a></span><span class='op'>(</span><span class='va'>dataset</span><span class='op'>)</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span> </span>
-<span>  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/count.html'>count</a></span><span class='op'>(</span><span class='op'>)</span> </span></code></pre>
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>datasaurus_dozen</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span> 
+  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/group_by.html'>group_by</a></span><span class='op'>(</span><span class='va'>dataset</span><span class='op'>)</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span> 
+  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/count.html'>count</a></span><span class='op'>(</span><span class='op'>)</span> 
+</code></pre>
 </div>
 <pre><code># A tibble: 13 × 2
 # Groups:   dataset [13]
@@ -2079,93 +2153,193 @@ Hausaufgaben
 12 wide_lines   142
 13 x_shape      142</code></pre>
 </div>
-<p>Der ursprüngliche Datasaurus (<code>dino</code>) wurde von Alberto Cairo in <a href="http://www.thefunctionalart.com/2016/08/download-datasaurus-never-trust-summary.html">diesem großartigen Blogpost</a> erstellt. Das andere Dutzend wurde mit Hilfe von Simulated Annealing generiert und der Prozess wird in dem Paper <em>Same Stats, Different Graphs: Generating Datasets with Varied Appearance and Identical Statistics through Simulated Annealing</em><a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> von Justin Matejka und George Fitzmaurice beschrieben. In dem Paper simulieren die Autoren eine Vielzahl von Datensätzen, die die gleichen zusammenfassenden Statistiken wie der Datasaurus haben, aber sehr unterschiedliche Verteilungen aufweisen.</p>
-<p>🧶 ✅ ⬆️ <em>Knit, commit und push deine Änderungen auf GitHub mit der Commit-Nachricht “Füge Antwort für Übung 1 hinzu.” Achte darauf, alle geänderten Dateien zu committen und zu pushen, damit dein Git-Fenster danach aufgeräumt ist.</em></p>
+<p>Der ursprüngliche Datasaurus (<code>dino</code>) wurde von Alberto
+Cairo in <a
+href="http://www.thefunctionalart.com/2016/08/download-datasaurus-never-trust-summary.html">diesem
+großartigen Blogpost</a> erstellt. Das andere Dutzend wurde mit Hilfe
+von Simulated Annealing generiert und der Prozess wird in dem Paper
+<em>Same Stats, Different Graphs: Generating Datasets with Varied
+Appearance and Identical Statistics through Simulated Annealing</em><a
+href="#fn1" class="footnote-ref" id="fnref1"
+role="doc-noteref"><sup>1</sup></a> von Justin Matejka und George
+Fitzmaurice beschrieben. In dem Paper simulieren die Autoren eine
+Vielzahl von Datensätzen, die die gleichen zusammenfassenden Statistiken
+wie der Datasaurus haben, aber sehr unterschiedliche Verteilungen
+aufweisen.</p>
+<p>🧶 ✅ ⬆️ <em>Knit, commit und push deine Änderungen auf GitHub mit
+der Commit-Nachricht “Füge Antwort für Übung 1 hinzu.” Achte darauf,
+alle geänderten Dateien zu committen und zu pushen, damit dein
+Git-Fenster danach aufgeräumt ist.</em></p>
 <h2 id="übung-2">Übung 2</h2>
-<p>Unten findest du den Code, den du brauchst, um diese nächste Übunge zu lösen. Die Antworten für 1 und 2 sind schon gegeben und auch in deiner R Markdown Datei enthalten.</p>
+<p>Unten findest du den Code, den du brauchst, um diese nächste Übunge
+zu lösen. Die Antworten für 1 und 2 sind schon gegeben und auch in
+deiner R Markdown Datei enthalten.</p>
 <ol type="1">
-<li>Plot <code>y</code> gegen <code>x</code> für den <code>dino</code> Datensatz (Code ist in R Markdown Datei)</li>
-<li>Berechne dann den Korrelationskoeffizienten zwischen “x” und “y” für diesen Datensatz. (Code ist in R Markdown Datei)</li>
+<li>Plot <code>y</code> gegen <code>x</code> für den <code>dino</code>
+Datensatz (Code ist in R Markdown Datei)</li>
+<li>Berechne dann den Korrelationskoeffizienten zwischen “x” und “y” für
+diesen Datensatz. (Code ist in R Markdown Datei)</li>
 <li>Klicke auf <code>knit</code> um das Dokument zu stricken</li>
 </ol>
 <p><strong>Code vorlesen</strong></p>
-<p>Hier siehst du neuen Code, welchen wir noch nicht im Kurs behandelt haben. Dieser kann folgendermassen gelesen werden:</p>
-<p>Beginne mit dem <code>datasaurus_dozen</code> und leite es in die Funktion <code>filter</code>, um nach Beobachtungen zu filtern, bei denen <code>dataset == "dino"</code> ist. Speichere den resultierenden gefilterten Dataframe als einen Dataframe namens <code>dino_data</code>.</p>
+<p>Hier siehst du neuen Code, welchen wir noch nicht im Kurs behandelt
+haben. Dieser kann folgendermassen gelesen werden:</p>
+<p>Beginne mit dem <code>datasaurus_dozen</code> und leite es in die
+Funktion <code>filter</code>, um nach Beobachtungen zu filtern, bei
+denen <code>dataset == "dino"</code> ist. Speichere den resultierenden
+gefilterten Dataframe als einen Dataframe namens
+<code>dino_data</code>.</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span><span class='va'>dino_data</span> <span class='op'>&lt;-</span> <span class='va'>datasaurus_dozen</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span></span>
-<span>  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/filter.html'>filter</a></span><span class='op'>(</span><span class='va'>dataset</span> <span class='op'>==</span> <span class='st'>"dino"</span><span class='op'>)</span></span></code></pre>
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>dino_data</span> <span class='op'>&lt;-</span> <span class='va'>datasaurus_dozen</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span>
+  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/filter.html'>filter</a></span><span class='op'>(</span><span class='va'>dataset</span> <span class='op'>==</span> <span class='st'>"dino"</span><span class='op'>)</span>
+</code></pre>
 </div>
 </div>
-<p>Hier geht eine ganze Menge vor sich, also lassen wir es langsam angehen und nehmen es Schritt für Schritt auseinander.</p>
-<p>Erstens, der Pipe-Operator: <code>%&gt;%</code>, nimmt das, was davor kommt und sendet es als erstes Argument an das, was danach kommt. Hier sagen wir also, dass wir den <code>datasaurus_dozen</code> Dataframe nach Beobachtungen filtern, bei denen <code>dataset == "dino"</code> ist.</p>
-<p>Zweitens, der Zuweisungsoperator: <code>&lt;-</code>, weist dem gefilterten Dataframe den Namen <code>dino_data</code> zu.</p>
-<p>Als nächstes wollen wir diese Daten visualisieren. Dafür verwenden wir die Funktion <code>ggplot()</code>. Das erste Argument sind die Daten, die wir visualisieren wollen. Als nächstes definieren wir die <code>aes</code>thetischen Mappings (visuelle Eigenschaften). In anderen Worten, die Spalten der Daten, die auf bestimmte visuelle Eigenschaften des Plots abgebildet werden, z.B. wird die <code>x</code>-Achse die Variable namens <code>x</code> und die <code>y</code>-Achse die Variable namens <code>y</code> repräsentieren.</p>
-<p>Dann fügen wir eine weitere Ebene zu diesem Diagramm hinzu, in der wir definieren, welche geometrischen Formen wir verwenden wollen, um jede Beobachtung in den Daten darzustellen. In diesem Fall wollen wir, dass es sich um Punkte handelt, daher <code>geom_point()</code>.</p>
+<p>Hier geht eine ganze Menge vor sich, also lassen wir es langsam
+angehen und nehmen es Schritt für Schritt auseinander.</p>
+<p>Erstens, der Pipe-Operator: <code>%&gt;%</code>, nimmt das, was davor
+kommt und sendet es als erstes Argument an das, was danach kommt. Hier
+sagen wir also, dass wir den <code>datasaurus_dozen</code> Dataframe
+nach Beobachtungen filtern, bei denen <code>dataset == "dino"</code>
+ist.</p>
+<p>Zweitens, der Zuweisungsoperator: <code>&lt;-</code>, weist dem
+gefilterten Dataframe den Namen <code>dino_data</code> zu.</p>
+<p>Als nächstes wollen wir diese Daten visualisieren. Dafür verwenden
+wir die Funktion <code>ggplot()</code>. Das erste Argument sind die
+Daten, die wir visualisieren wollen. Als nächstes definieren wir die
+<code>aes</code>thetischen Mappings (visuelle Eigenschaften). In anderen
+Worten, die Spalten der Daten, die auf bestimmte visuelle Eigenschaften
+des Plots abgebildet werden, z.B. wird die <code>x</code>-Achse die
+Variable namens <code>x</code> und die <code>y</code>-Achse die Variable
+namens <code>y</code> repräsentieren.</p>
+<p>Dann fügen wir eine weitere Ebene zu diesem Diagramm hinzu, in der
+wir definieren, welche geometrischen Formen wir verwenden wollen, um
+jede Beobachtung in den Daten darzustellen. In diesem Fall wollen wir,
+dass es sich um Punkte handelt, daher <code>geom_point()</code>.</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span><span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></span><span class='op'>(</span>data <span class='op'>=</span> <span class='va'>dino_data</span>, mapping <span class='op'>=</span> <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>x</span>, y <span class='op'>=</span> <span class='va'>y</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span></span>
-<span>  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_point.html'>geom_point</a></span><span class='op'>(</span><span class='op'>)</span></span></code></pre>
+<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></span><span class='op'>(</span>data <span class='op'>=</span> <span class='va'>dino_data</span>, mapping <span class='op'>=</span> <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>x</span>, y <span class='op'>=</span> <span class='va'>y</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_point.html'>geom_point</a></span><span class='op'>(</span><span class='op'>)</span>
+</code></pre>
 </div>
 <p><img src="ha-01-hallo-git_files/figure-html5/unnamed-chunk-8-1.png" width="624" /></p>
 </div>
-<p>Nächste Woche wirst du mehr über die Philosophie der Datenvisualisierung in Layern erfahren. Für den Moment kannst du dem Code folgen, welcher dir zur Verfügung gestellt wird.</p>
-<p>Für den zweiten Teil dieser Übungen müssen wir eine zusammenfassende Statistik berechnen: den Korrelationskoeffizienten. Der Korrelationskoeffizient, in der Statistik oft als <span class="math inline">\(r\)</span> bezeichnet, misst den linearen Zusammenhang zwischen zwei Variablen.</p>
-<p>Du wirst sehen, dass einige der Variablenpaare, die wir darstellen, keinen linearen Zusammenhang zwischen ihnen haben. Das ist genau der Grund, warum wir zuerst visualisieren wollen: visualisieren, um die Form der Beziehung zu beurteilen, und <span class="math inline">\(r\)</span> nur berechnen, wenn es relevant ist.</p>
-<p>In diesem Fall macht die Berechnung eines Korrelationskoeffizienten wirklich keinen Sinn, da die Beziehung zwischen <code>x</code> und <code>y</code> definitiv nicht linear ist - sie ist dinosaurierhaft!</p>
-<p>Aber zur Veranschaulichung lass uns den Korrelationskoeffizienten zwischen “x” und “y” berechnen.</p>
+<p>Nächste Woche wirst du mehr über die Philosophie der
+Datenvisualisierung in Layern erfahren. Für den Moment kannst du dem
+Code folgen, welcher dir zur Verfügung gestellt wird.</p>
+<p>Für den zweiten Teil dieser Übungen müssen wir eine zusammenfassende
+Statistik berechnen: den Korrelationskoeffizienten. Der
+Korrelationskoeffizient, in der Statistik oft als <span
+class="math inline">\(r\)</span> bezeichnet, misst den linearen
+Zusammenhang zwischen zwei Variablen.</p>
+<p>Du wirst sehen, dass einige der Variablenpaare, die wir darstellen,
+keinen linearen Zusammenhang zwischen ihnen haben. Das ist genau der
+Grund, warum wir zuerst visualisieren wollen: visualisieren, um die Form
+der Beziehung zu beurteilen, und <span class="math inline">\(r\)</span>
+nur berechnen, wenn es relevant ist.</p>
+<p>In diesem Fall macht die Berechnung eines Korrelationskoeffizienten
+wirklich keinen Sinn, da die Beziehung zwischen <code>x</code> und
+<code>y</code> definitiv nicht linear ist - sie ist dinosaurierhaft!</p>
+<p>Aber zur Veranschaulichung lass uns den Korrelationskoeffizienten
+zwischen “x” und “y” berechnen.</p>
 <ul>
-<li>Beginne mit <code>dino_data</code> und berechne eine zusammenfassende Statistik, die wir <code>r</code> nennen werden, als die Beziehung (<code>cor</code>) zwischen <code>x</code> und <code>y</code>.</li>
+<li>Beginne mit <code>dino_data</code> und berechne eine
+zusammenfassende Statistik, die wir <code>r</code> nennen werden, als
+die Beziehung (<code>cor</code>) zwischen <code>x</code> und
+<code>y</code>.</li>
 </ul>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span><span class='va'>dino_data</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span></span>
-<span>  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/summarise.html'>summarize</a></span><span class='op'>(</span>r <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/stats/cor.html'>cor</a></span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>y</span><span class='op'>)</span><span class='op'>)</span></span></code></pre>
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>dino_data</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span>
+  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/summarise.html'>summarize</a></span><span class='op'>(</span>r <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/stats/cor.html'>cor</a></span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>y</span><span class='op'>)</span><span class='op'>)</span>
+</code></pre>
 </div>
 <pre><code># A tibble: 1 × 1
         r
     &lt;dbl&gt;
 1 -0.0645</code></pre>
 </div>
-<p>🧶 ✅ ⬆️ <em>Knit, commit, und pushe deine Änderungen auf GitHub mit der Commit-Nachricht “Füge Antwort für Übung 2 hinzu.” Achte darauf, alle geänderten Dateien zu committen und zu pushen, damit dein Git-Fenster danach aufgeräumt ist.</em></p>
+<p>🧶 ✅ ⬆️ <em>Knit, commit, und pushe deine Änderungen auf GitHub mit
+der Commit-Nachricht “Füge Antwort für Übung 2 hinzu.” Achte darauf,
+alle geänderten Dateien zu committen und zu pushen, damit dein
+Git-Fenster danach aufgeräumt ist.</em></p>
 <h2 id="übung-3">Übung 3</h2>
 <ol type="1">
-<li>Plotte <code>y</code> gegen <code>x</code> für den <code>star</code> Datensatz.</li>
+<li>Plotte <code>y</code> gegen <code>x</code> für den <code>star</code>
+Datensatz.</li>
 </ol>
-<p>Du kannst (und solltest) den Code, den wir oben genutzt, wiederverwenden, ersetze den Namen des Datensatzes durch den gewünschten Datensatz. Berechne dann den Korrelationskoeffizienten zwischen “x” und “y” für diesen Datensatz. Wie ist dieser Wert im Vergleich zu <code>r</code> von <code>dino</code>?</p>
-<p>🧶 ✅ ⬆️ <em>Dies ist ein weiterer guter Ort, um zu pausieren, zu stricken (knit), Änderungen mit der Commit-Nachricht “Füge Antwort für Übung 3 hinzu.” zu committen und zu pushen. Achte darauf, alle geänderten Dateien zu committen und zu pushen, damit dein Git-Fenster danach aufgeräumt ist.</em></p>
+<p>Du kannst (und solltest) den Code, den wir oben genutzt,
+wiederverwenden, ersetze den Namen des Datensatzes durch den gewünschten
+Datensatz. Berechne dann den Korrelationskoeffizienten zwischen “x” und
+“y” für diesen Datensatz. Wie ist dieser Wert im Vergleich zu
+<code>r</code> von <code>dino</code>?</p>
+<p>🧶 ✅ ⬆️ <em>Dies ist ein weiterer guter Ort, um zu pausieren, zu
+stricken (knit), Änderungen mit der Commit-Nachricht “Füge Antwort für
+Übung 3 hinzu.” zu committen und zu pushen. Achte darauf, alle
+geänderten Dateien zu committen und zu pushen, damit dein Git-Fenster
+danach aufgeräumt ist.</em></p>
 <h2 id="übung-4">Übung 4</h2>
 <ol type="1">
-<li>Plotte <code>y</code> gegen <code>x</code> für den <code>circle</code> Datensatz.</li>
+<li>Plotte <code>y</code> gegen <code>x</code> für den
+<code>circle</code> Datensatz.</li>
 </ol>
-<p>Du kannst (und solltest) den Code, den wir oben genutzt, wiederverwenden, ersetze den Namen des Datensatzes durch den gewünschten Datensatz. Berechne dann den Korrelationskoeffizienten zwischen “x” und “y” für diesen Datensatz. Wie ist dieser Wert im Vergleich zu <code>r</code> von <code>dino</code>?</p>
-<p>🧶 ✅ ⬆️ <em>Du kannst erneut pausieren, die Änderungen mit der Commit-Nachricht “Füge Antwort für Übung 4 hinzu.” committen und pushen. Achte darauf, alle geänderten Dateien zu committen und zu pushen, damit dein Git-Fenster danach aufgeräumt ist.</em></p>
-<p>Super! Ich hoffe, dass du es schaffst in der Hausaufgabe bis hierhin zu kommen. Die nächsten beiden Übungen sind Bonus Übungen falls du Lust hast noch etwas weiter zu arbeiten.</p>
+<p>Du kannst (und solltest) den Code, den wir oben genutzt,
+wiederverwenden, ersetze den Namen des Datensatzes durch den gewünschten
+Datensatz. Berechne dann den Korrelationskoeffizienten zwischen “x” und
+“y” für diesen Datensatz. Wie ist dieser Wert im Vergleich zu
+<code>r</code> von <code>dino</code>?</p>
+<p>🧶 ✅ ⬆️ <em>Du kannst erneut pausieren, die Änderungen mit der
+Commit-Nachricht “Füge Antwort für Übung 4 hinzu.” committen und pushen.
+Achte darauf, alle geänderten Dateien zu committen und zu pushen, damit
+dein Git-Fenster danach aufgeräumt ist.</em></p>
+<p>Super! Ich hoffe, dass du es schaffst in der Hausaufgabe bis hierhin
+zu kommen. Die nächsten beiden Übungen sind Bonus Übungen falls du Lust
+hast noch etwas weiter zu arbeiten.</p>
 <h2 id="übung-5-bonus">Übung 5 (Bonus)</h2>
-<p>Zum Schluss wollen wir alle Datensätze auf einmal darstellen. Um dies zu tun, werden wir Method für eine Facettierung nutzen.</p>
-<p>Mit einer Facette (facet) durich die Variable <code>dataset</code>, platzieren wir die Plots in einem Raster aus drei Spalten, entfernen die Legende und geben der Variable <code>dataset</code> eine visuelle Eigenschaft (aesthetic) indem wir es dem Argument ‘color’ zuordnen.</p>
+<p>Zum Schluss wollen wir alle Datensätze auf einmal darstellen. Um dies
+zu tun, werden wir Method für eine Facettierung nutzen.</p>
+<p>Mit einer Facette (facet) durich die Variable <code>dataset</code>,
+platzieren wir die Plots in einem Raster aus drei Spalten, entfernen die
+Legende und geben der Variable <code>dataset</code> eine visuelle
+Eigenschaft (aesthetic) indem wir es dem Argument ‘color’ zuordnen.</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span><span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></span><span class='op'>(</span><span class='va'>datasaurus_dozen</span>, <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>x</span>, y <span class='op'>=</span> <span class='va'>y</span>, color <span class='op'>=</span> <span class='va'>dataset</span><span class='op'>)</span><span class='op'>)</span><span class='op'>+</span></span>
-<span>  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_point.html'>geom_point</a></span><span class='op'>(</span><span class='op'>)</span><span class='op'>+</span></span>
-<span>  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/facet_wrap.html'>facet_wrap</a></span><span class='op'>(</span><span class='op'>~</span> <span class='va'>dataset</span>, ncol <span class='op'>=</span> <span class='fl'>3</span><span class='op'>)</span> <span class='op'>+</span></span>
-<span>  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/theme.html'>theme</a></span><span class='op'>(</span>legend.position <span class='op'>=</span> <span class='st'>"none"</span><span class='op'>)</span></span></code></pre>
+<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></span><span class='op'>(</span><span class='va'>datasaurus_dozen</span>, <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>x</span>, y <span class='op'>=</span> <span class='va'>y</span>, color <span class='op'>=</span> <span class='va'>dataset</span><span class='op'>)</span><span class='op'>)</span><span class='op'>+</span>
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_point.html'>geom_point</a></span><span class='op'>(</span><span class='op'>)</span><span class='op'>+</span>
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/facet_wrap.html'>facet_wrap</a></span><span class='op'>(</span><span class='op'>~</span> <span class='va'>dataset</span>, ncol <span class='op'>=</span> <span class='fl'>3</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/theme.html'>theme</a></span><span class='op'>(</span>legend.position <span class='op'>=</span> <span class='st'>"none"</span><span class='op'>)</span>
+</code></pre>
 </div>
 </div>
-<p>Und wir können die Funktion <code>group_by()</code> in Kombination mit der Funktion <code>summarize()</code> verwenden, um alle zusammenfassenden Korrelationskoeffizienten zu erzeugen.</p>
+<p>Und wir können die Funktion <code>group_by()</code> in Kombination
+mit der Funktion <code>summarize()</code> verwenden, um alle
+zusammenfassenden Korrelationskoeffizienten zu erzeugen.</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span><span class='va'>datasaurus_dozen</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span></span>
-<span>  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/group_by.html'>group_by</a></span><span class='op'>(</span><span class='va'>dataset</span><span class='op'>)</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span></span>
-<span>  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/summarise.html'>summarize</a></span><span class='op'>(</span>r <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/stats/cor.html'>cor</a></span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>y</span><span class='op'>)</span><span class='op'>)</span> </span></code></pre>
+<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>datasaurus_dozen</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span>
+  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/group_by.html'>group_by</a></span><span class='op'>(</span><span class='va'>dataset</span><span class='op'>)</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span>
+  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/summarise.html'>summarize</a></span><span class='op'>(</span>r <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/stats/cor.html'>cor</a></span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>y</span><span class='op'>)</span><span class='op'>)</span> 
+</code></pre>
 </div>
 </div>
-<p><em>Bravo, du bist fertig! Übertrage alle verbleibenden Änderungen, verwende die Commit-Nachricht “Fertig mit Hausaufgabe 1! </em>” und pushe. Achte darauf, alle geänderten Dateien zu committen und zu pushen, damit dein Git-Fenster danach aufgeräumt ist. Bevor du die Aufgabe beendest, stelle sicher, dass alle Dokumente in deinem GitHub Repository aktualisiert sind.</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
-<section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes">
+<p><em>Bravo, du bist fertig! Übertrage alle verbleibenden Änderungen,
+verwende die Commit-Nachricht “Fertig mit Hausaufgabe 1! </em>” und
+pushe. Achte darauf, alle geänderten Dateien zu committen und zu pushen,
+damit dein Git-Fenster danach aufgeräumt ist. Bevor du die Aufgabe
+beendest, stelle sicher, dass alle Dokumente in deinem GitHub Repository
+aktualisiert sind.</p>
+<div class="sourceCode" id="cb3"><pre
+class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
+<section id="footnotes" class="footnotes footnotes-end-of-document"
+role="doc-endnotes">
 <hr />
 <ol>
-<li id="fn1"><p>Matejka, Justin, and George Fitzmaurice. “Same stats, different graphs: Generating datasets with varied appearance and identical statistics through simulated annealing.” Proceedings of the 2017 CHI Conference on Human Factors in Computing Systems. ACM, 2017.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn1"><p>Matejka, Justin, and George Fitzmaurice. “Same stats,
+different graphs: Generating datasets with varied appearance and
+identical statistics through simulated annealing.” Proceedings of the
+2017 CHI Conference on Human Factors in Computing Systems. ACM, 2017.<a
+href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 </ol>
 </section>
 <!--radix_placeholder_article_footer-->

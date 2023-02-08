@@ -56,7 +56,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 }
 code span.al { color: #ad0000; } /* Alert */
 code span.an { color: #5e5e5e; } /* Annotation */
-code span.at { color: #20794d; } /* Attribute */
+code span.at { } /* Attribute */
 code span.bn { color: #ad0000; } /* BaseN */
 code span.bu { } /* BuiltIn */
 code span.cf { color: #007ba5; } /* ControlFlow */
@@ -77,13 +77,14 @@ code span.kw { color: #007ba5; } /* Keyword */
 code span.op { color: #5e5e5e; } /* Operator */
 code span.ot { color: #007ba5; } /* Other */
 code span.pp { color: #ad0000; } /* Preprocessor */
-code span.sc { color: #20794d; } /* SpecialChar */
+code span.sc { color: #5e5e5e; } /* SpecialChar */
 code span.ss { color: #20794d; } /* SpecialString */
 code span.st { color: #20794d; } /* String */
 code span.va { color: #111111; } /* Variable */
 code span.vs { color: #20794d; } /* VerbatimString */
 code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 </style>
+
 
   <!--radix_placeholder_meta_tags-->
   <title>Woche 6 - Daten importieren und Daten aufräumen</title>
@@ -1262,7 +1263,10 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 
       // hoverable references
       $('span.citation[data-cites]').each(function() {
-        var refHtml = $('#ref-' + $(this).attr('data-cites')).html();
+        var refs = $(this).attr('data-cites').split(" ");
+        var refHtml = refs.map(function(ref) {
+          return "<p>" + $('#ref-' + ref).html() + "</p>";
+        }).join("\n");
         window.tippy(this, {
           allowHTML: true,
           content: refHtml,
@@ -1433,14 +1437,14 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   </script>
 
   <!--/radix_placeholder_distill-->
-  <script src="woche06_files/header-attrs-2.9/header-attrs.js"></script>
+  <script src="woche06_files/header-attrs-2.11/header-attrs.js"></script>
   <script src="woche06_files/clipboard-2.0.6/clipboard.min.js"></script>
   <link href="woche06_files/shareon-1.4.1/shareon.min.css" rel="stylesheet" />
   <script src="woche06_files/shareon-1.4.1/shareon.min.js"></script>
   <link href="woche06_files/xaringanExtra-shareagain-0.2.6/shareagain.css" rel="stylesheet" />
   <script src="woche06_files/xaringanExtra-shareagain-0.2.6/shareagain.js"></script>
   <script src="woche06_files/fitvids-2.1.1/fitvids.min.js"></script>
-  <script src="woche06_files/jquery-1.11.3/jquery.min.js"></script>
+  <script src="woche06_files/jquery-3.6.0/jquery-3.6.0.min.js"></script>
   <script src="woche06_files/popper-2.6.0/popper.min.js"></script>
   <link href="woche06_files/tippy-6.2.7/tippy.css" rel="stylesheet" />
   <link href="woche06_files/tippy-6.2.7/tippy-light-border.css" rel="stylesheet" />
@@ -1460,7 +1464,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <!--radix_placeholder_front_matter-->
 
 <script id="distill-front-matter" type="text/json">
-{"title":"Woche 6 - Daten importieren und Daten aufräumen","description":"Ziele und Materialien für unsere sechste gemeinsame Woche","authors":[],"publishedDate":"2021-04-21T00:00:00.000+00:00"}
+{"title":"Woche 6 - Daten importieren und Daten aufräumen","description":"Ziele und Materialien für unsere sechste gemeinsame Woche","authors":[],"publishedDate":"2021-04-21T00:00:00.000+02:00"}
 </script>
 
 <!--/radix_placeholder_front_matter-->
@@ -1482,9 +1486,10 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <nav class="l-text toc figcaption" id="TOC">
 <h3>Contents</h3>
 <ul>
-<li><a href="#ziele">Ziele</a></li>
-<li><a href="#folien">Folien</a></li>
-<li><a href="#weiterführende-aufgaben">Weiterführende Aufgaben</a></li>
+<li><a href="#ziele" id="toc-ziele">Ziele</a></li>
+<li><a href="#folien" id="toc-folien">Folien</a></li>
+<li><a href="#weiterführende-aufgaben"
+id="toc-weiterführende-aufgaben">Weiterführende Aufgaben</a></li>
 </ul>
 </nav>
 </div>
@@ -1493,19 +1498,22 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 
 </div>
 <div class="layout-chunk" data-layout="l-body">
-<div class="figure"><span id="fig:unnamed-chunk-1"></span>
+<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-1"></span>
 <img src="img/alistair-macrobert-RazuRIEPdgg-unsplash.jpg" alt="Photo by [Alistair MacRobert](https://unsplash.com/photos/RazuRIEPdgg)" data-distill-preview=1 />
 <p class="caption">
-Figure 1: Photo by <a href="https://unsplash.com/photos/RazuRIEPdgg">Alistair MacRobert</a>
+Figure 1: Photo by <a
+href="https://unsplash.com/photos/RazuRIEPdgg">Alistair MacRobert</a>
 </p>
 </div>
 </div>
-<p>Lerne wie du verschiedene Datenformate importierst und starte deine Projektarbeit zum Abschluss des Kurses.</p>
+<p>Lerne wie du verschiedene Datenformate importierst und starte deine
+Projektarbeit zum Abschluss des Kurses.</p>
 <h1 id="ziele">Ziele</h1>
 <p>Am Ende dieser Woche könnt ihr:</p>
 <ul>
 <li>Daten aus verschiedenen Formaten in R importieren</li>
-<li>Erkennen wann es notwendig ist Datumswerte aus Rohdaten in R selbst zu codieren</li>
+<li>Erkennen wann es notwendig ist Datumswerte aus Rohdaten in R selbst
+zu codieren</li>
 <li>Daten aus einem weiten Format in ein langes Format bringen</li>
 <li>Erkennen ob Daten als Tidy data klassifiert werden können</li>
 </ul>
@@ -1528,7 +1536,8 @@ Figure 1: Photo by <a href="https://unsplash.com/photos/RazuRIEPdgg">Alistair Ma
 Buch
 </td>
 <td style="text-align:left;">
-<a href="https://r4ds.had.co.nz/tidy-data.html#tidy-data">R4DS - Chapter 12 - Tidy data (minimum bis einschliesslich 12.3.)</a>
+<a href="https://r4ds.had.co.nz/tidy-data.html#tidy-data">R4DS - Chapter
+12 - Tidy data (minimum bis einschliesslich 12.3.)</a>
 </td>
 <td style="text-align:left;">
 Pflicht
@@ -1542,7 +1551,9 @@ Pflicht
 Hausaufgabe
 </td>
 <td style="text-align:left;">
-<a href="https://rstatszh.github.io/website/ha-06-projektarbeit.html">Hausaufgabe 06 - Projektarbeit</a>
+<a
+href="https://rstatszh.github.io/website/ha-06-projektarbeit.html">Hausaufgabe
+06 - Projektarbeit</a>
 </td>
 <td style="text-align:left;">
 Pflicht
@@ -1556,7 +1567,8 @@ Pflicht
 Buch
 </td>
 <td style="text-align:left;">
-<a href="https://r4ds.had.co.nz/dates-and-times.html">R4DS - Chapter 16 - Dates and times</a>
+<a href="https://r4ds.had.co.nz/dates-and-times.html">R4DS - Chapter 16
+- Dates and times</a>
 </td>
 <td style="text-align:left;">
 Freiwillig
@@ -1570,7 +1582,8 @@ Freiwillig
 Wissenschaftlicher Artikel (informelle Version)
 </td>
 <td style="text-align:left;">
-<a href="https://tidyr.tidyverse.org/articles/tidy-data.html">Tidy Data - Theorie</a>
+<a href="https://tidyr.tidyverse.org/articles/tidy-data.html">Tidy Data
+- Theorie</a>
 </td>
 <td style="text-align:left;">
 Freiwillig
@@ -1584,7 +1597,9 @@ Freiwillig
 Wissenschaftlicher Artikel
 </td>
 <td style="text-align:left;">
-<a href="https://www.tandfonline.com/doi/full/10.1080/00031305.2017.1375989">Data Organization in Spreadsheets</a>
+<a
+href="https://www.tandfonline.com/doi/full/10.1080/00031305.2017.1375989">Data
+Organization in Spreadsheets</a>
 </td>
 <td style="text-align:left;">
 Empfohlen
@@ -1596,7 +1611,8 @@ Empfohlen
 </tbody>
 </table>
 </div>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
+<div class="sourceCode" id="cb1"><pre
+class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
 <!--radix_placeholder_article_footer-->
 <!--/radix_placeholder_article_footer-->
 </div>

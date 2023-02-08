@@ -1,0 +1,950 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+  <head>
+    <title>rstatsZH - Data Science mit R</title>
+    <meta charset="utf-8" />
+    <meta name="author" content="Lars Schöbitz" />
+    <meta name="date" content="2022-09-15" />
+    <script src="libs/header-attrs/header-attrs.js"></script>
+    <link href="libs/remark-css/default.css" rel="stylesheet" />
+    <link href="libs/font-awesome/css/all.css" rel="stylesheet" />
+    <link href="libs/font-awesome/css/v4-shims.css" rel="stylesheet" />
+    <link href="libs/panelset/panelset.css" rel="stylesheet" />
+    <script src="libs/panelset/panelset.js"></script>
+    <script src="libs/clipboard/clipboard.min.js"></script>
+    <link href="libs/shareon/shareon.min.css" rel="stylesheet" />
+    <script src="libs/shareon/shareon.min.js"></script>
+    <link href="libs/xaringanExtra-shareagain/shareagain.css" rel="stylesheet" />
+    <script src="libs/xaringanExtra-shareagain/shareagain.js"></script>
+    <link rel="stylesheet" href="assets/css/xaringan-themer.css" type="text/css" />
+    <link rel="stylesheet" href="assets/css/my-css-style.css" type="text/css" />
+  </head>
+  <body>
+    <textarea id="source">
+
+
+class: title-slide
+
+
+
+
+&lt;script async defer data-domain="rstatszh.github.io/website" src="https://plausible.io/js/plausible.js"&gt;&lt;/script&gt;
+
+
+
+
+
+
+
+
+
+# rstatsZH - Data Science mit R
+## Datenvisualisierung verschiedener Datentypen 
+
+.bottom[
+
+<p>Lars Schöbitz</p><p>2022-09-15</p>
+]
+
+---
+class: left
+background-image: url(img/review.jpg)
+background-position: right
+background-size: contain
+
+# Rückblick - Woche 2
+
+**Daten erkunden**
+
+- Über mapping visueller Eigenschaften
+    - `aes()`
+- Über Faceting
+    - `facet_grid()` - 2 dimensional
+    - `facet_wrap()` - 1 dimensional
+- Mit Funktionen
+    - `str()`
+    - `nrow()`
+    - `ncol()`
+    - `View()`
+
+.footnote[Photo by: [Annie Spratt](https://unsplash.com/photos/nVrqbvzOh08)]
+
+???
+
+---
+background-image: url(img/goals-dart.jpg)
+background-position: right
+background-size: contain
+
+# Ziele für diese Woche
+
+.pull-left[
+
+Am Ende dieser Woche könnt ihr:
+
+- die Farb- und Achsenskalierung eines Plots anpassen
+- den passenden Plot für eure Daten finden
+- einzelne Funktionen des R Package `{dplyr}` anwenden
+- beschreiben wie das Symbol `%&gt;%` genutzt wird
+
+.footnote[Photo by: [Ameer Basheer](https://unsplash.com/photos/nVrqbvzOh08)]
+]
+
+
+---
+class: inverse, middle
+
+# .big[Hausaufgabe - Hallo OGD]
+
+---
+class: inverse, middle
+
+# .big[Übung 3 - Beispiel]
+
+---
+
+
+.panelset[
+.panel[.panel-name[Plot]
+&lt;img src="e1_d03-data-vis-num_files/figure-html/unnamed-chunk-5-1.png" width="100%" style="display: block; margin: auto;" /&gt;
+]
+
+.panel[.panel-name[Code]
+
+```r
+ggplot(data = corona_kultur_beschluss_gering,
+       aes(x = Beschluss, 
+           fill = Sparte)) + 
+* geom_histogram(binwidth = 10000) +
+  facet_wrap(~Kategorie) +
+  scale_fill_brewer(type = "qual", palette = 3) +
+* scale_x_continuous(breaks = seq(0, 100000, 10000),
+*                    labels = seq(0, 100, 10)) +
+  labs(title = "Corona Hilfen im Kulturbereich im Kanton Zürich", 
+       subtitle = "Verteilung der Beträge kleiner 100'000 CHF nach Kategorie und Sparte", 
+       caption = "Daten: opendata.swiss",
+       x = "Beschluss in 1000 CHF",
+       y = "Anzahl") + 
+* theme(legend.position = "bottom")
+```
+
+]
+]
+
+---
+class: inverse, middle
+
+# .big[Übung 4 - Beispiel]
+
+---
+.panelset[
+.panel[.panel-name[Plot]
+&lt;img src="e1_d03-data-vis-num_files/figure-html/unnamed-chunk-6-1.png" width="100%" style="display: block; margin: auto;" /&gt;
+]
+
+.panel[.panel-name[Code]
+
+```r
+ggplot(data = corona_kultur, 
+       mapping =  aes(x = Status, 
+                      fill = Sparte)) +
+  geom_bar() +
+  facet_wrap(~Kategorie, nrow = 1) +
+  scale_fill_brewer(type = "qual", palette = 3) +
+* theme_minimal(base_size = 14) +
+* theme(legend.position = "bottom")
+```
+
+]
+]
+
+---
+class: inverse, middle
+
+# .large[Praktikum 3 - {ggplot2}]
+
+---
+
+.note[
+
+1. **RStudio Cloud**: Öffne deinen Arbeitsbereich für den Kurs in der RStudio Cloud
+2. **RStudio Cloud / Projects**: Öffne erneut das Praktikum 03
+3. Folgt wieder auf dem Bildschirm
+
+]
+
+---
+## Eine Skala ersetzen - Farbskalen (color)
+
+
+```r
+ggplot(penguins, aes(x = bill_length_mm, y = bill_depth_mm, colour = species)) +
+  geom_point() +
+* scale_color_viridis_d()
+```
+
+&lt;img src="e1_d03-data-vis-num_files/figure-html/unnamed-chunk-7-1.png" width="80%" style="display: block; margin: auto;" /&gt;
+
+---
+## Eine Skala ersetzen - Farbskalen (fill)
+
+
+```r
+ggplot(penguins, aes(x = species, fill = island)) +
+  geom_bar() +
+* scale_fill_viridis_d()
+```
+
+&lt;img src="e1_d03-data-vis-num_files/figure-html/unnamed-chunk-8-1.png" width="80%" style="display: block; margin: auto;" /&gt;
+
+---
+## Eine Skala ersetzen - Farbskalen ([colorbrewer2.org](https://colorbrewer2.org/))
+
+
+```r
+ggplot(penguins, aes(x = species, fill = island)) +
+  geom_bar() +
+* scale_fill_brewer(type = "qual", palette = "Set2")
+```
+
+&lt;img src="e1_d03-data-vis-num_files/figure-html/unnamed-chunk-9-1.png" width="80%" style="display: block; margin: auto;" /&gt;
+
+---
+## Eine Skala ersetzen - Achsen (kontinuierliche Variable)
+
+.panelset[
+.panel[.panel-name[Plot]
+&lt;img src="e1_d03-data-vis-num_files/figure-html/unnamed-chunk-10-1.png" width="100%" style="display: block; margin: auto;" /&gt;
+]
+
+.panel[.panel-name[Code]
+
+```r
+ggplot(penguins, 
+       aes(x = bill_length_mm,
+           y = bill_depth_mm,
+           colour = species)) +
+  geom_point() +
+  scale_color_viridis_d() +
+* scale_x_continuous(breaks = seq(0, 70, 5), limits = c(0, 70)) +
+* scale_y_continuous(breaks = seq(0, 30, 2.5), limits = c(0, 30))
+```
+
+]
+]
+
+---
+# Praktikum 3 - Lösungen
+
+- **GitHub Organisation:** rstatsZH
+    - github.com/rstatsZH
+- **Repo:** prak-03-vis-ggplot2
+    - https://github.com/rstatsZH/prak-03-vis-ggplot2
+- **R Markdown Datei:** prak-03-solutions.Rmd
+    - https://github.com/rstatsZH/prak-03-vis-ggplot2/blob/main/prak-03-solutions.Rmd
+
+
+---
+class: inverse, middle
+
+# .large[Variablen Typen]
+
+
+---
+# Variablen Typen
+
+.midi[
+.pull-left[
+## Numerisch
+**Diskrete Variablen**
+- nicht negative
+- zählbare
+- ganze Zahlen
+- z.B. Anzahl Schüler, Würfelwurf
+
+**Stetige (kontinuierliche) Variablen**
+
+- unendliche Anzahl von Werten 
+- zwischen zwei Werten
+- auch Datums/Uhrzeitwerte
+- z.B. Länge, Gewicht, Grösse 
+
+]
+
+.pull-right[
+## Nicht numerisch
+
+**Kategoriale Variablen**
+- endliche Anzahl von Werten 
+- eindeutige Gruppen (z.B. EU Länder)
+- **ordinal**, wenn diese eine logische Reihenfolge/Rangordnung aufweisen (z.B. Wochentage, Schulnoten)
+
+]
+
+]
+
+
+
+
+???
+Diskrete Variablen sind numerische Variablen, die zwischen zwei beliebigen Werten eine zählbare Anzahl von nicht negativen Werten aufweisen. Eine diskrete Variable ist immer numerisch. Beispiele: Die Anzahl Schüler in der Primarschule oder das Ergebnis eines Wurfs eines Würfels. 
+
+Stetige Daten sind numerische Variablen, die zwischen zwei beliebigen Werten eine unendliche Anzahl von Werten aufweisen. Stetige Variablen können aus numerischen oder Datums-/Uhrzeitwerten bestehen. Beispiel: die Länge eines Teils oder Datum und Uhrzeit eines Zahlungseingangs
+
+Kategoriale Variablen umfassen eine endliche Anzahl von Kategorien oder eindeutigen Gruppen. Kategoriale Daten müssen nicht zwangsläufig eine logische Reihenfolge aufweisen. Zu den kategorialen Prädiktoren zählen beispielsweise Geschlecht, Materialtyp und Zahlungsmethode
+
+
+---
+# Variablen Typen - Penguins
+
+
+```r
+penguins
+```
+
+```
+# A tibble: 344 × 8
+  species island    bill_le…¹ bill_…² flipp…³ body_…⁴ sex    year
+  &lt;fct&gt;   &lt;fct&gt;         &lt;dbl&gt;   &lt;dbl&gt;   &lt;int&gt;   &lt;int&gt; &lt;fct&gt; &lt;int&gt;
+1 Adelie  Torgersen      39.1    18.7     181    3750 male   2007
+2 Adelie  Torgersen      39.5    17.4     186    3800 fema…  2007
+3 Adelie  Torgersen      40.3    18       195    3250 fema…  2007
+4 Adelie  Torgersen      NA      NA        NA      NA &lt;NA&gt;   2007
+5 Adelie  Torgersen      36.7    19.3     193    3450 fema…  2007
+6 Adelie  Torgersen      39.3    20.6     190    3650 male   2007
+# … with 338 more rows, and abbreviated variable names
+#   ¹​bill_length_mm, ²​bill_depth_mm, ³​flipper_length_mm,
+#   ⁴​body_mass_g
+```
+
+---
+# Variablen Typen - Penguins
+
+
+```r
+str(penguins)
+```
+
+```
+tibble [344 × 8] (S3: tbl_df/tbl/data.frame)
+ $ species          : Factor w/ 3 levels "Adelie","Chinstrap",..: 1 1 1 1 1 1 1 1 1 1 ...
+ $ island           : Factor w/ 3 levels "Biscoe","Dream",..: 3 3 3 3 3 3 3 3 3 3 ...
+ $ bill_length_mm   : num [1:344] 39.1 39.5 40.3 NA 36.7 39.3 38.9 39.2 34.1 42 ...
+ $ bill_depth_mm    : num [1:344] 18.7 17.4 18 NA 19.3 20.6 17.8 19.6 18.1 20.2 ...
+ $ flipper_length_mm: int [1:344] 181 186 195 NA 193 190 181 195 193 190 ...
+ $ body_mass_g      : int [1:344] 3750 3800 3250 NA 3450 3650 3625 4675 3475 4250 ...
+ $ sex              : Factor w/ 2 levels "female","male": 2 1 1 NA 1 2 1 2 NA NA ...
+ $ year             : int [1:344] 2007 2007 2007 2007 2007 2007 2007 2007 2007 2007 ...
+```
+
+---
+# Variablen Typen - Penguins 
+
+<div id="pzveloiefp" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>html {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
+}
+
+#pzveloiefp .gt_table {
+  display: table;
+  border-collapse: collapse;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #A8A8A8;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+#pzveloiefp .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#pzveloiefp .gt_caption {
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+#pzveloiefp .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#pzveloiefp .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 0;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#pzveloiefp .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#pzveloiefp .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#pzveloiefp .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: bold;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+#pzveloiefp .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: bold;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#pzveloiefp .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#pzveloiefp .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#pzveloiefp .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#pzveloiefp .gt_group_heading {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  text-align: left;
+}
+
+#pzveloiefp .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#pzveloiefp .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#pzveloiefp .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#pzveloiefp .gt_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#pzveloiefp .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#pzveloiefp .gt_stub_row_group {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+  vertical-align: top;
+}
+
+#pzveloiefp .gt_row_group_first td {
+  border-top-width: 2px;
+}
+
+#pzveloiefp .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#pzveloiefp .gt_first_summary_row {
+  border-top-style: solid;
+  border-top-color: #D3D3D3;
+}
+
+#pzveloiefp .gt_first_summary_row.thick {
+  border-top-width: 2px;
+}
+
+#pzveloiefp .gt_last_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#pzveloiefp .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#pzveloiefp .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+#pzveloiefp .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+#pzveloiefp .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#pzveloiefp .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#pzveloiefp .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding-left: 4px;
+  padding-right: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#pzveloiefp .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#pzveloiefp .gt_sourcenote {
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#pzveloiefp .gt_left {
+  text-align: left;
+}
+
+#pzveloiefp .gt_center {
+  text-align: center;
+}
+
+#pzveloiefp .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#pzveloiefp .gt_font_normal {
+  font-weight: normal;
+}
+
+#pzveloiefp .gt_font_bold {
+  font-weight: bold;
+}
+
+#pzveloiefp .gt_font_italic {
+  font-style: italic;
+}
+
+#pzveloiefp .gt_super {
+  font-size: 65%;
+}
+
+#pzveloiefp .gt_footnote_marks {
+  font-style: italic;
+  font-weight: normal;
+  font-size: 75%;
+  vertical-align: 0.4em;
+}
+
+#pzveloiefp .gt_asterisk {
+  font-size: 100%;
+  vertical-align: 0;
+}
+
+#pzveloiefp .gt_indent_1 {
+  text-indent: 5px;
+}
+
+#pzveloiefp .gt_indent_2 {
+  text-indent: 10px;
+}
+
+#pzveloiefp .gt_indent_3 {
+  text-indent: 15px;
+}
+
+#pzveloiefp .gt_indent_4 {
+  text-indent: 20px;
+}
+
+#pzveloiefp .gt_indent_5 {
+  text-indent: 25px;
+}
+</style>
+<table class="gt_table">
+  
+  <thead class="gt_col_headings">
+    <tr>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col" id="Variable">Variable</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col" id="Variablen Typ 1">Variablen Typ 1</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col" id="Variablen Typ 2">Variablen Typ 2</th>
+    </tr>
+  </thead>
+  <tbody class="gt_table_body">
+    <tr><td headers="Variable" class="gt_row gt_left">species</td>
+<td headers="Variablen Typ 1" class="gt_row gt_left">kategorisch</td>
+<td headers="Variablen Typ 2" class="gt_row gt_left">nicht ordinal</td></tr>
+    <tr><td headers="Variable" class="gt_row gt_left">island</td>
+<td headers="Variablen Typ 1" class="gt_row gt_left">kategorisch</td>
+<td headers="Variablen Typ 2" class="gt_row gt_left">nicht ordinal</td></tr>
+    <tr><td headers="Variable" class="gt_row gt_left">bill_length_mm</td>
+<td headers="Variablen Typ 1" class="gt_row gt_left">numerisch</td>
+<td headers="Variablen Typ 2" class="gt_row gt_left">kontinuierlich</td></tr>
+    <tr><td headers="Variable" class="gt_row gt_left">bill_depth_mm</td>
+<td headers="Variablen Typ 1" class="gt_row gt_left">numerisch</td>
+<td headers="Variablen Typ 2" class="gt_row gt_left">kontinuierlich</td></tr>
+    <tr><td headers="Variable" class="gt_row gt_left">flipper_length_mm</td>
+<td headers="Variablen Typ 1" class="gt_row gt_left">numerisch</td>
+<td headers="Variablen Typ 2" class="gt_row gt_left">kontinuierlich</td></tr>
+    <tr><td headers="Variable" class="gt_row gt_left">body_mass_g</td>
+<td headers="Variablen Typ 1" class="gt_row gt_left">numerisch</td>
+<td headers="Variablen Typ 2" class="gt_row gt_left">kontinuierlich</td></tr>
+    <tr><td headers="Variable" class="gt_row gt_left">sex</td>
+<td headers="Variablen Typ 1" class="gt_row gt_left">kategorisch</td>
+<td headers="Variablen Typ 2" class="gt_row gt_left">nicht ordinal</td></tr>
+    <tr><td headers="Variable" class="gt_row gt_left">year</td>
+<td headers="Variablen Typ 1" class="gt_row gt_left">numerisch</td>
+<td headers="Variablen Typ 2" class="gt_row gt_left">diskret</td></tr>
+  </tbody>
+  
+  
+</table>
+</div>
+
+???
+
+- Ist das Jahr nun diskret oder kontinuierlich?
+- In diesem Fall haben wir keine Datumsangabe oder Zeitpunktsangabe, sondern das Jahr in welchem die Daten gesammelt wurde, dies macht die Variable selbst zu einer diskreten Variable. 
+- Warum spielt das eine Rolle?
+
+
+---
+background-image: url(img/data-to-viz.png)
+background-size: contain
+
+.footnote[Screenshot of: https://www.data-to-viz.com/]
+
+---
+# Zwei Bücher für eure weitere Reise
+
+- `{ggplot2}`: Elegant Graphics for Data Analysis  https://ggplot2-book.org/index.html
+- Fundamentals of Data Visualization: https://clauswilke.com/dataviz/
+
+---
+# 🌻 Danke 
+
+Für die Aufmerksamkeit!
+
+Für die R packages [{xaringan}](https://github.com/yihui/xaringan) und [{xaringanthemer}](https://github.com/gadenbuie/xaringanthemer) mit welchen die Folien geschrieben wurden.
+
+Eine PDF Version der Folien kann hier heruntergeladen werden: https://github.com/rstatsZH/website/raw/master/slides/e1_d03-data-vis-num/e1_d03-data-vis-num.pdf
+
+<hr/>
+
+Für [Data Science in a Box](https://datasciencebox.org/) und [Remaster the Tidyverse](https://github.com/rstudio-education/remaster-the-tidyverse), von welchen ich Materialien für diesen Kurs nutze und welche genau wie diese Folien mit [Creative Commons Attribution Share Alike 4.0 International](https://creativecommons.org/licenses/by-sa/4.0/) lizensiert sind.
+    </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script>var slideshow = remark.create({
+"slideNumberFormat": "<div class=\"progress-bar-container\">\n  </div>\n  <div class=\"progress-bar\" style=\"width: calc(%current% / %total% * 100%);\">\n",
+"highlightStyle": "solarized-light",
+"highlightLanguage": ["r", "css", "yaml"],
+"highlightLines": true,
+"countIncrementalSlides": false,
+"ratio": "16:9"
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
+})();
+(function() {
+  "use strict"
+  // Replace <script> tags in slides area to make them executable
+  var scripts = document.querySelectorAll(
+    '.remark-slides-area .remark-slide-container script'
+  );
+  if (!scripts.length) return;
+  for (var i = 0; i < scripts.length; i++) {
+    var s = document.createElement('script');
+    var code = document.createTextNode(scripts[i].textContent);
+    s.appendChild(code);
+    var scriptAttrs = scripts[i].attributes;
+    for (var j = 0; j < scriptAttrs.length; j++) {
+      s.setAttribute(scriptAttrs[j].name, scriptAttrs[j].value);
+    }
+    scripts[i].parentElement.replaceChild(s, scripts[i]);
+  }
+})();
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();
+// adds .remark-code-has-line-highlighted class to <pre> parent elements
+// of code chunks containing highlighted lines with class .remark-code-line-highlighted
+(function(d) {
+  const hlines = d.querySelectorAll('.remark-code-line-highlighted');
+  const preParents = [];
+  const findPreParent = function(line, p = 0) {
+    if (p > 1) return null; // traverse up no further than grandparent
+    const el = line.parentElement;
+    return el.tagName === "PRE" ? el : findPreParent(el, ++p);
+  };
+
+  for (let line of hlines) {
+    let pre = findPreParent(line);
+    if (pre && !preParents.includes(pre)) preParents.push(pre);
+  }
+  preParents.forEach(p => p.classList.add("remark-code-has-line-highlighted"));
+})(document);</script>
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+};
+slideshow._releaseMath(document);
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>

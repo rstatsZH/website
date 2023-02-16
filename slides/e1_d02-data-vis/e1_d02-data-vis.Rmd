@@ -2,7 +2,7 @@
 title: "rstatsZH - Data Science mit R"
 subtitle: "Datenvisualisierung mit ggplot2"  
 author: "Lars Schöbitz"
-date: "2022-09-08"
+date: "2023-02-16"
 output:
   xaringan::moon_reader:
     self_contained: false
@@ -60,12 +60,11 @@ background-size: contain
 
 - Git  
 - GitHub
-- RStudio Cloud 
+- Posit Cloud 
 - R
 - R Markdown
 - R Package `{ggplot2}`
 - Pinguine `r emo::ji("penguin")`
-- Help Files
 - Code-chunks
 - Argument, Objekt, Funktion, etc. etc.
 
@@ -88,12 +87,11 @@ background-size: contain
 
 - Git  
 - GitHub
-- RStudio Cloud 
+- Posit Cloud 
 - R
 - R Markdown
 - R Package `{ggplot2}`
 - Pinguine `r emo::ji("penguin")`
-- Help Files
 - Code-chunks
 - Argument, Objekt, Funktion, etc. etc.
 
@@ -144,9 +142,9 @@ Deshalb sind dies die Ziele für heute.
 
 **Lesezeichen**
 
-- RStudio Cloud: https://rstudio.cloud/spaces/274753/content/
-- Kurs Webseite: https://rstatszh.github.io/website/
-- GitHub: https://github.com/rstatszh-k005
+- Posit Cloud: https://posit.cloud/spaces/333892/content/all?sort=name_asc
+- Kurs Website: https://rstatszh.github.io/website/
+- GitHub Organisation: https://github.com/rstatszh-k007
 
 **GitHub Zugangsdaten**
 
@@ -206,8 +204,8 @@ class: middle, inverse
 
 1. **E-Mail**: Öffne deine Email und klicke auf den Link zu deinem persönlichen GitHub repo für **prak-02**
 2. **GitHub**: Klicke auf den grünen Button "Code" und kopiere den Link für das Repo in deine Zwischenablage
-3. **RStudio Cloud**: Öffne deinen Arbeitsbereich für den Kurs in der RStudio Cloud
-4. **RStudio Cloud / Projects**: Klicke auf "New Project from GitHub Repository" 
+3. **Posit Cloud**: Öffne deinen Arbeitsbereich für den Kurs in der Posit Cloud
+4. **Posit Cloud / Projects**: Klicke auf "New Project from GitHub Repository" 
 5. **RStudio**: Finde den Datei Manager und Git
 6. **Zoom Chat**: Schreibt wenn ihr soweit seid
 
@@ -324,8 +322,8 @@ class: inverse, middle
 
 1. **E-Mail**: Öffne deine Email und klicke auf den Link zu deinem persönlichen GitHub repo für **prak-03**
 2. **GitHub**: Klicke auf den grünen Button "Code" und kopiere den Link für das Repo in deine Zwischenablage
-3. **RStudio Cloud**: Öffne deinen Arbeitsbereich für den Kurs in der RStudio Cloud
-4. **RStudio Cloud / Projects**: Klicke auf "New Project from GitHub Repository" 
+3. **Posit Cloud**: Öffne deinen Arbeitsbereich für den Kurs in der Posit Cloud
+4. **Posit Cloud / Projects**: Klicke auf "New Project from GitHub Repository" 
 5. **RStudio**: Finde den Datei Manager und Git
 6. **Zoom Chat**: Schreibt wenn ihr soweit seid
 
@@ -405,8 +403,8 @@ Arbeitet in 2er Teams. Eine Person teilt den Bildschirm. Die andere schreibt mit
 
 1. **E-Mail**: Öffne deine Email und klicke auf den Link zu deinem persönlichen GitHub repo für **prak-04**
 2. **GitHub**: Klicke auf den grünen Button "Code" und kopiere den Link für das Repo in deine Zwischenablage
-3. **RStudio Cloud**: Öffne deinen Arbeitsbereich für den Kurs in der RStudio Cloud
-4. **RStudio Cloud / Projects**: Klicke auf "New Project from GitHub Repository" 
+3. **Posit Cloud**: Öffne deinen Arbeitsbereich für den Kurs in der Posit Cloud
+4. **Posit Cloud / Projects**: Klicke auf "New Project from GitHub Repository" 
 
 ]
 
@@ -450,7 +448,7 @@ background-size: contain
 
 # Ziele erreicht? 
 
-Bitte ausfüllen: [kutt.it/rstatszh-eval](https://kutt.it/rstatszh-eval)
+Bitte ausfüllen: [https://forms.gle/YTy2R4hevrZXmgMN6](https://forms.gle/YTy2R4hevrZXmgMN6)
 
 .pull-left[
 
@@ -463,18 +461,6 @@ class: middle, inverse
 
 # .big[Hausaufgabe]
 
-
----
-# Hausaufgabe
-
-.note[
-
-- Öffnet jetzt eure E-Mail Inbox
-- Bestätigt mir im Zoom Chat, dass ihr eine Email mit Betreff **"rstatsZH - Lars hat das Repo ha02-GitHubName"** erhalten habt
-- Die Anweisungen für die Heausaufgabe 02 findet ihr oben rechts auf unserer Kurswebseite
-- Kontaktiert mich unter der Woche jederzeit auf Slack 
-
-]
 
 ---
 # `r emo::ji("sunflower")` Danke 

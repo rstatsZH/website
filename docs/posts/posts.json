@@ -80,7 +80,7 @@
     "categories": [],
     "contents": "\n\nContents\nZiele\nFolien\nWeiterführende Aufgaben\n\n\n\n\n\n\n\nFigure 1: Photo by Neven Krcmarek\n\n\n\nLerne das Grundkonzept des {ggplot2} R Package kennen\nund erstelle selbständig einen Plot mit offenen Behördendaten (Open\nGovernment Data)\nZiele\nAm Ende dieser Woche kannst du:\nden Unterschied zwischen markdown und R Markdown beschreiben\nselbständig einen Plot mit dem R Package {ggplot2}\nerstellen\ninnerhalb von RStudio selbstständig eine neue R Markdown Datei\nerstellen\ndas Aussehen eines HTML Dokuments anpassen\nFolien\n\n\n\n\n\n\nfitvids('.shareagain', {players: 'iframe'});\n\nWeiterführende Aufgaben\n\n\nBuch\n\n\nR4DS - Chapter\n3.1 bis 3.7 - Visualisation\n\n\nPflicht\n\n\n~ 60 Minuten\n\n\nHausaufgabe\n\n\nHausaufgabe\n02 - Hallo OGD\n\n\nPflicht\n\n\n~ 90 Minuten\n\n\nTutorial\n\n\nRStudio Primer -\nVisualisation Basics\n\n\nFreiwillig\n\n\n~ 60 Minuten\n\n\nFolien\n\n\nR\nmarkdown\n\n\nFreiwillig\n\n\n~ 30 Minuten\n\n\n\n\n\n",
     "preview": "posts/2021-03-07-woche02/img/data-vis.jpg",
-    "last_modified": "2023-02-08T15:12:26+01:00",
+    "last_modified": "2023-02-16T12:56:39+01:00",
     "input_file": {}
   },
   {

@@ -50,16 +50,17 @@ pre.numberSource code > span > a:first-child::before
   }
 pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
 div.sourceCode
-  {   }
+  { color: #00769e; background-color: #f1f3f5; }
 @media screen {
 pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
+code span { color: #00769e; } /* Normal */
 code span.al { color: #ad0000; } /* Alert */
 code span.an { color: #5e5e5e; } /* Annotation */
-code span.at { } /* Attribute */
+code span.at { color: #657422; } /* Attribute */
 code span.bn { color: #ad0000; } /* BaseN */
 code span.bu { } /* BuiltIn */
-code span.cf { color: #007ba5; } /* ControlFlow */
+code span.cf { color: #00769e; } /* ControlFlow */
 code span.ch { color: #20794d; } /* Char */
 code span.cn { color: #8f5902; } /* Constant */
 code span.co { color: #5e5e5e; } /* Comment */
@@ -73,9 +74,9 @@ code span.fl { color: #ad0000; } /* Float */
 code span.fu { color: #4758ab; } /* Function */
 code span.im { } /* Import */
 code span.in { color: #5e5e5e; } /* Information */
-code span.kw { color: #007ba5; } /* Keyword */
+code span.kw { color: #00769e; } /* Keyword */
 code span.op { color: #5e5e5e; } /* Operator */
-code span.ot { color: #007ba5; } /* Other */
+code span.ot { color: #00769e; } /* Other */
 code span.pp { color: #ad0000; } /* Preprocessor */
 code span.sc { color: #5e5e5e; } /* SpecialChar */
 code span.ss { color: #20794d; } /* SpecialString */
@@ -526,6 +527,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   d-article table.gt_table td,
   d-article table.gt_table th {
     border-bottom: none;
+    font-size: 100%;
   }
 
   .html-widget {
@@ -767,10 +769,6 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
     position: relative;
     margin-bottom: 2.5em;
     margin-top: 1.5em;
-  }
-
-  .figure img {
-    width: 100%;
   }
 
   .figure .caption {
@@ -1602,9 +1600,21 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 
       // hoverable references
       $('span.citation[data-cites]').each(function() {
+        const citeChild = $(this).children()[0]
+        // Do not process if @xyz has been used without escaping and without bibliography activated
+        // https://github.com/rstudio/distill/issues/466
+        if (citeChild === undefined) return true
+
+        if (citeChild.nodeName == "D-FOOTNOTE") {
+          var fn = citeChild
+          $(this).html(fn.shadowRoot.querySelector("sup"))
+          $(this).id = fn.id
+          fn.remove()
+        }
         var refs = $(this).attr('data-cites').split(" ");
         var refHtml = refs.map(function(ref) {
-          return "<p>" + $('#ref-' + ref).html() + "</p>";
+          // Could use CSS.escape too here, we insure backward compatibility in navigator
+          return "<p>" + $('div[id="ref-' + ref + '"]').html() + "</p>";
         }).join("\n");
         window.tippy(this, {
           allowHTML: true,
@@ -1616,6 +1626,31 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
           placement: 'bottom-start'
         });
       });
+
+      // fix footnotes in tables (#411)
+      // replacing broken distill.pub feature
+      $('table d-footnote').each(function() {
+        // we replace internal showAtNode methode which is triggered when hovering a footnote
+        this.hoverBox.showAtNode = function(node) {
+          // ported from https://github.com/distillpub/template/pull/105/files
+          calcOffset = function(elem) {
+              let x = elem.offsetLeft;
+              let y = elem.offsetTop;
+              // Traverse upwards until an `absolute` element is found or `elem`
+              // becomes null.
+              while (elem = elem.offsetParent && elem.style.position != 'absolute') {
+                  x += elem.offsetLeft;
+                  y += elem.offsetTop;
+              }
+
+              return { left: x, top: y };
+          }
+          // https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/offsetTop
+          const bbox = node.getBoundingClientRect();
+          const offset = calcOffset(node);
+          this.show([offset.left + bbox.width, offset.top + bbox.height]);
+        }
+      })
 
       // clear polling timer
       clearInterval(tid);
@@ -1715,6 +1750,8 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
     // mark non-body figures created by knitr chunks as 100% width
     $('.layout-chunk').each(function(i, val) {
       var figures = $(this).find('img, .html-widget');
+      // ignore leaflet img layers (#106)
+      figures = figures.filter(':not(img[class*="leaflet"])')
       if ($(this).attr('data-layout') !== "l-body") {
         figures.css('width', '100%');
       } else {
@@ -1737,7 +1774,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
     // get rid of index.html references in header
     if (window.location.protocol !== "file:") {
       $('.distill-site-header a[href]').each(function(i,val) {
-        $(this).attr('href', $(this).attr('href').replace("index.html", "./"));
+        $(this).attr('href', $(this).attr('href').replace(/^index[.]html/, "./"));
       });
     }
 
@@ -1776,7 +1813,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   </script>
 
   <!--/radix_placeholder_distill-->
-  <script src="site_libs/header-attrs-2.11/header-attrs.js"></script>
+  <script src="site_libs/header-attrs-2.16/header-attrs.js"></script>
   <script src="site_libs/popper-2.6.0/popper.min.js"></script>
   <link href="site_libs/tippy-6.2.7/tippy.css" rel="stylesheet" />
   <link href="site_libs/tippy-6.2.7/tippy-light-border.css" rel="stylesheet" />
@@ -1850,8 +1887,7 @@ Hausaufgaben
 <h3>Contents</h3>
 <ul>
 <li><a href="#ziele" id="toc-ziele">Ziele</a></li>
-<li><a href="#erste-schritte" id="toc-erste-schritte">Erste
-Schritte</a></li>
+<li><a href="#erste-schritte" id="toc-erste-schritte">Erste Schritte</a></li>
 <li><a href="#packages" id="toc-packages">Packages</a></li>
 <li><a href="#data" id="toc-data">Data</a></li>
 <li><a href="#übungen" id="toc-übungen">Übungen</a>
@@ -1859,22 +1895,13 @@ Schritte</a></li>
 <li><a href="#übung-1" id="toc-übung-1">Übung 1</a></li>
 <li><a href="#übung-2" id="toc-übung-2">Übung 2</a></li>
 <li><a href="#übung-3" id="toc-übung-3">Übung 3</a></li>
-<li><a href="#übung-4-bonus" id="toc-übung-4-bonus">Übung 4
-(Bonus)</a></li>
+<li><a href="#übung-4-bonus" id="toc-übung-4-bonus">Übung 4 (Bonus)</a></li>
 </ul></li>
 </ul>
 </nav>
 </div>
 <script async defer data-domain="rstatszh.github.io/website" src="https://plausible.io/js/plausible.js"></script>
-<p>Das Portal opendata.swiss stellt der Allgemeinheit offene
-Behördendaten in einem zentralen Katalog zur Verfügung. Es wird
-betrieben vom Bundesamt für Statisik und ist ein gemeinsames Projekt von
-Bund, Kantonen, Gemeinden und weiteren Organisationen mit einem
-staatlichen Auftrag. In dieser Hausaufgabe nutzen wir den Datensatz <a
-href="https://opendata.swiss/de/dataset/corona-hilfen-im-kulturbereich-im-kanton-zurich">“Corona
-Hilfen im Kulturbereich im Kanton Zürich”</a> publiziert am 04. März
-2021 von der Fachstelle Open Government Data des Kantons Zürich, und der
-Fachstele Kultur der Direktion der Justiz und des Innern.</p>
+<p>Das Portal opendata.swiss stellt der Allgemeinheit offene Behördendaten in einem zentralen Katalog zur Verfügung. Es wird betrieben vom Bundesamt für Statisik und ist ein gemeinsames Projekt von Bund, Kantonen, Gemeinden und weiteren Organisationen mit einem staatlichen Auftrag. In dieser Hausaufgabe nutzen wir den Datensatz <a href="https://opendata.swiss/de/dataset/corona-hilfen-im-kulturbereich-im-kanton-zurich">“Corona Hilfen im Kulturbereich im Kanton Zürich”</a> publiziert am 04. März 2021 von der Fachstelle Open Government Data des Kantons Zürich, und der Fachstele Kultur der Direktion der Justiz und des Innern.</p>
 <h1 id="ziele">Ziele</h1>
 <p>Diese Hausaufgabe hat die folgenden Ziele:</p>
 <ul>
@@ -1883,123 +1910,69 @@ Fachstele Kultur der Direktion der Justiz und des Innern.</p>
 <li>Mehr Übung mit Git und GitHub zu bekommen</li>
 </ul>
 <h1 id="erste-schritte">Erste Schritte</h1>
-<p>Öffne deine Email Inbox und suche nach der Email mit dem Link für das
-GitHub Repo zu dieser Hausaufgabe (ha-02-hallo-ogd). Alternativ kannst
-du GitHub öffnen und in unserer GitHub Organisation nach dem Repo mit
-deinem Namen suchen.</p>
-<p>Folge den Schritten aus Hausaufgabe 1 oder den Folien der Woche 2 um
-das GitHub Repo in die Posit Cloud zu clonen.</p>
+<p>Öffne deine Email Inbox und suche nach der Email mit dem Link für das GitHub Repo zu dieser Hausaufgabe (ha-02-hallo-ogd). Alternativ kannst du GitHub öffnen und in unserer GitHub Organisation nach dem Repo mit deinem Namen suchen.</p>
+<p>Folge den Schritten aus Hausaufgabe 1 oder den Folien der Woche 2 um das GitHub Repo in die Posit Cloud zu clonen.</p>
 <h1 id="packages">Packages</h1>
-<p>In dieser Hausaufgabe lernst du ein zwei R Packages kennen, welche
-wir in Woche 3 in mehr Detail behandeln werden. Das <code>{readr}</code>
-und das <code>{dplyr}</code> Package, welche beide zur Sammlung der
-<code>{tidyverse}</code> Packages gehören.</p>
+<p>In dieser Hausaufgabe lernst du ein zwei R Packages kennen, welche wir in Woche 3 in mehr Detail behandeln werden. Das <code>{readr}</code> und das <code>{dplyr}</code> Package, welche beide zur Sammlung der <code>{tidyverse}</code> Packages gehören.</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://ggplot2.tidyverse.org'>ggplot2</a></span><span class='op'>)</span>
-<span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://dplyr.tidyverse.org'>dplyr</a></span><span class='op'>)</span>
-<span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://readr.tidyverse.org'>readr</a></span><span class='op'>)</span>
-</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r"><span><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://ggplot2.tidyverse.org'>ggplot2</a></span><span class='op'>)</span></span>
+<span><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://dplyr.tidyverse.org'>dplyr</a></span><span class='op'>)</span></span>
+<span><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://readr.tidyverse.org'>readr</a></span><span class='op'>)</span></span></code></pre>
 </div>
 </div>
 <h1 id="data">Data</h1>
-<p>Wir nutzen den Datensatz mit dem Titel <a
-href="https://opendata.swiss/de/dataset/corona-hilfen-im-kulturbereich-im-kanton-zurich">“Corona
-Hilfen im Kulturbereich im Kanton Zürich”</a> publiziert am 04. März
-2021 von der Fachstelle Open Government Data des Kantons Zürich,
-Fachstele Kultur (Direktion der Justiz und des Innern).</p>
+<p>Wir nutzen den Datensatz mit dem Titel <a href="https://opendata.swiss/de/dataset/corona-hilfen-im-kulturbereich-im-kanton-zurich">“Corona Hilfen im Kulturbereich im Kanton Zürich”</a> publiziert am 04. März 2021 von der Fachstelle Open Government Data des Kantons Zürich, Fachstele Kultur (Direktion der Justiz und des Innern).</p>
 <div class="layout-chunk" data-layout="l-body">
 
 </div>
-<p>Die Beschreibung der Variablen ist auf der <a
-href="https://opendata.swiss/de/dataset/corona-hilfen-im-kulturbereich-im-kanton-zurich/resource/c93b970b-c903-4598-86c5-b7f04032848d">Ressource
-für den Datensatz</a> zu finden:</p>
+<p>Die Beschreibung der Variablen ist auf der <a href="https://opendata.swiss/de/dataset/corona-hilfen-im-kulturbereich-im-kanton-zurich/resource/c93b970b-c903-4598-86c5-b7f04032848d">Ressource für den Datensatz</a> zu finden:</p>
 <ul>
-<li><strong>Kategorie</strong> = Antragstellende Kategorie
-(‘Kulturschaffende’, ‘Kulturunternehmen gemeinnützig’ oder
-‘Kulturunternehmen gewinnorientiert’)</li>
-<li><strong>Sparte</strong> = Kultursparte (‘Bereichsübergreifend’,
-‘Bildende Kunst’, ‘Design’, ‘Film’, ‘Kino’, ‘Klubs und Konzertlokale’,
-‘Literatur’, ‘Museen’, ‘Musik’ oder ‘Tanz/Theater’)</li>
-<li><strong>Nachgefragt</strong> = Nachgefragter Betrag in CHF (gerundet
-auf 100 CHF)</li>
-<li><strong>Beschluss</strong> = Beschlossener Betrag in CHF (gerundet
-auf 100 CHF, ‘NA’ bei Ablehnung)</li>
-<li><strong>Status</strong> = Status des Antrags (‘Ablehnung’,
-‘Ausbezahlt’ oder ‘Saldo offen’)</li>
-<li><strong>Eingangsdatum</strong> = Datum des Eingangs des Gesuchs;
-‘Beschlussdatum’ = Datum des Beschlusses über das Gesuch</li>
-<li><strong>ID</strong> = anonymisierter Identifikator der
-antragstellenden natürlichen oder juristischen Person</li>
+<li><strong>Kategorie</strong> = Antragstellende Kategorie (‘Kulturschaffende’, ‘Kulturunternehmen gemeinnützig’ oder ‘Kulturunternehmen gewinnorientiert’)</li>
+<li><strong>Sparte</strong> = Kultursparte (‘Bereichsübergreifend’, ‘Bildende Kunst’, ‘Design’, ‘Film’, ‘Kino’, ‘Klubs und Konzertlokale’, ‘Literatur’, ‘Museen’, ‘Musik’ oder ‘Tanz/Theater’)</li>
+<li><strong>Nachgefragt</strong> = Nachgefragter Betrag in CHF (gerundet auf 100 CHF)</li>
+<li><strong>Beschluss</strong> = Beschlossener Betrag in CHF (gerundet auf 100 CHF, ‘NA’ bei Ablehnung)</li>
+<li><strong>Status</strong> = Status des Antrags (‘Ablehnung’, ‘Ausbezahlt’ oder ‘Saldo offen’)</li>
+<li><strong>Eingangsdatum</strong> = Datum des Eingangs des Gesuchs; ‘Beschlussdatum’ = Datum des Beschlusses über das Gesuch</li>
+<li><strong>ID</strong> = anonymisierter Identifikator der antragstellenden natürlichen oder juristischen Person</li>
 </ul>
 <h1 id="übungen">Übungen</h1>
 <h2 id="übung-1">Übung 1</h2>
-<p>Erinnerst du dich, dass RStudio in vier Bereiche unterteilt ist?
-Versuche diese, ohne nachzuschauen, zu benennen.</p>
+<p>Erinnerst du dich, dass RStudio in vier Bereiche unterteilt ist? Versuche diese, ohne nachzuschauen, zu benennen.</p>
 <p><strong>Aufgaben</strong></p>
 <ol type="1">
-<li>Füge deine Antworten zu der R Markdown Datei für die Hausaufgabe
-hinzu</li>
-<li>Stricke das Dokument und verifiziere, dass es keine Fehlermeldung
-gibt</li>
+<li>Füge deine Antworten zu der R Markdown Datei für die Hausaufgabe hinzu</li>
+<li>Stricke das Dokument und verifiziere, dass es keine Fehlermeldung gibt</li>
 </ol>
-<p>🧶 ✅ ⬆️ <em>Knit, commit, und pushe deine Änderungen auf GitHub mit
-der Commit-Nachricht “Füge Antwort für Übung 1 hinzu.” Achte darauf,
-alle geänderten Dateien zu committen und zu pushen, damit dein
-Git-Fenster danach aufgeräumt ist.</em></p>
+<p>🧶 ✅ ⬆️ <em>Knit, commit, und pushe deine Änderungen auf GitHub mit der Commit-Nachricht “Füge Antwort für Übung 1 hinzu.” Achte darauf, alle geänderten Dateien zu committen und zu pushen, damit dein Git-Fenster danach aufgeräumt ist.</em></p>
 <h2 id="übung-2">Übung 2</h2>
-<p>Verifiziere, dass der Datensatz <code>corona_kultur</code> in deinem
-Environment (Fenster oben rechts) in RStudio zu finden ist. Wieviele
-Beobachtungen gibt es in diesem Datensatz?</p>
+<p>Verifiziere, dass der Datensatz <code>corona_kultur</code> in deinem Environment (Fenster oben rechts) in RStudio zu finden ist. Wieviele Beobachtungen gibt es in diesem Datensatz?</p>
 <p><strong>Aufgaben</strong></p>
 <ol type="1">
-<li>Im RStudio Environment, klicke auf den Namen das Datensatzes
-<code>corona_kultur</code></li>
-<li>Führe den Code <code>View(corona_kultur)</code> in der
-<strong>Console</strong> aus.</li>
-<li>Nutze die Funktionen <code>glimpse()</code> und <code>str()</code>
-in einem R Code-chunk um die Daten zu erkunden</li>
-<li>Führe das Objekt <code>corona_kultur</code> in der Console aus?
-Kannst du die Anzahl Reihen und Spalten im Output finden?</li>
-<li>Welche zwei weiteren Funktionen kennst du um die Anzahl der Reihen
-und Spalten eines Datensatzes zu erfahren?</li>
-<li>In der Spalte <code>Beschluss</code> taucht immer wieder der Wert
-‘NA’ auf. Was bedeutet dies? Generell, und für diesen Datensatz?</li>
+<li>Im RStudio Environment, klicke auf den Namen das Datensatzes <code>corona_kultur</code></li>
+<li>Führe den Code <code>View(corona_kultur)</code> in der <strong>Console</strong> aus.</li>
+<li>Nutze die Funktionen <code>glimpse()</code> und <code>str()</code> in einem R Code-chunk um die Daten zu erkunden</li>
+<li>Führe das Objekt <code>corona_kultur</code> in der Console aus? Kannst du die Anzahl Reihen und Spalten im Output finden?</li>
+<li>Welche zwei weiteren Funktionen kennst du um die Anzahl der Reihen und Spalten eines Datensatzes zu erfahren?</li>
+<li>In der Spalte <code>Beschluss</code> taucht immer wieder der Wert ‘NA’ auf. Was bedeutet dies? Generell, und für diesen Datensatz?</li>
 </ol>
-<p>🧶 ✅ ⬆️ <em>Knit, commit, und pushe deine Änderungen auf GitHub mit
-der Commit-Nachricht “Füge Antwort für Übung 2 hinzu.” Achte darauf,
-alle geänderten Dateien zu committen und zu pushen, damit dein
-Git-Fenster danach aufgeräumt ist.</em></p>
+<p>🧶 ✅ ⬆️ <em>Knit, commit, und pushe deine Änderungen auf GitHub mit der Commit-Nachricht “Füge Antwort für Übung 2 hinzu.” Achte darauf, alle geänderten Dateien zu committen und zu pushen, damit dein Git-Fenster danach aufgeräumt ist.</em></p>
 <h2 id="übung-3">Übung 3</h2>
-<p>Schauen wir uns zuerst die Verteilung der Beträge an, welche
-nachgefragt wurden. Wir sehen, dass eine grosse Anzahl an kleineren
-Beträgen (&lt; 100’000 CHF) beantragt wurde, und das einige grosse
-Beträge (&gt; 2’000’000 CHF) bentragt wurden. Ein Antrag mit über 10
-Millionen CHF sticht ganz besonders heraus und führt dazu, dass dieser
-Plot nicht besonders schön ist.</p>
-<p><strong>Code vorlesen:</strong> Nutze das Objekt
-<code>corona_kultur</code> und plotte ein Histogram mit der der
-Verteilung der nachgefragten Beträge auf der x-Achse. Zähle die Anzahl
-der Gesuche pro 100’000 CHF auf der y-Achse.</p>
+<p>Schauen wir uns zuerst die Verteilung der Beträge an, welche nachgefragt wurden. Wir sehen, dass eine grosse Anzahl an kleineren Beträgen (&lt; 100’000 CHF) beantragt wurde, und das einige grosse Beträge (&gt; 2’000’000 CHF) bentragt wurden. Ein Antrag mit über 10 Millionen CHF sticht ganz besonders heraus und führt dazu, dass dieser Plot nicht besonders schön ist.</p>
+<p><strong>Code vorlesen:</strong> Nutze das Objekt <code>corona_kultur</code> und plotte ein Histogram mit der der Verteilung der nachgefragten Beträge auf der x-Achse. Zähle die Anzahl der Gesuche pro 100’000 CHF auf der y-Achse.</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></span><span class='op'>(</span>data <span class='op'>=</span> <span class='va'>corona_kultur</span>, <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>Nachgefragt</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span>
-  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_histogram.html'>geom_histogram</a></span><span class='op'>(</span>binwidth <span class='op'>=</span> <span class='fl'>100000</span><span class='op'>)</span>
-</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r"><span><span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></span><span class='op'>(</span>data <span class='op'>=</span> <span class='va'>corona_kultur</span>, <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>Nachgefragt</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span></span>
+<span>  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_histogram.html'>geom_histogram</a></span><span class='op'>(</span>binwidth <span class='op'>=</span> <span class='fl'>100000</span><span class='op'>)</span></span></code></pre>
 </div>
 <p><img src="ha-02-hallo-ogd_files/figure-html5/unnamed-chunk-4-1.png" width="624" /></p>
 </div>
-<p><strong>Code vorlesen:</strong> Beginne mit dem Objekt
-<code>corona_kultur</code> und leite es in die Funktion
-<code>filter()</code>, um nach Beobachtungen zu filtern, bei denen die
-Variable ‘Nachgefragt’ grösser 2’000’000 ist. Ordne den Datensatz dann
-in absteigender Reihenfolge nach der Variable ‘Nachgefragt’</p>
+<p><strong>Code vorlesen:</strong> Beginne mit dem Objekt <code>corona_kultur</code> und leite es in die Funktion <code>filter()</code>, um nach Beobachtungen zu filtern, bei denen die Variable ‘Nachgefragt’ grösser 2’000’000 ist. Ordne den Datensatz dann in absteigender Reihenfolge nach der Variable ‘Nachgefragt’</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>corona_kultur</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span> 
-  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/filter.html'>filter</a></span><span class='op'>(</span><span class='va'>Nachgefragt</span> <span class='op'>&gt;</span> <span class='fl'>2000000</span><span class='op'>)</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span> 
-  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/arrange.html'>arrange</a></span><span class='op'>(</span><span class='fu'><a href='https://dplyr.tidyverse.org/reference/desc.html'>desc</a></span><span class='op'>(</span><span class='va'>Nachgefragt</span><span class='op'>)</span><span class='op'>)</span> 
-</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r"><span><span class='va'>corona_kultur</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span> </span>
+<span>  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/filter.html'>filter</a></span><span class='op'>(</span><span class='va'>Nachgefragt</span> <span class='op'>&gt;</span> <span class='fl'>2000000</span><span class='op'>)</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span> </span>
+<span>  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/arrange.html'>arrange</a></span><span class='op'>(</span><span class='fu'><a href='https://dplyr.tidyverse.org/reference/desc.html'>desc</a></span><span class='op'>(</span><span class='va'>Nachgefragt</span><span class='op'>)</span><span class='op'>)</span> </span></code></pre>
 </div>
 <pre><code># A tibble: 9 × 8
   Kategorie  Sparte Nachg…¹ Besch…² Status Eingangs…³ Beschlus…⁴ ID   
@@ -2016,80 +1989,48 @@ in absteigender Reihenfolge nach der Variable ‘Nachgefragt’</p>
 # … with abbreviated variable names ¹​Nachgefragt, ²​Beschluss,
 #   ³​Eingangsdatum, ⁴​Beschlussdatum</code></pre>
 </div>
-<p>In den folgenden Aufgaben wollen wir uns nur mit Beobachtungen
-beschäftigen bei welchen die Variable ‘Beschluss’ kleiner 100’000 CHF
-ist. Dazu wird der Datensatz gefiltert und als ein neues Objekt in dem
-RStudio Environment gespeichert. Ich habe den Code für dich
-vorbereitet.</p>
+<p>In den folgenden Aufgaben wollen wir uns nur mit Beobachtungen beschäftigen bei welchen die Variable ‘Beschluss’ kleiner 100’000 CHF ist. Dazu wird der Datensatz gefiltert und als ein neues Objekt in dem RStudio Environment gespeichert. Ich habe den Code für dich vorbereitet.</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span class='va'>corona_kultur_beschluss_gering</span> <span class='op'>&lt;-</span> <span class='va'>corona_kultur</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span> 
-  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/filter.html'>filter</a></span><span class='op'>(</span><span class='va'>Beschluss</span> <span class='op'>&lt;</span> <span class='fl'>100000</span><span class='op'>)</span> 
-</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r"><span><span class='va'>corona_kultur_beschluss_gering</span> <span class='op'>&lt;-</span> <span class='va'>corona_kultur</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span> </span>
+<span>  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/filter.html'>filter</a></span><span class='op'>(</span><span class='va'>Beschluss</span> <span class='op'>&lt;</span> <span class='fl'>100000</span><span class='op'>)</span> </span></code></pre>
 </div>
 </div>
 <p><strong>Aufgaben</strong></p>
 <ol type="1">
-<li>Nutze die Daten im Objekt
-<code>corona_kultur_beschluss_gering</code> um mit der Funktion
-<code>ggplot()</code> einen Plot zu erstellen</li>
+<li>Nutze die Daten im Objekt <code>corona_kultur_beschluss_gering</code> um mit der Funktion <code>ggplot()</code> einen Plot zu erstellen</li>
 <li>Nutze die Variable ‘Beschluss’ für die x-Achse</li>
-<li>Nutze das Geom für ein Histogram für die Darstellung des Plots
-(<strong>Tipp:</strong> <code>geom_histogram</code>)</li>
+<li>Nutze das Geom für ein Histogram für die Darstellung des Plots (<strong>Tipp:</strong> <code>geom_histogram</code>)</li>
 </ol>
 <p><strong>Führe den Code aus und betrachte den Plot</strong></p>
 <ol start="4" type="1">
-<li>Ordne die Variable ‘Sparte’ der der visuellen Eigenschaft für Farben
-zu (<strong>Tipp:</strong> Schaue in Praktikum 3 oder 4 nach wie du es
-dort gemacht hast)</li>
+<li>Ordne die Variable ‘Sparte’ der der visuellen Eigenschaft für Farben zu (<strong>Tipp:</strong> Schaue in Praktikum 3 oder 4 nach wie du es dort gemacht hast)</li>
 </ol>
 <p><strong>Führe den Code aus und betrachte den Plot</strong></p>
 <ol start="5" type="1">
-<li>Nutze Faceting und lege die Variable ‘Kategorie’ auf die Spalten
-(<strong>Tipp:</strong> Schaue in Praktikum 4 nach wie du es dort
-gemacht hast)</li>
+<li>Nutze Faceting und lege die Variable ‘Kategorie’ auf die Spalten (<strong>Tipp:</strong> Schaue in Praktikum 4 nach wie du es dort gemacht hast)</li>
 </ol>
 <p><strong>Führe den Code aus und betrachte den Plot</strong></p>
 <ol start="6" type="1">
-<li>Innerhalb der Klammern der Funktion <code>geom_histogram()</code>,
-füge das Argument ‘binwidth’ hinzu uns setze den Wert auf 10000
-(<strong>Tipp</strong>: <code>binwidth = 10000</code>). Was bewirkt
-dieses Argument?</li>
+<li>Innerhalb der Klammern der Funktion <code>geom_histogram()</code>, füge das Argument ‘binwidth’ hinzu uns setze den Wert auf 10000 (<strong>Tipp</strong>: <code>binwidth = 10000</code>). Was bewirkt dieses Argument?</li>
 </ol>
 <p><strong>Führe den Code aus und betrachte den Plot</strong></p>
 <ol start="7" type="1">
-<li>Füge einen Titel, einen Untertitiel und eine Bildunterschrift
-(caption) hinzu. (<strong>Tipp:</strong> Schaue in den Folien für Woche
-2 nach)</li>
+<li>Füge einen Titel, einen Untertitiel und eine Bildunterschrift (caption) hinzu. (<strong>Tipp:</strong> Schaue in den Folien für Woche 2 nach)</li>
 </ol>
-<p>🧶 ✅ ⬆️ <em>Knit, commit, und pushe deine Änderungen auf GitHub mit
-der Commit-Nachricht “Füge Antwort für Übung 3 hinzu.” Achte darauf,
-alle geänderten Dateien zu committen und zu pushen, damit dein
-Git-Fenster danach aufgeräumt ist.</em></p>
-<p>Gratulation! Du hast die Übungen abgeschlossen. Falls du noch Lust
-und Zeit hast, ist hier noch eine Bonusaufgabe.</p>
+<p>🧶 ✅ ⬆️ <em>Knit, commit, und pushe deine Änderungen auf GitHub mit der Commit-Nachricht “Füge Antwort für Übung 3 hinzu.” Achte darauf, alle geänderten Dateien zu committen und zu pushen, damit dein Git-Fenster danach aufgeräumt ist.</em></p>
+<p>Gratulation! Du hast die Übungen abgeschlossen. Falls du noch Lust und Zeit hast, ist hier noch eine Bonusaufgabe.</p>
 <h2 id="übung-4-bonus">Übung 4 (Bonus)</h2>
 <ol type="1">
-<li>Nutze das Objekt <code>corona_kultur</code> und erstelle eine
-Säulendiagram (<code>geom_bar</code>)</li>
-<li>Ordne die Variable ‘Sparte’ der visuellen Eigenschaft für Farben
-zu</li>
-<li>Ordne der x-Achse eine kategoriale Variable ‘Status’ zu (anstatt
-einer numerischen Variable ‘Beschluss’)</li>
-<li>Nutze Faceting und lege die Variable ‘Kategorie’ auf die
-Spalten</li>
-<li>Füge einen Titel, einen Untertitiel und eine Bildunterschrift
-(caption) hinzu.</li>
-<li>Ändere die Position der Legende auf den unteren Bereich des Plots
-(<strong>Tipp:</strong> Schau nach was wir in Übung 2 aus Praktikum 4
-gemacht haben und ersetze ‘none’ durch ‘bottom’)</li>
+<li>Nutze das Objekt <code>corona_kultur</code> und erstelle eine Säulendiagram (<code>geom_bar</code>)</li>
+<li>Ordne die Variable ‘Sparte’ der visuellen Eigenschaft für Farben zu</li>
+<li>Ordne der x-Achse eine kategoriale Variable ‘Status’ zu (anstatt einer numerischen Variable ‘Beschluss’)</li>
+<li>Nutze Faceting und lege die Variable ‘Kategorie’ auf die Spalten</li>
+<li>Füge einen Titel, einen Untertitiel und eine Bildunterschrift (caption) hinzu.</li>
+<li>Ändere die Position der Legende auf den unteren Bereich des Plots (<strong>Tipp:</strong> Schau nach was wir in Übung 2 aus Praktikum 4 gemacht haben und ersetze ‘none’ durch ‘bottom’)</li>
 </ol>
-<p>🧶 ✅ ⬆️ <em>Knit, commit, und pushe deine Änderungen auf GitHub mit
-der Commit-Nachricht “Füge Antwort für Übung 4 hinzu.” Achte darauf,
-alle geänderten Dateien zu committen und zu pushen, damit dein
-Git-Fenster danach aufgeräumt ist.</em></p>
-<div class="sourceCode" id="cb2"><pre
-class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
+<p>🧶 ✅ ⬆️ <em>Knit, commit, und pushe deine Änderungen auf GitHub mit der Commit-Nachricht “Füge Antwort für Übung 4 hinzu.” Achte darauf, alle geänderten Dateien zu committen und zu pushen, damit dein Git-Fenster danach aufgeräumt ist.</em></p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
 <!--radix_placeholder_article_footer-->
 <!--/radix_placeholder_article_footer-->
 </div>

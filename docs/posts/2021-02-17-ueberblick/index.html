@@ -541,7 +541,6 @@ d-title .dt-tags {
 d-article table.gt_table td,
 d-article table.gt_table th {
   border-bottom: none;
-  font-size: 100%;
 }
 
 .html-widget {
@@ -783,6 +782,10 @@ figure img.external {
   position: relative;
   margin-bottom: 2.5em;
   margin-top: 1.5em;
+}
+
+.figure img {
+  width: 100%;
 }
 
 .figure .caption {
@@ -1614,21 +1617,9 @@ function init_distill() {
 
     // hoverable references
     $('span.citation[data-cites]').each(function() {
-      const citeChild = $(this).children()[0]
-      // Do not process if @xyz has been used without escaping and without bibliography activated
-      // https://github.com/rstudio/distill/issues/466
-      if (citeChild === undefined) return true
-
-      if (citeChild.nodeName == "D-FOOTNOTE") {
-        var fn = citeChild
-        $(this).html(fn.shadowRoot.querySelector("sup"))
-        $(this).id = fn.id
-        fn.remove()
-      }
       var refs = $(this).attr('data-cites').split(" ");
       var refHtml = refs.map(function(ref) {
-        // Could use CSS.escape too here, we insure backward compatibility in navigator
-        return "<p>" + $('div[id="ref-' + ref + '"]').html() + "</p>";
+        return "<p>" + $('#ref-' + ref).html() + "</p>";
       }).join("\n");
       window.tippy(this, {
         allowHTML: true,
@@ -1640,31 +1631,6 @@ function init_distill() {
         placement: 'bottom-start'
       });
     });
-
-    // fix footnotes in tables (#411)
-    // replacing broken distill.pub feature
-    $('table d-footnote').each(function() {
-      // we replace internal showAtNode methode which is triggered when hovering a footnote
-      this.hoverBox.showAtNode = function(node) {
-        // ported from https://github.com/distillpub/template/pull/105/files
-        calcOffset = function(elem) {
-            let x = elem.offsetLeft;
-            let y = elem.offsetTop;
-            // Traverse upwards until an `absolute` element is found or `elem`
-            // becomes null.
-            while (elem = elem.offsetParent && elem.style.position != 'absolute') {
-                x += elem.offsetLeft;
-                y += elem.offsetTop;
-            }
-
-            return { left: x, top: y };
-        }
-        // https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/offsetTop
-        const bbox = node.getBoundingClientRect();
-        const offset = calcOffset(node);
-        this.show([offset.left + bbox.width, offset.top + bbox.height]);
-      }
-    })
 
     // clear polling timer
     clearInterval(tid);
@@ -1764,8 +1730,6 @@ function init_common() {
   // mark non-body figures created by knitr chunks as 100% width
   $('.layout-chunk').each(function(i, val) {
     var figures = $(this).find('img, .html-widget');
-    // ignore leaflet img layers (#106)
-    figures = figures.filter(':not(img[class*="leaflet"])')
     if ($(this).attr('data-layout') !== "l-body") {
       figures.css('width', '100%');
     } else {
@@ -1788,7 +1752,7 @@ function init_common() {
   // get rid of index.html references in header
   if (window.location.protocol !== "file:") {
     $('.distill-site-header a[href]').each(function(i,val) {
-      $(this).attr('href', $(this).attr('href').replace(/^index[.]html/, "./"));
+      $(this).attr('href', $(this).attr('href').replace("index.html", "./"));
     });
   }
 
@@ -1930,7 +1894,7 @@ Folien</a></li>
 </div>
 <script async defer data-domain="rstatszh.github.io/website" src="https://plausible.io/js/plausible.js"></script>
 <div class="layout-chunk" data-layout="l-body">
-<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-1"></span>
+<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-6"></span>
 <img src="img/roadmap.jpg" alt="Photo by [Jaromír Kavan](https://unsplash.com/photos/vv-oEGlN-4E)" data-distill-preview=1 />
 <p class="caption">
 Figure 1: Photo by <a
@@ -1976,12 +1940,12 @@ Lars Schöbitz GmbH</p>
 2022 wieder Kurse anbieten zu können. Eine unverbindliche Anmeldung für
 die vorläufigen Kursdaten ist jederzeit möglich.</p>
 <div class="layout-chunk" data-layout="l-body-outset">
-<div id="tqpwijppqd" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<div id="nmozdszbvj" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
 <style>html {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
 }
 
-#tqpwijppqd .gt_table {
+#nmozdszbvj .gt_table {
   display: table;
   border-collapse: collapse;
   margin-left: auto;
@@ -2006,7 +1970,7 @@ die vorläufigen Kursdaten ist jederzeit möglich.</p>
   border-left-color: #D3D3D3;
 }
 
-#tqpwijppqd .gt_heading {
+#nmozdszbvj .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -2018,7 +1982,12 @@ die vorläufigen Kursdaten ist jederzeit möglich.</p>
   border-right-color: #D3D3D3;
 }
 
-#tqpwijppqd .gt_title {
+#nmozdszbvj .gt_caption {
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+#nmozdszbvj .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -2030,7 +1999,7 @@ die vorläufigen Kursdaten ist jederzeit möglich.</p>
   border-bottom-width: 0;
 }
 
-#tqpwijppqd .gt_subtitle {
+#nmozdszbvj .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -2042,13 +2011,13 @@ die vorläufigen Kursdaten ist jederzeit möglich.</p>
   border-top-width: 0;
 }
 
-#tqpwijppqd .gt_bottom_border {
+#nmozdszbvj .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#tqpwijppqd .gt_col_headings {
+#nmozdszbvj .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -2063,7 +2032,7 @@ die vorläufigen Kursdaten ist jederzeit möglich.</p>
   border-right-color: #D3D3D3;
 }
 
-#tqpwijppqd .gt_col_heading {
+#nmozdszbvj .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2083,7 +2052,7 @@ die vorläufigen Kursdaten ist jederzeit möglich.</p>
   overflow-x: hidden;
 }
 
-#tqpwijppqd .gt_column_spanner_outer {
+#nmozdszbvj .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2095,15 +2064,15 @@ die vorläufigen Kursdaten ist jederzeit möglich.</p>
   padding-right: 4px;
 }
 
-#tqpwijppqd .gt_column_spanner_outer:first-child {
+#nmozdszbvj .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#tqpwijppqd .gt_column_spanner_outer:last-child {
+#nmozdszbvj .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#tqpwijppqd .gt_column_spanner {
+#nmozdszbvj .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -2115,7 +2084,7 @@ die vorläufigen Kursdaten ist jederzeit möglich.</p>
   width: 100%;
 }
 
-#tqpwijppqd .gt_group_heading {
+#nmozdszbvj .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2138,9 +2107,10 @@ die vorläufigen Kursdaten ist jederzeit möglich.</p>
   border-right-width: 1px;
   border-right-color: #D3D3D3;
   vertical-align: middle;
+  text-align: left;
 }
 
-#tqpwijppqd .gt_empty_group_heading {
+#nmozdszbvj .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -2155,15 +2125,15 @@ die vorläufigen Kursdaten ist jederzeit möglich.</p>
   vertical-align: middle;
 }
 
-#tqpwijppqd .gt_from_md > :first-child {
+#nmozdszbvj .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#tqpwijppqd .gt_from_md > :last-child {
+#nmozdszbvj .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#tqpwijppqd .gt_row {
+#nmozdszbvj .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2182,7 +2152,7 @@ die vorläufigen Kursdaten ist jederzeit möglich.</p>
   overflow-x: hidden;
 }
 
-#tqpwijppqd .gt_stub {
+#nmozdszbvj .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2195,7 +2165,7 @@ die vorläufigen Kursdaten ist jederzeit möglich.</p>
   padding-right: 5px;
 }
 
-#tqpwijppqd .gt_stub_row_group {
+#nmozdszbvj .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2209,11 +2179,11 @@ die vorläufigen Kursdaten ist jederzeit möglich.</p>
   vertical-align: top;
 }
 
-#tqpwijppqd .gt_row_group_first td {
+#nmozdszbvj .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#tqpwijppqd .gt_summary_row {
+#nmozdszbvj .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -2223,16 +2193,16 @@ die vorläufigen Kursdaten ist jederzeit möglich.</p>
   padding-right: 5px;
 }
 
-#tqpwijppqd .gt_first_summary_row {
+#nmozdszbvj .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#tqpwijppqd .gt_first_summary_row.thick {
+#nmozdszbvj .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#tqpwijppqd .gt_last_summary_row {
+#nmozdszbvj .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2242,7 +2212,7 @@ die vorläufigen Kursdaten ist jederzeit möglich.</p>
   border-bottom-color: #D3D3D3;
 }
 
-#tqpwijppqd .gt_grand_summary_row {
+#nmozdszbvj .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -2252,7 +2222,7 @@ die vorläufigen Kursdaten ist jederzeit möglich.</p>
   padding-right: 5px;
 }
 
-#tqpwijppqd .gt_first_grand_summary_row {
+#nmozdszbvj .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2262,11 +2232,11 @@ die vorläufigen Kursdaten ist jederzeit möglich.</p>
   border-top-color: #D3D3D3;
 }
 
-#tqpwijppqd .gt_striped {
+#nmozdszbvj .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#tqpwijppqd .gt_table_body {
+#nmozdszbvj .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -2275,7 +2245,7 @@ die vorläufigen Kursdaten ist jederzeit möglich.</p>
   border-bottom-color: #D3D3D3;
 }
 
-#tqpwijppqd .gt_footnotes {
+#nmozdszbvj .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -2289,7 +2259,7 @@ die vorläufigen Kursdaten ist jederzeit möglich.</p>
   border-right-color: #D3D3D3;
 }
 
-#tqpwijppqd .gt_footnote {
+#nmozdszbvj .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-left: 4px;
@@ -2298,7 +2268,7 @@ die vorläufigen Kursdaten ist jederzeit möglich.</p>
   padding-right: 5px;
 }
 
-#tqpwijppqd .gt_sourcenotes {
+#nmozdszbvj .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -2312,7 +2282,7 @@ die vorläufigen Kursdaten ist jederzeit möglich.</p>
   border-right-color: #D3D3D3;
 }
 
-#tqpwijppqd .gt_sourcenote {
+#nmozdszbvj .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -2320,96 +2290,89 @@ die vorläufigen Kursdaten ist jederzeit möglich.</p>
   padding-right: 5px;
 }
 
-#tqpwijppqd .gt_left {
+#nmozdszbvj .gt_left {
   text-align: left;
 }
 
-#tqpwijppqd .gt_center {
+#nmozdszbvj .gt_center {
   text-align: center;
 }
 
-#tqpwijppqd .gt_right {
+#nmozdszbvj .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#tqpwijppqd .gt_font_normal {
+#nmozdszbvj .gt_font_normal {
   font-weight: normal;
 }
 
-#tqpwijppqd .gt_font_bold {
+#nmozdszbvj .gt_font_bold {
   font-weight: bold;
 }
 
-#tqpwijppqd .gt_font_italic {
+#nmozdszbvj .gt_font_italic {
   font-style: italic;
 }
 
-#tqpwijppqd .gt_super {
+#nmozdszbvj .gt_super {
   font-size: 65%;
 }
 
-#tqpwijppqd .gt_footnote_marks {
+#nmozdszbvj .gt_footnote_marks {
   font-style: italic;
   font-weight: normal;
   font-size: 75%;
   vertical-align: 0.4em;
 }
 
-#tqpwijppqd .gt_asterisk {
+#nmozdszbvj .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#tqpwijppqd .gt_slash_mark {
-  font-size: 0.7em;
-  line-height: 0.7em;
-  vertical-align: 0.15em;
+#nmozdszbvj .gt_indent_1 {
+  text-indent: 5px;
 }
 
-#tqpwijppqd .gt_fraction_numerator {
-  font-size: 0.6em;
-  line-height: 0.6em;
-  vertical-align: 0.45em;
+#nmozdszbvj .gt_indent_2 {
+  text-indent: 10px;
 }
 
-#tqpwijppqd .gt_fraction_denominator {
-  font-size: 0.6em;
-  line-height: 0.6em;
-  vertical-align: -0.05em;
+#nmozdszbvj .gt_indent_3 {
+  text-indent: 15px;
+}
+
+#nmozdszbvj .gt_indent_4 {
+  text-indent: 20px;
+}
+
+#nmozdszbvj .gt_indent_5 {
+  text-indent: 25px;
 }
 </style>
 <table class="gt_table">
   
   <thead class="gt_col_headings">
     <tr>
-      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1">Kurs</th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1">Jahr</th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1">Start KW</th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1">Ende KW</th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1">Freie Plätze</th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1">Bemerkung</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col" id="Kurs">Kurs</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="Start">Start</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="Ende">Ende</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="Freie Plätze">Freie Plätze</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col" id="Bemerkung">Bemerkung</th>
     </tr>
   </thead>
   <tbody class="gt_table_body">
-    <tr><td class="gt_row gt_left">rstatsZH-K006</td>
-<td class="gt_row gt_right">2022</td>
-<td class="gt_row gt_right">35</td>
-<td class="gt_row gt_right">41</td>
-<td class="gt_row gt_right">0</td>
-<td class="gt_row gt_left">Voll belegt</td></tr>
-    <tr><td class="gt_row gt_left gt_striped">rstatsZH-K007</td>
-<td class="gt_row gt_right gt_striped">2023</td>
-<td class="gt_row gt_right gt_striped">7</td>
-<td class="gt_row gt_right gt_striped">13</td>
-<td class="gt_row gt_right gt_striped">6</td>
-<td class="gt_row gt_left gt_striped">Termine sind vorläufig</td></tr>
-    <tr><td class="gt_row gt_left">rstatsZH-K008</td>
-<td class="gt_row gt_right">2023</td>
-<td class="gt_row gt_right">37</td>
-<td class="gt_row gt_right">43</td>
-<td class="gt_row gt_right">8</td>
-<td class="gt_row gt_left">Termine sind vorläufig</td></tr>
+    <tr><td headers="Kurs" class="gt_row gt_left">rstatsZH-K007</td>
+<td headers="Start" class="gt_row gt_right">9 Februar 2023</td>
+<td headers="Ende" class="gt_row gt_right">23 März 2023</td>
+<td headers="Freie Plätze" class="gt_row gt_right">6</td>
+<td headers="Bemerkung" class="gt_row gt_left">Uhrzeit 14 bis 17 Uhr</td></tr>
+    <tr><td headers="Kurs" class="gt_row gt_left gt_striped">rstatsZH-K008</td>
+<td headers="Start" class="gt_row gt_right gt_striped">4 September 2023</td>
+<td headers="Ende" class="gt_row gt_right gt_striped">16 Oktober 2023</td>
+<td headers="Freie Plätze" class="gt_row gt_right gt_striped">7</td>
+<td headers="Bemerkung" class="gt_row gt_left gt_striped">Termine sind vorläufig</td></tr>
   </tbody>
   
   

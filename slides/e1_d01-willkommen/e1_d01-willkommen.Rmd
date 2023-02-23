@@ -2,7 +2,7 @@
 title: "rstatsZH - Data Science mit R"
 subtitle: "Willkommen"  
 author: "Lars Schöbitz"
-date: "2022-09-01"
+date: "2023-02-09"
 output:
   xaringan::moon_reader:
     self_contained: false
@@ -212,7 +212,7 @@ class: inverse, middle
 **Programmieren**
 
 - R
-- RStudio (Cloud)
+- RStudio IDE on Posit (Cloud)
 - tidyverse
 - R Markdown
 
@@ -360,29 +360,6 @@ class: left
 background-position: right
 background-size: contain
 
-# rstatsZH - moderne Nutzer_innen 
-
-Moderne Nutzer_innen zu sein bedeutet, Fähigkeiten, Gewohnheiten und Denkweisen für eine reproduzierbare und kollaborative Arbeitsweise zu entwickeln.
-
-Wir lernen:
-
-1. Coding mit bewährten Verfahren und Skripts (R/RStudio/tidyverse)
-2. Reproduzierbare Dokumente schreiben und veröffentlichen (R Markdown)
-3. Kollaboratives Arbeiten und Versionsverwaltung (Git/GitHub)
-
-???
-
-Als Zusammenfassung könnt seid ihr am Ende dieses Kurses moderne Nutzer_innen
-
-Modern, da es in diesem Kurs nicht darum geht den Umgang mit R zu lernen. 
-
-- Wir lernen ein gesamtes Ökosystem an Werkzeugen und Praktiken kennen, welche uns helfen werden gute Gewohnheiten für eine reproduzierbare und kollaborative Arbeitsweise zu entwickeln
-    
-   -> Entscheidene Kompetenzen eines modernen Analytikers
-
-- Und dabei geht es nicht nur um Fähigkeiten, sondern auch um Denkweisen
-    - Darüber wie wir Daten formen, Daten organisieren und Daten analysieren
-    - Und wie das was wir jetzt tun unser analytisches Leben in der Zukunft besser machen kann. 
 
 ---
 class: middle, inverse
@@ -413,7 +390,7 @@ knitr::include_graphics("img/RStudio-Logo-Gray.png")
 ```
 
 - RStudio ist eine grafische Benutzeroberfläche, welche auch integrierte Entwicklunsumgebung (i.e. **IDE** - integrated development environment) genannt wird
-- RStudio IDE wird entwickelt von [RStudio, PBC](https://blog.rstudio.com/2020/01/29/rstudio-pbc/) (Public Benefit Corporation), eine US-amerikanische Firma
+- RStudio IDE wird entwickelt von [Posit Software, PBC formerly RStudio, PBC](https://posit.co/) (Public Benefit Corporation), eine US-amerikanische Firma
 ]
 
 ???
@@ -431,7 +408,7 @@ RStudio ist eine grafische Benutzeroberfläche. Wenn R der Motor ist, dann ist R
 
 - **Packages** sind die grundlegenden Einheiten von reproduzierbarem R-Code
 - Packages enthalten wiederverwendbare R Funktionen, die Dokumentation welche beschreibt wie sie verwendet werden, und Beispieldaten
-- Mit Stand Februar 2021 gibt es mehr als 17'000 R-Pakate auf **CRAN** (dem Comprehensive R Archive Network)<sup>1</sup>
+- Mit Stand Februar 2023 gibt es mehr als 19'000 R-Pakate auf **CRAN** (dem Comprehensive R Archive Network)<sup>1</sup>
 - Wir werden mit einem kleinen (aber wichtigen) Teil 
 
 .footnote[
@@ -468,7 +445,7 @@ background-position: right
 - Minority R Users [@miR_community](https://twitter.com/miR_community)
 - We are [@R-Ladies](https://twitter.com/WeAreRLadies)
 - Zurich R User Group [@ZurichRUsers](https://twitter.com/ZurichRUsers)
-- [RStudio Community](https://community.rstudio.com/)
+- [Posit Community](https://community.rstudio.com/)
 
 .footnote[Artwork by [@allison_horst](https://www.allisonhorst.com/)]
 
@@ -558,7 +535,7 @@ background-size: contain
 
 .note[
 
-- Öffne rstudio.cloud und login (Link ist im Zoom Chat) 
+- Öffne posit.cloud und login (Link ist im Zoom Chat) 
 - Unter "Projects", klicke auf **Start** neben **prak-00-willkommen**
 - Folge meinen Anweisungen im Zoom Video
 ]
@@ -711,7 +688,7 @@ class: middle
 **Breakout rooms (2er Gruppen)**
 
 - Eine Person teilt den Bildschirm
-- Öffne "Projects" in RStudio Cloud Workspace
+- Öffne "Projects" in Posit Cloud Workspace
 - Klicke auf **Start** neben **prak-01-visualisieren**
 
 ]
@@ -788,7 +765,7 @@ class: inverse, middle
 **Programmieren**
 
 - .gray[R]
-- .gray[RStudio (Cloud)]
+- .gray[RStudio IDE on Posit (Cloud)]
 - .gray[tidyverse]
 - .gray[R Markdown]
 
@@ -895,7 +872,7 @@ class: middle. inverse
 
 - Öffnet jetzt eure E-Mail Inbox
 - Bestätigt mir im Zoom Chat, dass ihr eine Email mit Betreff **"rstatsZH - Lars hat das Repo ha01-GitHubName"** erhalten habt
-- Die Anweisungen für die Heausaufgabe 01 findet ihr oben rechts auf unserer Kurswebseite
+- Die Anweisungen für die Hausaufgabe 01 findet ihr oben rechts auf unserer Kurswebsite
 - Kontaktiert mich unter der Woche jederzeit auf Slack 
 
 ]
@@ -913,7 +890,7 @@ background-size: contain
 
 # Ziele erreicht? 
 
-Bitte ausfüllen: [kutt.it/rstatszh-eval](https://kutt.it/rstatszh-eval)
+Bitte ausfüllen: [https://forms.gle/YTy2R4hevrZXmgMN6](https://forms.gle/YTy2R4hevrZXmgMN6)
 
 .pull-left[
 

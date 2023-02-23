@@ -12,7 +12,7 @@ Heute beginnen wir mit den grundlegenden Bausteinen von R und RStudio: die Benut
 
 Dieses erste Hausaufgabe wird von dir allein durchgeführt. In zukünfitgen Hausaufgabeen (oder auch Praktika) wirst du lernen, wie du auf GitHub in kleinen Teams zusammenarbeitest und einen Bericht für dein Team erstellst.
 
-# Verbindung zu GitHub und RStudio Cloud aufbauen
+# Verbindung zu GitHub und Posit Cloud aufbauen
 
 Du solltest eine Einladung erhalten haben, um der GitHub Organisation für diesen Kurs beizutreten. Diese Einladung musst du annehmen, bevor du mit dem nächsten Schritt fortfährst.
 
@@ -23,9 +23,9 @@ Du solltest eine Einladung erhalten haben, um der GitHub Organisation für diese
 knitr::include_graphics("img/github-org-1.png")
 ```
 
-Um deine RStudio und GitHub Konten zu verbinden, befolge die folgenden Schritte:
+Um deine Posit Cloud und GitHub Konten zu verbinden, befolge die folgenden Schritte:
 
-- Öffne rstudio.cloud und login mit deinem Benutzerkonto (nutze GitHub)
+- Öffne https://posit.cloud/ und login mit deinem Benutzerkonto (nutze GitHub)
 - Klicke auf deinen Namen in der oberen rechten Ecke, um das rechte Menü zu öffnen.
 - Klicke dann auf "Authentication".
 
@@ -44,7 +44,7 @@ knitr::include_graphics("img/github-auth.002.png")
 knitr::include_graphics("img/github-auth-3.png")
 ```
 
-- Zurück im Authentifizierungsfenster in RStudio Cloud aktivierst du nun auch das Kästchen *Private repo access also enabled*
+- Zurück im Authentifizierungsfenster in Posit Cloud aktivierst du nun auch das Kästchen *Private repo access also enabled*
 
 ```{r, echo=FALSE}
 
@@ -59,12 +59,12 @@ knitr::include_graphics("img/github-auth.004.png")
 ```{r github-auth-4, echo = FALSE}
 knitr::include_graphics("img/github-auth.005.png")
 ```
-- Sobald du fertig bist, sollten in RStudio Cloud beide Kästchen markiert sein.
+- Sobald du fertig bist, sollten in Posit Cloud beide Kästchen markiert sein.
 
 ```{r github-auth-5, echo = FALSE}
 knitr::include_graphics("img/github-auth-5.png")
 ```
-- Um zu bestätigen, dass du deine GitHub- und RStudio-Cloud-Konten erfolgreich verknüpft hast, wähle [GitHub settings \> Applications](https://github.com/settings/applications). Du solltest RStudio als autorisierte App unter *Authorized OAuth Apps* aufgelistet sehen. Falls nicht, ist dies ein guter Zeitpunkt, um eine Frage zu stellen.
+- Um zu bestätigen, dass du deine GitHub- und Posit-Cloud-Konten erfolgreich verknüpft hast, wähle [GitHub settings \> Applications](https://github.com/settings/applications). Du solltest RStudio als autorisierte App unter *Authorized OAuth Apps* aufgelistet sehen. Falls nicht, ist dies ein guter Zeitpunkt, um eine Frage zu stellen.
 
 ```{r github-auth-6, echo = FALSE}
 knitr::include_graphics("img/github-auth-6.png")
@@ -83,7 +83,7 @@ Jede deiner Aufgaben wird mit den folgenden Schritten beginnen, welche hier im D
 knitr::include_graphics("img/clone-repo-link.png")
 ```
 
-- Öffne nun RStudio Cloud und den Workspace für den Kurs. Klicke auf den Abwärtspfeil und erstelle ein **New Project from Git Repository**.
+- Öffne nun Posit Cloud und den **Workspace rstatZH-k007** für den Kurs. Klicke auf den Abwärtspfeil und erstelle ein **New Project from Git Repository**.
 
 ```{r new-project-from-gh, fig.margin = TRUE, echo = FALSE, fig.width=3}
 knitr::include_graphics("img/new-project-from-gh.png")
@@ -109,7 +109,7 @@ Bevor wir uns die Daten anschauen, machen wir noch ein paar Aufwärmübungen um 
 
 ### YAML
 
-- Im RStudio Cloud Workspace für den Kurs, klicke auf "Projects"
+- Im Posit Cloud Workspace für den Kurs, klicke auf "Projects"
 - Öffne dein Projekt in dem du darauf klickst (ha01-GitHubName)
 - Öffne die R Markdown (ha-01.Rmd) Datei in deinem Projekt (**Tipp:** Sie befindet sich in dem Ansichtsfenster unten rechts unter dem Reiter "Files")
 - Ändere den Autorennamen zu deinem Namen, füge ein Datum hinzu und stricke ('knit') das Dokument.
@@ -126,7 +126,7 @@ Der obere Teil deiner R Markdown Datei (zwischen den drei gestrichelten Linien) 
 
 ### Änderungen schreiben (commit)
 
-In deinem RStudio, öffne das Fenster mit dem Titel Git im Ansichtsfenster oben rechts.
+In deiner RStudio IDE, öffne das Fenster mit dem Titel Git im Ansichtsfenster oben rechts.
 
 Wenn du Änderungen an deiner Rmd-Datei gemacht hast, solltest du nun hier den Dateinamen sehen. Wähle die Datei aus der Liste aus indem du sie anklickst. Dann klicke auf **Diff** über den Dateinamen.
 

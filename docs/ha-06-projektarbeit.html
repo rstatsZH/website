@@ -50,17 +50,16 @@ pre.numberSource code > span > a:first-child::before
   }
 pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
 div.sourceCode
-  { color: #00769e; background-color: #f1f3f5; }
+  {   }
 @media screen {
 pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
-code span { color: #00769e; } /* Normal */
 code span.al { color: #ad0000; } /* Alert */
 code span.an { color: #5e5e5e; } /* Annotation */
-code span.at { color: #657422; } /* Attribute */
+code span.at { } /* Attribute */
 code span.bn { color: #ad0000; } /* BaseN */
 code span.bu { } /* BuiltIn */
-code span.cf { color: #00769e; } /* ControlFlow */
+code span.cf { color: #007ba5; } /* ControlFlow */
 code span.ch { color: #20794d; } /* Char */
 code span.cn { color: #8f5902; } /* Constant */
 code span.co { color: #5e5e5e; } /* Comment */
@@ -74,9 +73,9 @@ code span.fl { color: #ad0000; } /* Float */
 code span.fu { color: #4758ab; } /* Function */
 code span.im { } /* Import */
 code span.in { color: #5e5e5e; } /* Information */
-code span.kw { color: #00769e; } /* Keyword */
+code span.kw { color: #007ba5; } /* Keyword */
 code span.op { color: #5e5e5e; } /* Operator */
-code span.ot { color: #00769e; } /* Other */
+code span.ot { color: #007ba5; } /* Other */
 code span.pp { color: #ad0000; } /* Preprocessor */
 code span.sc { color: #5e5e5e; } /* SpecialChar */
 code span.ss { color: #20794d; } /* SpecialString */
@@ -527,7 +526,6 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   d-article table.gt_table td,
   d-article table.gt_table th {
     border-bottom: none;
-    font-size: 100%;
   }
 
   .html-widget {
@@ -769,6 +767,10 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
     position: relative;
     margin-bottom: 2.5em;
     margin-top: 1.5em;
+  }
+
+  .figure img {
+    width: 100%;
   }
 
   .figure .caption {
@@ -1600,21 +1602,9 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 
       // hoverable references
       $('span.citation[data-cites]').each(function() {
-        const citeChild = $(this).children()[0]
-        // Do not process if @xyz has been used without escaping and without bibliography activated
-        // https://github.com/rstudio/distill/issues/466
-        if (citeChild === undefined) return true
-
-        if (citeChild.nodeName == "D-FOOTNOTE") {
-          var fn = citeChild
-          $(this).html(fn.shadowRoot.querySelector("sup"))
-          $(this).id = fn.id
-          fn.remove()
-        }
         var refs = $(this).attr('data-cites').split(" ");
         var refHtml = refs.map(function(ref) {
-          // Could use CSS.escape too here, we insure backward compatibility in navigator
-          return "<p>" + $('div[id="ref-' + ref + '"]').html() + "</p>";
+          return "<p>" + $('#ref-' + ref).html() + "</p>";
         }).join("\n");
         window.tippy(this, {
           allowHTML: true,
@@ -1626,31 +1616,6 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
           placement: 'bottom-start'
         });
       });
-
-      // fix footnotes in tables (#411)
-      // replacing broken distill.pub feature
-      $('table d-footnote').each(function() {
-        // we replace internal showAtNode methode which is triggered when hovering a footnote
-        this.hoverBox.showAtNode = function(node) {
-          // ported from https://github.com/distillpub/template/pull/105/files
-          calcOffset = function(elem) {
-              let x = elem.offsetLeft;
-              let y = elem.offsetTop;
-              // Traverse upwards until an `absolute` element is found or `elem`
-              // becomes null.
-              while (elem = elem.offsetParent && elem.style.position != 'absolute') {
-                  x += elem.offsetLeft;
-                  y += elem.offsetTop;
-              }
-
-              return { left: x, top: y };
-          }
-          // https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/offsetTop
-          const bbox = node.getBoundingClientRect();
-          const offset = calcOffset(node);
-          this.show([offset.left + bbox.width, offset.top + bbox.height]);
-        }
-      })
 
       // clear polling timer
       clearInterval(tid);
@@ -1750,8 +1715,6 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
     // mark non-body figures created by knitr chunks as 100% width
     $('.layout-chunk').each(function(i, val) {
       var figures = $(this).find('img, .html-widget');
-      // ignore leaflet img layers (#106)
-      figures = figures.filter(':not(img[class*="leaflet"])')
       if ($(this).attr('data-layout') !== "l-body") {
         figures.css('width', '100%');
       } else {
@@ -1774,7 +1737,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
     // get rid of index.html references in header
     if (window.location.protocol !== "file:") {
       $('.distill-site-header a[href]').each(function(i,val) {
-        $(this).attr('href', $(this).attr('href').replace(/^index[.]html/, "./"));
+        $(this).attr('href', $(this).attr('href').replace("index.html", "./"));
       });
     }
 
@@ -1813,7 +1776,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   </script>
 
   <!--/radix_placeholder_distill-->
-  <script src="site_libs/header-attrs-2.16/header-attrs.js"></script>
+  <script src="site_libs/header-attrs-2.11/header-attrs.js"></script>
   <script src="site_libs/popper-2.6.0/popper.min.js"></script>
   <link href="site_libs/tippy-6.2.7/tippy.css" rel="stylesheet" />
   <link href="site_libs/tippy-6.2.7/tippy-light-border.css" rel="stylesheet" />
@@ -1887,22 +1850,41 @@ Hausaufgaben
 <h3>Contents</h3>
 <ul>
 <li><a href="#ziele" id="toc-ziele">Ziele</a></li>
-<li><a href="#erste-schritte" id="toc-erste-schritte">Erste Schritte</a></li>
-<li><a href="#übungen---teil-1---projektarbeit" id="toc-übungen---teil-1---projektarbeit">Übungen - Teil 1 - Projektarbeit</a>
+<li><a href="#erste-schritte" id="toc-erste-schritte">Erste
+Schritte</a></li>
+<li><a href="#übungen---teil-1---projektarbeit"
+id="toc-übungen---teil-1---projektarbeit">Übungen - Teil 1 -
+Projektarbeit</a>
 <ul>
-<li><a href="#installation-von-r-rstudio-und-git" id="toc-installation-von-r-rstudio-und-git">Installation von R, RStudio und Git</a></li>
-<li><a href="#daten-für-das-projekt" id="toc-daten-für-das-projekt">Daten für das Projekt</a></li>
-<li><a href="#github-repository-erstellen" id="toc-github-repository-erstellen">GitHub Repository erstellen</a></li>
+<li><a href="#installation-von-r-rstudio-und-git"
+id="toc-installation-von-r-rstudio-und-git">Installation von R, RStudio
+und Git</a></li>
+<li><a href="#daten-für-das-projekt"
+id="toc-daten-für-das-projekt">Daten für das Projekt</a></li>
+<li><a href="#github-repository-erstellen"
+id="toc-github-repository-erstellen">GitHub Repository
+erstellen</a></li>
 </ul></li>
-<li><a href="#übungen---teil-2---treibhausgase" id="toc-übungen---teil-2---treibhausgase">Übungen - Teil 2 - Treibhausgase</a>
+<li><a href="#übungen---teil-2---treibhausgase"
+id="toc-übungen---teil-2---treibhausgase">Übungen - Teil 2 -
+Treibhausgase</a>
 <ul>
-<li><a href="#übung-1---daten-importieren" id="toc-übung-1---daten-importieren">Übung 1 - Daten importieren</a></li>
-<li><a href="#übung-2---daten-transformieren-und-visualisieren" id="toc-übung-2---daten-transformieren-und-visualisieren">Übung 2 - Daten transformieren und visualisieren</a>
+<li><a href="#übung-1---daten-importieren"
+id="toc-übung-1---daten-importieren">Übung 1 - Daten
+importieren</a></li>
+<li><a href="#übung-2---daten-transformieren-und-visualisieren"
+id="toc-übung-2---daten-transformieren-und-visualisieren">Übung 2 -
+Daten transformieren und visualisieren</a>
 <ul>
 <li><a href="#pivoting" id="toc-pivoting">1. Pivoting</a></li>
-<li><a href="#daten-zusammenfassen-und-neue-variable-erstellen" id="toc-daten-zusammenfassen-und-neue-variable-erstellen">2. Daten zusammenfassen und neue Variable erstellen</a></li>
-<li><a href="#daten-visualisieren-1" id="toc-daten-visualisieren-1">3. Daten visualisieren 1</a></li>
-<li><a href="#daten-visualisieren-2-bonus" id="toc-daten-visualisieren-2-bonus">4. Daten visualisieren 2 (Bonus)</a></li>
+<li><a href="#daten-zusammenfassen-und-neue-variable-erstellen"
+id="toc-daten-zusammenfassen-und-neue-variable-erstellen">2. Daten
+zusammenfassen und neue Variable erstellen</a></li>
+<li><a href="#daten-visualisieren-1" id="toc-daten-visualisieren-1">3.
+Daten visualisieren 1</a></li>
+<li><a href="#daten-visualisieren-2-bonus"
+id="toc-daten-visualisieren-2-bonus">4. Daten visualisieren 2
+(Bonus)</a></li>
 </ul></li>
 </ul></li>
 </ul>
@@ -1915,57 +1897,103 @@ Hausaufgaben
 <h1 id="ziele">Ziele</h1>
 <p>Diese Hausaufgabe hat die folgende Ziele:</p>
 <ul>
-<li>Ein RStudio Project mittels eines selbst erstellten GitHub Repositories auf dem eigenen Arbeitsgerät starten</li>
+<li>Ein RStudio Project mittels eines selbst erstellten GitHub
+Repositories auf dem eigenen Arbeitsgerät starten</li>
 <li>Daten für eine Projektarbeit identifizieren</li>
-<li>Mehr Erfahrungen mit dem Tranformieren und Visualisieren von Daten sammeln</li>
-<li>SQL Befehle in Code-chunks innerhalb einer R Markdown Datei ausführen</li>
+<li>Mehr Erfahrungen mit dem Tranformieren und Visualisieren von Daten
+sammeln</li>
+<li>SQL Befehle in Code-chunks innerhalb einer R Markdown Datei
+ausführen</li>
 </ul>
 <h1 id="erste-schritte">Erste Schritte</h1>
 <p>Diese Hausaufgabe besteht aus zwei Teilen:</p>
 <ol type="1">
 <li>Projektarbeit (Pflicht)</li>
-<li>Daten über Treibhausgase in der Stadt Zürich (Zum Teil Bonusmaterial)</li>
+<li>Daten über Treibhausgase in der Stadt Zürich (Zum Teil
+Bonusmaterial)</li>
 </ol>
-<p>Öffne deine Email Inbox und suche nach der Email mit dem Link für das GitHub Repo zu dieser Hausaufgabe (ha-06-projekarbeit).</p>
-<h1 id="übungen---teil-1---projektarbeit">Übungen - Teil 1 - Projektarbeit</h1>
-<p>Im Anschluss an die sieben Kurseinheiten bekommt ihr die Gelegenheit als Teil eines kleinen Abschlussprojektes Unterstützung zu erhalten.</p>
+<p>Öffne deine Email Inbox und suche nach der Email mit dem Link für das
+GitHub Repo zu dieser Hausaufgabe (ha-06-projekarbeit).</p>
+<h1 id="übungen---teil-1---projektarbeit">Übungen - Teil 1 -
+Projektarbeit</h1>
+<p>Im Anschluss an die sieben Kurseinheiten bekommt ihr die Gelegenheit
+als Teil eines kleinen Abschlussprojektes Unterstützung zu erhalten.</p>
 <p>Dafür braucht es ein paar Vorraussetzungen:</p>
 <ol type="1">
 <li>R, RStudio und Git sind auf euren Arbeitsgeräten installiert</li>
 <li>Daten für die Projektarbeit sind ausgewählt</li>
-<li>Ein öffentliches (public) GitHub Repository wurde erstellt <strong>oder</strong> ein geschlossenes (private) GitHub Repository wurde erstellt zu welchem der GitHub Benutzer larnsce als Collaborator hinzugefügt wurde.</li>
+<li>Ein öffentliches (public) GitHub Repository wurde erstellt
+<strong>oder</strong> ein geschlossenes (private) GitHub Repository
+wurde erstellt zu welchem der GitHub Benutzer larnsce als Collaborator
+hinzugefügt wurde.</li>
 </ol>
-<p><strong>Beachte:</strong> Auch Projekte mit sensitiven und schützenswerten Daten können öffentlich publiziert werden. Dazu werden Ordner und/oder Dateien mit den zu schützenden Daten in der <code>.gitignore</code> Datei hinzugefügt. Somit wird erreicht, dass die Daten nicht zugänglich sind, jedoch der Code für die Arbeit mit den Daten, was deutlich zu einer transparenten Arbeitsweise beiträgt auch wenn die Ergebnisse nicht reproduzierbar sind. Dabei wird empfohlen sich innerhalb der Verwaltungseinheit mit den zuständigen Mitarbeiter_innen für Datenschutz in Verbindung zu setzen.</p>
+<p><strong>Beachte:</strong> Auch Projekte mit sensitiven und
+schützenswerten Daten können öffentlich publiziert werden. Dazu werden
+Ordner und/oder Dateien mit den zu schützenden Daten in der
+<code>.gitignore</code> Datei hinzugefügt. Somit wird erreicht, dass die
+Daten nicht zugänglich sind, jedoch der Code für die Arbeit mit den
+Daten, was deutlich zu einer transparenten Arbeitsweise beiträgt auch
+wenn die Ergebnisse nicht reproduzierbar sind. Dabei wird empfohlen sich
+innerhalb der Verwaltungseinheit mit den zuständigen Mitarbeiter_innen
+für Datenschutz in Verbindung zu setzen.</p>
 <ol start="4" type="1">
-<li>Das GitHub Repository auf das eigene Arbeitsgerät klonen und daraus ein RStudio Project machen</li>
+<li>Das GitHub Repository auf das eigene Arbeitsgerät klonen und daraus
+ein RStudio Project machen</li>
 </ol>
-<p>Diese Übung soll sicherstellen, dass all diese Vorraussetzungen erfüllt sind.</p>
-<h2 id="installation-von-r-rstudio-und-git">Installation von R, RStudio und Git</h2>
+<p>Diese Übung soll sicherstellen, dass all diese Vorraussetzungen
+erfüllt sind.</p>
+<h2 id="installation-von-r-rstudio-und-git">Installation von R, RStudio
+und Git</h2>
 <ol type="1">
-<li>Falls die Software noch nicht vorhanden ist, wende dich an die IT Unterstützung um die nötige Software installiert zu bekommen. Du kannst in der Zwischenzeit bis zu dem Punkt fortfahren an dem ich dich bitte RStudio auf deinem Arbeitsgerät zu öffnen.</li>
+<li>Falls die Software noch nicht vorhanden ist, wende dich an die IT
+Unterstützung um die nötige Software installiert zu bekommen. Du kannst
+in der Zwischenzeit bis zu dem Punkt fortfahren an dem ich dich bitte
+RStudio auf deinem Arbeitsgerät zu öffnen.</li>
 </ol>
-<p>Liste mit Software für IT: <a href="https://github.com/rstatsZH/kochbuch/tree/main/01-Installation" class="uri">https://github.com/rstatsZH/kochbuch/tree/main/01-Installation</a></p>
+<p>Liste mit Software für IT: <a
+href="https://github.com/rstatsZH/kochbuch/tree/main/01-Installation"
+class="uri">https://github.com/rstatsZH/kochbuch/tree/main/01-Installation</a></p>
 <h2 id="daten-für-das-projekt">Daten für das Projekt</h2>
-<p>Ideale Daten für das Projekt gibt es nicht, jedoch ist es sinnvoll nicht unbedingt Daten auszuwählen welche streng vertraulich sind, oder Daten welche Teil eines sehr grossen Projektes sind. Bereits öffentlich verfügbare Daten sind wertvoll wenn es euch wichtig ist das Projekt öffentlich und reproduzierbar zu publizieren. Das wichtigste Kritierium an die Daten ist jedoch, dass ihr Interesse daran habt den Datensatz zu erkunden und Fragen zu stellen und zu beantworten.</p>
+<p>Ideale Daten für das Projekt gibt es nicht, jedoch ist es sinnvoll
+nicht unbedingt Daten auszuwählen welche streng vertraulich sind, oder
+Daten welche Teil eines sehr grossen Projektes sind. Bereits öffentlich
+verfügbare Daten sind wertvoll wenn es euch wichtig ist das Projekt
+öffentlich und reproduzierbar zu publizieren. Das wichtigste Kritierium
+an die Daten ist jedoch, dass ihr Interesse daran habt den Datensatz zu
+erkunden und Fragen zu stellen und zu beantworten.</p>
 <ol type="1">
-<li>Einen Datensatz, oder mehrere Datensätze, für das Projekt identifizieren.</li>
+<li>Einen Datensatz, oder mehrere Datensätze, für das Projekt
+identifizieren.</li>
 </ol>
 <h2 id="github-repository-erstellen">GitHub Repository erstellen</h2>
-<p>Wie das geht hast du in <a href="https://rstatszh.github.io/website/ha-05-erstes-projekt.html#%C3%BCbung-1---erstelle-ein-eigenes-git-repository">Übung 1 der Hausaufgabe aus Woche 5</a> gelernt. Falls du Schwierigkeiten hast meiner Anleitung zu folgen, melde dich umgehend und ich kann dich unterstützen.</p>
+<p>Wie das geht hast du in <a
+href="https://rstatszh.github.io/website/ha-05-erstes-projekt.html#%C3%BCbung-1---erstelle-ein-eigenes-git-repository">Übung
+1 der Hausaufgabe aus Woche 5</a> gelernt. Falls du Schwierigkeiten hast
+meiner Anleitung zu folgen, melde dich umgehend und ich kann dich
+unterstützen.</p>
 <p>Abweichend von der Anleitung ist Folgendes:</p>
 <ul>
-<li>1 und 2. Schritt: Diese Schritte kannst du überspringen und das neue Repository unter deinem Benutzernamen erstellen. Beginne also mit dem 3. Schritt und erstelle ein neues Repository in deinem persönlichen Benutzer Account.</li>
+<li>1 und 2. Schritt: Diese Schritte kannst du überspringen und das neue
+Repository unter deinem Benutzernamen erstellen. Beginne also mit dem 3.
+Schritt und erstelle ein neues Repository in deinem persönlichen
+Benutzer Account.</li>
 <li><ol start="4" type="1">
-<li>Schritt: Überlege dir hier einen eigenen, sinnvollen Namen für das Repository</li>
+<li>Schritt: Überlege dir hier einen eigenen, sinnvollen Namen für das
+Repository</li>
 </ol></li>
 <li><ol start="6" type="1">
-<li>Schritt: Entscheide hier selbst darüber ob du das Repository öffentlich (public) oder geschlossen (private) zugänglich machen möchtest.</li>
+<li>Schritt: Entscheide hier selbst darüber ob du das Repository
+öffentlich (public) oder geschlossen (private) zugänglich machen
+möchtest.</li>
 </ol></li>
 </ul>
-<p>Auch wird dieses Mal kein Project in der RStudio Cloud erstellt, sondern auf deinem eigenen Arbeitsgerät. Überspringe deshalb die Schritte 12 bis 17 und ersetze diese durch Folgendes:</p>
+<p>Auch wird dieses Mal kein Project in der RStudio Cloud erstellt,
+sondern auf deinem eigenen Arbeitsgerät. Überspringe deshalb die
+Schritte 12 bis 17 und ersetze diese durch Folgendes:</p>
 <ul>
 <li>Öffne RStudio auf deinem Arbeitsgerät</li>
-<li>Klicke auf File &gt; New Project. Ein neues Fenster öffnet sich.</li>
+<li>Klicke auf File &gt; New Project. Ein neues Fenster öffnet
+sich.</li>
 </ul>
 <div class="layout-chunk" data-layout="l-body">
 <p><img src="img/github-to-project-local/github-to-project-local.001.png" width="960" /></p>
@@ -1977,41 +2005,74 @@ Hausaufgaben
 <p><img src="img/github-to-project-local/github-to-project-local.002.png" width="960" /></p>
 </div>
 <ul>
-<li>Füge die URL aus deiner Zwischenablage im Feld “Repository URL” ein. Im Feld “Project directory name:” wird der Name des Repositories übernommen.</li>
-<li>Wähle über den Button “Browse…” den Ordner auf deinem Arbeitsgerät aus, in dem du das Repository speichern möchtest (<strong>Tipp:</strong> Ich empfehle einen Ordner names “gitrepos” zu erstellen, welcher sich so nah wie möglich am Stammpfad des Laufwerks (Lokaler Datenträger) auf deinem Arbeitsgerät befindet. Im Windows Betriebssystem ist dies üblicherweise “C:”. As bietet sich an, an dem Ort ‘C:’ nur Ordner anzulegen, welche auch ein Git Repository sind. Dies erlaubt eine saubere Trennung zwischen allgemeinen Ordnern auf deinem Arbeitsgerät und solchen die ein Git Repository sind.</li>
+<li>Füge die URL aus deiner Zwischenablage im Feld “Repository URL” ein.
+Im Feld “Project directory name:” wird der Name des Repositories
+übernommen.</li>
+<li>Wähle über den Button “Browse…” den Ordner auf deinem Arbeitsgerät
+aus, in dem du das Repository speichern möchtest (<strong>Tipp:</strong>
+Ich empfehle einen Ordner names “gitrepos” zu erstellen, welcher sich so
+nah wie möglich am Stammpfad des Laufwerks (Lokaler Datenträger) auf
+deinem Arbeitsgerät befindet. Im Windows Betriebssystem ist dies
+üblicherweise “C:”. As bietet sich an, an dem Ort ‘C:’ nur Ordner
+anzulegen, welche auch ein Git Repository sind. Dies erlaubt eine
+saubere Trennung zwischen allgemeinen Ordnern auf deinem Arbeitsgerät
+und solchen die ein Git Repository sind.</li>
 </ul>
 <div class="layout-chunk" data-layout="l-body">
 <p><img src="img/github-to-project-local/github-to-project-local.003.png" width="960" /></p>
 </div>
 <ul>
-<li>Klicke auf “Create Project”, was für dich die folgenden drei Dinge erstellt
+<li>Klicke auf “Create Project”, was für dich die folgenden drei Dinge
+erstellt
 <ul>
 <li>ein Ordner auf deinem Arbeitsgerät</li>
-<li>ein lokales Git Repository welches mit einem remote GitHub Repository verbunden ist</li>
+<li>ein lokales Git Repository welches mit einem remote GitHub
+Repository verbunden ist</li>
 <li>ein RStudio Project</li>
 </ul></li>
 <li>Betrachte dein offenes RStudio Project</li>
 <li>Folge nun noch den Schritten 38 bis 43 aus der Hausaufgabe 5.</li>
 </ul>
-<p>Als nächstes könntest du mittels eines Dateimanagers (z.B. Windows File Explorer) deine Daten für das Projekt in dieses Repository kopieren. Es empfiehlt sich dazu innerhalb des Repositories einen Ordner namens “data” zu erstellen und die Daten dort abzulegen.</p>
+<p>Als nächstes könntest du mittels eines Dateimanagers (z.B. Windows
+File Explorer) deine Daten für das Projekt in dieses Repository
+kopieren. Es empfiehlt sich dazu innerhalb des Repositories einen Ordner
+namens “data” zu erstellen und die Daten dort abzulegen.</p>
 <div class="layout-chunk" data-layout="l-body">
 <p><img src="img/github-to-project-local/github-to-project-local.004.png" width="960" /></p>
 </div>
-<p>Wie du nun weiter machst ist dir überlassen. Möchtest du nicht, dass die Daten welche lokal gespeichert sind auf GitHub auftauchen? Dann füge den Pfad an dem diese liegen zu deiner <code>.gitignore</code> Datei hinzu (siehe Screenshot und ersetze den Namen data ggf. durch den Namen den du für diesen Ordner gewählt hast.</p>
+<p>Wie du nun weiter machst ist dir überlassen. Möchtest du nicht, dass
+die Daten welche lokal gespeichert sind auf GitHub auftauchen? Dann füge
+den Pfad an dem diese liegen zu deiner <code>.gitignore</code> Datei
+hinzu (siehe Screenshot und ersetze den Namen data ggf. durch den Namen
+den du für diesen Ordner gewählt hast.</p>
 <div class="layout-chunk" data-layout="l-body">
 <p><img src="img/github-to-project-local/github-to-project-local.005.png" width="960" /></p>
 </div>
-<p>Auch ist es nützlich eine README.md Datei zu erstellen und diese im Stammpfad des Repositories zu speichern. In der README kannst du dein Projekt beschreiben oder wichtige Vorraussetzungen für die Nutzung und Wiederverwendbarkeit deklarieren (Lizenzen).</p>
-<p>Sobald du zufrieden bist mit dem Aufbau deines Projektordners kannst du deine Veränderung mittels den dir bekannten Schritten und unter dem Git Reiter oben rechts in RStudio zurück auf GitHub pushen.</p>
-<h1 id="übungen---teil-2---treibhausgase">Übungen - Teil 2 - Treibhausgase</h1>
+<p>Auch ist es nützlich eine README.md Datei zu erstellen und diese im
+Stammpfad des Repositories zu speichern. In der README kannst du dein
+Projekt beschreiben oder wichtige Vorraussetzungen für die Nutzung und
+Wiederverwendbarkeit deklarieren (Lizenzen).</p>
+<p>Sobald du zufrieden bist mit dem Aufbau deines Projektordners kannst
+du deine Veränderung mittels den dir bekannten Schritten und unter dem
+Git Reiter oben rechts in RStudio zurück auf GitHub pushen.</p>
+<h1 id="übungen---teil-2---treibhausgase">Übungen - Teil 2 -
+Treibhausgase</h1>
 <h2 id="übung-1---daten-importieren">Übung 1 - Daten importieren</h2>
 <p>Die Aufgaben für diese Übung sind in der Vorlage hinterlegt.</p>
-<h2 id="übung-2---daten-transformieren-und-visualisieren">Übung 2 - Daten transformieren und visualisieren</h2>
+<h2 id="übung-2---daten-transformieren-und-visualisieren">Übung 2 -
+Daten transformieren und visualisieren</h2>
 <h3 id="pivoting">1. Pivoting</h3>
-<p>Die Daten sind derzeit in einem weiten Format. Das Ziel ist die Daten in ein langes Format zu bringen wobei nur die Spalte Jahr beibehalten wird und alle Spalten von Strom bis Heizoel_EL gedreht werden. Ich habe dir hier bereits etwas Code mit Lücken als Hilfestellung vorbereitet.</p>
+<p>Die Daten sind derzeit in einem weiten Format. Das Ziel ist die Daten
+in ein langes Format zu bringen wobei nur die Spalte Jahr beibehalten
+wird und alle Spalten von Strom bis Heizoel_EL gedreht werden. Ich habe
+dir hier bereits etwas Code mit Lücken als Hilfestellung
+vorbereitet.</p>
 <ol type="1">
-<li>Erstelle ein neues Objekt in deiner Arbeitsumgebung (Environment), welches im langen Format ist in dem du die Lücken ausfüllst. Den Namen für das Objekt kannst du selbst auswählen.</li>
-<li>Strick das Dokument und dann: git add, commit, push alle Veränderung zurück auf GitHub</li>
+<li>Erstelle ein neues Objekt in deiner Arbeitsumgebung (Environment),
+welches im langen Format ist in dem du die Lücken ausfüllst. Den Namen
+für das Objekt kannst du selbst auswählen.</li>
+<li>Strick das Dokument und dann: git add, commit, push alle Veränderung
+zurück auf GitHub</li>
 </ol>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>___ <span class="ot">&lt;-</span> ___ <span class="sc">%&gt;%</span> </span>
@@ -2029,32 +2090,43 @@ Hausaufgaben
 <span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>    <span class="at">___ =</span> <span class="st">&quot;Emissionen&quot;</span></span>
 <span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>  )</span></code></pre></div>
 </div>
-<h3 id="daten-zusammenfassen-und-neue-variable-erstellen">2. Daten zusammenfassen und neue Variable erstellen</h3>
-<p>Die Aufgaben für diese Übung sind in der Vorlage für die Hausaufgabe hinterlegt.</p>
+<h3 id="daten-zusammenfassen-und-neue-variable-erstellen">2. Daten
+zusammenfassen und neue Variable erstellen</h3>
+<p>Die Aufgaben für diese Übung sind in der Vorlage für die Hausaufgabe
+hinterlegt.</p>
 <h3 id="daten-visualisieren-1">3. Daten visualisieren 1</h3>
 <ol type="1">
-<li>Starte mit dem Objekt, welches du in Schritt 3 der vorheringen Übung erstellt hast</li>
-<li>Erstelle ein Säulendiagram und lege das Jahr auf die x-Achse und die Differenz der Emissionen zwischen den Jahren auf die y-Achse</li>
-<li><strong>Bonus:</strong> Warum ist auf der x-Achse immer nur für alle zehn Jahre ein Tick mit Beschriftung?<br />
+<li>Starte mit dem Objekt, welches du in Schritt 3 der vorheringen Übung
+erstellt hast</li>
+<li>Erstelle ein Säulendiagram und lege das Jahr auf die x-Achse und die
+Differenz der Emissionen zwischen den Jahren auf die y-Achse</li>
+<li><strong>Bonus:</strong> Warum ist auf der x-Achse immer nur für alle
+zehn Jahre ein Tick mit Beschriftung?<br />
 </li>
-<li><strong>Bonus:</strong> Wandle den Typen der Variable “Jahr” in eine Variable mit dem Typ Faktor um bevor du den Plot erstellst</li>
+<li><strong>Bonus:</strong> Wandle den Typen der Variable “Jahr” in eine
+Variable mit dem Typ Faktor um bevor du den Plot erstellst</li>
 <li><strong>Bonus:</strong> Passe das Layout des Plots beliebig an</li>
 </ol>
-<h3 id="daten-visualisieren-2-bonus">4. Daten visualisieren 2 (Bonus)</h3>
+<h3 id="daten-visualisieren-2-bonus">4. Daten visualisieren 2
+(Bonus)</h3>
 <ol type="1">
 <li>Nutze das Objekt welches du in “2.1 Pivoting” erstellt hast, und:
 <ul>
-<li>Nutze die Funktion <code>group_by()</code> um die Daten nach dem Jahr zu gruppieren</li>
-<li>Nutze die Funktion <code>filter()</code> um in der Spalte Jahr nur das Jahr 1990 und das Jahr 2016 anzuzeigen</li>
+<li>Nutze die Funktion <code>group_by()</code> um die Daten nach dem
+Jahr zu gruppieren</li>
+<li>Nutze die Funktion <code>filter()</code> um in der Spalte Jahr nur
+das Jahr 1990 und das Jahr 2016 anzuzeigen</li>
 <li>Wieviele Wege fallen dir ein um auf das Ergebnis zu kommen?</li>
 </ul></li>
-<li>Speicher das Ergebnis als ein neues Objekt in deiner Arbeitsumgebung (Environment) mit einem Namen deiner Wahl</li>
+<li>Speicher das Ergebnis als ein neues Objekt in deiner Arbeitsumgebung
+(Environment) mit einem Namen deiner Wahl</li>
 <li>Reproduziere folgendes verbundenes Säulendiagramm</li>
 </ol>
 <div class="layout-chunk" data-layout="l-body">
 <p><img src="ha-06-projektarbeit_files/figure-html5/unnamed-chunk-8-1.png" width="624" /></p>
 </div>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
+<div class="sourceCode" id="cb2"><pre
+class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
 <!--radix_placeholder_article_footer-->
 <!--/radix_placeholder_article_footer-->
 </div>

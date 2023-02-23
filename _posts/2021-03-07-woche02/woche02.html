@@ -56,7 +56,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 }
 code span.al { color: #ad0000; } /* Alert */
 code span.an { color: #5e5e5e; } /* Annotation */
-code span.at { color: #20794d; } /* Attribute */
+code span.at { } /* Attribute */
 code span.bn { color: #ad0000; } /* BaseN */
 code span.bu { } /* BuiltIn */
 code span.cf { color: #007ba5; } /* ControlFlow */
@@ -77,13 +77,14 @@ code span.kw { color: #007ba5; } /* Keyword */
 code span.op { color: #5e5e5e; } /* Operator */
 code span.ot { color: #007ba5; } /* Other */
 code span.pp { color: #ad0000; } /* Preprocessor */
-code span.sc { color: #20794d; } /* SpecialChar */
+code span.sc { color: #5e5e5e; } /* SpecialChar */
 code span.ss { color: #20794d; } /* SpecialString */
 code span.st { color: #20794d; } /* String */
 code span.va { color: #111111; } /* Variable */
 code span.vs { color: #20794d; } /* VerbatimString */
 code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 </style>
+
 
   <!--radix_placeholder_meta_tags-->
   <title>Woche 2 - Daten Visualisierung mit ggplot2</title>
@@ -115,7 +116,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   <!--/radix_placeholder_rmarkdown_metadata-->
   
   <script type="text/json" id="radix-resource-manifest">
-  {"type":"character","attributes":{},"value":["img/data-vis.jpg","woche02_files/anchor-4.2.2/anchor.min.js","woche02_files/anchor/anchor.min.js","woche02_files/bowser-1.9.3/bowser.min.js","woche02_files/bowser/bowser.min.js","woche02_files/clipboard-2.0.6/clipboard.min.js","woche02_files/clipboard/clipboard.min.js","woche02_files/distill-2.2.21/template.v2.js","woche02_files/distill/template.v2.js","woche02_files/fitvids-2.1.1/fitvids.min.js","woche02_files/fitvids/fitvids.min.js","woche02_files/header-attrs-2.7/header-attrs.js","woche02_files/header-attrs-2.9/header-attrs.js","woche02_files/header-attrs/header-attrs.js","woche02_files/jquery-1.11.3/jquery.min.js","woche02_files/jquery/jquery.min.js","woche02_files/popper-2.6.0/popper.min.js","woche02_files/popper/popper.min.js","woche02_files/shareon-1.4.1/shareon.min.css","woche02_files/shareon-1.4.1/shareon.min.js","woche02_files/shareon/shareon.min.css","woche02_files/shareon/shareon.min.js","woche02_files/tippy-6.2.7/tippy-bundle.umd.min.js","woche02_files/tippy-6.2.7/tippy-light-border.css","woche02_files/tippy-6.2.7/tippy.css","woche02_files/tippy-6.2.7/tippy.umd.min.js","woche02_files/tippy/tippy-bundle.umd.min.js","woche02_files/tippy/tippy-light-border.css","woche02_files/tippy/tippy.css","woche02_files/tippy/tippy.umd.min.js","woche02_files/webcomponents-2.0.0/webcomponents.js","woche02_files/webcomponents/webcomponents.js","woche02_files/xaringanExtra-shareagain-0.2.4/shareagain.css","woche02_files/xaringanExtra-shareagain-0.2.4/shareagain.js","woche02_files/xaringanExtra-shareagain-0.2.6/shareagain.css","woche02_files/xaringanExtra-shareagain-0.2.6/shareagain.js","woche02_files/xaringanExtra-shareagain/shareagain.css","woche02_files/xaringanExtra-shareagain/shareagain.js"]}
+  {"type":"character","attributes":{},"value":["img/data-vis.jpg","woche02_files/anchor-4.2.2/anchor.min.js","woche02_files/anchor/anchor.min.js","woche02_files/bowser-1.9.3/bowser.min.js","woche02_files/bowser/bowser.min.js","woche02_files/clipboard-2.0.6/clipboard.min.js","woche02_files/clipboard/clipboard.min.js","woche02_files/distill-2.2.21/template.v2.js","woche02_files/distill/template.v2.js","woche02_files/fitvids-2.1.1/fitvids.min.js","woche02_files/fitvids/fitvids.min.js","woche02_files/header-attrs-2.11/header-attrs.js","woche02_files/header-attrs-2.7/header-attrs.js","woche02_files/header-attrs-2.9/header-attrs.js","woche02_files/header-attrs/header-attrs.js","woche02_files/jquery-1.11.3/jquery.min.js","woche02_files/jquery-3.6.0/jquery-3.6.0.js","woche02_files/jquery-3.6.0/jquery-3.6.0.min.js","woche02_files/jquery-3.6.0/jquery-3.6.0.min.map","woche02_files/jquery/jquery.min.js","woche02_files/popper-2.6.0/popper.min.js","woche02_files/popper/popper.min.js","woche02_files/shareon-1.4.1/shareon.min.css","woche02_files/shareon-1.4.1/shareon.min.js","woche02_files/shareon/shareon.min.css","woche02_files/shareon/shareon.min.js","woche02_files/tippy-6.2.7/tippy-bundle.umd.min.js","woche02_files/tippy-6.2.7/tippy-light-border.css","woche02_files/tippy-6.2.7/tippy.css","woche02_files/tippy-6.2.7/tippy.umd.min.js","woche02_files/tippy/tippy-bundle.umd.min.js","woche02_files/tippy/tippy-light-border.css","woche02_files/tippy/tippy.css","woche02_files/tippy/tippy.umd.min.js","woche02_files/webcomponents-2.0.0/webcomponents.js","woche02_files/webcomponents/webcomponents.js","woche02_files/xaringanExtra-shareagain-0.2.4/shareagain.css","woche02_files/xaringanExtra-shareagain-0.2.4/shareagain.js","woche02_files/xaringanExtra-shareagain-0.2.6/shareagain.css","woche02_files/xaringanExtra-shareagain-0.2.6/shareagain.js","woche02_files/xaringanExtra-shareagain/shareagain.css","woche02_files/xaringanExtra-shareagain/shareagain.js"]}
   </script>
   <!--radix_placeholder_navigation_in_header-->
   <!--/radix_placeholder_navigation_in_header-->
@@ -1262,7 +1263,10 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 
       // hoverable references
       $('span.citation[data-cites]').each(function() {
-        var refHtml = $('#ref-' + $(this).attr('data-cites')).html();
+        var refs = $(this).attr('data-cites').split(" ");
+        var refHtml = refs.map(function(ref) {
+          return "<p>" + $('#ref-' + ref).html() + "</p>";
+        }).join("\n");
         window.tippy(this, {
           allowHTML: true,
           content: refHtml,
@@ -1433,14 +1437,14 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   </script>
 
   <!--/radix_placeholder_distill-->
-  <script src="woche02_files/header-attrs-2.9/header-attrs.js"></script>
+  <script src="woche02_files/header-attrs-2.11/header-attrs.js"></script>
   <script src="woche02_files/clipboard-2.0.6/clipboard.min.js"></script>
   <link href="woche02_files/shareon-1.4.1/shareon.min.css" rel="stylesheet" />
   <script src="woche02_files/shareon-1.4.1/shareon.min.js"></script>
   <link href="woche02_files/xaringanExtra-shareagain-0.2.6/shareagain.css" rel="stylesheet" />
   <script src="woche02_files/xaringanExtra-shareagain-0.2.6/shareagain.js"></script>
   <script src="woche02_files/fitvids-2.1.1/fitvids.min.js"></script>
-  <script src="woche02_files/jquery-1.11.3/jquery.min.js"></script>
+  <script src="woche02_files/jquery-3.6.0/jquery-3.6.0.min.js"></script>
   <script src="woche02_files/popper-2.6.0/popper.min.js"></script>
   <link href="woche02_files/tippy-6.2.7/tippy.css" rel="stylesheet" />
   <link href="woche02_files/tippy-6.2.7/tippy-light-border.css" rel="stylesheet" />
@@ -1460,7 +1464,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <!--radix_placeholder_front_matter-->
 
 <script id="distill-front-matter" type="text/json">
-{"title":"Woche 2 - Daten Visualisierung mit ggplot2","description":"Ziele und Materialien für unsere zweite gemeinsame Woche","authors":[],"publishedDate":"2021-03-05T00:00:00.000+00:00"}
+{"title":"Woche 2 - Daten Visualisierung mit ggplot2","description":"Ziele und Materialien für unsere zweite gemeinsame Woche","authors":[],"publishedDate":"2021-03-05T00:00:00.000+01:00"}
 </script>
 
 <!--/radix_placeholder_front_matter-->
@@ -1482,9 +1486,10 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <nav class="l-text toc figcaption" id="TOC">
 <h3>Contents</h3>
 <ul>
-<li><a href="#ziele">Ziele</a></li>
-<li><a href="#folien">Folien</a></li>
-<li><a href="#weiterführende-aufgaben">Weiterführende Aufgaben</a></li>
+<li><a href="#ziele" id="toc-ziele">Ziele</a></li>
+<li><a href="#folien" id="toc-folien">Folien</a></li>
+<li><a href="#weiterführende-aufgaben"
+id="toc-weiterführende-aufgaben">Weiterführende Aufgaben</a></li>
 </ul>
 </nav>
 </div>
@@ -1493,20 +1498,25 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 
 </div>
 <div class="layout-chunk" data-layout="l-body">
-<div class="figure"><span id="fig:unnamed-chunk-1"></span>
+<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-1"></span>
 <img src="img/data-vis.jpg" alt="Photo by [Neven Krcmarek](https://unsplash.com/photos/V4EOZj7g1gw)" data-distill-preview=1 />
 <p class="caption">
-Figure 1: Photo by <a href="https://unsplash.com/photos/V4EOZj7g1gw">Neven Krcmarek</a>
+Figure 1: Photo by <a
+href="https://unsplash.com/photos/V4EOZj7g1gw">Neven Krcmarek</a>
 </p>
 </div>
 </div>
-<p>Lerne das Grundkonzept des <code>{ggplot2}</code> R Package kennen und erstelle selbständig einen Plot mit offenen Behördendaten (Open Government Data)</p>
+<p>Lerne das Grundkonzept des <code>{ggplot2}</code> R Package kennen
+und erstelle selbständig einen Plot mit offenen Behördendaten (Open
+Government Data)</p>
 <h1 id="ziele">Ziele</h1>
 <p>Am Ende dieser Woche kannst du:</p>
 <ul>
 <li>den Unterschied zwischen markdown und R Markdown beschreiben</li>
-<li>selbständig einen Plot mit dem R Package <code>{ggplot2}</code> erstellen</li>
-<li>innerhalb von RStudio selbstständig eine neue R Markdown Datei erstellen</li>
+<li>selbständig einen Plot mit dem R Package <code>{ggplot2}</code>
+erstellen</li>
+<li>innerhalb von RStudio selbstständig eine neue R Markdown Datei
+erstellen</li>
 <li>das Aussehen eines HTML Dokuments anpassen</li>
 </ul>
 <h1 id="folien">Folien</h1>
@@ -1528,7 +1538,8 @@ Figure 1: Photo by <a href="https://unsplash.com/photos/V4EOZj7g1gw">Neven Krcma
 Buch
 </td>
 <td style="text-align:left;">
-<a href="https://r4ds.had.co.nz/data-visualisation.html">R4DS - Chapter 3.1 bis 3.7 - Visualisation</a>
+<a href="https://r4ds.had.co.nz/data-visualisation.html">R4DS - Chapter
+3.1 bis 3.7 - Visualisation</a>
 </td>
 <td style="text-align:left;">
 Pflicht
@@ -1542,7 +1553,9 @@ Pflicht
 Hausaufgabe
 </td>
 <td style="text-align:left;">
-<a href="https://rstatszh.github.io/website/ha-02-hallo-ogd.html">Hausaufgabe 02 - Hallo OGD</a>
+<a
+href="https://rstatszh.github.io/website/ha-02-hallo-ogd.html">Hausaufgabe
+02 - Hallo OGD</a>
 </td>
 <td style="text-align:left;">
 Pflicht
@@ -1556,7 +1569,8 @@ Pflicht
 Tutorial
 </td>
 <td style="text-align:left;">
-<a href="https://rstudio.cloud/learn/primers/1.1">RStudio Primer - Visualisation Basics</a>
+<a href="https://rstudio.cloud/learn/primers/1.1">RStudio Primer -
+Visualisation Basics</a>
 </td>
 <td style="text-align:left;">
 Freiwillig
@@ -1570,7 +1584,8 @@ Freiwillig
 Folien
 </td>
 <td style="text-align:left;">
-<a href="https://slides.djnavarro.net/starting-rmarkdown/#1">R markdown</a>
+<a href="https://slides.djnavarro.net/starting-rmarkdown/#1">R
+markdown</a>
 </td>
 <td style="text-align:left;">
 Freiwillig
@@ -1582,7 +1597,8 @@ Freiwillig
 </tbody>
 </table>
 </div>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
+<div class="sourceCode" id="cb1"><pre
+class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
 <!--radix_placeholder_article_footer-->
 <!--/radix_placeholder_article_footer-->
 </div>

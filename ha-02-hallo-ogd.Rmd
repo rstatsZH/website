@@ -22,7 +22,7 @@ Diese Hausaufgabe hat die folgenden Ziele:
 
 Öffne deine Email Inbox und suche nach der Email mit dem Link für das GitHub Repo zu dieser Hausaufgabe (ha-02-hallo-ogd). Alternativ kannst du GitHub öffnen und in unserer GitHub Organisation nach dem Repo mit deinem Namen suchen.
 
-Folge den Schritten aus Hausaufgabe 1 oder den Folien der Woche 2 um das GitHub Repo in deine RStudio Cloud zu clonen. 
+Folge den Schritten aus Hausaufgabe 1 oder den Folien der Woche 2 um das GitHub Repo in die Posit Cloud zu clonen. 
 
 # Packages
 

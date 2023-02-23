@@ -2,7 +2,7 @@
 title: "rstatsZH - Data Science mit R"
 subtitle: "Datenvisualisierung verschiedener Datentypen"  
 author: "Lars Schöbitz"
-date: "2022-09-15"
+date: "2023-02-23"
 output:
   xaringan::moon_reader:
     self_contained: false
@@ -196,8 +196,8 @@ class: inverse, middle
 
 .note[
 
-1. **RStudio Cloud**: Öffne deinen Arbeitsbereich für den Kurs in der RStudio Cloud
-2. **RStudio Cloud / Projects**: Öffne erneut das Praktikum 03
+1. **Posit Cloud**: Öffne deinen Arbeitsbereich für den Kurs in der Posit Cloud
+2. **Posit Cloud / Projects**: Öffne erneut das Praktikum 03
 3. Folgt wieder auf dem Bildschirm
 
 ]
@@ -266,16 +266,6 @@ ggplot(penguins,
 
 ]
 ]
-
----
-# Praktikum 3 - Lösungen
-
-- **GitHub Organisation:** rstatsZH
-    - github.com/rstatsZH
-- **Repo:** prak-03-vis-ggplot2
-    - https://github.com/rstatsZH/prak-03-vis-ggplot2
-- **R Markdown Datei:** prak-03-solutions.Rmd
-    - https://github.com/rstatsZH/prak-03-vis-ggplot2/blob/main/prak-03-solutions.Rmd
 
 
 ---

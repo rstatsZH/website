@@ -2,7 +2,7 @@
 title: "rstatsZH - Data Science mit R"
 subtitle: "Daten Transformation mit dplyr"
 author: "Lars Schöbitz"
-date: "2022-09-15"
+date: "2023-02-23"
 output:
   xaringan::moon_reader:
     self_contained: false
@@ -330,25 +330,15 @@ class: middle, inverse
 
 ## Live Code
 
-1. **E-Mail**: Öffne deine Email und klicke auf den Link zu deinem persönlichen GitHub repo für **prak-05**
-2. **GitHub**: Klicke auf den grünen Button "Code" und kopiere den Link für das Repo in deine Zwischenablage
-3. **RStudio Cloud**: Öffne deinen Arbeitsbereich für den Kurs in der RStudio Cloud
-4. **RStudio Cloud / Projects**: Klicke auf "New Project from GitHub Repository" 
-5. **RStudio**: Finde den Datei Manager und den Git Reiter
+1. **GitHub**: Öffne die GitHub Organisation für den Kurs: https://github.com/rstatszh-k007
+2. **GitHub**: Nutze die Suche um das Praktikum 5 (prak-05) mit deinem Benutzernamen zu finden
+3. **GitHub**: Klicke auf den grünen Button (Code) und kopiere die URL in die Zwischenablage
+3. **Posit Cloud**: Öffne deinen Arbeitsbereich für den Kurs in der Posit Cloud
+4. **Posit Cloud / Projects**: Klicke auf "New Project from GitHub Repository" 
+5. **RStudio IDE**: Finde den Datei Manager und den Git Reiter
 6. **Zoom Chat**: Schreibt wenn ihr soweit seid
 
 ]
-
----
-# Praktikum 5 - Lösungen
-
-- **GitHub Organisation:** rstatsZH
-    - github.com/rstatsZH
-- **Repo:** prak-05-wrangle-dplyr
-    - https://github.com/rstatsZH/prak-05-wrangle-dplyr
-- **R Markdown Datei:** prak-05-solutions.Rmd
-    - https://github.com/rstatsZH/prak-05-wrangle-dplyr/blob/main/prak-05-solutions.Rmd
-
 
 ---
 class: middle, inverse
@@ -362,11 +352,12 @@ class: middle, inverse
 
 ## In 2er Teams
 
-1. **E-Mail**: Öffne deine Email und klicke auf den Link zu deinem persönlichen GitHub repo für **prak-06**
-2. **GitHub**: Klicke auf den grünen Button "Code" und kopiere den Link für das Repo in deine Zwischenablage
-3. **RStudio Cloud**: Öffne deinen Arbeitsbereich für den Kurs in der RStudio Cloud
-4. **RStudio Cloud / Projects**: Klicke auf "New Project from GitHub Repository" 
-5. **RStudio**: Finde den Datei Manager und Git
+1. **GitHub**: Öffne die GitHub Organisation für den Kurs: https://github.com/rstatszh-k007
+2. **GitHub**: Nutze die Suche um das Praktikum 6 (prak-06) mit deinem Benutzernamen zu finden
+3. **GitHub**: Klicke auf den grünen Button (Code) und kopiere die URL in die Zwischenablage
+3. **Posit Cloud**: Öffne deinen Arbeitsbereich für den Kurs in der Posit Cloud
+4. **Posit Cloud / Projects**: Klicke auf "New Project from GitHub Repository" 
+5. **RStudio IDE**: Finde den Datei Manager und den Git Reiter
 6. **Zoom Chat**: Schreibt wenn ihr soweit seid
 
 ]

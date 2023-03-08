@@ -31,6 +31,7 @@ Am Ende dieser Woche könnt ihr:
 
 - Einer Anleitung folgen um kollaborativ mit Git und GitHub an einem Projekt zu arbeiten 
 - Die Begriffe `git add`, `git commit`, `git push`, und `git pull` unterscheiden 
+- Die vier grundlegenden Vektortypen in R wiedergeben 
 - Den Unterschied zwischen einem Vektor vom Typ "character" und "factor" erläutern
 
 # Folien

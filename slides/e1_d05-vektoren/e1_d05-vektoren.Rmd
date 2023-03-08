@@ -254,11 +254,18 @@ Am Ende dieser Woche könnt ihr:
 ---
 .note[
 
-# Demonstration 1 - Ehedaten
+# Praktikum 08-01 - Ehedaten
 
-1. Schaut mir bei dem Erkunden eines Datensatz zu 
-2. Schreibt selbst **keinen** Code
-3. Macht euch Notizen und stellt Fragen
+## Live Code
+
+1. **GitHub**: Öffne die GitHub Organisation für den Kurs: https://github.com/rstatszh-k007
+2. **GitHub**: Nutze die Suche um das Praktikum 08-01 (prak-08-01) mit deinem Benutzernamen zu finden
+3. **GitHub**: Klicke auf den grünen Button (Code) und kopiere die URL in die Zwischenablage
+3. **Posit Cloud**: Öffne deinen Arbeitsbereich für den Kurs in der Posit Cloud
+4. **Posit Cloud / Projects**: Klicke auf "New Project from GitHub Repository" 
+5. **RStudio IDE**: Finde den Datei Manager und den Git Reiter
+6. **Zoom Chat**: Schreibt wenn ihr soweit seid
+
 
 ]
 
@@ -284,7 +291,7 @@ countdown(
 .footnote[Photo by: [Blake Wisz](https://unsplash.com/@blakewisz)]
 
 ---
-# Praktikum 8 - Git / GitHub
+# Praktikum 08-02 - Git / GitHub
 
 Ihr könnt bereits:
 
@@ -297,7 +304,7 @@ Neu lernt ihr:
 - `git pull`
 
 ---
-# Praktikum 8 - Zwei Rollen
+# Praktikum 08-02 - Zwei Rollen
 
 .pull-left[
 **Person 1 - Push**
@@ -322,13 +329,13 @@ Neu lernt ihr:
 ---
 .note[
 
-# Praktikum 8 - Git / GitHub - Ehedaten
+# Praktikum 08-02 - Git / GitHub - Ehedaten
 
 ## 2er Teams
 
 **Lest die Anleitungen aufmerksam und entscheidet welche Person zu Beginn den Bildschirm teilt**
 
-1. **E-Mail**: Öffne deine Email und klicke auf den Link zu deinem GitHub **Team** repo für **prak-08-team0X**
+1. **E-Mail**: Öffne deine Email und klicke auf den Link zu deinem GitHub **Team** repo für **prak-08-02-team0X**
 2. **GitHub**: Klicke auf den grünen Button "Code" und kopiere den Link für das Repo in deine Zwischenablage
 3. **Posit Cloud**: Öffne deinen Arbeitsbereich für den Kurs in der Posit Cloud
 4. **Posit Cloud / Projects**: Klicke auf "New Project from GitHub Repository" 
@@ -362,8 +369,9 @@ countdown(
 
 # Demonstration 2 - Vektoren
 
-1. Schaut mir nochmals beim Programmieren zu
-2. Macht euch Notizen und stellt Fragen
+1. Schaut mir beim Programmieren zu
+2. Schreibt selbst **keinen Code**
+3. Macht euch Notizen und stellt Fragen
 
 ]
 

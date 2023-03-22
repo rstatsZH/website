@@ -4,7 +4,7 @@
     <title>rstatsZH - Data Science mit R</title>
     <meta charset="utf-8" />
     <meta name="author" content="Lars Schöbitz" />
-    <meta name="date" content="2022-11-03" />
+    <meta name="date" content="2023-03-22" />
     <script src="libs/header-attrs/header-attrs.js"></script>
     <link href="libs/remark-css/default.css" rel="stylesheet" />
     <link href="libs/font-awesome/css/all.css" rel="stylesheet" />
@@ -40,7 +40,7 @@ class: title-slide
 
 .bottom[
 
-<p>Lars Schöbitz</p><p>2022-11-03</p>
+<p>Lars Schöbitz</p><p>2023-03-22</p>
 ]
 
 ---
@@ -590,12 +590,16 @@ professions %&gt;%
 
 # Praktikum 10 - Daten zusammenfügen 
 
-## 2er Teams
+## 2er Teams 
 
-1. **E-Mail**: Öffne deine Email und klicke auf den Link zu deinem persönlichen GitHub repo
-2. **GitHub**: Klicke auf den grünen Button "Code" und kopiere den Link für das Repo in deine Zwischenablage
-3. **RStudio Cloud**: Öffne deinen Arbeitsbereich für den Kurs in der RStudio Cloud
-4. **RStudio Cloud / Projects**: Klicke auf "New Project from GitHub Repository" 
+1. **GitHub**: Öffne die GitHub Organisation für den Kurs: https://github.com/rstatszh-k007
+2. **GitHub**: Nutze die Suche um das Praktikum 10 (prak-10) mit deinem Benutzernamen zu finden
+3. **GitHub**: Klicke auf den grünen Button (Code) und kopiere die URL in die Zwischenablage
+3. **Posit Cloud**: Öffne deinen Arbeitsbereich für den Kurs in der Posit Cloud
+4. **Posit Cloud / Projects**: Klicke auf "New Project from GitHub Repository" 
+5. **RStudio IDE**: Finde den Datei Manager und den Git Reiter
+6. **Zoom Chat**: Schreibt wenn ihr soweit seid
+
 
 ]
 
@@ -669,7 +673,7 @@ professions %&gt;%
 ---
 ## Gewünschter Output
 
-<div id="pzveloiefp" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<div id="pzveloiefp" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
 <style>html {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
 }
@@ -709,6 +713,11 @@ professions %&gt;%
   border-right-style: none;
   border-right-width: 1px;
   border-right-color: #D3D3D3;
+}
+
+#pzveloiefp .gt_caption {
+  padding-top: 4px;
+  padding-bottom: 4px;
 }
 
 #pzveloiefp .gt_title {
@@ -831,6 +840,7 @@ professions %&gt;%
   border-right-width: 1px;
   border-right-color: #D3D3D3;
   vertical-align: middle;
+  text-align: left;
 }
 
 #pzveloiefp .gt_empty_group_heading {
@@ -1078,21 +1088,21 @@ professions %&gt;%
   
   <thead class="gt_col_headings">
     <tr>
-      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col">vorname</th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col">nachname</th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col">summe</th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col">email</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col" id="vorname">vorname</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col" id="nachname">nachname</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="summe">summe</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col" id="email">email</th>
     </tr>
   </thead>
   <tbody class="gt_table_body">
-    <tr><td class="gt_row gt_left">Edwin</td>
-<td class="gt_row gt_left">Dumont</td>
-<td class="gt_row gt_right">9.2</td>
-<td class="gt_row gt_left">edwin.dumont@example.com</td></tr>
-    <tr><td class="gt_row gt_left">Leonora</td>
-<td class="gt_row gt_left">Garcia</td>
-<td class="gt_row gt_right">24.6</td>
-<td class="gt_row gt_left">leonora.garcia@example.com</td></tr>
+    <tr><td headers="vorname" class="gt_row gt_left">Edwin</td>
+<td headers="nachname" class="gt_row gt_left">Dumont</td>
+<td headers="summe" class="gt_row gt_right">9.2</td>
+<td headers="email" class="gt_row gt_left">edwin.dumont@example.com</td></tr>
+    <tr><td headers="vorname" class="gt_row gt_left">Leonora</td>
+<td headers="nachname" class="gt_row gt_left">Garcia</td>
+<td headers="summe" class="gt_row gt_right">24.6</td>
+<td headers="email" class="gt_row gt_left">leonora.garcia@example.com</td></tr>
   </tbody>
   
   
@@ -1209,7 +1219,7 @@ kunden_tab %&gt;%
   gt()
 ```
 
-<div id="dbgvzfontn" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<div id="dbgvzfontn" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
 <style>html {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
 }
@@ -1249,6 +1259,11 @@ kunden_tab %&gt;%
   border-right-style: none;
   border-right-width: 1px;
   border-right-color: #D3D3D3;
+}
+
+#dbgvzfontn .gt_caption {
+  padding-top: 4px;
+  padding-bottom: 4px;
 }
 
 #dbgvzfontn .gt_title {
@@ -1371,6 +1386,7 @@ kunden_tab %&gt;%
   border-right-width: 1px;
   border-right-color: #D3D3D3;
   vertical-align: middle;
+  text-align: left;
 }
 
 #dbgvzfontn .gt_empty_group_heading {
@@ -1618,21 +1634,21 @@ kunden_tab %&gt;%
   
   <thead class="gt_col_headings">
     <tr>
-      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col">vorname</th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col">nachname</th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col">summe</th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col">email</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col" id="vorname">vorname</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col" id="nachname">nachname</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="summe">summe</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col" id="email">email</th>
     </tr>
   </thead>
   <tbody class="gt_table_body">
-    <tr><td class="gt_row gt_left">Edwin</td>
-<td class="gt_row gt_left">Dumont</td>
-<td class="gt_row gt_right">9.2</td>
-<td class="gt_row gt_left">edwin.dumont@example.com</td></tr>
-    <tr><td class="gt_row gt_left">Leonora</td>
-<td class="gt_row gt_left">Garcia</td>
-<td class="gt_row gt_right">24.6</td>
-<td class="gt_row gt_left">leonora.garcia@example.com</td></tr>
+    <tr><td headers="vorname" class="gt_row gt_left">Edwin</td>
+<td headers="nachname" class="gt_row gt_left">Dumont</td>
+<td headers="summe" class="gt_row gt_right">9.2</td>
+<td headers="email" class="gt_row gt_left">edwin.dumont@example.com</td></tr>
+    <tr><td headers="vorname" class="gt_row gt_left">Leonora</td>
+<td headers="nachname" class="gt_row gt_left">Garcia</td>
+<td headers="summe" class="gt_row gt_right">24.6</td>
+<td headers="email" class="gt_row gt_left">leonora.garcia@example.com</td></tr>
   </tbody>
   
   
@@ -1656,7 +1672,7 @@ einkaeufe %&gt;%
   gt()
 ```
 
-<div id="xdduhtxcdz" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<div id="xdduhtxcdz" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
 <style>html {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
 }
@@ -1696,6 +1712,11 @@ einkaeufe %&gt;%
   border-right-style: none;
   border-right-width: 1px;
   border-right-color: #D3D3D3;
+}
+
+#xdduhtxcdz .gt_caption {
+  padding-top: 4px;
+  padding-bottom: 4px;
 }
 
 #xdduhtxcdz .gt_title {
@@ -1818,6 +1839,7 @@ einkaeufe %&gt;%
   border-right-width: 1px;
   border-right-color: #D3D3D3;
   vertical-align: middle;
+  text-align: left;
 }
 
 #xdduhtxcdz .gt_empty_group_heading {
@@ -2065,21 +2087,21 @@ einkaeufe %&gt;%
   
   <thead class="gt_col_headings">
     <tr>
-      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col">vorname</th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col">nachname</th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col">summe</th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col">email</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col" id="vorname">vorname</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col" id="nachname">nachname</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="summe">summe</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col" id="email">email</th>
     </tr>
   </thead>
   <tbody class="gt_table_body">
-    <tr><td class="gt_row gt_left">Edwin</td>
-<td class="gt_row gt_left">Dumont</td>
-<td class="gt_row gt_right">17.4</td>
-<td class="gt_row gt_left">edwin.dumont@example.com</td></tr>
-    <tr><td class="gt_row gt_left">Leonora</td>
-<td class="gt_row gt_left">Garcia</td>
-<td class="gt_row gt_right">45.1</td>
-<td class="gt_row gt_left">leonora.garcia@example.com</td></tr>
+    <tr><td headers="vorname" class="gt_row gt_left">Edwin</td>
+<td headers="nachname" class="gt_row gt_left">Dumont</td>
+<td headers="summe" class="gt_row gt_right">17.4</td>
+<td headers="email" class="gt_row gt_left">edwin.dumont@example.com</td></tr>
+    <tr><td headers="vorname" class="gt_row gt_left">Leonora</td>
+<td headers="nachname" class="gt_row gt_left">Garcia</td>
+<td headers="summe" class="gt_row gt_right">45.1</td>
+<td headers="email" class="gt_row gt_left">leonora.garcia@example.com</td></tr>
   </tbody>
   
   
@@ -2103,10 +2125,14 @@ class: middle, inverse
 
 ## Live Coding 
 
-1. **E-Mail**: Öffne deine Email und klicke auf den Link zu deinem persönlichen GitHub repo
-2. **GitHub**: Klicke auf den grünen Button "Code" und kopiere den Link für das Repo in deine Zwischenablage
-3. **RStudio Cloud**: Öffne deinen Arbeitsbereich für den Kurs in der RStudio Cloud
-4. **RStudio Cloud / Projects**: Klicke auf "New Project from GitHub Repository" 
+1. **GitHub**: Öffne die GitHub Organisation für den Kurs: https://github.com/rstatszh-k007
+2. **GitHub**: Nutze die Suche um das Praktikum 11 (prak-11) mit deinem Benutzernamen zu finden
+3. **GitHub**: Klicke auf den grünen Button (Code) und kopiere die URL in die Zwischenablage
+3. **Posit Cloud**: Öffne deinen Arbeitsbereich für den Kurs in der Posit Cloud
+4. **Posit Cloud / Projects**: Klicke auf "New Project from GitHub Repository" 
+5. **RStudio IDE**: Finde den Datei Manager und den Git Reiter
+6. **Zoom Chat**: Schreibt wenn ihr soweit seid
+
 
 ]
 
@@ -2164,7 +2190,7 @@ class: middle
 https://rstatszh.github.io/website/posts/2021-04-30-woche07/
 
 ---
-# Projektarbeit - Unterstützung bis Mitte Dezember 2022
+# Projektarbeit - Unterstützung bis Anfang Mai 2023
 
 **Hausaufgabe 6**
 
@@ -2218,7 +2244,9 @@ background-size: contain
 
 # Ziele erreicht? 
 
-Bitte ausfüllen: [kutt.it/rstatszh-eval](https://kutt.it/rstatszh-eval)
+Bitte ausfüllen: 
+
+[https://forms.gle/fEmF9899WEnCETdL8](https://forms.gle/fEmF9899WEnCETdL8)
 
 .pull-left[
 
@@ -2297,19 +2325,6 @@ if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
     deleted = true;
   });
 })();
-// add `data-at-shortcutkeys` attribute to <body> to resolve conflicts with JAWS
-// screen reader (see PR #262)
-(function(d) {
-  let res = {};
-  d.querySelectorAll('.remark-help-content table tr').forEach(tr => {
-    const t = tr.querySelector('td:nth-child(2)').innerText;
-    tr.querySelectorAll('td:first-child .key').forEach(key => {
-      const k = key.innerText;
-      if (/^[a-z]$/.test(k)) res[k] = t;  // must be a single letter (key)
-    });
-  });
-  d.body.setAttribute('data-at-shortcutkeys', JSON.stringify(res));
-})(document);
 (function() {
   "use strict"
   // Replace <script> tags in slides area to make them executable

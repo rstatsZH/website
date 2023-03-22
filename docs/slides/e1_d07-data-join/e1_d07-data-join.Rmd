@@ -2,7 +2,7 @@
 title: "rstatsZH - Data Science mit R"
 subtitle: "Mit mehreren Dataframes arbeiten / Funktionen schreiben"
 author: "Lars Schöbitz"
-date: "2022-11-03"
+date: "2023-03-22"
 output:
   xaringan::moon_reader:
     self_contained: false
@@ -438,12 +438,16 @@ professions %>%
 
 # Praktikum 10 - Daten zusammenfügen 
 
-## 2er Teams
+## 2er Teams 
 
-1. **E-Mail**: Öffne deine Email und klicke auf den Link zu deinem persönlichen GitHub repo
-2. **GitHub**: Klicke auf den grünen Button "Code" und kopiere den Link für das Repo in deine Zwischenablage
-3. **RStudio Cloud**: Öffne deinen Arbeitsbereich für den Kurs in der RStudio Cloud
-4. **RStudio Cloud / Projects**: Klicke auf "New Project from GitHub Repository" 
+1. **GitHub**: Öffne die GitHub Organisation für den Kurs: https://github.com/rstatszh-k007
+2. **GitHub**: Nutze die Suche um das Praktikum 10 (prak-10) mit deinem Benutzernamen zu finden
+3. **GitHub**: Klicke auf den grünen Button (Code) und kopiere die URL in die Zwischenablage
+3. **Posit Cloud**: Öffne deinen Arbeitsbereich für den Kurs in der Posit Cloud
+4. **Posit Cloud / Projects**: Klicke auf "New Project from GitHub Repository" 
+5. **RStudio IDE**: Finde den Datei Manager und den Git Reiter
+6. **Zoom Chat**: Schreibt wenn ihr soweit seid
+
 
 ]
 
@@ -625,10 +629,14 @@ class: middle, inverse
 
 ## Live Coding 
 
-1. **E-Mail**: Öffne deine Email und klicke auf den Link zu deinem persönlichen GitHub repo
-2. **GitHub**: Klicke auf den grünen Button "Code" und kopiere den Link für das Repo in deine Zwischenablage
-3. **RStudio Cloud**: Öffne deinen Arbeitsbereich für den Kurs in der RStudio Cloud
-4. **RStudio Cloud / Projects**: Klicke auf "New Project from GitHub Repository" 
+1. **GitHub**: Öffne die GitHub Organisation für den Kurs: https://github.com/rstatszh-k007
+2. **GitHub**: Nutze die Suche um das Praktikum 11 (prak-11) mit deinem Benutzernamen zu finden
+3. **GitHub**: Klicke auf den grünen Button (Code) und kopiere die URL in die Zwischenablage
+3. **Posit Cloud**: Öffne deinen Arbeitsbereich für den Kurs in der Posit Cloud
+4. **Posit Cloud / Projects**: Klicke auf "New Project from GitHub Repository" 
+5. **RStudio IDE**: Finde den Datei Manager und den Git Reiter
+6. **Zoom Chat**: Schreibt wenn ihr soweit seid
+
 
 ]
 
@@ -687,7 +695,7 @@ class: middle
 https://rstatszh.github.io/website/posts/2021-04-30-woche07/
 
 ---
-# Projektarbeit - Unterstützung bis Mitte Dezember 2022
+# Projektarbeit - Unterstützung bis Anfang Mai 2023
 
 **Hausaufgabe 6**
 
@@ -743,7 +751,9 @@ background-size: contain
 
 # Ziele erreicht? 
 
-Bitte ausfüllen: [kutt.it/rstatszh-eval](https://kutt.it/rstatszh-eval)
+Bitte ausfüllen: 
+
+[https://forms.gle/fEmF9899WEnCETdL8](https://forms.gle/fEmF9899WEnCETdL8)
 
 .pull-left[
 

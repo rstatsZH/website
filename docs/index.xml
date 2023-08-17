@@ -7,13 +7,13 @@
     <description>Ein R Kurs für Mitarbeiter_innen der Verwaltung des Kantons Zürich
 </description>
     <generator>Distill</generator>
-    <lastBuildDate>Tue, 23 Nov 2021 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>2021-11-23</lastBuildDate>
     <item>
       <title>Zusatzeinheit - SQL</title>
       <link>https://rstatszh.github.io/website/posts/2021-11-23-zusatzseinheit-sql</link>
       <description>Übungen für Zusatzeinheit zum Arbeiten mit SQL Datenbanken</description>
       <guid>https://rstatszh.github.io/website/posts/2021-11-23-zusatzseinheit-sql</guid>
-      <pubDate>Tue, 23 Nov 2021 00:00:00 +0000</pubDate>
+      <pubDate>2021-11-23</pubDate>
       <media:content url="https://rstatszh.github.io/website/posts/2021-11-23-zusatzseinheit-sql/img/joshua-sortino-LqKhnDzSF-8-unsplash.jpg" medium="image" type="image/jpeg"/>
     </item>
     <item>
@@ -21,7 +21,7 @@
       <link>https://rstatszh.github.io/website/posts/2021-04-30-woche07</link>
       <description>Ziele und Materialien für unsere letzte gemeinsame Woche</description>
       <guid>https://rstatszh.github.io/website/posts/2021-04-30-woche07</guid>
-      <pubDate>Tue, 27 Apr 2021 00:00:00 +0000</pubDate>
+      <pubDate>2021-04-27</pubDate>
       <media:content url="https://rstatszh.github.io/website/posts/2021-04-30-woche07/img/tim-mossholder-WE_Kv_ZB1l0-unsplash.jpg" medium="image" type="image/jpeg"/>
     </item>
     <item>
@@ -29,7 +29,7 @@
       <link>https://rstatszh.github.io/website/posts/2021-04-21-woche06</link>
       <description>Ziele und Materialien für unsere sechste gemeinsame Woche</description>
       <guid>https://rstatszh.github.io/website/posts/2021-04-21-woche06</guid>
-      <pubDate>Wed, 21 Apr 2021 00:00:00 +0000</pubDate>
+      <pubDate>2021-04-21</pubDate>
       <media:content url="https://rstatszh.github.io/website/posts/2021-04-21-woche06/img/alistair-macrobert-RazuRIEPdgg-unsplash.jpg" medium="image" type="image/jpeg"/>
     </item>
     <item>
@@ -37,7 +37,7 @@
       <link>https://rstatszh.github.io/website/posts/2021-04-12-woche05</link>
       <description>Ziele und Materialien für unsere fünfte gemeinsame Woche</description>
       <guid>https://rstatszh.github.io/website/posts/2021-04-12-woche05</guid>
-      <pubDate>Mon, 12 Apr 2021 00:00:00 +0000</pubDate>
+      <pubDate>2021-04-12</pubDate>
       <media:content url="https://rstatszh.github.io/website/posts/2021-04-12-woche05/img/richy-great-MAYEkmn7G6E-unsplash.jpg" medium="image" type="image/jpeg"/>
     </item>
     <item>
@@ -45,7 +45,7 @@
       <link>https://rstatszh.github.io/website/posts/2021-03-28-woche04</link>
       <description>Ziele und Materialien für unsere vierte gemeinsame Woche</description>
       <guid>https://rstatszh.github.io/website/posts/2021-03-28-woche04</guid>
-      <pubDate>Fri, 26 Mar 2021 00:00:00 +0000</pubDate>
+      <pubDate>2021-03-26</pubDate>
       <media:content url="https://rstatszh.github.io/website/posts/2021-03-28-woche04/img/plier2.jpg" medium="image" type="image/jpeg"/>
     </item>
     <item>
@@ -53,7 +53,7 @@
       <link>https://rstatszh.github.io/website/posts/2021-03-19-woche03</link>
       <description>Ziele und Materialien für unsere dritte gemeinsame Woche</description>
       <guid>https://rstatszh.github.io/website/posts/2021-03-19-woche03</guid>
-      <pubDate>Fri, 19 Mar 2021 00:00:00 +0000</pubDate>
+      <pubDate>2021-03-19</pubDate>
       <media:content url="https://rstatszh.github.io/website/posts/2021-03-19-woche03/img/pliers.jpg" medium="image" type="image/jpeg"/>
     </item>
     <item>
@@ -61,7 +61,7 @@
       <link>https://rstatszh.github.io/website/posts/2021-03-07-woche02</link>
       <description>Ziele und Materialien für unsere zweite gemeinsame Woche</description>
       <guid>https://rstatszh.github.io/website/posts/2021-03-07-woche02</guid>
-      <pubDate>Fri, 05 Mar 2021 00:00:00 +0000</pubDate>
+      <pubDate>2021-03-05</pubDate>
       <media:content url="https://rstatszh.github.io/website/posts/2021-03-07-woche02/img/data-vis.jpg" medium="image" type="image/jpeg"/>
     </item>
     <item>
@@ -69,7 +69,7 @@
       <link>https://rstatszh.github.io/website/posts/2021-02-17-woche01</link>
       <description>Ziele und Materialien für unsere erste gemeinsame Woche</description>
       <guid>https://rstatszh.github.io/website/posts/2021-02-17-woche01</guid>
-      <pubDate>Fri, 12 Feb 2021 00:00:00 +0000</pubDate>
+      <pubDate>2021-02-12</pubDate>
       <media:content url="https://rstatszh.github.io/website/posts/2021-02-17-woche01/img/toolbox.jpg" medium="image" type="image/jpeg"/>
     </item>
     <item>
@@ -77,7 +77,7 @@
       <link>https://rstatszh.github.io/website/posts/2021-02-17-ueberblick</link>
       <description>Schau herein um Informationen zum Kursinhalt, den Lehrpersonen und freien Terminen zu bekommen.</description>
       <guid>https://rstatszh.github.io/website/posts/2021-02-17-ueberblick</guid>
-      <pubDate>Wed, 10 Feb 2021 00:00:00 +0000</pubDate>
+      <pubDate>2021-02-10</pubDate>
       <media:content url="https://rstatszh.github.io/website/posts/2021-02-17-ueberblick/img/roadmap.jpg" medium="image" type="image/jpeg"/>
     </item>
   </channel>

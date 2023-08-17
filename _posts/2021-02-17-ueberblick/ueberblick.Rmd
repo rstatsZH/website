@@ -64,7 +64,7 @@ Lars Schöbitz GmbH
 
 # Was sind die Termine?
 
-Auch in 2023 freuen wir uns wieder Kurse anbieten zu können. Der Kurs im Frühjahr hat bereits gestartet und ist voll belegt. Eine unverbindliche Anmeldung für die vorläufigen Kursdaten im Herbst 2023 ist jederzeit möglich.
+Auch in 2024 freuen wir uns wieder Kurse anbieten zu können. Eine unverbindliche Anmeldung für die vorläufigen Kursdaten im Frühling und Herbst 2024 ist jederzeit möglich.
 
 
 ```{r, echo=FALSE, layout="l-body-outset"}

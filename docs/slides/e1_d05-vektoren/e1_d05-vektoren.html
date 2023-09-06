@@ -4,11 +4,11 @@
     <title>rstatsZH - Data Science mit R</title>
     <meta charset="utf-8" />
     <meta name="author" content="Lars Schöbitz" />
-    <meta name="date" content="2023-03-09" />
+    <meta name="date" content="2023-10-05" />
     <script src="libs/header-attrs/header-attrs.js"></script>
     <link href="libs/remark-css/default.css" rel="stylesheet" />
-    <link href="libs/font-awesome/css/all.css" rel="stylesheet" />
-    <link href="libs/font-awesome/css/v4-shims.css" rel="stylesheet" />
+    <link href="libs/font-awesome/css/all.min.css" rel="stylesheet" />
+    <link href="libs/font-awesome/css/v4-shims.min.css" rel="stylesheet" />
     <link href="libs/panelset/panelset.css" rel="stylesheet" />
     <script src="libs/panelset/panelset.js"></script>
     <script src="libs/clipboard/clipboard.min.js"></script>
@@ -45,7 +45,7 @@ class: title-slide
 
 .bottom[
 
-<p>Lars Schöbitz</p><p>2023-03-09</p>
+<p>Lars Schöbitz</p><p>2023-10-05</p>
 ]
 
 ---
@@ -168,7 +168,7 @@ lernende2019 %&gt;%
   Schultyp                    n
   &lt;chr&gt;                   &lt;dbl&gt;
 1 Berufsfachschule        45532
-2 Brückenangebot           2073
+2 Brückenangebot           2078
 3 Heim- und Sonderschule   3021
 4 Höhere Berufsbildung    19780
 5 Mittelschule            20591
@@ -192,7 +192,7 @@ lernende2019 %&gt;%
   Schultyp                    n
   &lt;chr&gt;                   &lt;dbl&gt;
 1 Berufsfachschule        45532
-2 Brückenangebot           2073
+2 Brückenangebot           2078
 3 Heim- und Sonderschule   3021
 4 Höhere Berufsbildung    19780
 5 Mittelschule            20591
@@ -227,7 +227,7 @@ lernende %&gt;%
 .pull-right[
 
 ```
-# A tibble: 22 × 4
+# A tibble: 23 × 4
    Jahr  Total Differenz Veraenderung
   &lt;dbl&gt;  &lt;dbl&gt;     &lt;dbl&gt; &lt;chr&gt;       
 1  2000 217135        NA &lt;NA&gt;        
@@ -236,7 +236,7 @@ lernende %&gt;%
 4  2003 229676      2970 Zunahme     
 5  2004 228468     -1208 Abnahme     
 6  2005 230183      1715 Zunahme     
-# … with 16 more rows
+# ℹ 17 more rows
 ```
 
 ]
@@ -292,7 +292,8 @@ background-size: contain
 
 # Pause 
 
-<div class="countdown" id="timer_640868de" style="right:0;bottom:0;left:0;margin:5%;padding:15px;font-size:4em;" data-warnwhen="0">
+<div class="countdown" id="timer_7f0703a9" data-update-every="1" tabindex="0" style="right:0;bottom:0;left:0;margin:5%;padding:15px;font-size:4em;">
+<div class="countdown-controls"><button class="countdown-bump-down">&minus;</button><button class="countdown-bump-up">&plus;</button></div>
 <code class="countdown-time"><span class="countdown-digits minutes">10</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
 
@@ -359,7 +360,8 @@ background-size: contain
 
 # Pause 
 
-<div class="countdown" id="timer_64086752" style="right:0;bottom:0;left:0;margin:5%;padding:15px;font-size:4em;" data-warnwhen="0">
+<div class="countdown" id="timer_024525fe" data-update-every="1" tabindex="0" style="right:0;bottom:0;left:0;margin:5%;padding:15px;font-size:4em;">
+<div class="countdown-controls"><button class="countdown-bump-down">&minus;</button><button class="countdown-bump-up">&plus;</button></div>
 <code class="countdown-time"><span class="countdown-digits minutes">10</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
 
@@ -480,6 +482,19 @@ if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
     deleted = true;
   });
 })();
+// add `data-at-shortcutkeys` attribute to <body> to resolve conflicts with JAWS
+// screen reader (see PR #262)
+(function(d) {
+  let res = {};
+  d.querySelectorAll('.remark-help-content table tr').forEach(tr => {
+    const t = tr.querySelector('td:nth-child(2)').innerText;
+    tr.querySelectorAll('td:first-child .key').forEach(key => {
+      const k = key.innerText;
+      if (/^[a-z]$/.test(k)) res[k] = t;  // must be a single letter (key)
+    });
+  });
+  d.body.setAttribute('data-at-shortcutkeys', JSON.stringify(res));
+})(document);
 (function() {
   "use strict"
   // Replace <script> tags in slides area to make them executable

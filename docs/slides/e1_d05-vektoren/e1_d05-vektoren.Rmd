@@ -2,7 +2,7 @@
 title: "rstatsZH - Data Science mit R"
 subtitle: "Vektoren in R und mehr Git"
 author: "Lars Schöbitz"
-date: "2023-03-09"
+date: "2023-10-05"
 output:
   xaringan::moon_reader:
     self_contained: false

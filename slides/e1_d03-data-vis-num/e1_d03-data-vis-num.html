@@ -4,11 +4,11 @@
     <title>rstatsZH - Data Science mit R</title>
     <meta charset="utf-8" />
     <meta name="author" content="Lars Schöbitz" />
-    <meta name="date" content="2023-02-23" />
+    <meta name="date" content="2023-09-21" />
     <script src="libs/header-attrs/header-attrs.js"></script>
     <link href="libs/remark-css/default.css" rel="stylesheet" />
-    <link href="libs/font-awesome/css/all.css" rel="stylesheet" />
-    <link href="libs/font-awesome/css/v4-shims.css" rel="stylesheet" />
+    <link href="libs/font-awesome/css/all.min.css" rel="stylesheet" />
+    <link href="libs/font-awesome/css/v4-shims.min.css" rel="stylesheet" />
     <link href="libs/panelset/panelset.css" rel="stylesheet" />
     <script src="libs/panelset/panelset.js"></script>
     <script src="libs/clipboard/clipboard.min.js"></script>
@@ -43,7 +43,7 @@ class: title-slide
 
 .bottom[
 
-<p>Lars Schöbitz</p><p>2023-02-23</p>
+<p>Lars Schöbitz</p><p>2023-09-21</p>
 ]
 
 ---
@@ -294,17 +294,16 @@ penguins
 
 ```
 # A tibble: 344 × 8
-  species island    bill_le…¹ bill_…² flipp…³ body_…⁴ sex    year
-  &lt;fct&gt;   &lt;fct&gt;         &lt;dbl&gt;   &lt;dbl&gt;   &lt;int&gt;   &lt;int&gt; &lt;fct&gt; &lt;int&gt;
-1 Adelie  Torgersen      39.1    18.7     181    3750 male   2007
-2 Adelie  Torgersen      39.5    17.4     186    3800 fema…  2007
-3 Adelie  Torgersen      40.3    18       195    3250 fema…  2007
-4 Adelie  Torgersen      NA      NA        NA      NA &lt;NA&gt;   2007
-5 Adelie  Torgersen      36.7    19.3     193    3450 fema…  2007
-6 Adelie  Torgersen      39.3    20.6     190    3650 male   2007
-# … with 338 more rows, and abbreviated variable names
-#   ¹​bill_length_mm, ²​bill_depth_mm, ³​flipper_length_mm,
-#   ⁴​body_mass_g
+  species island   bill_length_mm bill_depth_mm flipper_length_mm
+  &lt;fct&gt;   &lt;fct&gt;             &lt;dbl&gt;         &lt;dbl&gt;             &lt;int&gt;
+1 Adelie  Torgers…           39.1          18.7               181
+2 Adelie  Torgers…           39.5          17.4               186
+3 Adelie  Torgers…           40.3          18                 195
+4 Adelie  Torgers…           NA            NA                  NA
+5 Adelie  Torgers…           36.7          19.3               193
+6 Adelie  Torgers…           39.3          20.6               190
+# ℹ 338 more rows
+# ℹ 3 more variables: body_mass_g &lt;int&gt;, sex &lt;fct&gt;, year &lt;int&gt;
 ```
 
 ---
@@ -331,13 +330,25 @@ tibble [344 × 8] (S3: tbl_df/tbl/data.frame)
 # Variablen Typen - Penguins 
 
 <div id="pzveloiefp" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>html {
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
+<style>#pzveloiefp table {
+  font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#pzveloiefp thead, #pzveloiefp tbody, #pzveloiefp tfoot, #pzveloiefp tr, #pzveloiefp td, #pzveloiefp th {
+  border-style: none;
+}
+
+#pzveloiefp p {
+  margin: 0;
+  padding: 0;
 }
 
 #pzveloiefp .gt_table {
   display: table;
   border-collapse: collapse;
+  line-height: normal;
   margin-left: auto;
   margin-right: auto;
   color: #333333;
@@ -358,18 +369,6 @@ tibble [344 × 8] (S3: tbl_df/tbl/data.frame)
   border-left-style: none;
   border-left-width: 2px;
   border-left-color: #D3D3D3;
-}
-
-#pzveloiefp .gt_heading {
-  background-color: #FFFFFF;
-  text-align: center;
-  border-bottom-color: #FFFFFF;
-  border-left-style: none;
-  border-left-width: 1px;
-  border-left-color: #D3D3D3;
-  border-right-style: none;
-  border-right-width: 1px;
-  border-right-color: #D3D3D3;
 }
 
 #pzveloiefp .gt_caption {
@@ -393,12 +392,24 @@ tibble [344 × 8] (S3: tbl_df/tbl/data.frame)
   color: #333333;
   font-size: 85%;
   font-weight: initial;
-  padding-top: 0;
-  padding-bottom: 6px;
+  padding-top: 3px;
+  padding-bottom: 5px;
   padding-left: 5px;
   padding-right: 5px;
   border-top-color: #FFFFFF;
   border-top-width: 0;
+}
+
+#pzveloiefp .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
 }
 
 #pzveloiefp .gt_bottom_border {
@@ -472,6 +483,10 @@ tibble [344 × 8] (S3: tbl_df/tbl/data.frame)
   overflow-x: hidden;
   display: inline-block;
   width: 100%;
+}
+
+#pzveloiefp .gt_spanner_row {
+  border-bottom-style: hidden;
 }
 
 #pzveloiefp .gt_group_heading {
@@ -573,6 +588,10 @@ tibble [344 × 8] (S3: tbl_df/tbl/data.frame)
   border-top-width: 2px;
 }
 
+#pzveloiefp .gt_row_group_first th {
+  border-top-width: 2px;
+}
+
 #pzveloiefp .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
@@ -622,6 +641,16 @@ tibble [344 × 8] (S3: tbl_df/tbl/data.frame)
   border-top-color: #D3D3D3;
 }
 
+#pzveloiefp .gt_last_grand_summary_row_top {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: double;
+  border-bottom-width: 6px;
+  border-bottom-color: #D3D3D3;
+}
+
 #pzveloiefp .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
@@ -652,8 +681,8 @@ tibble [344 × 8] (S3: tbl_df/tbl/data.frame)
 #pzveloiefp .gt_footnote {
   margin: 0px;
   font-size: 90%;
-  padding-left: 4px;
-  padding-right: 4px;
+  padding-top: 4px;
+  padding-bottom: 4px;
   padding-left: 5px;
   padding-right: 5px;
 }
@@ -710,10 +739,9 @@ tibble [344 × 8] (S3: tbl_df/tbl/data.frame)
 }
 
 #pzveloiefp .gt_footnote_marks {
-  font-style: italic;
-  font-weight: normal;
   font-size: 75%;
   vertical-align: 0.4em;
+  position: initial;
 }
 
 #pzveloiefp .gt_asterisk {
@@ -741,10 +769,10 @@ tibble [344 × 8] (S3: tbl_df/tbl/data.frame)
   text-indent: 25px;
 }
 </style>
-<table class="gt_table">
-  
-  <thead class="gt_col_headings">
-    <tr>
+<table class="gt_table" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
+  <thead>
+    
+    <tr class="gt_col_headings">
       <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col" id="Variable">Variable</th>
       <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col" id="Variablen Typ 1">Variablen Typ 1</th>
       <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col" id="Variablen Typ 2">Variablen Typ 2</th>

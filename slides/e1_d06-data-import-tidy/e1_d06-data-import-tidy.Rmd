@@ -2,7 +2,7 @@
 title: "rstatsZH - Data Science mit R"
 subtitle: "Vektoren / Daten Importieren / Daten Aufräumen"
 author: "Lars Schöbitz"
-date: "2023-03-16"
+date: "2023-10-12"
 output:
   xaringan::moon_reader:
     self_contained: false

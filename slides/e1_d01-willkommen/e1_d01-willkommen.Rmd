@@ -2,7 +2,7 @@
 title: "rstatsZH - Data Science mit R"
 subtitle: "Willkommen"  
 author: "Lars Schöbitz"
-date: "2023-02-09"
+date: "2023-09-07"
 output:
   xaringan::moon_reader:
     self_contained: false

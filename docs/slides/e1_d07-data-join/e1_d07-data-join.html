@@ -4,11 +4,11 @@
     <title>rstatsZH - Data Science mit R</title>
     <meta charset="utf-8" />
     <meta name="author" content="Lars Schöbitz" />
-    <meta name="date" content="2023-03-22" />
+    <meta name="date" content="2023-10-19" />
     <script src="libs/header-attrs/header-attrs.js"></script>
     <link href="libs/remark-css/default.css" rel="stylesheet" />
-    <link href="libs/font-awesome/css/all.css" rel="stylesheet" />
-    <link href="libs/font-awesome/css/v4-shims.css" rel="stylesheet" />
+    <link href="libs/font-awesome/css/all.min.css" rel="stylesheet" />
+    <link href="libs/font-awesome/css/v4-shims.min.css" rel="stylesheet" />
     <link href="libs/panelset/panelset.css" rel="stylesheet" />
     <script src="libs/panelset/panelset.js"></script>
     <script src="libs/clipboard/clipboard.min.js"></script>
@@ -40,7 +40,7 @@ class: title-slide
 
 .bottom[
 
-<p>Lars Schöbitz</p><p>2023-03-22</p>
+<p>Lars Schöbitz</p><p>2023-10-19</p>
 ]
 
 ---
@@ -116,19 +116,45 @@ class: middle
 Informationen zu 10 Frauen in der Wissenschaft welche die Welt verändert haben
 
 .small[
-
-|name               |
-|:------------------|
-|Ada Lovelace       |
-|Marie Curie        |
-|Janaki Ammal       |
-|Chien-Shiung Wu    |
-|Katherine Johnson  |
-|Rosalind Franklin  |
-|Vera Rubin         |
-|Gladys West        |
-|Flossie Wong-Staal |
-|Jennifer Doudna    |
+&lt;table&gt;
+ &lt;thead&gt;
+  &lt;tr&gt;
+   &lt;th style="text-align:left;"&gt; name &lt;/th&gt;
+  &lt;/tr&gt;
+ &lt;/thead&gt;
+&lt;tbody&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Ada Lovelace &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Marie Curie &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Janaki Ammal &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Chien-Shiung Wu &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Katherine Johnson &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Rosalind Franklin &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Vera Rubin &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Gladys West &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Flossie Wong-Staal &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Jennifer Doudna &lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
 ]
 
 
@@ -229,20 +255,18 @@ Einen dritten Dataframe in welchem wir sehen wofür die Wissenschaftlerinnen bek
 
 ```
 # A tibble: 10 × 5
-   name               profession          birth…¹ death…² known…³
-   &lt;chr&gt;              &lt;chr&gt;                 &lt;dbl&gt;   &lt;dbl&gt; &lt;chr&gt;  
- 1 Ada Lovelace       Mathematician            NA      NA first …
- 2 Marie Curie        Physicist and Chem…      NA      NA theory…
- 3 Janaki Ammal       Botanist               1897    1984 hybrid…
- 4 Chien-Shiung Wu    Physicist              1912    1997 confim…
- 5 Katherine Johnson  Mathematician          1918    2020 calcul…
- 6 Rosalind Franklin  Chemist                1920    1958 &lt;NA&gt;   
- 7 Vera Rubin         Astronomer             1928    2016 existe…
- 8 Gladys West        Mathematician          1930      NA mathem…
- 9 Flossie Wong-Staal Virologist and Mol…    1947      NA first …
-10 Jennifer Doudna    Biochemist             1964      NA one of…
-# … with abbreviated variable names ¹​birth_year, ²​death_year,
-#   ³​known_for
+   name               profession  birth_year death_year known_for
+   &lt;chr&gt;              &lt;chr&gt;            &lt;dbl&gt;      &lt;dbl&gt; &lt;chr&gt;    
+ 1 Ada Lovelace       Mathematic…         NA         NA first co…
+ 2 Marie Curie        Physicist …         NA         NA theory o…
+ 3 Janaki Ammal       Botanist          1897       1984 hybrid s…
+ 4 Chien-Shiung Wu    Physicist         1912       1997 confim a…
+ 5 Katherine Johnson  Mathematic…       1918       2020 calculat…
+ 6 Rosalind Franklin  Chemist           1920       1958 &lt;NA&gt;     
+ 7 Vera Rubin         Astronomer        1928       2016 existenc…
+ 8 Gladys West        Mathematic…       1930         NA mathemat…
+ 9 Flossie Wong-Staal Virologist…       1947         NA first sc…
+10 Jennifer Doudna    Biochemist        1964         NA one of t…
 ```
 
 ???
@@ -402,19 +426,18 @@ professions %&gt;%
 
 ```
 # A tibble: 10 × 4
-   name               profession                  birth…¹ death…²
-   &lt;chr&gt;              &lt;chr&gt;                         &lt;dbl&gt;   &lt;dbl&gt;
- 1 Ada Lovelace       Mathematician                    NA      NA
- 2 Marie Curie        Physicist and Chemist            NA      NA
- 3 Janaki Ammal       Botanist                       1897    1984
- 4 Chien-Shiung Wu    Physicist                      1912    1997
- 5 Katherine Johnson  Mathematician                  1918    2020
- 6 Rosalind Franklin  Chemist                        1920    1958
- 7 Vera Rubin         Astronomer                     1928    2016
- 8 Gladys West        Mathematician                  1930      NA
- 9 Flossie Wong-Staal Virologist and Molecular B…    1947      NA
-10 Jennifer Doudna    Biochemist                     1964      NA
-# … with abbreviated variable names ¹​birth_year, ²​death_year
+   name               profession            birth_year death_year
+   &lt;chr&gt;              &lt;chr&gt;                      &lt;dbl&gt;      &lt;dbl&gt;
+ 1 Ada Lovelace       Mathematician                 NA         NA
+ 2 Marie Curie        Physicist and Chemist         NA         NA
+ 3 Janaki Ammal       Botanist                    1897       1984
+ 4 Chien-Shiung Wu    Physicist                   1912       1997
+ 5 Katherine Johnson  Mathematician               1918       2020
+ 6 Rosalind Franklin  Chemist                     1920       1958
+ 7 Vera Rubin         Astronomer                  1928       2016
+ 8 Gladys West        Mathematician               1930         NA
+ 9 Flossie Wong-Staal Virologist and Molec…       1947         NA
+10 Jennifer Doudna    Biochemist                  1964         NA
 ```
 
 ---
@@ -455,17 +478,16 @@ professions %&gt;%
 
 ```
 # A tibble: 8 × 4
-  name               profession                   birth…¹ death…²
-  &lt;chr&gt;              &lt;chr&gt;                          &lt;dbl&gt;   &lt;dbl&gt;
-1 Janaki Ammal       Botanist                        1897    1984
-2 Chien-Shiung Wu    Physicist                       1912    1997
-3 Katherine Johnson  Mathematician                   1918    2020
-4 Rosalind Franklin  Chemist                         1920    1958
-5 Vera Rubin         Astronomer                      1928    2016
-6 Gladys West        Mathematician                   1930      NA
-7 Flossie Wong-Staal Virologist and Molecular Bi…    1947      NA
-8 Jennifer Doudna    Biochemist                      1964      NA
-# … with abbreviated variable names ¹​birth_year, ²​death_year
+  name               profession             birth_year death_year
+  &lt;chr&gt;              &lt;chr&gt;                       &lt;dbl&gt;      &lt;dbl&gt;
+1 Janaki Ammal       Botanist                     1897       1984
+2 Chien-Shiung Wu    Physicist                    1912       1997
+3 Katherine Johnson  Mathematician                1918       2020
+4 Rosalind Franklin  Chemist                      1920       1958
+5 Vera Rubin         Astronomer                   1928       2016
+6 Gladys West        Mathematician                1930         NA
+7 Flossie Wong-Staal Virologist and Molecu…       1947         NA
+8 Jennifer Doudna    Biochemist                   1964         NA
 ```
 
 ---
@@ -536,20 +558,18 @@ professions %&gt;%
 
 ```
 # A tibble: 10 × 5
-   name               profession          birth…¹ death…² known…³
-   &lt;chr&gt;              &lt;chr&gt;                 &lt;dbl&gt;   &lt;dbl&gt; &lt;chr&gt;  
- 1 Ada Lovelace       Mathematician            NA      NA first …
- 2 Marie Curie        Physicist and Chem…      NA      NA theory…
- 3 Janaki Ammal       Botanist               1897    1984 hybrid…
- 4 Chien-Shiung Wu    Physicist              1912    1997 confim…
- 5 Katherine Johnson  Mathematician          1918    2020 calcul…
- 6 Rosalind Franklin  Chemist                1920    1958 &lt;NA&gt;   
- 7 Vera Rubin         Astronomer             1928    2016 existe…
- 8 Gladys West        Mathematician          1930      NA mathem…
- 9 Flossie Wong-Staal Virologist and Mol…    1947      NA first …
-10 Jennifer Doudna    Biochemist             1964      NA one of…
-# … with abbreviated variable names ¹​birth_year, ²​death_year,
-#   ³​known_for
+   name               profession  birth_year death_year known_for
+   &lt;chr&gt;              &lt;chr&gt;            &lt;dbl&gt;      &lt;dbl&gt; &lt;chr&gt;    
+ 1 Ada Lovelace       Mathematic…         NA         NA first co…
+ 2 Marie Curie        Physicist …         NA         NA theory o…
+ 3 Janaki Ammal       Botanist          1897       1984 hybrid s…
+ 4 Chien-Shiung Wu    Physicist         1912       1997 confim a…
+ 5 Katherine Johnson  Mathematic…       1918       2020 calculat…
+ 6 Rosalind Franklin  Chemist           1920       1958 &lt;NA&gt;     
+ 7 Vera Rubin         Astronomer        1928       2016 existenc…
+ 8 Gladys West        Mathematic…       1930         NA mathemat…
+ 9 Flossie Wong-Staal Virologist…       1947         NA first sc…
+10 Jennifer Doudna    Biochemist        1964         NA one of t…
 ```
 
 ---
@@ -580,7 +600,7 @@ professions %&gt;%
 5 Katherine Johnson Mathematician               1918       2020
 6 Rosalind Franklin Chemist                     1920       1958
 7 Vera Rubin        Astronomer                  1928       2016
-# … with 3 more rows
+# ℹ 3 more rows
 ```
 
 
@@ -654,15 +674,14 @@ professions %&gt;%
 
 ```
 # A tibble: 5 × 10
-  kunden_id email      phone vorname nachn…¹ wohnort kanton   plz
-  &lt;chr&gt;     &lt;chr&gt;      &lt;chr&gt; &lt;chr&gt;   &lt;chr&gt;   &lt;chr&gt;   &lt;chr&gt;  &lt;dbl&gt;
-1 k1        edwin.dum… 075 … Edwin   Dumont  Domles… Zug     8099
-2 k2        leonora.g… 076 … Leonora Garcia  Hornus… Glarus  6894
-3 k3        lydia.bla… 079 … Lydia   Blanch… Albula… Zug     5790
-4 k4        maeva.mor… 076 … Maeva   Moreau  Lostal… Zürich  8113
-5 k5        frank.leg… 077 … Frank   Legrand Stein … Bern    4282
-# … with 2 more variables: geburtstag &lt;date&gt;, alter &lt;dbl&gt;, and
-#   abbreviated variable name ¹​nachname
+  kunden_id email     phone vorname nachname wohnort kanton   plz
+  &lt;chr&gt;     &lt;chr&gt;     &lt;chr&gt; &lt;chr&gt;   &lt;chr&gt;    &lt;chr&gt;   &lt;chr&gt;  &lt;dbl&gt;
+1 k1        edwin.du… 075 … Edwin   Dumont   Domles… Zug     8099
+2 k2        leonora.… 076 … Leonora Garcia   Hornus… Glarus  6894
+3 k3        lydia.bl… 079 … Lydia   Blancha… Albula… Zug     5790
+4 k4        maeva.mo… 076 … Maeva   Moreau   Lostal… Zürich  8113
+5 k5        frank.le… 077 … Frank   Legrand  Stein … Bern    4282
+# ℹ 2 more variables: geburtstag &lt;date&gt;, alter &lt;dbl&gt;
 ```
 ]
 
@@ -674,13 +693,25 @@ professions %&gt;%
 ## Gewünschter Output
 
 <div id="pzveloiefp" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>html {
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
+<style>#pzveloiefp table {
+  font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#pzveloiefp thead, #pzveloiefp tbody, #pzveloiefp tfoot, #pzveloiefp tr, #pzveloiefp td, #pzveloiefp th {
+  border-style: none;
+}
+
+#pzveloiefp p {
+  margin: 0;
+  padding: 0;
 }
 
 #pzveloiefp .gt_table {
   display: table;
   border-collapse: collapse;
+  line-height: normal;
   margin-left: auto;
   margin-right: auto;
   color: #333333;
@@ -701,18 +732,6 @@ professions %&gt;%
   border-left-style: none;
   border-left-width: 2px;
   border-left-color: #D3D3D3;
-}
-
-#pzveloiefp .gt_heading {
-  background-color: #FFFFFF;
-  text-align: center;
-  border-bottom-color: #FFFFFF;
-  border-left-style: none;
-  border-left-width: 1px;
-  border-left-color: #D3D3D3;
-  border-right-style: none;
-  border-right-width: 1px;
-  border-right-color: #D3D3D3;
 }
 
 #pzveloiefp .gt_caption {
@@ -736,12 +755,24 @@ professions %&gt;%
   color: #333333;
   font-size: 85%;
   font-weight: initial;
-  padding-top: 0;
-  padding-bottom: 6px;
+  padding-top: 3px;
+  padding-bottom: 5px;
   padding-left: 5px;
   padding-right: 5px;
   border-top-color: #FFFFFF;
   border-top-width: 0;
+}
+
+#pzveloiefp .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
 }
 
 #pzveloiefp .gt_bottom_border {
@@ -815,6 +846,10 @@ professions %&gt;%
   overflow-x: hidden;
   display: inline-block;
   width: 100%;
+}
+
+#pzveloiefp .gt_spanner_row {
+  border-bottom-style: hidden;
 }
 
 #pzveloiefp .gt_group_heading {
@@ -916,6 +951,10 @@ professions %&gt;%
   border-top-width: 2px;
 }
 
+#pzveloiefp .gt_row_group_first th {
+  border-top-width: 2px;
+}
+
 #pzveloiefp .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
@@ -965,6 +1004,16 @@ professions %&gt;%
   border-top-color: #D3D3D3;
 }
 
+#pzveloiefp .gt_last_grand_summary_row_top {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: double;
+  border-bottom-width: 6px;
+  border-bottom-color: #D3D3D3;
+}
+
 #pzveloiefp .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
@@ -995,8 +1044,8 @@ professions %&gt;%
 #pzveloiefp .gt_footnote {
   margin: 0px;
   font-size: 90%;
-  padding-left: 4px;
-  padding-right: 4px;
+  padding-top: 4px;
+  padding-bottom: 4px;
   padding-left: 5px;
   padding-right: 5px;
 }
@@ -1053,10 +1102,9 @@ professions %&gt;%
 }
 
 #pzveloiefp .gt_footnote_marks {
-  font-style: italic;
-  font-weight: normal;
   font-size: 75%;
   vertical-align: 0.4em;
+  position: initial;
 }
 
 #pzveloiefp .gt_asterisk {
@@ -1084,10 +1132,10 @@ professions %&gt;%
   text-indent: 25px;
 }
 </style>
-<table class="gt_table">
-  
-  <thead class="gt_col_headings">
-    <tr>
+<table class="gt_table" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
+  <thead>
+    
+    <tr class="gt_col_headings">
       <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col" id="vorname">vorname</th>
       <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col" id="nachname">nachname</th>
       <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="summe">summe</th>
@@ -1220,13 +1268,25 @@ kunden_tab %&gt;%
 ```
 
 <div id="dbgvzfontn" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>html {
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
+<style>#dbgvzfontn table {
+  font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#dbgvzfontn thead, #dbgvzfontn tbody, #dbgvzfontn tfoot, #dbgvzfontn tr, #dbgvzfontn td, #dbgvzfontn th {
+  border-style: none;
+}
+
+#dbgvzfontn p {
+  margin: 0;
+  padding: 0;
 }
 
 #dbgvzfontn .gt_table {
   display: table;
   border-collapse: collapse;
+  line-height: normal;
   margin-left: auto;
   margin-right: auto;
   color: #333333;
@@ -1247,18 +1307,6 @@ kunden_tab %&gt;%
   border-left-style: none;
   border-left-width: 2px;
   border-left-color: #D3D3D3;
-}
-
-#dbgvzfontn .gt_heading {
-  background-color: #FFFFFF;
-  text-align: center;
-  border-bottom-color: #FFFFFF;
-  border-left-style: none;
-  border-left-width: 1px;
-  border-left-color: #D3D3D3;
-  border-right-style: none;
-  border-right-width: 1px;
-  border-right-color: #D3D3D3;
 }
 
 #dbgvzfontn .gt_caption {
@@ -1282,12 +1330,24 @@ kunden_tab %&gt;%
   color: #333333;
   font-size: 85%;
   font-weight: initial;
-  padding-top: 0;
-  padding-bottom: 6px;
+  padding-top: 3px;
+  padding-bottom: 5px;
   padding-left: 5px;
   padding-right: 5px;
   border-top-color: #FFFFFF;
   border-top-width: 0;
+}
+
+#dbgvzfontn .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
 }
 
 #dbgvzfontn .gt_bottom_border {
@@ -1361,6 +1421,10 @@ kunden_tab %&gt;%
   overflow-x: hidden;
   display: inline-block;
   width: 100%;
+}
+
+#dbgvzfontn .gt_spanner_row {
+  border-bottom-style: hidden;
 }
 
 #dbgvzfontn .gt_group_heading {
@@ -1462,6 +1526,10 @@ kunden_tab %&gt;%
   border-top-width: 2px;
 }
 
+#dbgvzfontn .gt_row_group_first th {
+  border-top-width: 2px;
+}
+
 #dbgvzfontn .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
@@ -1511,6 +1579,16 @@ kunden_tab %&gt;%
   border-top-color: #D3D3D3;
 }
 
+#dbgvzfontn .gt_last_grand_summary_row_top {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: double;
+  border-bottom-width: 6px;
+  border-bottom-color: #D3D3D3;
+}
+
 #dbgvzfontn .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
@@ -1541,8 +1619,8 @@ kunden_tab %&gt;%
 #dbgvzfontn .gt_footnote {
   margin: 0px;
   font-size: 90%;
-  padding-left: 4px;
-  padding-right: 4px;
+  padding-top: 4px;
+  padding-bottom: 4px;
   padding-left: 5px;
   padding-right: 5px;
 }
@@ -1599,10 +1677,9 @@ kunden_tab %&gt;%
 }
 
 #dbgvzfontn .gt_footnote_marks {
-  font-style: italic;
-  font-weight: normal;
   font-size: 75%;
   vertical-align: 0.4em;
+  position: initial;
 }
 
 #dbgvzfontn .gt_asterisk {
@@ -1630,10 +1707,10 @@ kunden_tab %&gt;%
   text-indent: 25px;
 }
 </style>
-<table class="gt_table">
-  
-  <thead class="gt_col_headings">
-    <tr>
+<table class="gt_table" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
+  <thead>
+    
+    <tr class="gt_col_headings">
       <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col" id="vorname">vorname</th>
       <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col" id="nachname">nachname</th>
       <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="summe">summe</th>
@@ -1673,13 +1750,25 @@ einkaeufe %&gt;%
 ```
 
 <div id="xdduhtxcdz" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>html {
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
+<style>#xdduhtxcdz table {
+  font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#xdduhtxcdz thead, #xdduhtxcdz tbody, #xdduhtxcdz tfoot, #xdduhtxcdz tr, #xdduhtxcdz td, #xdduhtxcdz th {
+  border-style: none;
+}
+
+#xdduhtxcdz p {
+  margin: 0;
+  padding: 0;
 }
 
 #xdduhtxcdz .gt_table {
   display: table;
   border-collapse: collapse;
+  line-height: normal;
   margin-left: auto;
   margin-right: auto;
   color: #333333;
@@ -1700,18 +1789,6 @@ einkaeufe %&gt;%
   border-left-style: none;
   border-left-width: 2px;
   border-left-color: #D3D3D3;
-}
-
-#xdduhtxcdz .gt_heading {
-  background-color: #FFFFFF;
-  text-align: center;
-  border-bottom-color: #FFFFFF;
-  border-left-style: none;
-  border-left-width: 1px;
-  border-left-color: #D3D3D3;
-  border-right-style: none;
-  border-right-width: 1px;
-  border-right-color: #D3D3D3;
 }
 
 #xdduhtxcdz .gt_caption {
@@ -1735,12 +1812,24 @@ einkaeufe %&gt;%
   color: #333333;
   font-size: 85%;
   font-weight: initial;
-  padding-top: 0;
-  padding-bottom: 6px;
+  padding-top: 3px;
+  padding-bottom: 5px;
   padding-left: 5px;
   padding-right: 5px;
   border-top-color: #FFFFFF;
   border-top-width: 0;
+}
+
+#xdduhtxcdz .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
 }
 
 #xdduhtxcdz .gt_bottom_border {
@@ -1814,6 +1903,10 @@ einkaeufe %&gt;%
   overflow-x: hidden;
   display: inline-block;
   width: 100%;
+}
+
+#xdduhtxcdz .gt_spanner_row {
+  border-bottom-style: hidden;
 }
 
 #xdduhtxcdz .gt_group_heading {
@@ -1915,6 +2008,10 @@ einkaeufe %&gt;%
   border-top-width: 2px;
 }
 
+#xdduhtxcdz .gt_row_group_first th {
+  border-top-width: 2px;
+}
+
 #xdduhtxcdz .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
@@ -1964,6 +2061,16 @@ einkaeufe %&gt;%
   border-top-color: #D3D3D3;
 }
 
+#xdduhtxcdz .gt_last_grand_summary_row_top {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: double;
+  border-bottom-width: 6px;
+  border-bottom-color: #D3D3D3;
+}
+
 #xdduhtxcdz .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
@@ -1994,8 +2101,8 @@ einkaeufe %&gt;%
 #xdduhtxcdz .gt_footnote {
   margin: 0px;
   font-size: 90%;
-  padding-left: 4px;
-  padding-right: 4px;
+  padding-top: 4px;
+  padding-bottom: 4px;
   padding-left: 5px;
   padding-right: 5px;
 }
@@ -2052,10 +2159,9 @@ einkaeufe %&gt;%
 }
 
 #xdduhtxcdz .gt_footnote_marks {
-  font-style: italic;
-  font-weight: normal;
   font-size: 75%;
   vertical-align: 0.4em;
+  position: initial;
 }
 
 #xdduhtxcdz .gt_asterisk {
@@ -2083,10 +2189,10 @@ einkaeufe %&gt;%
   text-indent: 25px;
 }
 </style>
-<table class="gt_table">
-  
-  <thead class="gt_col_headings">
-    <tr>
+<table class="gt_table" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
+  <thead>
+    
+    <tr class="gt_col_headings">
       <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col" id="vorname">vorname</th>
       <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col" id="nachname">nachname</th>
       <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="summe">summe</th>
@@ -2325,6 +2431,19 @@ if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
     deleted = true;
   });
 })();
+// add `data-at-shortcutkeys` attribute to <body> to resolve conflicts with JAWS
+// screen reader (see PR #262)
+(function(d) {
+  let res = {};
+  d.querySelectorAll('.remark-help-content table tr').forEach(tr => {
+    const t = tr.querySelector('td:nth-child(2)').innerText;
+    tr.querySelectorAll('td:first-child .key').forEach(key => {
+      const k = key.innerText;
+      if (/^[a-z]$/.test(k)) res[k] = t;  // must be a single letter (key)
+    });
+  });
+  d.body.setAttribute('data-at-shortcutkeys', JSON.stringify(res));
+})(document);
 (function() {
   "use strict"
   // Replace <script> tags in slides area to make them executable

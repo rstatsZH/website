@@ -4,11 +4,11 @@
     <title>rstatsZH - Data Science mit R</title>
     <meta charset="utf-8" />
     <meta name="author" content="Lars Schöbitz" />
-    <meta name="date" content="2023-02-23" />
+    <meta name="date" content="2023-09-28" />
     <script src="libs/header-attrs/header-attrs.js"></script>
     <link href="libs/remark-css/default.css" rel="stylesheet" />
-    <link href="libs/font-awesome/css/all.css" rel="stylesheet" />
-    <link href="libs/font-awesome/css/v4-shims.css" rel="stylesheet" />
+    <link href="libs/font-awesome/css/all.min.css" rel="stylesheet" />
+    <link href="libs/font-awesome/css/v4-shims.min.css" rel="stylesheet" />
     <link href="libs/panelset/panelset.css" rel="stylesheet" />
     <script src="libs/panelset/panelset.js"></script>
     <script src="libs/clipboard/clipboard.min.js"></script>
@@ -41,7 +41,7 @@ class: title-slide
 
 .bottom[
 
-<p>Lars Schöbitz</p><p>2023-02-23</p>
+<p>Lars Schöbitz</p><p>2023-09-28</p>
 ]
 
 
@@ -420,17 +420,16 @@ filter(.data = penguins, species == "Adelie")
 
 ```
 # A tibble: 152 × 8
-  species island    bill_le…¹ bill_…² flipp…³ body_…⁴ sex    year
-  &lt;fct&gt;   &lt;fct&gt;         &lt;dbl&gt;   &lt;dbl&gt;   &lt;int&gt;   &lt;int&gt; &lt;fct&gt; &lt;int&gt;
-1 Adelie  Torgersen      39.1    18.7     181    3750 male   2007
-2 Adelie  Torgersen      39.5    17.4     186    3800 fema…  2007
-3 Adelie  Torgersen      40.3    18       195    3250 fema…  2007
-4 Adelie  Torgersen      NA      NA        NA      NA &lt;NA&gt;   2007
-5 Adelie  Torgersen      36.7    19.3     193    3450 fema…  2007
-6 Adelie  Torgersen      39.3    20.6     190    3650 male   2007
-# … with 146 more rows, and abbreviated variable names
-#   ¹​bill_length_mm, ²​bill_depth_mm, ³​flipper_length_mm,
-#   ⁴​body_mass_g
+  species island   bill_length_mm bill_depth_mm flipper_length_mm
+  &lt;fct&gt;   &lt;fct&gt;             &lt;dbl&gt;         &lt;dbl&gt;             &lt;int&gt;
+1 Adelie  Torgers…           39.1          18.7               181
+2 Adelie  Torgers…           39.5          17.4               186
+3 Adelie  Torgers…           40.3          18                 195
+4 Adelie  Torgers…           NA            NA                  NA
+5 Adelie  Torgers…           36.7          19.3               193
+6 Adelie  Torgers…           39.3          20.6               190
+# ℹ 146 more rows
+# ℹ 3 more variables: body_mass_g &lt;int&gt;, sex &lt;fct&gt;, year &lt;int&gt;
 ```
 
 

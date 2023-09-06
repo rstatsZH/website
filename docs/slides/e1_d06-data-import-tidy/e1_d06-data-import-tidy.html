@@ -4,11 +4,11 @@
     <title>rstatsZH - Data Science mit R</title>
     <meta charset="utf-8" />
     <meta name="author" content="Lars Schöbitz" />
-    <meta name="date" content="2023-03-16" />
+    <meta name="date" content="2023-10-12" />
     <script src="libs/header-attrs/header-attrs.js"></script>
     <link href="libs/remark-css/default.css" rel="stylesheet" />
-    <link href="libs/font-awesome/css/all.css" rel="stylesheet" />
-    <link href="libs/font-awesome/css/v4-shims.css" rel="stylesheet" />
+    <link href="libs/font-awesome/css/all.min.css" rel="stylesheet" />
+    <link href="libs/font-awesome/css/v4-shims.min.css" rel="stylesheet" />
     <link href="libs/panelset/panelset.css" rel="stylesheet" />
     <script src="libs/panelset/panelset.js"></script>
     <script src="libs/clipboard/clipboard.min.js"></script>
@@ -45,7 +45,7 @@ class: title-slide
 
 .bottom[
 
-<p>Lars Schöbitz</p><p>2023-03-16</p>
+<p>Lars Schöbitz</p><p>2023-10-12</p>
 ]
 
 ---
@@ -136,16 +136,16 @@ treibhaus
 
 ```
 # A tibble: 27 × 9
-   Jahr Strom Kerosin Diesel Benzin Holz_UW_BG_SK Fernwa…¹ Erdgas
-  &lt;dbl&gt; &lt;dbl&gt;   &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;         &lt;dbl&gt;    &lt;dbl&gt;  &lt;dbl&gt;
-1  1990 0.324   0.638  0.418   1.09         0.021    0.228   1.01
-2  1991 0.292   0.614  0.415   1.08         0.02     0.227   1.04
-3  1992 0.263   0.637  0.418   1.08         0.02     0.229   1.07
-4  1993 0.243   0.651  0.419   1.09         0.02     0.232   1.11
-5  1994 0.229   0.661  0.416   1.10         0.02     0.234   1.14
-6  1995 0.242   0.689  0.415   1.10         0.02     0.237   1.18
-# … with 21 more rows, 1 more variable: Heizoel_EL &lt;dbl&gt;, and
-#   abbreviated variable name ¹​Fernwaerme
+   Jahr Strom Kerosin Diesel Benzin Holz_UW_BG_SK Fernwaerme
+  &lt;dbl&gt; &lt;dbl&gt;   &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;         &lt;dbl&gt;      &lt;dbl&gt;
+1  1990 0.324   0.638  0.418   1.09         0.021      0.228
+2  1991 0.292   0.614  0.415   1.08         0.02       0.227
+3  1992 0.263   0.637  0.418   1.08         0.02       0.229
+4  1993 0.243   0.651  0.419   1.09         0.02       0.232
+5  1994 0.229   0.661  0.416   1.10         0.02       0.234
+6  1995 0.242   0.689  0.415   1.10         0.02       0.237
+# ℹ 21 more rows
+# ℹ 2 more variables: Erdgas &lt;dbl&gt;, Heizoel_EL &lt;dbl&gt;
 ```
 
 ---
@@ -184,7 +184,7 @@ read_csv("data/fussball_weltmeister.csv")
 4  2006 Männer            Italien     
 5  2019 Frauen            USA         
 6  2015 Frauen            USA         
-# … with 2 more rows
+# ℹ 2 more rows
 ```
 
 ---
@@ -434,7 +434,7 @@ dat &lt;- dat %&gt;%
 3    NA Tilde       20 trifft eher zu      
 4     4 Lorraine    39 teils-teils         
 5     5 Juan        91 trifft eher nicht zu
-# … with 5 more rows
+# ℹ 5 more rows
 ```
 
 ---
@@ -566,7 +566,7 @@ dat_clean_csv
 4     4 Lorraine    39 teils-teils         
 5     5 Juan        91 trifft eher nicht zu
 6     6 Anush       63 trifft eher nicht zu
-# … with 4 more rows
+# ℹ 4 more rows
 ```
 
 
@@ -596,7 +596,7 @@ dat_clean_rds
 4     4 Lorraine    39 teils-teils         
 5     5 Juan        91 trifft eher nicht zu
 6     6 Anush       63 trifft eher nicht zu
-# … with 4 more rows
+# ℹ 4 more rows
 ```
 
 
@@ -608,7 +608,8 @@ background-size: contain
 
 # Pause 
 
-<div class="countdown" id="timer_6411c51a" style="right:0;bottom:0;left:0;margin:5%;padding:15px;font-size:4em;" data-warnwhen="0">
+<div class="countdown" id="timer_529acdc7" data-update-every="1" tabindex="0" style="right:0;bottom:0;left:0;margin:5%;padding:15px;font-size:4em;">
+<div class="countdown-controls"><button class="countdown-bump-down">&minus;</button><button class="countdown-bump-up">&plus;</button></div>
 <code class="countdown-time"><span class="countdown-digits minutes">10</span><span class="countdown-digits colon">:</span><span class="countdown-digits seconds">00</span></code>
 </div>
 
@@ -1070,16 +1071,16 @@ Wie wären alle Eigenschaften erfüllt?
 
 ```
 # A tibble: 27 × 9
-   Jahr Strom Kerosin Diesel Benzin Holz_UW_BG_SK Fernwa…¹ Erdgas
-  &lt;dbl&gt; &lt;dbl&gt;   &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;         &lt;dbl&gt;    &lt;dbl&gt;  &lt;dbl&gt;
-1  1990 0.324   0.638  0.418   1.09         0.021    0.228   1.01
-2  1991 0.292   0.614  0.415   1.08         0.02     0.227   1.04
-3  1992 0.263   0.637  0.418   1.08         0.02     0.229   1.07
-4  1993 0.243   0.651  0.419   1.09         0.02     0.232   1.11
-5  1994 0.229   0.661  0.416   1.10         0.02     0.234   1.14
-6  1995 0.242   0.689  0.415   1.10         0.02     0.237   1.18
-# … with 21 more rows, 1 more variable: Heizoel_EL &lt;dbl&gt;, and
-#   abbreviated variable name ¹​Fernwaerme
+   Jahr Strom Kerosin Diesel Benzin Holz_UW_BG_SK Fernwaerme
+  &lt;dbl&gt; &lt;dbl&gt;   &lt;dbl&gt;  &lt;dbl&gt;  &lt;dbl&gt;         &lt;dbl&gt;      &lt;dbl&gt;
+1  1990 0.324   0.638  0.418   1.09         0.021      0.228
+2  1991 0.292   0.614  0.415   1.08         0.02       0.227
+3  1992 0.263   0.637  0.418   1.08         0.02       0.229
+4  1993 0.243   0.651  0.419   1.09         0.02       0.232
+5  1994 0.229   0.661  0.416   1.10         0.02       0.234
+6  1995 0.242   0.689  0.415   1.10         0.02       0.237
+# ℹ 21 more rows
+# ℹ 2 more variables: Erdgas &lt;dbl&gt;, Heizoel_EL &lt;dbl&gt;
 ```
 
 ]
@@ -1099,7 +1100,7 @@ Wie wären alle Eigenschaften erfüllt?
 4  1990 Benzin              1.09 
 5  1990 Holz_UW_BG_SK       0.021
 6  1990 Fernwaerme          0.228
-# … with 210 more rows
+# ℹ 210 more rows
 ```
 ]
 
@@ -1275,6 +1276,19 @@ if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
     deleted = true;
   });
 })();
+// add `data-at-shortcutkeys` attribute to <body> to resolve conflicts with JAWS
+// screen reader (see PR #262)
+(function(d) {
+  let res = {};
+  d.querySelectorAll('.remark-help-content table tr').forEach(tr => {
+    const t = tr.querySelector('td:nth-child(2)').innerText;
+    tr.querySelectorAll('td:first-child .key').forEach(key => {
+      const k = key.innerText;
+      if (/^[a-z]$/.test(k)) res[k] = t;  // must be a single letter (key)
+    });
+  });
+  d.body.setAttribute('data-at-shortcutkeys', JSON.stringify(res));
+})(document);
 (function() {
   "use strict"
   // Replace <script> tags in slides area to make them executable

@@ -2,7 +2,7 @@
 title: "rstatsZH - Data Science mit R"
 subtitle: "Mit mehreren Dataframes arbeiten / Funktionen schreiben"
 author: "Lars Schöbitz"
-date: "2023-03-22"
+date: "2023-10-19"
 output:
   xaringan::moon_reader:
     self_contained: false

@@ -83,7 +83,7 @@ Jede deiner Aufgaben wird mit den folgenden Schritten beginnen, welche hier im D
 knitr::include_graphics("img/clone-repo-link.png")
 ```
 
-- Öffne nun Posit Cloud und den **Workspace rstatZH-k007** für den Kurs. Klicke auf den Abwärtspfeil und erstelle ein **New Project from Git Repository**.
+- Öffne nun Posit Cloud und den **Workspace rstatZH-k008** für den Kurs. Klicke auf den Abwärtspfeil und erstelle ein **New Project from Git Repository**.
 
 ```{r new-project-from-gh, fig.margin = TRUE, echo = FALSE, fig.width=3}
 knitr::include_graphics("img/new-project-from-gh.png")

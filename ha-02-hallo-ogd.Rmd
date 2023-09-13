@@ -173,7 +173,6 @@ Gratulation! Du hast die Übungen abgeschlossen. Falls du noch Lust und Zeit has
 
 ```{r, include=FALSE}
 
-
 ggplot(data = corona_kultur,
        mapping =  aes(x = Status, 
                       fill = Sparte)) +

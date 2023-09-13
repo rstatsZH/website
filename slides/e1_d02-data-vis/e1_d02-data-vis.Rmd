@@ -142,9 +142,9 @@ Deshalb sind dies die Ziele für heute.
 
 **Lesezeichen**
 
-- Posit Cloud: https://posit.cloud/spaces/333892/content/all?sort=name_asc
+- Posit Cloud: https://posit.cloud/spaces/401082/content/all?sort=name_asc
 - Kurs Website: https://rstatszh.github.io/website/
-- GitHub Organisation: https://github.com/rstatszh-k007
+- GitHub Organisation: https://github.com/rstatszh-k008
 
 **GitHub Zugangsdaten**
 

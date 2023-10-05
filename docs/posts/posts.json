@@ -44,7 +44,7 @@
     "categories": [],
     "contents": "\n\nContents\nZiele\nFolien\nVektoren in R und mehr Git\n\nWeiterführende Aufgaben\n\n\n\n\n\n\n\nFigure 1: Photo by Richy Great\n\n\n\nEntwickle ein Verständnis für das Arbeiten mit Vektoren in R und arbeite gemeinsam an einem Projekt.\nZiele\nAm Ende dieser Woche könnt ihr:\nEiner Anleitung folgen um kollaborativ mit Git und GitHub an einem Projekt zu arbeiten\nDie Begriffe git add, git commit, git push, und git pull unterscheiden\nDie vier grundlegenden Vektortypen in R wiedergeben\nDen Unterschied zwischen einem Vektor vom Typ “character” und “factor” erläutern\nFolien\nVektoren in R und mehr Git\n\n\n\n\n\n\n\n\nWeiterführende Aufgaben\n\n\nHausaufgabe\n\n\nHausaufgabe 05 - Erstes Projekt\n\n\nPflicht\n\n\n~ 120 Minuten\n\n\nBuch\n\n\nR4DS - Chapter 8 - Workflow: projects\n\n\nPflicht\n\n\n~ 30 Minuten\n\n\nTutorial\n\n\nTeacups and Giraffes - Intro to R (Achtung: etwas neues Material)\n\n\nFreiwillig\n\n\n~ 30 Minuten\n\n\nTutorial\n\n\nTeacups and Giraffes - Introduction to the Normal Distribution\n\n\nFreiwillig\n\n\n~ 30 Minuten\n\n\nTutorial\n\n\nRStudio Primer 2 - Working with Data - Working with Tibbles\n\n\nEmpfohlen\n\n\n~ 20 Minuten\n\n\nTutorial\n\n\nRStudio Primer 2 - Working with Data - Isolating Data with dplyr\n\n\nEmpfohlen\n\n\n~ 20 Minuten\n\n\nTutorial\n\n\nRStudio Primer 2 - Working with Data - Derive Information with dplyr\n\n\nEmpfohlen\n\n\n~ 20 Minuten\n\n\n\n\n\n",
     "preview": "posts/2021-04-12-woche05/img/richy-great-MAYEkmn7G6E-unsplash.jpg",
-    "last_modified": "2023-09-06T15:04:48+02:00",
+    "last_modified": "2023-10-05T08:40:48+02:00",
     "input_file": {}
   },
   {

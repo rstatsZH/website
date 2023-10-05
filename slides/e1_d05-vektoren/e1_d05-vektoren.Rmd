@@ -258,7 +258,7 @@ Am Ende dieser Woche könnt ihr:
 
 ## Live Code
 
-1. **GitHub**: Öffne die GitHub Organisation für den Kurs: https://github.com/rstatszh-k007
+1. **GitHub**: Öffne die GitHub Organisation für den Kurs: https://github.com/rstatszh-k008
 2. **GitHub**: Nutze die Suche um das Praktikum 08-01 (prak-08-01) mit deinem Benutzernamen zu finden
 3. **GitHub**: Klicke auf den grünen Button (Code) und kopiere die URL in die Zwischenablage
 3. **Posit Cloud**: Öffne deinen Arbeitsbereich für den Kurs in der Posit Cloud

@@ -27,6 +27,12 @@ knitr::include_graphics("img/roadmap.jpg")
 
 ```
 
+# Aufgepasst!
+
+Dieser Kurs wird momentan überarbeitet um das Material auf den neuesten Stand zu bringen. Der nächste Kurs wird vorraussichtlich im Oktober 2024 stattfinden. Eine unverbindliche Anmeldung ist jederzeit über folgenden Link möglich:
+
+https://www.zh.ch/de/politik-staat/statistik-daten/datenkompetenz/datenkompetenz-verwaltung.html
+
 # Wer kann teilnehmen?
 
 Der Kurs richtet sich in erster Linie an Mitarbeiter_innen der Verwaltung des Kantons Zürich, steht jedoch auch anderen Personen offen. Die Kosten für den Kurs betragen 1450.00 CHF pro Person. 
@@ -50,46 +56,17 @@ Am Ende dieses Kurses kannst du:
 **Angebot & Koordination**
 
 Matthias Mazenauer  
-[Data Shop](https://www.zh.ch/de/direktion-der-justiz-und-des-innern/statistisches-amt/data-shop.html#-595137091)  
+[Team Data](https://www.zh.ch/de/direktion-der-justiz-und-des-innern/statistisches-amt/data.html)  
 Statistisisches Amt des Kantons Zürich  
 
-Thomas Knecht  
-[Data Shop](https://www.zh.ch/de/direktion-der-justiz-und-des-innern/statistisches-amt/data-shop.html#-595137091)  
+Philipp Bosch  
+[Team Data](https://www.zh.ch/de/direktion-der-justiz-und-des-innern/statistisches-amt/data.html)  
 Statistisisches Amt des Kantons Zürich  
 
 **Durchführung**
 
 [Lars Schöbitz](https://www.lse.de/)  
 Lars Schöbitz GmbH  
-
-# Was sind die Termine?
-
-Auch in 2024 freuen wir uns wieder Kurse anbieten zu können. Eine unverbindliche Anmeldung für die vorläufigen Kursdaten im Frühling und Herbst 2024 ist jederzeit möglich.
-
-
-```{r, echo=FALSE, layout="l-body-outset"}
-
-googlesheets4::read_sheet("1WhGB4Pqpr4ywGbOKaC2UoRsyaf5jbI7L8jY75Lic9FE") %>% 
-  #mutate(Jahr = lubridate::year(Start)) %>% 
-  select(-`Start KW`, -`Ende KW`) %>% 
-  #relocate(Jahr, .after = Kurs) 
-  #mutate(
-    #Start = format(Start, "%d. %B %Y"),
-    #Ende = format(Ende, "%d. %B %Y"),
-    #Bemerkung = case_when(is.na(Bemerkung) == TRUE ~ " ", TRUE ~ Bemerkung)
-    #) %>% 
-  gt::gt() %>% 
-  gt::opt_row_striping() %>% 
-  gt::fmt_date(
-    columns = c(Start, Ende),
-    date_style = "day_month_year",
-    locale = "de"
-  ) |> 
-  gt::tab_options(column_labels.font.weight = "bold") %>% 
-  gt::fmt_missing(columns = "Bemerkung", missing_text = "---")
-
-
-```
 
 # Wo kann ich mich (unverbindlich) anmelden?
 
